@@ -17,7 +17,7 @@ class CreateVideosTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->string('bunny_stream_id'); // Assuming you store Bunny Stream IDs
+            $table->text('embed_link');
             $table->timestamps();
         });
     }

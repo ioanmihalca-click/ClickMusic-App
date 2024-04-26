@@ -12,14 +12,10 @@
                     {{ __("Bine ai venit! Aici ai acces la toate PREMIERELE si la toata colectia de videoclipuri") }}
                 </div>
 
-
- @include('/components/video-dashboard')
-
-
+                <div class="p-6">
+                    @livewire('video-dashboard')
+                </div>
             </div>
         </div>
-
-        
-
-    
+    </div>
 </x-app-layout>
