@@ -13,8 +13,7 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <script src="https://cdn.bunnycdn.com/player/{{ 233943 }}.js"></script>
-
+        
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">

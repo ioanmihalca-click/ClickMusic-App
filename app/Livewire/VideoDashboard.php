@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\Video; // Make sure to import the Video model
+use App\Models\Video; 
 
 class VideoDashboard extends Component
 {
