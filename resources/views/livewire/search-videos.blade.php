@@ -7,13 +7,13 @@
     @if($searchResults->count() > 0)
         <div class="">
             @foreach($searchResults as $video)
-                <div class="max-w-xs mx-auto overflow-hidden rounded-lg shadow-lg sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl">
+                <div class="max-w-xs mx-auto mb-4 overflow-hidden rounded-lg shadow-lg sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl">
                            
                     <div class="mb-4 aspect-w-16 aspect-h-9">
                         {!! $video->embed_link !!}
                     </div>
                     <h3 class="mb-1 text-base font-semibold">{{ $video->title }}</h3>
-                    <p class="text-sm text-gray-600">{{ $video->description }}</p>
+                    {{--<p class="text-sm text-gray-600">{{ $video->description }}</p>--}}
                 </div>
             @endforeach
         </div>

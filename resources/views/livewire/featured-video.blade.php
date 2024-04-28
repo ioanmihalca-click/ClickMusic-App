@@ -7,7 +7,7 @@
       {!! $featuredVideo->embed_link !!}
     </div>
     <h3 class="mb-1 text-base font-semibold">{{ $featuredVideo->title }}</h3>
-    <p class="text-sm text-gray-600">{{ $featuredVideo->description }}</p>
+    {{--<p class="text-sm text-gray-600">{{ $video->description }}</p>--}}
   </div>
 @else
   <p>No featured video available.</p>
