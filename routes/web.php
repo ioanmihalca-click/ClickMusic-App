@@ -14,7 +14,7 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-    Route::get('/videos', [VideoController::class, 'getVideos']);
+
 
   
      
