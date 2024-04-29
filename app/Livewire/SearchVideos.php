@@ -24,11 +24,4 @@ class SearchVideos extends Component
         // Perform the search based on $searchTerm
         $this->searchResults = $this->searchTerm ? Video::where('title', 'like', "%{$this->searchTerm}%")->get() : collect([]);
     }
-
-//   public function clearSearch()
-// {
-//     $this->searchTerm = '';
-//     $this->searchResults = collect([]);
-// } 
-
 }

@@ -15,7 +15,8 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 
-
+    Route::get('/videos/{video}', [VideoController::class, 'show'])->name('videos.show');
+    
   
      
 require __DIR__.'/auth.php';
