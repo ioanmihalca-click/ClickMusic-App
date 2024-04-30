@@ -15,19 +15,37 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    <!-- Additional Styles -->
+    <style>
+        /* Custom scrollbar styling */
+        body::-webkit-scrollbar {
+            width: 9px;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: #3B82F6;
+            border-radius: 3px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background-color: #d1d5db;
+            border-radius: 3px;
+        }
+    </style>
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-300">
     <div class="min-h-screen bg-gray-100">
+
         <livewire:layout.navigation />
 
         <!-- Page Heading -->
         @if (isset($header))
-            <header class="bg-white shadow">
-                <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
+        <header class="bg-white shadow">
+            <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                {{ $header }}
+            </div>
+        </header>
         @endif
 
         <!-- Page Content -->
