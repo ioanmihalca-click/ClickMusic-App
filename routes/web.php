@@ -10,6 +10,14 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+    Route::view('magazin', 'magazin')
+    ->middleware(['auth', 'verified'])
+    ->name('magazin');
+
+    Route::view('sustine', 'sustine')
+    ->middleware(['auth', 'verified'])
+    ->name('sustine');
+
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
