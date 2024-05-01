@@ -19,7 +19,7 @@
     <div class="text-black bg-gray-50 dark:bg-black dark:text-white/50">
         <div
             class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
-            <header class="flex flex-col items-center justify-center mt-2"> 
+            <header class="flex flex-col items-center justify-center mt-2">
                 <img src="/img/logo.png" alt="Logo Click Music"
                     class="h-12 w-auto text-white lg:h-16 lg:text-[#FF2D20] mt-8">
 
@@ -44,9 +44,29 @@
                                     complet gratuit!
                                 </p>
                                 <!-- Embedded iframe -->
-                                <div style="position:relative;padding-top:56.25%;">
-                                    <iframe src="https://iframe.mediadelivery.net/embed/233943/e7750e6c-67fb-44a3-910b-773f7ed3580c?autoplay=true&loop=false&muted=false&preload=false&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe>
+                                <div class="my-3 rounded-lg shadow-lg overflow-hidden">
+                                    <div class="relative" style="padding-top:56.25%;">
+                                        <iframe
+                                            src="https://iframe.mediadelivery.net/embed/233943/e7750e6c-67fb-44a3-910b-773f7ed3580c?autoplay=true&loop=false&muted=false&preload=false&responsive=true"
+                                            loading="lazy" class="absolute inset-0 w-full h-full border-0"
+                                            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
+                                            allowfullscreen="true">
+                                        </iframe>
+                                    </div>
                                 </div>
+
+
+                                <h3 class="pl-1 mb-1 text-base font-semibold">Click - Te tin de mana (prod MdBeatz)</h3>
+
+                                <p class="pl-1 text-sm text-gray-600">Vezi mai mult... <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="inline-block w-4 h-4 ml-1 text-blue-500" viewBox="0 0 20 20"
+                                        fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M9.293 5.293a1 1 0 0 1 1.414 0l4 4a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-1.414-1.414L12.586 11H3a1 1 0 0 1 0-2h9.586l-2.293-2.293a1 1 0 0 1 0-1.414z"
+                                            clip-rule="evenodd" />
+                                    </svg></p>
+
                             </div>
                         </a>
                     </div>

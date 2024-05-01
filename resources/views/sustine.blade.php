@@ -12,7 +12,7 @@
                     {{ __('Daca rezonezi cu muzica, sustine artistul in realizarea urmatoarelor proiecte muzicale!') }}
                 </div>
 
-                <div class="flex justify-center mb-3 space-x-6">
+                <div class="flex justify-center mb-3 space-x-6 ">
                     <!-- PayPal Donation -->
                     <a href="http://www.paypal.me/ClickMusic" target="_blank" rel="noopener noreferrer"
                         class="inline-block px-4 py-1 text-sm font-semibold text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-600">
