@@ -28,11 +28,11 @@ class Comment extends Model
 
     public function replies()
     {
-        return $this->hasMany(Comment::class, 'reply_id'); // Corrected second argument (foreign key on replies table)
+        return $this->hasMany(Comment::class, 'reply_id' , 'id'); // Corrected second argument (foreign key on replies table)
     }
 
-    public function parent()
-    {
-        return $this->belongsTo(Comment::class, 'reply_id'); // Relationship for parent comment
-    }
+    // public function parent()
+    // {
+    //     return $this->belongsTo(Comment::class, 'reply_id'); // Relationship for parent comment
+    // }
 }
