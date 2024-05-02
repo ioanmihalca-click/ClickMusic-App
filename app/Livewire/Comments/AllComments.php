@@ -4,11 +4,13 @@ namespace App\Livewire\Comments;
 use Livewire\Component;
 use App\Models\Video; // Import the Video model
 use App\Models\Comment; // Import the Comment model
+use App\Models\Reply;
 
 class AllComments extends Component
 {
     public $videoId;
     public $newComment;
+    public $replyToComment = [];
 
     public function mount($videoId)
     {
@@ -37,4 +39,24 @@ class AllComments extends Component
 
         $this->newComment = ""; // Reset comment content after submission
     }
+
+    public function addReplyToComment($commentId)
+    {
+        $this->validate([
+            "replyToComment.{$commentId}" => 'required|min:3'
+        ]);
+    
+        $comment = Comment::findOrFail($commentId); // Find the parent comment
+        $reply = new Comment; // Create a new comment
+        $reply->body = $this->replyToComment[$commentId];
+        $reply->video_id = $comment->video_id; // Assign the same video ID
+        $reply->user_id = auth()->id(); // Assuming user is authenticated
+        $reply->reply_id = $comment->id; // Set the reply's reply_id to the parent comment's ID
+        $reply->save();
+    
+        // Reset reply content after submission
+        $this->replyToComment[$commentId] = "";
+    }
+    
+
 }

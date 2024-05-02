@@ -6,12 +6,12 @@
         <div class="mb-4">
             <label for="newComment" class="block text-sm font-medium text-gray-700">Leave a Comment</label>
             <textarea wire:model.defer="newComment" id="newComment"
-                class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 resize-none"
-                rows="3" placeholder="Add your comment"></textarea>
+                class="block w-full mt-1 border-none border-b border-gray-500 rounded-md shadow-sm  focus:ring-0 resize-none"
+                rows="1" placeholder="Add your comment"></textarea>
             @error('newComment') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
         <button type="submit"
-            class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Add
+            class="inline-flex justify-center p-1 text-xs font-medium text-white bg-blue-500 rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Add
             Comment</button>
     </form>
 
