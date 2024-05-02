@@ -26,16 +26,12 @@ class Video extends Model
         return $this->hasMany(Comment::class)->count(); // Separate method for total comment count
     }
 
-    // **Optional: Using a Global Scope (requires modifying Comment model)**
+    public function likes(){
+        return $this->hasMany(Like::class);
+    }
 
-    // public function scopeActive($query)
-    // {
-    //     return $query->whereNull('deleted_at'); // Filter out deleted comments (if applicable)
-    // }
+    public function doesUserLikedVideos(){
+        return $this->likes()->where('user_id', auth() ->id())->exists();
+    }
 
-    // public static function boot()
-    // {
-    //     parent::boot();
-    //     static::addGlobalScope(new ActiveScope); // Apply global scope to all Comment queries
-    // }
 }
