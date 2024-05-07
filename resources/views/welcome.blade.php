@@ -44,7 +44,7 @@
                                     complet gratuit!
                                 </p>
                                 <!-- Embedded iframe -->
-                                <div class="my-3 rounded-lg shadow-lg overflow-hidden">
+                                <div class="my-3 overflow-hidden rounded-lg shadow-lg">
                                     <div class="relative" style="padding-top:56.25%;">
                                         <iframe
                                             src="https://iframe.mediadelivery.net/embed/233943/e7750e6c-67fb-44a3-910b-773f7ed3580c?autoplay=true&loop=false&muted=false&preload=false&responsive=true"

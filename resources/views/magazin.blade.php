@@ -18,6 +18,7 @@
               src="https://bandcamp.com/EmbeddedPlayer/album=2761382938/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/" seamless>
               <a href="https://clickmusic.bandcamp.com/album/trup-si-suflet-lp">Cumpara Trup si Suflet LP by Click</a>
             </iframe>
+            
            
           </div>
           <div class="flex items-center justify-center">

@@ -22,7 +22,7 @@
                     <!-- Revolut Donation -->
                     <a href="https://revolut.me/clickmusic" target="_blank" rel="noopener noreferrer"
                         class="inline-block px-4 py-1 text-sm font-semibold text-white bg-green-500 rounded-lg shadow-md hover:bg-green-600">
-                        Donate via Revolut
+                        Doneaza prin Revolut
                     </a>
                 </div>
             </div>
