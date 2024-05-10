@@ -3,9 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Support\Str;
+
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -48,4 +51,22 @@ class User extends Authenticatable
     public function comments() {
         return $this->hasMany(Comment::class);
     }
+
+    public static function findOrCreateGoogleUser($providerUser)
+{
+    $user = User::where('email', $providerUser->email)->first();
+
+    if (!$user) {
+
+        $randomPassword = Str::random(16);
+        $user = User::create([
+            'name' => $providerUser->name,
+            'email' => $providerUser->email,
+            'password' => bcrypt($randomPassword),
+        ]);
+    }
+
+    return $user;
+}
+
 }

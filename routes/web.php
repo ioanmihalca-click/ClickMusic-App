@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VideoController;
 
+use App\Http\Controllers\Auth\AuthController;
+
+Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
 
 Route::view('/', 'welcome');
 
