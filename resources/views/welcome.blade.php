@@ -28,13 +28,16 @@
                 @endif
 
                 {{-- Google Login --}}
-        <div class="flex items-center justify-end mt-4">
-    <a href="{{ route('login.google') }}" class="inline-flex items-center justify-center px-4 py-2 text-white transition duration-300 ease-in-out bg-gray-800 rounded-md shadow-md hover:bg-gray-700">
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="inline-block mr-2 bi bi-google" viewBox="0 0 16 16">
-    <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z"/>
-  </svg>
-  Sign in with Google
-</a>
+                <div class="flex items-center justify-end mt-4">
+                    <a href="{{ route('login.google') }}"
+                        class="inline-flex items-center justify-center px-4 py-2 text-white transition duration-300 ease-in-out bg-gray-800 rounded-md shadow-md hover:bg-gray-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="inline-block mr-2 bi bi-google" viewBox="0 0 16 16">
+                            <path
+                                d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
+                        </svg>
+                        Sign in with Google
+                    </a>
 
             </header>
 
@@ -83,9 +86,15 @@
                 </main>
 
                 <footer class="py-16 text-sm text-center text-black dark:text-white/70">
-                    ClickMusic &copy; {{ date('Y') }}. Aplicatie dezvoltata de <a href="https://clickstudios-digital.com" target="_blank" >Click Studios Digital</a>.
-                    <a href="https://clickstudios-digital.com/politica-de-confidentialitate" target="_blank" >Politica de confidentialitate</a>.
+                    ClickMusic &copy; {{ date('Y') }}. Aplicație dezvoltată de <a
+                        href="https://clickstudios-digital.com" target="_blank" class="text-blue-500">Click Studios
+                        Digital</a>.
+                    <div class="flex-row">
+                        <a href="/politica-de-confidentialitate.html" class="text-blue-500">Politica de
+                            confidențialitate</a>
+                    </div>
                 </footer>
+
 
             </div>
         </div>
