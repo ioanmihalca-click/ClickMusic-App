@@ -85,15 +85,13 @@
                     </div>
                 </main>
 
-                <footer class="py-16 text-sm text-center text-black dark:text-white/70">
-                    ClickMusic &copy; {{ date('Y') }}. Aplicație dezvoltată de <a
-                        href="https://clickstudios-digital.com" target="_blank" class="text-blue-500">Click Studios
-                        Digital</a>.
-                    <div class="flex-row">
-                        <a href="/politica-de-confidentialitate.html" class="text-blue-500">Politica de
-                            confidențialitate</a>
-                    </div>
-                </footer>
+            <footer class="py-16 text-sm text-center text-black dark:text-white/70">
+    ClickMusic &copy; {{ date('Y') }}. Aplicație dezvoltată de <a href="https://clickstudios-digital.com" target="_blank" class="text-blue-500">Click Studios Digital</a>.
+    <div class="flex-row">
+        <a href="{{ route('privacy-policy') }}" class="text-blue-500">Politica de confidențialitate</a>
+    </div>
+</footer>
+
 
 
             </div>

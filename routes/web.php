@@ -28,6 +28,12 @@ Route::view('profile', 'profile')
 
 
     Route::get('/videos/{video}', [VideoController::class, 'show'])->name('videos.show');
+
+   // Define route for privacy policy page
+Route::get('/politica-de-confidentialitate', function () {
+    return view('politica-de-confidentialitate');
+})->name('privacy-policy');
+
     
   
      
