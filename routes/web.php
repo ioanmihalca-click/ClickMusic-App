@@ -34,6 +34,10 @@ Route::get('/politica-de-confidentialitate', function () {
     return view('politica-de-confidentialitate');
 })->name('privacy-policy');
 
+// Definire rută pentru pagina de Termeni și Condiții
+Route::get('/termeni-si-conditii', function () {
+    return view('termeni-si-conditii');
+})->name('terms-of-service');
     
   
      
