@@ -84,6 +84,7 @@
 
                 <footer class="py-16 text-sm text-center text-black dark:text-white/70">
                     ClickMusic &copy; {{ date('Y') }}. Aplicatie dezvoltata de <a href="https://clickstudios-digital.com" target="_blank" >Click Studios Digital</a>.
+                    <a href="https://clickstudios-digital.com/politica-de-confidentialitate" target="_blank" >Politica de confidentialitate</a>.
                 </footer>
 
             </div>
