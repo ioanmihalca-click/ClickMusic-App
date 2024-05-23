@@ -6,20 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- Meta Tags for Click Music Streaming App -->
-<meta name="description" content="Click Music Streaming App - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul Click din Baia Mare, Maramureș, Romania" />
+<!-- Meta Tags for Click Music Streaming App -->
+<meta name="description" content="Click Music - Muzica, Hip-Hop, Soul, Reggae - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul Click din Baia Mare, Maramureș, Romania" />
 <meta name="keywords" content="Click Music, streaming video, hip-hop, reggae, soul, Click, Baia Mare, Maramureș, Romania, muzică, videoclipuri muzicale, artist, streaming, audio, video" />
 
 <!-- Open Graph Tags for Social Media Sharing -->
-<meta property="og:title" content="Click Music Streaming App" />
-<meta property="og:description" content="Click Music Streaming App - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul Click din Baia Mare, Maramureș, Romania" />
-<meta property="og:image" content="img\logo.png" />
+<meta property="og:title" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
+<meta property="og:description" content="Click Music - Muzica, Hip-Hop, Soul, Reggae - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul Click din Baia Mare, Maramureș, Romania" />
+<meta property="og:image" content="{{ asset('img/logo.png') }}" /> 
 <meta property="og:image:type" content="image/png" />
-<meta property="og:image:alt" content="Click Music Streaming App" />
+<meta property="og:image:alt" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
 <meta property="og:url" content="https://clickmusic.ro" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="ro_RO" />
-<meta property="og:site_name" content="Click Music Streaming App" />
+<meta property="og:site_name" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
 
 <link rel="canonical" href="https://clickmusic.ro" />
 
