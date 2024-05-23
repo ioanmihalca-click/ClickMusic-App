@@ -54,7 +54,8 @@
         </main>
 
         <footer class="py-16 text-sm text-center text-black dark:text-white/70">
-            ClickMusic &copy; {{ date('Y') }}. Designed by Elan Media.
+            ClickMusic &copy; {{ date('Y') }}. Aplicatie dezvoltata de <a href="https://clickstudios-digital.com" target="_blank" >Click Studios Digital</a>.
+                </footer>
         </footer>
     </div>
 </body>
