@@ -83,9 +83,9 @@
                             Sign in with Google
                         </a>
                         <!-- Login with Facebook Button -->
-                        <a href="{{ route('login.facebook') }}" class="btn btn-primary">
+                        {{-- <a href="{{ route('login.facebook') }}" class="btn btn-primary">
                             Login with Facebook
-                        </a>
+                        </a> --}}
 
             </header>
 
