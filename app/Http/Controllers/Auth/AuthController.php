@@ -21,4 +21,18 @@ class AuthController extends Controller
         Auth::login($user);
         return redirect('/dashboard');
     }
+
+    public function redirectToFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    public function handleFacebookCallback()
+    {
+        $facebookUser = Socialite::driver('facebook')->user();
+        $user = User::findOrCreateFacebookUser($facebookUser);
+        Auth::login($user);
+        return redirect('/dashboard');
+    }
+    
 }

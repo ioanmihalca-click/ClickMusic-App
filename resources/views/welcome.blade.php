@@ -3,42 +3,48 @@
 
 <head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-34NT57GG5F"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-34NT57GG5F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-34NT57GG5F');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-34NT57GG5F');
+    </script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Meta Tags for Click Music Streaming App -->
-<meta name="description" content="Click Music - Muzica, Hip-Hop, Soul, Reggae - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul Click din Baia Mare, Maramureș, Romania" />
-<meta name="keywords" content="Click Music, streaming video, hip-hop, reggae, soul, Click, Baia Mare, Maramureș, Romania, muzică, videoclipuri muzicale, artist, streaming, audio, video" />
+    <!-- Meta Tags for Click Music Streaming App -->
+    <meta name="description"
+        content="Click Music - Muzica, Hip-Hop, Soul, Reggae - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul Click din Baia Mare, Maramureș, Romania" />
+    <meta name="keywords"
+        content="Click Music, streaming video, hip-hop, reggae, soul, Click, Baia Mare, Maramureș, Romania, muzică, videoclipuri muzicale, artist, streaming, audio, video" />
 
-<!-- Open Graph Tags for Social Media Sharing -->
-<meta property="og:title" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
-<meta property="og:description" content="Click Music - Muzica, Hip-Hop, Soul, Reggae - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul Click din Baia Mare, Maramureș, Romania" />
-<meta property="og:image" content="{{ asset('img/ClickMusic-OG.jpg') }}" /> 
-<meta property="og:image:type" content="image/jpg" />
-<meta property="og:image:alt" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
-<meta property="og:url" content="https://clickmusic.ro" />
-<meta property="og:type" content="website" />
-<meta property="og:locale" content="ro_RO" />
-<meta property="og:site_name" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
+    <!-- Open Graph Tags for Social Media Sharing -->
+    <meta property="og:title" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
+    <meta property="og:description"
+        content="Click Music - Muzica, Hip-Hop, Soul, Reggae - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul Click din Baia Mare, Maramureș, Romania" />
+    <meta property="og:image" content="{{ asset('img/ClickMusic-OG.jpg') }}" />
+    <meta property="og:image:type" content="image/jpg" />
+    <meta property="og:image:alt" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
+    <meta property="og:url" content="https://clickmusic.ro" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ro_RO" />
+    <meta property="og:site_name" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
 
 
-<link rel="canonical" href="https://clickmusic.ro" />
+    <link rel="canonical" href="https://clickmusic.ro" />
 
-<!-- Favicon -->
-<link rel="icon" href="{{ asset('img/logo.png') }}" type="image/x-icon" />
+    <!-- Favicon -->
+    <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/x-icon" />
 
-<!-- Apple Touch Icon -->
-<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logo.png') }}" type="image/x-icon" />
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logo.png') }}" type="image/x-icon" />
 
 
     <title>Click Music - Muzica, Hip-Hop, Soul, Reggae</title>
@@ -66,16 +72,20 @@
 
                 {{-- Google Login --}}
                 <div class="flex items-center justify-end mt-4">
-                        <div>
-                    <a href="{{ route('login.google') }}"
-                        class="inline-flex items-center justify-center px-4 py-2 text-white transition duration-300 ease-in-out bg-gray-800 rounded-md shadow-md hover:bg-gray-700">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="inline-block mr-2 bi bi-google" viewBox="0 0 16 16">
-                            <path
-                                d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
-                        </svg>
-                        Sign in with Google
-                    </a>
+                    <div>
+                        <a href="{{ route('login.google') }}"
+                            class="inline-flex items-center justify-center px-4 py-2 text-white transition duration-300 ease-in-out bg-gray-800 rounded-md shadow-md hover:bg-gray-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="inline-block mr-2 bi bi-google" viewBox="0 0 16 16">
+                                <path
+                                    d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
+                            </svg>
+                            Sign in with Google
+                        </a>
+                        <!-- Login with Facebook Button -->
+                        <a href="{{ route('login.facebook') }}" class="btn btn-primary">
+                            Login with Facebook
+                        </a>
 
             </header>
 

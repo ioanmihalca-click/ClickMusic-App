@@ -8,6 +8,10 @@ use App\Http\Controllers\Auth\AuthController;
 Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
 
+Route::get('auth/facebook', [AuthController::class, 'redirectToFacebook'])->name('login.facebook');
+Route::get('auth/facebook/callback', [AuthController::class, 'handleFacebookCallback']);
+
+
 Route::view('/', 'welcome');
 
 Route::view('dashboard', 'dashboard')
