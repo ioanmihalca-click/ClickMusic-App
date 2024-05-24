@@ -57,6 +57,17 @@
             border-radius: 3px;
         }
     </style>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-34NT57GG5F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-34NT57GG5F');
+</script>
+
 </head>
 
 <body class="font-sans antialiased scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-300">
