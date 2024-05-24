@@ -85,7 +85,7 @@ new #[Layout('layouts.guest')] class extends Component
             </x-primary-button>
         </div>
   
-                {{-- Google Login --}}
+                Google Login
                 <div class="flex items-center justify-end mt-4">
                     <a href="{{ route('login.google') }}"
                         class="inline-flex items-center justify-center px-4 py-2 text-white transition duration-300 ease-in-out bg-gray-800 rounded-md shadow-md hover:bg-gray-700">
