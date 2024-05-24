@@ -12,7 +12,7 @@
 <!-- Open Graph Tags for Social Media Sharing -->
 <meta property="og:title" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
 <meta property="og:description" content="Click Music - Muzica, Hip-Hop, Soul, Reggae - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul Click din Baia Mare, Maramureș, Romania" />
-<meta property="og:image" content="{{ asset('img\ClickMusic-OG.jpg') }}" /> 
+<meta property="og:image" content="{{ asset('img/ClickMusic-OG.jpg') }}" /> 
 <meta property="og:image:type" content="image/jpg" />
 <meta property="og:image:alt" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
 <meta property="og:url" content="https://clickmusic.ro" />
