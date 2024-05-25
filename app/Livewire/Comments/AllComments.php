@@ -28,7 +28,7 @@ class AllComments extends Component
     public function addComment()
     {
         $this->validate([
-            'newComment' => 'required|min:3'
+            'newComment' => 'required|min:1'
         ]);
 
         $comment = new Comment;
@@ -43,7 +43,7 @@ class AllComments extends Component
     public function addReplyToComment($commentId)
     {
         $this->validate([
-            "replyToComment.{$commentId}" => 'required|min:3'
+            "replyToComment.{$commentId}" => 'required|min:1'
         ]);
     
         $comment = Comment::findOrFail($commentId); // Find the parent comment
