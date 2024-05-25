@@ -91,11 +91,15 @@
             {{ $slot }}
         </main>
 
-        <footer class="py-16 text-sm text-center text-black dark:text-white/70">
-                    ClickMusic &copy; {{ date('Y') }}. Aplicație dezvoltată de <a
+            <footer class="py-16 text-sm text-center text-black">
+                    ClickMusic &copy; {{ date('Y') }}.Toate drepturile rezervate. 
+                     <div class="mt-2">
+                     Aplicație dezvoltată de <a
                         href="https://clickstudios-digital.com" target="_blank" class="text-blue-500">Click Studios
                         Digital</a>.
-                    <div class="flex-row mt-2">
+                        </div>
+
+                    <div class="flex-row mt-4">
                         <a href="{{ route('privacy-policy') }}" class="text-blue-500">Politica de confidențialitate</a>
                         |
                         <a href="{{ route('terms-of-service') }}" class="text-blue-500">Termeni și Condiții</a>
