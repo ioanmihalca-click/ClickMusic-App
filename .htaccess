@@ -1,4 +1,16 @@
 <IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteRule ^(.*)$ public/$1 [L]
+    RewriteEngine On
+
+    # Redirect from http://www. and https://www. to https://clickmusic.ro
+    RewriteCond %{HTTP_HOST} ^www\.clickmusic\.ro [NC]
+    RewriteRule ^(.*)$ https://clickmusic.ro/$1 [L,R=301]
+
+    # Redirect from http:// to https://
+    RewriteCond %{HTTP_HOST} ^clickmusic\.ro [NC]
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://clickmusic.ro/$1 [L,R=301]
+
+    # Internal rewrite to public directory
+    RewriteRule ^$ public/ [L]
+    RewriteRule (.*) public/$1 [L]
 </IfModule>
