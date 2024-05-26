@@ -10,7 +10,7 @@ class Video extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'embed_link'];
+    protected $fillable = ['title', 'description', 'embed_link', 'thumbnail_url'];
 
     public $timestamps = true;
 

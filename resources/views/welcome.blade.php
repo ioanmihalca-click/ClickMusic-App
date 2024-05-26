@@ -161,8 +161,8 @@
                         <div class="flex justify-between">
                             <h2 class="text-xl font-semibold text-center text-black">Cine este Click, artistul din
                                 spatele muzicii?</h2>
-                            <span x-show="!open" class="pb-2 ml-2 text-3xl font-semibold text-blue-500">+</span>
-                            <span x-show="open" class="ml-2 text-3xl font-semibold text-blue-500">-</span>
+                            <span x-show="!open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">+</span>
+                            <span x-show="open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">-</span>
                         </div>
 
                     </button>
@@ -217,9 +217,7 @@
                             unde antrenează copii și adulți în Freestyle Kickboxing și Fitness Funcțional. Este, de
                             asemenea, fondatorul și CEO al agenției de publicitate <a
                                 href="https://clickstudios-digital.com" target="_blank" class="text-blue-500">Click
-                                Studios
-                                Digital din
-                                Baia-Mare</a>.
+                                Studios Digital</a>din Baia-Mare.
                         </p>
                         <p class="mt-2 text-base text-black">Aceasta este pe scurt povestea lui Click, un artist
                             complex și
@@ -242,7 +240,7 @@
                             confidențialitate</a>
                         |
                         <a href="{{ route('terms-of-service') }}" class="text-blue-500">Termeni și Condiții</a>
-                      
+
                     </div>
 
                 </footer>
