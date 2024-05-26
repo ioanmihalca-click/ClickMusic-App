@@ -19,7 +19,7 @@ class AuthController extends Controller
         $googleUser = Socialite::driver('google')->user();
         $user = User::findOrCreateGoogleUser($googleUser);
         Auth::login($user);
-        return redirect('/dashboard');
+        return redirect('videoclipuri');
     }
 
     public function redirectToFacebook()
