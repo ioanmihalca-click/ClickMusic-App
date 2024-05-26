@@ -14,9 +14,9 @@ Route::get('auth/facebook/callback', [AuthController::class, 'handleFacebookCall
 
 Route::view('/', 'welcome');
 
-Route::view('dashboard', 'dashboard')
+Route::view('videoclipuri', 'videoclipuri')
     ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+    ->name('videoclipuri');
 
     Route::view('magazin', 'magazin')
     ->middleware(['auth', 'verified'])
