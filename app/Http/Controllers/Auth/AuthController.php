@@ -32,7 +32,7 @@ class AuthController extends Controller
         $facebookUser = Socialite::driver('facebook')->user();
         $user = User::findOrCreateFacebookUser($facebookUser);
         Auth::login($user);
-        return redirect('/dashboard');
+        return redirect('videoclipuri');
     }
     
 }
