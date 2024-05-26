@@ -18,12 +18,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- Meta Tags for Click Music Streaming App -->
-<meta name="description" content="Click Music - Muzica, Hip-Hop, Soul, Reggae - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul Click din Baia Mare, Maramureș, Romania" />
-<meta name="keywords" content="Click Music, streaming video, hip-hop, reggae, soul, Click, Baia Mare, Maramureș, Romania, muzică, videoclipuri muzicale, artist, streaming, audio, video" />
-
+<meta name="description"
+        content="Click Music - Muzica, Hip-Hop, Soul, Reggae - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul - Click" />
+    <meta name="keywords"
+        content="Click Music, streaming video, hip-hop, reggae, soul, Click, Baia Mare, Maramureș, Romania, muzică, videoclipuri muzicale, artist, streaming, audio, video, videoclipuri exclusive" />
 <!-- Open Graph Tags for Social Media Sharing -->
 <meta property="og:title" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
-<meta property="og:description" content="Click Music - Muzica, Hip-Hop, Soul, Reggae - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul Click din Baia Mare, Maramureș, Romania" />
+<meta property="og:description" content="Click Music - Muzica, Hip-Hop, Soul, Reggae - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul - Click" />
 <meta property="og:image" content="{{ asset('img/logo.png') }}" /> 
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:alt" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />

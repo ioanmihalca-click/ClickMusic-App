@@ -21,14 +21,14 @@
 
     <!-- Meta Tags for Click Music Streaming App -->
     <meta name="description"
-        content="Click Music - Muzica, Hip-Hop, Soul, Reggae - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul Click din Baia Mare, Maramureș, Romania" />
+        content="Click Music - Muzica, Hip-Hop, Soul, Reggae - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul - Click" />
     <meta name="keywords"
-        content="Click Music, streaming video, hip-hop, reggae, soul, Click, Baia Mare, Maramureș, Romania, muzică, videoclipuri muzicale, artist, streaming, audio, video" />
+        content="Click Music, streaming video, hip-hop, reggae, soul, Click, Baia Mare, Maramureș, Romania, muzică, videoclipuri muzicale, artist, streaming, audio, video, videoclipuri exclusive" />
 
     <!-- Open Graph Tags for Social Media Sharing -->
     <meta property="og:title" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
     <meta property="og:description"
-        content="Click Music - Muzica, Hip-Hop, Soul, Reggae - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul Click din Baia Mare, Maramureș, Romania" />
+        content="Click Music - Muzica, Hip-Hop, Soul, Reggae - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul - Click" />
     <meta property="og:image" content="{{ asset('img/ClickMusic-OG.jpg') }}" />
     <meta property="og:image:type" content="image/jpg" />
     <meta property="og:image:alt" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
@@ -89,23 +89,27 @@
 
             </header>
 
-            <div class="relative w-full max-w-2xl px-6 mt-2 lg:max-w-7xl"> 
+            <div class="relative w-full max-w-2xl px-6 mt-2 lg:max-w-7xl">
 
-                <main class="flex items-center justify-center mt-2"> 
+                <main class="flex items-center justify-center mt-2">
                     <div class="max-w-md mx-auto text-center lg:gap-8">
                         <a href="/register"
                             class="block rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-blue-500/20 focus:outline-none focus-visible:ring-[#FF2D20] lg:pb-10">
                             <div class="pt-3 sm:pt-5">
-                             <h1 class="text-xl font-semibold text-black">Click Music - Hip-Hop, Soul, Reggae</h1>
-                                <h2 class="mt-4 text-lg font-medium text-black">Bine ai venit pe platforma de streaming
-                                    Click Music!</h2>
+                                <h1 class="text-xl font-semibold">Click Music - Hip-Hop, Soul, Reggae</h1>
+                                <h2 class="mt-4 text-base font-semibold ">Bine ai venit pe platforma de streaming Click
+                                    Music</h2>
+
 
                                 <p class="mt-4 text-base">
-                                    Pentru a beneficia de acces la întreaga noastră colecție de videoclipuri și la
-                                    premiere exclusive, înregistrează-te ca membru al comunității noastre. <br> Este
+                                    Pentru a beneficia de acces la întreaga colecție de videoclipuri, inclusiv la cele
+                                    mai recente piese in PREMIERA, <span
+                                        class ="px-2 text-white bg-blue-500 rounded-md"> înregistrează-te</span> ca
+                                    membru al
+                                    comunității Click Music. Este
                                     complet gratuit!
-                                </p>
-                                <!-- Embedded iframe -->
+
+                                    <!-- Embedded iframe -->
                                 <div class="my-3 overflow-hidden rounded-lg shadow-lg">
                                     <div class="relative" style="padding-top:56.25%;">
                                         <iframe
@@ -114,6 +118,7 @@
                                             allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
                                             allowfullscreen="true">
                                         </iframe>
+
                                     </div>
                                 </div>
 
@@ -132,18 +137,94 @@
                             </div>
                         </a>
                     </div>
+
                 </main>
 
-                <footer class="py-16 text-sm text-center text-black">
-                    ClickMusic &copy; {{ date('Y') }}.Toate drepturile rezervate. 
-                     <div class="mt-2">
-                     Aplicație dezvoltată de <a
-                        href="https://clickstudios-digital.com" target="_blank" class="text-blue-500">Click Studios
-                        Digital</a>.
+                <!-- Biografie Click -->
+                <div x-data="{ open: false }"
+                    class="max-w-md mx-auto mt-8 text-left rounded-lg bg-white p-4 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-blue-500/20 focus:outline-none focus-visible:ring-[#FF2D20] lg:pb-10">
+
+                    <button @click="open = !open">
+                        <div class="flex justify-between">
+                            <h2 class="text-xl font-semibold text-center text-black">Cine este Click, artistul din
+                                spatele muzicii?</h2>
+                            <span x-show="!open" class="pb-2 ml-2 text-3xl font-semibold text-blue-500">+</span>
+                            <span x-show="open" class="ml-2 text-3xl font-semibold text-blue-500">-</span>
                         </div>
 
+                    </button>
+                    <div x-show="open" x-transition>
+                        <p class="mt-2 text-base text-black">Click este un artist de muzică hip-hop, soul și reggae
+                            stabilit în Baia-Mare, Maramureș. Stilul său muzical este variat, bucurându-se de toate genurile muzicale fără a se limita la unul singur.</p>
+                        <p class="mt-2 text-base text-black">A început călătoria muzicală la vârsta de 13 ani, când și-a
+                            descoperit pasiunea pentru producția de instrumentale și scrierea versurilor. Încă de la
+                            început, a fost încurajat și instruit de Gabi Mican, administratorul portalului de hip-hop
+                            “Rap-Arena”. Aceasta colaborare i-a permis să creeze mai multe materiale și să apară pe
+                            numeroase compilații de muzică rap.</p>
+                        <p class="mt-2 text-base text-black">La 18 ani, s-a mutat la Cluj, unde, împreună cu Blazon și
+                            DJ Maka, a format trupa Camuflaj. Aceasta a devenit rapid un simbol al muzicii hip-hop și
+                            reggae din Cluj și, ulterior, din toată țara, odată cu mutarea în București și colaborarea
+                            cu un label muzical cunoscut. Trupa a câștigat recunoaștere națională cu piese precum
+                            "România" și "În Jurul Lumii".</p>
+                        <p class="mt-2 text-base text-black">
+                            Click și-a lansat primul album solo, "Trup și Suflet", în 2017, urmat de "Lume Dragă" în
+                            2020 și
+                            EP-urile "Dulce și Amar" și "Culori EP" în 2021. De pe albumul "Trup și Suflet" s-a remarcat
+                            piesa "De Dragoste și Război" în colaborare cu El Nino (8 milioane de vizualizări în acest
+                            moment) și "Prima Dată" în colaborare cu Feli (6 milioane de vizualizări în acest moment).
+                            De pe
+                            albumul "Lume Dragă" s-a remarcat piesa "Nopțile Calde" în colaborare cu Style da Kid (5
+                            milioane de vizualizări în acest moment). A creat, de asemenea, un material deosebit alături
+                            de
+                            CDP, un grup format din Style da Kid, Pacha Man și Dragoș Udilă.
+                        </p>
+
+                        <p class="mt-2 text-base text-black">Produsele muzicale realizate alaturi de fratele său, Style
+                            da
+                            Kid,
+                            l-au ajutat pe Click să se impună pe scena muzicală din România. În prezent, Click lucrează
+                            la finalizarea albumului "Inimă Română" împreună cu Gavrila și Style da Kid, și la un nou
+                            album solo care îmbină clasicul cu noul.</p>
+                        <p class="mt-2 text-base text-black">
+                            Canalul de YouTube al lui Click,
+                            <a href="https://youtube.com/clickmusicromania" target="_blank" class="text-blue-500">Click
+                                Music Romania</a>,
+                            a strâns peste 50 de milioane de vizualizări până în prezent.
+                        </p>
+
+
+
+                        <h2 class="mt-4 text-xl font-semibold text-black">Cine este omul din spatele artistului?</h2>
+                        <p class="mt-2 text-base text-black">
+                            Pe lângă cariera sa muzicală, Click este un sportiv dedicat, antrenor și președinte al
+                            <a href="https://csvictoriamm.ro/" target="_blank" class="text-blue-500">Clubului Sportiv
+                                Victoria
+                                Maramureș</a>,
+                            unde antrenează copii și adulți în Freestyle Kickboxing și Fitness Funcțional. Este, de
+                            asemenea, fondatorul și CEO al agenției de publicitate <a
+                                href="https://clickstudios-digital.com" target="_blank" class="text-blue-500">Click
+                                Studios
+                                Digital din
+                                Baia-Mare</a>.
+                        </p>
+                        <p class="mt-2 text-base text-black">Aceasta este pe scurt povestea lui Click, un artist
+                            complex și
+                            dedicat, cu o carieră muzicală diversă și un angajament puternic față de comunitate și
+                            sport.</p>
+                    </div>
+                </div>
+
+                <footer class="py-16 text-sm text-center text-black">
+                    ClickMusic &copy; {{ date('Y') }}.Toate drepturile rezervate.
+                    <div class="mt-2">
+                        Aplicație dezvoltată de <a href="https://clickstudios-digital.com" target="_blank"
+                            class="text-blue-500">Click Studios
+                            Digital</a>.
+                    </div>
+
                     <div class="flex-row mt-4">
-                        <a href="{{ route('privacy-policy') }}" class="text-blue-500">Politica de confidențialitate</a>
+                        <a href="{{ route('privacy-policy') }}" class="text-blue-500">Politica de
+                            confidențialitate</a>
                         |
                         <a href="{{ route('terms-of-service') }}" class="text-blue-500">Termeni și Condiții</a>
                     </div>
