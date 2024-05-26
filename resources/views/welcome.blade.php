@@ -217,7 +217,7 @@
                             unde antrenează copii și adulți în Freestyle Kickboxing și Fitness Funcțional. Este, de
                             asemenea, fondatorul și CEO al agenției de publicitate <a
                                 href="https://clickstudios-digital.com" target="_blank" class="text-blue-500">Click
-                                Studios Digital</a>din Baia-Mare.
+                                Studios Digital</a> din Baia-Mare.
                         </p>
                         <p class="mt-2 text-base text-black">Aceasta este pe scurt povestea lui Click, un artist
                             complex și
