@@ -242,18 +242,10 @@
                             confidențialitate</a>
                         |
                         <a href="{{ route('terms-of-service') }}" class="text-blue-500">Termeni și Condiții</a>
-                        |
-                        <a href="/videoclipuri" class="text-blue-500 ">Videoclipuri</a>
-                        |
-                        <a href="/magazin" class="text-blue-500">Magazin</a>
-                        |
-                        <a href="/sustine" class="text-blue-500">Susține</a>
+                      
                     </div>
 
-
                 </footer>
-
-
 
             </div>
         </div>
