@@ -26,13 +26,16 @@
     <meta name="keywords"
         content="Click Music, streaming video, hip-hop, reggae, soul, Click, Baia Mare, Maramureș, Romania, muzică, videoclipuri muzicale, artist, streaming, audio, video, videoclipuri exclusive" />
     <!-- Open Graph Tags for Social Media Sharing -->
-    <meta property="og:title" content="{{ $video->title }}" />
-    <meta property="og:description" content="{{ $video->description }}" />
-    <meta property="og:image" content="{{ $video->thumbnail_url }}" />
-    <meta property="og:image:alt" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
-    <meta property="og:image:type" content="image/jpg" />
-    <meta property="og:url" content="{{ route('videos.show', $video->id) }}" />
-    <meta property="og:type" content="video.other" />
+    
+    @isset($video)
+        <meta property="og:title" content="{{ $video->title }}" />
+        <meta property="og:description" content="{{ $video->description }}" />
+        <meta property="og:image" content="{{ $video->thumbnail_url }}" />
+        <meta property="og:image:alt" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
+        <meta property="og:url" content="{{ route('videos.show', $video->id) }}" />
+        <meta property="og:type" content="video.other" />
+    @endisset
+    
     <meta property="og:locale" content="ro_RO" />
     <meta property="og:site_name" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
 
