@@ -56,6 +56,19 @@
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    <!-- Schema Markup for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MusicGroup",
+        "name": "Click",
+        "genre": ["Hip-Hop", "Soul", "Reggae"],
+        "url": "https://clickmusic.ro",
+        "image": "{{ asset('img/ClickMusic-OG.jpg') }}",
+        "description": "Click este un artist de muzică hip-hop, soul și reggae din Baia-Mare, Maramureș."
+    }
+    </script>
+
 </head>
 
 <body class="font-sans antialiased">
@@ -142,7 +155,7 @@
 
                 <!-- Biografie Click -->
                 <div x-data="{ open: false }"
-                    class="max-w-md mx-auto mt-8 text-left rounded-lg bg-white p-4 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-blue-500/20 focus:outline-none focus-visible:ring-[#FF2D20] lg:pb-10">
+                    class="max-w-md mx-auto mt-8 text-left rounded-lg bg-white p-4 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-blue-500/20 focus:outline-none focus-visible:ring-[#FF2D20] ">
 
                     <button @click="open = !open">
                         <div class="flex justify-between">
@@ -155,7 +168,8 @@
                     </button>
                     <div x-show="open" x-transition>
                         <p class="mt-2 text-base text-black">Click este un artist de muzică hip-hop, soul și reggae
-                            stabilit în Baia-Mare, Maramureș. Stilul său muzical este variat, bucurându-se de toate genurile muzicale fără a se limita la unul singur.</p>
+                            stabilit în Baia-Mare, Maramureș. Stilul său muzical este variat, bucurându-se de toate
+                            genurile muzicale fără a se limita la unul singur.</p>
                         <p class="mt-2 text-base text-black">A început călătoria muzicală la vârsta de 13 ani, când și-a
                             descoperit pasiunea pentru producția de instrumentale și scrierea versurilor. Încă de la
                             început, a fost încurajat și instruit de Gabi Mican, administratorul portalului de hip-hop
@@ -212,7 +226,23 @@
                             dedicat, cu o carieră muzicală diversă și un angajament puternic față de comunitate și
                             sport.</p>
                     </div>
+
                 </div>
+
+              <!-- Secțiunea cu linkuri interne -->
+<div class="flex justify-center mt-4">
+ 
+        <!-- Link către pagina Videoclipuri -->
+        <a href="/videoclipuri" class="px-2 text-gray-500 hover:text-blue-500">Videoclipuri</a>
+
+        <!-- Link către pagina Magazin -->
+        <a href="/magazin" class="px-2 text-gray-500 hover:text-blue-500">Magazin</a>
+
+        <!-- Link către pagina Sustine -->
+        <a href="/sustine" class="px-2 text-gray-500 hover:text-blue-500">Sustine artistul</a>
+  
+</div>
+
 
                 <footer class="py-16 text-sm text-center text-black">
                     ClickMusic &copy; {{ date('Y') }}.Toate drepturile rezervate.
