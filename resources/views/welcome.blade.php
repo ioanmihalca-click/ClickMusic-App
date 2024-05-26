@@ -229,21 +229,6 @@
 
                 </div>
 
-              <!-- Secțiunea cu linkuri interne -->
-<div class="flex justify-center mt-4">
- 
-        <!-- Link către pagina Videoclipuri -->
-        <a href="/videoclipuri" class="px-2 text-gray-500 hover:text-blue-500">Videoclipuri</a>
-
-        <!-- Link către pagina Magazin -->
-        <a href="/magazin" class="px-2 text-gray-500 hover:text-blue-500">Magazin</a>
-
-        <!-- Link către pagina Sustine -->
-        <a href="/sustine" class="px-2 text-gray-500 hover:text-blue-500">Sustine artistul</a>
-  
-</div>
-
-
                 <footer class="py-16 text-sm text-center text-black">
                     ClickMusic &copy; {{ date('Y') }}.Toate drepturile rezervate.
                     <div class="mt-2">
