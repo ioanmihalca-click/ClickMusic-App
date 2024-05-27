@@ -14,7 +14,7 @@
     <title>{{ $video->title }}</title>
     <meta property="og:title" content="{{ $video->title }}" />
     <meta property="og:description" content="{{ $video->description }}" />
-    <meta property="og:image" content="{{ asset('img/ClickMusic-OG.jpg') }}" />
+    <meta property="og:image" content="{{ $video->thumbnail_url }}" />
     <meta property="og:image:type" content="image/jpg" />
     <meta property="og:image:alt" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
 
