@@ -233,7 +233,7 @@
 
                     <button @click="open = !open">
                         <div class="flex justify-between">
-                            <h2 class="mb-4 text-lg font-semibold">Inregistreaza-te pentru a avea ACCES la Toate videoclipurile</h2>
+                            <h2 class="mb-4 text-lg font-semibold">Înregistrează-te pentru a avea ACCES la Toate videoclipurile</h2>
                             <span x-show="!open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">+</span>
                             <span x-show="open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">-</span>
                         </div>
