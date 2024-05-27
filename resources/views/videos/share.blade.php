@@ -66,11 +66,11 @@
 
         <h1 class="mb-2 text-xl font-semibold">{{ $video->title }}</h1>
         {{-- <p class="text-gray-700">{{ $video->description }}</p> --}}
-      <p class="mt-4 text-center text-gray-500">
-    Pentru a urmari videoul complet va rugam sa va 
-    <a href="{{ route('register', ['video_id' => $video->id]) }}" class="px-2 text-white bg-blue-500 rounded-sm">inregistrati</a> 
+      <p class="mt-4 mb-2 text-center text-gray-500">
+    Pentru a avea acces la videoclipuri va rugam sa va 
+    <a href="/register" class="px-2 text-white bg-blue-500 rounded-sm">înregistrati</a> 
     sau sa va 
-    <a href="{{ route('login', ['video_id' => $video->id]) }}" class="px-2 text-white bg-blue-500 rounded-sm">logati</a>.
+    <a href="/login" class="px-2 text-white bg-blue-500 rounded-sm">logati</a>.
 </p>
 
 
