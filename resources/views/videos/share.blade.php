@@ -9,6 +9,8 @@
     <meta property="og:title" content="{{ $video->title }}" />
     <meta property="og:description" content="{{ $video->description }}" />
     <meta property="og:image" content="{{ $video->thumbnail_url }}" />
+    <meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
     <meta property="og:url" content="{{ route('videos.share', $video->id) }}" />
     <meta property="og:type" content="video.other" />
 
