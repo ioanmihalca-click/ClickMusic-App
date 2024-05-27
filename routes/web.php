@@ -33,6 +33,8 @@ Route::view('profile', 'profile')
 
     Route::get('/videos/{video}', [VideoController::class, 'show'])->name('videos.show');
 
+    Route::get('/videos/share/{id}', [VideoController::class, 'share'])->name('videos.share');
+
    // Define route for privacy policy page
 Route::get('/politica-de-confidentialitate', function () {
     return view('politica-de-confidentialitate');

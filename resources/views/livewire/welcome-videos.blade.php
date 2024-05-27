@@ -1,6 +1,3 @@
-
-
-
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
         @foreach ($videos as $video)
             <div class="max-w-xs mx-0 overflow-hidden rounded-lg shadow-lg sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl">
