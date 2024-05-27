@@ -11,7 +11,6 @@ Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback
 Route::get('auth/facebook', [AuthController::class, 'redirectToFacebook'])->name('login.facebook');
 Route::get('auth/facebook/callback', [AuthController::class, 'handleFacebookCallback']);
 
-
 Route::view('/', 'welcome');
 
 Route::view('videoclipuri', 'videoclipuri')

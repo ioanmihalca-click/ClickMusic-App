@@ -13,10 +13,10 @@
 
     <title>{{ $video->title }}</title>
     <meta property="og:title" content="{{ $video->title }}" />
-    <meta property="og:description" content="{{ $video->description }}" />
-    <meta property="og:image" content="{{ $video->thumbnail_url }}" />
+    {{-- <meta property="og:description" content="{{ $video->description }}" /> --}}
+    <meta property="og:image" content="{{ asset('img/ClickMusic-OG.jpg') }}" />
     <meta property="og:image:type" content="image/jpg" />
-    <meta property="og:image:alt" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
+    <meta property="og:image:alt" content="{{ $video->title }}" />
 
     <meta property="og:url" content="{{ route('videos.share', $video->id) }}" />
     <meta property="og:type" content="video.other" />
@@ -66,7 +66,13 @@
 
         <h1 class="mb-2 text-xl font-semibold">{{ $video->title }}</h1>
         {{-- <p class="text-gray-700">{{ $video->description }}</p> --}}
-       <p class="mt-4 text-center text-gray-500">Pentru a urmari videoul complet va rugam sa va <a href="/register?video_id={{ $video->id }}" class="px-2 text-white bg-blue-500 rounded-sm">inregistrati</a> sau sa va <a href="/login?video_id={{ $video->id }}" class="px-2 text-white bg-blue-500 rounded-sm">logati</a>.</p>
+      <p class="mt-4 text-center text-gray-500">
+    Pentru a urmari videoul complet va rugam sa va 
+    <a href="{{ route('register', ['video_id' => $video->id]) }}" class="px-2 text-white bg-blue-500 rounded-sm">inregistrati</a> 
+    sau sa va 
+    <a href="{{ route('login', ['video_id' => $video->id]) }}" class="px-2 text-white bg-blue-500 rounded-sm">logati</a>.
+</p>
+
 
     </div>
 
