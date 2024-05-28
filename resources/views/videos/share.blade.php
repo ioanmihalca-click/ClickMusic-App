@@ -78,7 +78,7 @@
         
                    
                         <a href="{{ route('login.google') }}"
-                            class="inline-flex items-center justify-center px-4 py-1 mt-4 text-white transition duration-300 ease-in-out bg-blue-500 rounded-md shadow-md hover:bg-gray-700">
+                            class="inline-flex items-center justify-center px-4 py-1 mt-4 text-white transition duration-300 ease-in-out bg-gray-600 rounded-md shadow-md hover:bg-gray-700">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="inline-block mr-2 bi bi-google" viewBox="0 0 16 16">
                                 <path
