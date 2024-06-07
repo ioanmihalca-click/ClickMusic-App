@@ -185,10 +185,10 @@
                             2020 și
                             EP-urile "Dulce și Amar" și "Culori EP" în 2021. De pe albumul "Trup și Suflet" s-a remarcat
                             piesa "De Dragoste și Război" în colaborare cu El Nino (8 milioane de vizualizări în acest
-                            moment) și "Prima Dată" în colaborare cu Feli (6 milioane de vizualizări în acest moment).
+                            moment), "Prima Dată" în colaborare cu Feli (6 milioane de vizualizări în acest moment), "Pictez" (500 de mii de vizualizari in acest moment), "Speranta" (320 de mii de vizualizari in acest moment) etc.
                             De pe
                             albumul "Lume Dragă" s-a remarcat piesa "Nopțile Calde" în colaborare cu Style da Kid (5
-                            milioane de vizualizări în acest moment). A creat, de asemenea, un material deosebit alături
+                            milioane de vizualizări în acest moment), "Nici o slabiciune" in colaborare cu Style da Kid si Pacha Man (aproximativ 2 milioane de vizualizari in acest moment) si piesa ce da numele albumului "Lume draga" in colaborare cu Style da Kid si Oana Ciucanu (aproximativ 2 milioane de vizualizari in acest moment). A creat, de asemenea, un material deosebit alături
                             de
                             CDP, un grup format din Style da Kid, Pacha Man și Dragoș Udilă.
                         </p>
