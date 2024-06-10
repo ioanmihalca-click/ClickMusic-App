@@ -32,7 +32,7 @@ new #[Layout('layouts.guest')] class extends Component
 
         Auth::login($user);
 
-        $this->redirect(route('videoclipuri', absolute: false), navigate: true);
+        $this->redirect(route('abonament', absolute: false), navigate: true);
     }
 }; ?>
 

@@ -4,14 +4,25 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VideoController;
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\CheckoutController;
 
 Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
 
-Route::get('auth/facebook', [AuthController::class, 'redirectToFacebook'])->name('login.facebook');
-Route::get('auth/facebook/callback', [AuthController::class, 'handleFacebookCallback']);
+// Route::get('auth/facebook', [AuthController::class, 'redirectToFacebook'])->name('login.facebook');
+// Route::get('auth/facebook/callback', [AuthController::class, 'handleFacebookCallback']);
 
 Route::view('/', 'welcome');
+
+Route::view('abonament', 'abonament')
+    ->middleware(['auth', 'verified'])
+    ->name('abonament');
+
+    Route::get('checkout/{plan?}', CheckoutController::class)
+    ->middleware(['auth', 'verified'])
+    ->name('checkout');
+
+
 
 Route::view('videoclipuri', 'videoclipuri')
     ->middleware(['auth', 'verified'])
