@@ -92,48 +92,33 @@
     <!-- End Title -->
 
     <!-- Grid -->
-    <div class="grid gap-6 mt-12 sm:grid-cols-1 lg:grid-cols-3 lg:items-center">
+    <div class="flex flex-wrap justify-center gap-6 mt-12">
         <!-- Card -->
-        <div class="flex flex-col p-8 text-center border border-gray-200 shadow-md rounded-xl ">
-            <h4 class="text-lg font-medium text-gray-800 ">Lunar</h4>
-            <span class="mt-5 text-5xl font-bold text-gray-800">
-                <span class="text-2xl font-bold -me-2">Lei</span>
+        <div class="w-full sm:w-80 md:w-64 lg:w-72 p-8 text-center border border-gray-200 shadow-md rounded-xl transition-transform transform hover:shadow-xl hover:scale-105">
+            <h4 class="text-lg font-medium text-gray-800">Lunar</h4>
+            <div class="mt-5 text-5xl font-bold text-gray-800">
+                <span class="text-2xl font-bold align-top">Lei</span>
                 9.99
-            </span>
-            <p class="mt-2 text-sm text-gray-500">Fara nici o obligatie. Anulezi oricand.</p>
-
-            <a href="{{ route('checkout', ['plan' => 'price_1PQ3d2LHnRRaUZdBVHGvJcQX']) }}" class="inline-flex items-center justify-center px-4 py-3 mt-5 text-sm font-semibold text-indigo-800 bg-indigo-100 border border-transparent rounded-lg gap-x-2 hover:bg-indigo-200 disabled:opacity-50 disabled:pointer-events-none " >
+            </div>
+            <p class="mt-2 text-sm text-gray-500">Fara nici o obligatie. <br> Anulezi oricand.</p>
+            <a href="{{ route('checkout', ['plan' => 'price_1PQ3d2LHnRRaUZdBVHGvJcQX']) }}" class="inline-flex items-center justify-center px-4 py-3 mt-5 text-sm font-semibold text-indigo-800 bg-indigo-100 border border-transparent rounded-lg gap-x-2 hover:bg-indigo-200 disabled:opacity-50 disabled:pointer-events-none">
                 Aboneaza-te
             </a>
         </div>
         <!-- End Card -->
 
         <!-- Card -->
-        <div class="flex flex-col p-8 text-center border-2 border-indigo-800 shadow-md rounded-xl">
-            <p class="mb-3"><span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-lg text-xs uppercase font-semibold bg-indigo-100 text-indigo-800">Cel mai popular</span></p>
+        <div class="w-full sm:w-80 md:w-64 lg:w-72 p-8 text-center border border-gray-200 shadow-md rounded-xl transition-transform transform hover:shadow-xl hover:scale-105">
+            {{-- <p class="mb-3">
+                <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-lg text-xs uppercase font-semibold bg-indigo-100 text-indigo-800">Cel mai popular</span>
+            </p> --}}
             <h4 class="text-lg font-medium text-gray-800">Anual</h4>
-            <span class="mt-5 text-5xl font-bold text-gray-800">
-                <span class="text-2xl font-bold -me-2">Lei</span>
+            <div class="mt-5 text-5xl font-bold text-gray-800">
+                <span class="text-2xl font-bold align-top">Lei</span>
                 99.99
-            </span>
-            <p class="mt-2 text-sm text-gray-500">Platesti pe un an si ai 2 luni gratis.</p>
-
-            <a href="{{ route('checkout', ['plan' => 'price_1PQDByLHnRRaUZdBbQo07mPl']) }}" class="inline-flex items-center justify-center px-4 py-3 mt-5 text-sm font-semibold text-white bg-indigo-600 border border-transparent rounded-lg gap-x-2 hover:bg-indigo-700 disabled:opacity-50 disabled:pointer-events-none " >
-                Aboneaza-te
-            </a>
-        </div>
-        <!-- End Card -->
-
-        <!-- Card -->
-        <div class="flex flex-col p-8 text-center border border-gray-200 shadow-md rounded-xl">
-            <h4 class="text-lg font-medium text-gray-800">Pe viata</h4>
-            <span class="mt-5 text-5xl font-bold text-gray-800">
-                <span class="text-2xl font-bold -me-2">Lei</span>
-                999.99
-            </span>
-            <p class="mt-2 text-sm text-gray-500">Platesti o singura data. Ai acces pe viata.</p>
-
-            <a href="{{ route('checkout', ['plan' => 'price_1PQDFbLHnRRaUZdBDFjtZuik']) }}" class="inline-flex items-center justify-center px-4 py-3 mt-5 text-sm font-semibold text-indigo-800 bg-indigo-100 border border-transparent rounded-lg gap-x-2 hover:bg-indigo-200 disabled:opacity-50 disabled:pointer-events-none" >
+            </div>
+            <p class="mt-2 text-sm text-gray-500">Platesti pe un an. <br> Ai 2 luni gratis.</p>
+            <a href="{{ route('checkout', ['plan' => 'price_1PQDByLHnRRaUZdBbQo07mPl']) }}" class="inline-flex items-center justify-center px-4 py-3 mt-5 text-sm font-semibold text-indigo-800 bg-indigo-100 border border-transparent rounded-lg gap-x-2 hover:bg-indigo-200 disabled:opacity-50 disabled:pointer-events-none">
                 Aboneaza-te
             </a>
         </div>
@@ -142,6 +127,8 @@
     <!-- End Grid -->
 </div>
 <!-- End Pricing -->
+
+
 
 
    <footer class="py-16 text-sm text-center text-black">
