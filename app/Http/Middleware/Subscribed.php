@@ -19,4 +19,26 @@ class Subscribed
 
         return $next($request);
     }
+
+
+ /**
+     * Cancel the user's subscription.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public static function cancelSubscription(Request $request): Response
+    {
+        $user = $request->user();
+
+        if ($user && $user->subscribed()) {
+            $user->subscription()->cancelNow();
+
+            return redirect('/')
+                ->with('success', 'Your subscription has been cancelled.');
+        }
+
+        return redirect()->back()
+            ->with('error', 'Unable to cancel subscription.');
+    }
 }

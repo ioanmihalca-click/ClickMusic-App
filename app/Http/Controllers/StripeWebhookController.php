@@ -24,6 +24,17 @@ class StripeWebhookController extends Controller
                      ->update(['stripe_status' => $subscription['status']]);
             }
         }
+
+        if ($eventType == 'customer.subscription.deleted') {
+            $subscription = $payload['data']['object'];
+            $user = User::where('stripe_id', $subscription['customer'])->first();
+
+            if ($user) {
+                // Cancel the subscription immediately
+                $user->subscription('default')->cancelNow();
+            }
+        }
+
     
         return response('Webhook Handled', 200);
     }

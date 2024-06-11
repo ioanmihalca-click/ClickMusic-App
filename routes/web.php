@@ -57,20 +57,8 @@ Route::view('profile', 'profile')
 // Other routes...
 
 Route::post('/subscription/cancel', function (Request $request) {
-    $user = Auth::user();
-
-    if (! $user) {
-        return redirect()->back()->with('error', 'You must be logged in to cancel your subscription.');
-    }
-
-    try {
-        $user->cancelNow; 
-
-        return redirect()->back()->with('success', 'Your subscription has been canceled immediately.');
-    } catch (\Exception $e) {
-        return redirect()->route('welcome')->with('success', 'Your subscription has been cancelled successfully.');
-    }
-})->middleware(['auth', 'verified'])->name('subscription.cancel');
+    return Subscribed::cancelSubscription($request);
+})->middleware(['auth', 'verified']);
 
 
 
