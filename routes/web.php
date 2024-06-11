@@ -32,11 +32,11 @@ Route::view('abonament', 'abonament')
 
 
     Route::view('magazin', 'magazin')
-    ->middleware([[Subscribed::class]])
+    ->middleware([Subscribed::class])
     ->name('magazin');
 
     Route::view('sustine', 'sustine')
-    ->middleware([[Subscribed::class]])
+    ->middleware([Subscribed::class])
     ->name('sustine');
 
 Route::view('profile', 'profile')
@@ -56,6 +56,7 @@ Route::view('profile', 'profile')
             return $request->user()->redirectToBillingPortal(route('videoclipuri')); 
         })->name('abonament');
     });
+
 
     Route::get('/videos/{video}', [VideoController::class, 'show'])->name('videos.show');
 
