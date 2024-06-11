@@ -52,7 +52,7 @@ Route::view('profile', 'profile')
 
     
 
-    Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
+    // Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
     
 // Other routes...
 
