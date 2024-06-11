@@ -19,7 +19,13 @@ class AuthController extends Controller
         $googleUser = Socialite::driver('google')->user();
         $user = User::findOrCreateGoogleUser($googleUser);
         Auth::login($user);
-        return redirect('abonament');
+
+    // Check if the user is subscribed and redirect accordingly
+    if ($user->subscribed()) {
+        return redirect()->route('videoclipuri');
+    } else {
+        return redirect()->route('abonament');
+    }
     }
 
     public function redirectToFacebook()
