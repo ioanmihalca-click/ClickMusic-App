@@ -28,17 +28,17 @@ class AuthController extends Controller
     }
     }
 
-    public function redirectToFacebook()
-    {
-        return Socialite::driver('facebook')->redirect();
-    }
+    // public function redirectToFacebook()
+    // {
+    //     return Socialite::driver('facebook')->redirect();
+    // }
 
-    public function handleFacebookCallback()
-    {
-        $facebookUser = Socialite::driver('facebook')->user();
-        $user = User::findOrCreateFacebookUser($facebookUser);
-        Auth::login($user);
-        return redirect('videoclipuri');
-    }
+    // public function handleFacebookCallback()
+    // {
+    //     $facebookUser = Socialite::driver('facebook')->user();
+    //     $user = User::findOrCreateFacebookUser($facebookUser);
+    //     Auth::login($user);
+    //     return redirect('videoclipuri');
+    // }
     
 }

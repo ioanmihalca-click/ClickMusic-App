@@ -70,21 +70,29 @@ class User extends Authenticatable
     return $user;
 }
 
-public static function findOrCreateFacebookUser($providerUser)
+public function subscribed()
 {
-    $user = self::where('email', $providerUser->email)->first();
-
-    if (!$user) {
-        $randomPassword = Str::random(16);
-        $user = self::create([
-            'name' => $providerUser->name,
-            'email' => $providerUser->email,
-            'password' => bcrypt($randomPassword),
-        ]);
-    }
-
-    return $user;
+    // Check if the user has an active subscription
+    return $this->subscriptions()
+                ->where('stripe_status', 'active')
+                ->exists();
 }
+
+// public static function findOrCreateFacebookUser($providerUser)
+// {
+//     $user = self::where('email', $providerUser->email)->first();
+
+//     if (!$user) {
+//         $randomPassword = Str::random(16);
+//         $user = self::create([
+//             'name' => $providerUser->name,
+//             'email' => $providerUser->email,
+//             'password' => bcrypt($randomPassword),
+//         ]);
+//     }
+
+//     return $user;
+// }
 
 
 }
