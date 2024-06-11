@@ -88,10 +88,9 @@
         <form method="POST" action="{{ route('logout') }}">
             @csrf
 
-            <x-button>
+           <button type="submit" class="text-gray-500 hover:text-gray-700 font-medium">
                 {{ __('Log Out') }}
-            </x-button>
-        </form>
+            </button>
     @endauth
 
                 {{-- Google Login --}}
