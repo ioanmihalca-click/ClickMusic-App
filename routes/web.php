@@ -26,7 +26,7 @@ Route::view('abonament', 'abonament')
 
 
     Route::view('videoclipuri', 'videoclipuri')
-    ->middleware(['auth', 'verified'])
+    ->middleware([Subscribed::class])
     ->name('videoclipuri');
 
 
