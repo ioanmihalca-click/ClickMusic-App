@@ -4,16 +4,18 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use Illuminate\Support\Str;
+use Carbon\Carbon;
 
+use Illuminate\Support\Str;
+use Laravel\Cashier\Billable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Cashier\Concerns\ManagesSubscriptions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Laravel\Cashier\Billable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, Billable;
+    use HasFactory, Notifiable, Billable, ManagesSubscriptions;
 
     /**
      * The attributes that are mass assignable.
@@ -77,6 +79,26 @@ public function subscribed()
                 ->where('stripe_status', 'active')
                 ->exists();
 }
+
+public function cancelNow($name = 'default')
+    {
+        $subscription = $this->subscription($name);
+
+        if (!$subscription) {
+            throw new \Exception("No subscription found with the name {$name}.");
+        }
+
+        $subscription->cancel();
+
+        $this->markAsCancelled();
+
+        return $this;
+    }
+
+    public function markAsCancelled()
+    {
+        $this->fill(['ends_at' => Carbon::now()])->save();
+    }
 
 // public static function findOrCreateFacebookUser($providerUser)
 // {
