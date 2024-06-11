@@ -51,10 +51,6 @@ Route::view('profile', 'profile')
             return back()->with('success', 'Abonamentul a fost anulat cu succes!');
         })->name('cancelSubscription');
     
-        Route::get('/abonament', function (Request $request) {
-            // Redirect către pagina 'videoclipuri' după interacțiunea cu portalul de gestionare a abonamentului
-            return $request->user()->redirectToBillingPortal(route('videoclipuri')); 
-        })->name('abonament');
     });
 
 
