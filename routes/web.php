@@ -5,6 +5,7 @@ use App\Http\Controllers\VideoController;
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Middleware\Subscribed;
 
 Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
@@ -24,9 +25,10 @@ Route::view('abonament', 'abonament')
 
 
 
-Route::view('videoclipuri', 'videoclipuri')
+    Route::view('videoclipuri', 'videoclipuri')
     ->middleware(['auth', 'verified'])
     ->name('videoclipuri');
+
 
     Route::view('magazin', 'magazin')
     ->middleware(['auth', 'verified'])

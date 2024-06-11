@@ -12,7 +12,7 @@ new #[Layout('layouts.guest')] class extends Component
     /**
      * Handle an incoming authentication request.
      */
-    public function login(): void
+   public function login(): void
     {
         $this->validate();
 
@@ -20,7 +20,13 @@ new #[Layout('layouts.guest')] class extends Component
 
         Session::regenerate();
 
-        $this->redirectIntended(default: route('abonament', absolute: false), navigate: true);
+        $user = auth()->user();
+
+        if ($user->subscribed()) {
+            $this->redirect(route('videoclipuri'));
+        } else {
+            $this->redirect(route('abonament'));
+        }
     }
 }; ?>
 
