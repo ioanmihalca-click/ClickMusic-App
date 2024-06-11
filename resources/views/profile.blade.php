@@ -24,6 +24,21 @@
                     <livewire:profile.delete-user-form />
                 </div>
             </div>
+
+            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                <form action="{{ route('cancelSubscription') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
+                        Anulează Abonamentul
+                    </button>
+                </form>
+            </div>
+
+            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                <a href="{{ route('abonament') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                    Modifică Planul Abonamentului
+                </a>
+            </div>
         </div>
     </div>
 </x-app-layout>

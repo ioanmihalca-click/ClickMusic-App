@@ -75,8 +75,11 @@
   
  
             <header class="flex flex-col items-center justify-center mt-2 mb-4">
-                <img src="/img/logo.png" alt="Logo Click Music"
-                    class="h-12 w-auto text-white lg:h-16 lg:text-[#FF2D20] mt-8">
+    <a href="{{ route('welcome') }}"> <!-- Adaugă acest element de ancoră -->
+        <img src="/img/logo.png" alt="Logo Click Music"
+            class="h-12 w-auto text-white lg:h-16 lg:text-[#FF2D20] mt-8">
+    </a>
+</header>
 
 
 </header>

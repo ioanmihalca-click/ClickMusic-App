@@ -6,6 +6,7 @@ use App\Http\Controllers\VideoController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Middleware\Subscribed;
+use Illuminate\Http\Request;
 
 Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
@@ -31,17 +32,30 @@ Route::view('abonament', 'abonament')
 
 
     Route::view('magazin', 'magazin')
-    ->middleware(['auth', 'verified'])
+    ->middleware([[Subscribed::class]])
     ->name('magazin');
 
     Route::view('sustine', 'sustine')
-    ->middleware(['auth', 'verified'])
+    ->middleware([[Subscribed::class]])
     ->name('sustine');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
+
+
+    Route::middleware(['auth'])->group(function () {
+        Route::post('/cancel-subscription', function (Request $request) {
+            $request->user()->subscription()->cancel();
+            return back()->with('success', 'Abonamentul a fost anulat cu succes!');
+        })->name('cancelSubscription');
+    
+        Route::get('/abonament', function (Request $request) {
+            // Redirect către pagina 'videoclipuri' după interacțiunea cu portalul de gestionare a abonamentului
+            return $request->user()->redirectToBillingPortal(route('videoclipuri')); 
+        })->name('abonament');
+    });
 
     Route::get('/videos/{video}', [VideoController::class, 'show'])->name('videos.show');
 
