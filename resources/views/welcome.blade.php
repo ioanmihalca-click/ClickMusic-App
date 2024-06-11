@@ -83,6 +83,17 @@
                     <livewire:welcome.navigation />
                 @endif
 
+ @auth
+        <!-- Butonul de logout -->
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+
+            <x-button>
+                {{ __('Log Out') }}
+            </x-button>
+        </form>
+    @endauth
+
                 {{-- Google Login --}}
                 <div class="flex items-center justify-end mt-4">
                     <div>
