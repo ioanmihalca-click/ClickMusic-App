@@ -58,7 +58,9 @@ Route::view('profile', 'profile')
 
 Route::post('/subscription/cancel', function (Request $request) {
     return Subscribed::cancelSubscription($request);
-})->middleware(['auth', 'verified']);
+})->middleware(['auth', 'verified'])->name('subscription.cancel');
+
+
 
 
 
