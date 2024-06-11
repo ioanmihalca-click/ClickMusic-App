@@ -31,7 +31,7 @@ class StripeWebhookController extends Controller
 
             if ($user) {
                 // Cancel the subscription immediately
-                $user->subscription('main')->cancelNow();
+                $user->subscription()->cancelNow();
             }
         }
 
