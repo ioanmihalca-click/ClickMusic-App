@@ -32,7 +32,7 @@ class Subscribed
         $user = $request->user();
 
         if ($user && $user->subscribed()) {
-            $user->subscription()->cancelNow();
+            $user->subscription('main')->cancelNow();
 
             return redirect('/')
                 ->with('success', 'Your subscription has been cancelled.');
