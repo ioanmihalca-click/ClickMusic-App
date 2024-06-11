@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Middleware\Subscribed;
 use Illuminate\Http\Request;
+use App\Http\Controllers\StripeWebhookController;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -49,7 +50,10 @@ Route::view('profile', 'profile')
 
 
 
+    
 
+    Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
+    
 // Other routes...
 
 Route::post('/subscription/cancel', function (Request $request) {
