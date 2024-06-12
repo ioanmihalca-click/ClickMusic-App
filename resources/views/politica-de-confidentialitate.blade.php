@@ -50,7 +50,7 @@
             <p class="mb-4">Putem actualiza această politică de confidențialitate din când în când pentru a reflecta schimbări în practicile noastre sau din alte motive operaționale, legale sau de reglementare. Vă vom notifica despre orice modificări semnificative prin postarea noii politici de confidențialitate pe această pagină și actualizarea datei de intrare în vigoare.</p>
             <h2 class="mb-2 text-2xl font-semibold">9. Contactați-ne</h2>
             <p class="mb-4">Dacă aveți întrebări despre această politică de confidențialitate sau practicile noastre de confidențialitate, vă rugăm să ne contactați la:</p>
-            <p class="mb-4"><strong>Email:</strong> <a href="mailto:clickmusic.ro@gmail.com" class="text-blue-500">clickmusic.ro@gmail.com</a></p>
+            <p class="mb-4"><strong>Email:</strong> <a href="mailto:contact@clickmusic.ro" class="text-blue-500">contact@clickmusic.ro</a></p>
         </div>
     </div>
 </body>

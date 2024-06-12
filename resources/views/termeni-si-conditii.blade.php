@@ -24,7 +24,7 @@
             <h2 class="mb-2 text-2xl font-semibold">6. Modificări ale Termenilor și Condițiilor</h2>
             <p class="mb-4">Ne rezervăm dreptul de a actualiza sau modifica periodic acești termeni și condiții fără notificare prealabilă. Vă recomandăm să verificați periodic această pagină pentru a fi la curent cu orice modificări.</p>
             <h2 class="mb-2 text-2xl font-semibold">7. Contact</h2>
-            <p class="mb-4">Dacă aveți întrebări, nelămuriri sau probleme legate de acești termeni și condiții sau de abonament, vă rugăm să ne contactați la adresa <a href="mailto:clickmusicro@gmail.com" class="text-blue-500">clickmusicro@gmail.com</a>.</p>
+            <p class="mb-4">Dacă aveți întrebări, nelămuriri sau probleme legate de acești termeni și condiții sau de abonament, vă rugăm să ne contactați la adresa <a href="mailto:contact@clickmusic.ro" class="text-blue-500">contact@clickmusic.ro</a>.</p>
         </div>
     </div>
 </body>

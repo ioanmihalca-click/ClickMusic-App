@@ -21,7 +21,7 @@
 
   <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
   @auth  @if (auth()->user()->subscribed('prod_QGao8eve2XHvzf'))
-      <p class="text-gray-600 mb-2">Ai un abonament activ.</p>
+      <p class="text-gray-600 mb-2">Ai un abonament activ. <br> Pentru intrebari sau nelamuriri: contact@clickmusic.ro</p>
     @endif
   @endauth
 
