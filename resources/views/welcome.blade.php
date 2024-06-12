@@ -116,13 +116,7 @@
 
 
                                 <p class="mt-4 text-base">
-                                    Pentru a beneficia de acces la întreaga colecție de videoclipuri, inclusiv la cele
-                                    mai recente piese in PREMIERA, <span
-                                        class ="px-2 text-white bg-blue-500 rounded-md"> înregistrează-te</span> ca
-                                    membru al
-                                    comunității Click Music. Este
-                                    complet gratuit!
-
+                             Pentru acces nelimitat la colecția completă de videoclipuri și vloguri, inclusiv PREMIERE în exclusivitate, <span class="px-2 text-white bg-blue-500 rounded-md">abonează-te acum la doar 9,99 lei/lună</span>. Alătură-te comunității noastre și bucură-te de un conținut fresh, actualizat constant!
                                     <!-- Embedded iframe -->
                                 <div class="my-3 overflow-hidden rounded-lg shadow-lg">
                                     <div class="relative" style="padding-top:56.25%;">

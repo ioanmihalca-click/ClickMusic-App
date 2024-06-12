@@ -19,14 +19,14 @@ class SubscriptionController extends Controller
             $subscription = $user->subscription('prod_QGao8eve2XHvzf');
 
             if ($subscription) {
-                $subscription->cancel();
-                return redirect()->route('abonament')->with('success', 'Abonamentul tau a fost anulat cu succes.'); // Redirect to abonament.blade using route name
+                $subscription->cancelNow();
+                return redirect()->route('abonament')->with('success', 'Abonamentul tau a fost anulat cu succes. Mai ai acces la videoclipuri pana la incheierea abonamentului in curs.'); // Redirect to abonament.blade using route name
             } else {
-                  return redirect()->route('abonament')->withErrors(['error' => 'You do not have an active subscription.']);
+                  return redirect()->route('abonament')->withErrors(['error' => 'Nu ai un abonament activ']);
             }
         } catch (\Exception $e) {  // Catch potential exceptions
             report($e);
-            return redirect()->route('abonament')->withErrors(['error' => 'An error occurred while canceling your subscription. Please try again later.']);
+            return redirect()->route('abonament')->withErrors(['error' => 'A aparut o eroare. Te rugam incearca mai tarziu.']);
         }
     }
 }

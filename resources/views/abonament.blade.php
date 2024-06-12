@@ -74,9 +74,12 @@
 <body class="font-sans antialiased">
   
  
-            <header class="flex flex-col items-center justify-center mt-2 mb-4">
-                <img src="/img/logo.png" alt="Logo Click Music"
-                    class="h-12 w-auto text-white lg:h-16 lg:text-[#FF2D20] mt-8">
+           <header class="flex flex-col items-center justify-center mt-2 mb-4">
+  <a href="{{ route('welcome') }}">
+    <img src="/img/logo.png" alt="Logo Click Music"
+         class="h-12 w-auto text-white lg:h-16 lg:text-[#FF2D20] mt-8">
+  </a>
+
 
 
  <div class="bg-blue-500 rounded text-white px-2 mt-4">
