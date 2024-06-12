@@ -79,6 +79,24 @@
                     class="h-12 w-auto text-white lg:h-16 lg:text-[#FF2D20] mt-8">
 
 
+ <div class="bg-blue-500 rounded text-white px-2 mt-4">
+                    @if (session()->has('success'))
+  <div class="alert alert-success">
+    {{ session()->get('success') }}
+  </div>
+@endif
+
+@if ($errors->any())
+  <div class="alert alert-danger">
+    <ul>
+      @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
+@endif
+<div>
+
 </header>
 
 

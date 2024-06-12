@@ -1,15 +1,16 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\VideoController;
-
-use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Middleware\Subscribed;
 use Illuminate\Http\Request;
-use App\Http\Controllers\StripeWebhookController;
+use App\Http\Middleware\Subscribed;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VideoController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\Auth\AuthController;
+
+use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\StripeWebhookController;
 
 
 Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');
@@ -50,15 +51,13 @@ Route::view('profile', 'profile')
 
 
 
-    
+    Route::post('/subscription/cancel', [SubscriptionController::class, 'cancelSubscription'])->name('subscription.cancel');
+
 
     // Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
     
 // Other routes...
 
-Route::post('/subscription/cancel', function (Request $request) {
-    return Subscribed::cancelSubscription($request);
-})->middleware(['auth', 'verified'])->name('subscription.cancel');
 
 
 

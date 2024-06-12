@@ -80,41 +80,5 @@ public function subscribed()
                 ->exists();
 }
 
-public function cancelNow($name = 'default')
-    {
-        $subscription = $this->subscription($name);
-
-        if (!$subscription) {
-            throw new \Exception("No subscription found with the name {$name}.");
-        }
-
-        $subscription->cancel();
-
-        $this->markAsCancelled();
-
-        return $this;
-    }
-
-    public function markAsCancelled()
-    {
-        $this->fill(['ends_at' => Carbon::now()])->save();
-    }
-
-// public static function findOrCreateFacebookUser($providerUser)
-// {
-//     $user = self::where('email', $providerUser->email)->first();
-
-//     if (!$user) {
-//         $randomPassword = Str::random(16);
-//         $user = self::create([
-//             'name' => $providerUser->name,
-//             'email' => $providerUser->email,
-//             'password' => bcrypt($randomPassword),
-//         ]);
-//     }
-
-//     return $user;
-// }
-
 
 }

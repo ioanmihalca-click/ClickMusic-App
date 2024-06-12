@@ -19,14 +19,20 @@
                 </div>
             </div>
 
-    <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <form action="{{ route('subscription.cancel') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
-                        Anulează Abonamentul
-                    </button>
-                </form>
-            </div>
+  <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+  @auth  @if (auth()->user()->subscribed('prod_QGao8eve2XHvzf'))
+      <p class="text-gray-600 mb-2">Ai un abonament activ.</p>
+    @endif
+  @endauth
+
+  <form action="{{ route('subscription.cancel') }}" method="POST">
+    @csrf
+    <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
+      Anulează Abonamentul
+    </button>
+  </form>
+</div>
+
 
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <div class="max-w-xl">
