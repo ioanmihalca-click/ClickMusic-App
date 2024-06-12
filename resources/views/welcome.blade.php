@@ -116,7 +116,14 @@
 
 
                                 <p class="mt-4 text-base">
-                             Pentru acces nelimitat la colecția completă de videoclipuri și vloguri, inclusiv PREMIERE în exclusivitate, <span class="px-2 text-white bg-blue-500 rounded-md">abonează-te acum la doar 9,99 lei/lună</span>. Alătură-te comunității noastre și bucură-te de un conținut fresh, actualizat constant!
+                             
+                    Pentru acces complet la întreaga colecție de videoclipuri, inclusiv cele mai recente lansări și PREMIERE exclusive, abonează-te pentru doar <br>
+                    <span class="text-blue-500 font-semibold"> 9,99 lei/lună. </span> <br>
+                    
+                                  <span class="px-2 text-white bg-blue-500 rounded-md">Abonează-te acum</span>
+                                  <br> 
+                                 
+
                                     <!-- Embedded iframe -->
                                 <div class="my-3 overflow-hidden rounded-lg shadow-lg">
                                     <div class="relative" style="padding-top:56.25%;">
