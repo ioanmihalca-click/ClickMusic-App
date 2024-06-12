@@ -1,5 +1,5 @@
 <div>
-    <h2 class="mb-4 text-lg font-semibold ">Videoclip Promovat</h2>
+    <h2 class="mb-4 text-lg font-semibold ">PREMIERA - <span class="text-white bg-blue-500 rounded px-2">Exclusiv pe clickmusic.ro</span> </h2>
 
     @if ($featuredVideo)
         <div class="overflow-hidden rounded-lg shadow-lg">
