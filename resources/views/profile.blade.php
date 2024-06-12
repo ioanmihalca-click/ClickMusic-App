@@ -27,7 +27,7 @@
 
   <form action="{{ route('subscription.cancel') }}" method="POST">
     @csrf
-    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+    <button type="submit" class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded">
       Anulează Abonamentul
     </button>
   </form>
