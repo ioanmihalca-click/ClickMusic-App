@@ -71,7 +71,7 @@
 
 </head>
 
-<body class="font-sans antialiased">
+<body class=" bg-gray-50 font-sans antialiased">
   
  
            <header class="flex flex-col items-center justify-center mt-2 mb-4">
@@ -117,12 +117,12 @@
         <!-- Card -->
         <div class="w-full sm:w-80 md:w-64 lg:w-72 p-8 text-center border border-gray-200 shadow-md rounded-xl transition-transform transform hover:shadow-xl hover:scale-105">
             <h4 class="text-lg font-medium text-gray-800">Lunar</h4>
-            <div class="mt-5 text-5xl font-bold text-gray-800">
+            <div class="mt-5 text-5xl font-bold text-blue-500">
                 <span class="text-2xl font-bold align-top">Lei</span>
                 9.99
             </div>
             <p class="mt-2 text-sm text-gray-500">Fara nici o obligatie. <br> Anulezi oricand.</p>
-            <a href="{{ route('checkout', ['plan' => 'price_1PQ3d2LHnRRaUZdBVHGvJcQX']) }}" class="inline-flex items-center justify-center px-4 py-3 mt-5 text-sm font-semibold text-indigo-800 bg-indigo-100 border border-transparent rounded-lg gap-x-2 hover:bg-indigo-200 disabled:opacity-50 disabled:pointer-events-none">
+            <a href="{{ route('checkout', ['plan' => 'price_1PQ3d2LHnRRaUZdBVHGvJcQX']) }}" class="inline-flex items-center justify-center px-4 py-3 mt-5 text-sm font-semibold text-white bg-blue-500 border border-transparent rounded-lg gap-x-2 hover:bg-blue-600 disabled:opacity-50 disabled:pointer-events-none">
                 Aboneaza-te
             </a>
         </div>
@@ -134,12 +134,12 @@
                 <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-lg text-xs uppercase font-semibold bg-indigo-100 text-indigo-800">Cel mai popular</span>
             </p> --}}
             <h4 class="text-lg font-medium text-gray-800">Anual</h4>
-            <div class="mt-5 text-5xl font-bold text-gray-800">
+            <div class="mt-5 text-5xl font-bold text-blue-500">
                 <span class="text-2xl font-bold align-top">Lei</span>
                 99.99
             </div>
             <p class="mt-2 text-sm text-gray-500">Platesti pe un an. <br> Ai 2 luni gratis.</p>
-            <a href="{{ route('checkout', ['plan' => 'price_1PQDByLHnRRaUZdBbQo07mPl']) }}" class="inline-flex items-center justify-center px-4 py-3 mt-5 text-sm font-semibold text-indigo-800 bg-indigo-100 border border-transparent rounded-lg gap-x-2 hover:bg-indigo-200 disabled:opacity-50 disabled:pointer-events-none">
+            <a href="{{ route('checkout', ['plan' => 'price_1PQDByLHnRRaUZdBbQo07mPl']) }}" class="inline-flex items-center justify-center px-4 py-3 mt-5 text-sm font-semibold text-white bg-blue-500 border border-transparent rounded-lg gap-x-2 hover:bg-blue-600 disabled:opacity-50 disabled:pointer-events-none">
                 Aboneaza-te
             </a>
         </div>
@@ -148,31 +148,6 @@
     <!-- End Grid -->
 </div>
 <!-- End Pricing -->
-
-
-
-
-   <footer class="py-16 text-sm text-center text-black">
-                    ClickMusic &copy; {{ date('Y') }}.Toate drepturile rezervate.
-                    <div class="mt-2">
-                        Aplicație dezvoltată de <a href="https://clickstudios-digital.com" target="_blank"
-                            class="text-blue-500">Click Studios
-                            Digital</a>.
-                    </div>
-
-                    <div class="flex-row mt-4">
-                        <a href="{{ route('privacy-policy') }}" class="text-blue-500">Politica de
-                            confidențialitate</a>
-                        |
-                        <a href="{{ route('terms-of-service') }}" class="text-blue-500">Termeni și Condiții</a>
-
-                    </div>
-
-                </footer>
-
-            </div>
-        </div>
-    </div>
 
 
  <footer class="py-16 text-sm text-center text-black">

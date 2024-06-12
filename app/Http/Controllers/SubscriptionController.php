@@ -20,7 +20,7 @@ class SubscriptionController extends Controller
 
             if ($subscription) {
                 $subscription->cancelNow();
-                return redirect()->route('abonament')->with('success', 'Abonamentul tau a fost anulat cu succes. Mai ai acces la videoclipuri pana la incheierea abonamentului in curs.'); // Redirect to abonament.blade using route name
+                return redirect()->route('abonament')->with('success', 'Abonamentul tau a fost anulat cu succes.'); // Redirect to abonament.blade using route name
             } else {
                   return redirect()->route('abonament')->withErrors(['error' => 'Nu ai un abonament activ']);
             }
