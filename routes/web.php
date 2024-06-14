@@ -1,16 +1,16 @@
 <?php
 
-use Illuminate\Http\Request;
+
 use App\Http\Middleware\Subscribed;
 
-use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Auth\AuthController;
 
 use App\Http\Controllers\SubscriptionController;
-use App\Http\Controllers\StripeWebhookController;
+
 
 
 Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');

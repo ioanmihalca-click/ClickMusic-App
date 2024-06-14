@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
+
+use App\Notifications\SubscriptionCancelled;
 
 class SubscriptionController extends Controller
 {
@@ -20,7 +22,12 @@ class SubscriptionController extends Controller
 
             if ($subscription) {
                 $subscription->cancelNow();
+
+                   // Notify the user that their subscription has been cancelled
+                   $user->notify(new SubscriptionCancelled());
+                
                 return redirect()->route('abonament')->with('success', 'Abonamentul tau a fost anulat cu succes.'); // Redirect to abonament.blade using route name
+                   
             } else {
                   return redirect()->route('abonament')->withErrors(['error' => 'Nu ai un abonament activ']);
             }
@@ -29,4 +36,5 @@ class SubscriptionController extends Controller
             return redirect()->route('abonament')->withErrors(['error' => 'A aparut o eroare. Te rugam incearca mai tarziu.']);
         }
     }
+
 }

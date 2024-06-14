@@ -11,6 +11,15 @@
 
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+
+                {{-- Mesaj abonament cu succes --}}
+                {{-- @dd(session('success')); --}}
+                @if (Session::has('success'))
+                    <div class="p-6 text-center bg-green-100 border-b border-green-200">
+                        <p class="text-green-700">Abonamentul a fost creat cu succes!</p>
+                    </div>
+                @endif
+
                 <div class="p-6 text-center text-gray-900">
                     {{ __('Bine ai venit! Aici ai acces la toate PREMIERELE si la toata colectia de videoclipuri') }}
                 </div>
@@ -22,9 +31,11 @@
                         @livewire('search-videos')
                     </div>
 
-                    
 
+                    @livewire('featured-video')
+                </div>
 
+                <div class="p-6">
                     @livewire('recent-videos')
                 </div>
 
@@ -32,8 +43,7 @@
 
                     @livewire('popular-videos') </div> --}}
 
-                <div class="p-6">
-                    @livewire('featured-video') </div>
+
 
                 <div class="p-6">
 
