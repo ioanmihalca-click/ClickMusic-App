@@ -5,7 +5,7 @@
 @if (trim($slot) === 'Click Music')
 <img src="https://clickmusic.ro/img/logo.png" class="logo" alt="Logo">
 @else
-{{ $slot }}
+<img src="https://clickmusic.ro/img/logo.png" class="logo" alt="Logo">
 @endif
 </a>
 </td>
