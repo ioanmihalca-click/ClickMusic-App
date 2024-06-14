@@ -2,7 +2,7 @@
 <tr>
 <td class="header">
 <a href="https://clickmusic.ro/" style="display: inline-block;">
-@if (trim($slot) === 'Click Music')
+@if (trim($slot) === 'Laravel')
 <img src="https://clickmusic.ro/img/logo.png" class="logo" alt="">
 @else
 {{ $slot }}
