@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Notifications\SubscriptionCreated;
+use App\Notifications\AbonamentNouCreatAdmin;
 
 class CheckoutController extends Controller
 {
@@ -24,6 +26,7 @@ class CheckoutController extends Controller
         // After the checkout, send the SubscriptionCreated notification
         if ($checkout) {
             $user->notify(new SubscriptionCreated());
+            User::find(1)->notify(new AbonamentNouCreatAdmin);
         }
 
         return $checkout;

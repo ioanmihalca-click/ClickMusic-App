@@ -1,17 +1,20 @@
 <?php
 
 
+use App\Models\User;
+
+
+use App\Mail\NewComment;
 use App\Http\Middleware\Subscribed;
-
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VideoController;
+
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Auth\AuthController;
-
 use App\Http\Controllers\SubscriptionController;
-
-
+use App\Notifications\AbonamentNouCreatAdmin;
+use App\Notifications\SubscriptionCreated;
+use Carbon\Carbon;
 
 Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
@@ -20,6 +23,17 @@ Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback
 // Route::get('auth/facebook/callback', [AuthController::class, 'handleFacebookCallback']);
 
 Route::view('/', 'welcome')->name('welcome');
+// Route::get('/', function(){
+    //    $when = Carbon::now()->addSeconds(10);
+
+//     User::find(1)->notify(new AbonamentNouCreatAdmin)->delay($when);
+
+    //  Notification::route('mail' ,'ioanclickmihalca.@gmail.com')
+    //  notify->(new AbonamentNouCreatAdmin)->delay($when);
+//     return view('welcome');
+
+
+// });
 
 Route::view('abonament', 'abonament')
     ->middleware(['auth', 'verified'])
