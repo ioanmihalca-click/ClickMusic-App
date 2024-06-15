@@ -12,7 +12,7 @@
             <h1 class="mb-4 text-3xl font-bold">Politică de Confidențialitate</h1>
             <p class="mb-4"><strong>Data Intrării în Vigoare:</strong> 25.05.2024</p>
             <h2 class="mb-2 text-2xl font-semibold">1. Introducere</h2>
-            <p class="mb-4">Bun venit la Click Music Streaming App. Ne angajăm să protejăm informațiile dvs. personale și dreptul dvs. la confidențialitate. Dacă aveți întrebări sau nelămuriri cu privire la această notificare de confidențialitate sau practicile noastre în ceea ce privește informațiile dvs. personale, vă rugăm să ne contactați la <a href="mailto:clickmusicro@gmail.com" class="text-blue-500">clickmusicro@gmail.com</a>.</p>
+            <p class="mb-4">Bun venit la Click Music Streaming App. Ne angajăm să protejăm informațiile dvs. personale și dreptul dvs. la confidențialitate. Dacă aveți întrebări sau nelămuriri cu privire la această notificare de confidențialitate sau practicile noastre în ceea ce privește informațiile dvs. personale, vă rugăm să ne contactați la <a href="mailto:contact@clickmusic.ro" class="text-blue-500">contact@clickmusic.ro</a>.</p>
             <h2 class="mb-2 text-2xl font-semibold">2. Informațiile pe Care le Colectăm</h2>
             <p class="mb-4">Când utilizați Google Login pentru a accesa aplicația noastră, putem colecta următoarele informații:</p>
             <ul class="mb-4 list-disc list-inside">
@@ -45,7 +45,7 @@
                 <li><strong>Dreptul la Portabilitatea Datelor:</strong> Puteți solicita să primiți informațiile dvs. personale într-un format structurat, utilizat în mod obișnuit și care poate fi citit automat.</li>
                 <li><strong>Dreptul de a Obiecta:</strong> Puteți obiecta la prelucrarea informațiilor dvs. personale.</li>
             </ul>
-            <p class="mb-4">Pentru a exercita aceste drepturi, vă rugăm să ne contactați la <a href="mailto:clickmusic.ro@gmail.com" class="text-blue-500">clickmusic.ro@gmail.com</a></p>
+            <p class="mb-4">Pentru a exercita aceste drepturi, vă rugăm să ne contactați la <a href="mailto:contact@clickmusic.ro" class="text-blue-500">contact@clickmusic.ro</a></p>
             <h2 class="mb-2 text-2xl font-semibold">8. Modificări ale Politicii de Confidențialitate</h2>
             <p class="mb-4">Putem actualiza această politică de confidențialitate din când în când pentru a reflecta schimbări în practicile noastre sau din alte motive operaționale, legale sau de reglementare. Vă vom notifica despre orice modificări semnificative prin postarea noii politici de confidențialitate pe această pagină și actualizarea datei de intrare în vigoare.</p>
             <h2 class="mb-2 text-2xl font-semibold">9. Contactați-ne</h2>

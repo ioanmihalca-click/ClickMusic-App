@@ -118,7 +118,7 @@
                                 <p class="mt-4 text-base">
                              
                     Pentru acces complet la întreaga colecție de videoclipuri, inclusiv cele mai recente lansări și PREMIERE exclusive, abonează-te pentru doar <br>
-                    <span class="text-blue-500 font-semibold"> 9,99 lei/lună. </span> <br>
+                    <span class="font-semibold text-blue-500"> 9,99 lei/lună. </span> <br>
                     
                                   <span class="px-2 text-white bg-blue-500 rounded-md">Abonează-te acum</span>
                                   <br> 
@@ -255,7 +255,7 @@
                 <h3 class="mt-8 text-center">Social Links:</h3>
                 <div class="flex justify-center p-4">
 
-                    <a href="https://instagram.com/clickmusic1" target="_blank" class="px-4 text-gray-500">
+                    <a href="https://instagram.com/clickmusic1" target="_blank" rel="noopener noreferrer" class="px-4 text-gray-500">
                         <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor"
                             class="" viewBox="0 0 16 16">
                             <path
@@ -263,7 +263,7 @@
                         </svg>
                     </a>
 
-                    <a href="https://www.facebook.com/clickmusicromania" target="_blank" class="text-gray-500">
+                    <a href="https://www.facebook.com/clickmusicromania" target="_blank" rel="noopener noreferrer" class="text-gray-500">
                         <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor"
                             class="" viewBox="0 0 16 16">
                             <path
@@ -272,7 +272,7 @@
                     </a>
 
                     <a href="https://open.spotify.com/artist/0rbyxJSUfSXjmeW652c41O?si=4I3hPlSITruYO69znEmXFA&nd=1&dlsi=cf9e5847f277482e"
-                        target="_blank" class="px-4 text-gray-500">
+                        target="_blank" rel="noopener noreferrer" class="px-4 text-gray-500">
                         <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor"
                             class="" viewBox="0 0 16 16">
                             <path
@@ -280,7 +280,7 @@
                         </svg>
                     </a>
 
-                    <a href="https://youtube.com/clickmusicromania" target="_blank" class="text-gray-500 ">
+                    <a href="https://youtube.com/clickmusicromania" target="_blank" rel="noopener noreferrer" class="text-gray-500 ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor"
                             class="" viewBox="0 0 16 16">
                             <path
@@ -293,7 +293,7 @@
                 <footer class="py-16 text-sm text-center text-black">
                     ClickMusic &copy; {{ date('Y') }}.Toate drepturile rezervate.
                     <div class="mt-2">
-                        Aplicație dezvoltată de <a href="https://clickstudios-digital.com" target="_blank"
+                        Aplicație dezvoltată de <a href="https://clickstudios-digital.com" target="_blank" rel="noopener noreferrer"
                             class="text-blue-500">Click Studios
                             Digital</a>.
                     </div>
