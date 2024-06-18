@@ -12,6 +12,7 @@ use App\Http\Controllers\VideoController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Middleware\AdminMiddleware;
 use App\Notifications\AbonamentNouCreatAdmin;
 use App\Notifications\SubscriptionCreated;
 use Carbon\Carbon;
@@ -23,6 +24,11 @@ Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback
 // Route::get('auth/facebook/callback', [AuthController::class, 'handleFacebookCallback']);
 
 Route::view('/', 'welcome')->name('welcome');
+
+Route::view('admin', 'admin')
+    ->middleware(AdminMiddleware::class)
+    ->name('admin');
+
 // Route::get('/', function(){
     //    $when = Carbon::now()->addSeconds(10);
 

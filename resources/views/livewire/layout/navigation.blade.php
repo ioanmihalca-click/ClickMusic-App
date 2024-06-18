@@ -41,8 +41,12 @@ new class extends Component {
                 </div>
             </div>
 
+<div class="flex items-center justify-center px-2 ml-auto"> <livewire:megaphone /> </div>
+
+   
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+         
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
@@ -127,5 +131,7 @@ new class extends Component {
                 </button>
             </div>
         </div>
+         
     </div>
+    
 </nav>

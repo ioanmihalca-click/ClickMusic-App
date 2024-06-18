@@ -12,10 +12,11 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Cashier\Concerns\ManagesSubscriptions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use MBarlow\Megaphone\HasMegaphone;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, Billable, ManagesSubscriptions;
+    use HasFactory, Notifiable, Billable, HasMegaphone, ManagesSubscriptions;
 
     /**
      * The attributes that are mass assignable.
