@@ -39,7 +39,9 @@ class AbonamentNouCreatAdmin extends Notification
         ->greeting('Salut Admin')
         ->subject('Abonament Creat cu Succes!')
         ->line('Un nou abonament a fost creat cu succes!')
-        ->line('Felicitari si succes cu noile melodii!');
+        ->line('Felicitari si succes cu noile melodii!')
+        ->salutation('Cu respect, Click Music App');
+        
        
         
         
