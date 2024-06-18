@@ -25,24 +25,28 @@ Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback
 // Route::get('auth/facebook', [AuthController::class, 'redirectToFacebook'])->name('login.facebook');
 // Route::get('auth/facebook/callback', [AuthController::class, 'handleFacebookCallback']);
 
-// Route::view('/', 'welcome')->name('welcome');
+Route::view('/', 'welcome')->name('welcome');
 
 Route::view('admin', 'admin')
     ->middleware(AdminMiddleware::class)
     ->name('admin');
 
-Route::get('/', function(){
-$users = User::all();
-Notification::send($users, new NotificareVideoclipNou());
+// Route::get('/', function(){
 
+// trigger mail notification Videoclip Nou
+// $users = User::all();
+// Notification::send($users, new NotificareVideoclipNou());
+// ************************************************
+
+// add delay to queue
     //    $when = Carbon::now()->addSeconds(10);
 //    User::find(1)->notify(new AbonamentNouCreatAdmin)->delay($when);
 
     
-    return view('welcome');
+//     return view('welcome');
 
 
-});
+// });
 
 Route::view('abonament', 'abonament')
     ->middleware(['auth', 'verified'])

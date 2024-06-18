@@ -35,14 +35,15 @@ class NotificareVideoclipNou extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-        $url = 'http://clickmusic.ro//videos/9'; // URL of your video
-        $imageUrl = '/img/de mana cu tine cover.webp'; // URL of your cover image
+        $url = 'http://clickmusic.ro/videos/9'; // URL of your video
+        $imageUrl = 'https://clickmusic.ro/img/de%20mana%20cu%20tine%20cover.webp'; // URL of your cover image
 
         return (new MailMessage)
         ->from('contact@clickmusic.ro', 'Click Music Ro')
-        ->line(new HtmlString("<a href='{$url}'><img src='{$imageUrl}' alt='Video Cover'></a>"))
+        ->line(new HtmlString("<a href='{$url}'><img src='{$imageUrl}' alt=''></a>"))
         ->greeting('Salut, '. $notifiable->name. '!')
         ->subject('Un nou videoclip pe platforma Click Music!')
+        ->line('Am adaugat un nou videoclip!')
         ->line('Iti mulțumim pentru că te-ai abonat si ca ne sustii!')
         ->action('Vizualizați Videoclipul', url('/videos/9'))
         ->salutation('Cu respect, Click Music');
