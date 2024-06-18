@@ -1,21 +1,23 @@
 <?php
 
 
+use Carbon\Carbon;
+
+
 use App\Models\User;
-
-
 use App\Mail\NewComment;
 use App\Http\Middleware\Subscribed;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\VideoController;
 
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\SubscriptionController;
 use App\Http\Middleware\AdminMiddleware;
-use App\Notifications\AbonamentNouCreatAdmin;
+use App\Http\Controllers\VideoController;
 use App\Notifications\SubscriptionCreated;
-use Carbon\Carbon;
+use App\Http\Controllers\CheckoutController;
+use Illuminate\Support\Facades\Notification;
+use App\Http\Controllers\Auth\AuthController;
+use App\Notifications\AbonamentNouCreatAdmin;
+use App\Notifications\NotificareVideoclipNou;
+use App\Http\Controllers\SubscriptionController;
 
 Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
@@ -23,23 +25,24 @@ Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback
 // Route::get('auth/facebook', [AuthController::class, 'redirectToFacebook'])->name('login.facebook');
 // Route::get('auth/facebook/callback', [AuthController::class, 'handleFacebookCallback']);
 
-Route::view('/', 'welcome')->name('welcome');
+// Route::view('/', 'welcome')->name('welcome');
 
 Route::view('admin', 'admin')
     ->middleware(AdminMiddleware::class)
     ->name('admin');
 
-// Route::get('/', function(){
+Route::get('/', function(){
+$users = User::all();
+Notification::send($users, new NotificareVideoclipNou());
+
     //    $when = Carbon::now()->addSeconds(10);
+//    User::find(1)->notify(new AbonamentNouCreatAdmin)->delay($when);
 
-//     User::find(1)->notify(new AbonamentNouCreatAdmin)->delay($when);
-
-    //  Notification::route('mail' ,'ioanclickmihalca.@gmail.com')
-    //  notify->(new AbonamentNouCreatAdmin)->delay($when);
-//     return view('welcome');
+    
+    return view('welcome');
 
 
-// });
+});
 
 Route::view('abonament', 'abonament')
     ->middleware(['auth', 'verified'])
