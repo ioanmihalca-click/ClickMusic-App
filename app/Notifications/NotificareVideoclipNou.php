@@ -12,12 +12,15 @@ class NotificareVideoclipNou extends Notification
 {
     use Queueable;
 
-    /**
-     * Create a new notification instance.
-     */
-    public function __construct()
+    public $videoUrl;
+    public $imageUrl;
+    public $videoName;
+
+    public function __construct($videoUrl, $imageUrl, $videoName)
     {
-        //
+        $this->videoUrl = $videoUrl;
+        $this->imageUrl = $imageUrl;
+        $this->videoName = $videoName;
     }
 
     /**
@@ -35,20 +38,17 @@ class NotificareVideoclipNou extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-        $url = 'http://clickmusic.ro/videos/9'; // URL of your video
-        $imageUrl = ''; // URL of your cover image
-
         return (new MailMessage)
-        ->from('contact@clickmusic.ro', 'Click Music Ro')
-        ->line(new HtmlString("<a href='{$url}'><img src='{$imageUrl}' alt=''></a>"))
-        ->greeting('Salut, '. $notifiable->name. '!')
-        ->subject('Un nou videoclip pe platforma Click Music!')
-        ->line('Am adaugat un nou videoclip!')
-        ->line('Iti mulțumim pentru că te-ai abonat si ca ne sustii!')
-        ->line('Pentru a putea vizualiza videoclipul direct din acest email, trebuie sa fiti autentificat in aplicatia Click Music.')
-        ->line('Click - De mana cu tine (prod MdBeatz')
-        ->action('Vizualizați Videoclipul', url('/videos/9'))
-        ->salutation('Cu respect, Click Music');
+            ->from('contact@clickmusic.ro', 'Click Music Ro')
+            ->subject('Un nou videoclip pe platforma Click Music!')
+            ->line(new HtmlString("<a href='{$this->videoUrl}'><img src='{$this->imageUrl}' alt=''></a>"))
+            ->greeting('Salut, ' . $notifiable->name . '!')
+            ->line('Am adaugat un nou videoclip!')
+            ->line('Iti mulțumim pentru că te-ai abonat si ca ne sustii!')
+            ->line('Pentru a putea vizualiza videoclipul direct din acest email, trebuie sa fiti autentificat in aplicatia Click Music.')
+            ->line($this->videoName) 
+            ->action('Vizualizați Videoclipul', url($this->videoUrl))
+            ->salutation('Cu respect, Click Music');
     }
 
     /**

@@ -18,6 +18,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Notifications\AbonamentNouCreatAdmin;
 use App\Notifications\NotificareVideoclipNou;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\VideoNotificationController;
 
 Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
@@ -30,6 +31,10 @@ Route::view('/', 'welcome')->name('welcome');
 Route::view('admin', 'admin')
     ->middleware(AdminMiddleware::class)
     ->name('admin');
+
+Route::post('/send-notification', [VideoNotificationController::class, 'sendNotification'])
+->middleware(AdminMiddleware::class)
+->name('send.notification');
 
 
     //trigger mail notification Videoclip Nou
