@@ -40,11 +40,12 @@ class NotificareVideoclipNou extends Notification
 
         return (new MailMessage)
         ->from('contact@clickmusic.ro', 'Click Music Ro')
-        ->line(new HtmlString("<a href='{$url}'><img src='{$imageUrl}' alt=''></a>"))
+        ->line(new HtmlString("<a href='{$url}'><img src='{$imageUrl}' alt='Video Cover Photo'></a>"))
         ->greeting('Salut, '. $notifiable->name. '!')
         ->subject('Un nou videoclip pe platforma Click Music!')
         ->line('Am adaugat un nou videoclip!')
         ->line('Iti mulțumim pentru că te-ai abonat si ca ne sustii!')
+        ->line('Pentru a putea vizualiza videoclipul direct din acest email, trebuie sa fiti autentificat in aplicatia Click Music.')
         ->action('Vizualizați Videoclipul', url('/videos/9'))
         ->salutation('Cu respect, Click Music');
     }
