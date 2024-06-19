@@ -1,10 +1,10 @@
-<div tabindex="0" aria-label="group icon" role="img" class="focus:outline-none w-8 h-8 border rounded-full border-gray-200 flex flex-shrink-0 items-center justify-center">
+<div tabindex="0" aria-label="group icon" role="img" class="flex items-center justify-center flex-shrink-0 w-8 h-8 border border-gray-200 rounded-full focus:outline-none">
     {!! $icon ?? '' !!}
 </div>
-<div class="pl-3 w-full">
+<div class="w-full pl-3">
     <div class="items-center justify-between w-full pr-2">
-        <p class="block w-full focus:outline-none text-sm leading-none my-0">
-            <span class="text-indigo-700 font-bold">
+        <p class="block w-full my-0 text-sm leading-none focus:outline-none">
+            <span class="font-bold text-indigo-700">
                 @if(! empty($announcement['link']))
                     <a href="{{ $announcement['link'] }}">
                 @endif
@@ -14,20 +14,20 @@
                 @endif
             </span>
         </p>
-        <p class="block w-full focus:outline-none text-sm leading-none">
+        <p class="block w-full text-sm leading-none focus:outline-none">
             {{ $announcement['body'] }}
         </p>
     </div>
     <div class="flex justify-between">
-        <p class="focus:outline-none text-xs leading-3 pt-1 text-gray-500" title="{{ $created_at->format('jS M Y H:i') }}">
+        <p class="pt-1 text-xs leading-3 text-gray-500 focus:outline-none" title="{{ $created_at->format('jS M Y H:i') }}">
             {{ $created_at->diffForHumans() }}
         </p>
 
         @if(! empty($announcement['link']))
-            <p class="text-right focus:outline-none text-xs leading-3 pt-1">
+            <p class="pt-1 text-xs leading-3 text-right focus:outline-none">
                 <a href="{{ $announcement['link'] }}"
                    {{ ! empty($announcement['linkNewWindow']) ? ' target="_blank"' : '' }}
-                   class="cursor-pointer no-underline bg-gray-100 text-gray-800 rounded-md border border-gray-300 p-2 hover:bg-gray-300">
+                   class="p-2 text-gray-800 no-underline bg-gray-100 border border-gray-300 rounded-md cursor-pointer hover:bg-gray-300">
                     {{ ! empty($announcement['linkText']) ? $announcement['linkText'] : 'View' }}
                 </a>
             </p>

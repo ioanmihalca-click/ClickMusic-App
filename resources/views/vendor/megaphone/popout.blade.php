@@ -51,7 +51,7 @@
             <div class="flex items-center justify-between">
                 <hr class="w-full">
                 <p tabindex="0" class="flex flex-shrink-0 px-3 py-16 text-sm leading-normal text-gray-500 focus:outline-none">
-                    No new announcements
+                    Nu exista notificari noi
                 </p>
                 <hr class="w-full">
             </div>
