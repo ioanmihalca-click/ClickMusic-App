@@ -1,6 +1,5 @@
 <div class="max-w-2xl p-16 mx-auto bg-white rounded">
 
-<h1 class='mb-4 text-center bg-gray-400 rounded-sm'>Trimite o notificare "Clopotel" in aplicatie abonatilor</h1>
 
 
     @if(session()->has('megaphone_success'))

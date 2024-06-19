@@ -28,22 +28,50 @@
 
 </head>
 
-<body class="bg-gray-500">
-<div class="container p-2">
+<body class="bg-gray-200">
 
+<div class="text-black bg-gray-200">
+        <div
+            class="relative flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
+            <header class="flex flex-col items-center justify-center mt-2">
+                <img src="/img/logo.png" alt="Logo Click Music"
+                    class="h-12 w-auto text-white lg:h-16 lg:text-[#FF2D20] mt-8">
+                    </header>
+                    <h1 class="px-2 my-8 text-2xl font-bold text-center text-blue-500 bg-gray-100 rounded">Admin - Panou de control</h1>
+                    </div>
+                    </div>
+
+<div x-data="{ open: false }" class="max-w-2xl p-4 mx-auto mt-4 bg-white rounded">
+  <button @click="open = !open">
+  <div class="flex justify-between">
+   <h2 class="text-xl font-semibold text-center text-black">Trimite o notificare abonatilor</h2>
+                            <span x-show="!open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">+</span>
+                            <span x-show="open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">-</span>
+                        </div>
+
+                    </button>
+    <div x-show="open" x-transition>
 <livewire:megaphone-admin></livewire:megaphone-admin>
+</div>
+</div>
 
 
-<div class="max-w-2xl p-16 mx-auto mt-4 bg-white rounded">
+<div x-data="{ open: false }" class="max-w-2xl p-4 mx-auto mt-4 bg-white rounded ">
+  <button @click="open = !open">
+    <div class="flex justify-between">
+    <h2 class="text-xl font-semibold text-center text-black">Trimite un e-mail abonatilor - "Videoclip nou" </h2>
+  <span x-show="!open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">+</span>
+                            <span x-show="open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">-</span>
+                        </div>
+         </button>
 
-    <h2 class="mb-4 text-center bg-gray-400 rounded-sm">Trimite o notificare e-mail "Videoclip nou" abonatilor</h2>
 
     @if (session('success'))
         <div class="p-4 mb-4 text-green-700 bg-green-100 rounded-lg">
             {{ session('success') }}
         </div>
     @endif
-
+<div x-show="open" x-transition>
     <form action="{{ route('send.notification') }}" method="POST" class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
         @csrf
 
@@ -79,7 +107,7 @@
     </form>
 </div>
 
-
+</div>
 
 
 </div>
