@@ -66,10 +66,14 @@
 
         <h1 class="mb-2 text-xl font-semibold">{{ $video->title }}</h1>
         {{-- <p class="text-gray-700">{{ $video->description }}</p> --}}
-        <p class="mt-4 mb-2 text-center text-gray-500">
-            Pentru a avea acces la videoclipuri vă rugam să deveniti membru al comunității Click Music! </p>
-        <div>
-            <a href="/register" class="px-2 text-white ease-in-out bg-blue-500 rounded-md hover:bg-gray-700">Devin membru</a>
+         <p class="mt-4 text-base">
+                             
+                    Pentru acces complet la întreaga colecție de videoclipuri, inclusiv cele mai recente lansări și PREMIERE exclusive, abonează-te pentru doar <br>
+                    <span class="font-semibold text-blue-500"> 9,99 lei/lună. </span> <br>
+                    
+                               
+        <div class="mt-2">
+            <a href="/register" class="px-2 text-white ease-in-out bg-blue-500 rounded-md hover:bg-gray-700">Abonează-te</a>
 
             <a href="/login" class="px-2 text-white ease-in-out bg-blue-500 rounded-md hover:bg-gray-700">Sunt deja membru</a>
 

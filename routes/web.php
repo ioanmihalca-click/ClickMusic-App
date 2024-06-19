@@ -31,9 +31,11 @@ Route::view('admin', 'admin')
     ->middleware(AdminMiddleware::class)
     ->name('admin');
 
+
+    //trigger mail notification Videoclip Nou
 // Route::get('/', function(){
 
-// trigger mail notification Videoclip Nou
+
 // $users = User::all();
 // Notification::send($users, new NotificareVideoclipNou());
 // ************************************************
