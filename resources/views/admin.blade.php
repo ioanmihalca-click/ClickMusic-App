@@ -25,6 +25,23 @@
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+  <!-- Additional Styles -->
+    <style>
+        /* Custom scrollbar styling */
+        body::-webkit-scrollbar {
+            width: 9px;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: #3B82F6;
+            border-radius: 3px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background-color: #d1d5db;
+            border-radius: 3px;
+        }
+    </style>
 
 </head>
 
@@ -34,8 +51,10 @@
         <div
             class="relative flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
             <header class="flex flex-col items-center justify-center mt-2">
-                <img src="/img/logo.png" alt="Logo Click Music"
+                <a href="/">
+                 <img src="/img/logo.png" alt="Logo Click Music"
                     class="h-12 w-auto text-white lg:h-16 lg:text-[#FF2D20] mt-8">
+                    </a>
                     </header>
                     <h1 class="px-2 my-8 text-2xl font-bold text-center text-blue-500 bg-gray-100 rounded">Admin - Panou de control</h1>
                     </div>
