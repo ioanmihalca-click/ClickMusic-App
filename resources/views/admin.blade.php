@@ -186,7 +186,7 @@
         <section x-data="{ open: false }" id="lista-videoclipuri" class="max-w-md p-2 bg-white rounded-md shadow-md">
             <button @click="open = !open">
                 <div class="flex justify-between">
-                    <h2 class="mb-4 text-xl font-semibold">Sterge Videoclipuri</h2>
+                    <h2 class="text-xl font-semibold text-center text-black">Sterge Videoclipuri</h2>
                     <span x-show="!open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">+</span>
                     <span x-show="open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">-</span>
                 </div>
