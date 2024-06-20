@@ -9,10 +9,16 @@ class FeaturedVideo extends Component
 {
   public $featuredVideo;
 
+  protected $listeners = ['featuredVideoChanged' => '$refresh']; 
+
   public function mount()
   {
-    // Define logic to fetch the featured video (e.g., by ID, flag)
-    $this->featuredVideo = Video::find(1); // Replace with your logic
+      $this->loadFeaturedVideo();
+  }
+
+  public function loadFeaturedVideo()
+  {
+      $this->featuredVideo = Video::where('featured', true)->first();
   }
 
   public function render()

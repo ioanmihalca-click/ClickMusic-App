@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
 use App\Models\Video;
+use Livewire\Livewire;
+use Illuminate\Http\Request;
 
 class VideoController extends Controller
 {
@@ -41,6 +42,25 @@ class VideoController extends Controller
         Video::create($validatedData);
 
         return redirect()->route('videos.create')->with('success', 'Videoclipul a fost adăugat cu succes!'); // Folosim 'success' aici
+    }
+
+
+    public function setFeaturedVideo(Request $request)
+    {
+        $validatedData = $request->validate([
+            'featured_video_id' => 'required|exists:videos,id',
+        ]);
+
+        // Elimină flag-ul "featured" de la toate videoclipurile
+        Video::query()->update(['featured' => false]);
+
+        // Setează videoclipul ales ca "featured"
+        Video::find($validatedData['featured_video_id'])->update(['featured' => true]);
+
+        // Refresh Livewire component (dacă este cazul)
+        // Livewire::dispatchBrowserEvent('featuredVideoChanged');
+
+        return redirect()->route('admin')->with('success_featured', 'Videoclipul promovat a fost actualizat cu succes!');
     }
 
     public function destroy(Video $video) // Injectează direct modelul Video

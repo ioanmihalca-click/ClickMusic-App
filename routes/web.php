@@ -32,6 +32,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/admin', [VideoController::class, 'index'])->name('admin'); // Single route for the admin page
     Route::get('/admin/videos/create', [VideoController::class, 'create'])->name('videos.create'); 
     Route::post('/admin/videos', [VideoController::class, 'store'])->name('videos.store');
+    Route::post('/admin/set/featured/video', [VideoController::class, 'setFeaturedVideo'])->name('set.featured.video');
     Route::delete('/admin/videos/{video}', [VideoController::class, 'destroy'])->name('videos.destroy');
     Route::post('/send-notification', [VideoNotificationController::class, 'sendNotification'])->name('send.notification');
 

@@ -221,6 +221,37 @@
     </div>
 </div>
 
+{{-- Videoclip Promovat --}}
+
+<section id="featured-video" class="max-w-md p-6 mx-auto mt-8 bg-white rounded-md shadow-md">
+    <h2 class="mb-4 text-xl font-semibold">Setează videoclip promovat</h2>
+
+    @if (session('success_featured'))
+        <div class="p-4 text-green-700 bg-green-100 border-l-4 border-green-500" role="alert">
+            {{ session('success_featured') }}
+        </div>
+    @endif
+
+    <form action="{{ route('set.featured.video') }}" method="POST">
+        @csrf
+        <div class="mb-4">
+            <label for="featured_video_id" class="block mb-2 text-sm font-bold text-gray-700">ID Videoclip:</label>
+            <select name="featured_video_id" id="featured_video_id" class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" required>
+                <option value="">Selectează</option>
+                @foreach ($videos as $video)
+                    <option value="{{ $video->id }}" {{ $video->featured ? 'selected' : '' }}>
+                        {{ $video->title }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+        <button type="submit" class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline">
+            Salvează
+        </button>
+    </form>
+</section>
+
 
     </div>
 
