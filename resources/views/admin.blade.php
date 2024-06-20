@@ -64,14 +64,14 @@
         <div class="md:pr-4 md:w-1/2">
             <div
                 class="relative flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white mb-4">
-                <h2 class="px-2 text-xl font-bold text-center text-blue-500 bg-gray-100 rounded">Gestionare notificari si abonati
+                <h2 class="px-2 text-xl font-bold text-center text-blue-500 bg-gray-100 rounded">Gestionare notificari catre abonati
                 </h2>
             </div>
 
             <div x-data="{ open: false }" class="max-w-md p-2 mb-4 bg-white rounded-md shadow-md">
                 <button @click="open = !open">
                     <div class="flex justify-between">
-                        <h2 class="text-xl font-semibold text-center text-black">Trimite o notificare abonatilor</h2>
+                        <h2 class="text-xl font-semibold text-center text-black">Trimite o notificare abonatilor in aplicatie</h2>
                         <span x-show="!open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">+</span>
                         <span x-show="open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">-</span>
                     </div>

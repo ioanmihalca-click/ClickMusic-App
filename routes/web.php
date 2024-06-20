@@ -112,6 +112,9 @@ Route::get('/termeni-si-conditii', function () {
     return view('termeni-si-conditii');
 })->name('terms-of-service');
     
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
   
      
 require __DIR__.'/auth.php';

@@ -6,9 +6,16 @@
     <title>Termeni și Condiții</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="text-gray-800 bg-gray-100">
-    <div class="container p-8 mx-auto">
-        <div class="p-6 bg-white rounded-lg shadow-lg">
+<body class="font-sans antialiased">
+    <div class="text-black bg-gray-50">
+        <div class="relative min-h-screen flex flex-col items-center  selection:bg-[#FF2D20] selection:text-white">
+            <header class="flex flex-col items-center justify-center mt-2 mb-8">
+            <a href="/" >
+                <img src="/img/logo.png" alt="Logo Click Music" class="h-12 w-auto text-white lg:h-16 lg:text-[#FF2D20] mt-8">
+                </a>
+            </header>
+    
+        <div class="max-w-md p-6 bg-white rounded-lg shadow-lg">
             <h1 class="mb-4 text-3xl font-bold">Termeni și Condiții</h1>
             <p class="mb-4">Bun venit la Click Music Streaming App. Vă rugăm să citiți cu atenție acești termeni și condiții înainte de a utiliza aplicația noastră.</p>
             <h2 class="mb-2 text-2xl font-semibold">1. Accesul și Utilizarea</h2>
@@ -27,5 +34,23 @@
             <p class="mb-4">Dacă aveți întrebări, nelămuriri sau probleme legate de acești termeni și condiții sau de abonament, vă rugăm să ne contactați la adresa <a href="mailto:contact@clickmusic.ro" class="text-blue-500">contact@clickmusic.ro</a>.</p>
         </div>
     </div>
+    <footer class="py-16 text-sm text-center text-black">
+                    ClickMusic &copy; {{ date('Y') }}.Toate drepturile rezervate.
+                    <div class="mt-2">
+                        Aplicație dezvoltată de <a href="https://clickstudios-digital.com" target="_blank" rel="noopener noreferrer"
+                            class="text-blue-500">Click Studios
+                            Digital</a>.
+                    </div>
+
+                    <div class="flex-row mt-4">
+                        <a href="{{ route('privacy-policy') }}" class="text-blue-500">Politica de
+                            confidențialitate</a>
+                        |
+                        <a href="{{ route('terms-of-service') }}" class="text-blue-500">Termeni și Condiții</a>
+                        |
+                        <a href="{{ route('contact') }}" class="text-blue-500">Contact</a>
+                    </div>
+
+                </footer>
 </body>
 </html>

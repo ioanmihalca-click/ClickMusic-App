@@ -303,7 +303,8 @@
                             confidențialitate</a>
                         |
                         <a href="{{ route('terms-of-service') }}" class="text-blue-500">Termeni și Condiții</a>
-
+                        |
+                        <a href="{{ route('contact') }}" class="text-blue-500">Contact</a>
                     </div>
 
                 </footer>
