@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\User;
 use App\Models\Video;
 use Livewire\Livewire;
 use Illuminate\Http\Request;
@@ -20,8 +21,15 @@ class VideoController extends Controller
 
     public function index()
     {
-        $videos = Video::orderBy('created_at', 'desc')->get(); // Latest videos first
-    return view('admin', ['videos' => $videos]); 
+        {
+            $videos = Video::orderBy('created_at', 'desc')->get();
+            $users = User::all(); // Preia toți utilizatorii
+        
+            return view('admin', [
+                'videos' => $videos,
+                'users' => $users // Transmite utilizatorii către view
+            ]);
+        }
     }
 
     public function create()
@@ -57,9 +65,7 @@ class VideoController extends Controller
         // Setează videoclipul ales ca "featured"
         Video::find($validatedData['featured_video_id'])->update(['featured' => true]);
 
-        // Refresh Livewire component (dacă este cazul)
-        // Livewire::dispatchBrowserEvent('featuredVideoChanged');
-
+    
         return redirect()->route('admin')->with('success_featured', 'Videoclipul promovat a fost actualizat cu succes!');
     }
 
