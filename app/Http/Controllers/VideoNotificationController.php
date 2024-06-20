@@ -22,6 +22,6 @@ class VideoNotificationController extends Controller
 
         Notification::send($users, new NotificareVideoclipNou($validatedData['videoUrl'], $validatedData['imageUrl'],$validatedData['videoName']));
 
-        return redirect()->back()->with('success', 'Notificarile au fost trimise cu succes!');
+        return redirect()->back()->with('notification_success', 'Notificările au fost trimise cu succes!');  
     }
 }

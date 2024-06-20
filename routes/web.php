@@ -28,13 +28,18 @@ Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback
 
 Route::view('/', 'welcome')->name('welcome');
 
-Route::view('admin', 'admin')
-    ->middleware(AdminMiddleware::class)
-    ->name('admin');
+Route::middleware([AdminMiddleware::class])->group(function () { // Aplică middleware-ul la întreg grupul de rute
+    Route::get('/admin', function () { // Ruta pentru a afișa formularul în admin.blade.php
+        return view('admin'); 
+    })->name('admin');
 
-Route::post('/send-notification', [VideoNotificationController::class, 'sendNotification'])
-->middleware(AdminMiddleware::class)
-->name('send.notification');
+    Route::post('/send-notification', [VideoNotificationController::class, 'sendNotification'])->name('send.notification');
+    
+    Route::get('/admin/videos/create', [VideoController::class, 'create'])->name('videos.create');
+    Route::post('/admin/videos', [VideoController::class, 'store'])->name('videos.store');
+
+    
+});
 
 
     //trigger mail notification Videoclip Nou
