@@ -202,6 +202,35 @@
 
   {{-- Editare Videoclipuri --}}
 
+<section id="lista-videoclipuri" class="max-w-2xl p-6 mx-auto mt-8 bg-white rounded-md shadow-md">
+    <h2 class="mb-4 text-xl font-semibold">Videoclipuri existente</h2>
+
+      @if (session('success_delete'))
+            <div class="p-4 text-green-700 bg-green-100 border-l-4 border-green-500" role="alert">
+                {{ session('success_delete') }}
+            </div>
+        @endif
+
+    @if ($videos->count() > 0) 
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"> 
+            @foreach ($videos as $video)
+                <div class="overflow-hidden bg-white rounded-lg shadow-md">
+                    <img src="{{ $video->thumbnail_url }}" alt="{{ $video->title }}" class="w-full">
+                    <div class="p-4">
+                        <h3 class="mb-2 text-lg font-semibold">{{ $video->title }}</h3>
+                        <form action="{{ route('videos.destroy', $video) }}" method="POST" class="inline-block">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-red-500 hover:text-red-700">Șterge</button>
+                        </form>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @else
+        <p>Nu există videoclipuri încă.</p>
+    @endif
+</section>
 
 
 

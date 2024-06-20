@@ -17,9 +17,16 @@ class VideoController extends Controller
         return view('videos.share', compact('video'));
     }
 
+    public function index()
+    {
+        $videos = Video::orderBy('created_at', 'desc')->get(); // Latest videos first
+    return view('admin', ['videos' => $videos]); 
+    }
+
     public function create()
     {
-        return view('admin'); // Întoarce view-ul admin.blade.php
+        $videos = Video::all(); // Preia toate videoclipurile din baza de date
+        return view('admin', ['videos' => $videos]); // Transmite videoclipurile către view
     }
 
     public function store(Request $request)
@@ -34,6 +41,12 @@ class VideoController extends Controller
         Video::create($validatedData);
 
         return redirect()->route('videos.create')->with('success', 'Videoclipul a fost adăugat cu succes!'); // Folosim 'success' aici
+    }
+
+    public function destroy(Video $video) // Injectează direct modelul Video
+    {
+        $video->delete(); // Sterge videoclipul
+        return redirect()->route('admin')->with('success_delete', 'Videoclipul a fost șters cu succes!');
     }
 
 }
