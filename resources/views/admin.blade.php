@@ -46,18 +46,19 @@
 
 <body class="px-2 bg-gray-200">
 
-    <div class="text-black bg-gray-200">
-        <div class="relative flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
-            <header class="flex flex-col items-center justify-center mt-2">
-                <a href="/">
-                    <img src="/img/logo.png" alt="Logo Click Music"
-                        class="h-12 w-auto text-white lg:h-16 lg:text-[#FF2D20] mt-8">
-                </a>
-            </header>
-            <h1 class="px-2 my-8 text-2xl font-bold text-center text-blue-500 bg-gray-100 rounded">Admin - Panou de
-                control</h1>
+   <div class="text-black bg-gray-200">
+    <div class="relative flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
+        <header class="flex flex-col items-center justify-center mt-2">
+                <img src="{{ asset('img/admin.png') }}" alt="Admin Image" class="w-24 mx-auto mt-4 rounded-full shadow-md"> 
+{{-- 
+            <a href="/">
+                <img src="/img/logo.png" alt="Logo Click Music" class="h-12 w-auto text-white lg:h-16 lg:text-[#FF2D20] mt-8">
+            </a> --}}
+        </header>
+        <h1 class="px-2 my-8 text-2xl font-bold text-center text-blue-500 bg-gray-100 rounded">Admin - Panou de control</h1>
+
         </div>
-    </div>
+</div>
     <div class="flex flex-col justify-between max-w-5xl p-4 mx-auto bg-gray-100 rounded md:flex-row">
         <!-- Secțiunea pentru gestionarea notificărilor -->
         <div class="md:pr-4 md:w-1/2">
@@ -321,6 +322,19 @@
 
 
     </div>
+
+     <footer class="py-16 text-sm text-center text-black">
+                    ClickMusic &copy; {{ date('Y') }}.Toate drepturile rezervate.
+                    <div class="mt-2">
+                        Aplicație dezvoltată de <a href="https://clickstudios-digital.com" target="_blank" rel="noopener noreferrer"
+                            class="text-blue-500">Click Studios
+                            Digital</a>.
+                    </div>
+
+             
+
+                </footer>
+
 
 </body>
 
