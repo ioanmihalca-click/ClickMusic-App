@@ -203,24 +203,114 @@
                             piesa "De Dragoste și Război" în colaborare cu El Nino
 
 
-    
+     <div class="relative mt-4" style="padding-bottom: 56.25%;">  {{-- 16:9 aspect ratio --}}
+            <iframe 
+                src="https://www.youtube.com/embed/3QBXjL79pwc?si=Ntc90qhUBVJma26r" 
+                title="YouTube video player" 
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen
+                class="absolute top-0 left-0 w-full h-full"
+            ></iframe>
+        </div>
+
 
 
 "Prima Dată" în colaborare cu Feli, 
                              
 
+ <div class="relative mt-4" style="padding-bottom: 56.25%;">  {{-- 16:9 aspect ratio --}}
+            <iframe 
+                src="https://www.youtube.com/embed/AyNGsax5LcY?si=HhRRQzHXSouBK79w" 
+                title="YouTube video player" 
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen
+                class="absolute top-0 left-0 w-full h-full"
+            ></iframe>
+        </div>
+
+
+
+
                              
                              
                              "Pictez",
                              
+                              <div class="relative mt-4" style="padding-bottom: 56.25%;">  {{-- 16:9 aspect ratio --}}
+            <iframe 
+                src="https://www.youtube.com/embed/55_l1jxFe2A?si=HtG5o6PASFRjG9F_" 
+                title="YouTube video player" 
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen
+                class="absolute top-0 left-0 w-full h-full"
+            ></iframe>
+        </div>
+
+
+
+
                              
                               "Speranta"
                               
+                               <div class="relative mt-4" style="padding-bottom: 56.25%;">  {{-- 16:9 aspect ratio --}}
+            <iframe 
+                src="https://www.youtube.com/embed/ahP0Py7zhJY?si=o3avtKEAkrZtE1YH" 
+                title="YouTube video player" 
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen
+                class="absolute top-0 left-0 w-full h-full"
+            ></iframe>
+        </div>
+
                               
-                               etc.
+                               etc. <br>
                             De pe
-                            albumul "Lume Dragă" s-a remarcat piesa "Nopțile Calde" în colaborare cu Style da Kid (5
-                            milioane de vizualizări în acest moment), "Nici o slabiciune" in colaborare cu Style da Kid si Pacha Man (aproximativ 2 milioane de vizualizari in acest moment) si piesa ce da numele albumului "Lume draga" in colaborare cu Style da Kid si Oana Ciucanu (aproximativ 2 milioane de vizualizari in acest moment). A creat, de asemenea, un material deosebit alături
+                            albumul "Lume Dragă" s-a remarcat piesa "Nopțile Calde" în colaborare cu Style da Kid , 
+                            
+                             <div class="relative mt-4" style="padding-bottom: 56.25%;">  {{-- 16:9 aspect ratio --}}
+            <iframe 
+                src="https://www.youtube.com/embed/zwqfdK1kjzI?si=SJWz68DwBnlqzSRP" 
+                title="YouTube video player" 
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen
+                class="absolute top-0 left-0 w-full h-full"
+            ></iframe>
+        </div>
+
+                            
+                            "Nici o slabiciune" in colaborare cu Style da Kid si Pacha Man 
+                            
+                             <div class="relative mt-4" style="padding-bottom: 56.25%;">  {{-- 16:9 aspect ratio --}}
+            <iframe 
+                src="https://www.youtube.com/embed/-C5nv4JNlE4?si=cVUo3P3IAOwef_53" 
+                title="YouTube video player" 
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen
+                class="absolute top-0 left-0 w-full h-full"
+            ></iframe>
+        </div>
+
+                            
+                             si piesa ce da numele albumului "Lume draga" in colaborare cu Style da Kid si Oana Ciucanu.
+                             
+                              <div class="relative mt-4" style="padding-bottom: 56.25%;">  {{-- 16:9 aspect ratio --}}
+            <iframe 
+                src="https://www.youtube.com/embed/vSeB96h6kEQ?si=v2AK9wBKyaXtXUPF" 
+                title="YouTube video player" 
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen
+                class="absolute top-0 left-0 w-full h-full"
+            ></iframe>
+        </div>
+
+                             
+                              A creat, de asemenea, un material deosebit alături
                             de
                             CDP, un grup format din Style da Kid, Pacha Man și Dragoș Udilă.
                         </p>
