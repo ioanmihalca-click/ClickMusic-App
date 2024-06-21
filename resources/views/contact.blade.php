@@ -91,15 +91,15 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="text-black bg-gray-50">
+    <div class="p-2 text-black bg-gray-100">
         <div class="relative min-h-screen flex flex-col items-center  selection:bg-[#FF2D20] selection:text-white">
             <header class="flex flex-col items-center justify-center mt-2 mb-8">
             <a href="/" >
                 <img src="/img/logo.png" alt="Logo Click Music" class="h-12 w-auto text-white lg:h-16 lg:text-[#FF2D20] mt-8">
                 </a>
             </header>
- <div class="max-w-md p-2 bg-white rounded">
-            <p class="mt-4 text-left text-gray-700">
+        <div class="max-w-md p-6 bg-white rounded-lg shadow-lg">
+            <p class="mt-4 text-left ">
             
 Pentru orice nelămuriri, sugestii sau reclamații, suntem aici să vă ajutăm: <br><br>
 📧 Email: contact@clickmusic.ro <br>
@@ -116,10 +116,10 @@ Orice alte nelămuriri legate de serviciile noastre<br><br>
 Așteptăm cu interes să auzim de la voi!
                 <a href="mailto:contact@clickmusic.ro" class="text-blue-500 hover:underline">contact@clickmusic.ro</a>.
             </p>
-            </div
-        </div>
-    </div>
-
+            </div>
+            
+            
+   
           <footer class="py-16 text-sm text-center text-black">
                     ClickMusic &copy; {{ date('Y') }}.Toate drepturile rezervate.
                     <div class="mt-2">
@@ -138,6 +138,7 @@ Așteptăm cu interes să auzim de la voi!
                     </div>
 
                 </footer>
+               
 </body>
 
 </html>               

@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="font-sans antialiased">
-    <div class="text-black bg-gray-50">
+    <div class="p-2 text-black bg-gray-100">
         <div class="relative min-h-screen flex flex-col items-center  selection:bg-[#FF2D20] selection:text-white">
             <header class="flex flex-col items-center justify-center mt-2 mb-8">
             <a href="/" >
