@@ -181,13 +181,43 @@
                             DJ Maka, a format trupa Camuflaj. Aceasta a devenit rapid un simbol al muzicii hip-hop și
                             reggae din Cluj și, ulterior, din toată țara, odată cu mutarea în București și colaborarea
                             cu un label muzical cunoscut. Trupa a câștigat recunoaștere națională cu piese precum
-                            "România" și "În Jurul Lumii".</p>
+                            "România" și "În Jurul Lumii".
+                            </p>
+
+ <div class="relative mt-4" style="padding-bottom: 56.25%;">  {{-- 16:9 aspect ratio --}}
+            <iframe 
+                src="https://www.youtube.com/embed/D_BxEKzY_9k?si=bUttmiFssChkfNHY" 
+                title="YouTube video player" 
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen
+                class="absolute top-0 left-0 w-full h-full"
+            ></iframe>
+        </div>
+
+
                         <p class="mt-2 text-base text-black">
                             Click și-a lansat primul album solo, "Trup și Suflet", în 2017, urmat de "Lume Dragă" în
                             2020 și
                             EP-urile "Dulce și Amar" și "Culori EP" în 2021. De pe albumul "Trup și Suflet" s-a remarcat
-                            piesa "De Dragoste și Război" în colaborare cu El Nino (8 milioane de vizualizări în acest
-                            moment), "Prima Dată" în colaborare cu Feli (6 milioane de vizualizări în acest moment), "Pictez" (500 de mii de vizualizari in acest moment), "Speranta" (320 de mii de vizualizari in acest moment) etc.
+                            piesa "De Dragoste și Război" în colaborare cu El Nino
+
+
+    
+
+
+"Prima Dată" în colaborare cu Feli, 
+                             
+
+                             
+                             
+                             "Pictez",
+                             
+                             
+                              "Speranta"
+                              
+                              
+                               etc.
                             De pe
                             albumul "Lume Dragă" s-a remarcat piesa "Nopțile Calde" în colaborare cu Style da Kid (5
                             milioane de vizualizări în acest moment), "Nici o slabiciune" in colaborare cu Style da Kid si Pacha Man (aproximativ 2 milioane de vizualizari in acest moment) si piesa ce da numele albumului "Lume draga" in colaborare cu Style da Kid si Oana Ciucanu (aproximativ 2 milioane de vizualizari in acest moment). A creat, de asemenea, un material deosebit alături

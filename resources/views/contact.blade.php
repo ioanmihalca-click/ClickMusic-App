@@ -98,8 +98,8 @@
                 <img src="/img/logo.png" alt="Logo Click Music" class="h-12 w-auto text-white lg:h-16 lg:text-[#FF2D20] mt-8">
                 </a>
             </header>
- <div class="max-w-md bg-white rounded">
-            <p class="mt-4 text-center text-gray-700">
+ <div class="max-w-md p-2 bg-white rounded">
+            <p class="mt-4 text-left text-gray-700">
             
 Pentru orice nelămuriri, sugestii sau reclamații, suntem aici să vă ajutăm: <br><br>
 📧 Email: contact@clickmusic.ro <br>
