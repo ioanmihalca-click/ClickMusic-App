@@ -197,9 +197,19 @@
 
 
                         <p class="mt-2 text-base text-black">
-                            Click și-a lansat primul album solo, "Trup și Suflet", în 2017, urmat de "Lume Dragă" în
-                            2020 și
-                            EP-urile "Dulce și Amar" și "Culori EP" în 2021. De pe albumul "Trup și Suflet" s-a remarcat
+                            Click și-a lansat primul album solo, <br>
+                             "Trup și Suflet", în 2017 <br>
+                              (<a href="https://youtu.be/qzzeGDeeo4Y?si=oimnxAeKHp1Zfv4V" target="_blank" rel="noopener noreferrer" class="px-2 text-white bg-blue-500 rounded">Asculta aici</a>), <br>
+                             urmat de "Lume Dragă" în
+                            2020 <br>
+                             (<a href="https://youtu.be/ME0qVN8aRDA?si=aPHf-NHyrv5huDRH" target="_blank" rel="noopener noreferrer" class="px-2 text-white bg-blue-500 rounded">Asculta aici</a>) <br>
+                             și EP-urile "Dulce și Amar" <br>
+                              (<a href="https://youtube.com/playlist?list=PLROBgwG4dMG71NFY5lJhbW_puA1o5mYhc&si=DYdjwLqYX_tE2KfE" target="_blank" rel="noopener noreferrer" class="px-2 text-white bg-blue-500 rounded">Asculta aici</a>) <br>
+                            și "Culori EP" in colaborare cu MdBeatz în 2021. <br>
+                                (<a href="https://youtube.com/playlist?list=PLROBgwG4dMG7P50sEumQrRiaIjOZdIZHk&si=XuhinKO-m-JrKUX_" target="_blank" rel="noopener noreferrer" class="px-2 text-white bg-blue-500 rounded">Asculta aici</a>) <br>
+                            
+
+                            De pe albumul "Trup și Suflet" s-a remarcat
                             piesa "De Dragoste și Război" în colaborare cu El Nino
 
 
@@ -314,12 +324,17 @@
                             de
                             CDP, un grup format din Style da Kid, Pacha Man și Dragoș Udilă.
                         </p>
+                          (<a href="https://youtube.com/playlist?list=PLROBgwG4dMG7qEY66XA3dp8ggzd1xxkTm&si=TzzJOMAm--qi9cJj" target="_blank" rel="noopener noreferrer" class="px-2 text-white bg-blue-500 rounded">Asculta aici</a>) <br>
+                            
 
                         <p class="mt-2 text-base text-black">Produsele muzicale realizate alaturi de fratele său, Style
                             da
                             Kid,
                             l-au ajutat pe Click să se impună pe scena muzicală din România. În prezent, Click lucrează
-                            la finalizarea albumului "Inimă Română" împreună cu Gavrila și Style da Kid, și la un nou
+                            la finalizarea albumului "Inimă Română" împreună cu Gavrila și Style da Kid,<br>
+                             (<a href="https://youtube.com/playlist?list=PLROBgwG4dMG5j_x-By7AW0XSFQsZAhxQ_&si=YLSurPvOsAUz_Pz4" target="_blank" rel="noopener noreferrer" class="px-2 text-white bg-blue-500 rounded">Asculta aici</a>) <br>
+                            
+                             și la un nou
                             album solo care îmbină clasicul cu noul.</p>
                         <p class="mt-2 text-base text-black">
                             Canalul de YouTube al lui Click,
