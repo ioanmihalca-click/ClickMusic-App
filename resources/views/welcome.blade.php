@@ -330,8 +330,9 @@
                         <p class="mt-2 text-base text-black">Produsele muzicale realizate alaturi de fratele său, Style
                             da
                             Kid,
-                            l-au ajutat pe Click să se impună pe scena muzicală din România. În prezent, Click lucrează
-                            la finalizarea albumului "Inimă Română" împreună cu Gavrila și Style da Kid,<br>
+                            l-au ajutat pe Click să se impună pe scena muzicală din România. <br>
+                            În prezent, Click lucrează
+                            la finalizarea albumului "Inima Română" împreună cu Gavrila și Style da Kid,<br>
                              (<a href="https://youtube.com/playlist?list=PLROBgwG4dMG5j_x-By7AW0XSFQsZAhxQ_&si=YLSurPvOsAUz_Pz4" target="_blank" rel="noopener noreferrer" class="px-2 text-white bg-blue-500 rounded">Asculta aici</a>) <br>
                             
                              și la un nou
