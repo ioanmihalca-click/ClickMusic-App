@@ -237,49 +237,80 @@
                     </form>
             </section>
 
-                  {{-- Sterge Videoclipuri --}}
-            <section x-data="{ open: false }" id="lista-videoclipuri"
-                class="max-w-md p-2 mb-4 bg-white rounded-md shadow-md">
-                <button @click="open = !open">
-                    <div class="flex justify-between">
-                        <h2 class="text-xl font-semibold text-center text-black">Sterge Videoclipuri</h2>
-                        <span x-show="!open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">+</span>
-                        <span x-show="open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">-</span>
-                    </div>
-                </button>
-                @if (session('success_delete'))
-                    <div class="p-4 text-green-700 bg-green-100 border-l-4 border-green-500" role="alert">
-                        {{ session('success_delete') }}
-                    </div>
-                @endif
-                <div x-show="open" x-transition>
-                    @if ($videos->count() > 0)
-                        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                            @foreach ($videos as $video)
-                                <div class="overflow-hidden bg-white rounded-lg shadow-md">
-                                    <img src="{{ $video->thumbnail_url }}" alt="{{ $video->title }}"
-                                        class="w-full">
-                                    <div class="p-4">
-                                        <h3 class="mb-2 text-lg font-semibold">{{ $video->title }}</h3>
-                                        <form action="{{ route('videos.destroy', $video) }}" method="POST"
-                                            class="inline-block">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                class="text-red-500 hover:text-red-700">Șterge</button>
-                                        </form>
-                                    </div>
+{{-- Sterge/ Editeaza Videoclipuri --}}
+
+<section x-data="{ open: false }" id="manage-videos" class="max-w-md p-2 mb-4 bg-white rounded-md shadow-md">
+    <button @click="open = !open" >
+    <div class="flex justify-between">
+        <h2 class="text-xl font-semibold text-center text-black">Șterge / Editează Videoclipuri</h2>
+        <span x-show="!open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">+</span>
+        <span x-show="open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">-</span>
+        </div>
+    </button>
+
+    <div x-show="open" x-transition class="p-4">
+        @if (session('success_message'))
+            <div class="p-4 mb-4 text-green-700 bg-green-100 border-l-4 border-green-500" role="alert">
+                {{ session('success_message') }}
+            </div>
+        @endif
+
+        @if ($videos->count() > 0)
+            <div class="grid grid-cols-1 gap-4">
+                @foreach ($videos as $video)
+                    <div class="overflow-hidden bg-white rounded-lg shadow-md" x-data="{ editing: false }">  
+                        <img src="{{ $video->thumbnail_url }}" alt="{{ $video->title }}" class="w-full">
+                        <div class="p-4">
+                            {{-- Display video title and description --}}
+                            <div x-show="!editing"> 
+                                <h3 class="mb-2 text-lg font-semibold">{{ $video->title }}</h3>
+                                <p class="text-gray-700">{{ $video->description }}</p>
+                            </div>
+                        
+                            {{-- Edit Video Form --}}
+                            <form x-show="editing" action="{{ route('videos.update', $video) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+
+                                <div class="mb-2">
+                                    <label for="title_{{ $video->id }}" class="block text-sm font-medium text-gray-700">Titlu:</label>
+                                    <input type="text" id="title_{{ $video->id }}" name="title" value="{{ $video->title }}" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 sm:text-sm">
                                 </div>
-                            @endforeach
+                                <div class="mb-2">
+                                    <label for="description_{{ $video->id }}" class="block text-sm font-medium text-gray-700">Descriere:</label>
+                                    <textarea id="description_{{ $video->id }}" name="description" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 sm:text-sm">{{ $video->description }}</textarea>
+                                </div>
+                                
+                                <button type="submit" class="px-3 py-1.5 text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-500">Salvează</button>
+                            </form>
+
+                            <div class="flex items-center mt-2 space-x-2">
+                                {{-- Delete Video Form --}}
+                                <form x-show="!editing" action="{{ route('videos.destroy', $video) }}" method="POST" class="inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="px-3 py-1.5 text-white bg-red-500 rounded hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-500">Șterge</button>
+                                </form>
+
+                                <button type="button" x-show="!editing" @click="editing = true" class="px-3 py-1.5 text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-500">Editează</button>
+                            </div>
+
                         </div>
-                    @else
-                        <p>Nu există videoclipuri încă.</p>
-                    @endif
-                </div>
-            </section>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <p class="text-center text-gray-500">Nu există videoclipuri încă.</p>
+        @endif
+    </div>
+</section>
+
+
 
         </div>
     </div>
+
+    {{-- Lista utilizatori: --}}
 
 <section x-data="{ open: false }" id="users" class="max-w-5xl p-2 mx-auto mt-8 bg-white rounded-md shadow-md">
    

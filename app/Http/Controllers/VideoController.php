@@ -32,11 +32,11 @@ class VideoController extends Controller
         }
     }
 
-    public function create()
-    {
-        $videos = Video::all(); // Preia toate videoclipurile din baza de date
-        return view('admin', ['videos' => $videos]); // Transmite videoclipurile către view
-    }
+    // public function create()
+    // {
+    //     $videos = Video::all(); // Preia toate videoclipurile din baza de date
+    //     return view('admin', ['videos' => $videos]); // Transmite videoclipurile către view
+    // }
 
     public function store(Request $request)
     {
@@ -69,10 +69,23 @@ class VideoController extends Controller
         return redirect()->route('admin')->with('success_featured', 'Videoclipul promovat a fost actualizat cu succes!');
     }
 
-    public function destroy(Video $video) // Injectează direct modelul Video
-    {
-        $video->delete(); // Sterge videoclipul
-        return redirect()->route('admin')->with('success_delete', 'Videoclipul a fost șters cu succes!');
-    }
 
+    public function update(Request $request, Video $video)
+{
+    $validatedData = $request->validate([
+        'title' => 'required|string|max:255', // Adăugat max:255 pentru a limita lungimea titlului
+        'description' => 'required|string',
+    ]);
+
+    $video->update($validatedData);
+
+    return redirect()->route('admin')->with('success_message', 'Videoclipul a fost actualizat cu succes!');
+}
+
+
+    public function destroy(Video $video) 
+    {
+        $video->delete(); 
+        return redirect()->route('admin')->with('success_message', 'Videoclipul a fost șters cu succes!');
+    }
 }
