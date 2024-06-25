@@ -312,9 +312,16 @@
 
     {{-- Lista utilizatori: --}}
 
-<section id="users" class="max-w-5xl p-2 mx-auto mt-8 bg-white rounded-md shadow-md">
+<section x-data="{ open: false }" id="users" class="max-w-5xl p-2 mx-auto mt-8 bg-white rounded-md shadow-md">
+    <button @click="open = !open" >
+    <div class="flex justify-between">
     <h2 class="text-xl font-semibold text-center text-black">Listă utilizatori</h2>
+     <span x-show="!open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">+</span>
+        <span x-show="open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">-</span>
+        </div>
+    </button>
 
+<div x-show="open" x-transition class="p-4">
     @if ($users->count() > 0)
         <table class="w-full border-collapse table-auto">
             <thead>
