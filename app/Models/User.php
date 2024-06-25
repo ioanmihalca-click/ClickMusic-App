@@ -82,4 +82,9 @@ public function subscribed()
 }
 
 
+public function isEligibleForFreePlan()
+    {
+        return $this->usertype === 'admin' || $this->usertype === 'super_user';
+    }
+
 }

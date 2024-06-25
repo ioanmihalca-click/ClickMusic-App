@@ -71,7 +71,7 @@
 
 </head>
 
-<body class=" bg-gray-50 font-sans antialiased">
+<body class="font-sans antialiased bg-gray-50">
   
  
            <header class="flex flex-col items-center justify-center mt-2 mb-4">
@@ -82,7 +82,7 @@
 
 
 
- <div class="bg-blue-500 rounded text-white px-2 mt-4">
+ <div class="px-2 mt-4 text-white bg-blue-500 rounded">
                     @if (session()->has('success'))
   <div class="alert alert-success">
     {{ session()->get('success') }}
@@ -105,6 +105,19 @@
 
 <!-- Pricing -->
 <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+
+<div class="max-w-2xl mx-auto mb-10 text-center lg:mb-14">
+@if ($user->isEligibleForFreePlan())
+    <p class="mb-8">Vi s-a atribuit rolul de <span class="px-2 text-white bg-blue-500 rounded">Super_User</span> al acestei aplicatii!</p>
+    <a href="{{ route('videoclipuri') }}" class="btn btn-primary hover:bg-blue-500 hover:rounded hover:px-2 hover:text-white">Aveti ACCES PREMIUM Gratuit la Videoclipuri</a>
+
+</div>
+@else
+ 
+
+
+
+
     <!-- Title -->
     <div class="max-w-2xl mx-auto mb-10 text-center lg:mb-14">
         <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Planuri de abonament</h2>
@@ -115,7 +128,7 @@
     <!-- Grid -->
     <div class="flex flex-wrap justify-center gap-6 mt-12">
         <!-- Card -->
-        <div class="w-full sm:w-80 md:w-64 lg:w-72 p-8 text-center border border-gray-200 shadow-md rounded-xl transition-transform transform hover:shadow-xl hover:scale-105">
+        <div class="w-full p-8 text-center transition-transform transform border border-gray-200 shadow-md sm:w-80 md:w-64 lg:w-72 rounded-xl hover:shadow-xl hover:scale-105">
             <h4 class="text-lg font-medium text-gray-800">Lunar</h4>
             <div class="mt-5 text-5xl font-bold text-blue-500">
                 <span class="text-2xl font-bold align-top">Lei</span>
@@ -129,7 +142,7 @@
         <!-- End Card -->
 
         <!-- Card -->
-        <div class="w-full sm:w-80 md:w-64 lg:w-72 p-8 text-center border border-gray-200 shadow-md rounded-xl transition-transform transform hover:shadow-xl hover:scale-105">
+        <div class="w-full p-8 text-center transition-transform transform border border-gray-200 shadow-md sm:w-80 md:w-64 lg:w-72 rounded-xl hover:shadow-xl hover:scale-105">
             {{-- <p class="mb-3">
                 <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-lg text-xs uppercase font-semibold bg-indigo-100 text-indigo-800">Cel mai popular</span>
             </p> --}}
@@ -146,6 +159,7 @@
         <!-- End Card -->
     </div>
     <!-- End Grid -->
+    @endif
 </div>
 <!-- End Pricing -->
 

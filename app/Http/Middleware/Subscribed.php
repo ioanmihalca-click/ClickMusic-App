@@ -11,15 +11,12 @@ class Subscribed
 {
 
      
-    public function handle(Request $request, Closure $next): Response
+    public function handle($request, Closure $next)
     {
-        if (! $request->user()?->subscribed()) {
-            // Redirect user to billing page and ask them to subscribe...
-            return redirect('abonament');
+        if ($request->user() && ($request->user()->subscribed('prod_QGao8eve2XHvzf') || $request->user()->usertype === 'super_user')) {
+            return $next($request);
         }
 
-        return $next($request);
+        return redirect('abonament'); // Or any other relevant page
     }
-
-
 }

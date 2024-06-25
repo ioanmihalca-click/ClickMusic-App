@@ -14,6 +14,7 @@ use App\Http\Controllers\VideoController;
 use App\Notifications\SubscriptionCreated;
 use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Notification;
+use App\Http\Controllers\AbonamentController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Notifications\AbonamentNouCreatAdmin;
 use App\Notifications\NotificareVideoclipNou;
@@ -57,13 +58,12 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 
 // });
 
-Route::view('abonament', 'abonament')
-    ->middleware(['auth', 'verified'])
-    ->name('abonament');
+Route::get('abonament', [AbonamentController::class, 'show'])->name('abonament')->middleware('auth');
+   
 
-    Route::get('checkout/{plan?}', CheckoutController::class)
-    ->middleware(['auth', 'verified'])
-    ->name('checkout');
+Route::match(['get', 'post'], 'checkout/{plan}', [CheckoutController::class, '__invoke'])
+->middleware(['auth', 'verified'])
+->name('checkout');
 
 
 
