@@ -312,17 +312,9 @@
 
     {{-- Lista utilizatori: --}}
 
-<section x-data="{ open: false }" id="users" class="max-w-5xl p-2 mx-auto mt-8 bg-white rounded-md shadow-md">
-   
-   <button @click="open = !open">
-                    <div class="flex justify-between">
+<section id="users" class="max-w-5xl p-2 mx-auto mt-8 bg-white rounded-md shadow-md">
     <h2 class="text-xl font-semibold text-center text-black">Listă utilizatori</h2>
- <span x-show="!open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">+</span>
-                        <span x-show="open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">-</span>
-                    </div>
-                </button>
 
-     <div x-show="open" x-transition>
     @if ($users->count() > 0)
         <table class="w-full border-collapse table-auto">
             <thead>
@@ -331,14 +323,26 @@
                     <th class="px-4 py-2 text-left bg-gray-100">Email</th>
                     <th class="px-4 py-2 text-left bg-gray-100">Tip utilizator</th>
                     <th class="px-4 py-2 text-left bg-gray-100">Data înregistrării</th>
+                    <th class="px-4 py-2 text-left bg-gray-100">Acțiuni</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($users as $user)
-                    <tr class="hover:bg-gray-50">
+                    <tr>
                         <td class="px-4 py-2 border">{{ $user->name }}</td>
                         <td class="px-4 py-2 border">{{ $user->email }}</td>
-                        <td class="px-4 py-2 border">{{ $user->usertype }}</td>
+                        <td class="px-4 py-2 border">
+                            <form action="{{ route('users.update.usertype', $user) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <input type="hidden" name="user_id" value="{{ $user->id }}"> <select name="usertype">
+                                    <option value="user" {{ $user->usertype == 'user' ? 'selected' : '' }}>User</option>
+                                    <option value="admin" {{ $user->usertype == 'admin' ? 'selected' : '' }}>Admin</option>
+                                    <option value="super_user" {{ $user->usertype == 'super_user' ? 'selected' : '' }}>Super User</option>
+                                </select>
+                                <button type="submit" class="px-2 py-1 text-white bg-blue-500 rounded hover:bg-blue-700">Save</button>
+                            </form>
+                        </td>
                         <td class="px-4 py-2 border">{{ $user->created_at->format('d-m-Y H:i') }}</td>
                     </tr>
                 @endforeach
@@ -366,7 +370,11 @@
 
                 </footer>
 
-
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.store('userEditing', {});
+    });
+</script>
 </body>
 
 </html>

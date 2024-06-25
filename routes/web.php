@@ -9,6 +9,7 @@ use App\Mail\NewComment;
 use App\Http\Middleware\Subscribed;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\VideoController;
 use App\Notifications\SubscriptionCreated;
@@ -36,6 +37,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/admin/set/featured/video', [VideoController::class, 'setFeaturedVideo'])->name('set.featured.video');
     Route::put('/admin/videos/{video}', [VideoController::class, 'update'])->name('videos.update');
     Route::delete('/admin/videos/{video}', [VideoController::class, 'destroy'])->name('videos.destroy');
+    Route::put('/users/{user}/usertype', [UserController::class, 'updateUsertype'])->name('users.update.usertype');
+
     Route::post('/send-notification', [VideoNotificationController::class, 'sendNotification'])->name('send.notification');
 
 });
