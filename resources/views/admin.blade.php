@@ -330,7 +330,7 @@
                     <th class="px-4 py-2 text-left bg-gray-100">Email</th>
                     <th class="px-4 py-2 text-left bg-gray-100">Tip utilizator</th>
                     <th class="px-4 py-2 text-left bg-gray-100">Data înregistrării</th>
-                    <th class="px-4 py-2 text-left bg-gray-100">Acțiuni</th>
+                 
                 </tr>
             </thead>
             <tbody>
