@@ -21,6 +21,7 @@ use App\Notifications\AbonamentNouCreatAdmin;
 use App\Notifications\NotificareVideoclipNou;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\VideoNotificationController;
+use App\Http\Controllers\SubscriptionSuccessController;
 
 Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
@@ -62,6 +63,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 // });
 
 Route::get('abonament', [AbonamentController::class, 'show'])->name('abonament')->middleware('auth');
+Route::get('/subscription/success', SubscriptionSuccessController::class)->name('subscription.success')->middleware('auth');
    
 
 Route::match(['get', 'post'], 'checkout/{plan}', [CheckoutController::class, '__invoke'])

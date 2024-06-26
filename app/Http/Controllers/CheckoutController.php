@@ -19,15 +19,15 @@ class CheckoutController extends Controller
         $checkout = $user
             ->newSubscription('prod_QGao8eve2XHvzf', $plan)
             ->checkout([
-                'success_url' => route('videoclipuri'),
+                'success_url' => route('subscription.success'),
                 'cancel_url' => url('/'),
             ]);
 
         // After the checkout, send the SubscriptionCreated notification
-        if ($checkout) {
-            $user->notify(new SubscriptionCreated());
-            User::find(1)->notify(new AbonamentNouCreatAdmin);
-        }
+        // if ($checkout) {
+        //     $user->notify(new SubscriptionCreated());
+        //     User::find(1)->notify(new AbonamentNouCreatAdmin);
+        // }
 
         return $checkout;
     } 
