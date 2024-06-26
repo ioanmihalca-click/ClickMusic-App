@@ -79,7 +79,7 @@ class VideoController extends Controller
 
     $video->update($validatedData);
 
-    return redirect()->route('admin')->with('success_message', 'Videoclipul a fost actualizat cu succes!');
+    return redirect()->route('admin')->with('success_edit', 'Videoclipul a fost actualizat cu succes!');
 }
 
 

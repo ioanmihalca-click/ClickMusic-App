@@ -249,9 +249,9 @@
     </button>
 
     <div x-show="open" x-transition class="p-4">
-        @if (session('success_message'))
+        @if (session('success_edit'))
             <div class="p-4 mb-4 text-green-700 bg-green-100 border-l-4 border-green-500" role="alert">
-                {{ session('success_message') }}
+                {{ session('success_edit') }}
             </div>
         @endif
 
@@ -321,7 +321,15 @@
         </div>
     </button>
 
+
 <div x-show="open" x-transition class="p-4">
+
+  @if (session('success_usertype'))
+            <div class="p-4 mb-4 text-green-700 bg-green-100 border-l-4 border-green-500" role="alert">
+                {{ session('success_usertype') }}
+            </div>
+        @endif
+
     @if ($users->count() > 0)
         <table class="w-full border-collapse table-auto">
             <thead>

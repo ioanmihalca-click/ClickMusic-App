@@ -29,6 +29,6 @@ class UserController extends Controller
             $user->notify(new SuperUserNotification()); // Send the notification
         }
 
-        return redirect()->back()->with('success_message', 'User type updated successfully.');
+        return redirect()->back()->with('success_usertype', 'User type schimbat cu succes!');
     }
 }
