@@ -22,6 +22,8 @@ use App\Notifications\NotificareVideoclipNou;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\VideoNotificationController;
 use App\Http\Controllers\SubscriptionSuccessController;
+use App\Livewire\Blog\Index as BlogIndex;
+use App\Livewire\Blog\Show as BlogShow;
 
 Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
@@ -30,6 +32,12 @@ Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback
 // Route::get('auth/facebook/callback', [AuthController::class, 'handleFacebookCallback']);
 
 Route::view('/', 'welcome')->name('welcome');
+
+
+
+Route::get('/blog', BlogIndex::class)->name('blog.index');
+Route::get('/blog/{slug}', BlogShow::class)->name('blog.show');
+
 
 Route::middleware([AdminMiddleware::class])->group(function () { 
     Route::get('/admin', [VideoController::class, 'index'])->name('admin'); // Single route for the admin page

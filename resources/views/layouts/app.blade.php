@@ -114,6 +114,8 @@
                         <a href="{{ route('terms-of-service') }}" class="text-blue-500">Termeni și Condiții</a>
                         |
                         <a href="{{ route('contact') }}" class="text-blue-500">Contact</a>
+                         |
+                        <a href="{{ route('blog.index') }}" class="text-blue-500">Blog</a>
                     </div>
 
                 </footer>
