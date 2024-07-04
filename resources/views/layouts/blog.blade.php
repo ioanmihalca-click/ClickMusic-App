@@ -25,7 +25,7 @@
     <!-- Open Graph Tags for Social Media Sharing -->
     <meta property="og:title" content="Blog Click Music - Noutăți din Hip-Hop, Soul și Reggae" />
     <meta property="og:description"
-        content="Descoperă cele mai recente articole, noutăți și povești din lumea hip-hop, soul și reggae pe blogul Click Music" />
+        content="Descoperă cele mai recente articole, noutăți și povești din lumea hip-hop, soul și reggae pe blogul lui Click" />
     <meta property="og:image" content="{{ asset('img/ClickMusic-Blog-OG.jpg') }}" />
     <meta property="og:image:type" content="image/jpg" />
     <meta property="og:image:alt" content="Blog Click Music - Noutăți din Hip-Hop, Soul și Reggae" />
