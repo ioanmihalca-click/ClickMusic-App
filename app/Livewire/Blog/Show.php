@@ -3,7 +3,7 @@
 namespace App\Livewire\Blog;
 
 use Livewire\Component;
-use Canvas\Models\Post;
+use App\Models\Post;
 
 class Show extends Component
 {

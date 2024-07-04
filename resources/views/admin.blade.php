@@ -368,6 +368,27 @@
     @endif
 </section>
 
+{{-- Blog --}}
+<section x-data="{ open: false }" id="blog" class="max-w-5xl p-2 mx-auto mt-8 bg-white rounded-md shadow-md">
+    <button @click="open = !open">
+        <div class="flex justify-between">
+            <h2 class="text-xl font-semibold text-center text-black">Blog Management</h2>
+            <span x-show="!open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">+</span>
+            <span x-show="open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">-</span>
+        </div>
+    </button>
+
+    <div x-show="open" x-transition>
+        <livewire:blog-admin  wire:key="blog-admin-unique-key"/> <div class="text-center text-red-500">
+    @error('embed_link')
+        <span class="text-xs italic">{{ $message }}</span>
+    @enderror
+</div>
+    </div>
+</section>
+
+
+
 
 
 
@@ -390,6 +411,15 @@
         Alpine.store('userEditing', {});
     });
 </script>
+
+<script>
+document.addEventListener('livewire:load', function () {
+        Livewire.on('editingStateChanged', () => {
+            Alpine.store('open', false);
+ });
+    });
+</script>
+
 </body>
 
 </html>

@@ -4,7 +4,7 @@ namespace App\Livewire\Blog;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use Canvas\Models\Post;
+use App\Models\Post;
 
 class Index extends Component
 {
