@@ -6,7 +6,7 @@
             <a href="{{ route('blog.show', $post->slug) }}" class="block group"> {{-- Make the entire card clickable --}}
                 @if ($post->featured_image)
                     <div class="relative overflow-hidden rounded-lg aspect-w-16 aspect-h-9">
-                        <img src="{{ $post->featured_image }}" alt="{{ $post->title }}" class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110">
+                        <img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}" class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black opacity-40"></div>
                     </div>
                 @endif

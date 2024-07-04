@@ -6,14 +6,14 @@
         </div>
     @endif
 
-    <h2 class="mb-4 text-2xl font-semibold">Blog Management</h2> 
+    {{-- <h2 class="mb-4 text-2xl font-semibold">Blog Management</h2>  --}}
 
     @if ($editing) 
         {{-- Edit/Create Form --}}
         <form wire:submit.prevent="save">
             {{-- Title Input --}}
             <div class="mb-4">
-                <label for="title" class="block mb-2 text-sm font-bold text-gray-700">Title:</label>
+                <label for="title" class="block mb-2 text-sm font-bold text-gray-700">Titlu:</label>
                 <input type="text" wire:model="title" id="title" class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" placeholder="Enter title">
                 @error('title') <span class="text-red-500">{{ $message }}</span> @enderror
             </div>
@@ -27,32 +27,36 @@
 
             {{-- Body/Content Textarea --}}
             <div class="mb-4">
-                <label for="body" class="block mb-2 text-sm font-bold text-gray-700">Content:</label>
+                <label for="body" class="block mb-2 text-sm font-bold text-gray-700">Continut:</label>
                 <textarea wire:model="body" id="body" class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" rows="10" placeholder="Enter content"></textarea>
                 @error('body') <span class="text-red-500">{{ $message }}</span> @enderror
             </div>
 
             {{-- Featured Image Input --}}
             <div class="mb-4">
-                <label for="featured_image" class="block mb-2 text-sm font-bold text-gray-700">Featured Image:</label>
+                <label for="featured_image" class="block mb-2 text-sm font-bold text-gray-700">Imagine:</label>
                 <input type="file" wire:model="featured_image" id="featured_image">
                 @error('featured_image') <span class="text-red-500">{{ $message }}</span> @enderror
 
                 @if ($featured_image)
-                    <img src="{{ $featured_image->temporaryUrl() }}" class="mt-2 max-h-40"> 
-                @endif
+    @if ($editing && !$postId) {{-- Check if we are editing a new post --}}
+        <img src="{{ $featured_image->temporaryUrl() }}" class="mt-2 max-h-40">
+    @else
+        <img src="{{ asset('storage/blog-images/' . $featured_image) }}" class="mt-2 max-h-40">
+    @endif
+@endif
             </div>
             
             {{-- Meta Description Textarea --}}
             <div class="mb-4">
-                <label for="meta_description" class="block mb-2 text-sm font-bold text-gray-700">Meta Description:</label>
+                <label for="meta_description" class="block mb-2 text-sm font-bold text-gray-700">Meta Descriere:</label>
                 <textarea wire:model="meta_description" id="meta_description" class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" rows="3" placeholder="Enter meta description"></textarea>
                 @error('meta_description') <span class="text-red-500">{{ $message }}</span> @enderror
             </div>
 
             {{-- Published At Input --}}
             <div class="mb-4">
-                <label for="published_at" class="block mb-2 text-sm font-bold text-gray-700">Published At:</label>
+                <label for="published_at" class="block mb-2 text-sm font-bold text-gray-700">Publicat la:</label>
                 <input type="datetime-local" wire:model="published_at" id="published_at" class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline">
                 @error('published_at') <span class="text-red-500">{{ $message }}</span> @enderror
             </div>
@@ -67,7 +71,7 @@
         </form>
     @else
         {{-- Blog Post List --}}
-        <button wire:click="create" class="px-4 py-2 mb-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">Create New Post</button>
+        <button wire:click="create" class="px-4 py-2 mb-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">Adauga Articol</button>
  
         <ul>
             @foreach ($posts as $post)

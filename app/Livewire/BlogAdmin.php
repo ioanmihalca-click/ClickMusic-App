@@ -7,6 +7,7 @@ use Ramsey\Uuid\Uuid;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\DB;
 
 class BlogAdmin extends Component
 {
@@ -70,8 +71,7 @@ public $postId;
         ];
 
         if ($this->featured_image) {
-            $filename = $this->featured_image->store('blog-images', 'public');
-            $data['featured_image'] = $filename; // Store only the filename
+            $data['featured_image'] = $this->featured_image->store('blog-images', 'public'); 
         }
 
         if ($this->postId) {
@@ -104,10 +104,16 @@ public $postId;
   $this->dispatch('editingStateChanged');
 }
 
-    public function delete($id)
+public function delete($id)
     {
-        Post::findOrFail($id)->delete();
-        $this->posts = Post::all();
+        DB::beginTransaction(); 
+        
+        Post::findOrFail($id)->forceDelete();
+        $this->posts = Post::all(); // Refresh post list
+
+
+        DB::commit();
+
         session()->flash('message', 'Post deleted successfully.');
         $this->dispatch('editingStateChanged');
     }

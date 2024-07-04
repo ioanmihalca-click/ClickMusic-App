@@ -7,7 +7,7 @@
 
     @if ($post->featured_image)
         <div class="relative mb-6 overflow-hidden rounded-lg aspect-w-16 aspect-h-9"> 
-            <img src="{{ $post->featured_image }}" alt="{{ $post->title }}" class="object-cover w-full h-full">
+            <img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}" class="object-cover w-full h-full">
         </div>
     @endif
 
