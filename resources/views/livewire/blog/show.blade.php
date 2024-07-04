@@ -9,7 +9,7 @@
     <h1 class="mb-4 text-4xl font-bold text-gray-800">{{ $post->title }}</h1>
 
     <div class="mb-4 text-gray-600">
-        Publicat la data de {{ $post->published_at->format('F j, Y') }}
+        Publicat la data de {{ $post->published_at->format('F j, Y') }} de Click
     </div>
 
     @if ($post->featured_image)
