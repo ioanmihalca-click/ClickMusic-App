@@ -1,3 +1,10 @@
+@section('meta_tags')
+    <meta property="og:title" content="{{ $post->title }}">
+    <meta property="og:description" content="{{ $post->meta['description'] ?? '' }}">
+    <meta property="og:image" content="{{ asset('storage/' . $post->featured_image) }}">
+    <meta property="og:url" content="{{ route('blog.show', $post->slug) }}">
+    <meta name="twitter:card" content="summary_large_image">
+@endsection
 <article class="max-w-4xl p-8 mx-auto bg-white rounded-lg shadow-md">
     <h1 class="mb-4 text-4xl font-bold text-gray-800">{{ $post->title }}</h1>
 
@@ -17,6 +24,7 @@
 
     <div class="mt-8">
     <a href="{{ route('blog.index') }}" class="text-blue-600 hover:underline">&larr; Inapoi la Blog</a>
+    
 </div>
 
 </article>

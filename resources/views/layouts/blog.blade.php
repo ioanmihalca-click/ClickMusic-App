@@ -34,6 +34,8 @@
     <meta property="og:locale" content="ro_RO" />
     <meta property="og:site_name" content="Click Music Blog" />
 
+     <meta name="description" content="@yield('meta_description', 'Default blog description')">
+
     <link rel="canonical" href="https://clickmusic.ro/blog" />
 
     <!-- Favicon -->

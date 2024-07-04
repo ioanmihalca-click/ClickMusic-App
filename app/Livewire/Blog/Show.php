@@ -18,7 +18,9 @@ class Show extends Component
 
     public function render()
     {
-        return view('livewire.blog.show')
-        ->layout('layouts.blog');
+        return view('livewire.blog.show', [
+            'post' => $this->post, 
+            'meta_description' => $this->post->meta['description'] ?? null, // Pass meta_description
+        ])->layout('layouts.blog');
     }
 }

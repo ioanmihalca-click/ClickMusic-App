@@ -104,6 +104,8 @@ public $postId;
   $this->dispatch('editingStateChanged');
 }
 
+
+
 public function delete($id)
     {
         DB::beginTransaction(); 
