@@ -37,6 +37,10 @@
                 <label for="featured_image" class="block mb-2 text-sm font-bold text-gray-700">Featured Image:</label>
                 <input type="file" wire:model="featured_image" id="featured_image">
                 @error('featured_image') <span class="text-red-500">{{ $message }}</span> @enderror
+
+                @if ($featured_image)
+                    <img src="{{ $featured_image->temporaryUrl() }}" class="mt-2 max-h-40"> 
+                @endif
             </div>
             
             {{-- Meta Description Textarea --}}
@@ -44,14 +48,6 @@
                 <label for="meta_description" class="block mb-2 text-sm font-bold text-gray-700">Meta Description:</label>
                 <textarea wire:model="meta_description" id="meta_description" class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" rows="3" placeholder="Enter meta description"></textarea>
                 @error('meta_description') <span class="text-red-500">{{ $message }}</span> @enderror
-            </div>
-
-            {{-- Published Checkbox --}}
-            <div class="mb-4">
-                <label for="is_published" class="inline-flex items-center">
-                    <input type="checkbox" wire:model="is_published" id="is_published" class="w-5 h-5 text-indigo-600 rounded form-checkbox">
-                    <span class="ml-2 text-gray-700">Published</span>
-                </label>
             </div>
 
             {{-- Published At Input --}}
@@ -75,13 +71,13 @@
  
         <ul>
             @foreach ($posts as $post)
-                <li class="p-4 mb-4 border rounded">
-                    <a href="{{ route('blog.show', $post->slug) }}" class="font-semibold">{{ $post->title }}</a>
-                    <p class="text-gray-600">{{ $post->published_at->format('F j, Y') }}</p>
-                    <button wire:click="edit({{ $post->id }})" class="px-4 py-2 font-bold text-white bg-yellow-500 rounded hover:bg-yellow-700">Edit</button>
-                    <button wire:click="delete({{ $post->id }})" class="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700">Delete</button>
-                </li>
-            @endforeach
+        <li class="p-4 mb-4 border rounded">
+            <a href="{{ route('blog.show', $post->slug) }}" class="font-semibold">{{ $post->title }}</a>
+            <p class="text-gray-600">{{ $post->published_at->format('F j, Y') }}</p>
+            <button wire:click="edit('{{ $post->id }}')" class="px-4 py-2 font-bold text-white bg-yellow-500 rounded hover:bg-yellow-700">Edit</button>
+            <button wire:click="delete('{{ $post->id }}')" class="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700">Delete</button>
+        </li>
+    @endforeach
         </ul>
 
     @endif
