@@ -26,11 +26,37 @@
             </div>
 
             {{-- Body/Content Textarea --}}
-            <div class="mb-4">
-                <label for="body" class="block mb-2 text-sm font-bold text-gray-700">Continut:</label>
-                <textarea wire:model="body" id="body" class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" rows="10" placeholder="Enter content"></textarea>
-                @error('body') <span class="text-red-500">{{ $message }}</span> @enderror
-            </div>
+       <div class="mb-4">
+    <label for="body" class="block mb-2 text-sm font-bold text-gray-700">Continut:</label>
+    <div x-data="editor()" class="relative">
+        <div class="mb-2 space-x-2">
+            <button @click.prevent="format('bold')" class="px-2 py-1 font-bold bg-gray-200 rounded">B</button>
+            <button @click.prevent="format('italic')" class="px-2 py-1 italic bg-gray-200 rounded">I</button>
+            <button @click.prevent="format('underline')" class="px-2 py-1 underline bg-gray-200 rounded">U</button>
+            <button @click.prevent="format('h2')" class="px-2 py-1 bg-gray-200 rounded">H2</button>
+            <button @click.prevent="format('h3')" class="px-2 py-1 bg-gray-200 rounded">H3</button>
+            <button @click.prevent="format('br')" class="px-2 py-1 bg-gray-200 rounded">BR</button> 
+            <button @click.prevent="format('insertUnorderedList')" class="px-2 py-1 bg-gray-200 rounded">List</button>
+        </div>
+        <textarea
+            x-ref="textarea"
+            wire:model.defer="body"
+            id="body"
+            rows="10"
+            placeholder="Enter content"
+            class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+            @input="updateContent"
+        ></textarea>
+
+        <button @click.prevent="togglePreview" class="px-2 py-1 mt-2 text-white bg-blue-500 rounded">
+            <span x-text="preview ? 'Edit' : 'Preview'"></span>
+        </button>
+
+<div x-show="preview" x-html="previewContent" class="p-4 mt-2 prose border rounded lg:prose-xl max-w-none"></div>
+    </div>
+    @error('body') <span class="text-red-500">{{ $message }}</span> @enderror
+</div>
+
 
             {{-- Featured Image Input --}}
             <div class="mb-4">
@@ -86,3 +112,62 @@
 
     @endif
 </div>
+<script>
+function editor() {
+    return {
+        preview: false,
+        previewContent: '',
+        format(command) {
+            let textarea = this.$refs.textarea;
+            let start = textarea.selectionStart;
+            let end = textarea.selectionEnd;
+            let selectedText = textarea.value.substring(start, end);
+
+            let formattedText = selectedText; // Default to selected text
+            switch (command) {
+                case 'bold':
+                    formattedText = `<strong>${selectedText}</strong>`;
+                    break;
+                case 'italic':
+                    formattedText = `<em>${selectedText}</em>`;
+                    break;
+                case 'underline':
+                    formattedText = `<u>${selectedText}</u>`;
+                    break;
+                case 'h2':
+                    formattedText = `<h2>${selectedText}</h2>`;
+                    break;
+                case 'h3':
+                    formattedText = `<h3>${selectedText}</h3>`;
+                    break;
+                case 'ul':
+                    formattedText = `<ul><li>${selectedText}</li></ul>`;
+                    break;
+                case 'br':
+                    formattedText = `${selectedText}<br>`;
+                    break;
+            }
+
+            textarea.value = textarea.value.substring(0, start) + formattedText + textarea.value.substring(end);
+            this.updateContent();
+
+            textarea.focus();
+            textarea.setSelectionRange(start + formattedText.length, start + formattedText.length);
+        },
+
+        updateContent() {
+            this.$wire.set('body', this.$refs.textarea.value);
+            // Only update preview when in preview mode
+            if (this.preview) {
+                this.previewContent = this.$refs.textarea.value;
+            }
+        },
+        togglePreview() {
+            this.preview = !this.preview;
+            if (this.preview) {
+                this.previewContent = this.$refs.textarea.value;
+            }
+        }
+    };
+}
+</script>
