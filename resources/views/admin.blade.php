@@ -310,6 +310,28 @@
         </div>
     </div>
 
+
+{{-- Blog --}}
+<section x-data="{ open: false }" id="blog" class="max-w-5xl p-2 mx-auto mt-8 bg-white rounded-md shadow-md">
+    <button @click="open = !open">
+        <div class="flex justify-between">
+            <h2 class="text-xl font-semibold text-center text-black">Blog Management</h2>
+            <span x-show="!open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">+</span>
+            <span x-show="open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">-</span>
+        </div>
+    </button>
+
+    <div x-show="open" x-transition>
+        <livewire:blog-admin  wire:key="blog-admin-unique-key"/> <div class="text-center text-red-500">
+    @error('embed_link')
+        <span class="text-xs italic">{{ $message }}</span>
+    @enderror
+</div>
+    </div>
+</section>
+
+
+
     {{-- Lista utilizatori: --}}
 
 <section x-data="{ open: false }" id="users" class="max-w-5xl p-2 mx-auto mt-8 bg-white rounded-md shadow-md">
@@ -367,28 +389,6 @@
         <p class="text-center text-gray-500">Nu există utilizatori încă.</p>
     @endif
 </section>
-
-{{-- Blog --}}
-<section x-data="{ open: false }" id="blog" class="max-w-5xl p-2 mx-auto mt-8 bg-white rounded-md shadow-md">
-    <button @click="open = !open">
-        <div class="flex justify-between">
-            <h2 class="text-xl font-semibold text-center text-black">Blog Management</h2>
-            <span x-show="!open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">+</span>
-            <span x-show="open" class="pb-2 ml-2 text-2xl font-semibold text-blue-500">-</span>
-        </div>
-    </button>
-
-    <div x-show="open" x-transition>
-        <livewire:blog-admin  wire:key="blog-admin-unique-key"/> <div class="text-center text-red-500">
-    @error('embed_link')
-        <span class="text-xs italic">{{ $message }}</span>
-    @enderror
-</div>
-    </div>
-</section>
-
-
-
 
 
 
