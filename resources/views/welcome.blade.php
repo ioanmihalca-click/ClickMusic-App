@@ -125,7 +125,11 @@
                                     <a href='/register'
                                         class="px-2 text-white transition duration-300 bg-blue-500 rounded-md hover:bg-blue-600">Abonează-te
                                         acum</a>
-
+                                    <br>
+                                    <br>
+                                    <span>Lansarea oficială a platformei va avea loc pe 17 iulie 2024,
+                                        cu un videoclip EXCLUSIV: <br>
+                                        <strong>"Click - Ganduri bune"</strong> </span>
                                 </div>
 
                                 <!-- Embedded iframe -->
@@ -144,21 +148,23 @@
 
                                 <h3 class="pl-1 mb-1 text-base font-semibold">Click - Te tin de mana (prod MdBeatz)</h3>
 
-                                <a href="/register" class="pl-1 text-sm text-gray-600">Vezi mai mult... <svg
+                                {{-- <a href="/register" class="pl-1 text-sm text-gray-600">Vezi mai mult... <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         class="inline-block w-4 h-4 ml-1 text-blue-500" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path fill-rule="evenodd"
                                             d="M9.293 5.293a1 1 0 0 1 1.414 0l4 4a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-1.414-1.414L12.586 11H3a1 1 0 0 1 0-2h9.586l-2.293-2.293a1 1 0 0 1 0-1.414z"
                                             clip-rule="evenodd" />
-                                    </svg></a>
+                                    </svg></a> --}}
 
                             </div>
 
                             <p class="mt-4">
-            <a href='/blog' class="px-2 text-white bg-blue-500 rounded hover:bg-blue-600">Vizitează blogul Click Music</a>
-           
-        </p>
+                                <a href='/blog'
+                                    class="px-2 text-white bg-blue-500 rounded hover:bg-blue-600">Vizitează blogul Click
+                                    Music</a>
+
+                            </p>
                         </div>
                     </div>
 
