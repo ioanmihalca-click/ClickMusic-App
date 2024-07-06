@@ -6,37 +6,34 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 
-
 <url>
-  <loc>https://clickmusic.ro/</loc>
-  <lastmod>2024-05-24T07:47:35+00:00</lastmod>
-  <priority>1.00</priority>
+<loc>https://clickmusic.ro/</loc>
+<lastmod>2024-07-06T22:36:26+00:00</lastmod>
+<priority>1.00</priority>
 </url>
 <url>
-  <loc>https://clickmusic.ro/login</loc>
-  <lastmod>2024-05-24T07:47:35+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://clickmusic.ro/blog</loc>
+<lastmod>2024-07-06T22:36:26+00:00</lastmod>
+<priority>0.80</priority>
 </url>
 <url>
-  <loc>https://clickmusic.ro/register</loc>
-  <lastmod>2024-05-24T07:47:35+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://clickmusic.ro/politica-de-confidentialitate</loc>
+<lastmod>2024-07-06T22:36:26+00:00</lastmod>
+<priority>0.80</priority>
 </url>
 <url>
-  <loc>https://clickmusic.ro/politica-de-confidentialitate</loc>
-  <lastmod>2024-05-24T07:47:35+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://clickmusic.ro/termeni-si-conditii</loc>
+<lastmod>2024-07-06T22:36:26+00:00</lastmod>
+<priority>0.80</priority>
 </url>
 <url>
-  <loc>https://clickmusic.ro/termeni-si-conditii</loc>
-  <lastmod>2024-05-24T07:47:35+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://clickmusic.ro/contact</loc>
+<lastmod>2024-07-06T22:36:26+00:00</lastmod>
+<priority>0.80</priority>
 </url>
 <url>
-  <loc>https://clickmusic.ro/forgot-password</loc>
-  <lastmod>2024-05-24T07:47:35+00:00</lastmod>
-  <priority>0.64</priority>
+<loc>https://clickmusic.ro/blog/cum-mi-am-transformat-visul-muzical-intr-o-platforma-revolutionara-de-streaming</loc>
+<lastmod>2024-07-06T22:36:26+00:00</lastmod>
+<priority>0.70</priority>
 </url>
-
-
 </urlset>
