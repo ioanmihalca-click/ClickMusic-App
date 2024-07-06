@@ -156,8 +156,8 @@
                             </div>
 
                             <p class="mt-4">
-            Descoperă cele mai recente articole și noutăți<br>
-            <a href='/blog' class="text-blue-500 hover:underline">Vizitează blogul Click Music</a>
+            <a href='/blog' class="px-2 text-white bg-blue-500 rounded hover:bg-blue-600">Vizitează blogul Click Music</a>
+           
         </p>
                         </div>
                     </div>
