@@ -1,4 +1,4 @@
-<div class="p-8 bg-white rounded-lg shadow-md">
+<div class="p-4 bg-white rounded-lg shadow-md">
     <h1 class="mb-4 text-3xl font-bold text-center">Articole pe Blog</h1>
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
