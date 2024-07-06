@@ -26,7 +26,7 @@
     <meta property="og:title" content="Blog Click Music - Noutăți din Hip-Hop, Soul și Reggae" />
     <meta property="og:description"
         content="Descoperă cele mai recente articole, noutăți și povești din lumea hip-hop, soul și reggae pe blogul lui Click" />
-    <meta property="og:image" content="{{ asset('img/ClickMusic-Blog-OG.jpg') }}" />
+    <meta property="og:image" content="{{ asset('ClickMusic-Blog-OG.jpg') }}" />
     <meta property="og:image:type" content="image/jpg" />
     <meta property="og:image:alt" content="Blog Click Music - Noutăți din Hip-Hop, Soul și Reggae" />
     <meta property="og:url" content="https://clickmusic.ro/blog" />
@@ -34,7 +34,6 @@
     <meta property="og:locale" content="ro_RO" />
     <meta property="og:site_name" content="Click Music Blog" />
 
-     <meta name="description" content="@yield('meta_description', 'Default blog description')">
 
     <link rel="canonical" href="https://clickmusic.ro/blog" />
 
