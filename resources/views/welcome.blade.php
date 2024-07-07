@@ -143,7 +143,7 @@
                                         <span class="font-semibold text-blue-500">9,99 lei/lună.</span>
                                     </p>
                                     <a href="/register"
-       class="inline-block px-4 py-2 mt-4 text-white transition-colors bg-blue-500 rounded-md shadow-lg hover:bg-blue-600">
+       class="inline-block px-2 py-1 mt-4 text-white transition-colors bg-blue-500 rounded-md shadow-lg hover:bg-blue-600">
         Abonează-te acum
     </a>
 
