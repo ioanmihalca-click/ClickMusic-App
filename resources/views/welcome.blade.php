@@ -104,9 +104,14 @@
 
             </header>
 
+
+
+
             <div class="relative w-full max-w-2xl px-6 mt-2 lg:max-w-7xl">
 
                 <main class="flex items-center justify-center mt-2">
+
+
                     <div class="max-w-md mx-auto text-center lg:gap-8">
 
                         <div
@@ -116,21 +121,31 @@
                                 <h2 class="mt-4 text-base font-semibold ">Bine ai venit pe platforma de streaming Click
                                     Music</h2>
 
+ <!-- Anunt -->
+                <div class="relative p-6 mt-6 bg-white rounded-lg shadow-lg">
+                    <div class="absolute inset-x-0 top-0 flex justify-center transform -translate-y-1/2">
+                        <div class="px-4 py-2 text-white bg-red-600 rounded-full shadow-lg">
+                            Noutăți
+                        </div>
+                    </div>
+                    <h2 class="mt-8 text-2xl font-semibold text-gray-900">Lansarea Oficială a Platformei</h2>
+                    <p class="mt-2 text-lg text-gray-700">Va avea loc pe <strong>17 iulie 2024</strong>, cu un videoclip EXCLUSIV:</p>
+                    <h3 class="mt-4 text-lg font-semibold text-gray-900">Click - Ganduri bune</h3>
+                    
+                </div>
+                <!-- Anunt -->
+
+
                                 <div class="p-4 text-center">
                                     <p class="mb-2">Pentru acces complet la întreaga colecție de videoclipuri,
                                         inclusiv cele mai recente lansări și PREMIERE exclusive, abonează-te pentru doar
                                         <br>
                                         <span class="font-semibold text-blue-500">9,99 lei/lună.</span>
                                     </p>
-                                    <a href='/register'
-                                        class="px-2 text-white transition duration-300 bg-blue-500 rounded-md hover:bg-blue-600">Abonează-te
-                                        acum</a>
-                                    <br>
-                                    <br>
-                                    <span>Lansarea oficială a platformei va avea loc pe 17 iulie 2024,
-                                        cu un videoclip EXCLUSIV: <br>
-                                        <strong>"Click - Ganduri bune"</strong> </span>
-                                </div>
+                                    <a href="/register"
+       class="inline-block px-4 py-2 mt-4 text-white transition-colors bg-blue-500 rounded-md shadow-lg hover:bg-blue-600">
+        Abonează-te acum
+    </a>
 
                                 <!-- Embedded iframe -->
                                 <div class="my-2 overflow-hidden rounded-lg shadow-lg">
@@ -159,12 +174,12 @@
 
                             </div>
 
-                            <p class="mt-4">
-                                <a href='/blog'
-                                    class="px-2 text-white bg-blue-500 rounded hover:bg-blue-600">Vizitează blogul Click
-                                    Music</a>
-
-                            </p>
+                        <!-- Vizitează Blogul Section -->
+                            <div class="p-4 mt-8 text-center">
+                                <p>Noutăți, articole și povești din viata mea:</p>
+                                <a href='/blog' class="inline-block px-4 py-2 text-blue-500 hover:text-blue-600">Vizitează blogul Click Music</a>
+                            </div>
+                            <!-- End of Vizitează Blogul Section -->
                         </div>
                     </div>
 
