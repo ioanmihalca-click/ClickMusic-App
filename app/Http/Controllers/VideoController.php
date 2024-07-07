@@ -32,11 +32,11 @@ class VideoController extends Controller
         }
     }
 
-    // public function create()
-    // {
-    //     $videos = Video::all(); // Preia toate videoclipurile din baza de date
-    //     return view('admin', ['videos' => $videos]); // Transmite videoclipurile către view
-    // }
+    public function create()
+    {
+        $videos = Video::all(); // Preia toate videoclipurile din baza de date
+        return view('admin', ['videos' => $videos]); // Transmite videoclipurile către view
+    }
 
     public function store(Request $request)
     {
