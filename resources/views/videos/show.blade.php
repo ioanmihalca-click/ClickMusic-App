@@ -49,10 +49,15 @@
 
                     </div>
                 </div>
+
+
+
+
                 <h3 class="p-2 mb-1 text-base font-semibold">{{ $video->title }}</h3>
                 <p class="p-2 text-sm text-gray-600">{!! nl2br($video->description) !!}</p>
-
-
+<div class="p-2">
+    @livewire('video-recommendations', ['video' => $video]) 
+    </div>
                 <div class="p-2 text-sm text-black">
                     @livewire('comments.all-comments', ['videoId' => $video->id])
                 </div>
