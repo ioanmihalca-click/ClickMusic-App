@@ -175,7 +175,7 @@
                             </div>
 
                         <!-- Vizitează Blogul Section -->
-                            <div class="p-4 mt-8 text-center">
+                            <div class="p-4 text-center">
                                 <p>Noutăți, articole și povești din viata mea:</p>
                                 <a href='/blog' class="inline-block px-4 py-2 text-blue-500 hover:text-blue-600">Vizitează blogul Click Music</a>
                             </div>
