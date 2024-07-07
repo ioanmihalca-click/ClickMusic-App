@@ -14,11 +14,11 @@
 
                 {{-- Mesaj abonament cu succes --}}
                 {{-- @dd(session('success')); --}}
-                @if (Session::has('success'))
+                {{-- @if (Session::has('success'))
                     <div class="p-6 text-center bg-green-100 border-b border-green-200">
                         <p class="text-green-700">Abonamentul a fost creat cu succes!</p>
                     </div>
-                @endif
+                @endif --}}
 
                 <div class="p-6 text-center text-gray-900">
                     {{ __('Bine ai venit! Aici ai acces la toate PREMIERELE si la toata colectia de videoclipuri') }}
