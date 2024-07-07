@@ -26,36 +26,50 @@
             </div>
 
             {{-- Body/Content Textarea --}}
-       <div class="mb-4">
+      <div class="mb-4">
     <label for="body" class="block mb-2 text-sm font-bold text-gray-700">Continut:</label>
     <div x-data="editor()" class="relative">
-        <div class="mb-2 space-x-2">
+        <div class="flex mb-2 space-x-2">
             <button @click.prevent="format('bold')" class="px-2 py-1 font-bold bg-gray-200 rounded">B</button>
             <button @click.prevent="format('italic')" class="px-2 py-1 italic bg-gray-200 rounded">I</button>
             <button @click.prevent="format('underline')" class="px-2 py-1 underline bg-gray-200 rounded">U</button>
             <button @click.prevent="format('h2')" class="px-2 py-1 bg-gray-200 rounded">H2</button>
             <button @click.prevent="format('h3')" class="px-2 py-1 bg-gray-200 rounded">H3</button>
-            <button @click.prevent="format('br')" class="px-2 py-1 bg-gray-200 rounded">BR</button> 
             <button @click.prevent="format('insertUnorderedList')" class="px-2 py-1 bg-gray-200 rounded">List</button>
+            <button @click.prevent="format('br')" class="px-2 py-1 bg-gray-200 rounded">BR</button>
         </div>
-        <textarea
-            x-ref="textarea"
-            wire:model.defer="body"
-            id="body"
-            rows="10"
-            placeholder="Enter content"
-            class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-            @input="updateContent"
-        ></textarea>
+        
+        <div class="flex my-2 space-x-2">  
+            <input 
+                type="text" 
+                x-model="embedLink" 
+                @keydown.enter.prevent="insertEmbed"
+                placeholder="Adauga un link Youtube si apasa Enter"
+                class="w-full px-2 py-1 border rounded focus:outline-none focus:ring focus:border-blue-300"
+            >
+            <button @click.prevent="insertEmbed" class="px-2 py-1 bg-gray-200 rounded">Embed</button>
+            <button @click.prevent="togglePreview" class="px-2 py-1 text-white bg-blue-500 rounded">
+                <span x-text="preview ? 'Edit' : 'Preview'"></span>
+            </button>
+        </div>
 
-        <button @click.prevent="togglePreview" class="px-2 py-1 mt-2 text-white bg-blue-500 rounded">
-            <span x-text="preview ? 'Edit' : 'Preview'"></span>
-        </button>
+        <div x-show="!preview">
+            <textarea 
+                x-ref="textarea"
+                wire:model.defer="body" 
+                id="body" 
+                rows="10" 
+                placeholder="Enter content"
+                class="w-full px-3 py-2 text-gray-700 border rounded shadow-sm focus:outline-none focus:ring focus:ring-blue-500"
+                @input="updateContent"
+            ></textarea>
+        </div>
 
-<div x-show="preview" x-html="previewContent" class="p-4 mt-2 prose border rounded lg:prose-xl max-w-none"></div>
+        <div x-show="preview" x-html="previewContent" class="p-4 mt-2 prose border rounded lg:prose-xl max-w-none"></div>
     </div>
     @error('body') <span class="text-red-500">{{ $message }}</span> @enderror
 </div>
+
 
 
             {{-- Featured Image Input --}}
@@ -68,7 +82,7 @@
     @if ($editing && !$postId) {{-- Check if we are editing a new post --}}
         <img src="{{ $featured_image->temporaryUrl() }}" class="mt-2 max-h-40">
     @else
-        <img src="{{ asset('storage/blog-images/' . $featured_image) }}" class="mt-2 max-h-40">
+        <img src="{{ asset('storage/' . $featured_image) }}" class="mt-2 max-h-40">
     @endif
 @endif
             </div>
@@ -117,13 +131,15 @@ function editor() {
     return {
         preview: false,
         previewContent: '',
+        embedLink: '',
+
         format(command) {
             let textarea = this.$refs.textarea;
             let start = textarea.selectionStart;
             let end = textarea.selectionEnd;
             let selectedText = textarea.value.substring(start, end);
 
-            let formattedText = selectedText; // Default to selected text
+            let formattedText = selectedText;
             switch (command) {
                 case 'bold':
                     formattedText = `<strong>${selectedText}</strong>`;
@@ -162,11 +178,47 @@ function editor() {
                 this.previewContent = this.$refs.textarea.value;
             }
         },
+
         togglePreview() {
             this.preview = !this.preview;
             if (this.preview) {
                 this.previewContent = this.$refs.textarea.value;
             }
+        },
+
+        insertEmbed() {
+            if (!this.embedLink) return;
+
+            let textarea = this.$refs.textarea;
+            let start = textarea.selectionStart;
+
+            // Improved YouTube link detection (including shorts and share links)
+            const youtubeRegex = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?([\w-]{11})(?:\S+)?$/;
+            const match = this.embedLink.match(youtubeRegex);
+
+            if (match) {
+                let videoId = match[1]; // Extract the video ID
+
+                // Responsive Embed Code Generation
+                let embedCode = `<div class="relative mx-auto overflow-hidden" style="padding-bottom: 56.25%;">
+                                    <iframe 
+                                        class="absolute top-0 left-0 w-full h-full"
+                                        src="https://www.youtube.com/embed/${videoId}" 
+                                        title="YouTube video player" 
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                        allowfullscreen
+                                    ></iframe>
+                                </div>`;
+
+                textarea.value = textarea.value.substring(0, start) + embedCode + textarea.value.substring(start);
+            } else {
+                // For other embeds, insert the link as plain text
+                textarea.value = textarea.value.substring(0, start) + this.embedLink + textarea.value.substring(start);
+            }
+
+            this.updateContent();
+            this.embedLink = ''; // Clear the input after inserting
         }
     };
 }

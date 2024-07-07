@@ -29,12 +29,13 @@ public $postId;
             'featured_image' => 'nullable|image|max:1024', // Max 1MB
             'published_at' => 'nullable|date',
         ];
+        
     }
 
     // Lifecycle Methods
     public function mount()
     {
-        $this->posts = Post::all();
+        $this->posts = Post::orderBy('published_at', 'desc')->get();
         $this->editing = false;
     }
 
