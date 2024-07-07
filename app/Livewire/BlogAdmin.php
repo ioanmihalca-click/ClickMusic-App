@@ -17,6 +17,7 @@ class BlogAdmin extends Component
 // Remove 'is_published = false'
 public $editing = false;
 public $postId;
+public $existing_featured_image;
 
     // Form Validation Rules (Dynamic)
     public function rules()
@@ -60,21 +61,23 @@ public $postId;
     public function save()
     {
         $this->validate();
-
+    
         $data = [
-       
-            'id' => (string) Uuid::uuid4(),  // Generate a UUID string
+            'id' => (string) Uuid::uuid4(),
             'title' => $this->title,
             'slug' => $this->slug,
             'body' => $this->body,
             'meta' => ['description' => $this->meta_description],
             'published_at' => $this->published_at,
         ];
-
+    
         if ($this->featured_image) {
-            $data['featured_image'] = $this->featured_image->store('blog-images', 'public'); 
+            $data['featured_image'] = $this->featured_image->store('blog-images', 'public');
+        } elseif ($this->postId) {
+            // Retain the existing image if no new image is uploaded
+            $data['featured_image'] = $this->existing_featured_image;
         }
-
+    
         if ($this->postId) {
             Post::find($this->postId)->update($data);
             session()->flash('message', 'Post updated successfully.');
@@ -82,27 +85,27 @@ public $postId;
             Post::create($data);
             session()->flash('message', 'Post created successfully.');
         }
-
+    
         $this->resetInputFields();
         $this->editing = false;
         $this->posts = Post::all(); // Refresh post list
         $this->dispatch('editingStateChanged');
     }
+    
     public function edit($id)
 {
     $post = Post::findOrFail($id);
 
-  // Manually set properties
-  $this->postId = $post->id;
-  $this->title = $post->title;
-  $this->slug = $post->slug;
-  $this->body = $post->body;
-  $this->meta_description = $post->meta['description'] ?? '';
-  $this->featured_image = $post->featured_image;
-  $this->published_at = $post->published_at; // Set published_at directly 
+    $this->postId = $post->id;
+    $this->title = $post->title;
+    $this->slug = $post->slug;
+    $this->body = $post->body;
+    $this->meta_description = $post->meta['description'] ?? '';
+    $this->existing_featured_image = $post->featured_image;
+    $this->published_at = $post->published_at;
 
-  $this->editing = true;
-  $this->dispatch('editingStateChanged');
+    $this->editing = true;
+    $this->dispatch('editingStateChanged');
 }
 
 
@@ -123,8 +126,9 @@ public function delete($id)
 
     public function resetInputFields()
     {
-        $this->reset(['title', 'slug', 'body', 'meta_description', 'featured_image', 'published_at', 'postId']);
+        $this->reset(['title', 'slug', 'body', 'meta_description', 'featured_image', 'published_at', 'postId', 'existing_featured_image']);
     }
+    
 
     public function cancelEdit()
     {

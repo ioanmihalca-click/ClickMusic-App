@@ -74,18 +74,17 @@
 
             {{-- Featured Image Input --}}
             <div class="mb-4">
-                <label for="featured_image" class="block mb-2 text-sm font-bold text-gray-700">Imagine:</label>
-                <input type="file" wire:model="featured_image" id="featured_image">
-                @error('featured_image') <span class="text-red-500">{{ $message }}</span> @enderror
+    <label for="featured_image" class="block mb-2 text-sm font-bold text-gray-700">Imagine:</label>
+    <input type="file" wire:model="featured_image" id="featured_image">
+    @error('featured_image') <span class="text-red-500">{{ $message }}</span> @enderror
 
-                @if ($featured_image)
-    @if ($editing && !$postId) {{-- Check if we are editing a new post --}}
+    @if ($featured_image)
         <img src="{{ $featured_image->temporaryUrl() }}" class="mt-2 max-h-40">
-    @else
-        <img src="{{ asset('storage/' . $featured_image) }}" class="mt-2 max-h-40">
+    @elseif ($existing_featured_image)
+        <img src="{{ asset('storage/' . $existing_featured_image) }}" class="mt-2 max-h-40">
     @endif
-@endif
-            </div>
+</div>
+
             
             {{-- Meta Description Textarea --}}
             <div class="mb-4">
