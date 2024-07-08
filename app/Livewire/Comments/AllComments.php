@@ -1,10 +1,11 @@
 <?php
 namespace App\Livewire\Comments;
 
+use App\Models\Reply;
 use Livewire\Component;
+use App\Events\CommentCreated;
 use App\Models\Video; // Import the Video model
 use App\Models\Comment; // Import the Comment model
-use App\Models\Reply;
 
 class AllComments extends Component
 {
@@ -36,6 +37,8 @@ class AllComments extends Component
         $comment->video_id = $this->videoId;
         $comment->user_id = auth()->id(); // Assuming user is authenticated
         $comment->save();
+
+        event(new CommentCreated($comment)); // Dispatch the event
 
         $this->newComment = ""; // Reset comment content after submission
     }
