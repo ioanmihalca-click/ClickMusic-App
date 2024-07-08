@@ -33,10 +33,9 @@ class VideoController extends Controller
     }
 
     public function create()
-    {
-        $videos = Video::all(); // Preia toate videoclipurile din baza de date
-        return view('admin', ['videos' => $videos]); // Transmite videoclipurile către view
-    }
+{
+    return view('admin'); 
+}
 
     public function store(Request $request)
     {
@@ -49,7 +48,7 @@ class VideoController extends Controller
 
         Video::create($validatedData);
 
-        return redirect()->route('videos.create')->with('success', 'Videoclipul a fost adăugat cu succes!'); // Folosim 'success' aici
+        return redirect()->route('admin')->with('success', 'Videoclipul a fost adăugat cu succes!'); // Folosim 'success' aici
     }
 
 
