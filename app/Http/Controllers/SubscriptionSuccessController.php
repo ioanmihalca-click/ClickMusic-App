@@ -14,7 +14,7 @@ class SubscriptionSuccessController extends Controller
         $user = $request->user();
 
         // Verify that the subscription was actually created
-        if ($user->subscribed('prod_QGao8eve2XHvzf')) {
+        if ($user->subscribed('prod_QRUy1QC2SMeYJR')) {
             $user->notify(new SubscriptionCreated());
             User::find(1)->notify(new AbonamentNouCreatAdmin());
         }

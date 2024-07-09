@@ -134,7 +134,7 @@
                     9.99
                 </div>
                 <p class="mt-2 text-sm text-gray-500">Fara nici o obligatie. <br> Anulezi oricand.</p>
-                <a href="{{ route('checkout', ['plan' => 'price_1PQ3d2LHnRRaUZdBVHGvJcQX']) }}" class="inline-flex items-center justify-center px-4 py-3 mt-5 text-sm font-semibold text-white bg-blue-500 border border-transparent rounded-lg gap-x-2 hover:bg-blue-600 disabled:opacity-50 disabled:pointer-events-none">
+                <a href="{{ route('checkout', ['plan' => 'price_1PabyDLHnRRaUZdBk3McKwYs']) }}" class="inline-flex items-center justify-center px-4 py-3 mt-5 text-sm font-semibold text-white bg-blue-500 border border-transparent rounded-lg gap-x-2 hover:bg-blue-600 disabled:opacity-50 disabled:pointer-events-none">
                     Aboneaza-te
                 </a>
             </div>
@@ -148,7 +148,7 @@
                     99.99
                 </div>
                 <p class="mt-2 text-sm text-gray-500">Platesti pe un an. <br> Ai 2 luni gratis.</p>
-                <a href="{{ route('checkout', ['plan' => 'price_1PQDByLHnRRaUZdBbQo07mPl']) }}" class="inline-flex items-center justify-center px-4 py-3 mt-5 text-sm font-semibold text-white bg-blue-500 border border-transparent rounded-lg gap-x-2 hover:bg-blue-600 disabled:opacity-50 disabled:pointer-events-none">
+                <a href="{{ route('checkout', ['plan' => 'price_1PabyDLHnRRaUZdBXUK6VBns']) }}" class="inline-flex items-center justify-center px-4 py-3 mt-5 text-sm font-semibold text-white bg-blue-500 border border-transparent rounded-lg gap-x-2 hover:bg-blue-600 disabled:opacity-50 disabled:pointer-events-none">
                     Aboneaza-te
                 </a>
             </div>

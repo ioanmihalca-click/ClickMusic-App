@@ -13,11 +13,11 @@ class CheckoutController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request, string $plan = 'price_1PQ3d2LHnRRaUZdBVHGvJcQX')
+    public function __invoke(Request $request, string $plan = 'price_1PabyDLHnRRaUZdBk3McKwYs')
     {
         $user = $request->user();
         $checkout = $user
-            ->newSubscription('prod_QGao8eve2XHvzf', $plan)
+            ->newSubscription('prod_QRUy1QC2SMeYJR', $plan)
             ->checkout([
                 'success_url' => route('subscription.success'),
                 'cancel_url' => url('/'),

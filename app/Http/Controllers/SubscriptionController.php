@@ -18,7 +18,7 @@ class SubscriptionController extends Controller
         }
 
         try {
-            $subscription = $user->subscription('prod_QGao8eve2XHvzf');
+            $subscription = $user->subscription('prod_QRUy1QC2SMeYJR');
 
             if ($subscription) {
                 $subscription->cancelNow();
