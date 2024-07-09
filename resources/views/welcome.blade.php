@@ -137,7 +137,7 @@
 
 
                                 <div class="p-4 text-center">
-                                    <p class="mb-2">TEST Pentru acces complet la întreaga colecție de videoclipuri,
+                                    <p class="mb-2">Pentru acces complet la întreaga colecție de videoclipuri,
                                         inclusiv cele mai recente lansări și PREMIERE exclusive, abonează-te pentru doar
                                         <br>
                                         <span class="font-semibold text-blue-500">9,99 lei/lună.</span>
