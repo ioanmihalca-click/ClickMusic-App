@@ -60,6 +60,7 @@
         "description": "{{ $post->meta['description'] ?? '' }}"
     }
     </script>
+
 </head>
 
 <body>
