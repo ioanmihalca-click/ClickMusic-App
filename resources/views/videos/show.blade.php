@@ -15,12 +15,18 @@
                 <div class="flex flex-wrap items-center p-1">
                     <div class="flex items-center">
                         <div class="w-full mb-0 md:w-auto md:mb-0 md:mr-1">
-                           <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('videos.share', $video->id)) }}"
+                           {{-- <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('videos.share', $video->id)) }}"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="px-2 py-1 text-xs text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-600">
                     Share on Facebook
-                </a>
+                </a> --}}
+                 <a href="https://www.facebook.com/sharer/sharer.php?u=https://clickmusic.ro"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="px-2 py-1 text-xs text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-600">
+       Share pe Facebook
+    </a>
 
                         </div>
 
