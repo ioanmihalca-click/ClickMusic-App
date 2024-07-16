@@ -57,17 +57,59 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <!-- Schema Markup for SEO -->
-    <script type="application/ld+json">
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicArtist",
+  "name": "Click",
+  "description": "Click este un artist de muzică hip-hop, soul și reggae din Baia-Mare, Maramureș.",
+  "genre": ["Hip-Hop", "Soul", "Reggae"],
+  "url": "https://clickmusic.ro",
+  "image": "{{ asset('img/ClickMusic-OG.jpg') }}",
+  "sameAs": [
+    "https://youtube.com/clickmusicromania"
+  ],
+  "album": [
     {
-        "@context": "https://schema.org",
-        "@type": "MusicGroup",
-        "name": "Click",
-        "genre": ["Hip-Hop", "Soul", "Reggae"],
-        "url": "https://clickmusic.ro",
-        "image": "{{ asset('img/ClickMusic-OG.jpg') }}",
-        "description": "Click este un artist de muzică hip-hop, soul și reggae din Baia-Mare, Maramureș."
+      "@type": "MusicAlbum",
+      "name": "Trup și Suflet",
+      "datePublished": "2017"
+    },
+    {
+      "@type": "MusicAlbum",
+      "name": "Lume Dragă",
+      "datePublished": "2020"
+    },
+    {
+      "@type": "MusicAlbum",
+      "name": "Dulce și Amar",
+      "albumProductionType": "EP",
+      "datePublished": "2021"
+    },
+    {
+      "@type": "MusicAlbum",
+      "name": "Culori EP",
+      "albumProductionType": "EP",
+      "datePublished": "2021",
+      "byArtist": [
+        {
+          "@type": "MusicArtist",
+          "name": "Click"
+        },
+        {
+          "@type": "MusicArtist",
+          "name": "MdBeatz"
+        }
+      ]
+    },
+    {
+      "@type": "MusicAlbum",
+      "name": "Inima Romana",
+      "datePublished": "2024"
     }
-    </script>
+  ]
+}
+</script>
 
 </head>
 
@@ -129,7 +171,7 @@
                         </div>
                     </div>
                     <h2 class="mt-8 text-2xl font-semibold text-gray-900">Lansarea Oficială a Platformei</h2>
-                    <p class="mt-2 text-lg text-gray-700">Va avea loc pe <strong>17 iulie 2024</strong>, cu un videoclip EXCLUSIV:</p>
+                    <p class="mt-2 text-lg text-gray-700">Va avea loc cu un videoclip EXCLUSIV:</p>
                     <h3 class="mt-4 text-lg font-semibold text-gray-900">Click - Ganduri bune</h3>
                     
                 </div>
