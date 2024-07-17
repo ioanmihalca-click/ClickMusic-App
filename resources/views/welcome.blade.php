@@ -216,14 +216,15 @@
                         </div>
                         
                       <h3 class="mb-2 text-lg font-semibold text-gray-800 md:text-xl">
-    Click - Mă răcoresc (feat Mihai Stănciuc)
+    Click - Mă răcoresc 
+    <span class="block mt-2 text-base">feat. Mihai Stănciuc</span>
   </h3>
   <p class="text-base font-medium text-gray-600">PROMO</p>
                     </div>
                 </div>
             </div>
                  <!-- Vizitează Blogul Section -->
-                    <div class="p-6 mt-6 text-center rounded-lg shadow-lg bg-gradient-to-r from-blue-100 via-blue-200 to-blue-300">
+                    <div class="p-2 mt-6 text-center rounded-lg shadow-lg bg-gradient-to-r from-blue-100 via-blue-200 to-blue-300">
     <p class="mb-2">Noutăți, articole și povești din viața mea:</p>
     <a 
       href="/blog" 
