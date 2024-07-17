@@ -133,7 +133,7 @@ Route::get('/contact', function () {
   
 //Download mp3
 
-Route::get('/download-mp3', function () {
+Route::get('/download-mp3/click-ma-racoresc', function () {
     // Calea către fișierul MP3 (adaptează în funcție de locația ta)
     $filePath = 'public/Click_Ma_Racoresc_feat_Mihai_Stanciuc.mp3'; 
 
@@ -145,6 +145,8 @@ Route::get('/download-mp3', function () {
         return redirect()->back()->with('error', 'Trebuie să fii autentificat pentru a descărca acest fișier.');
     }
 });
+
+// etc. pentru fiecare MP3 
      
 require __DIR__.'/auth.php';
 
