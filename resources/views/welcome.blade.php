@@ -139,7 +139,7 @@
 
 
            {{-- Google Login --}}
-                <div class="mt-4">
+                <div class="mt-8">
                     <a href="{{ route('login.google') }}" class="flex items-center justify-center px-6 py-3 text-gray-700 transition duration-300 ease-in-out bg-white border border-gray-300 rounded-lg shadow-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF2D20]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                             class="mr-2 bi bi-google" viewBox="0 0 16 16">
@@ -159,7 +159,7 @@
         <div class="max-w-md mx-auto text-center lg:gap-8">
             <div class="overflow-hidden bg-white shadow-2xl rounded-3xl">
                 <img class="object-cover w-full h-full" src="/img/ClickMusic-OG.jpg" alt="Click Music">
-                <div class="p-4">
+                <div class="p-2">
                     <!-- <div class="text-sm font-semibold tracking-wide text-center text-blue-500 uppercase">ClickMusic.Ro</div> -->
                     <h1 class="mt-1 text-xl font-extrabold text-center text-gray-900 md:text-3xl">Hip-Hop • Soul • Reggae</h1>
                     <h2 class="mt-2 text-center text-gray-500">Bine ai venit pe platforma de streaming Click Music</h2>
@@ -200,7 +200,7 @@
                             <span class="font-semibold text-blue-500">9,99 lei/ lună.</span>
                         </p>
                         <a href="/register" class="inline-block px-2 py-1 mt-2 mb-2 text-white transition-colors bg-blue-500 rounded-md shadow-lg hover:bg-blue-600">
-                            Abonează-te acum
+                            Abonează-te
                         </a>
 
                         <!-- Embedded iframe -->
@@ -224,7 +224,7 @@
                 </div>
             </div>
                  <!-- Vizitează Blogul Section -->
-                    <div class="p-2 mt-6 text-center rounded-lg shadow-lg bg-gradient-to-r from-blue-100 via-blue-200 to-blue-300">
+                    <div class="p-2 pb-4 mt-6 text-center rounded-lg shadow-lg bg-gradient-to-r from-blue-100 via-blue-200 to-blue-300">
     <p class="mb-2">Noutăți, articole și povești din viața mea:</p>
     <a 
       href="/blog" 
