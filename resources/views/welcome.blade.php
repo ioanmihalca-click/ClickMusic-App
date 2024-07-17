@@ -174,7 +174,7 @@
                             </div>
                         </div>
                         
-                       <div class="p-6 my-4 text-white rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-600">
+                       <div class="p-4 my-4 text-white rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-600">
     <p class="mb-3 text-xl font-medium text-center text-blue-100">
     Ascultă <span class="font-bold text-white">EXCLUSIV</span> pe ClickMusic.ro:
   </p>
