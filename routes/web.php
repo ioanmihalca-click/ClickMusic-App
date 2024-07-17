@@ -24,6 +24,7 @@ use App\Http\Controllers\VideoNotificationController;
 use App\Http\Controllers\SubscriptionSuccessController;
 use App\Livewire\Blog\Index as BlogIndex;
 use App\Livewire\Blog\Show as BlogShow;
+use Illuminate\Support\Facades\Storage;
 
 Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
@@ -130,6 +131,20 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
   
+//Download mp3
+
+Route::get('/download-mp3', function () {
+    // Calea către fișierul MP3 (adaptează în funcție de locația ta)
+    $filePath = 'public/Click_Ma_Racoresc_feat_Mihai_Stanciuc.mp3'; 
+
+    // Verificare dacă utilizatorul este autentificat (membru)
+    if (auth()->check()) {
+        return Storage::download($filePath, 'Click_Ma_Racoresc_feat_Mihai_Stanciuc.mp3');
+    } else {
+        // Redirecționare sau mesaj de eroare dacă utilizatorul nu este autentificat
+        return redirect()->back()->with('error', 'Trebuie să fii autentificat pentru a descărca acest fișier.');
+    }
+});
      
 require __DIR__.'/auth.php';
 
