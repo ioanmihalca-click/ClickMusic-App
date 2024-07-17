@@ -157,31 +157,49 @@
 <div class="relative w-full max-w-2xl px-6 mt-2 lg:max-w-7xl">
     <main class="flex items-center justify-center mt-2">
         <div class="max-w-md mx-auto text-center lg:gap-8">
-        
-            <div class="block rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/80 hover:ring-blue-500/20 focus:outline-none focus-visible:ring-[#FF2D20] lg:pb-10">
-                <div class="pt-3 sm:pt-5">
-                    <h1 class="text-xl font-semibold">Click Music - Hip-Hop, Soul, Reggae</h1>
-                    <h2 class="mt-4 text-base font-semibold">Bine ai venit pe platforma de streaming Click Music</h2>
-                
-                    <!-- Anunt -->
-                    <div class="relative p-6 mt-6 bg-white rounded-lg shadow-lg">
-                        <div class="absolute inset-x-0 top-0 flex justify-center transform -translate-y-1/2">
-                            <div class="px-4 py-2 text-white bg-red-600 rounded-full shadow-lg">
-                                Noutăți
+            <div class="overflow-hidden bg-white shadow-2xl rounded-3xl">
+                <img class="object-cover w-full h-full" src="/img/ClickMusic-OG.jpg" alt="Click Music">
+                <div class="p-4">
+                    <!-- <div class="text-sm font-semibold tracking-wide text-center text-blue-500 uppercase">ClickMusic.Ro</div> -->
+                    <h1 class="mt-1 text-xl font-extrabold text-center text-gray-900 md:text-3xl">Hip-Hop • Soul • Reggae</h1>
+                    <h2 class="mt-2 text-center text-gray-500">Bine ai venit pe platforma de streaming Click Music</h2>
+                    
+                    <div class="px-2 py-2">
+                        <div class="relative">
+                            <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                                <div class="w-full border-t border-gray-300"></div>
+                            </div>
+                            <div class="relative flex justify-center">
+                                <span class="px-3 text-lg font-medium text-white bg-red-600 rounded">Noutăți</span>
                             </div>
                         </div>
-                        <p class="mt-2 text-lg text-gray-700">Ascultă <strong>EXCLUSIV</strong> pe ClickMusic.ro:</p>
-                        <h2 class="mt-4 text-lg font-semibold text-gray-900">Click - Mă răcoresc (feat Mihai Stănciuc) <span class="text-blue-500">↓↓↓</span></h2>
-                    </div>
-                    <!-- Anunt -->
+                        
+                       <div class="p-6 my-4 text-white rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-600">
+    <p class="mb-3 text-xl font-medium text-center text-blue-100">
+    Ascultă <span class="font-bold text-white">EXCLUSIV</span> pe ClickMusic.ro:
+  </p>
+  
+  <h2 class="mb-4 text-2xl font-bold text-center text-white md:text-3xl">
+    Click - Mă răcoresc 
+    <span class="block mt-2 text-xl text-blue-200 md:text-2xl">feat. Mihai Stănciuc</span>
+  </h2>
+    <div class="flex justify-center mt-4">
+        <a href="/blog" class="px-4 py-2 text-blue-500 transition duration-300 bg-white rounded-md shadow-lg hover:bg-blue-100">
+            Citeste articolul de pe Blog
+        </a>
+    </div>
+</div>
 
-                    <div class="p-4 text-center">
+                        {{-- <span class="text-blue-500">↓↓↓</span> --}}
+                    </div>
+
+                    <div class="p-2 text-lg text-center">
                         <p class="mb-2">Pentru acces complet la întreaga colecție de videoclipuri,
                             inclusiv cele mai recente lansări și PREMIERE exclusive, abonează-te pentru doar
                             <br>
                             <span class="font-semibold text-blue-500">9,99 lei/ lună.</span>
                         </p>
-                        <a href="/register" class="inline-block px-2 py-1 mt-4 text-white transition-colors bg-blue-500 rounded-md shadow-lg hover:bg-blue-600">
+                        <a href="/register" class="inline-block px-2 py-1 mt-2 text-white transition-colors bg-blue-500 rounded-md shadow-lg hover:bg-blue-600">
                             Abonează-te acum
                         </a>
 
@@ -196,22 +214,31 @@
                                 </iframe>
                             </div>
                         </div>
-
-                        <h3 class="pl-1 mb-1 text-base font-semibold">Click - Mă răcoresc (feat Mihai Stănciuc)</h3>
-                         <p class="text-base font-semibold text-gray-700">PROMO</p>
+                        
+                      <h3 class="mb-2 text-lg font-semibold text-gray-800 md:text-xl">
+    Click - Mă răcoresc (feat Mihai Stănciuc)
+  </h3>
+  <p class="text-base font-medium text-gray-600">PROMO</p>
                     </div>
-
-                    <!-- Vizitează Blogul Section -->
-                    <div class="p-4 text-center">
-                        <p>Noutăți, articole și povești din viata mea:</p>
-                        <a href="/blog" class="inline-block px-4 py-2 text-blue-500 hover:text-blue-600">Vizitează blogul Click Music</a>
-                    </div>
-                    <!-- End of Vizitează Blogul Section -->
                 </div>
             </div>
+                 <!-- Vizitează Blogul Section -->
+                    <div class="p-6 mt-6 text-center rounded-lg shadow-lg bg-gradient-to-r from-blue-100 via-blue-200 to-blue-300">
+    <p class="mb-2">Noutăți, articole și povești din viața mea:</p>
+    <a 
+      href="/blog" 
+      class="px-4 py-2 font-bold text-white transition duration-300 bg-blue-500 rounded hover:bg-blue-700"
+    >
+      Vizitează blogul Click Music
+    </a>
+  </div>
+                    <!-- End of Vizitează Blogul Section -->
         </div>
+        
     </main>
+    
 </div>
+
 
                 <!-- Biografie Click -->
                 <div x-data="{ open: false }"
