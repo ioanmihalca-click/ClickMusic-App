@@ -139,7 +139,7 @@
 
 
            {{-- Google Login --}}
-                <div class="mt-8">
+                <div class="mt-4">
                     <a href="{{ route('login.google') }}" class="flex items-center justify-center px-6 py-3 text-gray-700 transition duration-300 ease-in-out bg-white border border-gray-300 rounded-lg shadow-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF2D20]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                             class="mr-2 bi bi-google" viewBox="0 0 16 16">
@@ -199,7 +199,7 @@
                             <br>
                             <span class="font-semibold text-blue-500">9,99 lei/ lună.</span>
                         </p>
-                        <a href="/register" class="inline-block px-2 py-1 mt-2 text-white transition-colors bg-blue-500 rounded-md shadow-lg hover:bg-blue-600">
+                        <a href="/register" class="inline-block px-2 py-1 mt-2 mb-2 text-white transition-colors bg-blue-500 rounded-md shadow-lg hover:bg-blue-600">
                             Abonează-te acum
                         </a>
 
@@ -215,9 +215,9 @@
                             </div>
                         </div>
                         
-                      <h3 class="mb-2 text-lg font-semibold text-gray-800 md:text-xl">
-    Click - Mă răcoresc 
-    <span class="block mt-2 text-base">feat. Mihai Stănciuc</span>
+                      <h3 class="mb-2 text-sm font-semibold text-gray-800 md:text-xl">
+    Click - Mă răcoresc (feat. Mihai Stănciuc)
+    <span class="block mt-2 text-base"></span>
   </h3>
   <p class="text-base font-medium text-gray-600">PROMO</p>
                     </div>
