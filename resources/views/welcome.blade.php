@@ -159,7 +159,7 @@
         <div class="max-w-md mx-auto text-center lg:gap-8">
             <div class="overflow-hidden bg-white shadow-2xl rounded-3xl">
                 <img class="object-cover w-full h-full" src="/img/ClickMusic-OG.jpg" alt="Click Music">
-                <div class="p-2">
+                <div class="p-2 md:p-4">
                     <!-- <div class="text-sm font-semibold tracking-wide text-center text-blue-500 uppercase">ClickMusic.Ro</div> -->
                     <h1 class="mt-1 text-xl font-extrabold text-center text-gray-900 md:text-3xl">Hip-Hop • Soul • Reggae</h1>
                     <h2 class="mt-2 text-center text-gray-500">Bine ai venit pe platforma de streaming Click Music</h2>
