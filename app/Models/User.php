@@ -5,7 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use Carbon\Carbon;
-
+use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Support\Str;
 use Laravel\Cashier\Billable;
@@ -89,9 +89,13 @@ public function isEligibleForFreePlan()
         return $this->usertype === 'admin' || $this->usertype === 'super_user';
     }
 
-    public function canAccessPanel(Panel $panel): bool
-    {
-        return str_ends_with($this->email, 'ioanclickmihalca@gmail.com');
-    }
+    // public function canAccessPanel(Panel $panel): bool
+    // {
+    //     return str_ends_with($this->email, 'ioanclickmihalca@gmail.com');
+    // }
+    public function canAccessPanel(): bool
+{
+    return $this->usertype === 'admin'; 
+}
 
 }
