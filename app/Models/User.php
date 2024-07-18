@@ -15,7 +15,7 @@ use Laravel\Cashier\Concerns\ManagesSubscriptions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use HasFactory, Notifiable, Billable, HasMegaphone, ManagesSubscriptions;
 
@@ -89,13 +89,9 @@ public function isEligibleForFreePlan()
         return $this->usertype === 'admin' || $this->usertype === 'super_user';
     }
 
-    // public function canAccessPanel(Panel $panel): bool
-    // {
-    //     return str_ends_with($this->email, 'ioanclickmihalca@gmail.com');
-    // }
-    public function canAccessPanel(): bool
-{
-    return $this->usertype === 'admin'; 
-}
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return str_ends_with($this->email, 'ioanclickmihalca@gmail.com');
+    }
 
 }
