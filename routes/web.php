@@ -40,18 +40,18 @@ Route::get('/blog', BlogIndex::class)->name('blog.index');
 Route::get('/blog/{slug}', BlogShow::class)->name('blog.show');
 
 
-Route::middleware([AdminMiddleware::class])->group(function () { 
-    Route::get('/admin', [VideoController::class, 'index'])->name('admin'); // Single route for the admin page
-    Route::get('/admin/videos/create', [VideoController::class, 'create'])->name('videos.create'); 
-    Route::post('/admin/videos', [VideoController::class, 'store'])->name('videos.store');
-    Route::post('/admin/set/featured/video', [VideoController::class, 'setFeaturedVideo'])->name('set.featured.video');
-    Route::put('/admin/videos/{video}', [VideoController::class, 'update'])->name('videos.update');
-    Route::delete('/admin/videos/{video}', [VideoController::class, 'destroy'])->name('videos.destroy');
-    Route::put('/users/{user}/usertype', [UserController::class, 'updateUsertype'])->name('users.update.usertype');
+// Route::middleware([AdminMiddleware::class])->group(function () { 
+//     Route::get('/admin', [VideoController::class, 'index'])->name('admin'); // Single route for the admin page
+//     Route::get('/admin/videos/create', [VideoController::class, 'create'])->name('videos.create'); 
+//     Route::post('/admin/videos', [VideoController::class, 'store'])->name('videos.store');
+//     Route::post('/admin/set/featured/video', [VideoController::class, 'setFeaturedVideo'])->name('set.featured.video');
+//     Route::put('/admin/videos/{video}', [VideoController::class, 'update'])->name('videos.update');
+//     Route::delete('/admin/videos/{video}', [VideoController::class, 'destroy'])->name('videos.destroy');
+//     Route::put('/users/{user}/usertype', [UserController::class, 'updateUsertype'])->name('users.update.usertype');
 
-    Route::post('/send-notification', [VideoNotificationController::class, 'sendNotification'])->name('send.notification');
+//     Route::post('/send-notification', [VideoNotificationController::class, 'sendNotification'])->name('send.notification');
 
-});
+// });
 
     //trigger mail notification Videoclip Nou
 // Route::get('/', function(){

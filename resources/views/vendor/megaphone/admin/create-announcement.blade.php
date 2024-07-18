@@ -1,4 +1,4 @@
-<div class="max-w-2xl p-16 mx-auto bg-white rounded">
+<div class="max-w-2xl p-16 bg-white rounded">
 
 
 
@@ -45,6 +45,7 @@
             <input type="text" id="linkText" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" wire:model.blur="linkText">
         </div>
 
-        <button type="submit" class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline">{{ __('Send') }}</button>
+        <button type="submit" class="px-4 py-2 font-bold text-black bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline">{{ __('Trimite') }}</button>
+  
     </form>
 </div>

@@ -45,7 +45,7 @@ class NotificareVideoclipNou extends Notification
             ->greeting('Salut, ' . $notifiable->name . '!')
             ->line('Am adaugat un nou videoclip!')
             ->line('Iti mulțumim pentru că te-ai abonat si ca ne sustii!')
-            ->line('Pentru a putea vizualiza videoclipul direct din acest email, trebuie sa fiti autentificat in aplicatia Click Music.')
+            ->line('Pentru a putea vizualiza videoclipul direct din acest email, trebuie sa fii AUTENTIFICAT in aplicatia Click Music.')
             ->line($this->videoName) 
             ->action('Vizualizați Videoclipul', url($this->videoUrl))
             ->salutation('Cu respect, Click Music');
