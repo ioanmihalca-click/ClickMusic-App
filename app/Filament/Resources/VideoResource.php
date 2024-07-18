@@ -35,6 +35,7 @@ class VideoResource extends Resource
     protected static ?string $modelLabel = 'Videoclip';
 
     protected static ?string $pluralModelLabel = 'Videoclipuri';
+    protected static ?int $navigationSort = 2; 
 
    
 

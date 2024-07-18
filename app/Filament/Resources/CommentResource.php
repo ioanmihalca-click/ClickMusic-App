@@ -19,7 +19,7 @@ class CommentResource extends Resource
 
     protected static ?string $navigationLabel = 'Comentarii';
 
-    protected static ?int $navigationSort = 4;
+    protected static ?int $navigationSort = 5;
 
     public static function table(Table $table): Table
     {
