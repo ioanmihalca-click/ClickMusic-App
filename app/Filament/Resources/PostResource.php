@@ -7,16 +7,17 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use App\Models\Post;
 use Filament\Tables;
-use App\Filament\Resources\PostResource\Pages\ListPosts;
-use App\Filament\Resources\PostResource\Pages\CreatePost;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\RichEditor;
+use App\Filament\Resources\PostResource\Pages\ListPosts;
+use App\Filament\Resources\PostResource\Pages\CreatePost;
 
 class PostResource extends Resource
 {
@@ -37,8 +38,8 @@ class PostResource extends Resource
                     ->required()
                     ->unique(ignoreRecord: true),
                
-                Forms\Components\TextInput::make('meta')
-                    ->required(),
+                    Forms\Components\TextInput::make('meta.title')->label('Meta Title')->required(),
+                    Forms\Components\Textarea::make('meta.description')->label('Meta Description')->required(),
                     Forms\Components\RichEditor::make('body')->columnSpanFull()
                     ->required(),
                     Forms\Components\FileUpload::make('featured_image')->disk('public')->directory('blog-images')
@@ -88,5 +89,23 @@ class PostResource extends Resource
             // 'view' => ViewPost::route('/{record}'),
             // 'edit' => EditPost::route('/{record}/edit'),
         ];
-    }    
+    } 
+    
+    public static function mutateFormDataBeforeFill(array $data): array
+    {
+        // Decode JSON string to array for meta
+        $data['meta'] = json_decode($data['meta'], true);
+    
+        return $data;
+    }
+    
+    // This method is called before the form fields are saved to the database
+    public static function mutateFormDataBeforeSave(array $data): array
+    {
+        // Convert the meta array to a JSON string before saving
+        $data['meta'] = json_encode(Arr::only($data['meta'], ['title', 'description']));
+    
+        return $data;
+    }
+
 }

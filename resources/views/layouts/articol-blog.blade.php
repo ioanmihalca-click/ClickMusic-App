@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{{ $post->meta['title'] ?? $post->title }} - Click Music Blog</title>
-    <meta name="description" content="{{ $post->meta}}">
+    <meta name="description" content="{{ $post->meta['description'] ?? '' }}">
     <meta name="keywords" content="{{ $post->meta['keywords'] ?? 'Click Music, blog, hip-hop, reggae, soul, Click, Baia Mare, Maramureș, Romania, articole muzicale, noutăți muzicale' }}">
     <link rel="canonical" href="{{ url()->current() }}">
 
