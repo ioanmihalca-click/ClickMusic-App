@@ -40,7 +40,7 @@ class PostResource extends Resource
                
                     Forms\Components\TextInput::make('meta.title')->label('Meta Title')->required(),
                     Forms\Components\Textarea::make('meta.description')->label('Meta Description')->required(),
-                    Forms\Components\RichEditor::make('body')->columnSpanFull()
+                    Forms\Components\MarkdownEditor::make('body')->columnSpanFull()
                     ->required(),
                     Forms\Components\FileUpload::make('featured_image')->disk('public')->directory('blog-images')
                     ->required()

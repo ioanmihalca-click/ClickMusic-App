@@ -173,8 +173,6 @@
         </a>
     </div> --}}
 
-
-
                     <div class="p-2 text-lg text-center">
                         <p class="mb-2">Pentru acces complet la întreaga colecție de videoclipuri,
                             inclusiv cele mai recente lansări și PREMIERE exclusive, abonează-te pentru doar
