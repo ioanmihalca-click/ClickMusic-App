@@ -164,34 +164,16 @@
                     <h1 class="mt-1 text-xl font-extrabold text-center text-gray-900 md:text-3xl">Hip-Hop • Soul • Reggae</h1>
                     <h2 class="mt-2 text-center text-gray-500">Bine ai venit pe platforma de streaming Click Music</h2>
                     
-                    <div class="px-2 py-2">
-                        <div class="relative">
-                            <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                                <div class="w-full border-t border-gray-300"></div>
-                            </div>
-                            <div class="relative flex justify-center">
-                                <span class="px-3 text-lg font-medium text-white bg-red-600 rounded">Noutăți</span>
-                            </div>
-                        </div>
-                        
-                       <div class="p-4 my-4 text-white rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-600">
-    <p class="mb-3 text-xl font-medium text-center text-blue-100">
-    Ascultă <span class="font-bold text-white">EXCLUSIV</span> pe ClickMusic.ro:
-  </p>
-  
-  <h2 class="mb-4 text-2xl font-bold text-center text-white md:text-3xl">
-    Click - Mă răcoresc 
-    <span class="block mt-2 text-xl text-blue-200 md:text-2xl">feat. Mihai Stănciuc</span>
-  </h2>
-    <div class="flex justify-center mt-4">
+          
+                             <div class="w-full border-t border-gray-300"></div>
+                          
+    {{-- <div class="flex justify-center mt-4">
         <a href="/blog" class="px-4 py-2 text-blue-500 transition duration-300 bg-white rounded-md shadow-lg hover:bg-blue-100">
             Citeste articolul de pe Blog
         </a>
-    </div>
-</div>
+    </div> --}}
 
-                        {{-- <span class="text-blue-500">↓↓↓</span> --}}
-                    </div>
+
 
                     <div class="p-2 text-lg text-center">
                         <p class="mb-2">Pentru acces complet la întreaga colecție de videoclipuri,
