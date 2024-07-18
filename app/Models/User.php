@@ -6,13 +6,14 @@ namespace App\Models;
 
 use Carbon\Carbon;
 
+use Filament\Panel;
 use Illuminate\Support\Str;
 use Laravel\Cashier\Billable;
+use MBarlow\Megaphone\HasMegaphone;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Cashier\Concerns\ManagesSubscriptions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use MBarlow\Megaphone\HasMegaphone;
 
 class User extends Authenticatable
 {
@@ -86,6 +87,11 @@ public function subscribed()
 public function isEligibleForFreePlan()
     {
         return $this->usertype === 'admin' || $this->usertype === 'super_user';
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return str_ends_with($this->email, 'ioanclickmihalca@gmail.com');
     }
 
 }
