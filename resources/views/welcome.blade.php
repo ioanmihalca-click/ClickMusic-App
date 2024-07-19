@@ -192,7 +192,20 @@
     Click - Mă răcoresc (feat. Mihai Stănciuc)
     <span class="block mt-2 text-base"></span>
   </h3>
-  <p class="text-base font-medium text-gray-600">PROMO</p>
+  
+
+<div class="p-2 my-4 ">
+  <h4 class="mb-4 text-xl font-bold text-blue-800">🎉 CONCURS </h4>
+<p class="mb-4 text-lg">
+    Ofer <span class="font-semibold text-purple-700">3 abonamente Super_User</span> <br>
+     (abonament gratuit pe viață)! 
+  </p>
+ <a href="https://clickmusic.ro/blog/ma-racoresc-noua-mea-piesa-reggae-cu-mihai-stanciuc-la-saxofon-exclusiv-pe-clickmusic" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-500 hover:underline">
+       Detalii
+      </a>
+
+</div>
+
                     </div>
                 </div>
             </div>
