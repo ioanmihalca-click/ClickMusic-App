@@ -60,6 +60,7 @@ class PostResource extends Resource
                 TextColumn::make('meta')->searchable()->limit('20'),
                 TextColumn::make('published_at')
                     ->dateTime(),
+                      
             ])
             ->filters([
                 // ... (optional filters) ...
@@ -71,7 +72,8 @@ class PostResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
-            ]);
+            ])
+            ->defaultSort('published_at', 'desc');
     }
     
     public static function getRelations(): array
