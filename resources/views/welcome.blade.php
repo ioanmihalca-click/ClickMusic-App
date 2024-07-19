@@ -189,7 +189,7 @@
                         </div>
                         
                       <h3 class="mb-2 text-sm font-semibold text-gray-800 md:text-xl">
-    Click - Mă răcoresc (feat. Mihai Stănciuc)
+    Click - Mă răcoresc (feat. Mihai Stanciuc)
     <span class="block mt-2 text-base"></span>
   </h3>
   
