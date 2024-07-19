@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Post;
+
 use Illuminate\Console\Command;
 use Spatie\Sitemap\SitemapGenerator;
 
