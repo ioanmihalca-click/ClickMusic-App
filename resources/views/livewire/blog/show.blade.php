@@ -1,4 +1,5 @@
 
+<div>
 <article class="max-w-4xl p-4 mx-auto bg-white rounded-lg shadow-md">
     <h1 class="mb-4 text-2xl font-bold text-gray-800 md:text-4xl">{{ $post->title }}</h1>
 
@@ -44,3 +45,40 @@
 </div>
 
 </article>
+
+{{-- Articole recomandate --}}
+@if ($recommendedPosts->isNotEmpty())
+    <section class="max-w-4xl px-4 mx-auto mt-12">
+        <h2 class="mb-6 text-2xl font-bold text-gray-900">Articole similare</h2>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            @foreach($recommendedPosts as $post)
+                <article class="overflow-hidden transition-all duration-300 bg-white shadow-lg group rounded-2xl hover:shadow-xl">
+                    <a href="{{ route('blog.show', $post->slug) }}" class="block">
+                        <div class="relative aspect-w-16 aspect-h-9">
+                            @if ($post->featured_image)
+                                <img 
+                                    src="{{ asset('storage/' . $post->featured_image) }}" 
+                                    alt="{{ $post->title }}" 
+                                    class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                                >
+                                <div class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-black/60 to-transparent group-hover:opacity-100"></div>
+                            @endif
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 transition-colors duration-300 group-hover:text-blue-600">
+                                {{ $post->title }}
+                            </h3>
+                            <time datetime="{{ $post->published_at->toDateString() }}" class="block mt-2 text-sm text-gray-500">
+                                {{ $post->published_at->format('j F Y') }}
+                            </time>
+                            <p class="mt-3 text-gray-600 line-clamp-3">
+                                {{ $post->summary }}
+                            </p>
+                        </div>
+                    </a>
+                </article>
+            @endforeach
+        </div>
+    </section>
+@endif
+</div>
