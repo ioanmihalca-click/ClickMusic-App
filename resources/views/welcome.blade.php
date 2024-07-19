@@ -195,7 +195,7 @@
   
 
 <div class="p-2 my-4 ">
-  <h4 class="mb-4 text-xl font-bold text-blue-800">🎉 CONCURS! </h4>
+  <h4 class="mb-4 text-xl font-bold text-blue-800">🎉 CONCURS!!! </h4>
 <p class="mb-4 text-lg">
     Ofer <span class="font-semibold text-purple-700">3 abonamente Super_User</span> <br>
      (abonament gratuit pe viață)! 
