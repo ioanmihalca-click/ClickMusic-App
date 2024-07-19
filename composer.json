@@ -18,7 +18,8 @@
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.4",
         "livewire/volt": "^1.0",
-        "mbarlow/megaphone": "^2.0"
+        "mbarlow/megaphone": "^2.0",
+        "spatie/laravel-sitemap": "^7.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
