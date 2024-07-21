@@ -183,6 +183,14 @@
                             Abonează-te
                         </a>
 
+
+<h3 class="mt-8 text-2xl font-bold text-center text-gray-800 ">
+  Noutăți
+  <svg class="w-8 h-8 mx-auto mt-4 text-blue-500 animate-bounce" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+    <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+  </svg>
+</h3>
+
                         <!-- Embedded iframe -->
                         <div class="my-2 overflow-hidden rounded-lg shadow-lg">
                             <div style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/233943/2a892dab-dec3-4f0d-8ceb-d99f2caee95c?autoplay=false&loop=false&muted=false&preload=false&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div>
