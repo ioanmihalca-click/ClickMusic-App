@@ -184,11 +184,12 @@
                         </a>
 
 
-
+<h3 class="mt-8 text-2xl font-bold text-center text-gray-800 ">
+  Noutăți
   <svg class="w-8 h-8 mx-auto mt-4 text-blue-500 animate-bounce" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
     <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
   </svg>
-
+</h3>
 
                         <!-- Embedded iframe -->
                         <div class="my-2 overflow-hidden rounded-lg shadow-lg">
