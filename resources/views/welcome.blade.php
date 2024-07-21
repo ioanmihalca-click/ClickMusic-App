@@ -183,20 +183,19 @@
                             Abonează-te
                         </a>
 
-<div class="group">
-  <div class="relative mb-8">
-    <h3 class="relative z-10 text-xl font-bold text-center text-gray-800 sm:text-3xl">
-      <span class="relative inline-block px-4 py-2 bg-white">
-        Premieră
-        <span class="absolute bottom-0 left-0 w-full h-1 transition-transform duration-300 ease-out origin-left transform scale-x-0 bg-blue-500 group-hover:scale-x-100"></span>
-      </span>
-    </h3>
-    <div class="absolute left-0 w-full h-px transform -translate-y-1/2 bg-gray-200 top-1/2"></div>
-    <svg class="w-8 h-8 mx-auto mt-4 text-blue-500 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-    </svg>
-  </div>
+<div class="relative mb-8 group">
+  <h3 class="relative z-10 text-3xl font-bold text-center text-gray-800">
+    <span class="relative inline-block px-4 py-2 bg-white">
+      Premieră
+      <span class="absolute bottom-0 left-0 w-full h-1 transition-transform duration-300 ease-out origin-left transform scale-x-0 bg-blue-500 group-hover:scale-x-100"></span>
+    </span>
+  </h3>
+  <div class="absolute left-0 w-full h-px transform -translate-y-1/2 bg-gray-200 top-1/2"></div>
+  <svg class="w-8 h-8 mx-auto mt-4 text-blue-500 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+  </svg>
 </div>
+
 <!-- Embedded iframe -->
 <div class="my-4 overflow-hidden rounded-lg shadow-lg">
   <div style="position:relative;padding-top:56.25%;">
@@ -205,7 +204,7 @@
 </div>
 
 <h3 class="mb-4 text-sm font-semibold text-center text-gray-800 md:text-lg">
-  Click - Mă răcoresc (feat. Mihai Stanciuc)</span>
+  Click - Mă răcoresc (feat. Mihai Stanciuc)
 </h3>
 
 <div class="p-2 my-4 ">
