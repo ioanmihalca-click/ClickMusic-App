@@ -184,18 +184,18 @@
                         </a>
 
 <div class="group">
-<div class="relative mb-8">
-  <h3 class="relative z-10 text-3xl font-bold text-center text-gray-800">
-    <span class="relative inline-block px-4 py-2 bg-white">
-      Premieră
-      <span class="absolute bottom-0 left-0 w-full h-1 transition-transform duration-300 ease-out origin-left transform scale-x-0 bg-gradient-to-r from-blue-400 to-purple-500 group-hover:scale-x-100"></span>
-    </span>
-  </h3>
-  <div class="absolute left-0 w-full h-px transform -translate-y-1/2 bg-gray-200 top-1/2"></div>
-  <svg class="w-8 h-8 mx-auto mt-4 text-blue-500 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-  </svg>
-</div>
+  <div class="relative mb-8">
+    <h3 class="relative z-10 text-xl font-bold text-center text-gray-800 sm:text-3xl">
+      <span class="relative inline-block px-4 py-2 bg-white">
+        Premieră
+        <span class="absolute bottom-0 left-0 w-full h-1 transition-transform duration-300 ease-out origin-left transform scale-x-0 bg-blue-500 group-hover:scale-x-100"></span>
+      </span>
+    </h3>
+    <div class="absolute left-0 w-full h-px transform -translate-y-1/2 bg-gray-200 top-1/2"></div>
+    <svg class="w-8 h-8 mx-auto mt-4 text-blue-500 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </div>
 </div>
 <!-- Embedded iframe -->
 <div class="my-4 overflow-hidden rounded-lg shadow-lg">
@@ -204,14 +204,14 @@
   </div>
 </div>
 
-<h3 class="mb-4 text-xl font-semibold text-center text-gray-800">
-  Click - Mă răcoresc <span class="text-blue-500">(feat. Mihai Stanciuc)</span>
+<h3 class="mb-4 text-sm font-semibold text-center text-gray-800 md:text-lg">
+  Click - Mă răcoresc (feat. Mihai Stanciuc)</span>
 </h3>
 
 <div class="p-2 my-4 ">
-  <h4 class="mb-4 text-xl font-bold text-blue-800">🎉 CONCURS </h4>
+  <h4 class="mb-4 text-xl font-bold">🎉 CONCURS </h4>
 <p class="mb-4 text-lg">
-    Ofer <span class="font-semibold text-purple-700">3 abonamente Super_User</span> <br>
+    Ofer <span class="font-semibold text-blue-500">3 abonamente Super_User</span> <br>
      (abonament gratuit pe viață)! 
   </p>
  <a href="https://clickmusic.ro/blog/ma-racoresc-noua-mea-piesa-reggae-cu-mihai-stanciuc-la-saxofon-exclusiv-pe-clickmusic" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-500 hover:underline">
