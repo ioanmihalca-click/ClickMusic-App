@@ -13,7 +13,9 @@ use Filament\Notifications\Notification;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
+use App\Megaphone\CommentReplyNotification;
 use App\Filament\Resources\CommentResource\Pages\ListComments;
+
 
 class CommentResource extends Resource
 {
@@ -41,7 +43,7 @@ class CommentResource extends Resource
                     ->tooltip(function (Comment $record): string {
                         return $record->video->title ?? 'Fără titlu';
                     }),
-                    TextColumn::make('body')
+                TextColumn::make('body')
                     ->label('Conținut')
                     ->limit(10) // Limitează textul la 50 de caractere
                     ->tooltip(function (Comment $record): string {
@@ -52,7 +54,7 @@ class CommentResource extends Resource
                         $prefix = $record->reply_id ? '[Răspuns] ' : '';
                         return $prefix . Str::limit($record->body, 10);
                     }),
-                    TextColumn::make('created_at')
+                TextColumn::make('created_at')
                     ->label('Data')
                     ->dateTime('d M Y H:i')
                     ->color('gray')
@@ -78,13 +80,17 @@ class CommentResource extends Resource
                             ->label('Răspuns')
                             ->required(),
                     ])
-                    ->action(function (Comment $record, array $data) {
-                        // Logica pentru a adăuga un răspuns rapid
-                        $record->replies()->create([
+                    ->action(function (Comment $record, array $data): void {
+                        $reply = $record->replies()->create([
                             'body' => $data['reply'],
                             'user_id' => auth()->id(),
                             'video_id' => $record->video_id,
                         ]);
+
+
+                        // Trigger Megaphone Notification (Here's the key change!)
+                        $record->user->notify(new CommentReplyNotification($reply, $record->video));
+                    
                         Notification::make()
                             ->title('Răspuns adăugat cu succes')
                             ->success()
