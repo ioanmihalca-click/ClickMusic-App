@@ -4,6 +4,7 @@ namespace App\Livewire\Comments;
 use App\Models\Reply;
 use Livewire\Component;
 use App\Events\CommentCreated;
+use App\Megaphone\CommentReplyNotification;
 use App\Models\Video; // Import the Video model
 use App\Models\Comment; // Import the Comment model
 
@@ -21,8 +22,19 @@ class AllComments extends Component
 
     public function render()
     {
-        $video = Video::find($this->videoId); // Fetch the video data
-        $comments = $video->comments()->latest()->get(); // Fetch comments ordered by creation time, newest first
+        $video = Video::find($this->videoId);
+
+    // Fetch comments with eager loading of replies, sorted by the latest reply
+    $comments = $video->comments()
+        ->whereNull('reply_id')
+        ->latest()
+        ->with(['replies' => function ($query) {
+            $query->latest();
+        }])
+        ->get()
+        ->sortByDesc(function ($comment) {
+            return $comment->replies->max('created_at') ?: $comment->created_at;
+        });
         return view('livewire.comments.all-comments', compact('comments', 'video'));
     }
 
@@ -59,6 +71,10 @@ class AllComments extends Component
     
         // Reset reply content after submission
         $this->replyToComment[$commentId] = "";
+
+     // Trigger the Megaphone notification, passing only title and body:
+        $comment->user->notify(new CommentReplyNotification($reply, $comment->video));
+        
     }
     
 

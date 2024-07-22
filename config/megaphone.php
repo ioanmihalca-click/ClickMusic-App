@@ -19,10 +19,7 @@ return [
      * Custom notification types specific to your App
      */
     'customTypes' => [
-        /*
-            Associative array in the format of
-            \Namespace\To\Notification::class => 'path.to.view',
-         */
+        \App\Megaphone\CommentReplyNotification::class => 'vendor.megaphone.comment-reply-notification', 
     ],
 
     /*
