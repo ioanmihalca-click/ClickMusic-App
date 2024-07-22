@@ -9,6 +9,7 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Notifications\Notification;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\CommentResource\Pages\ListComments;
@@ -31,14 +32,18 @@ class CommentResource extends Resource
                     ->label('Utilizator')
                     ->searchable()
                     ->sortable(),
-                TextColumn::make('video.title')
-                    ->label('Videoclip')
-                    ->searchable()
-                    ->sortable(),
-                TextColumn::make('body')
-                    ->label('Comentariu')
+                    ImageColumn::make('video.thumbnail_url')
+        ->label('Thumbnail')
+        ->circular()
+        ->width(40)
+        ->height(40),
+                    TextColumn::make('body')
+                    ->label('Conținut')
                     ->limit(100)
-                    ->html(),
+                    ->formatStateUsing(function (Comment $record) {
+                        $prefix = $record->reply_id ? '[Răspuns] ' : '';
+                        return $prefix . $record->body;
+                    }),
                 TextColumn::make('created_at')
                     ->label('Data comentariului')
                     ->dateTime(),
