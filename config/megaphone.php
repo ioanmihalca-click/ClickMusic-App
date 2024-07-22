@@ -20,6 +20,7 @@ return [
      */
     'customTypes' => [
         \App\Megaphone\CommentReplyNotification::class => 'vendor.megaphone.comment-reply-notification', 
+        \App\Megaphone\NewCommentNotification::class => 'vendor.megaphone.new-comment-notification',
     ],
 
     /*
