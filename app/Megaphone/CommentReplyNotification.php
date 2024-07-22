@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\Video;
 use MBarlow\Megaphone\Types\BaseAnnouncement;
 
+
 class CommentReplyNotification extends BaseAnnouncement
 {
     protected $reply, $video, $title, $body, $route, $url;
@@ -19,14 +20,14 @@ class CommentReplyNotification extends BaseAnnouncement
         // Set title, body, and route
         $this->title = $reply->user->name . ' a răspuns la comentariul tău de la "' . $video->title . '"!';
         $this->body = $reply->body;
-        $this->route = route('videos.show', ['video' => $video->id]);
+        $this->url = route('videos.show', ['video' => $video->id]);
         
 
-        parent::__construct(
-            $this->title, // Title
-            $this->body, // Body
-            $this->route // Route
-        );
+        // parent::__construct(
+        //     $this->title, // Title
+        //     $this->body, // Body
+        //     $this->route // Route
+        // );
     }
 
     public function toArray($notifiable)
