@@ -4,12 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Mews\Purifier\Facades\Purifier;
+use Mews\Purifier\Casts\CleanHtml;
 
 class Comment extends Model
 {
     use HasFactory;
 
     protected $fillable = ['user_id', 'video_id', 'reply_id', 'body'];
+    protected $casts = [
+        'body' => CleanHtml::class,
+    ];
 
     public function scopeLatestFirst($query)
     {
