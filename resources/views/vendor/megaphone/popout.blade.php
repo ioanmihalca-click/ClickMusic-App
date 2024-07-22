@@ -3,7 +3,7 @@
 
     <div class="absolute right-0 z-30 h-screen p-8 pt-3 overflow-y-auto shadow-md 2xl:w-4/12 bg-gray-50">
         <div class="flex items-center justify-between">
-            <p tabindex="0" class="text-2xl font-semibold leading-6 text-gray-800 focus:outline-none">Notificari</p>
+            <p tabindex="0" class="text-2xl font-semibold leading-6 text-blue-500 focus:outline-none">Notificari</p>
             <button role="button" aria-label="close modal" class="rounded-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500" @click="open = false">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M18 6L6 18" stroke="#4B5563" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
