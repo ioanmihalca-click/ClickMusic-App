@@ -34,20 +34,20 @@ class CommentResource extends Resource
                     ->searchable()
                     ->sortable(),
                 ImageColumn::make('video.thumbnail_url')
-                    ->label('Thumbnail')
+                    ->label('Videoclip')
                     ->circular()
                     ->width(40)
                     ->height(40),
                     TextColumn::make('body')
                     ->label('Conținut')
-                    ->limit(50) // Limitează textul la 50 de caractere
+                    ->limit(10) // Limitează textul la 50 de caractere
                     ->tooltip(function (Comment $record): string {
                         $prefix = $record->reply_id ? '[Răspuns] ' : '';
                         return $prefix . $record->body;
                     }) // Adaugă un tooltip cu textul complet la hover
                     ->formatStateUsing(function (Comment $record) {
                         $prefix = $record->reply_id ? '[Răspuns] ' : '';
-                        return $prefix . Str::limit($record->body, 50);
+                        return $prefix . Str::limit($record->body, 10);
                     }),
                 TextColumn::make('created_at')
                     ->label('Data comentariului')
