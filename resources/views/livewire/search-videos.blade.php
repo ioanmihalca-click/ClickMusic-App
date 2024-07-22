@@ -1,7 +1,7 @@
 <div>
     <div class="flex mb-4">
         <input wire:model="searchTerm" type="text" class="flex-grow px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="Search Videos" wire:keyup.enter="search">
-        <button wire:click="search" class="px-4 py-2 text-white bg-blue-500 rounded-md shadow-md hover:bg-blue-600">Search</button>
+        <button wire:click="search" class="px-4 py-2 ml-3 text-white bg-blue-500 rounded-md shadow-md hover:bg-blue-600">Search</button>
     </div>
 
     @if($searchResults->count() > 0)
