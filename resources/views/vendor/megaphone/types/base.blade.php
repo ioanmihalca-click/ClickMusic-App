@@ -4,7 +4,7 @@
 <div class="w-full pl-3">
     <div class="items-center justify-between w-full pr-2">
         <p class="block w-full my-0 text-sm leading-none focus:outline-none">
-            <span class="font-bold text-blue-500">
+            <span class="font-bold text-gray-900">
                 @if(! empty($announcement['link']))
                     <a href="{{ $announcement['link'] }}">
                 @endif
