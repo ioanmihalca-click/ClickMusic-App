@@ -1,5 +1,5 @@
 <div tabindex="0" aria-label="group icon" role="img" class="flex items-center justify-center flex-shrink-0 w-8 h-8 border border-gray-200 rounded-full focus:outline-none">
-    {!! $icon ?? '' !!}
+   <x-heroicon-o-bell class="w-5 h-5" />
 </div>
 <div class="w-full pl-3">
     <div class="items-center justify-between w-full pr-2">
