@@ -1,19 +1,17 @@
 @foreach($comments as $comment)
     <li class="p-4 border border-gray-100 rounded-lg" x-data="{ open: false }">
-        <div class="flex items-center"> {{-- Changed to items-center --}}
-            @if ($comment->user && $comment->user->usertype === 'admin')
-                <x-heroicon-o-shield-check class="inline-block w-4 h-4 mr-1 text-blue-500 align-middle" /> 
-            @endif
-            <div class="flex items-baseline">
-            {{-- User avatar (if needed) --}}
-            {{-- <img class="w-8 h-8 mr-2 rounded-full" src="{{ $comment->user->avatar_url }}" alt="{{ $comment->user->name }}"> --}}
-            <span class="font-semibold text-gray-900">{{ $comment->user->name }}</span>
-            <span class="ml-2 text-sm text-gray-500">{{ $comment->created_at->diffForHumans() }}</span>
-                <div class="mt-1 text-sm text-gray-700">{{ $comment->body }}</div>
+        <div class="flex flex-col">
+            <div class="flex items-center">
+                @if ($comment->user && $comment->user->usertype === 'admin')
+                    <x-heroicon-o-shield-check class="inline-block w-4 h-4 pb-0.5 text-blue-500"  /> 
+                @endif
+                <span class="font-semibold text-gray-900">{{ $comment->user->name }}</span>
+                <span class="ml-2 text-sm text-gray-500">{{ $comment->created_at->diffForHumans() }}</span>
             </div>
+            <div class="mt-1 text-sm text-gray-700">{{ $comment->body }}</div>
         </div>
 
-        <div class="mt-4 ">
+        <div class="mt-4 ml-4">
             <button @click.prevent="open = !open" class="mr-2 text-blue-500">
                 {{ $comment->replies->count() > 0 ? $comment->replies->count() . ' replies' : 'Reply' }}
             </button>
@@ -26,26 +24,20 @@
             </form>
         </div>
 
-        <ul class="mt-2 space-y-2" x-show="open">
-            @php $indentationLevel = 10; @endphp
+        <ul class="mt-2 ml-4 space-y-2" x-show="open">
             @foreach ($comment->replies->sortByDesc('created_at') as $reply)
-                <li class="p-2 border border-gray-100 rounded-lg" style="margin-left: {{ $indentationLevel }}px;">
-                    <div class="flex items-center">
-                        {{-- User avatar (if needed) --}}
-                        {{-- <img class="w-6 h-6 mr-2 rounded-full" src="{{ $reply->user->avatar_url }}" alt="{{ $reply->user->name }}"> --}}
-
-                        @if ($reply->user && $reply->user->usertype === 'admin')
-                            <x-heroicon-o-shield-check class="inline-block w-4 h-4 mr-1 text-blue-500 align-middle" />
-                        @endif
-
-                        <div class="flex items-baseline">
+                <li class="p-2 border border-gray-100 rounded-lg">
+                    <div class="flex flex-col">
+                        <div class="flex items-center">
+                            @if ($reply->user && $reply->user->usertype === 'admin')
+                                <x-heroicon-o-shield-check class="inline-block w-4 h-4 pb-0.5 text-blue-500"  />
+                            @endif
                             <span class="font-semibold text-gray-900">{{ $reply->user->name }}</span>
                             <span class="ml-2 text-sm text-gray-500">{{ $reply->created_at->diffForHumans() }}</span>
-                            <div class="mt-1 text-sm text-gray-700">{{ $reply->body }}</div>
                         </div>
+                        <div class="mt-1 text-sm text-gray-700">{{ $reply->body }}</div>
                     </div>
                 </li>
-                @php $indentationLevel += 10; @endphp
             @endforeach
         </ul>
     </li>
