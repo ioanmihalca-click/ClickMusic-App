@@ -37,7 +37,10 @@ class CommentResource extends Resource
                     ->label('Videoclip')
                     ->circular()
                     ->width(40)
-                    ->height(40),
+                    ->height(40)
+                    ->tooltip(function (Comment $record): string {
+                        return $record->video->title ?? 'Fără titlu';
+                    }),
                     TextColumn::make('body')
                     ->label('Conținut')
                     ->limit(10) // Limitează textul la 50 de caractere
