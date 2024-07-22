@@ -4,12 +4,14 @@ namespace App\Filament\Resources;
 
 use Filament\Tables;
 use App\Models\Comment;
-use App\Filament\Resources\CommentResource\Pages\ListComments;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Notifications\Notification;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\CommentResource\Pages\ListComments;
 
 class CommentResource extends Resource
 {
@@ -49,6 +51,30 @@ class CommentResource extends Resource
             ])
             ->actions([
                 Tables\Actions\DeleteAction::make(),
+                Tables\Actions\Action::make('view_video')
+                    ->label('Vezi videoclip')
+                    ->url(fn (Comment $record): string => route('videos.show', $record->video))
+                    ->openUrlInNewTab(),
+
+                    Tables\Actions\Action::make('quick_reply')
+    ->label('Răspunde rapid')
+    ->form([
+        Textarea::make('reply')
+            ->label('Răspuns')
+            ->required(),
+    ])
+    ->action(function (Comment $record, array $data) {
+        // Logica pentru a adăuga un răspuns rapid
+        $record->replies()->create([
+            'body' => $data['reply'],
+            'user_id' => auth()->id(),
+            'video_id' => $record->video_id,
+        ]);
+        Notification::make()
+            ->title('Răspuns adăugat cu succes')
+            ->success()
+            ->send();
+    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
