@@ -7,37 +7,43 @@ use Livewire\Component;
 
 class Like extends Component
 {
-    public $video;
-    public $likes;
-    public $likeActive;
+    public Video $video;
+    public $likeCount;
+    public $isLiked;
+
     public function mount(Video $video)
     {
         $this->video = $video;
+        $this->refreshLikeStatus();
     }
+
     public function render()
     {
-        $this->likes = $this->video->likes->count();
         return view('livewire.videos.like');
     }
 
-    public function like()
+    public function toggleLike()
     {
-      // Check if user already liked the video
-      if ($this->video->doesUserLikedVideos()) {
-        // User already liked, do nothing (optional: display a message)
-        return;
-      }
-    
-      // User hasn't liked yet, create a new like record
-      $this->video->likes()->create([
-        'user_id' => auth()->id()
-      ]);
-    
-      // Update the like count (optional: can be handled through Livewire magic properties)
-      $this->likes = $this->video->likes->count();
-    
-      // Update like button state (optional: emit Livewire event for UI update)
-      $this->likeActive = true;
+        if (!auth()->check()) {
+            $this->dispatch('showLoginPrompt');
+            return;
+        }
+
+        if ($this->isLiked) {
+            $this->video->likes()->where('user_id', auth()->id())->delete();
+        } else {
+            $this->video->likes()->create([
+                'user_id' => auth()->id()
+            ]);
+        }
+
+        $this->refreshLikeStatus();
+        $this->dispatch('likeUpdated', $this->video->id);
     }
-    
+
+    private function refreshLikeStatus()
+    {
+        $this->likeCount = $this->video->likes()->count();
+        $this->isLiked = $this->video->likes()->where('user_id', auth()->id())->exists();
+    }
 }
