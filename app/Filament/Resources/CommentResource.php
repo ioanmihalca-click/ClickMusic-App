@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use Filament\Tables;
 use App\Models\Comment;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
@@ -32,17 +33,21 @@ class CommentResource extends Resource
                     ->label('Utilizator')
                     ->searchable()
                     ->sortable(),
-                    ImageColumn::make('video.thumbnail_url')
-        ->label('Thumbnail')
-        ->circular()
-        ->width(40)
-        ->height(40),
+                ImageColumn::make('video.thumbnail_url')
+                    ->label('Thumbnail')
+                    ->circular()
+                    ->width(40)
+                    ->height(40),
                     TextColumn::make('body')
                     ->label('Conținut')
-                    ->limit(100)
-                    ->formatStateUsing(function (Comment $record) {
+                    ->limit(50) // Limitează textul la 50 de caractere
+                    ->tooltip(function (Comment $record): string {
                         $prefix = $record->reply_id ? '[Răspuns] ' : '';
                         return $prefix . $record->body;
+                    }) // Adaugă un tooltip cu textul complet la hover
+                    ->formatStateUsing(function (Comment $record) {
+                        $prefix = $record->reply_id ? '[Răspuns] ' : '';
+                        return $prefix . Str::limit($record->body, 50);
                     }),
                 TextColumn::make('created_at')
                     ->label('Data comentariului')
@@ -61,25 +66,25 @@ class CommentResource extends Resource
                     ->url(fn (Comment $record): string => route('videos.show', $record->video))
                     ->openUrlInNewTab(),
 
-                    Tables\Actions\Action::make('quick_reply')
-    ->label('Răspunde rapid')
-    ->form([
-        Textarea::make('reply')
-            ->label('Răspuns')
-            ->required(),
-    ])
-    ->action(function (Comment $record, array $data) {
-        // Logica pentru a adăuga un răspuns rapid
-        $record->replies()->create([
-            'body' => $data['reply'],
-            'user_id' => auth()->id(),
-            'video_id' => $record->video_id,
-        ]);
-        Notification::make()
-            ->title('Răspuns adăugat cu succes')
-            ->success()
-            ->send();
-    }),
+                Tables\Actions\Action::make('quick_reply')
+                    ->label('Răspunde rapid')
+                    ->form([
+                        Textarea::make('reply')
+                            ->label('Răspuns')
+                            ->required(),
+                    ])
+                    ->action(function (Comment $record, array $data) {
+                        // Logica pentru a adăuga un răspuns rapid
+                        $record->replies()->create([
+                            'body' => $data['reply'],
+                            'user_id' => auth()->id(),
+                            'video_id' => $record->video_id,
+                        ]);
+                        Notification::make()
+                            ->title('Răspuns adăugat cu succes')
+                            ->success()
+                            ->send();
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
