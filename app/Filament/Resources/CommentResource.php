@@ -52,9 +52,11 @@ class CommentResource extends Resource
                         $prefix = $record->reply_id ? '[Răspuns] ' : '';
                         return $prefix . Str::limit($record->body, 10);
                     }),
-                TextColumn::make('created_at')
-                    ->label('Data comentariului')
-                    ->dateTime(),
+                    TextColumn::make('created_at')
+                    ->label('Data')
+                    ->dateTime('d M Y H:i')
+                    ->color('gray')
+                    ->visibleFrom('md'),
             ])
             ->filters([
                 SelectFilter::make('user')
