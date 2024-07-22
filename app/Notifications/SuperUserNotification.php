@@ -37,7 +37,7 @@ class SuperUserNotification extends Notification
         return (new MailMessage)
             ->from('contact@clickmusic.ro', 'Click Music Ro')
             ->greeting('Salut, ' . $notifiable->name . '!')
-            ->line('Ți-a fost atribuit rolul de Super_User pe platforma noastră! 🌟')
+            ->line('Ți-a fost atribuit rolul de Super_User pe platforma Click Music! 🌟')
             ->line('Ce înseamnă asta pentru tine?')
             ->line('✅ Acces PREMIUM gratuit pe viață')
             ->line('✅ Conținut exclusiv și în avanpremieră')

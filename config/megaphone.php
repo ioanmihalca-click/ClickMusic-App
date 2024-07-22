@@ -1,5 +1,7 @@
 <?php
 
+
+
 return [
     /*
      * Model that has the "Notifiable" and "HasMegaphone" Traits
@@ -21,6 +23,7 @@ return [
     'customTypes' => [
         \App\Megaphone\CommentReplyNotification::class => 'vendor.megaphone.comment-reply-notification', 
         \App\Megaphone\NewCommentNotification::class => 'vendor.megaphone.new-comment-notification',
+        App\Megaphone\SuperUserNotificationBell::class => 'vendor.megaphone.super-user-notification-bell',
     ],
 
     /*

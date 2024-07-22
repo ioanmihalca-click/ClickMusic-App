@@ -16,6 +16,7 @@ use App\Notifications\SuperUserNotification;
 use App\Filament\Resources\UserResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\UserResource\RelationManagers;
+use App\Megaphone\SuperUserNotificationBell;
 
 class UserResource extends Resource
 {
@@ -62,6 +63,9 @@ class UserResource extends Resource
                     }
                     $record->update(['usertype' => 'super_user']);
                     $record->notify(new SuperUserNotification());
+                    
+                    // Trigger Megaphone notification
+                  $record->notify(new SuperUserNotificationBell());
                 })
                 ->requiresConfirmation()
                 ->color('success')
