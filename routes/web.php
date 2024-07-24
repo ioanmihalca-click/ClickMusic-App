@@ -38,6 +38,8 @@ Route::view('/', 'welcome')->name('welcome');
 Route::get('/blog', BlogIndex::class)->name('blog.index');
 Route::get('/blog/{slug}', BlogShow::class)->name('blog.show');
 
+Route::view('magazin', 'magazin')->name('magazin');
+
 
 Route::get('abonament', [AbonamentController::class, 'show'])->name('abonament')->middleware('auth');
 Route::get('/subscription/success', SubscriptionSuccessController::class)->name('subscription.success')->middleware('auth');
@@ -53,16 +55,15 @@ Route::match(['get', 'post'], 'checkout/{plan}', [CheckoutController::class, '__
     ->middleware([Subscribed::class])
     ->name('videoclipuri');
 
-
-    Route::view('magazin', 'magazin')
-    ->middleware([Subscribed::class])
-    ->name('magazin');
+    Route::get('/videos/{video}', [VideoController::class, 'show'])
+    ->name('videos.show')
+    ->middleware(['auth']); 
 
     Route::view('sustine', 'sustine')
     ->middleware([Subscribed::class])
     ->name('sustine');
 
-Route::view('profile', 'profile')
+    Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
@@ -70,11 +71,6 @@ Route::view('profile', 'profile')
 
 
     Route::post('/subscription/cancel', [SubscriptionController::class, 'cancelSubscription'])->name('subscription.cancel');
-
-
-
-
-    Route::get('/videos/{video}', [VideoController::class, 'show'])->name('videos.show');
 
     Route::get('/videos/share/{id}', [VideoController::class, 'share'])->name('videos.share');
 
