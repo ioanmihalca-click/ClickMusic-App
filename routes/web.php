@@ -29,8 +29,7 @@ use Illuminate\Support\Facades\Storage;
 Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
 
-// Route::get('auth/facebook', [AuthController::class, 'redirectToFacebook'])->name('login.facebook');
-// Route::get('auth/facebook/callback', [AuthController::class, 'handleFacebookCallback']);
+
 
 Route::view('/', 'welcome')->name('welcome');
 
@@ -39,37 +38,6 @@ Route::view('/', 'welcome')->name('welcome');
 Route::get('/blog', BlogIndex::class)->name('blog.index');
 Route::get('/blog/{slug}', BlogShow::class)->name('blog.show');
 
-
-// Route::middleware([AdminMiddleware::class])->group(function () { 
-//     Route::get('/admin', [VideoController::class, 'index'])->name('admin'); // Single route for the admin page
-//     Route::get('/admin/videos/create', [VideoController::class, 'create'])->name('videos.create'); 
-//     Route::post('/admin/videos', [VideoController::class, 'store'])->name('videos.store');
-//     Route::post('/admin/set/featured/video', [VideoController::class, 'setFeaturedVideo'])->name('set.featured.video');
-//     Route::put('/admin/videos/{video}', [VideoController::class, 'update'])->name('videos.update');
-//     Route::delete('/admin/videos/{video}', [VideoController::class, 'destroy'])->name('videos.destroy');
-//     Route::put('/users/{user}/usertype', [UserController::class, 'updateUsertype'])->name('users.update.usertype');
-
-//     Route::post('/send-notification', [VideoNotificationController::class, 'sendNotification'])->name('send.notification');
-
-// });
-
-    //trigger mail notification Videoclip Nou
-// Route::get('/', function(){
-
-
-// $users = User::all();
-// Notification::send($users, new NotificareVideoclipNou());
-// ************************************************
-
-// add delay to queue
-    //    $when = Carbon::now()->addSeconds(10);
-//    User::find(1)->notify(new AbonamentNouCreatAdmin)->delay($when);
-
-    
-//     return view('welcome');
-
-
-// });
 
 Route::get('abonament', [AbonamentController::class, 'show'])->name('abonament')->middleware('auth');
 Route::get('/subscription/success', SubscriptionSuccessController::class)->name('subscription.success')->middleware('auth');
@@ -102,13 +70,6 @@ Route::view('profile', 'profile')
 
 
     Route::post('/subscription/cancel', [SubscriptionController::class, 'cancelSubscription'])->name('subscription.cancel');
-
-
-    // Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
-    
-// Other routes...
-
-
 
 
 
@@ -147,7 +108,40 @@ Route::get('/download-mp3/click-ma-racoresc', function () {
 });
 
 // etc. pentru fiecare MP3 
+
+
+
+
+//Pagina de ascultare si download mp3
+
+Route::get('/song', function () {
+    $songTitle = ""; // Titlul piesei
+    $songUrl = Storage::url('songs\Click_Ma_Racoresc_feat_Mihai_Stanciuc.mp3'); // Calea către fișierul audio
+    $coverUrl = Storage::url('songs\Ma racoresc Thumbnail Optimizat.jpg'); // Calea către imaginea de copertă
+
+    return view('songs.song', compact('songTitle', 'songUrl', 'coverUrl'));
+})->name('song.show');
+
+
+
+
      
 require __DIR__.'/auth.php';
 
+
+//View Mail
+
+use App\Models\PromoEmail;
+use App\Notifications\PromoEmailNotification;
+
+Route::get('/preview-promo-email', function () {
+    $promoEmail = PromoEmail::first(); // Or any other way to get a PromoEmail instance
+    $songUrl = 'http://127.0.0.1:8000/song';
+    $downloadUrl = 'http://127.0.0.1:8000/song';
+    $imageUrl = 'https://res.cloudinary.com/dpxess5iw/image/upload/v1721219233/Ma_racoresc_Thumbnail_Optimizat_vsotpf.jpg';
+    $subject = 'Ma racoresc';
+
+    return (new PromoEmailNotification($promoEmail, $songUrl, $downloadUrl, $imageUrl, $subject))
+        ->toMail($promoEmail);
+});
 

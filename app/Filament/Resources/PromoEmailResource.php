@@ -63,7 +63,19 @@ class PromoEmailResource extends Resource
                     ->icon('heroicon-o-plus')
                     ->form(fn (Form $form) => static::form($form))
                     ->action(function (array $data): void {
-                        PromoEmail::create($data);
+                        // Verificare dacă email-ul există deja
+                        if (PromoEmail::where('recipient_email', $data['recipient_email'])->exists()) {
+                            FilamentNotification::make()
+                                ->title('Email-ul există deja')
+                                ->warning()
+                                ->send();
+                        } else {
+                            PromoEmail::create($data);
+                            FilamentNotification::make()
+                                ->title('Email adăugat cu succes')
+                                ->success()
+                                ->send();
+                        }
                     }),
                     self::getSendEmailAction('sendAll', 'Trimite tuturor', fn() => PromoEmail::all())
             ])
