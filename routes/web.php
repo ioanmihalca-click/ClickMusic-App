@@ -129,19 +129,19 @@ Route::get('/song', function () {
 require __DIR__.'/auth.php';
 
 
-//View Mail
+//Preview Mail
 
-use App\Models\PromoEmail;
-use App\Notifications\PromoEmailNotification;
+// use App\Models\PromoEmail;
+// use App\Notifications\PromoEmailNotification;
 
-Route::get('/preview-promo-email', function () {
-    $promoEmail = PromoEmail::first(); // Or any other way to get a PromoEmail instance
-    $songUrl = 'http://127.0.0.1:8000/song';
-    $downloadUrl = 'http://127.0.0.1:8000/song';
-    $imageUrl = 'https://res.cloudinary.com/dpxess5iw/image/upload/v1721219233/Ma_racoresc_Thumbnail_Optimizat_vsotpf.jpg';
-    $subject = 'Ma racoresc';
+// Route::get('/preview-promo-email', function () {
+//     $promoEmail = PromoEmail::first(); // Or any other way to get a PromoEmail instance
+//     $songUrl = 'http://127.0.0.1:8000/song';
+//     $downloadUrl = 'http://127.0.0.1:8000/song';
+//     $imageUrl = 'https://res.cloudinary.com/dpxess5iw/image/upload/v1721219233/Ma_racoresc_Thumbnail_Optimizat_vsotpf.jpg';
+//     $subject = 'Ma racoresc';
 
-    return (new PromoEmailNotification($promoEmail, $songUrl, $downloadUrl, $imageUrl, $subject))
-        ->toMail($promoEmail);
-});
+//     return (new PromoEmailNotification($promoEmail, $songUrl, $downloadUrl, $imageUrl, $subject))
+//         ->toMail($promoEmail);
+// });
 

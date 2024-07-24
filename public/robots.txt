@@ -5,6 +5,7 @@ Disallow: /forgot-password
 Disallow: /videoclipuri/
 Disallow: /magazin/
 Disallow: /sustine/
+Disallow: /song/
 Allow: /
 
 Sitemap: https://clickmusic.ro/sitemap.xml
