@@ -10,9 +10,11 @@ use Filament\Tables\Table;
 use App\Jobs\SendPromoEmails;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\Action;
+use Filament\Tables\Filters\Filter;
 use Illuminate\Support\Facades\Log;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Filament\Notifications\Notification as FilamentNotification;
 use App\Filament\Resources\PromoEmailResource\Pages\EditPromoEmail;
@@ -55,7 +57,18 @@ class PromoEmailResource extends Resource
                     ->color(fn (string $state): string => self::getStatusColor($state)),
             ])
             ->filters([
-                //
+                  // Căutare după nume sau email
+            Filter::make('search')
+            ->query(function (Builder $query, array $data): Builder {
+                return $query
+                    ->where('recipient_name', 'like', "%{$data['query']}%")
+                    ->orWhere('recipient_email', 'like', "%{$data['query']}%");
+            })
+            ->form([
+                TextInput::make('query')
+                    ->label('Caută după nume sau email')
+                    ->placeholder('Introdu textul de căutare'),
+            ]),
             ])
             ->headerActions([
                 Action::make('addEmail')
