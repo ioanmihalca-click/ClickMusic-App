@@ -39,6 +39,7 @@ Route::get('/blog', BlogIndex::class)->name('blog.index');
 Route::get('/blog/{slug}', BlogShow::class)->name('blog.show');
 
 Route::view('magazin', 'magazin')->name('magazin');
+Route::get('/album/{album:slug}', [AlbumController::class, 'show'])->name('album.show');
 
 
 Route::get('abonament', [AbonamentController::class, 'show'])->name('abonament')->middleware('auth');

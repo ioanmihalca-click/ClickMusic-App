@@ -130,32 +130,39 @@
                     class="h-12 w-auto text-white lg:h-16 lg:text-[#FF2D20] mt-8">
             </header>
 
-            <div class="flex flex-col items-center justify-center min-h-screen bg-white">
-    <h1 class="mb-8 text-5xl font-bold text-gray-800 animate-pulse">
-        Coming Soon
-    </h1>
-    <p class="mb-8 text-lg text-gray-800">
-       Lucram la magazin. Revenim curand!
-    </p>
-</div>
-  
-  {{-- <x-slot name="header">
+    <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            {{ __('Albume') }}
+            {{ $album->titlu }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
-                <div class="p-6">
-                    @livewire('album-list')
+            <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/3">
+                            <img src="{{ asset('storage/' . $album->coperta_album) }}" alt="{{ $album->titlu }}" class="w-full rounded-lg shadow-md">
+                        </div>
+                        <div class="mt-4 md:w-2/3 md:pl-8 md:mt-0">
+                            <h1 class="mb-4 text-3xl font-bold">{{ $album->titlu }}</h1>
+                            <p class="mb-4 text-gray-600">{{ $album->descriere }}</p>
+                            <p class="mb-4 text-xl font-semibold">Preț: {{ number_format($album->pret, 2) }} RON</p>
+                            <p class="mb-4">Genul Muzical: {{ $album->gen_muzical }}</p>
+                            <p class="mb-4">Număr de trackuri: {{ $album->numar_trackuri }}</p>
+                            <p class="mb-4">An lansare: {{ $album->an_lansare }}</p>
+                            
+                            <a href="#" class="inline-block px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
+                                Cumpără Acum
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 
- <footer class="py-16 text-sm text-center text-black">
+<footer class="py-16 text-sm text-center text-black">
                 ClickMusic &copy; {{ date('Y') }}.Toate drepturile rezervate.
                 <div class="mt-2">
                     Aplicație dezvoltată de <a href="https://clickstudios-digital.com" target="_blank"

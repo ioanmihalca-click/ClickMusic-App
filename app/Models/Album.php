@@ -32,6 +32,7 @@ class Album extends Model
     ];
 
     protected $dates = ['data_lansare'];
+    
 
     public function setTitluAttribute($value)
     {
@@ -73,4 +74,10 @@ class Album extends Model
     {
         return $query->where('an_lansare', $an);
     }
+
+    public function scopeSearch($query, $search)
+{
+    return $query->where('titlu', 'like', "%{$search}%")
+                 ->orWhere('descriere', 'like', "%{$search}%");
+}
 }

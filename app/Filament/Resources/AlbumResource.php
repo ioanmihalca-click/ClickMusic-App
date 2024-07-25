@@ -65,12 +65,12 @@ class AlbumResource extends Resource
                             ->disk('public')
                             ->directory('albume/coperte')
                             ->required(),
-                        Forms\Components\FileUpload::make('file_path')
-                            ->label('Fișier album (ZIP)')
-                            ->disk('public')
-                            ->directory('albume/fisiere')
-                            ->acceptedFileTypes(['application/zip', 'application/x-zip-compressed'])
+                            Forms\Components\TextInput::make('file_path')
+                            ->label('Calea către fișierul albumului (ZIP)')
+                            ->helperText('Introdu calea relativă la directorul public/albume/fisiere (de exemplu, album1.zip)')
                             ->required(),
+                            
+                            
                     ])
                     ->columns(2)
             ]);
