@@ -9,9 +9,13 @@ use App\Mail\NewComment;
 use App\Http\Middleware\Subscribed;
 use Illuminate\Support\Facades\Route;
 
+use App\Livewire\Blog\Show as BlogShow;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\VideoController;
+use App\Livewire\Blog\Index as BlogIndex;
 use App\Notifications\SubscriptionCreated;
 use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Notification;
@@ -22,9 +26,6 @@ use App\Notifications\NotificareVideoclipNou;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\VideoNotificationController;
 use App\Http\Controllers\SubscriptionSuccessController;
-use App\Livewire\Blog\Index as BlogIndex;
-use App\Livewire\Blog\Show as BlogShow;
-use Illuminate\Support\Facades\Storage;
 
 Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);

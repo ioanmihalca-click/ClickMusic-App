@@ -121,6 +121,7 @@
 }
 </script>
 
+@livewireStyles
 </head>
 
 <body class="font-sans antialiased">
@@ -149,7 +150,7 @@
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
                 <div class="p-6">
-                    @livewire('album-list')
+                    <livewire:album-list />
                 </div>
             </div>
         </div>
@@ -176,5 +177,6 @@
 
             </footer>
 
+@livewireScripts
             </body>
             </html>

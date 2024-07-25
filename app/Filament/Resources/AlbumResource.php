@@ -10,9 +10,13 @@ use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\AlbumResource\Pages;
-use Filament\Forms\Components\Section;
+use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\RichEditor;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AlbumResource extends Resource
@@ -39,10 +43,9 @@ class AlbumResource extends Resource
                         Forms\Components\TextInput::make('slug')
                             ->required()
                             ->maxLength(255),
-                        Forms\Components\Textarea::make('descriere')
+                            RichEditor::make('descriere')
                             ->required()
                             ->maxLength(65535)
-                            ->rows(5)
                             ->columnSpan('full'),
                         Forms\Components\TextInput::make('pret')
                             ->numeric()
@@ -65,11 +68,14 @@ class AlbumResource extends Resource
                             ->disk('public')
                             ->directory('albume/coperte')
                             ->required(),
-                            Forms\Components\TextInput::make('file_path')
-                            ->label('Calea către fișierul albumului (ZIP)')
-                            ->helperText('Introdu calea relativă la directorul public/albume/fisiere (de exemplu, album1.zip)')
-                            ->required(),
-                            
+                        Forms\Components\FileUpload::make('file_path')
+                            ->label('Fișier album (ZIP)')
+                            ->disk('public')
+                            ->directory('albume/fisiere')
+                            ->visibility('private')
+                            ->acceptedFileTypes(['application/zip', 'application/x-zip-compressed', 'application/x-rar-compressed'])
+                            ->maxSize(204800) // 200MB in kilobytes
+                            ->required(fn (string $context): bool => $context === 'create'), // Required doar la creare
                             
                     ])
                     ->columns(2)

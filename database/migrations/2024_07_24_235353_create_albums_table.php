@@ -24,7 +24,7 @@ return new class extends Migration
             $table->date('data_lansare')->nullable();
             $table->decimal('pret', 8, 2);
             $table->string('coperta_album');
-            $table->string('file_path'); //calea spre fisier zip
+            $table->string('file_path')->nullable(); 
             $table->string('slug')->unique()->nullable();
             $table->timestamps();
             $table->softDeletes();

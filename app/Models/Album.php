@@ -57,12 +57,12 @@ class Album extends Model
 
     public function getFilePathAttribute($value)
     {
-        return storage_path('app/public/albume/' . $value);
+        return storage_path('storage/' . $value);
     }
 
     public function getCoverUrlAttribute()
     {
-        return asset('storage/albume/' . $this->coperta_album);
+        return asset('storage/' . $this->coperta_album);
     }
 
     public function getDownloadUrlAttribute()

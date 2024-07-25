@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Album;
@@ -32,10 +32,9 @@ class AlbumList extends Component
 
     public function render()
     {
-        return view('livewire.album-list', [
-            'albums' => Album::search($this->search)
-                ->orderBy($this->sortField, $this->sortDirection)
-                ->paginate(10),
-        ]);
+        $albums = Album::search($this->search)
+            ->orderBy($this->sortField, $this->sortDirection)
+            ->paginate(10);
+        return view('livewire.album-list', ['albums' => $albums]);
     }
 }
