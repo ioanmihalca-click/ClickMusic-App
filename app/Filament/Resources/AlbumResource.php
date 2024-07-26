@@ -30,58 +30,71 @@ class AlbumResource extends Resource
     protected static ?int $navigationSort = 7;
 
     public static function form(Form $form): Form
-    {
-        return $form
-            ->schema([
-                Section::make()
-                    ->schema([
-                        Forms\Components\TextInput::make('titlu')
-                            ->required()
-                            ->maxLength(255)
-                            ->reactive()
-                            ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug($state))),
-                        Forms\Components\TextInput::make('slug')
-                            ->required()
-                            ->maxLength(255),
-                            RichEditor::make('descriere')
-                            ->required()
-                            ->maxLength(65535)
-                            ->columnSpan('full'),
-                        Forms\Components\TextInput::make('pret')
-                            ->numeric()
-                            ->required()
-                            ->prefix('RON')
-                            ->maxValue(42949672.95),
-                        Forms\Components\DatePicker::make('data_lansare')
-                            ->default(now())
-                            ->required(),
-                        Forms\Components\TextInput::make('gen_muzical')
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('numar_trackuri')
-                            ->numeric()
-                            ->required()
-                            ->minValue(1),
-                        Forms\Components\FileUpload::make('coperta_album')
-                            ->label('Coperta')
-                            ->image()
-                            ->disk('public')
-                            ->directory('albume/coperte')
-                            ->required(),
-                        Forms\Components\FileUpload::make('file_path')
-                            ->label('Fișier album (ZIP)')
-                            ->disk('public')
-                            ->directory('albume/fisiere')
-                            ->visibility('private')
-                            ->acceptedFileTypes(['application/zip', 'application/x-zip-compressed', 'application/x-rar-compressed'])
-                            ->maxSize(204800) // 200MB in kilobytes
-                            ->required(fn (string $context): bool => $context === 'create'), // Required doar la creare
-                            
-                    ])
-                    ->columns(2)
-            ]);
-    }
+{
+    return $form
+        ->schema([
+            Section::make()
+                ->schema([
+                    Forms\Components\TextInput::make('titlu')
+                        ->required()
+                        ->maxLength(255)
+                        ->reactive()
+                        ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug($state))),
 
+                    Forms\Components\TextInput::make('slug')
+                        ->required()
+                        ->maxLength(255),
+
+                    RichEditor::make('descriere')
+                        ->required()
+                        ->maxLength(65535)
+                        ->columnSpan('full'),
+
+                    Forms\Components\DatePicker::make('data_lansare')
+                        ->default(now())
+                        ->required(),
+
+                    Forms\Components\TextInput::make('gen_muzical')
+                        ->required()
+                        ->maxLength(255),
+
+                    Forms\Components\TextInput::make('numar_trackuri')
+                        ->numeric()
+                        ->required()
+                        ->minValue(1),
+
+                    Forms\Components\TextInput::make('pret')
+                        ->numeric()
+                        ->required()
+                        ->prefix('RON')
+                        ->maxValue(42949672.95),
+
+                    Forms\Components\TextInput::make('payment_link')
+                        ->required()
+                        ->maxLength(255),
+
+                    Forms\Components\Grid::make(2)
+                        ->schema([
+                            Forms\Components\FileUpload::make('coperta_album')
+                                ->label('Coperta')
+                                ->image()
+                                ->disk('public')
+                                ->directory('albume/coperte')
+                                ->required(),
+
+                            Forms\Components\FileUpload::make('file_path')
+                                ->label('Fișier album (ZIP)')
+                                ->disk('public')
+                                ->directory('albume/fisiere')
+                                ->visibility('private')
+                                ->acceptedFileTypes(['application/zip', 'application/x-zip-compressed', 'application/x-rar-compressed'])
+                                ->maxSize(204800) // 200MB in kilobytes
+                                ->required(fn (string $context): bool => $context === 'create'), // Required doar la creare
+                        ]),
+                ])
+                ->columns(2)
+        ]);
+}
     public static function table(Table $table): Table
     {
         return $table
@@ -92,18 +105,18 @@ class AlbumResource extends Resource
                 Tables\Columns\TextColumn::make('titlu')
                     ->searchable()
                     ->sortable(),
-                    Tables\Columns\TextColumn::make('gen_muzical')
+                Tables\Columns\TextColumn::make('gen_muzical')
                     ->searchable()
                     ->sortable()
-                    ->width(150), 
-                    Tables\Columns\TextColumn::make('pret')->money('ron')
+                    ->width(150),
+                Tables\Columns\TextColumn::make('pret')->money('ron')
                     ->sortable()
                     ->width(100),
-                    Tables\Columns\TextColumn::make('data_lansare')
+                Tables\Columns\TextColumn::make('data_lansare')
                     ->date()
                     ->sortable()
                     ->width(120),
-                    
+
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('gen_muzical'),

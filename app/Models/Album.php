@@ -21,8 +21,10 @@ class Album extends Model
         'numar_trackuri', 
         'data_lansare', 
         'pret', 
+        'payment_link',
         'coperta_album', 
         'file_path'
+        
     ];
 
     protected $casts = [

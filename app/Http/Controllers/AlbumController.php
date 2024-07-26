@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Mail\ComandaAlbumConfirmare;
 use App\Models\Album;
-use Illuminate\Support\Str;
+use App\Models\ComandaAlbum;
 use Illuminate\Http\Request;
+use Laravel\Cashier\Cashier;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 
 class AlbumController extends Controller
 {
@@ -14,27 +18,33 @@ class AlbumController extends Controller
         return view('albums.show', compact('album'));
     }
 
-    public function checkout(Album $album, Request $request)
+    public function checkout(Album $album)
     {
-        // Validate the email
-        $validated = $request->validate(['email' => 'required|email']);
-    
-        // Check if the email exists
-        $user = User::where('email', $validated['email'])->first();
-    
-        // If the user doesn't exist, create one
-        if (!$user) {
-            $user = User::create([
-                'email' => $validated['email'],
-                'password' => bcrypt(Str::random(10)), // Or leave the password blank
-            ]);
-        }
-        
-        // ... your existing logic to create a payment link or handle the purchase ...
-        // (You'll likely need to associate the purchase with the $user in your payment system)
-        
-        // After successful purchase, generate download link and send email
-        // ... (Add this part after your purchase logic)
+        return redirect($album->payment_link);
     }
 
+    public function checkoutSuccess(Request $request)
+{
+    return view('checkout.success', ['message' => 'Thank you for your purchase! You will receive an email with download instructions shortly.']);
+}
+    private function sendConfirmationEmail(ComandaAlbum $comanda)
+    {
+        Mail::to($comanda->email)->send(new ComandaAlbumConfirmare($comanda));
+    }
+
+    private function generateDownloadLink(Album $album)
+    {
+        return URL::signedRoute('album.download', ['album' => $album->id], now()->addHours(24));
+    }
+
+    public function download(Request $request, Album $album)
+    {
+        if (!$request->hasValidSignature()) {
+            abort(401);
+        }
+
+        $filePath = Storage::disk('public')->path($album->file_path);
+
+        return response()->download($filePath, $album->titlu . '.zip');
+    }
 }
