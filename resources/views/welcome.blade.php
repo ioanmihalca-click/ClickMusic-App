@@ -163,7 +163,7 @@
                                 <!-- <div class="text-sm font-semibold tracking-wide text-center text-blue-500 uppercase">ClickMusic.Ro</div> -->
                                 <h1 class="mt-1 text-xl font-extrabold text-center text-gray-900 md:text-3xl">Hip-Hop •
                                     Soul • Reggae</h1>
-                                <h2 class="mt-2 text-lg text-center text-gray-500">Bine ai venit pe platforma de streaming Click
+                                <h2 class="mt-2 text-lg text-center text-gray-500"> TEST Bine ai venit pe platforma de streaming Click
                                     Music</h2>
 
 
