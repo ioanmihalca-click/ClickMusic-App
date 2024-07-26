@@ -125,8 +125,7 @@
 
 <body class="font-sans antialiased">
     <div class="text-black bg-gray-50">
-        <div
-            class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
+        <div class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
             <header class="flex flex-col items-center justify-center mt-2">
                 <img src="/img/logo.png" alt="Logo Click Music"
                     class="h-12 w-auto text-white lg:h-16 lg:text-[#FF2D20] mt-8">
@@ -450,7 +449,7 @@
 
             <!--Preview videos Welcome -->
             <div x-data="{ open: false }"
-                class="max-w-md mx-auto mt-8 text-left rounded-lg bg-white p-4 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-blue-500/20 focus:outline-none focus-visible:ring-[#FF2D20] ">
+                class="max-w-md mx-auto my-8 text-left rounded-lg bg-white p-4 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-blue-500/20 focus:outline-none focus-visible:ring-[#FF2D20] ">
 
                 <button @click="open = !open">
                     <div class="flex justify-between">
@@ -470,13 +469,30 @@
 
 
 
-            {{-- Social Links --}}
+           
+            </div>
 
-            <h3 class="mt-8 text-center">Mă găsesti și aici:</h3>
-            <div class="flex justify-center p-4">
-
-                <a href="https://instagram.com/clickmusic1" target="_blank" rel="noopener noreferrer"
-                    class="px-4 text-gray-500 hover:text-blue-500">
+           <footer class="py-8 text-white bg-gray-800">
+        <div class="container px-4 mx-auto">
+            <div class="flex flex-wrap justify-between">
+                <div class="w-full mb-6 md:w-1/3 md:mb-0">
+                    <h3 class="mb-2 text-xl font-bold">Click Music</h3>
+                    <p class="text-gray-400">Hip-Hop, Soul și Reggae din inima României</p>
+                </div>
+                <div class="w-full mb-6 md:w-1/3 md:mb-0">
+                    <h3 class="mb-2 text-xl font-bold">Link-uri rapide</h3>
+                    <ul class="text-gray-400">
+                        <li><a href="{{ route('privacy-policy') }}" class="hover:text-white">Politica de confidențialitate</a></li>
+                        <li><a href="{{ route('terms-of-service') }}" class="hover:text-white">Termeni și Condiții</a></li>
+                        <li><a href="{{ route('contact') }}" class="hover:text-white">Contact</a></li>
+                        <li><a href="{{ route('blog.index') }}" class="hover:text-white">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/3">
+                    <h3 class="mb-3 text-xl font-bold">Mă găsesti și aici:</h3>
+                    <div class="flex mx-auto space-x-4">
+                       <a href="https://instagram.com/clickmusic1" target="_blank" rel="noopener noreferrer"
+                    class="text-gray-500 hover:text-blue-500">
                     <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor"
                         class="" viewBox="0 0 16 16">
                         <path
@@ -494,7 +510,7 @@
                 </a>
 
                 <a href="https://open.spotify.com/artist/0rbyxJSUfSXjmeW652c41O?si=4I3hPlSITruYO69znEmXFA&nd=1&dlsi=cf9e5847f277482e"
-                    target="_blank" rel="noopener noreferrer" class="px-4 text-gray-500 hover:text-blue-500">
+                    target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-blue-500">
                     <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor"
                         class="" viewBox="0 0 16 16">
                         <path
@@ -511,32 +527,15 @@
                     </svg>
                 </a>
 
+                    </div>
+                </div>
             </div>
-
-            <footer class="py-16 text-sm text-center text-black">
-                ClickMusic &copy; {{ date('Y') }}.Toate drepturile rezervate.
-                <div class="mt-2">
-                    Aplicație dezvoltată de <a href="https://clickstudios-digital.com" target="_blank"
-                        rel="noopener noreferrer" class="text-blue-500">Click Studios
-                        Digital</a>.
-                </div>
-
-                <div class="flex-row mt-4">
-                    <a href="{{ route('privacy-policy') }}" class="text-blue-500">Politica de
-                        confidențialitate</a>
-                    |
-                    <a href="{{ route('terms-of-service') }}" class="text-blue-500">Termeni și Condiții</a>
-                    |
-                    <a href="{{ route('contact') }}" class="text-blue-500">Contact</a>
-                    |
-                    <a href="{{ route('blog.index') }}" class="text-blue-500">Blog</a>
-                </div>
-
-            </footer>
-
+            <div class="mt-8 text-sm text-center text-gray-400">
+                <p>&copy; {{ date('Y') }} ClickMusic. Toate drepturile rezervate.</p>
+                <p class="mt-2">Aplicație dezvoltată de <a href="https://clickstudios-digital.com" target="_blank" rel="noopener noreferrer" class="text-blue-300 hover:text-white">Click Studios Digital</a>.</p>
+            </div>
         </div>
-    </div>
-    </div>
-</body>
+    </footer>
 
+</body>
 </html>
