@@ -24,9 +24,10 @@ class AlbumController extends Controller
     }
 
     public function checkoutSuccess(Request $request)
-{
-    return view('checkout.success', ['message' => 'Thank you for your purchase! You will receive an email with download instructions shortly.']);
-}
+    {
+        return view('albums.checkout_success');
+    }
+    
     private function sendConfirmationEmail(ComandaAlbum $comanda)
     {
         Mail::to($comanda->email)->send(new ComandaAlbumConfirmare($comanda));
