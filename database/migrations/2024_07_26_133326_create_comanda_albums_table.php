@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('comanda_albums', function (Blueprint $table) {
             $table->id();
-            $table->string('email')->unique();
+            $table->string('email');
             $table->unsignedBigInteger('album_id');
             $table->string('download_link')->nullable();
             $table->timestamps(); // Created_at, updated_at

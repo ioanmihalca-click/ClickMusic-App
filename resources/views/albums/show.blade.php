@@ -99,7 +99,7 @@
                                 @csrf
                                 <input type="email" name="email" placeholder="Email" required>
                                 <button type="submit"
-                                    class="inline-block px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
+                                    class="inline-block px-4 py-2 mt-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
                                     Cumpără Acum
                                 </button>
                             </form>
