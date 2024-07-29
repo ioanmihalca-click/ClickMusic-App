@@ -82,13 +82,13 @@
     <div class="max-w-md p-6 mx-auto bg-white rounded-lg shadow-md">
         <h1 class="mb-4 text-2xl font-bold text-center text-green-600">Comandă finalizată cu succes!</h1>
 
-        @if ($comanda)
+        @if ($comandaAlbum)
             <p class="mb-4 text-gray-700">
-                Vă mulțumim pentru achiziția albumului "{{ $comanda->album->titlu }}". Un e-mail de confirmare cu
+                Vă mulțumim pentru achiziția albumului "{{ $comandaAlbum->album->titlu }}". Un e-mail de confirmare cu
                 detaliile comenzii a fost trimis la adresa dumneavoastră de e-mail.
             </p>
-            <div class="text-center">
-                <a href="{{ $comanda->download_link }}"
+            <div class="my-4 text-center">
+                <a href="{{ $comandaAlbum->download_link }}"
                     class="inline-block px-4 py-2 text-white transition duration-200 bg-blue-500 rounded hover:bg-blue-600">
                     Descarcă acum
                 </a>

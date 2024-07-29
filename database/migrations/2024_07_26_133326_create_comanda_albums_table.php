@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comanda_albums', function (Blueprint $table) {
+        Schema::create('comanda_album', function (Blueprint $table) {
             $table->id();
+            $table->string('order_id')->unique();
             $table->string('email');
             $table->unsignedBigInteger('album_id');
             $table->string('download_link')->nullable();
+            $table->enum('status', ['pending', 'completed', 'failed'])->default('pending');
             $table->timestamps(); // Created_at, updated_at
 
              // Foreign key constraint
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comanda_albums');
+        Schema::dropIfExists('comanda_album');
     }
 };

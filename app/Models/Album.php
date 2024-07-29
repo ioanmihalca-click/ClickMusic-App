@@ -20,7 +20,8 @@ class Album extends Model
         'descriere', 
         'numar_trackuri', 
         'data_lansare', 
-        'pret', 
+        'pret',
+        'price_id_stripe', 
         'payment_link',
         'coperta_album', 
         'file_path'
@@ -57,10 +58,10 @@ class Album extends Model
         return 'slug';
     }
 
-    public function getFilePathAttribute($value)
-    {
-        return storage_path('storage/' . $value);
-    }
+//     public function getFilePathAttribute($value)
+// {
+//     return $value; 
+// }
 
     public function getCoverUrlAttribute()
     {
@@ -68,9 +69,9 @@ class Album extends Model
     }
 
     public function getDownloadUrlAttribute()
-    {
-        return asset('storage/albume/' . $this->file_path);
-    }
+{
+    return route('album.download', ['album' => $this->id]);
+}
 
     public function scopeLansatInAn($query, $an)
     {
@@ -81,5 +82,9 @@ class Album extends Model
 {
     return $query->where('titlu', 'like', "%{$search}%")
                  ->orWhere('descriere', 'like', "%{$search}%");
+}
+public function getPriceIdStripeAttribute()
+{
+    return $this->attributes['price_id_stripe'];
 }
 }

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->unsignedInteger('numar_trackuri');
             $table->date('data_lansare')->nullable();
             $table->decimal('pret', 8, 2);
-            $table->string('payment_link')->nullable();
+            $table->string('price_id_stripe')->nullable();
             $table->string('coperta_album');
             $table->string('file_path')->nullable(); 
             $table->string('slug')->unique()->nullable();

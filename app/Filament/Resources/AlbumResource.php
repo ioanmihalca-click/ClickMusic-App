@@ -69,7 +69,8 @@ class AlbumResource extends Resource
                         ->prefix('RON')
                         ->maxValue(42949672.95),
 
-                    Forms\Components\TextInput::make('payment_link')
+                    Forms\Components\TextInput::make('price_id_stripe')
+                        ->label('Price ID Stripe')
                         ->required()
                         ->maxLength(255),
 
