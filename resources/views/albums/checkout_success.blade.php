@@ -85,8 +85,9 @@
         @if ($comandaAlbum)
             <p class="mb-4 text-gray-700">
                 Vă mulțumim pentru achiziția albumului "{{ $comandaAlbum->album->titlu }}". Un e-mail de confirmare cu
-                detaliile comenzii a fost trimis la adresa dumneavoastră de e-mail.
+                detaliile comenzii a fost trimis la adresa dumneavoastră de e-mail. <br>
             </p>
+            <p class="mb-4 font-bold text-gray-700">Atenție: Linkul este valabil doar 24 de ore!</p>
             <div class="my-4 text-center">
                 <a href="{{ $comandaAlbum->download_link }}"
                     class="inline-block px-4 py-2 text-white transition duration-200 bg-blue-500 rounded hover:bg-blue-600">
