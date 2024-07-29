@@ -8,7 +8,7 @@
 
     <!-- Meta Tags -->
     <meta name="description"
-        content="Descoperă albumele artistului Click - muzică hip-hop, soul și reggae autentică din Baia Mare, România. Streaming și achiziție de albume disponibile.">
+        content="Descoperă albumele artistului Click - muzică hip-hop, soul și reggae autentică din inima României. Streaming și achiziție de albume digitale.">
     <meta name="keywords" content="Click Music, hip-hop românesc, soul, reggae, albume muzicale, artist român, Baia Mare">
 
     <!-- Open Graph Tags -->
