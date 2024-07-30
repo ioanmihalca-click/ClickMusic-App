@@ -178,7 +178,7 @@
         </section>
 
         <!-- Premiere Section -->
-        <!-- <section class="mb-16 overflow-hidden transition-all duration-300 transform bg-white shadow-lg rounded-3xl hover:shadow-2xl">
+         <section class="mb-16 overflow-hidden transition-all duration-300 transform bg-white shadow-lg rounded-3xl hover:shadow-2xl">
             <div class="relative p-8 md:p-12">
                 <div class="absolute inset-0 bg-gradient-to-t from-blue-500 to-white opacity-10"></div>
                 <h3 class="relative mb-8 text-xl font-bold text-center text-gray-800 md:text-3xl">
@@ -198,7 +198,6 @@
                 </h4>
             </div>
         </section>
-        -->
   
 
 
