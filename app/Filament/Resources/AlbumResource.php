@@ -89,7 +89,7 @@ class AlbumResource extends Resource
                                 ->directory('albume/fisiere')
                                 ->visibility('private')
                                 ->acceptedFileTypes(['application/zip', 'application/x-zip-compressed', 'application/x-rar-compressed'])
-                                ->maxSize(204800) // 200MB in kilobytes
+                                ->maxSize(504800) 
                                 ->required(fn (string $context): bool => $context === 'create'), // Required doar la creare
                         ]),
                 ])
