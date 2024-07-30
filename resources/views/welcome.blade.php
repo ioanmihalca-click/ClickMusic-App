@@ -140,65 +140,74 @@
 
 </head>
 
-<body class="font-sans antialiased bg-gray-100">
+<body class="font-sans antialiased bg-gradient-to-t from-blue-500 to-gray-100">
 <livewire:header-nav />
 
-   
-         <main class="container px-4 py-8 mx-auto">
-        <div class="max-w-3xl mx-auto">
-                        <!-- Hero Section -->
-            <section class="mb-12 overflow-hidden bg-white shadow-2xl rounded-3xl">
-                {{-- <img class="object-cover object-center w-full h-full" src="/img/ClickMusic-OG.jpg" alt="Click Music"> --}}
-                <div class="p-6 text-center md:p-8">
-                    <h1 class="mb-2 text-2xl font-extrabold text-gray-900 md:text-3xl">Hip-Hop • Soul • Reggae</h1>
-                    <h2 class="mb-4 text-base text-gray-600 md:text-xl">Bine ai venit pe platforma de streaming Click Music</h2>
-                    <div class="my-4 border-t border-gray-300"></div>
-                    <p class="mb-6 text-lg text-gray-700">
+<main class="container px-4 py-12 mx-auto">
+    <div class="max-w-3xl mx-auto">
+        <!-- Hero Section -->
+        <section class="mb-16 overflow-hidden transition-all duration-300 transform bg-white shadow-lg rounded-3xl hover:shadow-2xl">
+            <div class="relative p-8 md:p-12">
+                <div class="absolute inset-0 bg-gradient-to-t from-blue-500 to-white opacity-10"></div>
+                <div class="relative z-10 text-center">
+                    <h1 class="mb-3 text-xl font-extrabold text-gray-900 md:text-3xl">Hip-Hop • Soul • Reggae</h1>
+                    <h2 class="mb-6 text-xl text-gray-700 md:text-2xl">Bine ai venit pe platforma de streaming Click Music</h2>
+                    <div class="my-6 border-t border-gray-300"></div>
+                    <p class="mb-8 text-lg text-gray-700">
                         Pentru acces complet la întreaga colecție de videoclipuri,
                         inclusiv cele mai recente lansări și PREMIERE exclusive, abonează-te pentru doar
-                        <span class="font-semibold text-blue-500">9,99 lei/ lună.</span>
+                        <span class="font-semibold text-blue-600">9,99 lei/ lună.</span>
                     </p>
-                     @if (Route::has('login'))
+                    @if (Route::has('login'))
                     <div class="mb-8">
                         <livewire:welcome.navigation />
                     </div>
-                @endif
+                    @endif
 
-                <div class="flex justify-center">
-                    <a href="{{ route('login.google') }}" class="flex items-center justify-center px-6 py-3 text-gray-700 transition duration-300 ease-in-out bg-white border border-gray-300 rounded-lg shadow-md hover:bg-gray-50 hover:text-blue-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="mr-3 bi bi-google" viewBox="0 0 16 16">
-                            <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
-                        </svg>
-                        <span class="text-base font-medium">Sign in with Google</span>
-                    </a>
-                </div>
-                </div>
-            </section>
-
-                           <!-- Premiere Section -->
-            <section class="mb-12 overflow-hidden bg-white shadow-2xl rounded-3xl">
-                <div class="p-6 md:p-8">
-                    <h3 class="relative mb-6 text-3xl font-bold text-center text-gray-800">
-                        <span class="relative inline-block px-4 py-2 bg-white">
-                            Premieră
-                            <span class="absolute bottom-0 left-0 w-full h-1 transition-transform duration-300 ease-out origin-left transform scale-x-0 bg-blue-500 group-hover:scale-x-100"></span>
-                        </span>
-                    </h3>
-                    <div class="mb-6 overflow-hidden rounded-lg shadow-lg">
-                        <div style="position:relative;padding-top:56.25%;">
-                            <iframe src="https://iframe.mediadelivery.net/embed/233943/2a892dab-dec3-4f0d-8ceb-d99f2caee95c?autoplay=false&loop=false&muted=false&preload=false&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe>
-                        </div>
+                    <div class="flex justify-center">
+                        <a href="{{ route('login.google') }}" class="flex items-center justify-center px-4 py-2 text-gray-700 transition duration-300 ease-in-out transform bg-white border border-gray-300 rounded-full shadow-md hover:bg-gray-50 hover:text-blue-500 hover:-translate-y-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="mr-4 bi bi-google" viewBox="0 0 16 16">
+                                <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
+                            </svg>
+                            <span class="text-base font-medium">Sign in with Google</span>
+                        </a>
                     </div>
-                    <h4 class="mb-6 text-xl font-semibold text-center text-gray-800">
-                        Click - Mă răcoresc (feat. Mihai Stanciuc)
-                    </h4>
                 </div>
-            </section>
+            </div>
+        </section>
+
+        <!-- Premiere Section -->
+         <section class="mb-16 overflow-hidden transition-all duration-300 transform bg-white shadow-lg rounded-3xl hover:shadow-2xl">
+            <div class="relative p-8 md:p-12">
+                <div class="absolute inset-0 bg-gradient-to-t from-blue-500 to-white opacity-10"></div>
+                <h3 class="relative mb-8 text-xl font-bold text-center text-gray-800 md:text-3xl">
+                    <span class="relative inline-block px-4 py-2 bg-white">
+                        Premieră
+                        <span class="absolute bottom-0 left-0 w-full h-1 transition-transform duration-300 ease-out origin-left transform scale-x-0 bg-blue-500 group-hover:scale-x-100"></span>
+                    </span>
+                </h3>
+                <div class="relative mb-8 overflow-hidden rounded-lg shadow-lg">
+                    <div style="position:relative;padding-top:56.25%;">
+                        <iframe src="https://iframe.mediadelivery.net/embed/233943/2a892dab-dec3-4f0d-8ceb-d99f2caee95c?autoplay=false&loop=false&muted=false&preload=false&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe>
+                    </div>
+                    <div class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-black bg-opacity-50 opacity-0 hover:opacity-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                </div>
+                <h4 class="mb-6 text-2xl font-semibold text-center text-gray-800">
+                    Click - Mă răcoresc (feat. Mihai Stanciuc)
+                </h4>
+            </div>
+        </section>
+  
 
 
             <!-- Biografie Click -->
-             <section x-data="{ open: false }" class="mb-12 overflow-hidden bg-white shadow-2xl rounded-3xl">
-                <button @click="open = !open" class="w-full p-6 text-left md:p-8">
+             <section x-data="{ open: false }" class="mb-8 overflow-hidden transition-all duration-300 transform bg-white shadow-lg rounded-3xl hover:shadow-2xl">
+                <button @click="open = !open" class="w-full p-6 text-left ">
                     <div class="flex items-center justify-between">
                         <h2 class="text-lg font-semibold text-gray-900 md:text-2xl">Cine este Click, artistul din spatele muzicii?</h2>
                         <span x-show="!open" class="text-3xl font-semibold text-blue-500">+</span>
@@ -383,8 +392,8 @@
 
           
            <!-- Preview Videos Section -->
-            <section x-data="{ open: false }" class="overflow-hidden bg-white shadow-2xl rounded-3xl">
-                <button @click="open = !open" class="w-full p-6 text-left md:p-8">
+            <section x-data="{ open: false }" class="mb-8 overflow-hidden transition-all duration-300 transform bg-white shadow-lg rounded-3xl hover:shadow-2xl">
+                <button @click="open = !open" class="w-full p-6 text-left ">
                     <div class="flex items-center justify-between">
                         <h2 class="text-lg font-semibold text-gray-900 md:text-2xl">Abonează-te pentru a avea ACCES la Toate videoclipurile</h2>
                         <span x-show="!open" class="text-3xl font-semibold text-blue-500">+</span>
@@ -397,7 +406,7 @@
             </section>
         </div>
     </main>
-
+  </div>
            <footer class="py-8 text-white bg-gray-800">
         <div class="container px-4 mx-auto">
             <div class="flex flex-wrap justify-between">
