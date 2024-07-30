@@ -14,7 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="font-sans antialiased bg-gray-100">
-    <livewire:header />
+    <livewire:header-nav />
 
   
         <div class="relative min-h-screen p-3 flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">

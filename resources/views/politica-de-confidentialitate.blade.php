@@ -14,7 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="font-sans antialiased bg-gray-100">
-    <livewire:header />
+    <livewire:header-nav />
 
 
     

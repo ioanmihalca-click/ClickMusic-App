@@ -71,16 +71,10 @@
 
 </head>
 
-<body class="font-sans antialiased bg-gray-50">
+<body class="font-sans antialiased bg-gray-100">
+<livewire:header-nav />
   
  
-           <header class="flex flex-col items-center justify-center mt-2 mb-4">
-  <a href="{{ route('welcome') }}">
-    <img src="/img/logo.png" alt="Logo Click Music"
-         class="h-12 w-auto text-white lg:h-16 lg:text-[#FF2D20] mt-8">
-  </a>
-
-
 
  <div class="px-2 mt-4 text-white bg-blue-500 rounded">
                     @if (session()->has('success'))
@@ -98,9 +92,9 @@
     </ul>
   </div>
 @endif
-<div>
+</div>
 
-</header>
+
 
 
 <!-- Pricing -->

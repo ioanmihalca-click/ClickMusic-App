@@ -124,7 +124,7 @@
 </head>
 
 <body class="font-sans antialiased bg-gray-100">
-<livewire:header />
+<livewire:header-nav />
 
    
          <main class="container px-4 py-8 mx-auto">
