@@ -12,7 +12,7 @@ class WelcomeVideos extends Component
     public function mount()
     {
         // Fetch all videos from the database
-        $this->videos = Video::all();
+        $this->videos = Video::orderBy('created_at', 'desc')->get();
     }
 
     public function render()
