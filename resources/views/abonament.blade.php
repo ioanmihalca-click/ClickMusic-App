@@ -126,7 +126,7 @@
     <!-- Grid -->
     <div class="flex flex-col items-center justify-center gap-6 mt-12 lg:flex-row">
         @if ($user->isEligibleForFreePlan())
-            <div class="w-full p-8 mx-auto text-center transition-transform transform border border-gray-200 shadow-md sm:w-80 md:w-64 lg:w-72 rounded-xl hover:shadow-xl hover:scale-105">
+            <div class="w-full p-8 mx-auto text-center transition-transform transform bg-white border border-gray-200 shadow-md sm:w-80 md:w-64 lg:w-72 rounded-xl hover:shadow-xl hover:scale-105">
                 <p class="mb-8">Vi s-a atribuit rolul de <br>
                 <span class="px-2 text-white bg-blue-500 rounded">Super_User</span></p>
                 <div class="flex justify-center mx-auto text-blue-500">
