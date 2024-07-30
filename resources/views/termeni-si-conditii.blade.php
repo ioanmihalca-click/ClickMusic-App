@@ -12,6 +12,24 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logo.png') }}" type="image/x-icon" />
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+<style>
+        /* Custom scrollbar styling */
+        body::-webkit-scrollbar {
+            width: 9px;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: #3B82F6;
+            border-radius: 3px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background-color: #d1d5db;
+            border-radius: 3px;
+        }
+    </style>
+
 </head>
 <body class="font-sans antialiased bg-gray-100">
     <livewire:header-nav />
@@ -20,7 +38,7 @@
         <div class="relative min-h-screen p-3 flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
          
         <div class="max-w-5xl p-6 mb-4 bg-white rounded-lg shadow-lg">
-            <h1 class="mb-2 text-2xl font-extrabold text-gray-900 md:text-3xl md:text-4xl">Termeni și Condiții</h1>
+            <h1 class="mb-2 text-2xl font-extrabold text-gray-900 md:text-3xl ">Termeni și Condiții</h1>
             <p class="mb-4">Bun venit la Click Music Streaming App. Vă rugăm să citiți cu atenție acești termeni și condiții înainte de a utiliza aplicația noastră.</p>
             <h2 class="mb-2 text-2xl font-semibold">1. Accesul și Utilizarea</h2>
             <p class="mb-4">Prin accesarea și utilizarea aplicației noastre, sunteți de acord să respectați acești termeni și condiții și toate legile și reglementările aplicabile.</p>

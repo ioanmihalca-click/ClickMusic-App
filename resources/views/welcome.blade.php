@@ -56,6 +56,23 @@
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    <style>
+        /* Custom scrollbar styling */
+        body::-webkit-scrollbar {
+            width: 9px;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: #3B82F6;
+            border-radius: 3px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background-color: #d1d5db;
+            border-radius: 3px;
+        }
+    </style>
+
     <!-- Schema Markup for SEO -->
     <script type="application/ld+json">
 {
@@ -133,7 +150,7 @@
             <section class="mb-12 overflow-hidden bg-white shadow-2xl rounded-3xl">
                 {{-- <img class="object-cover object-center w-full h-full" src="/img/ClickMusic-OG.jpg" alt="Click Music"> --}}
                 <div class="p-6 text-center md:p-8">
-                    <h1 class="mb-2 text-2xl font-extrabold text-gray-900 md:text-3xl md:text-4xl">Hip-Hop • Soul • Reggae</h1>
+                    <h1 class="mb-2 text-2xl font-extrabold text-gray-900 md:text-3xl">Hip-Hop • Soul • Reggae</h1>
                     <h2 class="mb-4 text-base text-gray-600 md:text-xl">Bine ai venit pe platforma de streaming Click Music</h2>
                     <div class="my-4 border-t border-gray-300"></div>
                     <p class="mb-6 text-lg text-gray-700">

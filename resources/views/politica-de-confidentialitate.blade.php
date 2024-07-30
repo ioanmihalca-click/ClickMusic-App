@@ -12,6 +12,24 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logo.png') }}" type="image/x-icon" />
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+<style>
+        /* Custom scrollbar styling */
+        body::-webkit-scrollbar {
+            width: 9px;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: #3B82F6;
+            border-radius: 3px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background-color: #d1d5db;
+            border-radius: 3px;
+        }
+    </style>
+
 </head>
 <body class="font-sans antialiased bg-gray-100">
     <livewire:header-nav />
@@ -22,7 +40,7 @@
            
 
         <div class="max-w-5xl p-6 mb-4 bg-white rounded-lg shadow-lg">
-            <h1 class="mb-2 text-2xl font-extrabold text-gray-900 md:text-3xl md:text-4xl">Politică de Confidențialitate</h1>
+            <h1 class="mb-2 text-2xl font-extrabold text-gray-900 md:text-3xl ">Politică de Confidențialitate</h1>
             <p class="mb-4"><strong>Data Intrării în Vigoare:</strong> 25.05.2024</p>
             <h2 class="mb-2 text-2xl font-semibold">1. Introducere</h2>
             <p class="mb-4">Bun venit la Click Music Streaming App. Ne angajăm să protejăm informațiile dvs. personale și dreptul dvs. la confidențialitate. Dacă aveți întrebări sau nelămuriri cu privire la această notificare de confidențialitate sau practicile noastre în ceea ce privește informațiile dvs. personale, vă rugăm să ne contactați la <a href="mailto:contact@clickmusic.ro" class="text-blue-500">contact@clickmusic.ro</a>.</p>

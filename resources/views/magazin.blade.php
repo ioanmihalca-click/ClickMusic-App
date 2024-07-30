@@ -34,6 +34,23 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 
+<style>
+        /* Custom scrollbar styling */
+        body::-webkit-scrollbar {
+            width: 9px;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: #3B82F6;
+            border-radius: 3px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background-color: #d1d5db;
+            border-radius: 3px;
+        }
+    </style>
+
     <!-- Schema Markup -->
     <script type="application/ld+json">
     {
