@@ -80,11 +80,11 @@
                         <div class="mt-4 md:w-2/3 md:pl-8 md:mt-0">
                             <h1 class="mb-4 text-3xl font-bold">{{ $album->titlu }}</h1>
                             <p class="mb-4 text-gray-600">{!! $album->descriere !!}</p>
-                            <p class="my-4 text-xl font-semibold">Preț: {{ number_format($album->pret, 2) }} RON</p>
-                            <p class="mb-4">Genul Muzical: {{ $album->gen_muzical }}</p>
+                            <p class="my-4">Genul Muzical: {{ $album->gen_muzical }}</p>
                             <p class="mb-4">Număr de trackuri: {{ $album->numar_trackuri }}</p>
                             <p class="mb-4">An lansare:
                                 {{ \Carbon\Carbon::parse($album->data_lansare)->format('Y') }}</p>
+                            <p class="mb-4 text-xl font-semibold">Preț: {{ number_format($album->pret, 2) }} RON</p>
 
                             <form action="{{ route('album.checkout', $album) }}" method="POST">
                                 @csrf
