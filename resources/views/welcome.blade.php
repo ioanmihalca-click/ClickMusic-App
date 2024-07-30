@@ -181,7 +181,7 @@
             <div class="relative p-8 md:p-12">
                 <div class="absolute inset-0 bg-gradient-to-t from-blue-500 to-white opacity-10"></div>
                 <h3 class="relative mb-8 text-xl font-bold text-center text-gray-800 md:text-3xl">
-                    <span class="relative inline-block px-4 py-2 bg-white">
+                    <span class="relative inline-block px-4 py-2">
                         Premieră
                         <span class="absolute bottom-0 left-0 w-full h-1 transition-transform duration-300 ease-out origin-left transform scale-x-0 bg-blue-500 group-hover:scale-x-100"></span>
                     </span>
