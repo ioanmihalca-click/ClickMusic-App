@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Click Music - Magazin | {{ $album->titlu }}</title>
+    <title>Click Music - Magazin | Albume</title>
 
     <!-- Meta Tags -->
     <meta name="description"
@@ -64,18 +64,9 @@
 </head>
 
 <body class="font-sans antialiased bg-gray-100">
-    <header class="bg-white shadow">
-        <div class="container flex items-center justify-between px-4 py-6 mx-auto">
-            <a href="/" class="flex items-center">
-                <img src="/img/logo.png" alt="Logo Click Music" class="w-auto h-12">
-            </a>
-            <nav>
-                <a href="/" class="px-3 py-2 text-gray-600 hover:text-gray-900">Acasă</a>
-                <a href="/magazin" class="px-3 py-2 text-gray-600 hover:text-gray-900">Albume</a>
-                <a href="/blog" class="px-3 py-2 text-gray-600 hover:text-gray-900">Blog</a>
-            </nav>
-        </div>
-    </header>
+
+<livewire:header />
+
 
     <main class="container px-4 py-8 mx-auto">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">

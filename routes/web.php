@@ -33,7 +33,7 @@ Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback
 
 
 Route::view('/', 'welcome')->name('welcome');
-
+Route::view('/accespremium', 'loginPremium')->name('accespremium');
 
 
 Route::get('/blog', BlogIndex::class)->name('blog.index');

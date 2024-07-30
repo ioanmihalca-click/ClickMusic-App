@@ -1,4 +1,4 @@
-<nav class="flex justify-end flex-1 mt-4 -mx-3">
+<nav class="flex justify-center flex-1 mt-4 -mx-3">
     @auth
 
         <a

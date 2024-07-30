@@ -2,55 +2,8 @@
 <html lang="ro">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Click Music - Magazin | Albume</title>
 
-    <!-- Meta Tags -->
-    <meta name="description"
-        content="Descoperă albumele artistului Click - muzică hip-hop, soul și reggae autentică din inima României. Streaming și achiziție de albume digitale.">
-    <meta name="keywords" content="Click Music, hip-hop românesc, soul, reggae, albume muzicale, artist român, Baia Mare">
-
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Click Music - Albume Hip-Hop, Soul și Reggae">
-    <meta property="og:description"
-        content="Explorează colecția de albume a artistului Click - hip-hop, soul și reggae direct din inima României.">
-    <meta property="og:image" content="{{ asset('img/ClickMusic-OG.jpg') }}">
-    <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:type" content="website">
-
-    <!-- Favicon -->
-    <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/x-icon" />
-
-    <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logo.png') }}" type="image/x-icon" />
-
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600,700&display=swap" rel="stylesheet">
-
-    <!-- Styles -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @livewireStyles
-
-    <!-- Schema Markup -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "MusicArtist",
-      "name": "Click",
-      "description": "Artist de muzică hip-hop, soul și reggae din Baia Mare, România",
-      "image": "{{ asset('img/ClickMusic-OG.jpg') }}",
-      "url": "https://clickmusic.ro",
-      "genre": ["Hip-Hop", "Soul", "Reggae"],
-      "sameAs": [
-        "https://youtube.com/clickmusicromania"
-      ]
-    }
-    </script>
-
-    <!-- Google Analytics -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-34NT57GG5F"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -59,30 +12,152 @@
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
+
         gtag('config', 'G-34NT57GG5F');
     </script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Meta Tags for Click Music Streaming App -->
+    <meta name="description"
+        content="Click Music - Muzica, Hip-Hop, Soul, Reggae - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul - Click" />
+    <meta name="keywords"
+        content="Click Music, streaming video, hip-hop, reggae, soul, Click, Baia Mare, Maramureș, Romania, muzică, videoclipuri muzicale, artist, streaming, audio, video, videoclipuri exclusive" />
+
+    <!-- Open Graph Tags for Social Media Sharing -->
+    <meta property="og:title" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
+    <meta property="og:description"
+        content="Click Music - Muzica, Hip-Hop, Soul, Reggae - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul - Click" />
+    <meta property="og:image" content="{{ asset('img/ClickMusic-OG.jpg') }}" />
+    <meta property="og:image:type" content="image/jpg" />
+    <meta property="og:image:alt" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
+    <meta property="og:url" content="https://clickmusic.ro" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ro_RO" />
+    <meta property="og:site_name" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
+
+
+    <link rel="canonical" href="https://clickmusic.ro" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/x-icon" />
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logo.png') }}" type="image/x-icon" />
+
+
+    <title>Click Music - Muzica, Hip-Hop, Soul, Reggae</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+
+    <!-- Styles -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- Schema Markup for SEO -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicArtist",
+  "name": "Click",
+  "description": "Click este un artist de muzică hip-hop, soul și reggae din Baia-Mare, Maramureș.",
+  "genre": ["Hip-Hop", "Soul", "Reggae"],
+  "url": "https://clickmusic.ro",
+  "image": "{{ asset('img/ClickMusic-OG.jpg') }}",
+  "sameAs": [
+    "https://youtube.com/clickmusicromania"
+  ],
+  "album": [
+    {
+      "@type": "MusicAlbum",
+      "name": "Trup și Suflet",
+      "datePublished": "2017"
+    },
+    {
+      "@type": "MusicAlbum",
+      "name": "Lume Dragă",
+      "datePublished": "2020"
+    },
+    {
+      "@type": "MusicAlbum",
+      "name": "Dulce și Amar",
+      "albumProductionType": "EP",
+      "datePublished": "2021"
+    },
+    {
+      "@type": "MusicAlbum",
+      "name": "Culori EP",
+      "albumProductionType": "EP",
+      "datePublished": "2021",
+      "byArtist": [
+        {
+          "@type": "MusicArtist",
+          "name": "Click"
+        },
+        {
+          "@type": "MusicArtist",
+          "name": "MdBeatz"
+        }
+      ]
+    },
+    {
+      "@type": "MusicAlbum",
+      "name": "Inima Romana",
+      "datePublished": "2024",
+      "byArtist": [
+        {
+          "@type": "MusicArtist",
+          "name": "Click"
+        },
+        {
+          "@type": "MusicArtist",
+          "name": "Găvrilă"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
 </head>
 
 <body class="font-sans antialiased bg-gray-100">
 
-<livewire:header />
+    <livewire:header />
 
-    <main class="container px-4 py-8 mx-auto">
-        <h1 class="mb-6 text-3xl font-bold text-gray-800">Albume</h1>
-@if(session('error'))
-    <div class="relative px-4 py-3 text-green-700 bg-green-100 border border-green-400 rounded" role="alert">
-        <strong class="font-bold">Eroare:</strong>
-        <span class="block sm:inline">{{ session('error') }}</span>
-    </div>
-@endif
+    <main class="container px-4 py-12 mx-auto">
+        <div class="max-w-2xl mx-auto overflow-hidden bg-white shadow-2xl rounded-3xl">
+            <div class="p-8 md:p-12">
+                <h1 class="mb-6 text-3xl font-bold text-center text-gray-800 md:text-4xl">Acces Premium</h1>
+                
+                <div class="mb-8 text-center">
+                    <p class="mb-4 text-lg text-gray-700">
+                        Pentru acces complet la întreaga colecție de videoclipuri,
+                        inclusiv cele mai recente lansări și PREMIERE exclusive, abonează-te pentru doar
+                    </p>
+                    <p class="text-2xl font-semibold text-blue-500">9,99 lei/ lună</p>
+                </div>
 
+                @if (Route::has('login'))
+                    <div class="mb-8">
+                        <livewire:welcome.navigation />
+                    </div>
+                @endif
 
-        <div class="overflow-hidden bg-white rounded-lg shadow-xl">
-            <div class="p-6">
-                <livewire:album-list />
+                <div class="flex justify-center">
+                    <a href="{{ route('login.google') }}" class="flex items-center justify-center px-6 py-3 text-gray-700 transition duration-300 ease-in-out bg-white border border-gray-300 rounded-lg shadow-md hover:bg-gray-50 hover:text-blue-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="mr-3 bi bi-google" viewBox="0 0 16 16">
+                            <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
+                        </svg>
+                        <span class="text-base font-medium">Sign in with Google</span>
+                    </a>
+                </div>
             </div>
         </div>
     </main>
+
 
     <footer class="py-8 text-white bg-gray-800">
         <div class="container px-4 mx-auto">
@@ -153,7 +228,6 @@
         </div>
     </footer>
 
-    @livewireScripts
 </body>
 
 </html>

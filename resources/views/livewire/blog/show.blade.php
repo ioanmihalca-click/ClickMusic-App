@@ -54,7 +54,7 @@
             @foreach($recommendedPosts as $post)
                 <article class="overflow-hidden transition-all duration-300 bg-white shadow-lg group rounded-2xl hover:shadow-xl">
                     <a href="{{ route('blog.show', $post->slug) }}" class="block">
-                        <div class="relative aspect-w-16 aspect-h-9">
+                        <div class="relative overflow-hidden aspect-w-16 aspect-h-9">
                             @if ($post->featured_image)
                                 <img 
                                     src="{{ asset('storage/' . $post->featured_image) }}" 
