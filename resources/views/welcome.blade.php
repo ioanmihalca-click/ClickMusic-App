@@ -197,7 +197,7 @@
                         </svg>
                     </div>
                 </div>
-                <h4 class="mb-6 text-2xl font-semibold text-center text-gray-800">
+                <h4 class="mb-6 text-sm font-semibold text-center text-gray-800 md:text-2xl">
                     Click - Mă răcoresc (feat. Mihai Stanciuc)
                 </h4>
             </div>
