@@ -138,7 +138,7 @@
             </div>
         @else
             <!-- Card -->
-            <div class="w-full p-8 text-center transition-transform transform border border-gray-200 shadow-md sm:w-80 md:w-64 lg:w-72 rounded-xl hover:shadow-xl hover:scale-105">
+            <div class="w-full p-8 text-center transition-transform transform bg-white border border-gray-200 shadow-md sm:w-80 md:w-64 lg:w-72 rounded-xl hover:shadow-xl hover:scale-105">
                 <h4 class="text-lg font-medium text-gray-800">Lunar</h4>
                 <div class="mt-5 text-5xl font-bold text-blue-500">
                     <span class="text-2xl font-bold align-top">Lei</span>
@@ -152,7 +152,7 @@
             <!-- End Card -->
 
             <!-- Card -->
-            <div class="w-full p-8 text-center transition-transform transform border border-gray-200 shadow-md sm:w-80 md:w-64 lg:w-72 rounded-xl hover:shadow-xl hover:scale-105">
+            <div class="w-full p-8 text-center transition-transform transform bg-white border border-gray-200 shadow-md sm:w-80 md:w-64 lg:w-72 rounded-xl hover:shadow-xl hover:scale-105">
                 <h4 class="text-lg font-medium text-gray-800">Anual</h4>
                 <div class="mt-5 text-5xl font-bold text-blue-500">
                     <span class="text-2xl font-bold align-top">Lei</span>
