@@ -183,7 +183,7 @@
             </section>
 
 
-            <section class="mb-16 overflow-hidden transition-all duration-300 transform shadow-lg bg-gradient-to-t from-blue-200 to-white rounded-3xl hover:shadow-2xl">
+            <section class="mb-16 overflow-hidden transition-all duration-300 transform shadow-lg bg-gradient-to-t from-blue-500 to-white rounded-3xl hover:shadow-2xl">
 
                 <!--Cea mai recentă piesă -->
                 <div class="p-4">
