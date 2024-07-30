@@ -59,6 +59,7 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+
     <!-- Additional Styles -->
     <style>
         /* Custom scrollbar styling */
