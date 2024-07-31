@@ -15,7 +15,7 @@
     <meta property="og:title" content="Click Music - Albume Hip-Hop, Reggae și Soul">
     <meta property="og:description"
         content="Explorează colecția de albume a artistului Click - hip-hop, reggae și soul direct din inima României.">
-    <meta property="og:image" content="{{ asset('img/ClickMusic-OG.jpg') }}">
+    <meta property="og:image" content="{{ asset('img/ClickMusic-OG-Magazin.jpg') }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
 
@@ -51,21 +51,39 @@
         }
     </style>
 
-    <!-- Schema Markup -->
-    <script type="application/ld+json">
+   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    @foreach ($albums as $album)
     {
-      "@context": "https://schema.org",
-      "@type": "MusicArtist",
-      "name": "Click",
-      "description": "Artist de muzică hip-hop, reggae și soul din Baia Mare, România",
-      "image": "{{ asset('img/ClickMusic-OG.jpg') }}",
-      "url": "https://clickmusic.ro",
-      "genre": ["Hip-Hop", "Reggae", "Soul"],
-      "sameAs": [
-        "https://youtube.com/clickmusicromania"
-      ]
-    }
-    </script>
+      "@type": "ListItem",
+      "position": {{ $loop->index + 1 }},
+      "item": {
+        "@type": "MusicAlbum",
+        "name": "{{ $album->titlu }}",
+        "byArtist": {
+          "@type": "MusicArtist",
+          "name": "Click"
+        },
+        "image": "{{ $album->coverUrl }}",
+        "datePublished": "{{ $album->data_lansare->format('Y-m-d') }}",
+        "genre": "{{ $album->gen_muzical }}",
+        "numTracks": {{ $album->numar_trackuri }},
+        "offers": {
+          "@type": "Offer",
+          "price": "{{ $album->pret }}",
+          "priceCurrency": "RON",
+          "url": "{{ route('album.show', $album->slug) }}",
+          "availability": "https://schema.org/InStock" 
+        }
+      }
+    }@if (!$loop->last),@endif
+    @endforeach
+  ]
+}
+</script>
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-34NT57GG5F"></script>

@@ -15,7 +15,7 @@
     <meta property="og:title" content="Click Music - Albume Hip-Hop, Reggae, Soul">
     <meta property="og:description"
         content="Explorează colecția de albume a artistului Click - Hip-Hop, Reggae si Soul direct din inima României.">
-    <meta property="og:image" content="{{ asset('img/ClickMusic-OG.jpg') }}">
+    <meta property="og:image" content="{{ asset('img/ClickMusic-OG-Magazin.jpg') }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
 
@@ -36,19 +36,29 @@
 
     <!-- Schema Markup -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "MusicArtist",
-      "name": "Click",
-      "description": "Artist de muzică hip-hop, reggae si soul din Baia Mare, România",
-      "image": "{{ asset('img/ClickMusic-OG.jpg') }}",
-      "url": "https://clickmusic.ro",
-      "genre": ["Hip-Hop", "Reggae", "Soul"],
-      "sameAs": [
-        "https://youtube.com/clickmusicromania"
-      ]
-    }
-    </script>
+{
+  "@context": "https://schema.org",
+  "@type": "MusicAlbum",
+  "name": "{{ $album->titlu }}",  // Titlul albumului
+  "byArtist": {
+    "@type": "MusicArtist",
+    "name": "Click" 
+  },
+  "description": "{{ $album->descriere }}",  // Descrierea albumului
+  "image": "{{ $album->coverUrl }}", // URL-ul imaginii de copertă
+  "datePublished": "{{ $album->data_lansare->format('Y-m-d') }}", // Data lansării
+  "genre": "{{ $album->gen_muzical }}", // Genul muzical
+  "numTracks": {{ $album->numar_trackuri }}, // Numărul de piese
+  "offers": {
+    "@type": "Offer",
+    "price": "{{ $album->pret }}",
+    "priceCurrency": "RON",
+    "url": "{{ route('album.show', $album->slug) }}", // URL-ul paginii albumului
+    "availability": "https://schema.org/InStock" 
+  }
+}
+</script>
+
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-34NT57GG5F"></script>
