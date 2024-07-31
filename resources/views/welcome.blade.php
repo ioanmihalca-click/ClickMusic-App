@@ -160,7 +160,7 @@
 <p class="mb-6 text-lg leading-relaxed text-gray-700">
     Salut! Sunt Click, un artist de muzică hip-hop reggae din inima României. 
     Vă invit să mă cunoașteți răsfoind <a href="/blog" class="font-semibold text-blue-500 hover:text-blue-600">Blogul</a> sau ascultându-mi muzica gratuit pe <a href="https://youtube.com/clickmusicromania" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-500 hover:text-blue-600">YouTube</a>. Puteți să mă susțineți prin achiziționarea de albume digitale și tricouri din 
-    <a href="/accespremium" class="font-semibold text-blue-500 hover:text-blue-600">Magazin</a> sau prin <a href="/magazin" class="font-semibold text-blue-500 hover:text-blue-600">Acces Premium</a>.
+    <a href="/magazin" class="font-semibold text-blue-500 hover:text-blue-600">Magazin</a> sau prin <a href="/accespremium" class="font-semibold text-blue-500 hover:text-blue-600">Acces Premium</a>.
 </p>
 
 
