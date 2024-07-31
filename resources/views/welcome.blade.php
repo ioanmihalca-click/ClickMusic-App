@@ -22,8 +22,8 @@
     <!-- Meta Tags for Click Music Streaming App -->
     <meta name="description"
         content="Click Music - Muzica, Hip-Hop, Reggae, Soul - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul - Click" />
-    <meta name="keywords"
-        content="Click Music, streaming video, hip-hop, reggae, soul, Click, Baia Mare, Maramureș, Romania, muzică, videoclipuri muzicale, artist, streaming, audio, video, videoclipuri exclusive" />
+  <meta name="keywords" content="Click, Click Music, muzică românească, hip hop românesc, reggae românesc, muzică Baia Mare, Maramureș, artist independent, streaming muzică, albume digitale, videoclipuri muzicale, download MP3, concerte Click, versuri Click, muzică nouă, muzică underground, muzică alternativă, muzică independentă, muzică conștientă, muzică pozitivă, muzică de vară, muzică de petrecere, muzică de relaxare, artist reggae din România, albume hip-hop de ascultat în 2024, muzică pentru relaxare" />
+
 
     <!-- Open Graph Tags for Social Media Sharing -->
     <meta property="og:title" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
