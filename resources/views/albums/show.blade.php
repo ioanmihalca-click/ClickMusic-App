@@ -46,7 +46,14 @@
   },
   "description": "{{ $album->descriere }}",  // Descrierea albumului
   "image": "{{ $album->coverUrl }}", // URL-ul imaginii de copertă
-  "datePublished": "{{ $album->data_lansare->format('Y-m-d') }}", // Data lansării
+  "datePublished": "@php
+                     if($album->data_lansare instanceof \Carbon\Carbon) {
+                         echo $album->data_lansare->format('Y-m-d');
+                     } else {
+                         // Dacă data_lansare este deja un string, îl afișăm direct
+                         echo $album->data_lansare;
+                     }
+                  @endphp", 
   "genre": "{{ $album->gen_muzical }}", // Genul muzical
   "numTracks": {{ $album->numar_trackuri }}, // Numărul de piese
   "offers": {
