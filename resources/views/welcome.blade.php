@@ -21,7 +21,7 @@
 
     <!-- Meta Tags for Click Music Streaming App -->
     <meta name="description"
-        content="Click Music - Muzica, Hip-Hop, Soul, Reggae - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul - Click" />
+        content="Click Music - Muzica, Hip-Hop, Reggae, Soul - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul - Click" />
     <meta name="keywords"
         content="Click Music, streaming video, hip-hop, reggae, soul, Click, Baia Mare, Maramureș, Romania, muzică, videoclipuri muzicale, artist, streaming, audio, video, videoclipuri exclusive" />
 
@@ -31,11 +31,11 @@
         content="Click Music - Muzica, Hip-Hop, Soul, Reggae - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul - Click" />
     <meta property="og:image" content="{{ asset('img/ClickMusic-OG.jpg') }}" />
     <meta property="og:image:type" content="image/jpg" />
-    <meta property="og:image:alt" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
+    <meta property="og:image:alt" content="Click Music - Muzica, Hip-hop, Reggae și Soul" />
     <meta property="og:url" content="https://clickmusic.ro" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ro_RO" />
-    <meta property="og:site_name" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
+    <meta property="og:site_name" content="Click Music - Muzica, Hip-hop, Reggae și Soul" />
 
 
     <link rel="canonical" href="https://clickmusic.ro" />
@@ -47,7 +47,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logo.png') }}" type="image/x-icon" />
 
 
-    <title>Click Music - Muzica, Hip-Hop, Soul, Reggae</title>
+    <title>Click Music - Muzica, Hip-Hop, Reggae, Soul</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -79,8 +79,8 @@
   "@context": "https://schema.org",
   "@type": "MusicArtist",
   "name": "Click",
-  "description": "Click este un artist de muzică hip-hop, soul și reggae din Baia-Mare, Maramureș.",
-  "genre": ["Hip-Hop", "Soul", "Reggae"],
+  "description": "Click este un artist de muzică hip-hop, reggae și soul din Baia-Mare, Maramureș.",
+  "genre": ["Hip-Hop", "Reggae", "Soul"],
   "url": "https://clickmusic.ro",
   "image": "{{ asset('img/ClickMusic-OG.jpg') }}",
   "sameAs": [
@@ -151,7 +151,7 @@
                 <div class="relative p-8 md:p-12">
                     <div class="absolute inset-0 bg-gradient-to-t from-blue-500 to-white opacity-10"></div>
                     <div class="relative z-10 text-center">
-                        <h1 class="mb-3 text-xl font-extrabold text-gray-900 md:text-3xl">Hip-Hop • Soul • Reggae</h1>
+                        <h1 class="mb-3 text-xl font-extrabold text-gray-900 md:text-3xl">Hip-Hop • Reggae • Soul</h1>
                         <h2 class="mb-6 text-xl text-gray-700 md:text-2xl">Bine ai venit pe platforma de streaming Click
                             Music</h2>
                         <div class="my-6 border-t border-gray-300"></div>
@@ -191,12 +191,7 @@
                         Cea mai recentă piesă
                     </h3>
                     <div class="relative px-4 mb-8 ">
-                        <div class="overflow-hidden rounded-lg shadow-lg" style="position:relative;padding-top:56.25%;">
-                            <iframe src="https://www.youtube.com/embed/8WPtQ5P-PVU?si=bdpOHOevyPob-nxH" loading="lazy"
-                                style="border:0;position:absolute;top:0;height:100%;width:100%;"
-                                allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
-                                allowfullscreen="true"></iframe>
-                        </div>
+                        <div class="overflow-hidden rounded-md shadow-sm" style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/233943/396eb18b-18eb-46d8-a6f7-279d7104d8c9?autoplay=false&loop=false&muted=false&preload=false&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div>
                     </div>
 
                     <!--Latest Blog Posts -->
@@ -231,7 +226,7 @@
                     </div>
                 </button>
                 <div x-show="open" x-transition class="p-6 md:p-8">
-                    <p class="mt-2 text-base text-black">Click este un artist de muzică hip-hop, soul și reggae
+                    <p class="mt-2 text-base text-black">Click este un artist de muzică hip-hop, reggae și soul
                         stabilit în Baia-Mare, Maramureș. Stilul său muzical este variat, bucurându-se de toate
                         genurile muzicale fără a se limita la unul singur.</p>
                     <p class="mt-2 text-base text-black">A început călătoria muzicală la vârsta de 13 ani, când și-a
@@ -430,7 +425,7 @@
             <div class="flex flex-wrap justify-between">
                 <div class="w-full mb-6 md:w-1/3 md:mb-0">
                     <h3 class="mb-2 text-xl font-bold">Click Music</h3>
-                    <p class="text-gray-400">Hip-Hop, Soul și Reggae din inima României</p>
+                    <p class="text-gray-400">Hip-Hop, Reggae și Soul din inima României</p>
                 </div>
                 <div class="w-full mb-6 md:w-1/3 md:mb-0">
                     <h3 class="mb-2 text-xl font-bold">Link-uri rapide</h3>

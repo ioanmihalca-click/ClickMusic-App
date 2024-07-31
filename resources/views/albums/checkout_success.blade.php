@@ -9,13 +9,13 @@
 
     <!-- Meta Tags -->
     <meta name="description"
-        content="Descoperă albumele artistului Click - muzică hip-hop, soul și reggae autentică din inima României. Streaming și achiziție de albume digitale.">
+        content="Descoperă albumele artistului Click - muzică Hip-Hop, Reggae, Soul autentică din inima României. Streaming și achiziție de albume digitale.">
     <meta name="keywords" content="Click Music, hip-hop românesc, soul, reggae, albume muzicale, artist român, Baia Mare">
 
     <!-- Open Graph Tags -->
-    <meta property="og:title" content="Click Music - Albume Hip-Hop, Soul și Reggae">
+    <meta property="og:title" content="Click Music - Albume Hip-Hop, Reggae, Soul">
     <meta property="og:description"
-        content="Explorează colecția de albume a artistului Click - hip-hop, soul și reggae direct din inima României.">
+        content="Explorează colecția de albume a artistului Click - Hip-Hop, Reggae, si Soul direct din inima României.">
     <meta property="og:image" content="{{ asset('img/ClickMusic-OG.jpg') }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
@@ -41,10 +41,10 @@
       "@context": "https://schema.org",
       "@type": "MusicArtist",
       "name": "Click",
-      "description": "Artist de muzică hip-hop, soul și reggae din Baia Mare, România",
+      "description": "Artist de muzică Hip-Hop, Reggae si Soul din Baia Mare, România",
       "image": "{{ asset('img/ClickMusic-OG.jpg') }}",
       "url": "https://clickmusic.ro",
-      "genre": ["Hip-Hop", "Soul", "Reggae"],
+      "genre": ["Hip-Hop", "Reggae", "Soul"],
       "sameAs": [
         "https://youtube.com/clickmusicromania"
       ]
@@ -114,7 +114,7 @@
             <div class="flex flex-wrap justify-between">
                 <div class="w-full mb-6 md:w-1/3 md:mb-0">
                     <h3 class="mb-2 text-xl font-bold">Click Music</h3>
-                    <p class="text-gray-400">Hip-Hop, Soul și Reggae din inima României</p>
+                    <p class="text-gray-400">Hip-Hop, Reggae și Soul din inima României</p>
                 </div>
                 <div class="w-full mb-6 md:w-1/3 md:mb-0">
                     <h3 class="mb-2 text-xl font-bold">Link-uri rapide</h3>

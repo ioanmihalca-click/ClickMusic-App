@@ -94,7 +94,7 @@
             <div class="flex flex-wrap justify-between">
                 <div class="w-full mb-6 md:w-1/3 md:mb-0">
                     <h3 class="mb-2 text-xl font-bold">Click Music</h3>
-                    <p class="text-gray-400">Hip-Hop, Soul și Reggae din inima României</p>
+                    <p class="text-gray-400">Hip-Hop, Reggae și Soul din inima României</p>
                 </div>
                 <div class="w-full mb-6 md:w-1/3 md:mb-0">
                     <h3 class="mb-2 text-xl font-bold">Link-uri rapide</h3>

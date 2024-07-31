@@ -18,17 +18,17 @@
 
     <!-- Meta Tags for Click Music Blog -->
     <meta name="description"
-        content="Blog-ul Click Music - Noutăți, articole și povești din lumea hip-hop, soul și reggae" />
+        content="Blog-ul Click Music - Noutăți, articole și povești din lumea hip-hop, reggae și soul" />
     <meta name="keywords"
         content="Click Music, blog, hip-hop, reggae, soul, Click, Baia Mare, Maramureș, Romania, articole muzicale, noutăți muzicale" />
 
     <!-- Open Graph Tags for Social Media Sharing -->
-    <meta property="og:title" content="Blog Click Music - Noutăți din Hip-Hop, Soul și Reggae" />
+    <meta property="og:title" content="Blog Click Music - Noutăți din Hip-Hop, Reggae si Soul" />
     <meta property="og:description"
-        content="Descoperă cele mai recente articole, noutăți și povești din lumea hip-hop, soul și reggae pe blogul lui Click" />
+        content="Descoperă cele mai recente articole, noutăți și povești din lumea Hip-Hop, Reggae si Soul pe blogul lui Click" />
     <meta property="og:image" content="{{ asset('ClickMusic-Blog-OG.jpg') }}" />
     <meta property="og:image:type" content="image/jpg" />
-    <meta property="og:image:alt" content="Blog Click Music - Noutăți din Hip-Hop, Soul și Reggae" />
+    <meta property="og:image:alt" content="Blog Click Music - Noutăți din Hip-Hop, Reggae si Soul" />
     <meta property="og:url" content="https://clickmusic.ro/blog" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ro_RO" />
@@ -43,7 +43,7 @@
     <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logo.png') }}" type="image/x-icon" />
 
-    <title>Blog Click Music - Noutăți din Hip-Hop, Soul și Reggae</title>
+    <title>Blog Click Music - Noutăți din Hip-Hop, Reggae și Soul</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -77,7 +77,7 @@
         "name": "Click Music Blog",
         "url": "https://clickmusic.ro/blog",
         "image": "{{ asset('img/ClickMusic-Blog-OG.jpg') }}",
-        "description": "Blog-ul oficial Click Music cu articole, noutăți și povești din lumea hip-hop, soul și reggae.",
+        "description": "Blog-ul oficial Click Music cu articole, noutăți și povești din lumea hip-hop, reggae și soul.",
         "publisher": {
             "@type": "Organization",
             "name": "Click Music",
@@ -104,7 +104,7 @@
             <div class="flex flex-wrap justify-between">
                 <div class="w-full mb-6 md:w-1/3 md:mb-0">
                     <h3 class="mb-2 text-xl font-bold">Click Music</h3>
-                    <p class="text-gray-400">Hip-Hop, Soul și Reggae din inima României</p>
+                    <p class="text-gray-400">Hip-Hop, Reggae și Soul din inima României</p>
                 </div>
                 <div class="w-full mb-6 md:w-1/3 md:mb-0">
                     <h3 class="mb-2 text-xl font-bold">Link-uri rapide</h3>
