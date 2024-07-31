@@ -90,8 +90,8 @@
           "@type": "MusicGroup",
           "name": "Click"
         },
-        "image": "https://clickmusic.ro/storage/albume/coperte/trup-si-suflet.jpg",
-        "datePublished": "2017-07-29",
+        "image": "https://clickmusic.ro/storage/albume/coperte/01J41ZS2EGHTMYBTV1579HBY0M.png",
+        "datePublished": "2017-11-24",
         "genre": "Hip Hop, Reggae, Soul",
         "numTracks": 24,
         "offers": {
@@ -113,9 +113,9 @@
           "@type": "MusicGroup",
           "name": "Click"
         },
-        "image": "https://clickmusic.ro/storage/albume/coperte/lume-draga.jpg",
-        "datePublished": "2020-01-01",
-        "genre": "Hip Hop",
+        "image": "https://clickmusic.ro/storage/albume/coperte/01J420HTMWVRJQBFXEQ0AFBY85.jpg",
+        "datePublished": "2020-11-24",
+        "genre": "Hip Hop, Reggae, Soul",
         "numTracks": 27,
         "offers": {
           "@type": "Offer",
@@ -136,8 +136,8 @@
           "@type": "MusicGroup",
           "name": "Click"
         },
-        "image": "https://clickmusic.ro/storage/albume/coperte/dulce-si-amar.jpg",
-        "datePublished": "2021-01-01",
+        "image": "https://clickmusic.ro/storage/albume/coperte/01J41VW85010WQGXNRBBNJGHDW.jpg",
+        "datePublished": "2018-01-01",
         "albumProductionType": "EP",
         "genre": "Hip Hop, Soul",
         "numTracks": 8,
@@ -145,7 +145,7 @@
           "@type": "Offer",
           "price": "25.99",
           "priceCurrency": "RON",
-          "url": "https://clickmusic.ro/album/dulce-si-amar",
+          "url": "https://clickmusic.ro/album/dulce-si-amar-ep",
           "availability": "https://schema.org/InStock"
         }
       }
@@ -166,7 +166,7 @@
             "name": "MdBeatz"
           }
         ],
-        "image": "https://clickmusic.ro/storage/albume/coperte/culori-ep.jpg",
+        "image": "https://clickmusic.ro/storage/albume/coperte/01J41Z5VQFSCJ2ZGK8SXR7WWG7.jpg",
         "datePublished": "2021-06-15",
         "albumProductionType": "EP",
         "genre": "Hip Hop",
@@ -180,36 +180,27 @@
         }
       }
     },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "MusicAlbum",
-        "name": "Inima Romana",
-        "byArtist": [
-          {
-            "@type": "MusicArtist",
-            "name": "Click"
-          },
-          {
-            "@type": "MusicArtist",
-            "name": "Găvrilă"
-          }
-        ],
-        "image": "https://clickmusic.ro/storage/albume/coperte/inima-romana.jpg",
-        "datePublished": "2024-03-21",
-        "genre": "Hip Hop",
-        "numTracks": 15,
-        "offers": {
-          "@type": "Offer",
-          "price": "49.99",
-          "priceCurrency": "RON",
-          "url": "https://clickmusic.ro/album/inima-romana",
-          "availability": "https://schema.org/InStock"
+   {
+            "@type": "ListItem",
+            "position": 5,
+            "item": {
+                "@type": "MusicAlbum",
+                "name": "Inima Română",
+                "byArtist": [
+                    {
+                        "@type": "MusicArtist",
+                        "name": "Click"
+                    },
+                    {
+                        "@type": "MusicArtist",
+                        "name": "Găvrilă"
+                    }
+                ],
+                "datePublished": "2024-12-01" 
+               
+            }
         }
-      }
-    }
-  ]
+    ]
 }
 </script>
 
