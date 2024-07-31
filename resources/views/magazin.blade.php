@@ -51,39 +51,169 @@
         }
     </style>
 
-   <script type="application/ld+json">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ItemList",
+  "@type": "MusicStore",
+  "name": "Click Music",
+  "image": "https://clickmusic.ro/img/ClickMusic-OG-Site.jpg",
+  "url": "https://clickmusic.ro/magazin",
+  "description": "Magazinul oficial al artistului Click, unde poți găsi albume digitale și tricouri.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Click Music"
+  },
+  "sameAs": [
+    "https://youtube.com/clickmusicromania",
+    "https://www.facebook.com/clickmusicromania",
+    "https://www.instagram.com/clickmusic1/"
+  ],
+  "knowsAbout": {
+    "@type": "MusicGroup",
+    "name": "Click",
+    "description": "Click este un artist de muzică hip-hop și reggae din Baia-Mare, Maramureș.",
+    "genre": ["Hip-Hop", "Reggae", "Soul"],
+    "url": "https://clickmusic.ro",
+    "image": "https://clickmusic.ro/img/ClickMusic-OG-Magazin.jpg",
+    "sameAs": [
+      "https://youtube.com/clickmusicromania"
+    ]
+  },
   "itemListElement": [
-    @foreach ($albums as $album)
     {
       "@type": "ListItem",
-      "position": {{ $loop->index + 1 }},
+      "position": 1,
       "item": {
         "@type": "MusicAlbum",
-        "name": "{{ $album->titlu }}",
+        "name": "Trup și Suflet",
         "byArtist": {
-          "@type": "MusicArtist",
+          "@type": "MusicGroup",
           "name": "Click"
         },
-        "image": "{{ $album->coverUrl }}",
-        "datePublished": "{{ $album->data_lansare->format('Y-m-d') }}",
-        "genre": "{{ $album->gen_muzical }}",
-        "numTracks": {{ $album->numar_trackuri }},
+        "image": "https://clickmusic.ro/storage/albume/coperte/trup-si-suflet.jpg",
+        "datePublished": "2017-07-29",
+        "genre": "Hip Hop, Reggae, Soul",
+        "numTracks": 24,
         "offers": {
           "@type": "Offer",
-          "price": "{{ $album->pret }}",
+          "price": "35.99",
           "priceCurrency": "RON",
-          "url": "{{ route('album.show', $album->slug) }}",
-          "availability": "https://schema.org/InStock" 
+          "url": "https://clickmusic.ro/album/trup-si-suflet",
+          "availability": "https://schema.org/InStock"
         }
       }
-    }@if (!$loop->last),@endif
-    @endforeach
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "MusicAlbum",
+        "name": "Lume Dragă",
+        "byArtist": {
+          "@type": "MusicGroup",
+          "name": "Click"
+        },
+        "image": "https://clickmusic.ro/storage/albume/coperte/lume-draga.jpg",
+        "datePublished": "2020-01-01",
+        "genre": "Hip Hop",
+        "numTracks": 27,
+        "offers": {
+          "@type": "Offer",
+          "price": "35.99",
+          "priceCurrency": "RON",
+          "url": "https://clickmusic.ro/album/lume-draga",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "MusicAlbum",
+        "name": "Dulce și Amar",
+        "byArtist": {
+          "@type": "MusicGroup",
+          "name": "Click"
+        },
+        "image": "https://clickmusic.ro/storage/albume/coperte/dulce-si-amar.jpg",
+        "datePublished": "2021-01-01",
+        "albumProductionType": "EP",
+        "genre": "Hip Hop, Soul",
+        "numTracks": 8,
+        "offers": {
+          "@type": "Offer",
+          "price": "25.99",
+          "priceCurrency": "RON",
+          "url": "https://clickmusic.ro/album/dulce-si-amar",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "MusicAlbum",
+        "name": "Culori EP",
+        "byArtist": [
+          {
+            "@type": "MusicArtist",
+            "name": "Click"
+          },
+          {
+            "@type": "MusicArtist",
+            "name": "MdBeatz"
+          }
+        ],
+        "image": "https://clickmusic.ro/storage/albume/coperte/culori-ep.jpg",
+        "datePublished": "2021-06-15",
+        "albumProductionType": "EP",
+        "genre": "Hip Hop",
+        "numTracks": 7,
+        "offers": {
+          "@type": "Offer",
+          "price": "25.99",
+          "priceCurrency": "RON",
+          "url": "https://clickmusic.ro/album/culori-ep",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "MusicAlbum",
+        "name": "Inima Romana",
+        "byArtist": [
+          {
+            "@type": "MusicArtist",
+            "name": "Click"
+          },
+          {
+            "@type": "MusicArtist",
+            "name": "Găvrilă"
+          }
+        ],
+        "image": "https://clickmusic.ro/storage/albume/coperte/inima-romana.jpg",
+        "datePublished": "2024-03-21",
+        "genre": "Hip Hop",
+        "numTracks": 15,
+        "offers": {
+          "@type": "Offer",
+          "price": "49.99",
+          "priceCurrency": "RON",
+          "url": "https://clickmusic.ro/album/inima-romana",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    }
   ]
 }
 </script>
+
+
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-34NT57GG5F"></script>
