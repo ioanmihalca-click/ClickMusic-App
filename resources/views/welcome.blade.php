@@ -145,11 +145,14 @@
 
     <main class="container px-4 py-12 mx-auto">
         <div class="max-w-2xl mx-auto">
-        <!-- Hero Section -->
+           <!-- Hero Section -->
 <section class="mb-16 overflow-hidden transition-all duration-300 transform bg-white shadow-lg rounded-3xl hover:shadow-2xl">
     <div class="relative">
+        <!-- Background gradient și opacitate -->
+        <div class="absolute inset-0 bg-gradient-to-t from-blue-500 to-white opacity-10"></div>
+        
         <!-- Imagine care ocupă întreaga lățime a cardului -->
-        <div class="w-full">
+        <div class="relative w-full">
             <img src="/img/ClickMusic-OG-Site.jpg" alt="Click Music" class="object-cover w-full h-full">
         </div>
         
