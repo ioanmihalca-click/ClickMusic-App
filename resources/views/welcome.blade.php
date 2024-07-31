@@ -152,7 +152,7 @@
         <div class="absolute inset-0 bg-gradient-to-t from-blue-500 to-white opacity-10"></div>
         
         <!-- Imagine care ocupă întreaga lățime a cardului -->
-        <div class="relative w-full bg-white shadow">
+        <div class="relative w-full">
             <img src="/img/ClickMusic-OG-Site.jpg" alt="Click Music" class="object-cover w-full h-full">
         </div>
         
