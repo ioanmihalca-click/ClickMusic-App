@@ -2,6 +2,8 @@
 
 namespace App\Filament\Widgets;
 
+use App\Models\Album;
+use App\Models\Post;
 use App\Models\User;
 use App\Models\Video;
 use App\Models\Newsletter;
@@ -17,13 +19,19 @@ class StatsOverview extends BaseStatsOverviewWidget
             ->color('primary')
             ->icon('heroicon-o-users'),
             Stat::make('Newsletter Subscribers', Newsletter::count())
-            ->color('info') // You can choose a different color if you prefer
+            ->color('info') 
             ->icon('heroicon-o-envelope'),
+            Stat::make('Total Blog Posts', Post::count())
+                ->color('primary') 
+                ->icon('heroicon-o-document-text'),
             Stat::make('Total Videos', Video::count())
             ->color('success')
             ->icon('heroicon-o-film'),
+            Stat::make('Albume in Magazin', Album::count())
+                ->color('success') 
+                ->icon('heroicon-o-musical-note'), 
             Stat::make('Most Active User', function () {
-                return User::withCount('comments') // Assuming you have a 'comments' relationship on the User model
+                return User::withCount('comments') 
                     ->orderBy('comments_count', 'desc')
                     ->first()?->name ?? 'N/A';
             }),
