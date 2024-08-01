@@ -24,4 +24,16 @@ class NewsletterController extends Controller
 
         return redirect()->back()->with('success', 'V-ați abonat cu succes la newsletter!'); 
     }
+
+    public function unsubscribe(Request $request)
+    {
+        $email = $request->query('email');
+    
+        if ($email) {
+            Newsletter::where('recipient_email', $email)->delete();
+            return view('newsletter.unsubscribe', ['success' => 'Te-ai dezabonat cu succes de la newsletter!']);
+        }
+    
+        return view('newsletter.unsubscribe', ['error' => 'Adresa de email nu a fost găsită.']);
+    }
 }

@@ -39,6 +39,10 @@ class NewsletterNotification extends Notification implements ShouldQueue
 
     public function toMail($notifiable)
     {
+
+        $unsubscribeUrl = route('newsletter.unsubscribe', ['email' => $this->newsletter->recipient_email]); 
+        
+        
         return (new MailMessage)
             ->from('contact@clickmusic.ro', 'Click Music Ro')
             ->subject('Piesa noua de la Click!')
@@ -48,7 +52,9 @@ class NewsletterNotification extends Notification implements ShouldQueue
             ->action('Asculta pe Youtube', url($this->url))
             ->line('Astept cu drag sa ma saluti si sa-mi spui parerea ta despre piesa intr-un comentariu. Sa ne auzim cu bine!')
             ->salutation(new HtmlString('Cu respect,<br>Click<br><br>
-                <a href="https://www.youtube.com/clickmusicromania" style="color: #DC2626; text-decoration: none;" target="_blank" rel="noopener noreferrer">YouTube Click Music</a> | 
-                <a href="https://clickmusic.ro" style="color: #3B82F6; text-decoration: none;" target="_blank" rel="noopener noreferrer">clickmusic.ro</a>'));
-    }
+            <a href="https://www.youtube.com/clickmusicromania" style="color: #DC2626; text-decoration: none;" target="_blank" rel="noopener noreferrer">YouTube Click Music</a> | 
+            <a href="https://clickmusic.ro" style="color: #3B82F6; text-decoration: none;" target="_blank" rel="noopener noreferrer">clickmusic.ro</a><br><br>
+            <p style="font-size: 12px; color: #888888; text-align: center;">Dacă nu mai dorești să primești newslettere, te poți <a href="' . $unsubscribeUrl . '" style="color: #3869D4;">dezabona aici</a>.</p>'));
+           
+            }
 }

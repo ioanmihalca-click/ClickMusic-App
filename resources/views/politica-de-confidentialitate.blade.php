@@ -39,51 +39,143 @@
         <div class="relative min-h-screen p-3 flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
            
 
-        <div class="max-w-5xl p-6 mb-4 bg-white rounded-lg shadow-lg">
-            <h1 class="mb-2 text-2xl font-extrabold text-gray-900 md:text-3xl ">Politică de Confidențialitate</h1>
-            <p class="mb-4"><strong>Data Intrării în Vigoare:</strong> 25.05.2024</p>
-            <h2 class="mb-2 text-2xl font-semibold">1. Introducere</h2>
-            <p class="mb-4">Bun venit la Click Music Streaming App. Ne angajăm să protejăm informațiile dvs. personale și dreptul dvs. la confidențialitate. Dacă aveți întrebări sau nelămuriri cu privire la această notificare de confidențialitate sau practicile noastre în ceea ce privește informațiile dvs. personale, vă rugăm să ne contactați la <a href="mailto:contact@clickmusic.ro" class="text-blue-500">contact@clickmusic.ro</a>.</p>
-            <h2 class="mb-2 text-2xl font-semibold">2. Informațiile pe Care le Colectăm</h2>
-            <p class="mb-4">Când utilizați Google Login pentru a accesa aplicația noastră, putem colecta următoarele informații:</p>
-            <ul class="mb-4 list-disc list-inside">
-                <li>Informații din Profilul Google: Acestea includ numele dvs. și adresa de email.</li>
-            </ul>
-            <h2 class="mb-2 text-2xl font-semibold">3. Cum Folosim Informațiile Dvs.</h2>
-            <p class="mb-4">Utilizăm informațiile colectate în următoarele moduri:</p>
-            <ul class="mb-4 list-disc list-inside">
-                <li><strong>Pentru a Furniza și Menține Serviciul Nostru:</strong> Pentru a gestiona contul dvs. și pentru a vă furniza serviciile solicitate.</li>
-                <li><strong>Pentru a Comunica cu Dvs.:</strong> Pentru a vă contacta cu actualizări, notificări și alte informații legate de utilizarea aplicației noastre.</li>
-            </ul>
-            <h2 class="mb-2 text-2xl font-semibold">4. Partajarea Informațiilor Dvs.</h2>
-            <p class="mb-4">Nu partajăm informațiile dvs. personale cu terțe părți, cu excepția următoarelor situații:</p>
-            <ul class="mb-4 list-disc list-inside">
-                <li><strong>Cu Consimțământul Dvs.:</strong> Putem partaja informațiile dvs. cu terțe părți dacă ne-ați dat consimțământul explicit pentru a face acest lucru.</li>
-                <li><strong>Din Motive Legale:</strong> Putem dezvălui informațiile dvs. dacă acest lucru este cerut de lege, cum ar fi pentru a respecta o citație sau un proces legal similar.</li>
-                <li><strong>Pentru a Proteja Drepturile și Siguranța:</strong> Putem dezvălui informațiile dvs. pentru a aplica termenii și politicile noastre, pentru a proteja drepturile, confidențialitatea, siguranța sau proprietatea noastră, a utilizatorilor noștri și a publicului.</li>
-            </ul>
-            <h2 class="mb-2 text-2xl font-semibold">5. Securitatea Datelor</h2>
-            <p class="mb-4">Luăm în serios securitatea datelor și implementăm măsuri tehnice și organizatorice adecvate pentru a proteja informațiile dvs. personale de accesul, utilizarea sau dezvăluirea neautorizată. Totuși, niciun sistem de transmisie prin internet sau metodă de stocare electronică nu este 100% sigur.</p>
-            <h2 class="mb-2 text-2xl font-semibold">6. Retenția Datelor</h2>
-            <p class="mb-4">Vom păstra informațiile dvs. personale atât timp cât contul dvs. este activ sau cât este necesar pentru a vă furniza serviciile noastre. De asemenea, vom păstra și utiliza informațiile dvs. după cum este necesar pentru a respecta obligațiile legale, a rezolva dispute și a aplica acordurile noastre.</p>
-            <h2 class="mb-2 text-2xl font-semibold">7. Drepturile Dvs. de Protecție a Datelor</h2>
-            <p class="mb-4">În funcție de locația dvs., puteți avea următoarele drepturi cu privire la informațiile dvs. personale:</p>
-            <ul class="mb-4 list-disc list-inside">
-                <li><strong>Dreptul de Acces:</strong> Puteți solicita o copie a informațiilor personale pe care le deținem despre dvs.</li>
-                <li><strong>Dreptul la Rectificare:</strong> Puteți solicita corectarea oricăror informații inexacte sau incomplete.</li>
-                <li><strong>Dreptul la Ștergere:</strong> Puteți solicita ștergerea informațiilor dvs. personale.</li>
-                <li><strong>Dreptul la Restricționarea Prelucrării:</strong> Puteți solicita restricționarea prelucrării informațiilor dvs. personale.</li>
-                <li><strong>Dreptul la Portabilitatea Datelor:</strong> Puteți solicita să primiți informațiile dvs. personale într-un format structurat, utilizat în mod obișnuit și care poate fi citit automat.</li>
-                <li><strong>Dreptul de a Obiecta:</strong> Puteți obiecta la prelucrarea informațiilor dvs. personale.</li>
-            </ul>
-            <p class="mb-4">Pentru a exercita aceste drepturi, vă rugăm să ne contactați la <a href="mailto:contact@clickmusic.ro" class="text-blue-500">contact@clickmusic.ro</a></p>
-            <h2 class="mb-2 text-2xl font-semibold">8. Modificări ale Politicii de Confidențialitate</h2>
-            <p class="mb-4">Putem actualiza această politică de confidențialitate din când în când pentru a reflecta schimbări în practicile noastre sau din alte motive operaționale, legale sau de reglementare. Vă vom notifica despre orice modificări semnificative prin postarea noii politici de confidențialitate pe această pagină și actualizarea datei de intrare în vigoare.</p>
-            <h2 class="mb-2 text-2xl font-semibold">9. Contactați-ne</h2>
-            <p class="mb-4">Dacă aveți întrebări despre această politică de confidențialitate sau practicile noastre de confidențialitate, vă rugăm să ne contactați la:</p>
-            <p class="mb-4"><strong>Email:</strong> <a href="mailto:contact@clickmusic.ro" class="text-blue-500">contact@clickmusic.ro</a></p>
-        </div>
-    </div>
+       <div class="max-w-5xl p-6 mb-4 bg-white rounded-lg shadow-lg">
+    <h1 class="mb-2 text-2xl font-extrabold text-gray-900 md:text-3xl ">Politică de Confidențialitate</h1>
+    <p class="mb-4"><strong>Data Intrării în Vigoare:</strong> 25.05.2024</p>
+
+    <h2 class="mb-2 text-2xl font-semibold">1. Introducere</h2>
+    <p class="mb-4">
+        Bun venit la Click Music Streaming App. Ne angajăm să protejăm informațiile dvs. personale și dreptul dvs. la confidențialitate. 
+        Dacă aveți întrebări sau nelămuriri cu privire la această politică de confidențialitate sau practicile noastre în ceea ce privește 
+        informațiile dvs. personale, vă rugăm să ne contactați la <a href="mailto:contact@clickmusic.ro" class="text-blue-500">contact@clickmusic.ro</a>.
+    </p>
+
+    <h2 class="mb-2 text-2xl font-semibold">2. Definiții</h2>
+    <ul class="mb-4 list-disc list-inside">
+        <li>
+            **"Informații Personale"** înseamnă orice informație care se referă la o persoană fizică identificată sau identificabilă.
+        </li>
+        <li>
+            **"Prelucrarea"** înseamnă orice operațiune sau set de operațiuni efectuate asupra Informațiilor Personale sau asupra seturilor de Informații Personale.
+        </li>
+        <li>
+            **"Utilizator"** înseamnă orice persoană fizică care accesează sau utilizează Serviciul nostru.
+        </li>
+    </ul>
+
+    <h2 class="mb-2 text-2xl font-semibold">3. Informațiile pe Care le Colectăm</h2>
+    <p class="mb-4">
+        Când utilizați Google Login pentru a accesa aplicația noastră, putem colecta următoarele Informații Personale:
+    </p>
+    <ul class="mb-4 list-disc list-inside">
+        <li>Informații din Profilul Google: Acestea includ numele dvs. și adresa de email.</li>
+    </ul>
+    <p class="mb-4">
+        De asemenea, putem colecta informații despre modul în care utilizați aplicația noastră, cum ar fi paginile pe care le vizitați și 
+        acțiunile pe care le efectuați. Aceste informații sunt colectate prin intermediul cookie-urilor și altor tehnologii similare.
+    </p>
+
+    <h2 class="mb-2 text-2xl font-semibold">4. Cum Folosim Informațiile Dvs.</h2>
+    <p class="mb-4">Utilizăm informațiile colectate în următoarele scopuri:</p>
+    <ul class="mb-4 list-disc list-inside">
+        <li>
+            **Pentru a Furniza și Menține Serviciul Nostru:** Pentru a gestiona contul dvs., pentru a vă furniza serviciile solicitate și pentru a 
+            îmbunătăți aplicația noastră.
+        </li>
+        <li>
+            **Pentru a Comunica cu Dvs.:** Pentru a vă contacta cu actualizări, notificări și alte informații legate de utilizarea aplicației noastre.
+        </li>
+        <li>
+            **Pentru a Personaliza Experiența Dvs.:** Pentru a vă oferi conținut și funcționalități relevante pentru dvs.
+        </li>
+    </ul>
+
+    <h2 class="mb-2 text-2xl font-semibold">5. Cookie-uri</h2>
+    <p class="mb-4">
+        Folosim cookie-uri și tehnologii similare pentru a colecta informații despre modul în care utilizați aplicația noastră și pentru a vă oferi o 
+        experiență personalizată. Puteți controla utilizarea cookie-urilor prin setările browserului dvs.
+    </p>
+
+    <h2 class="mb-2 text-2xl font-semibold">6. Partajarea Informațiilor Dvs.</h2>
+    <p class="mb-4">Nu partajăm informațiile dvs. personale cu terțe părți, cu excepția următoarelor situații:</p>
+    <ul class="mb-4 list-disc list-inside">
+        <li>
+            **Cu Consimțământul Dvs.:** Putem partaja informațiile dvs. cu terțe părți dacă ne-ați dat consimțământul explicit pentru a face acest lucru.
+        </li>
+        <li>
+            **Din Motive Legale:** Putem dezvălui informațiile dvs. dacă acest lucru este cerut de lege sau dacă avem o bună credință că o astfel de acțiune este necesară 
+            pentru a respecta o obligație legală, a proteja și apăra drepturile sau proprietatea Click Music, a preveni sau investiga posibile infracțiuni în legătură cu Serviciul, 
+            a proteja siguranța personală a utilizatorilor Serviciului sau a publicului, sau a ne proteja împotriva răspunderii legale.
+        </li>
+    </ul>
+
+    <h2 class="mb-2 text-2xl font-semibold">7. Transferul Datelor în Străinătate</h2>
+    <p class="mb-4">
+        Informațiile dvs. pot fi transferate și păstrate pe computere situate în afara țării dvs., provinciei, țării sau altei jurisdicții guvernamentale unde legile privind 
+        protecția datelor pot diferi de cele din jurisdicția dvs. Dacă vă aflați în afara României și alegeți să ne furnizați informații, vă rugăm să rețineți că 
+        transferăm datele, inclusiv Informațiile Personale, în România și le procesăm acolo.
+    </p>
+
+    <h2 class="mb-2 text-2xl font-semibold">8. Securitatea Datelor</h2>
+    <p class="mb-4">
+        Luăm în serios securitatea datelor și implementăm măsuri tehnice și organizatorice adecvate pentru a proteja informațiile dvs. personale de accesul, 
+        utilizarea sau dezvăluirea neautorizată. Totuși, niciun sistem de transmisie prin internet sau metodă de stocare electronică nu este 100% sigur.
+    </p>
+
+    <h2 class="mb-2 text-2xl font-semibold">9. Retenția Datelor</h2>
+    <p class="mb-4">
+        Vom păstra informațiile dvs. personale atât timp cât contul dvs. este activ sau cât este necesar pentru a vă furniza serviciile noastre. 
+        De asemenea, vom păstra și utiliza informațiile dvs. după cum este necesar pentru a respecta obligațiile legale, a rezolva dispute și a aplica acordurile noastre.
+    </p>
+
+    <h2 class="mb-2 text-2xl font-semibold">10. Drepturile Dvs. de Protecție a Datelor</h2>
+    <p class="mb-4">În funcție de locația dvs., puteți avea următoarele drepturi cu privire la informațiile dvs. personale:</p>
+    <ul class="mb-4 list-disc list-inside">
+        <li>
+            **Dreptul de Acces:** Puteți solicita o copie a informațiilor personale pe care le deținem despre dvs.
+        </li>
+        <li>
+            **Dreptul la Rectificare:** Puteți solicita corectarea oricăror informații inexacte sau incomplete.
+        </li>
+        <li>
+            **Dreptul la Ștergere:** Puteți solicita ștergerea informațiilor dvs. personale.
+        </li>
+        <li>
+            **Dreptul la Restricționarea Prelucrării:** Puteți solicita restricționarea prelucrării informațiilor dvs. personale.
+        </li>
+        <li>
+            **Dreptul la Portabilitatea Datelor:** Puteți solicita să primiți informațiile dvs. personale într-un format structurat, utilizat în mod obișnuit și care poate fi citit automat.
+        </li>
+        <li>
+            **Dreptul de a Obiecta:** Puteți obiecta la prelucrarea informațiilor dvs. personale.
+        </li>
+               <li>
+            **Dreptul de a Retrage Consimțământul:** Dacă v-ați dat consimțământul pentru prelucrarea Informațiilor dvs. Personale, aveți dreptul să vă retrageți consimțământul în orice moment.
+        </li>
+    </ul>
+    <p class="mb-4">
+        Pentru a exercita aceste drepturi, vă rugăm să ne contactați la <a href="mailto:contact@clickmusic.ro" class="text-blue-500">contact@clickmusic.ro</a>. 
+        Vom răspunde solicitării dvs. în termen de 30 de zile.
+    </p>
+
+    <h2 class="mb-2 text-2xl font-semibold">11. Modificări ale Politicii de Confidențialitate</h2>
+    <p class="mb-4">
+        Putem actualiza această politică de confidențialitate din când în când pentru a reflecta schimbări în practicile noastre sau din alte motive 
+        operaționale, legale sau de reglementare. Vă vom notifica despre orice modificări semnificative prin postarea noii politici de confidențialitate 
+        pe această pagină și actualizarea datei de intrare în vigoare. Vă recomandăm să revizuiți periodic această politică de confidențialitate pentru a fi 
+        informat cu privire la modul în care vă protejăm informațiile.
+    </p>
+
+    <h2 class="mb-2 text-2xl font-semibold">12. Contactați-ne</h2>
+    <p class="mb-4">
+        Dacă aveți întrebări despre această politică de confidențialitate sau practicile noastre de confidențialitate, vă rugăm să ne contactați la:
+    </p>
+    <p class="mb-4">
+        <strong>Email:</strong> <a href="mailto:contact@clickmusic.ro" class="text-blue-500">contact@clickmusic.ro</a>
+    </p>
+</div>
+</div>
+
    
 
    <footer class="py-8 text-white bg-gray-800">

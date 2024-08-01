@@ -36,6 +36,7 @@ Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback
 Route::view('/', 'welcome')->name('welcome');
 
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe'); 
+Route::get('/newsletter/unsubscribe', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
 
 Route::view('/accespremium', 'loginPremium')->name('accespremium');
 
@@ -152,11 +153,11 @@ require __DIR__.'/auth.php';
 // });
 
 //Preview Newsletter
-// use App\Models\Newsletter; // Assuming you still have a Newsletter model
+// use App\Models\Newsletter; 
 // use App\Notifications\NewsletterNotification;
 
 // Route::get('/preview-newsletter-email', function () {
-//     $newsletter = Newsletter::first(); // Or any other way to get a Newsletter instance
+//     $newsletter = Newsletter::find(1); // Or any other way to get a Newsletter instance
 //     $imageUrl = 'https://res.cloudinary.com/dpxess5iw/image/upload/v1721219233/Ma_racoresc_Thumbnail_Optimizat_vsotpf.jpg'; // Replace with your actual image path or URL
 //     $url = 'https://youtu.be/8WPtQ5P-PVU?si=qjmZIx4GipQL1CiM'; // Replace with the actual URL you want to link to
 
