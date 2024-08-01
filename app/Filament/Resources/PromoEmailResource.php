@@ -25,7 +25,7 @@ class PromoEmailResource extends Resource
     protected static ?string $model = PromoEmail::class;
     protected static ?string $navigationIcon = 'heroicon-o-radio';
     protected static ?string $navigationLabel = 'Comunicat de presa Radio/DJ';
-    protected static ?int $navigationSort = 5;
+    protected static ?int $navigationSort = 8;
 
     public static function form(Form $form): Form
     {

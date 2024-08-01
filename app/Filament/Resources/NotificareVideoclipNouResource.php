@@ -15,8 +15,8 @@ class NotificareVideoclipNouResource extends Page  // Extindem clasa Page
 {
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
     protected static string $view = 'filament.pages.send-video-notification'; // View-ul va fi în filament/pages
-    protected static ?string $navigationLabel = 'Trimite mail video nou';
-    protected static ?int $navigationSort = 4; 
+    protected static ?string $navigationLabel = 'Mail abonati video nou';
+    protected static ?int $navigationSort = 6; 
 
     public $videoName;
     public $videoUrl;

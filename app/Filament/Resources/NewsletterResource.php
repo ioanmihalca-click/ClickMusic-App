@@ -9,21 +9,32 @@ use App\Models\Newsletter;
 use Filament\Tables\Table;
 use App\Jobs\SendNewsletters;
 use Filament\Resources\Resource;
+use Filament\Forms\Components\View;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Filters\Filter;
 use Illuminate\Support\Facades\Log;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
+use Filament\Forms\Components\RichEditor;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\Wizard\Step;
+
 use Illuminate\Database\Eloquent\Collection;
 use Filament\Notifications\Notification as FilamentNotification;
+
+use App\Filament\Resources\NewsletterResource\Pages\EditNewsletter;
+use App\Filament\Resources\NewsletterResource\Pages\ListNewsletters;
+use App\Filament\Resources\NewsletterResource\Pages\CreateNewsletter;
+
 
 class NewsletterResource extends Resource
 {
     protected static ?string $model = Newsletter::class;
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
     protected static ?string $navigationLabel = 'Newsletter';
-    protected static ?int $navigationSort = 6;
+    protected static ?int $navigationSort = 7;
 
     public static function form(Form $form): Form
     {
@@ -98,11 +109,11 @@ class NewsletterResource extends Resource
     }
 
     private static function getSendNewsletterAction(string $name, string $label, callable $getRecords): Action
-    {
-        return Action::make($name)
-            ->label($label)
-            ->icon('heroicon-o-paper-airplane')
-            ->form(self::getSendNewsletterForm())
+{
+    return Action::make($name)
+        ->label($label)
+        ->icon('heroicon-o-paper-airplane')
+        ->form(self::getSendNewsletterForm())
             ->action(function ($record, array $data) use ($getRecords): void {
                 try {
                     SendNewsletters::dispatch(
@@ -123,7 +134,8 @@ class NewsletterResource extends Resource
                         ->send();
                 }
             })
-            ->requiresConfirmation();
+            ->requiresConfirmation()
+            ->modalWidth('2xl');
     }
 
     private static function getSendNewsletterForm(): array
@@ -184,4 +196,18 @@ class NewsletterResource extends Resource
             })
             ->requiresConfirmation();
     }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => ListNewsletters::route('/'),
+            // 'create' => CreateNewsletter::route('/create'),
+            'edit' => EditNewsletter::route('/{record}/edit'),
+        ];
+    }
+
+    public static function canCreate(): bool
+{
+    return false;
+}
 }
