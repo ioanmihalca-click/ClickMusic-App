@@ -155,7 +155,7 @@
                 <img src="/img/Poza Click optimizata.jpg" alt="Click" class="w-32 h-32 border-4 border-blue-500 rounded-full shadow-lg">
             </div>
             <h1 class="mb-3 text-xl font-extrabold text-gray-900 md:text-3xl">Hip-Hop • Reggae • Soul</h1>
-            <h2 class="mb-6 text-xl text-gray-700 md:text-2xl">Bine ai venit pe platforma de streaming Click Music</h2>
+            <h2 class="mb-6 text-xl text-gray-700 md:text-2xl">Streaming Video, Blog si Magazin Click Music</h2>
 
 <!-- Text de introducere personalizat -->
 <p class="mb-6 text-lg leading-relaxed text-gray-700">
