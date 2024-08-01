@@ -42,7 +42,6 @@ class NewsletterResource extends Resource
             ->schema([
                 TextInput::make('recipient_name')
                     ->label('Nume Destinatar')
-                    ->required()
                     ->maxLength(255),
                 TextInput::make('recipient_email')
                     ->label('Adresă Email')

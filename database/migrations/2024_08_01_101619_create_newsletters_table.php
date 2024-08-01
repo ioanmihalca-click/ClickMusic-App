@@ -10,7 +10,7 @@ class CreateNewslettersTable extends Migration
     {
         Schema::create('newsletters', function (Blueprint $table) {
             $table->id();
-            $table->string('recipient_name');
+            $table->string('recipient_name')->nullable()->default('drag ascultator');
             $table->string('recipient_email')->unique();
             $table->string('status')->default('pending');
             $table->timestamp('sent_at')->nullable();
