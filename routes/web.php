@@ -35,6 +35,7 @@ Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback
 
 Route::view('/', 'welcome')->name('welcome');
 
+Route::view('/newsletter', 'newsletter')->name('newsletter');
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe'); 
 Route::get('/newsletter/unsubscribe', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
 

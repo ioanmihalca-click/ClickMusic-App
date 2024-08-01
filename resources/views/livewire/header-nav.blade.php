@@ -66,11 +66,29 @@
         <div class="relative flex p-4 rounded-lg group gap-x-6 hover:bg-gray-50">
           <div class="flex items-center justify-center flex-none mt-1 rounded-lg h-11 w-11 bg-gray-50 group-hover:bg-white">
             <svg class="w-6 h-6 text-gray-600 group-hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+
+
+            </svg>
+          </div>
+
+        <div>
+            <a href="/newsletter" class="font-semibold text-gray-900">
+              Newsletter
+              <span class="absolute inset-0"></span>
+            </a>
+            <p class="mt-1 text-gray-600">Emailuri cu noutățile muzicale.</p>
+          </div>
+        </div>
+        <div class="relative flex p-4 rounded-lg group gap-x-6 hover:bg-gray-50">
+          <div class="flex items-center justify-center flex-none mt-1 rounded-lg h-11 w-11 bg-gray-50 group-hover:bg-white">
+            <svg class="w-6 h-6 text-gray-600 group-hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round"  d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
 
 
             </svg>
           </div>
+
           <div>
             <a href="/accespremium" class="font-semibold text-gray-900">
               Acces Premium
