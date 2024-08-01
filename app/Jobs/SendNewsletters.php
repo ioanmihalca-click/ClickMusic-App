@@ -16,30 +16,22 @@ class SendNewsletters implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $newsletters;
-    protected $subject;
-    protected $content;
+    protected Collection $newsletters; 
+    protected $imageUrl;
+    protected $url;
 
-    public function __construct($newsletters, $subject, $content)
+    public function __construct(Collection $newsletters, $imageUrl, $url)
     {
         $this->newsletters = $newsletters;
-        $this->subject = $subject;
-        $this->content = $content;
+        $this->imageUrl = $imageUrl;
+        $this->url = $url;
     }
 
     public function handle()
     {
-        if (!$this->newsletters instanceof Collection) {
-            $this->newsletters = collect([$this->newsletters]);
-        }
-
         foreach ($this->newsletters as $newsletter) {
             try {
-                Notification::send($newsletter, new NewsletterNotification(
-                    $newsletter,
-                    $this->subject,
-                    $this->content
-                ));
+                $newsletter->notify(new NewsletterNotification($newsletter, $this->imageUrl, $this->url));
 
                 $newsletter->update([
                     'status' => 'sent',

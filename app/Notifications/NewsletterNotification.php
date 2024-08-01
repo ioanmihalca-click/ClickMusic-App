@@ -14,14 +14,15 @@ class NewsletterNotification extends Notification implements ShouldQueue
     use Queueable;
 
     protected $newsletter;
-    protected $subject;
-    protected $content;
-
-    public function __construct(Newsletter $newsletter, $subject, $content)
+    protected $imageUrl;
+    protected $url;
+  
+    public function __construct(Newsletter $newsletter, $imageUrl, $url,)
     {
         $this->newsletter = $newsletter;
-        $this->subject = $subject;
-        $this->content = $content;
+        $this->imageUrl = $imageUrl;
+        $this->url = $url;
+     
     }
 
     public function via($notifiable)
@@ -40,9 +41,12 @@ class NewsletterNotification extends Notification implements ShouldQueue
     {
         return (new MailMessage)
             ->from('contact@clickmusic.ro', 'Click Music Ro')
-            ->subject($this->subject)
-            ->greeting('Salut ' . $this->newsletter->recipient_name)
-            ->line(new HtmlString($this->content))
+            ->subject('Piesa noua de la Click!')
+            ->greeting('Salut ' . $this->newsletter->recipient_name . '!')
+            ->line('Sper ca acest email te gaseste bine. Vreau sa te anunt ca am lansat o noua piesa!')
+            ->line(new HtmlString("<a href='{$this->url}'><img src='{$this->imageUrl}' alt=''></a>"))
+            ->action('Asculta pe Youtube', url($this->url))
+            ->line('Astept cu drag sa ma saluti si sa-mi spui parerea ta despre piesa intr-un comentariu. Sa ne auzim cu bine!')
             ->salutation(new HtmlString('Cu respect,<br>Click<br><br>
                 <a href="https://www.youtube.com/clickmusicromania" style="color: #DC2626; text-decoration: none;" target="_blank" rel="noopener noreferrer">YouTube Click Music</a> | 
                 <a href="https://clickmusic.ro" style="color: #3B82F6; text-decoration: none;" target="_blank" rel="noopener noreferrer">clickmusic.ro</a>'));

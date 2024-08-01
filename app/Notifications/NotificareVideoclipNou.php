@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class NotificareVideoclipNou extends Notification
+class NotificareVideoclipNou extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -31,6 +31,13 @@ class NotificareVideoclipNou extends Notification
     public function via(object $notifiable): array
     {
         return ['mail'];
+    }
+
+    public function withDelay($notifiable)
+    {
+        return [
+            'mail' => now()->addSeconds(2),
+        ];
     }
 
     /**

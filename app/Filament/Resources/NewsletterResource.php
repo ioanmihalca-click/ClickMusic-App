@@ -118,8 +118,8 @@ class NewsletterResource extends Resource
                 try {
                     SendNewsletters::dispatch(
                         $getRecords($record),
-                        $data['subject'],
-                        $data['content']
+                        $data['image_url'],
+                        $data['url']
                     );
     
                     FilamentNotification::make()
@@ -141,12 +141,14 @@ class NewsletterResource extends Resource
     private static function getSendNewsletterForm(): array
     {
         return [
-            Forms\Components\TextInput::make('subject')
-                ->label('Subiect Newsletter')
+           
+                Forms\Components\TextInput::make('image_url')
+                ->label('Imagine')
                 ->required(),
-            Forms\Components\RichEditor::make('content')
-                ->label('Conținut Newsletter')
+            Forms\Components\TextInput::make('url')
+                ->label('URL')
                 ->required(),
+                
         ];
     }
 
@@ -178,8 +180,8 @@ class NewsletterResource extends Resource
                 try {
                     SendNewsletters::dispatch(
                         $getRecords($records),
-                        $data['subject'],
-                        $data['content']
+                        $data['image_url'],
+                        $data['url']
                     );
 
                     FilamentNotification::make()

@@ -131,7 +131,7 @@ Route::get('/song', function () {
 require __DIR__.'/auth.php';
 
 
-//Preview Mail
+//Preview PromoMail
 
 // use App\Models\PromoEmail;
 // use App\Notifications\PromoEmailNotification;
@@ -145,5 +145,18 @@ require __DIR__.'/auth.php';
 
 //     return (new PromoEmailNotification($promoEmail, $songUrl, $downloadUrl, $imageUrl, $subject))
 //         ->toMail($promoEmail);
+// });
+
+//Preview Newsletter
+// use App\Models\Newsletter; // Assuming you still have a Newsletter model
+// use App\Notifications\NewsletterNotification;
+
+// Route::get('/preview-newsletter-email', function () {
+//     $newsletter = Newsletter::first(); // Or any other way to get a Newsletter instance
+//     $imageUrl = 'https://res.cloudinary.com/dpxess5iw/image/upload/v1721219233/Ma_racoresc_Thumbnail_Optimizat_vsotpf.jpg'; // Replace with your actual image path or URL
+//     $url = 'https://youtu.be/8WPtQ5P-PVU?si=qjmZIx4GipQL1CiM'; // Replace with the actual URL you want to link to
+
+//     return (new NewsletterNotification($newsletter, $imageUrl, $url))
+//         ->toMail($newsletter);
 // });
 

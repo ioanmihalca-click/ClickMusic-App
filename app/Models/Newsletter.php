@@ -12,6 +12,8 @@ class Newsletter extends Model
     protected $fillable = [
         'recipient_email',
         'recipient_name',
+        'image_url', 
+        'url',       
         'status',
         'sent_at',
     ];
