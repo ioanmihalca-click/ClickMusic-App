@@ -4,8 +4,9 @@ namespace App\Filament\Widgets;
 
 use App\Models\User;
 use App\Models\Video;
-use Filament\Widgets\StatsOverviewWidget as BaseStatsOverviewWidget;
+use App\Models\Newsletter;
 use Filament\Widgets\StatsOverviewWidget\Stat;
+use Filament\Widgets\StatsOverviewWidget as BaseStatsOverviewWidget;
 
 class StatsOverview extends BaseStatsOverviewWidget
 {
@@ -15,7 +16,10 @@ class StatsOverview extends BaseStatsOverviewWidget
             Stat::make('Total Users', User::count())
             ->color('primary')
             ->icon('heroicon-o-users'),
-        Stat::make('Total Videos', Video::count())
+            Stat::make('Newsletter Subscribers', Newsletter::count())
+            ->color('info') // You can choose a different color if you prefer
+            ->icon('heroicon-o-envelope'),
+            Stat::make('Total Videos', Video::count())
             ->color('success')
             ->icon('heroicon-o-film'),
             Stat::make('Most Active User', function () {
@@ -23,6 +27,7 @@ class StatsOverview extends BaseStatsOverviewWidget
                     ->orderBy('comments_count', 'desc')
                     ->first()?->name ?? 'N/A';
             }),
+
             // ... add more stats as needed ...
         ];
     }
