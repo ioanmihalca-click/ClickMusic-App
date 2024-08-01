@@ -12,7 +12,8 @@
                 </svg>
             </button>
 
-            <div x-show="open" @click.away="open = false" class="absolute right-0 z-10 flex w-screen px-4 mt-5 max-w-max">
+            <div x-show="open" @click.away="open = false" class="absolute right-0 z-10 flex w-screen px-4 mt-5 max-w-max" style="display: none;" 
+        x-cloak>
                <div class="flex-auto w-screen max-w-md overflow-hidden text-sm leading-6 bg-white shadow-lg rounded-3xl ring-1 ring-gray-900/5">
       <div class="p-4">
         <div class="relative flex p-4 rounded-lg group gap-x-6 hover:bg-gray-50">
