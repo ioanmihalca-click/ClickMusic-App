@@ -26,6 +26,7 @@ use App\Notifications\NotificareVideoclipNou;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\VideoNotificationController;
 use App\Http\Controllers\SubscriptionSuccessController;
+use App\Http\Controllers\NewsletterController;
 
 Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
@@ -33,6 +34,9 @@ Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback
 
 
 Route::view('/', 'welcome')->name('welcome');
+
+Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe'); 
+
 Route::view('/accespremium', 'loginPremium')->name('accespremium');
 
 

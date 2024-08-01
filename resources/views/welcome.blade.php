@@ -22,7 +22,8 @@
     <!-- Meta Tags for Click Music Streaming App -->
     <meta name="description"
         content="Click Music - Muzica, Hip-Hop, Reggae, Soul - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul - Click" />
-  <meta name="keywords" content="Click, Click Music, muzică românească, hip hop românesc, reggae românesc, muzică Baia Mare, Maramureș, artist independent, streaming muzică, albume digitale, videoclipuri muzicale, download MP3, concerte Click, versuri Click, muzică nouă, muzică underground, muzică alternativă, muzică independentă, muzică conștientă, muzică pozitivă, muzică de vară, muzică de petrecere, muzică de relaxare, artist reggae din România, albume hip-hop de ascultat în 2024, muzică pentru relaxare" />
+    <meta name="keywords"
+        content="Click, Click Music, muzică românească, hip hop românesc, reggae românesc, muzică Baia Mare, Maramureș, artist independent, streaming muzică, albume digitale, videoclipuri muzicale, download MP3, concerte Click, versuri Click, muzică nouă, muzică underground, muzică alternativă, muzică independentă, muzică conștientă, muzică pozitivă, muzică de vară, muzică de petrecere, muzică de relaxare, artist reggae din România, albume hip-hop de ascultat în 2024, muzică pentru relaxare" />
 
 
     <!-- Open Graph Tags for Social Media Sharing -->
@@ -145,54 +146,121 @@
 
     <main class="container px-4 py-12 mx-auto">
         <div class="max-w-2xl mx-auto">
-        
-<!-- Hero Section -->
-<section class="mb-16 overflow-hidden transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-2xl">
-    <div class="relative p-8 md:p-12">
-        <div class="absolute inset-0 bg-gradient-to-t from-blue-500 to-white opacity-10"></div>
-        <div class="relative z-10 text-center">
-            <div class="flex justify-center mb-6">
-                <img src="/img/Poza Click optimizata.jpg" alt="Click" class="w-32 h-32 border-4 border-blue-500 rounded-full shadow-lg">
-            </div>
-            <h1 class="mb-3 text-xl font-extrabold text-gray-900 md:text-3xl">Hip-Hop • Reggae • Soul</h1>
-            <h2 class="mb-6 text-xl text-gray-700 md:text-2xl">Streaming Video, Blog si Magazin Click Music</h2>
 
-<!-- Text de introducere personalizat -->
-<p class="mb-6 text-lg leading-relaxed text-gray-700">
-    Salut! Sunt Click, un artist de muzică hip-hop reggae din inima României. 
-    Vă invit să mă cunoașteți răsfoind <a href="/blog" class="font-semibold text-blue-500 hover:text-blue-600">Blogul</a> sau ascultându-mi muzica gratuit pe <a href="https://youtube.com/clickmusicromania" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-500 hover:text-blue-600">YouTube</a>. Puteți să mă susțineți prin achiziționarea de albume digitale și tricouri din 
-    <a href="/magazin" class="font-semibold text-blue-500 hover:text-blue-600">Magazin</a> sau prin <a href="/accespremium" class="font-semibold text-blue-500 hover:text-blue-600">Acces Premium</a>.
-</p>
+            <!-- Hero Section -->
+            <section
+                class="mb-16 overflow-hidden transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-2xl">
+                <div class="relative p-8 md:p-12">
+                    <div class="absolute inset-0 bg-gradient-to-t from-blue-500 to-white opacity-10"></div>
+                    <div class="relative z-10 text-center">
+                        <div class="flex justify-center mb-6">
+                            <img src="/img/Poza Click optimizata.jpg" alt="Click"
+                                class="w-32 h-32 border-4 border-blue-500 rounded-full shadow-lg">
+                        </div>
+                        <h1 class="mb-3 text-xl font-extrabold text-gray-900 md:text-3xl">Hip-Hop • Reggae • Soul</h1>
+                        <h2 class="mb-6 text-gray-700 text-medium md:text-2xl">Streaming Video, Blog si Magazin Click
+                            Music</h2>
 
-            <div class="my-6 border-t border-gray-300"></div>
-            <p class="mb-8 text-lg text-gray-700">
-                Pentru Acces Premium la download-uri și la întreaga colecție de videoclipuri,
-                inclusiv cele mai recente lansări și PREMIERE exclusive, abonează-te pentru doar <br>
-                <span class="font-semibold text-blue-600">9,99 lei/ lună.</span>
-            </p>
-            @if (Route::has('login'))
-                <div class="mb-8">
-                    <livewire:welcome.navigation />
+                        <!-- Text de introducere personalizat -->
+                        <p class="mb-6 text-lg leading-relaxed text-gray-700">
+                            Salut! Sunt Click, un artist de muzică hip-hop reggae din inima României.
+                            Vă invit să mă cunoașteți răsfoind <a href="/blog"
+                                class="font-semibold text-blue-500 hover:text-blue-600">Blogul</a> sau ascultându-mi
+                            muzica gratuit pe <a href="https://youtube.com/clickmusicromania" target="_blank"
+                                rel="noopener noreferrer"
+                                class="font-semibold text-blue-500 hover:text-blue-600">YouTube</a>. Puteți să mă
+                            susțineți prin achiziționarea de albume digitale și tricouri din
+                            <a href="/magazin" class="font-semibold text-blue-500 hover:text-blue-600">Magazin</a> sau
+                            prin <a href="/accespremium" class="font-semibold text-blue-500 hover:text-blue-600">Acces
+                                Premium</a>.
+                        </p>
+
+                        <!--Newsletter -->
+
+                        <div class="max-w-md p-4 mx-auto ">
+                            @if (session('success'))
+                                <div class="mt-4 text-green-500">{{ session('success') }}</div>
+                            @endif
+
+                            @if ($errors->any())
+                                <div class="mt-4 text-red-500">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            <h2 class="mb-4 text-xl font-bold tracking-tight text-gray-800 md:text-3xl">Abonează-te la
+                                newsletter</h2>
+                            <p class="mt-4 mb-6 leading-8 text-gray-600 text-medium">Lasă-mi adresa ta de email și te
+                                voi ține la curent cu cele mai recente piese, albume și videoclipuri lansate pe YouTube.
+                            </p>
+                            <form action="{{ route('newsletter.subscribe') }}" method="POST" class="space-y-4">
+                                @csrf
+                                <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
+                                    <div class="flex-1">
+                                        <label for="name"
+                                            class="block mb-2 text-sm font-medium text-gray-700">Numele Tău</label>
+                                        <input id="name" name="name" type="text" autocomplete="name" required
+                                            class="block w-full px-4 py-2 text-sm text-gray-900 transition duration-300 ease-in-out border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 hover:bg-white"
+                                            placeholder="Introdu numele tău">
+                                    </div>
+                                    <div class="flex-1">
+                                        <label for="email-address"
+                                            class="block mb-2 text-sm font-medium text-gray-700">Adresa de email</label>
+                                        <input id="email-address" name="email" type="email" autocomplete="email"
+                                            required
+                                            class="block w-full px-4 py-2 text-sm text-gray-900 transition duration-300 ease-in-out border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 hover:bg-white"
+                                            placeholder="Adaugă emailul tău">
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <button type="submit"
+                                        class="w-32 rounded-md bg-blue-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-colors duration-300">
+                                        Abonează-te
+                                    </button>
+
+                                </div>
+                                <p class="mt-3 text-sm"><a href="{{ route('privacy-policy') }}"
+                                        class="text-sm text-blue-500 md:text-medium hover:text-blue-600">Politica de
+                                        confidențialitate</a></p>
+
+                            </form>
+                        </div>
+
+
+
+                        <div class="my-6 border-t border-gray-300"></div>
+                        <p class="mb-8 text-lg text-gray-700">
+                            Pentru Acces Premium la download-uri și la întreaga colecție de videoclipuri,
+                            inclusiv cele mai recente lansări și PREMIERE exclusive, abonează-te pentru doar <br>
+                            <span class="font-semibold text-blue-600">9,99 lei/ lună.</span>
+                        </p>
+                        @if (Route::has('login'))
+                            <div class="mb-8">
+                                <livewire:welcome.navigation />
+                            </div>
+                        @endif
+
+                        <div class="flex justify-center">
+                            <a href="{{ route('login.google') }}"
+                                class="flex items-center justify-center px-4 py-2 text-gray-700 transition duration-300 ease-in-out transform bg-white border border-gray-300 rounded-full shadow-md hover:bg-gray-50 hover:text-blue-500 hover:-translate-y-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    fill="currentColor" class="mr-4 bi bi-google" viewBox="0 0 16 16">
+                                    <path
+                                        d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
+                                </svg>
+                                <span class="text-base font-medium">Loghează-te Google</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-            @endif
-
-            <div class="flex justify-center">
-                <a href="{{ route('login.google') }}"
-                    class="flex items-center justify-center px-4 py-2 text-gray-700 transition duration-300 ease-in-out transform bg-white border border-gray-300 rounded-full shadow-md hover:bg-gray-50 hover:text-blue-500 hover:-translate-y-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        fill="currentColor" class="mr-4 bi bi-google" viewBox="0 0 16 16">
-                        <path
-                            d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
-                    </svg>
-                    <span class="text-base font-medium">Loghează-te Google</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+            </section>
 
 
-            <section class="mb-16 overflow-hidden transition-all duration-300 transform shadow-lg bg-gradient-to-t from-blue-500 to-white rounded-3xl hover:shadow-2xl">
+            <section
+                class="mb-16 overflow-hidden transition-all duration-300 transform shadow-lg bg-gradient-to-t from-blue-500 to-white rounded-3xl hover:shadow-2xl">
 
                 <!--Cea mai recentă piesă -->
                 <div class="p-4">
@@ -200,7 +268,12 @@
                         Cea mai recentă piesă
                     </h3>
                     <div class="relative px-4 mb-8 ">
-                        <div class="overflow-hidden rounded-md shadow-sm" style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/233943/396eb18b-18eb-46d8-a6f7-279d7104d8c9?autoplay=false&loop=false&muted=false&preload=false&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div>
+                        <div class="overflow-hidden rounded-md shadow-sm"
+                            style="position:relative;padding-top:56.25%;"><iframe
+                                src="https://iframe.mediadelivery.net/embed/233943/396eb18b-18eb-46d8-a6f7-279d7104d8c9?autoplay=false&loop=false&muted=false&preload=false&responsive=true"
+                                loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;"
+                                allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
+                                allowfullscreen="true"></iframe></div>
                     </div>
 
                     <!--Latest Blog Posts -->
@@ -499,22 +572,16 @@
     </footer>
 
 
-<div
-  x-data="{ show: false }"
-  x-on:scroll.window="show = window.pageYOffset >= 1000"
-  class="fixed bottom-8 right-8"
->
-  <button
-    x-show="show"
-    x-transition
-    x-on:click="window.scrollTo({top: 0, behavior: 'smooth'})"
-    class="p-2 bg-white rounded-full shadow-lg"
-  >
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-      <path fill="currentColor" d="m11 7.825l-4.9 4.9q-.3.3-.7.288t-.7-.313q-.275-.3-.288-.7t.288-.7l6.6-6.6q.15-.15.325-.212T12 4.425q.2 0 .375.063t.325.212l6.6 6.6q.275.275.275.688t-.275.712q-.3.3-.713.3t-.712-.3L13 7.825V19q0 .425-.288.713T12 20q-.425 0-.713-.288T11 19V7.825Z"/>
-    </svg>
-  </button>
-</div>
+    <div x-data="{ show: false }" x-on:scroll.window="show = window.pageYOffset >= 1000"
+        class="fixed bottom-8 right-8">
+        <button x-show="show" x-transition x-on:click="window.scrollTo({top: 0, behavior: 'smooth'})"
+            class="p-2 bg-white rounded-full shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                    d="m11 7.825l-4.9 4.9q-.3.3-.7.288t-.7-.313q-.275-.3-.288-.7t.288-.7l6.6-6.6q.15-.15.325-.212T12 4.425q.2 0 .375.063t.325.212l6.6 6.6q.275.275.275.688t-.275.712q-.3.3-.713.3t-.712-.3L13 7.825V19q0 .425-.288.713T12 20q-.425 0-.713-.288T11 19V7.825Z" />
+            </svg>
+        </button>
+    </div>
 
 </body>
 
