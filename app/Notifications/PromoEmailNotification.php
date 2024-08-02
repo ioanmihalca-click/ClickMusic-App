@@ -33,13 +33,6 @@ class PromoEmailNotification extends Notification implements ShouldQueue
         return ['mail'];
     }
 
-    public function withDelay($notifiable)
-    {
-        return [
-            'mail' => now()->addSeconds(5),
-        ];
-    }
-
     public function toMail($notifiable)
     {
         $mailMessage = (new MailMessage)

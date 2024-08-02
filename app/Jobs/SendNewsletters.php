@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use Carbon\Carbon;
 use App\Models\Newsletter;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Collection;
@@ -28,8 +29,16 @@ class SendNewsletters implements ShouldQueue
     }
 
     public function handle()
-    {
-        foreach ($this->newsletters as $newsletter) {
+{
+    $today = Carbon::today();
+
+    $this->newsletters->chunk(100)->each(function (Collection $chunk) use ($today) {
+        if (Newsletter::where('status', 'sent')->whereDate('sent_at', $today)->count() >= 300) {
+            $this->release(3600); 
+            return;
+        }
+
+        foreach ($chunk as $newsletter) { // Move the foreach loop inside the chunk processing
             try {
                 $newsletter->notify(new NewsletterNotification($newsletter, $this->imageUrl, $this->url));
 
@@ -37,10 +46,15 @@ class SendNewsletters implements ShouldQueue
                     'status' => 'sent',
                     'sent_at' => now(),
                 ]);
+
+                sleep(5);
+
             } catch (\Exception $e) {
-                $newsletter->update(['status' => 'failed']);
-                logger()->error("Error sending newsletter to {$newsletter->recipient_email}: {$e->getMessage()}");
+                // Now $newsletter is defined within the catch block
+                logger()->error("Error sending newsletter (chunk {$chunk->count()}) to {$newsletter->recipient_email}: {$e->getMessage()}");
             }
-        }
-    }
+        } 
+    });
+}
+
 }

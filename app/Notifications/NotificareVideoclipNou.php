@@ -33,13 +33,6 @@ class NotificareVideoclipNou extends Notification implements ShouldQueue
         return ['mail'];
     }
 
-    public function withDelay($notifiable)
-    {
-        return [
-            'mail' => now()->addSeconds(5),
-        ];
-    }
-
     /**
      * Get the mail representation of the notification.
      */

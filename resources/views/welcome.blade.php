@@ -155,7 +155,7 @@
                     <div class="relative z-10 text-center">
                         <div class="flex justify-center mb-6">
                             <img src="/img/Poza Click optimizata.jpg" alt="Click"
-                                class="w-32 h-32 border-4 border-blue-500 rounded-full shadow-lg">
+                                class="w-32 h-32 border-4 border-blue-500 rounded-full shadow-lg md:w-36 md:h-36">
                         </div>
                         <h1 class="mb-3 text-xl font-extrabold text-gray-900 md:text-3xl">Hip-Hop • Reggae • Soul</h1>
                         <h2 class="mb-6 text-gray-700 text-medium md:text-2xl">Streaming Video, Blog si Magazin Click
