@@ -19,6 +19,8 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
 
+    <link rel="canonical" href="https://clickmusic.ro/magazin" />
+
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/x-icon" />
 

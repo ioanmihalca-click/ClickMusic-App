@@ -21,14 +21,14 @@
 
     <!-- Meta Tags for Click Music Streaming App -->
     <meta name="description"
-        content="Click Music - Muzica, Hip-Hop, Reggae, Soul - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul - Click" />
+        content="Click Music -Fii la curent cu cele mai recente piese, albume și videoclipuri lansate pe YouTube - Click" />
     <meta name="keywords"
         content="Click Music, streaming video, hip-hop, reggae, soul, Click, Baia Mare, Maramureș, Romania, muzică, videoclipuri muzicale, artist, streaming, audio, video, videoclipuri exclusive" />
 
     <!-- Open Graph Tags for Social Media Sharing -->
-    <meta property="og:title" content="Click Music - Muzica, Hip-Hop, Reggae, Soul" />
+    <meta property="og:title" content="Click Music - Newsletter" />
     <meta property="og:description"
-        content="Click Music - Muzica, Hip-Hop, Reggae, Soul - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul - Click" />
+        content="Click Music -Fii la curent cu cele mai recente piese, albume și videoclipuri lansate pe YouTube - Click" />
     <meta property="og:image" content="{{ asset('img/ClickMusic-OG-Site.jpg') }}" />
     <meta property="og:image:type" content="image/jpg" />
     <meta property="og:image:alt" content="Click Music - Muzica, Hip-Hop, Reggae, Soul" />
@@ -38,7 +38,7 @@
     <meta property="og:site_name" content="Click Music - Muzica, Hip-Hop, Reggae, Soul" />
 
 
-    <link rel="canonical" href="https://clickmusic.ro" />
+    <link rel="canonical" href="https://clickmusic.ro/newsletter" />
 
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/x-icon" />
