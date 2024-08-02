@@ -32,7 +32,7 @@
     <meta property="og:image" content="{{ asset('img/ClickMusic-OG-Site.jpg') }}" />
     <meta property="og:image:type" content="image/jpg" />
     <meta property="og:image:alt" content="Click Music - Muzica, Hip-Hop, Reggae, Soul" />
-    <meta property="og:url" content="https://clickmusic.ro" />
+    <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ro_RO" />
     <meta property="og:site_name" content="Click Music - Muzica, Hip-Hop, Reggae, Soul" />
