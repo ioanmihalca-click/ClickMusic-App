@@ -32,13 +32,13 @@ class SendNewsletters implements ShouldQueue
 {
     $today = Carbon::today();
 
-    $this->newsletters->chunk(100)->each(function (Collection $chunk) use ($today) {
+    $this->newsletters->chunk(300)->each(function (Collection $chunk) use ($today) {
         if (Newsletter::where('status', 'sent')->whereDate('sent_at', $today)->count() >= 300) {
             $this->release(3600); 
             return;
         }
 
-        foreach ($chunk as $newsletter) { // Move the foreach loop inside the chunk processing
+        foreach ($chunk as $newsletter) { 
             try {
                 $newsletter->notify(new NewsletterNotification($newsletter, $this->imageUrl, $this->url));
 
@@ -47,7 +47,7 @@ class SendNewsletters implements ShouldQueue
                     'sent_at' => now(),
                 ]);
 
-                sleep(5);
+                sleep(10);
 
             } catch (\Exception $e) {
                 // Now $newsletter is defined within the catch block
