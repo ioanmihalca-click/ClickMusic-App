@@ -164,12 +164,12 @@
                         <!-- Text de introducere personalizat -->
                         <p class="mb-6 text-lg leading-relaxed text-gray-700">
                             Salut! Sunt Click, un artist de muzică hip-hop reggae din inima României.
-                            Vă invit să mă cunoașteți răsfoind <a href="/blog"
+                            Te invit să mă cunoști răsfoind <a href="/blog"
                                 class="font-semibold text-blue-500 hover:text-blue-600">Blogul</a> sau ascultându-mi
                             muzica gratuit pe <a href="https://youtube.com/clickmusicromania" target="_blank"
                                 rel="noopener noreferrer"
-                                class="font-semibold text-blue-500 hover:text-blue-600">YouTube</a>. Puteți să mă
-                            susțineți prin achiziționarea de albume digitale și tricouri din
+                                class="font-semibold text-blue-500 hover:text-blue-600">YouTube</a>. Poți să mă
+                            susții prin achiziționarea de albume digitale și tricouri din
                             <a href="/magazin" class="font-semibold text-blue-500 hover:text-blue-600">Magazin</a> sau
                             prin <a href="/accespremium" class="font-semibold text-blue-500 hover:text-blue-600">Acces
                                 Premium</a>.
@@ -177,7 +177,7 @@
 
                         <!--Newsletter -->
 
-                        <div class="max-w-md p-4 mx-auto">
+                        <div class="max-w-md mx-auto">
                             @if (session('success'))
                                 <div class="mt-4 text-green-500">{{ session('success') }}</div>
                             @endif
@@ -232,7 +232,7 @@
 
                         <div class="my-6 border-t border-gray-300"></div>
                         <p class="mb-8 text-lg text-gray-700">
-                            Pentru Acces Premium la download-uri și la întreaga colecție de videoclipuri,
+                            Pentru <span class="font-semibold text-blue-500">Acces Premium</span> la download-uri și la întreaga colecție de videoclipuri,
                             inclusiv cele mai recente lansări și PREMIERE exclusive, abonează-te pentru doar <br>
                             <span class="font-semibold text-blue-600">9,99 lei/ lună.</span>
                         </p>
