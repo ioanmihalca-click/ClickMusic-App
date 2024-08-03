@@ -71,9 +71,9 @@ Route::match(['get', 'post'], 'checkout/{plan}', [CheckoutController::class, '__
     ->name('videos.show')
     ->middleware(['auth']); 
 
-    Route::view('sustine', 'sustine')
-    ->middleware([Subscribed::class])
-    ->name('sustine');
+    // Route::view('sustine', 'sustine')
+    // ->middleware([Subscribed::class])
+    // ->name('sustine');
 
     Route::view('profile', 'profile')
     ->middleware(['auth'])
