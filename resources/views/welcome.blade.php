@@ -158,11 +158,11 @@
                                 class="w-32 h-32 border-4 border-blue-500 rounded-full shadow-lg md:w-36 md:h-36">
                         </div>
                         <h1 class="mb-3 text-xl font-extrabold text-gray-900 md:text-3xl">Hip-Hop • Reggae • Soul</h1>
-                        <h2 class="mb-6 text-gray-700 text-medium md:text-2xl">Streaming Video <br> Blog si Magazin Click
+                        <h2 class="mb-6 text-base text-gray-700 md:text-2xl">Streaming Video <br> Blog si Magazin Click
                             Music</h2>
 
                         <!-- Text de introducere personalizat -->
-                        <p class="mb-6 text-lg leading-relaxed text-gray-700">
+                        <p class="mb-6 text-base leading-relaxed text-gray-700 md:text-lg">
                             Salut! Sunt Click, un artist de muzică hip-hop reggae din inima României.
                             Te invit să mă cunoști răsfoind <a href="/blog"
                                 class="font-semibold text-blue-500 hover:text-blue-600">Blogul</a> sau ascultându-mi
