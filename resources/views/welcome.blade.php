@@ -193,15 +193,14 @@
                             @endif
                             <h2 class="mb-4 text-xl font-bold tracking-tight text-gray-800 md:text-3xl">Abonează-te la
                                 newsletter</h2>
-                            <p class="mt-4 mb-6 leading-8 text-gray-600 text-medium">Lasă-mi adresa ta de email și te
-                                voi ține la curent cu cele mai recente piese, albume și videoclipuri lansate pe YouTube.
+                            <p class="mt-4 mb-6 leading-8 text-gray-600 text-medium">Trimit un email de fiecare data cand lansez ceva nou pe Youtube
                             </p>
                             <form action="{{ route('newsletter.subscribe') }}" method="POST" class="space-y-4">
                                 @csrf
                                 <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
                                     <div class="flex-1">
                                         <label for="name"
-                                            class="block mb-2 text-sm font-medium text-gray-700">Numele Tău</label>
+                                            class="block mb-2 text-sm font-medium text-gray-700">Numele tău</label>
                                         <input id="name" name="name" type="text" autocomplete="name" required
                                             class="block w-full px-4 py-2 text-sm text-gray-900 transition duration-300 ease-in-out border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 hover:bg-white"
                                             placeholder="Introdu numele tău">
