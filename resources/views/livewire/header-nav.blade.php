@@ -1,5 +1,5 @@
-<header class="bg-white shadow">
-    <div class="container flex items-center justify-between px-4 py-6 mx-auto">
+<header class="bg-white shadow ">
+    <div class="container flex items-center justify-between px-4 py-2 mx-auto">
         <a href="/" class="flex items-center">
             <img src="/img/logo.png" alt="Logo Click Music" class="w-auto h-12">
         </a>

@@ -53,6 +53,10 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    
+    <!-- Font Roboto -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+    
 
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -141,25 +145,91 @@
 
 </head>
 
-<body class="font-sans antialiased bg-gradient-to-t from-blue-500 to-gray-100">
-    <livewire:header-nav />
+<body class="font-sans antialiased bg-white">
 
-    <main class="container px-4 py-12 mx-auto">
+    <!-- Navigation bar -->
+
+{{-- <nav x-data="{ isOpen: false }" class="fixed top-0 left-0 z-50 w-full bg-black bg-opacity-75">
+    <div class="container flex items-center justify-between px-4 py-2 mx-auto">
+        <a href="/" class="text-white text-xs tracking-[4px] uppercase font-roboto-condensed">Click Music Romania</a>
+        
+        <!-- Hamburger menu button (visible on mobile) -->
+        <button @click="isOpen = !isOpen" class="text-white md:hidden">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+
+        <!-- Desktop menu -->
+        <div class="hidden space-x-4 md:flex">
+            <a href="/" class="text-white hover:text-gray-300 font-roboto-condensed">Acasa</a>
+            <a href="/magazin" class="text-white hover:text-gray-300 font-roboto-condensed">Magazin</a>
+            <a href="/blog" class="text-white hover:text-gray-300 font-roboto-condensed">Blog</a>
+            <a href="/newsletter" class="text-white hover:text-gray-300 font-roboto-condensed">Newsletter</a>
+            <a href="/accespremium" class="text-white hover:text-gray-300 font-roboto-condensed">Acces Premium</a>
+        </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div x-show="isOpen" @click.away="isOpen = false" class="md:hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="/" @click="isOpen = false" class="block px-3 py-2 text-white font-roboto-condensed">Acasa</a>
+            <a href="/magazin" @click="isOpen = false" class="block px-3 py-2 text-white font-roboto-condensed">Magazin</a>
+            <a href="/blog" @click="isOpen = false" class="block px-3 py-2 text-white font-roboto-condensed">Blog</a>
+            <a href="/newsletter" @click="isOpen = false" class="block px-3 py-2 text-white font-roboto-condensed">Newsletter</a>
+            <a href="/accespremium" @click="isOpen = false" class="block px-3 py-2 text-white font-roboto-condensed">Acces Premium</a>
+        </div>
+    </div>
+</nav> --}}
+
+<div>
+<livewire:header-nav />
+</div>
+
+<div x-data="{ show: false }" 
+     x-init="setTimeout(() => show = true, 500); 
+             window.addEventListener('scroll', effectsHomeSection)"
+     x-show="show" 
+     x-transition.duration.500ms
+     class="relative h-screen overflow-hidden">
+    <div class="relative h-screen bg-white home-parallax home-fade">
+        <div class="absolute inset-0">
+           <img src="{{ asset('img/hero-large.webp') }}"
+ 
+     alt="Click Music Romania" 
+     class="object-cover w-full h-full opacity-35">
+        </div>
+        <div class="relative z-10 flex items-center justify-center h-full text-gray-700 caption-content">
+            <div class="text-center">
+                <h1 class="font-roboto-condensed uppercase mb-3 tracking-[6px] md:tracking-[20px] font-bold text-3xl md:text-5xl leading-relaxed md:leading-normal">
+                    Click Music Romania
+                </h1>
+                <h2 class="mb-12 text-xl text-gray-700 font-roboto-condensed md:text-3xl">Hip-Hop • Reggae • Soul</h2>
+                <a href="#despre" class="px-10 py-2 text-xs tracking-widest text-gray-700 uppercase transition-all duration-300 border border-blue-500 scroll-link hover:bg-blue-500 hover:text-white font-roboto-condensed hover:border-transparent">Afla mai multe</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <main id="despre" class="container px-4 py-12 mx-auto">
         <div class="max-w-2xl mx-auto">
 
-            <!-- Hero Section -->
+          
             <section
-                class="mb-16 overflow-hidden transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-2xl">
+                class="mb-16 overflow-hidden transition-all duration-300 transform bg-white ">
                 <div class="relative p-8 md:p-12">
-                    <div class="absolute inset-0 bg-gradient-to-t from-blue-500 to-white opacity-10"></div>
+                    <div class="absolute inset-0"></div>
                     <div class="relative z-10 text-center">
                         <div class="flex justify-center mb-6">
                             <img src="/img/Poza Click optimizata.jpg" alt="Click"
                                 class="w-32 h-32 border-4 border-blue-500 rounded-full shadow-lg md:w-36 md:h-36">
                         </div>
-                        <h1 class="mb-3 text-xl font-extrabold text-gray-900 md:text-3xl">Hip-Hop • Reggae • Soul</h1>
-                        <h2 class="mb-6 text-base text-gray-700 md:text-2xl">Streaming Video <br> Blog si Magazin Click
-                            Music</h2>
+                      <p class="mb-6 text-base font-roboto-condensed uppercase tracking-widest text-gray-700 md:text-2xl">Bine ai venit!
+                        <h3 class="mb-6 text-base font-roboto-condensed uppercase tracking-widest text-gray-700 md:text-2xl">Streaming Video <br> Blog si Magazin Click
+                            Music</h3>
 
                         <!-- Text de introducere personalizat -->
                         <p class="mb-6 text-base leading-relaxed text-gray-700 md:text-lg">
@@ -191,7 +261,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <h2 class="mb-4 text-xl font-bold tracking-tight text-gray-800 md:text-3xl">Abonează-te la
+                            <h2 class="mb-6 text-base font-roboto-condensed uppercase tracking-widest text-gray-700 md:text-2xl">Abonează-te la
                                 newsletter</h2>
                             <p class="mt-4 mb-6 leading-8 text-gray-600 text-medium">Trimit un email de fiecare data cand lansez ceva nou pe Youtube
                             </p>
@@ -259,11 +329,11 @@
 
 
             <section
-                class="mb-16 overflow-hidden transition-all duration-300 transform shadow-lg bg-gradient-to-t from-blue-500 to-white rounded-3xl hover:shadow-2xl">
+                class="mb-16 overflow-hidden ">
 
                 <!--Cea mai recentă piesă -->
                 <div class="p-4">
-                    <h3 class="mt-4 mb-8 text-xl font-bold text-center text-gray-800 md:text-3xl">
+                    <h3 class="mb-8 text-base text-center font-roboto-condensed uppercase tracking-widest text-gray-700 md:text-2xl">
                         Cea mai recentă piesă
                     </h3>
                     <div class="relative px-4 mb-8 ">
@@ -277,7 +347,7 @@
 
                     <!--Latest Blog Posts -->
                     <div class="p-4">
-                        <h3 class="mb-8 text-xl font-bold text-center text-gray-800 md:text-3xl">Ultimele Articole pe
+                        <h3 class="mb-8 text-base font-roboto-condensed text-center uppercase tracking-widest text-gray-700 md:text-2xl">Ultimele Articole pe
                             Blog
                         </h3>
                         @livewire('latest-blog-posts')
@@ -285,7 +355,7 @@
 
                     <!--Albume-->
                     <div class="p-4">
-                        <h3 class="mb-8 text-xl font-bold text-center text-gray-800 md:text-3xl">Albume in Magazin
+                        <h3 class="mb-8 text-center text-base font-roboto-condensed uppercase tracking-widest text-gray-700 md:text-2xl">Albume in Magazin
                         </h3>
                         <livewire:album-list />
                     </div>
@@ -295,195 +365,92 @@
 
 
 
-            <!-- Biografie Click -->
-            <section x-data="{ open: false }"
-                class="mb-8 overflow-hidden transition-all duration-300 transform bg-white shadow-lg rounded-3xl hover:shadow-2xl">
-                <button @click="open = !open" class="w-full p-6 text-left ">
-                    <div class="flex items-center justify-between">
-                        <h2 class="text-lg font-semibold text-gray-900 md:text-2xl">Cine este Click, artistul din
-                            spatele muzicii?</h2>
-                        <span x-show="!open" class="text-3xl font-semibold text-blue-500">+</span>
-                        <span x-show="open" class="text-3xl font-semibold text-blue-500">-</span>
-                    </div>
-                </button>
-                <div x-show="open" x-transition class="p-6 md:p-8">
-                    <p class="mt-2 text-base text-black">Click este un artist de muzică hip-hop, reggae și soul
-                        stabilit în Baia-Mare, Maramureș. Stilul său muzical este variat, bucurându-se de toate
-                        genurile muzicale fără a se limita la unul singur.</p>
-                    <p class="mt-2 text-base text-black">A început călătoria muzicală la vârsta de 13 ani, când și-a
-                        descoperit pasiunea pentru producția de instrumentale și scrierea versurilor. Încă de la
-                        început, a fost încurajat și instruit de Gabi Mican, administratorul portalului de hip-hop
-                        “Rap-Arena”. Aceasta colaborare i-a permis să creeze mai multe materiale și să apară pe
-                        numeroase compilații de muzică rap.</p>
-                    <p class="mt-2 text-base text-black">La 18 ani, s-a mutat la Cluj, unde, împreună cu Blazon și
-                        DJ Maka, a format trupa Camuflaj. Aceasta a devenit rapid un simbol al muzicii hip-hop și
-                        reggae din Cluj și, ulterior, din toată țara, odată cu mutarea în București și colaborarea
-                        cu un label muzical cunoscut. Trupa a câștigat recunoaștere națională cu piese precum
-                        "România" și "În Jurul Lumii".
-                    </p>
+           <!-- Biografie Click -->
+<div x-data="{ open: false }" data-aos="zoom-in-up" class="mb-4">
+    <button @click="open = !open" class="w-full px-4 py-4 mb-4 transition duration-300 ease-in-out transform shadow-md  hover:-translate-y-2">
+      <div class="flex justify-between">
+        <h3 class="text-sm md:text-lg font-roboto-condensed uppercase tracking-widest">Cine este Click? <br class="md:hidden"> artistul din spatele muzicii</h3>
+        <span x-show="!open" class="text-blue-500 p-2">+</span>
+        <span x-show="open" class="text-blue-500 p-2">-</span>
+      </div>
+    </button>
+    <div x-show="open" x-transition class="px-8 py-8 bg-white border border-t-0">
+        <p class="mt-2 text-base text-black">Click este un artist de muzică hip-hop, reggae și soul stabilit în Baia-Mare, Maramureș. Stilul său muzical este variat, bucurându-se de toate genurile muzicale fără a se limita la unul singur.</p>
+        <p class="mt-2 text-base text-black">A început călătoria muzicală la vârsta de 13 ani, când și-a descoperit pasiunea pentru producția de instrumentale și scrierea versurilor. Încă de la început, a fost încurajat și instruit de Gabi Mican, administratorul portalului de hip-hop “Rap-Arena”. Aceasta colaborare i-a permis să creeze mai multe materiale și să apară pe numeroase compilații de muzică rap.</p>
+        <p class="mt-2 text-base text-black">La 18 ani, s-a mutat la Cluj, unde, împreună cu Blazon și DJ Maka, a format trupa Camuflaj. Aceasta a devenit rapid un simbol al muzicii hip-hop și reggae din Cluj și, ulterior, din toată țara, odată cu mutarea în București și colaborarea cu un label muzical cunoscut. Trupa a câștigat recunoaștere națională cu piese precum "România" și "În Jurul Lumii".</p>
 
-                    <div class="relative mt-4" style="padding-bottom: 56.25%;"> {{-- 16:9 aspect ratio --}}
-                        <iframe src="https://www.youtube.com/embed/D_BxEKzY_9k?si=bUttmiFssChkfNHY"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
-                    </div>
+        <div class="relative mt-4" style="padding-bottom: 56.25%;">
+            <iframe src="https://www.youtube.com/embed/D_BxEKzY_9k?si=bUttmiFssChkfNHY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
+        </div>
 
+        <p class="mt-2 text-base text-black">Click și-a lansat primul album solo, <br> "Trup și Suflet", în 2017 <br> (<a href="https://youtu.be/qzzeGDeeo4Y?si=oimnxAeKHp1Zfv4V" target="_blank" rel="noopener noreferrer" class="px-2 text-white bg-blue-500 rounded">Asculta aici</a>), <br> urmat de "Lume Dragă" în 2020 <br> (<a href="https://youtu.be/ME0qVN8aRDA?si=aPHf-NHyrv5huDRH" target="_blank" rel="noopener noreferrer" class="px-2 text-white bg-blue-500 rounded">Asculta aici</a>) <br> și EP-urile "Dulce și Amar" <br> (<a href="https://youtube.com/playlist?list=PLROBgwG4dMG71NFY5lJhbW_puA1o5mYhc&si=DYdjwLqYX_tE2KfE" target="_blank" rel="noopener noreferrer" class="px-2 text-white bg-blue-500 rounded">Asculta aici</a>) <br> și "Culori EP" in colaborare cu MdBeatz în 2021. <br> (<a href="https://youtube.com/playlist?list=PLROBgwG4dMG7P50sEumQrRiaIjOZdIZHk&si=XuhinKO-m-JrKUX_" target="_blank" rel="noopener noreferrer" class="px-2 text-white bg-blue-500 rounded">Asculta aici</a>) <br>
 
-                    <p class="mt-2 text-base text-black">
-                        Click și-a lansat primul album solo, <br>
-                        "Trup și Suflet", în 2017 <br>
-                        (<a href="https://youtu.be/qzzeGDeeo4Y?si=oimnxAeKHp1Zfv4V" target="_blank"
-                            rel="noopener noreferrer" class="px-2 text-white bg-blue-500 rounded">Asculta
-                            aici</a>), <br>
-                        urmat de "Lume Dragă" în
-                        2020 <br>
-                        (<a href="https://youtu.be/ME0qVN8aRDA?si=aPHf-NHyrv5huDRH" target="_blank"
-                            rel="noopener noreferrer" class="px-2 text-white bg-blue-500 rounded">Asculta
-                            aici</a>) <br>
-                        și EP-urile "Dulce și Amar" <br>
-                        (<a href="https://youtube.com/playlist?list=PLROBgwG4dMG71NFY5lJhbW_puA1o5mYhc&si=DYdjwLqYX_tE2KfE"
-                            target="_blank" rel="noopener noreferrer"
-                            class="px-2 text-white bg-blue-500 rounded">Asculta aici</a>) <br>
-                        și "Culori EP" in colaborare cu MdBeatz în 2021. <br>
-                        (<a href="https://youtube.com/playlist?list=PLROBgwG4dMG7P50sEumQrRiaIjOZdIZHk&si=XuhinKO-m-JrKUX_"
-                            target="_blank" rel="noopener noreferrer"
-                            class="px-2 text-white bg-blue-500 rounded">Asculta aici</a>) <br>
+        <p class="mt-2 text-base text-black">De pe albumul "Trup și Suflet" s-a remarcat piesa "De Dragoste și Război" în colaborare cu El Nino</p>
+        
+        <div class="relative mt-4" style="padding-bottom: 56.25%;">
+            <iframe src="https://www.youtube.com/embed/3QBXjL79pwc?si=Ntc90qhUBVJma26r" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
+        </div>
 
+        <p class="mt-2 text-base text-black">"Prima Dată" în colaborare cu Feli,</p>
 
-                        De pe albumul "Trup și Suflet" s-a remarcat
-                        piesa "De Dragoste și Război" în colaborare cu El Nino
+        <div class="relative mt-4" style="padding-bottom: 56.25%;">
+            <iframe src="https://www.youtube.com/embed/AyNGsax5LcY?si=HhRRQzHXSouBK79w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
+        </div>
 
+        <p class="mt-2 text-base text-black">"Pictez",</p>
 
-                    <div class="relative mt-4" style="padding-bottom: 56.25%;"> {{-- 16:9 aspect ratio --}}
-                        <iframe src="https://www.youtube.com/embed/3QBXjL79pwc?si=Ntc90qhUBVJma26r"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
-                    </div>
+        <div class="relative mt-4" style="padding-bottom: 56.25%;">
+            <iframe src="https://www.youtube.com/embed/55_l1jxFe2A?si=HtG5o6PASFRjG9F_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
+        </div>
 
+        <p class="mt-2 text-base text-black">"Speranta"</p>
 
+        <div class="relative mt-4" style="padding-bottom: 56.25%;">
+            <iframe src="https://www.youtube.com/embed/ahP0Py7zhJY?si=o3avtKEAkrZtE1YH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
+        </div>
 
-                    "Prima Dată" în colaborare cu Feli,
+        <p class="mt-2 text-base text-black">De pe albumul "Lume Dragă" s-a remarcat piesa "Nopțile Calde" în colaborare cu Style da Kid,</p>
 
+        <div class="relative mt-4" style="padding-bottom: 56.25%;">
+            <iframe src="https://www.youtube.com/embed/zwqfdK1kjzI?si=SJWz68DwBnlqzSRP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
+        </div>
 
-                    <div class="relative mt-4" style="padding-bottom: 56.25%;"> {{-- 16:9 aspect ratio --}}
-                        <iframe src="https://www.youtube.com/embed/AyNGsax5LcY?si=HhRRQzHXSouBK79w"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
-                    </div>
+        <p class="mt-2 text-base text-black">"Nici o slabiciune" in colaborare cu Style da Kid si Pacha Man</p>
 
+        <div class="relative mt-4" style="padding-bottom: 56.25%;">
+            <iframe src="https://www.youtube.com/embed/-C5nv4JNlE4?si=cVUo3P3IAOwef_53" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
+        </div>
 
+        <p class="mt-2 text-base text-black">si piesa ce da numele albumului "Lume draga" in colaborare cu Style da Kid si Oana Ciucanu.</p>
 
+        <div class="relative mt-4" style="padding-bottom: 56.25%;">
+            <iframe src="https://www.youtube.com/embed/vSeB96h6kEQ?si=v2AK9wBKyaXtXUPF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
+        </div>
 
+        <p class="mt-2 text-base text-black">A creat, de asemenea, un material deosebit alături de CDP, un grup format din Style da Kid, Pacha Man și Dragoș Udilă.</p>
 
+        <div class="relative mt-4" style="padding-bottom: 56.25%;">
+            <iframe src="https://www.youtube.com/embed/TzzJOMAm--qi9cJj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
+        </div>
 
-                    "Pictez",
+        <p class="mt-2 text-base text-black">Produsele muzicale realizate alaturi de fratele său, Style da Kid, l-au ajutat pe Click să se impună pe scena muzicală din România. <br> În prezent, Click lucrează la finalizarea albumului "Inima Română" împreună cu Gavrila și Style da Kid,</p>
 
-                    <div class="relative mt-4" style="padding-bottom: 56.25%;"> {{-- 16:9 aspect ratio --}}
-                        <iframe src="https://www.youtube.com/embed/55_l1jxFe2A?si=HtG5o6PASFRjG9F_"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
-                    </div>
+        <div class="relative mt-4" style="padding-bottom: 56.25%;">
+            <iframe src="https://www.youtube.com/embed/YLSurPvOsAUz_Pz4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
+        </div>
+
+        <p class="mt-2 text-base text-black">și la un nou album solo care îmbină clasicul cu noul.</p>
+        <p class="mt-2 text-base text-black">Canalul de YouTube al lui Click, <a href="https://youtube.com/clickmusicromania" target="_blank" class="text-blue-500">Click Music Romania</a>, a strâns peste 50 de milioane de vizualizări până în prezent.</p>
+
+        <h4 class="mt-4 text-lg font-semibold text-black">Cine este omul din spatele artistului?</h4>
+        <p class="mt-2 text-base text-black">Pe lângă cariera sa muzicală, Click este un sportiv dedicat, antrenor și președinte al <a href="https://csvictoriamm.ro/" target="_blank" class="text-blue-500">Clubului Sportiv Victoria Maramureș</a>, unde antrenează copii și adulți în Freestyle Kickboxing și Fitness Funcțional. Este, de asemenea, fondatorul și CEO al agenției de publicitate <a href="https://clickstudios-digital.com" target="_blank" class="text-blue-500">Click Studios Digital</a> din Baia-Mare.</p>
+        <p class="mt-2 text-base text-black">Aceasta este pe scurt povestea lui Click, un artist complex și dedicat, cu o carieră muzicală diversă și un angajament puternic față de comunitate și sport.</p>
+    </div>
+</div>
 
 
 
-
-
-                    "Speranta"
-
-                    <div class="relative mt-4" style="padding-bottom: 56.25%;"> {{-- 16:9 aspect ratio --}}
-                        <iframe src="https://www.youtube.com/embed/ahP0Py7zhJY?si=o3avtKEAkrZtE1YH"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
-                    </div>
-
-
-                    etc. <br>
-                    De pe
-                    albumul "Lume Dragă" s-a remarcat piesa "Nopțile Calde" în colaborare cu Style da Kid ,
-
-                    <div class="relative mt-4" style="padding-bottom: 56.25%;"> {{-- 16:9 aspect ratio --}}
-                        <iframe src="https://www.youtube.com/embed/zwqfdK1kjzI?si=SJWz68DwBnlqzSRP"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
-                    </div>
-
-
-                    "Nici o slabiciune" in colaborare cu Style da Kid si Pacha Man
-
-                    <div class="relative mt-4" style="padding-bottom: 56.25%;"> {{-- 16:9 aspect ratio --}}
-                        <iframe src="https://www.youtube.com/embed/-C5nv4JNlE4?si=cVUo3P3IAOwef_53"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
-                    </div>
-
-
-                    si piesa ce da numele albumului "Lume draga" in colaborare cu Style da Kid si Oana Ciucanu.
-
-                    <div class="relative mt-4" style="padding-bottom: 56.25%;"> {{-- 16:9 aspect ratio --}}
-                        <iframe src="https://www.youtube.com/embed/vSeB96h6kEQ?si=v2AK9wBKyaXtXUPF"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen class="absolute top-0 left-0 w-full h-full"></iframe>
-                    </div>
-
-
-                    A creat, de asemenea, un material deosebit alături
-                    de
-                    CDP, un grup format din Style da Kid, Pacha Man și Dragoș Udilă.
-                    </p>
-                    (<a href="https://youtube.com/playlist?list=PLROBgwG4dMG7qEY66XA3dp8ggzd1xxkTm&si=TzzJOMAm--qi9cJj"
-                        target="_blank" rel="noopener noreferrer" class="px-2 text-white bg-blue-500 rounded">Asculta
-                        aici</a>) <br>
-
-
-                    <p class="mt-2 text-base text-black">Produsele muzicale realizate alaturi de fratele său, Style
-                        da
-                        Kid,
-                        l-au ajutat pe Click să se impună pe scena muzicală din România. <br>
-                        În prezent, Click lucrează
-                        la finalizarea albumului "Inima Română" împreună cu Gavrila și Style da Kid,<br>
-                        (<a href="https://youtube.com/playlist?list=PLROBgwG4dMG5j_x-By7AW0XSFQsZAhxQ_&si=YLSurPvOsAUz_Pz4"
-                            target="_blank" rel="noopener noreferrer"
-                            class="px-2 text-white bg-blue-500 rounded">Asculta aici</a>) <br>
-
-                        și la un nou
-                        album solo care îmbină clasicul cu noul.</p>
-                    <p class="mt-2 text-base text-black">
-                        Canalul de YouTube al lui Click,
-                        <a href="https://youtube.com/clickmusicromania" target="_blank" class="text-blue-500">Click
-                            Music Romania</a>,
-                        a strâns peste 50 de milioane de vizualizări până în prezent.
-                    </p>
-
-
-
-                    <h2 class="mt-4 text-xl font-semibold text-black">Cine este omul din spatele artistului?</h2>
-                    <p class="mt-2 text-base text-black">
-                        Pe lângă cariera sa muzicală, Click este un sportiv dedicat, antrenor și președinte al
-                        <a href="https://csvictoriamm.ro/" target="_blank" class="text-blue-500">Clubului Sportiv
-                            Victoria
-                            Maramureș</a>,
-                        unde antrenează copii și adulți în Freestyle Kickboxing și Fitness Funcțional. Este, de
-                        asemenea, fondatorul și CEO al agenției de publicitate <a
-                            href="https://clickstudios-digital.com" target="_blank" class="text-blue-500">Click
-                            Studios Digital</a> din Baia-Mare.
-                    </p>
-                    <p class="mt-2 text-base text-black">Aceasta este pe scurt povestea lui Click, un artist
-                        complex și
-                        dedicat, cu o carieră muzicală diversă și un angajament puternic față de comunitate și
-                        sport.</p>
-                </div>
-            </section>
-
-
-            <!-- Preview Videos Section -->
+            {{-- <!-- Preview Videos Section -->
             <section x-data="{ open: false }"
                 class="mb-8 overflow-hidden transition-all duration-300 transform bg-white shadow-lg rounded-3xl hover:shadow-2xl">
                 <button @click="open = !open" class="w-full p-6 text-left ">
@@ -497,7 +464,7 @@
                 <div x-show="open" x-transition class="p-6 md:p-8">
                     @livewire('welcome-videos')
                 </div>
-            </section>
+            </section> --}}
         </div>
     </main>
     </div>
