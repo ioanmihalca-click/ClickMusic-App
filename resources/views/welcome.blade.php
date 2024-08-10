@@ -270,7 +270,7 @@
 
                         <!--Newsletter -->
 
-                        <div id="newsletter" class="max-w-md py-8 mx-auto mt-48">
+                        <div id="newsletter" class="max-w-md py-20 mx-auto mt-48">
                             @if (session('success'))
                                 <div class="mt-4 text-green-500">{{ session('success') }}</div>
                             @endif
@@ -337,7 +337,8 @@
 
 <!--Access Premium -->
 
-                        <div id="accespremium" class="py-8 mt-48"></div>
+                        <div id="accespremium" class="py-16 mt-48"></div>
+                        <h2 class="mb-6 text-base tracking-widest text-gray-700 uppercase font-roboto-condensed md:text-2xl">Acces Premium</h2>
                         <p class="mb-8 text-lg text-gray-700">
                             Pentru <span class="font-semibold text-blue-500">Acces Premium</span> la download-uri și la întreaga colecție de videoclipuri,
                             inclusiv cele mai recente lansări și PREMIERE exclusive, abonează-te pentru doar <br>
@@ -378,7 +379,7 @@
   </div>
 </div>
 
-            <section id="piesarecenta" class="py-8 mt-48 mb-16 overflow-hidden ">
+            <section id="piesarecenta" class="py-16 mt-48 mb-16 overflow-hidden ">
 
                 <!--Cea mai recentă piesă -->
                 <div class="p-4">

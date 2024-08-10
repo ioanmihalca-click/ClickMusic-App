@@ -1,4 +1,4 @@
-<header class="bg-white shadow ">
+<header class="fixed top-0 left-0 z-50 w-full bg-white bg-opacity-75 shadow">
     <div class="container flex items-center justify-between px-4 py-2 mx-auto">
         <a href="/" class="flex items-center">
             <img src="/img/logo.png" alt="Logo Click Music" class="w-auto h-12">
@@ -14,7 +14,7 @@
 
             <div x-show="open" @click.away="open = false" class="absolute right-0 z-10 flex w-screen px-4 mt-5 max-w-max" style="display: none;" 
         x-cloak>
-               <div class="flex-auto w-screen max-w-md overflow-hidden text-sm leading-6 bg-white shadow-lg rounded-3xl ring-1 ring-gray-900/5">
+               <div class="flex-auto w-screen max-w-md overflow-hidden text-sm leading-6 bg-white shadow-lg bg-opacity-85 ring-1 ring-gray-900/5">
       <div class="p-4">
         <div class="relative flex p-4 rounded-lg group gap-x-6 hover:bg-gray-50">
           <div class="flex items-center justify-center flex-none mt-1 rounded-lg h-11 w-11 bg-gray-50 group-hover:bg-white">
