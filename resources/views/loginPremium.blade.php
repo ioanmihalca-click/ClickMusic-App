@@ -144,10 +144,10 @@
 
     <livewire:header-nav />
 
-    <main class="container px-4 py-12 mx-auto">
+    <main class="container px-4 py-20 mx-auto">
         <div class="max-w-2xl mx-auto overflow-hidden bg-white shadow-2xl rounded-3xl">
             <div class="p-8 md:p-12">
-                <h1 class="mb-6 text-3xl font-bold text-center text-gray-800 md:text-4xl">Acces Premium</h1>
+                <h1 class="mb-6 text-2xl tracking-widest text-center text-gray-800 uppercase font-roboto-condensed md:text-3xl">Acces Premium</h1>
                 
                 <div class="mb-8 text-center">
                     <p class="mb-4 text-lg text-gray-700">
