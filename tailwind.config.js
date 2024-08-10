@@ -17,7 +17,7 @@ export default {
             },
             objectPosition: {
                 
-                'right-15': '15% center',
+                'right-30': '35% center',
                 // Add more as needed
               }
         },

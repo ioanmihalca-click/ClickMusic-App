@@ -186,12 +186,20 @@
 <livewire:header-nav />
 </div>
 
-<div x-data="{ show: false }" 
-     x-init="setTimeout(() => show = true, 500); 
-             window.addEventListener('scroll', effectsHomeSection)"
-     x-show="show" 
-     x-transition.duration.500ms
+<div 
+     x-data="{ loading: true }"
+     x-init="$nextTick(() => { setTimeout(() => loading = false, 700) })"
      class="relative h-screen overflow-hidden">
+
+    <!-- Loading Spinner -->
+    <div x-show="loading" class="absolute inset-0 z-50 flex items-center justify-center bg-white">
+        <div class="w-16 h-16 border-t-4 border-blue-500 border-solid rounded-full animate-spin"></div>
+    </div>
+
+
+    <div x-show="!loading" x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+         class="relative h-screen bg-white home-parallax home-fade">
     <div class="relative h-screen bg-white home-parallax home-fade">
         <div class="absolute inset-0">
            <img src="{{ asset('img/hero-large.webp') }}"
@@ -210,7 +218,8 @@
         </div>
     </div>
 </div>
-
+    </div>
+</div>
 
 
 
