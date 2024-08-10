@@ -256,7 +256,7 @@
 
                         <!--Newsletter -->
 
-                        <div class="max-w-md mx-auto">
+                        <div class="max-w-md mx-auto mt-48">
                             @if (session('success'))
                                 <div class="mt-4 text-green-500">{{ session('success') }}</div>
                             @endif
