@@ -228,7 +228,7 @@
 
           
             <section
-                class="mb-16 overflow-hidden transition-all duration-300 transform bg-white ">
+                class="mb-12 overflow-hidden transition-all duration-300 transform bg-white ">
                 <div class="relative p-8 md:p-12">
                     <div class="absolute inset-0"></div>
                     <div class="relative z-10 text-center">
