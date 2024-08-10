@@ -254,7 +254,7 @@
                                 Premium</a>.
                         </p>
 
-                    <div class="justify-center mt-20 mb-32 animate-pulse">
+                    <div class="justify-center mt-16 mb-32 animate-pulse">
   <div class="w-2/12 w-full mx-auto">
     <div class="text-3xl text-center text-black hover:text-gray-500">
       <a href="#newsletter" class="flex items-center justify-center scroll-link">
