@@ -254,9 +254,23 @@
                                 Premium</a>.
                         </p>
 
+                    <div class="justify-center mt-24 mb-32 animate-pulse">
+  <div class="w-2/12 w-full mx-auto">
+    <div class="text-3xl text-center text-black hover:text-gray-500">
+      <a href="#newsletter" class="flex items-center justify-center scroll-link">
+       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+</svg>
+
+      </a>
+    </div>
+  </div>
+</div>
+
+
                         <!--Newsletter -->
 
-                        <div class="max-w-md mx-auto mt-48">
+                        <div id="newsletter" class="max-w-md py-8 mx-auto mt-48">
                             @if (session('success'))
                                 <div class="mt-4 text-green-500">{{ session('success') }}</div>
                             @endif
@@ -305,11 +319,25 @@
                                         confidențialitate</a></p>
 
                             </form>
-                        </div>
+                        
 
+                           <div class="justify-center mt-24 mb-32 animate-pulse">
+  <div class="w-2/12 w-full mx-auto">
+    <div class="text-3xl text-center text-black hover:text-gray-500">
+      <a href="#accespremium" class="flex items-center justify-center scroll-link">
+       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+</svg>
 
+      </a>
+    </div>
+  </div>
+</div>
+</div>
 
-                        <div class="my-6 border-t border-gray-300"></div>
+<!--Access Premium -->
+
+                        <div id="accespremium" class="py-8 mt-48"></div>
                         <p class="mb-8 text-lg text-gray-700">
                             Pentru <span class="font-semibold text-blue-500">Acces Premium</span> la download-uri și la întreaga colecție de videoclipuri,
                             inclusiv cele mai recente lansări și PREMIERE exclusive, abonează-te pentru doar <br>
@@ -337,8 +365,20 @@
             </section>
 
 
-            <section
-                class="mb-16 overflow-hidden ">
+ <div class="justify-center mt-24 mb-32 animate-pulse">
+  <div class="w-full mx-auto ">
+    <div class="text-3xl text-center text-black hover:text-gray-500">
+      <a href="#piesarecenta" class="flex items-center justify-center scroll-link">
+       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+</svg>
+
+      </a>
+    </div>
+  </div>
+</div>
+
+            <section id="piesarecenta" class="py-8 mt-48 mb-16 overflow-hidden ">
 
                 <!--Cea mai recentă piesă -->
                 <div class="p-4">
