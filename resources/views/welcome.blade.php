@@ -209,10 +209,10 @@
         </div>
         <div class="relative z-10 flex items-center justify-center h-full text-gray-700 caption-content">
             <div class="text-center">
-                <h1 class="font-roboto-condensed uppercase mb-3 tracking-[6px] md:tracking-[20px] font-bold text-3xl md:text-5xl leading-relaxed md:leading-normal">
+                <h1 class="font-roboto-condensed uppercase mb-3 tracking-[6px] md:tracking-[20px] font-bold text-4xl md:text-5xl leading-relaxed md:leading-normal">
                     Click Music Romania
                 </h1>
-                <h2 class="mb-12 text-xl text-gray-700 font-roboto-condensed md:text-3xl">Hip-Hop • Reggae • Soul</h2>
+                <h2 class="mb-12 text-xl text-gray-700 uppercase font-roboto-condensed md:text-3xl">Hip-Hop • Reggae • Soul</h2>
                 <a href="#despre" class="px-10 py-2 text-xs tracking-widest text-gray-700 uppercase transition-all duration-300 border border-blue-500 scroll-link hover:bg-blue-500 hover:text-white font-roboto-condensed hover:border-transparent">Afla mai multe</a>
             </div>
         </div>
