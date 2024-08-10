@@ -228,7 +228,7 @@
 
           
             <section
-                class="mb-12 overflow-hidden transition-all duration-300 transform bg-white ">
+                class="mb-16 overflow-hidden transition-all duration-300 transform bg-white ">
                 <div class="relative p-8 md:p-12">
                     <div class="absolute inset-0"></div>
                     <div class="relative z-10 text-center">
@@ -254,7 +254,7 @@
                                 Premium</a>.
                         </p>
 
-                    <div class="justify-center mt-24 mb-32 animate-pulse">
+                    <div class="justify-center mt-20 mb-32 animate-pulse">
   <div class="w-2/12 w-full mx-auto">
     <div class="text-3xl text-center text-black hover:text-gray-500">
       <a href="#newsletter" class="flex items-center justify-center scroll-link">
