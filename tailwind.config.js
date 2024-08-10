@@ -15,6 +15,11 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
                 'roboto-condensed': ['"Roboto Condensed"', 'sans-serif'],
             },
+            objectPosition: {
+                
+                'right-30': '30% center',
+                // Add more as needed
+              }
         },
     },
 

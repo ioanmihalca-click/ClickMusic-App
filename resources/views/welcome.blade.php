@@ -197,7 +197,7 @@
            <img src="{{ asset('img/hero-large.webp') }}"
  
      alt="Click Music Romania" 
-     class="object-cover w-full h-full opacity-35">
+     class="object-cover w-full h-full object-right-30 opacity-35 md:object-center">
         </div>
         <div class="relative z-10 flex items-center justify-center h-full text-gray-700 caption-content">
             <div class="text-center">
@@ -227,8 +227,8 @@
                             <img src="/img/Poza Click optimizata.jpg" alt="Click"
                                 class="w-32 h-32 border-4 border-blue-500 rounded-full shadow-lg md:w-36 md:h-36">
                         </div>
-                      <p class="mb-6 text-base font-roboto-condensed uppercase tracking-widest text-gray-700 md:text-2xl">Bine ai venit!
-                        <h3 class="mb-6 text-base font-roboto-condensed uppercase tracking-widest text-gray-700 md:text-2xl">Streaming Video <br> Blog si Magazin Click
+                      <p class="mb-6 text-base tracking-widest text-gray-700 uppercase font-roboto-condensed md:text-2xl">Bine ai venit!
+                        <h3 class="mb-6 text-base tracking-widest text-gray-700 uppercase font-roboto-condensed md:text-2xl">Streaming Video <br> Blog si Magazin Click
                             Music</h3>
 
                         <!-- Text de introducere personalizat -->
@@ -261,7 +261,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <h2 class="mb-6 text-base font-roboto-condensed uppercase tracking-widest text-gray-700 md:text-2xl">Abonează-te la
+                            <h2 class="mb-6 text-base tracking-widest text-gray-700 uppercase font-roboto-condensed md:text-2xl">Abonează-te la
                                 newsletter</h2>
                             <p class="mt-4 mb-6 leading-8 text-gray-600 text-medium">Trimit un email de fiecare data cand lansez ceva nou pe Youtube
                             </p>
@@ -333,7 +333,7 @@
 
                 <!--Cea mai recentă piesă -->
                 <div class="p-4">
-                    <h3 class="mb-8 text-base text-center font-roboto-condensed uppercase tracking-widest text-gray-700 md:text-2xl">
+                    <h3 class="mb-8 text-base tracking-widest text-center text-gray-700 uppercase font-roboto-condensed md:text-2xl">
                         Cea mai recentă piesă
                     </h3>
                     <div class="relative px-4 mb-8 ">
@@ -347,7 +347,7 @@
 
                     <!--Latest Blog Posts -->
                     <div class="p-4">
-                        <h3 class="mb-8 text-base font-roboto-condensed text-center uppercase tracking-widest text-gray-700 md:text-2xl">Ultimele Articole pe
+                        <h3 class="mb-8 text-base tracking-widest text-center text-gray-700 uppercase font-roboto-condensed md:text-2xl">Ultimele Articole pe
                             Blog
                         </h3>
                         @livewire('latest-blog-posts')
@@ -355,7 +355,7 @@
 
                     <!--Albume-->
                     <div class="p-4">
-                        <h3 class="mb-8 text-center text-base font-roboto-condensed uppercase tracking-widest text-gray-700 md:text-2xl">Albume in Magazin
+                        <h3 class="mb-8 text-base tracking-widest text-center text-gray-700 uppercase font-roboto-condensed md:text-2xl">Albume in Magazin
                         </h3>
                         <livewire:album-list />
                     </div>
@@ -367,11 +367,11 @@
 
            <!-- Biografie Click -->
 <div x-data="{ open: false }" data-aos="zoom-in-up" class="mb-4">
-    <button @click="open = !open" class="w-full px-4 py-4 mb-4 transition duration-300 ease-in-out transform shadow-md  hover:-translate-y-2">
+    <button @click="open = !open" class="w-full px-4 py-4 mb-4 transition duration-300 ease-in-out transform shadow-md hover:-translate-y-2">
       <div class="flex justify-between">
-        <h3 class="text-sm md:text-lg font-roboto-condensed uppercase tracking-widest">Cine este Click? <br class="md:hidden"> artistul din spatele muzicii</h3>
-        <span x-show="!open" class="text-blue-500 p-2">+</span>
-        <span x-show="open" class="text-blue-500 p-2">-</span>
+        <h3 class="text-sm tracking-widest uppercase md:text-lg font-roboto-condensed">Cine este Click? <br class="md:hidden"> artistul din spatele muzicii</h3>
+        <span x-show="!open" class="p-2 text-blue-500">+</span>
+        <span x-show="open" class="p-2 text-blue-500">-</span>
       </div>
     </button>
     <div x-show="open" x-transition class="px-8 py-8 bg-white border border-t-0">
