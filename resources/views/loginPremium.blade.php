@@ -147,14 +147,14 @@
     <main class="container px-4 py-20 mx-auto">
         <div class="max-w-2xl mx-auto overflow-hidden bg-white shadow-2xl rounded-3xl">
             <div class="p-8 md:p-12">
-                <h1 class="mb-6 text-2xl tracking-widest text-center text-gray-800 uppercase font-roboto-condensed md:text-3xl">Acces Premium</h1>
+                <h1 class="mb-6 text-xl tracking-widest text-center text-gray-800 uppercase font-roboto-condensed md:text-2xl">Acces Premium</h1>
                 
                 <div class="mb-8 text-center">
-                    <p class="mb-4 text-lg text-gray-700">
+                    <p class="mb-4 text-base text-gray-700 md:text-lg">
                         Pentru acces complet la întreaga colecție de videoclipuri,
                         inclusiv cele mai recente lansări și PREMIERE exclusive, abonează-te pentru doar
                     </p>
-                    <p class="text-2xl font-semibold text-blue-500">9,99 lei/ lună</p>
+                    <p class="text-lg font-semibold text-blue-500">9,99 lei/ lună</p>
                 </div>
 
                 @if (Route::has('login'))
