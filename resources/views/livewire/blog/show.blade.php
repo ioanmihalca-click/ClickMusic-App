@@ -1,5 +1,5 @@
 
-<div>
+<div class="py-16">
 <article class="max-w-4xl p-4 mx-auto bg-white rounded-lg shadow-md">
     <h1 class="mb-4 text-2xl font-bold text-gray-800 md:text-4xl">{{ $post->title }}</h1>
 
