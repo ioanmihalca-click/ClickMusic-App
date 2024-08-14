@@ -348,20 +348,20 @@
             </section>
 
 
-
-
-
-           <!-- Biografie Click -->
-<div x-data="{ open: false }" data-aos="zoom-in-up" class="mb-4">
-    <button @click="open = !open" class="w-full px-4 py-4 mb-4 transition duration-300 ease-in-out transform shadow-md hover:-translate-y-2">
-      <div class="flex justify-between">
+<div x-data="{
+activeAccordion: '',
+setActiveAccordion(id) {
+this.activeAccordion = (this.activeAccordion == id) ? '' : id
+}
+}" class="relative w-full mx-auto overflow-hidden text-sm font-normal bg-white border border-gray-200 divide-y divide-gray-200 rounded-md">
+<div x-data="{ id: $id('accordion') }" class="cursor-pointer group">
+<button @click="setActiveAccordion(id)" class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underline">
         <h3 class="text-sm tracking-widest uppercase md:text-lg font-roboto-condensed">Cine este Click? <br class="md:hidden"> artistul din spatele muzicii</h3>
-        <span x-show="!open" class="p-2 text-blue-500">+</span>
-        <span x-show="open" class="p-2 text-blue-500">-</span>
-      </div>
-    </button>
-    <div x-show="open" x-transition class="px-8 py-8 bg-white border border-t-0">
-        <p class="mt-2 text-base text-black">Click este un artist de muzică hip-hop, reggae și soul stabilit în Baia-Mare, Maramureș. Stilul său muzical este variat, bucurându-se de toate genurile muzicale fără a se limita la unul singur.</p>
+<svg class="w-4 h-4 duration-200 ease-out" :class="{ 'rotate-180': activeAccordion==id }" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</button>
+<div x-show="activeAccordion==id" x-collapse x-cloak>
+<div class="p-4 pt-0">
+  <p class="mt-2 text-base text-black">Click este un artist de muzică hip-hop, reggae și soul stabilit în Baia-Mare, Maramureș. Stilul său muzical este variat, bucurându-se de toate genurile muzicale fără a se limita la unul singur.</p>
         <p class="mt-2 text-base text-black">A început călătoria muzicală la vârsta de 13 ani, când și-a descoperit pasiunea pentru producția de instrumentale și scrierea versurilor. Încă de la început, a fost încurajat și instruit de Gabi Mican, administratorul portalului de hip-hop “Rap-Arena”. Aceasta colaborare i-a permis să creeze mai multe materiale și să apară pe numeroase compilații de muzică rap.</p>
         <p class="mt-2 text-base text-black">La 18 ani, s-a mutat la Cluj, unde, împreună cu Blazon și DJ Maka, a format trupa Camuflaj. Aceasta a devenit rapid un simbol al muzicii hip-hop și reggae din Cluj și, ulterior, din toată țara, odată cu mutarea în București și colaborarea cu un label muzical cunoscut. Trupa a câștigat recunoaștere națională cu piese precum "România" și "În Jurul Lumii".</p>
 
@@ -431,27 +431,11 @@
         <h4 class="mt-4 text-lg font-semibold text-black">Cine este omul din spatele artistului?</h4>
         <p class="mt-2 text-base text-black">Pe lângă cariera sa muzicală, Click este un sportiv dedicat, antrenor și președinte al <a href="https://csvictoriamm.ro/" target="_blank" class="text-blue-500">Clubului Sportiv Victoria Maramureș</a>, unde antrenează copii și adulți în Freestyle Kickboxing și Fitness Funcțional. Este, de asemenea, fondatorul și CEO al agenției de publicitate <a href="https://clickstudios-digital.com" target="_blank" class="text-blue-500">Click Studios Digital</a> din Baia-Mare.</p>
         <p class="mt-2 text-base text-black">Aceasta este pe scurt povestea lui Click, un artist complex și dedicat, cu o carieră muzicală diversă și un angajament puternic față de comunitate și sport.</p>
-    </div>
+  
+</div>
+</div>
 </div>
 
-
-
-            {{-- <!-- Preview Videos Section -->
-            <section x-data="{ open: false }"
-                class="mb-8 overflow-hidden transition-all duration-300 transform bg-white shadow-lg rounded-3xl hover:shadow-2xl">
-                <button @click="open = !open" class="w-full p-6 text-left ">
-                    <div class="flex items-center justify-between">
-                        <h2 class="text-lg font-semibold text-gray-900 md:text-2xl">Abonează-te pentru a avea ACCES la
-                            Toate videoclipurile</h2>
-                        <span x-show="!open" class="text-3xl font-semibold text-blue-500">+</span>
-                        <span x-show="open" class="text-3xl font-semibold text-blue-500">-</span>
-                    </div>
-                </button>
-                <div x-show="open" x-transition class="p-6 md:p-8">
-                    @livewire('welcome-videos')
-                </div>
-            </section> --}}
-        </div>
     </main>
     </div>
     <footer class="py-8 text-white bg-gray-800">
@@ -527,11 +511,11 @@
     <div x-data="{ show: false }" x-on:scroll.window="show = window.pageYOffset >= 1000"
         class="fixed bottom-8 right-8">
         <button x-show="show" x-transition x-on:click="window.scrollTo({top: 0, behavior: 'smooth'})"
-            class="p-2 bg-white rounded-full shadow-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                <path fill="currentColor"
-                    d="m11 7.825l-4.9 4.9q-.3.3-.7.288t-.7-.313q-.275-.3-.288-.7t.288-.7l6.6-6.6q.15-.15.325-.212T12 4.425q.2 0 .375.063t.325.212l6.6 6.6q.275.275.275.688t-.275.712q-.3.3-.713.3t-.712-.3L13 7.825V19q0 .425-.288.713T12 20q-.425 0-.713-.288T11 19V7.825Z" />
-            </svg>
+            class="px-1 py-2 text-white bg-blue-500 border-black border-solid shadow-lg hover:text-white hover:bg-blue-600">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
+</svg>
+
         </button>
     </div>
 
