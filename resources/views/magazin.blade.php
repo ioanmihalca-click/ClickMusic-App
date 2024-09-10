@@ -226,7 +226,7 @@
 <livewire:header-nav />
 
     <main class="container px-4 py-8 mx-auto">
-        <h1 class="mb-6 text-3xl font-bold text-gray-800">Albume</h1>
+        <h1 class="mt-24 mb-6 text-3xl font-bold text-gray-800">Albume</h1>
 @if(session('error'))
     <div class="relative px-4 py-3 text-green-700 bg-green-100 border border-green-400 rounded" role="alert">
         <strong class="font-bold">Eroare:</strong>
@@ -235,11 +235,11 @@
 @endif
 
 
-        <div class="overflow-hidden bg-white rounded-lg shadow-xl">
+   
             <div class="p-6">
                 <livewire:album-list />
             </div>
-        </div>
+      
     </main>
 
     <footer class="py-8 text-white bg-gray-800">

@@ -237,7 +237,7 @@
                         </ul>
                     </div>
                 @endif
-                <h2 class="mb-6 text-base tracking-widest text-gray-700 uppercase font-roboto-condensed md:text-2xl">Abonează-te la newsletter</h2>
+                <h2 class="mt-12 mb-6 text-base tracking-widest text-gray-700 uppercase font-roboto-condensed md:text-2xl">Abonează-te la newsletter</h2>
                 <p class="mt-4 mb-6 leading-8 text-gray-600 text-medium">Trimit un email de fiecare data cand lansez ceva nou pe Youtube</p>
                 <form action="{{ route('newsletter.subscribe') }}" method="POST" class="space-y-4">
                     @csrf

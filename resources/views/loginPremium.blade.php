@@ -145,7 +145,7 @@
     <livewire:header-nav />
 
     <main class="container px-4 py-20 mx-auto">
-        <div class="max-w-2xl mx-auto overflow-hidden bg-white shadow-2xl rounded-3xl">
+        <div class="max-w-2xl mx-auto ">
             <div class="p-8 md:p-12">
                 <h1 class="mb-6 text-xl tracking-widest text-center text-gray-800 uppercase font-roboto-condensed md:text-2xl">Acces Premium</h1>
                 

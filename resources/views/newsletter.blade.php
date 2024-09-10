@@ -144,8 +144,8 @@
 
     <livewire:header-nav />
 
-    <main class="container px-4 py-12 mx-auto">
-        <div class="max-w-2xl mx-auto overflow-hidden bg-white shadow-2xl rounded-3xl">
+    <main class="container px-4 py-12 mx-auto ">
+        <div class="max-w-2xl mx-auto mt-24 text-center">
               <!--Newsletter -->
 
                         <div class="max-w-md p-4 mx-auto ">

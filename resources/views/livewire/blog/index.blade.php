@@ -1,5 +1,5 @@
 <section class="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
-    <h1 class="mb-12 text-4xl font-extrabold text-center text-gray-900">Articole pe Blog</h1>
+    <h1 class="mt-8 mb-12 text-4xl font-extrabold text-center text-gray-900">Articole pe Blog</h1>
 
     <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         @foreach ($posts as $post)

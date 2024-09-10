@@ -87,8 +87,8 @@
 
     <main class="container px-4 py-8 mx-auto">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+           
+                <div class="p-6 mt-24 bg-white border-b border-gray-200">
                     <div class="flex flex-col md:flex-row">
                         <div class="md:w-1/3">
                             <img src="{{ asset('storage/' . $album->coperta_album) }}" alt="{{ $album->titlu }}"
@@ -147,7 +147,7 @@
                                     </a>
                                 </div>
 
-                            </div>
+                
                         </div>
                     </div>
                 </div>
