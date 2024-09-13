@@ -526,7 +526,7 @@ this.activeAccordion = (this.activeAccordion == id) ? '' : id
     </footer>
 
 <!--Cookies -->
-<div x-data="cookieConsent()" x-show="bannerVisible" 
+{{-- <div x-data="cookieConsent()" x-show="bannerVisible" 
      x-transition:enter="transition ease-out duration-500" 
      x-transition:enter-start="translate-y-full" 
      x-transition:enter-end="translate-y-0" 
@@ -592,7 +592,7 @@ document.addEventListener('alpine:init', () => {
         }
     }));
 });
-</script>
+</script> --}}
 
 
 </body>
