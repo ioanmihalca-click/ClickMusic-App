@@ -8,8 +8,9 @@ use App\Models\Video;
 class SearchVideos extends Component
 {
     public $searchTerm = '';
-    public $searchResults;
+    public $searchResults = null;
     public $suggestions = [];
+    public $lastSearchedTerm = '';
 
     protected $queryString = ['searchTerm' => ['except' => '']];
 
@@ -40,24 +41,19 @@ class SearchVideos extends Component
 
     public function search()
     {
+        $this->suggestions = [];
+        $this->lastSearchedTerm = $this->searchTerm; // Salvăm termenul de căutare
+        
         if (strlen($this->searchTerm) >= 2) {
             $this->searchResults = Video::where('title', 'like', "%{$this->searchTerm}%")
                 ->orWhere('description', 'like', "%{$this->searchTerm}%")
-                ->take(12)
                 ->get();
-            
-            // Stocăm termenul de căutare înainte de a-l reseta
-            $searchedTerm = $this->searchTerm;
-            
-            // Resetăm câmpul de căutare
-            $this->searchTerm = '';
-            
-            // Emitem un eveniment cu termenul căutat
-            $this->dispatch('searchPerformed', $searchedTerm);
         } else {
             $this->searchResults = collect();
         }
-        $this->suggestions = [];
+
+        $this->dispatch('searchPerformed', $this->lastSearchedTerm);
+        $this->searchTerm = ''; // Resetăm câmpul de căutare
     }
 
     public function render()

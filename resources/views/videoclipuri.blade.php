@@ -20,7 +20,7 @@
                     </div>
                 @endif --}}
 
-                <div class="p-6 text-center text-gray-900">
+                <div class="p-2 text-center text-gray-900 md:p-6">
                     {{ __('Bine ai venit! Aici ai acces la toate PREMIERELE si la toata colectia de videoclipuri') }}
                 </div>
 
@@ -28,21 +28,21 @@
                     @livewire('search-videos')
                 </div>
 
-                <div class="p-6">
+                <div class="p-2 md:p-6">
                     @livewire('featured-video')
                 </div>
 
-                <div class="p-6">
+                <div class="p-2 md:p-6">
                     @livewire('recent-videos')
                 </div>
 
-                {{--   <div class="p-6">
+                {{--   <div class="p-2 md:p-6">
 
                     @livewire('popular-videos') </div> --}}
 
 
 
-                <div class="p-6">
+                <div class="p-2 md:p-6">
 
                     @livewire('video-dashboard') </div>
 
