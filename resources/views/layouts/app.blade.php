@@ -81,7 +81,7 @@
         @endif
 
         <!-- Page Content -->
-        <main>
+        <main class="container flex-grow px-4 py-4 mx-auto ">
             {{ $slot }}
         </main>
     </div>

@@ -7,7 +7,7 @@
 
     <div class="py-4">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+            <div class="overflow-hidden bg-white rounded shadow-sm">
 
                 <div class="w-full mb-4 aspect-w-16 aspect-h-9">
                     {!! $video->embed_link !!}
