@@ -163,15 +163,17 @@
 
 
        <!-- Fixed right-side "Ce e nou?" button -->
-<div class="fixed right-0 z-50 bottom-24 md:bottom-8 md:right-0">
-    <div class="p-2 bg-white rounded-l-lg shadow-lg ">
+<div x-data="floatingButton()" x-init="init()" id="floating-button" class="fixed right-0 z-50 transition-all duration-300 ease-in-out" :style="{ bottom: `${bottomPosition}px` }">
+    <div class="p-2 bg-white rounded-l-lg shadow-lg">
         <x-slider-intro>
             <x-slot name="trigger">
-             
+                <!-- conținutul trigger-ului -->
             </x-slot>
         </x-slider-intro>
     </div>
 </div>
+
+
 
     <div x-show="!loading" x-transition:enter="transition ease-out duration-300"
          x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
@@ -594,6 +596,31 @@ document.addEventListener('alpine:init', () => {
 });
 </script> --}}
 
+<script>
+function floatingButton() {
+    return {
+        bottomPosition: 32, // 32px = 8 * 4 (tailwind's bottom-8)
+        footerHeight: 0,
+        init() {
+            this.footerHeight = document.querySelector('footer').offsetHeight;
+            window.addEventListener('scroll', () => this.updatePosition());
+            this.updatePosition();
+        },
+        updatePosition() {
+            const scrollPosition = window.pageYOffset;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const distanceToFooter = documentHeight - scrollPosition - windowHeight;
+            
+            if (distanceToFooter <= this.footerHeight) {
+                this.bottomPosition = this.footerHeight - distanceToFooter + 32;
+            } else {
+                this.bottomPosition = 32;
+            }
+        }
+    }
+}
+</script>
 
 </body>
 </html>

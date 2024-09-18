@@ -58,7 +58,7 @@
         </a>
     </div>
 
-    <div class="max-w-md p-2 mx-auto mt-8 text-left text-center bg-white rounded-lg shadow-lg">
+    <div class="max-w-md p-2 mx-auto mt-8 text-center bg-white rounded-lg shadow-lg">
         <div class="mb-4 aspect-w-16 aspect-h-9">
             <img src="{{ $video->thumbnail_url }}" alt="{{ $video->title }}"
                 class="object-cover w-full h-full rounded-md">
