@@ -1,14 +1,12 @@
 <div class="w-full mx-auto"
-     x-data="{ 
-         isLoading: false 
-     }"
+     x-data="{ isLoading: false }"
      x-on:livewire:loading.window="isLoading = true"
      x-on:livewire:load.window="isLoading = false"
 >
     <div class="relative mb-6">
         <div class="flex">
             <input
-                wire:model.debounce.300ms="searchTerm"
+                wire:model.defer="searchTerm"
                 wire:keydown.enter="search"
                 type="text"
                 class="flex-grow px-4 py-2 border border-gray-300 shadow-sm rounded-l-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
@@ -29,16 +27,6 @@
                 </span>
             </button>
         </div>
-
-        @if(count($suggestions) > 0)
-            <ul class="absolute z-10 w-full mt-1 overflow-y-auto bg-white border border-gray-300 rounded-md shadow-lg max-h-60">
-                @foreach($suggestions as $suggestion)
-                    <li class="px-4 py-2 cursor-pointer hover:bg-gray-100" wire:click="selectSuggestion('{{ $suggestion }}')">
-                        {{ $suggestion }}
-                    </li>
-                @endforeach
-            </ul>
-        @endif
     </div>
 
     @if($lastSearchedTerm)

@@ -4,52 +4,34 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Video;
+use Illuminate\Support\Facades\Log;
 
 class SearchVideos extends Component
 {
     public $searchTerm = '';
     public $searchResults = null;
-    public $suggestions = [];
     public $lastSearchedTerm = '';
 
     protected $queryString = ['searchTerm' => ['except' => '']];
 
-    public function updatedSearchTerm()
-    {
-        $this->getSuggestions();
-    }
-
-    public function getSuggestions()
-    {
-        if (strlen($this->searchTerm) >= 2) {
-            $this->suggestions = Video::where('title', 'like', "%{$this->searchTerm}%")
-                ->select('title')
-                ->distinct()
-                ->take(5)
-                ->pluck('title')
-                ->toArray();
-        } else {
-            $this->suggestions = [];
-        }
-    }
-
-    public function selectSuggestion($suggestion)
-    {
-        $this->searchTerm = $suggestion;
-        $this->search();
-    }
-
     public function search()
     {
-        $this->suggestions = [];
-        $this->lastSearchedTerm = $this->searchTerm; // Salvăm termenul de căutare
+        $this->lastSearchedTerm = trim($this->searchTerm);
         
-        if (strlen($this->searchTerm) >= 2) {
-            $this->searchResults = Video::where('title', 'like', "%{$this->searchTerm}%")
-                ->orWhere('description', 'like', "%{$this->searchTerm}%")
-                ->get();
+        if (strlen($this->lastSearchedTerm) >= 2) {
+            $this->searchResults = Video::where(function($query) {
+                $query->where('title', 'like', "%{$this->lastSearchedTerm}%")
+                      ->orWhere('description', 'like', "%{$this->lastSearchedTerm}%");
+            })->get();
+
+            // Logging pentru depanare
+            Log::info("Căutare efectuată", [
+                'termen' => $this->lastSearchedTerm,
+                'rezultate' => $this->searchResults->count()
+            ]);
         } else {
             $this->searchResults = collect();
+            Log::info("Termen de căutare prea scurt", ['termen' => $this->lastSearchedTerm]);
         }
 
         $this->dispatch('searchPerformed', $this->lastSearchedTerm);
