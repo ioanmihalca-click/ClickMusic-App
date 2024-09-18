@@ -126,6 +126,8 @@
     <!-- Grid -->
     <div class="flex flex-col items-center justify-center gap-6 mt-12 lg:flex-row">
         @if ($user->isEligibleForFreePlan())
+
+        <a href="{{ route('videoclipuri') }}">
             <div class="w-full p-8 mx-auto text-center transition-transform transform bg-white border border-gray-200 shadow-md sm:w-80 md:w-64 lg:w-72 rounded-xl hover:shadow-xl hover:scale-105">
                 <p class="mb-8">Vi s-a atribuit rolul de <br>
                 <span class="px-2 text-white bg-blue-500 rounded">Super_User</span></p>
@@ -134,8 +136,9 @@
                         <path fill-rule="evenodd" d="M11.5 1.246c.832-.855 2.913.642 0 2.566-2.913-1.924-.832-3.421 0-2.566M9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h10s1 0 1-1-1-4-6-4-6 3-6 4m13.5-8.09c1.387-1.425 4.855 1.07 0 4.277-4.854-3.207-1.387-5.702 0-4.276ZM15 2.165c.555-.57 1.942.428 0 1.711-1.942-1.283-.555-2.281 0-1.71Z"/>
                     </svg>
                 </div>
-                <a href="{{ route('videoclipuri') }}" class="btn btn-primary hover:bg-blue-500 hover:rounded hover:px-2 hover:text-white">ACCES PREMIUM</a>
+                <p>ACCES PREMIUM</p>
             </div>
+            </a>
         @else
             <!-- Card -->
             <div class="w-full p-8 text-center transition-transform transform bg-white border border-gray-200 shadow-md sm:w-80 md:w-64 lg:w-72 rounded-xl hover:shadow-xl hover:scale-105">
