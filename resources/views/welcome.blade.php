@@ -163,7 +163,7 @@
 
 
        <!-- Fixed right-side "Ce e nou?" button -->
-<div class="fixed right-0 z-50 bottom-4 md:bottom-8 md:right-0">
+<div class="fixed right-0 z-50 bottom-24 md:bottom-4 md:bottom-8 md:right-0">
     <div class="p-2 bg-white rounded-l-lg shadow-lg ">
         <x-slider-intro>
             <x-slot name="trigger">
