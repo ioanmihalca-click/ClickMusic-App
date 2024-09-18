@@ -75,7 +75,8 @@
 
                      
             <p class="mt-4 text-sm leading-relaxed font-roboto-condensed md:text-base">
-                "Gânduri Bune" este o piesă care îmi este foarte dragă și care explorează puterea gândurilor pozitive și impactul lor asupra vieții noastre. Piesa este disponibila in premiera pana la lansarea oficiala in sectiunea ACCES PREMIUM. Click pe poza pentru a citi articolul complet.
+                "Gânduri Bune" este o piesă care îmi este foarte dragă și care explorează puterea gândurilor pozitive și impactul lor asupra vieții noastre. <br><br>
+                Piesa a fost disponibila in premiera pana la lansarea oficiala in sectiunea ACCES PREMIUM, iar acum poate fi ascultata pe Youtube si pe toate platformele de streaming. Linkul de Youtube il gasiti in articol. Click pe poza pentru a citi articolul complet.
             </p>
 
     </div>
