@@ -49,9 +49,6 @@
     <!-- Livewire Styles -->
     @livewireStyles
 
-    <!-- Alpine.js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
     <!-- Additional Styles -->
     <style>
         /* Custom scrollbar styling */
@@ -138,6 +135,7 @@
         </div>
     </footer>
    
+   @livewireScripts
 </body>
 
 </html>

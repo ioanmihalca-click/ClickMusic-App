@@ -24,14 +24,11 @@
                     {{ __('Bine ai venit! Aici ai acces la toate PREMIERELE si la toata colectia de videoclipuri') }}
                 </div>
 
+                <div class="px-6">
+                    @livewire('search-videos')
+                </div>
 
                 <div class="p-6">
-
-                    <div class="">
-                        @livewire('search-videos')
-                    </div>
-
-
                     @livewire('featured-video')
                 </div>
 

@@ -163,7 +163,7 @@
 
 
        <!-- Fixed right-side "Ce e nou?" button -->
-<div class="fixed right-0 z-50 bottom-24 md:bottom-4 md:bottom-8 md:right-0">
+<div class="fixed right-0 z-50 bottom-24 md:bottom-8 md:right-0">
     <div class="p-2 bg-white rounded-l-lg shadow-lg ">
         <x-slider-intro>
             <x-slot name="trigger">
@@ -230,7 +230,7 @@
             </p>
 
             <div class="justify-center mb-32 mt-18 animate-pulse">
-                <div class="w-2/12 w-full mx-auto">
+                <div class="w-full mx-auto">
                     <div class="text-3xl text-center text-black hover:text-gray-500">
                         <a href="#newsletter" class="flex items-center justify-center scroll-link">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10">
@@ -283,7 +283,7 @@
                 </form>
 
                 <div class="justify-center mt-24 mb-32 animate-pulse">
-                    <div class="w-2/12 w-full mx-auto">
+                    <div class="w-full mx-auto">
                         <div class="text-3xl text-center text-black hover:text-gray-500">
                             <a href="#accespremium" class="flex items-center justify-center scroll-link">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10">

@@ -8,7 +8,7 @@
                     {!! $featuredVideo->embed_link !!}
                 </div>
                 <div class="p-4">
-                    <h3 class="mb-2 text-xl font-semibold text-gray-800">{{ $featuredVideo->title }}</h3>
+                    <h3 class="mb-2 text-xl font-semibold text-gray-800 line-clamp-1">{{ $featuredVideo->title }}</h3>
                     <p class="flex items-center text-blue-500 hover:text-blue-600">
                         Vezi mai mult
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
