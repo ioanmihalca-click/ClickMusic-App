@@ -55,7 +55,7 @@
         }
         .center-card {
             height: calc(100% - 2.5rem);
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             margin-bottom: 1rem;
         }
     }
