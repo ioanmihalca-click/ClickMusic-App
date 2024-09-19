@@ -1,11 +1,11 @@
-<header class="fixed top-0 left-0 z-50 w-full bg-white bg-opacity-75 shadow">
+<header class="fixed top-0 left-0 z-50 w-full bg-gradient-to-b from-black to-transparent">
     <div class="container flex items-center justify-between px-4 py-2 mx-auto">
         <a href="/" class="flex items-center">
-            <img src="/img/logo.png" alt="Logo Click Music" class="w-auto h-12">
+            <img src="/img/logo alb.png" alt="Logo Click Music" class="w-auto h-12">
         </a>
         
         <div x-data="{ open: false }" class="relative">
-            <button @click="open = !open" type="button" class="inline-flex items-center text-base font-semibold leading-6 text-gray-900 gap-x-1" aria-expanded="false">
+            <button @click="open = !open" type="button" class="inline-flex items-center text-base font-semibold leading-6 text-white transition-colors duration-200 gap-x-1" aria-expanded="false">
                 <span>Meniu</span>
                 <svg class="w-5 h-5 transition-transform duration-200" :class="{'rotate-180': open}" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
