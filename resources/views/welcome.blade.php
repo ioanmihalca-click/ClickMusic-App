@@ -378,9 +378,9 @@
 </div>
 
     <!-- Blog Posts Section -->
-    <section id="blogposts" class="py-16 mt-48 mb-16 overflow-hidden ">
+    <section id="blogposts" class="px-6 py-16 mt-48 mb-16 overflow-hidden ">
         <div class="max-w-5xl mx-auto">
-            <h3 class="px-6 my-8 text-2xl tracking-widest text-center text-blue-400 uppercase font-roboto-condensed md:text-3xl">
+            <h3 class="my-8 text-2xl tracking-widest text-center text-blue-400 uppercase font-roboto-condensed md:text-3xl">
                 Ultimele Articole pe Blog
             </h3>
             @livewire('latest-blog-posts')
