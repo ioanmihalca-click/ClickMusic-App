@@ -54,8 +54,8 @@
             transform: translateZ(10px);
         }
         .center-card {
-            height: calc(100% - 2rem);
-            margin-top: 1rem;
+            height: calc(100% - 2.5rem);
+            margin-top: 1.2rem;
             margin-bottom: 1rem;
         }
     }

@@ -195,7 +195,7 @@
 
                 <a href="#despre" class="px-10 py-2 text-xs tracking-widest text-gray-700 uppercase transition-all duration-300 border border-blue-500 scroll-link hover:bg-blue-500 hover:text-white font-roboto-condensed hover:border-transparent">Afla mai multe</a>
 
-            
+
 
             </div>
            
