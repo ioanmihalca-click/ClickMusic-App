@@ -326,7 +326,7 @@
 <div class="justify-center mt-12 mb-32 animate-pulse">
     <div class="w-full mx-auto ">
         <div class="text-3xl text-center text-black hover:text-gray-500">
-            <a href="#piesarecenta" class="flex items-center justify-center scroll-link">
+            <a href="#blogposts" class="flex items-center justify-center scroll-link">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
@@ -334,8 +334,8 @@
         </div>
     </div>
 </div>
-
-<section id="piesarecenta" class="py-16 mt-48 mb-16 overflow-hidden">
+</div>
+<section id="blogposts" class="py-16 mt-48 mb-16 overflow-hidden">
 
                 <!--Cea mai recentă piesă -->
                 {{-- <div class="p-4">
@@ -360,11 +360,11 @@
                     </div>
 
                     <!--Albume-->
-                    <div class="p-4">
+                    {{-- <div class="p-4">
                         <h3 class="mb-8 text-base tracking-widest text-center text-gray-700 uppercase font-roboto-condensed md:text-2xl">Albume in Magazin
                         </h3>
                         <livewire:album-list />
-                    </div>
+                    </div> --}}
             </section>
 
 
@@ -373,7 +373,7 @@ activeAccordion: '',
 setActiveAccordion(id) {
 this.activeAccordion = (this.activeAccordion == id) ? '' : id
 }
-}" class="relative w-full mx-auto overflow-hidden text-sm font-normal bg-white border border-gray-200 divide-y divide-gray-200 rounded-md">
+}" class="relative max-w-2xl mx-auto overflow-hidden text-sm font-normal bg-white border border-gray-200 divide-y divide-gray-200 rounded-md">
 <div x-data="{ id: $id('accordion') }" class="cursor-pointer group">
 <button @click="setActiveAccordion(id)" class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underline">
         <h3 class="text-sm tracking-widest uppercase md:text-lg font-roboto-condensed">Cine este Click? <br class="md:hidden"> artistul din spatele muzicii</h3>
@@ -454,7 +454,7 @@ this.activeAccordion = (this.activeAccordion == id) ? '' : id
   
 </div>
 </div>
-</div>
+
 
     </main>
     </div>
