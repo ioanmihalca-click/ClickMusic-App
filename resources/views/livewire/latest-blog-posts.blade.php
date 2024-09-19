@@ -24,9 +24,9 @@
                         <div class="mb-4 text-base text-gray-700 line-clamp-3">
                             {{ strip_tags($post->body) }}
                         </div>
-                        <a href="{{ route('blog.show', $post->slug) }}" class="inline-block px-6 py-2 text-sm font-medium text-white transition-colors duration-300 bg-blue-500 rounded-lg hover:bg-blue-600">
+                        {{-- <a href="{{ route('blog.show', $post->slug) }}" class="inline-block px-6 py-2 text-sm font-medium text-white transition-colors duration-300 bg-blue-500 rounded-lg hover:bg-blue-600">
                             Citește mai mult
-                        </a>
+                        </a> --}}
                     </div>
                 </article>
             @endforeach
