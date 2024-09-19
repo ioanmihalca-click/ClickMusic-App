@@ -338,7 +338,7 @@
 <section id="piesarecenta" class="py-16 mt-48 mb-16 overflow-hidden">
 
                 <!--Cea mai recentă piesă -->
-                <div class="p-4">
+                {{-- <div class="p-4">
                     <h3 class="mb-8 text-base tracking-widest text-center text-gray-700 uppercase font-roboto-condensed md:text-2xl">
                         Cea mai recentă piesă
                     </h3>
@@ -349,7 +349,7 @@
                                 loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;"
                                 allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
                                 allowfullscreen="true"></iframe></div>
-                    </div>
+                    </div> --}}
 
                     <!--Latest Blog Posts -->
                     <div class="p-4">
