@@ -46,6 +46,8 @@ Route::get('/promo/unsubscribe/{email}', [PromoUnsubscribeController::class, 'un
     ->name('promo.unsubscribe')
     ->middleware('signed');
 
+Route::view('/accespremium', 'loginPremium')->name('accespremium');
+
 
 Route::get('/blog', BlogIndex::class)->name('blog.index');
 Route::get('/blog/{slug}', BlogShow::class)->name('blog.show');
