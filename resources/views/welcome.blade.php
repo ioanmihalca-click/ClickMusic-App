@@ -336,7 +336,7 @@
 
        <!-- Access Premium Section -->
 <div id="accespremium" class="max-w-xl px-6 py-20 mx-auto mt-48 ">
-    <div class="max-w-2xl px-4 mx-auto mt-24 text-center">
+    <div class="max-w-2xl px-4 mx-auto mt-20 text-center">
         <h2 class="mb-6 text-2xl tracking-widest text-blue-400 uppercase font-roboto-condensed md:text-3xl">
             Acces Premium
         </h2>
