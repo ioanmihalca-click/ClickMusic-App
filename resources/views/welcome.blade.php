@@ -337,34 +337,14 @@
 </div>
 <section id="blogposts" class="py-16 mt-48 mb-16 overflow-hidden">
 
-                <!--Cea mai recentă piesă -->
-                {{-- <div class="p-4">
-                    <h3 class="mb-8 text-base tracking-widest text-center text-gray-700 uppercase font-roboto-condensed md:text-2xl">
-                        Cea mai recentă piesă
-                    </h3>
-                    <div class="relative px-4 mb-8 ">
-                        <div class="overflow-hidden rounded-md shadow-sm"
-                            style="position:relative;padding-top:56.25%;"><iframe
-                                src="https://iframe.mediadelivery.net/embed/233943/396eb18b-18eb-46d8-a6f7-279d7104d8c9?autoplay=false&loop=false&muted=false&preload=false&responsive=true"
-                                loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;"
-                                allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
-                                allowfullscreen="true"></iframe></div>
-                    </div> --}}
-
                     <!--Latest Blog Posts -->
-                    <div class="p-4">
+                    <div class="max-w-6xl mx-auto">
                         <h3 class="mb-8 text-base tracking-widest text-center text-gray-700 uppercase font-roboto-condensed md:text-2xl">Ultimele Articole pe
                             Blog
                         </h3>
                         @livewire('latest-blog-posts')
                     </div>
 
-                    <!--Albume-->
-                    {{-- <div class="p-4">
-                        <h3 class="mb-8 text-base tracking-widest text-center text-gray-700 uppercase font-roboto-condensed md:text-2xl">Albume in Magazin
-                        </h3>
-                        <livewire:album-list />
-                    </div> --}}
             </section>
 
 
