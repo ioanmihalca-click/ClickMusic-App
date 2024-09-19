@@ -27,6 +27,7 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\VideoNotificationController;
 use App\Http\Controllers\SubscriptionSuccessController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\PromoUnsubscribeController;
 
 Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
@@ -39,7 +40,11 @@ Route::view('/newsletter', 'newsletter')->name('newsletter');
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe'); 
 Route::get('/newsletter/unsubscribe', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
 
-Route::view('/accespremium', 'loginPremium')->name('accespremium');
+
+
+Route::get('/promo/unsubscribe/{email}', [PromoUnsubscribeController::class, 'unsubscribe'])
+    ->name('promo.unsubscribe')
+    ->middleware('signed');
 
 
 Route::get('/blog', BlogIndex::class)->name('blog.index');

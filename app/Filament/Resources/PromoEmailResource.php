@@ -115,7 +115,6 @@ class PromoEmailResource extends Resource
                         $getRecords($record),
                         $data['subject'],
                         $data['song_url'],
-                        $data['download_url'],
                         $data['image_url']
                     );
     
@@ -143,9 +142,6 @@ class PromoEmailResource extends Resource
             Forms\Components\TextInput::make('song_url')
                 ->label('Song URL')
                 ->required()
-                ->url(),
-            Forms\Components\TextInput::make('download_url')
-                ->label('Download URL')
                 ->url(),
             Forms\Components\TextInput::make('image_url')
                 ->label('Image URL')
@@ -202,7 +198,6 @@ class PromoEmailResource extends Resource
                     $getRecords($records),
                     $data['subject'],
                     $data['song_url'],
-                    $data['download_url'],
                     $data['image_url']
                 );
 

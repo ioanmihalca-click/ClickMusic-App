@@ -18,16 +18,14 @@ class SendPromoEmails implements ShouldQueue
 
     protected $emails;
     protected $songUrl;
-    protected $downloadUrl;
     protected $imageUrl;
-    protected $subject;
+    protected $songTitle;
 
-    public function __construct($emails, $subject = null, $songUrl, $downloadUrl = null, $imageUrl = null)
+    public function __construct($emails, $songTitle, $songUrl, $imageUrl = null)
     {
-        $this->subject = $subject;
         $this->emails = $emails;
+        $this->songTitle = $songTitle;
         $this->songUrl = $songUrl;
-        $this->downloadUrl = $downloadUrl;
         $this->imageUrl = $imageUrl;
     }
 
@@ -42,9 +40,8 @@ class SendPromoEmails implements ShouldQueue
                 Notification::send($email, new PromoEmailNotification(
                     $email,
                     $this->songUrl,
-                    $this->downloadUrl,
                     $this->imageUrl,
-                    $this->subject
+                    $this->songTitle
                 ));
 
                 // Actualizarea statusului emailului
