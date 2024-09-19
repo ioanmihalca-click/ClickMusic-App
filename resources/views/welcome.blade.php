@@ -167,7 +167,7 @@
     <div class="p-2 bg-white rounded-l-lg shadow-lg">
         <x-slider-intro>
             <x-slot name="trigger">
-                <!-- conținutul trigger-ului -->
+             
             </x-slot>
         </x-slider-intro>
     </div>
@@ -338,7 +338,7 @@
 <section id="blogposts" class="py-16 mt-48 mb-16 overflow-hidden">
 
                     <!--Latest Blog Posts -->
-                    <div class="max-w-6xl mx-auto">
+                    <div class="max-w-5xl mx-auto">
                         <h3 class="mb-8 text-base tracking-widest text-center text-gray-700 uppercase font-roboto-condensed md:text-2xl">Ultimele Articole pe
                             Blog
                         </h3>

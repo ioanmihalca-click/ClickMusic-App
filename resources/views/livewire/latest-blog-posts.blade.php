@@ -2,7 +2,7 @@
     <div class="px-4 mx-auto max-w-7xl ">
         <div class="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3 perspective-1000">
             @foreach ($posts as $index => $post)
-                <article class="overflow-hidden bg-white rounded-lg shadow-md transition-all duration-300 ease-in-out transform-style-3d
+                <article class="overflow-hidden bg-gray-50 border border-gray-300 rounded-lg shadow-md transition-all duration-500 ease-in-out transform-style-3d
                     @if($index === 0) md:rotate-y-30 md:hover:rotate-y-0
                     @elseif($index === 1) center-card md:hover:translate-z-10
                     @else md:-rotate-y-30 md:hover:rotate-y-0
@@ -42,10 +42,10 @@
     }
     @media (min-width: 768px) {
         .md\:rotate-y-30 {
-            transform: rotateY(30deg);
+            transform: rotateY(35deg);
         }
         .md\:-rotate-y-30 {
-            transform: rotateY(-30deg);
+            transform: rotateY(-35deg);
         }
         .md\:hover\:rotate-y-0:hover {
             transform: rotateY(0deg);
@@ -54,8 +54,8 @@
             transform: translateZ(10px);
         }
         .center-card {
-            height: calc(100% - 3rem);
-            margin-top: 1.5rem;
+            height: calc(100% - 2rem);
+            margin-top: 1rem;
             margin-bottom: 1rem;
         }
     }
