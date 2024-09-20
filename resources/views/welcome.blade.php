@@ -164,9 +164,13 @@
     </div>
 
    <!-- Fixed right-side "Ce e nou?" button -->
-<div x-data="floatingButton()" x-init="init()" id="floating-button"
-    class="fixed right-0 z-50 transition-all duration-300 ease-in-out"
-    :style="{ bottom: `${bottomPosition}px` }">
+<div x-data="floatingButton()" 
+     x-init="init()" 
+     id="floating-button"
+     class="fixed right-0 z-50 hidden transition-all duration-300 ease-in-out"
+     :class="{ 'hidden': false }"
+     x-cloak
+     :style="{ bottom: `${bottomPosition}px` }">
     <x-slider-intro />
 </div>
 
@@ -705,7 +709,7 @@
                     const distanceToFooter = documentHeight - scrollPosition - windowHeight;
 
                     if (distanceToFooter <= this.footerHeight) {
-                        this.bottomPosition = this.footerHeight - distanceToFooter + 32;
+                        this.bottomPosition = this.footerHeight - distanceToFooter - 52;
                     } else {
                         this.bottomPosition = 32;
                     }

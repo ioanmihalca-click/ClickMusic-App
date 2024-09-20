@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+[x-cloak] { 
+    display: none !important; 
+}
+
 .poster-container {
     perspective: 900px;
     transform-style: preserve-3d;
