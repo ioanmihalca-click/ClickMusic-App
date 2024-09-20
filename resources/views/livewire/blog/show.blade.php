@@ -121,7 +121,7 @@
                             @endif
                         </div>
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold text-gray-900 transition-colors duration-300 group-hover:text-blue-600">
+                            <h3 class="text-xl font-semibold text-gray-900 transition-colors duration-300 line-clamp-3 group-hover:text-blue-600">
                                 {{ $post->title }}
                             </h3>
                             <time datetime="{{ $post->published_at->toDateString() }}" class="block mt-2 text-sm text-gray-500">
