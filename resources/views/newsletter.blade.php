@@ -140,65 +140,62 @@
 
 </head>
 
-<body class="font-sans antialiased bg-gray-100">
+<body class="font-sans antialiased bg-black">
 
     <livewire:header-nav />
 
     <main class="container px-4 py-12 mx-auto ">
-        <div class="max-w-2xl mx-auto mt-24 text-center">
-              <!--Newsletter -->
+        <!-- Newsletter Section -->
+        <div  class="h-screen max-w-md px-6 py-20 mx-auto">
+            @if (session('success'))
+                <div class="mt-4 text-green-400">{{ session('success') }}</div>
+            @endif
 
-                        <div class="max-w-md p-4 mx-auto ">
-                            @if (session('success'))
-                                <div class="mt-4 text-green-500">{{ session('success') }}</div>
-                            @endif
+            @if ($errors->any())
+                <div class="mt-4 text-red-400">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <h2 class="mt-12 mb-6 text-2xl tracking-widest text-blue-400 uppercase font-roboto-condensed md:text-3xl">
+                Abonează-te la newsletter
+            </h2>
+            <p class="mt-4 mb-6 text-lg leading-8 text-gray-300">Trimit un email de fiecare data cand lansez ceva nou
+                pe Youtube</p>
+            <form action="{{ route('newsletter.subscribe') }}" method="POST" class="space-y-4">
+                @csrf
+                <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
+                    <div class="flex-1">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-300">Numele tău</label>
+                        <input id="name" name="name" type="text" autocomplete="name" required
+                            class="block w-full px-4 py-2 text-sm text-white transition duration-300 ease-in-out bg-gray-800 border border-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 hover:bg-gray-700"
+                            placeholder="Introdu numele tău">
+                    </div>
+                    <div class="flex-1">
+                        <label for="email-address" class="block mb-2 text-sm font-medium text-gray-300">Adresa de
+                            email</label>
+                        <input id="email-address" name="email" type="email" autocomplete="email" required
+                            class="block w-full px-4 py-2 text-sm text-white transition duration-300 ease-in-out bg-gray-800 border border-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 hover:bg-gray-700"
+                            placeholder="Adaugă emailul tău">
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <button type="submit"
+                        class="w-32 px-3.5 py-2.5 text-sm font-semibold text-white bg-blue-600 rounded-md shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors duration-300">
+                        Abonează-te
+                    </button>
+                </div>
+                <p class="mt-3 text-sm">
+                    <a href="{{ route('privacy-policy') }}" class="text-blue-400 hover:text-blue-300">
+                        Politica de confidențialitate
+                    </a>
+                </p>
+            </form>
+        </div>
 
-                            @if ($errors->any())
-                                <div class="mt-4 text-red-500">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-                            <h2 class="mb-4 text-xl font-bold tracking-tight text-gray-800 md:text-3xl">Abonează-te la
-                                newsletter</h2>
-                            <p class="mt-4 mb-6 leading-8 text-gray-600 text-medium">Lasă-mi adresa ta de email și te
-                                voi ține la curent cu cele mai recente piese, albume și videoclipuri lansate pe YouTube.
-                            </p>
-                            <form action="{{ route('newsletter.subscribe') }}" method="POST" class="space-y-4">
-                                @csrf
-                                <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
-                                    <div class="flex-1">
-                                        <label for="name"
-                                            class="block mb-2 text-sm font-medium text-gray-700">Numele Tău</label>
-                                        <input id="name" name="name" type="text" autocomplete="name" required
-                                            class="block w-full px-4 py-2 text-sm text-gray-900 transition duration-300 ease-in-out border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 hover:bg-white"
-                                            placeholder="Introdu numele tău">
-                                    </div>
-                                    <div class="flex-1">
-                                        <label for="email-address"
-                                            class="block mb-2 text-sm font-medium text-gray-700">Adresa de email</label>
-                                        <input id="email-address" name="email" type="email" autocomplete="email"
-                                            required
-                                            class="block w-full px-4 py-2 text-sm text-gray-900 transition duration-300 ease-in-out border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 hover:bg-white"
-                                            placeholder="Adaugă emailul tău">
-                                    </div>
-                                </div>
-                                <div class="mt-4">
-                                    <button type="submit"
-                                        class="w-32 rounded-md bg-blue-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 transition-colors duration-300">
-                                        Abonează-te
-                                    </button>
-
-                                </div>
-                                <p class="mt-3 text-sm"><a href="{{ route('privacy-policy') }}"
-                                        class="text-sm text-blue-500 md:text-medium hover:text-blue-600">Politica de
-                                        confidențialitate</a></p>
-
-                            </form>
-                        </div>
 
         </div>
     </main>

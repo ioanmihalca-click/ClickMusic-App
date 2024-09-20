@@ -7,7 +7,7 @@
  @if($albums->count() > 0)
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
     @foreach ($albums as $album)
-        <div class="flex flex-col h-full overflow-hidden bg-white rounded-lg shadow-md">
+        <div class="flex flex-col h-full overflow-hidden bg-white border border-blue-500 rounded-lg shadow-md">
             <div class="aspect-w-1 aspect-h-1">
                 <img src="{{ $album->cover_url }}" alt="{{ $album->titlu }}"
                     class="object-cover w-full h-full">

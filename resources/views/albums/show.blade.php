@@ -80,7 +80,7 @@
     </script>
 </head>
 
-<body class="font-sans antialiased bg-gray-100">
+<body class="font-sans antialiased bg-black">
 
 <livewire:header-nav />
 
@@ -88,7 +88,7 @@
     <main class="container px-4 py-8 mx-auto">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
            
-                <div class="p-6 mt-24 bg-white border-b border-gray-200">
+                <div class="p-6 mt-24 bg-gray-200 border border-blue-500 rounded">
                     <div class="flex flex-col md:flex-row">
                         <div class="md:w-1/3">
                             <img src="{{ asset('storage/' . $album->coperta_album) }}" alt="{{ $album->titlu }}"

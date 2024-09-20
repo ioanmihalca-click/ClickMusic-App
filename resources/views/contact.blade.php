@@ -90,7 +90,7 @@
 
 </head>
 
-<body class="font-sans antialiased bg-gray-100">
+<body class="font-sans antialiased bg-black">
     <livewire:header-nav />
 
 
@@ -98,7 +98,7 @@
     <div
         class="relative p-3 min-h-screen flex justify-center flex-col items-center  selection:bg-[#FF2D20] selection:text-white">
 
-        <div class="max-w-5xl p-6 bg-white rounded-lg shadow-lg">
+        <div class="max-w-5xl p-6 bg-white border border-blue-500 rounded-lg shadow-lg">
             <h1 class="mb-2 text-2xl font-extrabold text-gray-900 md:text-3xl ">Contact</h1>
 
             <p class="mt-4 text-left ">
