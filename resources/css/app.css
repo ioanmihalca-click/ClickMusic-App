@@ -60,3 +60,30 @@
         margin-bottom: 5px;
     }
 }
+/* Carduri 3D */
+
+.perspective-1000 {
+    perspective: 1000px;
+}
+.transform-style-3d {
+    transform-style: preserve-3d;
+}
+@media (min-width: 768px) {
+    .md\:rotate-y-30 {
+        transform: rotateY(35deg);
+    }
+    .md\:-rotate-y-30 {
+        transform: rotateY(-35deg);
+    }
+    .md\:hover\:rotate-y-0:hover {
+        transform: rotateY(0deg);
+    }
+    .md\:hover\:translate-z-10:hover {
+        transform: translateZ(10px);
+    }
+    .center-card {
+        height: calc(100% - 2.5rem);
+        margin-top: 1.2rem;
+        margin-bottom: 1rem;
+    }
+}
