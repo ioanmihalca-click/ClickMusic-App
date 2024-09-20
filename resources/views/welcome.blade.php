@@ -151,68 +151,66 @@
         <livewire:header-nav />
     </div>
 
-    <div x-data="{ loading: true }" x-init="$nextTick(() => { setTimeout(() => loading = false, 700) })" class="relative h-screen overflow-hidden">
+    <div x-data="{ loading: true, isMobile: window.innerWidth <= 768 }" 
+     x-init="$nextTick(() => { 
+         setTimeout(() => loading = false, 700);
+         window.addEventListener('resize', () => isMobile = window.innerWidth <= 768);
+     })" 
+     class="relative h-screen overflow-hidden">
 
-        <!-- Loading Spinner -->
-        <div x-show="loading" class="absolute inset-0 z-50 flex items-center justify-center bg-black">
-            <div class="w-16 h-16 border-t-4 border-blue-500 border-solid rounded-full animate-spin"></div>
+    <!-- Loading Spinner -->
+    <div x-show="loading" class="absolute inset-0 z-50 flex items-center justify-center bg-black">
+        <div class="w-16 h-16 border-t-4 border-blue-500 border-solid rounded-full animate-spin"></div>
+    </div>
+
+    <!-- Fixed right-side "Ce e nou?" button -->
+    <div x-data="floatingButton()" x-init="init()" id="floating-button"
+        class="fixed right-0 z-50 transition-all duration-300 ease-in-out"
+        :style="{ bottom: `${bottomPosition}px` }">
+        <div class="p-2 bg-white rounded-l-lg shadow-lg">
+            <x-slider-intro>
+                <x-slot name="trigger">
+                </x-slot>
+            </x-slider-intro>
         </div>
+    </div>
 
+    <div x-show="!loading" x-transition:enter="transition ease-out duration-300" x-data="netflixBackground()"
+        x-init="init()" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+        class="relative h-screen overflow-hidden bg-black home-parallax home-fade">
 
-        <!-- Fixed right-side "Ce e nou?" button -->
-        <div x-data="floatingButton()" x-init="init()" id="floating-button"
-            class="fixed right-0 z-50 transition-all duration-300 ease-in-out"
-            :style="{ bottom: `${bottomPosition}px` }">
-            <div class="p-2 bg-white rounded-l-lg shadow-lg">
-                <x-slider-intro>
-                    <x-slot name="trigger">
-
-                    </x-slot>
-                </x-slider-intro>
-            </div>
-        </div>
-
-
-
-        <div x-show="!loading" x-transition:enter="transition ease-out duration-300" x-data="netflixBackground()"
-            x-init="init()" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-            class="relative h-screen overflow-hidden bg-black home-parallax home-fade">
-
-            <!-- Poster Background -->
-            <div class="absolute inset-0 overflow-hidden poster-container">
-                <template x-for="(row, rowIndex) in posterRows" :key="rowIndex">
-                    <div class="poster-row"
-                        :style="`animation-duration: ${50 + rowIndex * 5}s; transform: translateY(${rowIndex * 50}px) rotateX(60deg);`">
-                        <template x-for="(poster, posterIndex) in row" :key="posterIndex">
-                            <div class="poster">
-                                <img :src="poster" alt="Movie Poster"
-                                    class="object-cover w-full h-full rounded-lg">
-                            </div>
-                        </template>
-                    </div>
-                </template>
-            </div>
-
-            <!-- Gradient Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/75"></div>
-
-            <!-- Content Overlay -->
-            <div class="relative z-10 flex items-center justify-center h-full text-white caption-content">
-                <div class="text-center">
-                    <h1
-                        class="font-roboto-condensed uppercase mb-3 tracking-[6px] md:tracking-[20px] font-bold text-4xl md:text-5xl leading-relaxed md:leading-normal">
-                        Click Music Romania
-                    </h1>
-                    <h2 class="mb-12 text-xl uppercase font-roboto-condensed md:text-3xl">Hip-Hop • Reggae • Soul</h2>
-                    <a href="#despre"
-                        class="px-10 py-2 text-xs tracking-widest uppercase transition-all duration-300 border border-blue-500 scroll-link hover:bg-blue-500 hover:text-white font-roboto-condensed hover:border-transparent">Afla
-                        mai multe</a>
+        <!-- Poster Background -->
+        <div class="absolute inset-0 overflow-hidden poster-container">
+            <template x-for="(row, rowIndex) in posterRows" :key="rowIndex">
+                <div class="poster-row"
+                    :style="`animation-duration: ${50 + rowIndex * 5}s; transform: translateY(${isMobile ? rowIndex * 25 : rowIndex * 50}px) rotateX(60deg);`">
+                    <template x-for="(poster, posterIndex) in row" :key="posterIndex">
+                        <div class="poster">
+                            <img :src="poster" alt="Movie Poster"
+                                class="object-cover w-full h-full rounded-lg">
+                        </div>
+                    </template>
                 </div>
+            </template>
+        </div>
+
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/75"></div>
+
+        <!-- Content Overlay -->
+        <div class="relative z-10 flex items-center justify-center h-full text-white caption-content">
+            <div class="text-center">
+                <h1 class="font-roboto-condensed uppercase mb-3 tracking-[6px] md:tracking-[20px] font-bold text-4xl md:text-5xl leading-relaxed md:leading-normal">
+                    Click Music Romania
+                </h1>
+                <h2 class="mb-12 text-xl uppercase font-roboto-condensed md:text-3xl">Hip-Hop • Reggae • Soul</h2>
+                <a href="#despre"
+                    class="px-10 py-2 text-xs tracking-widest uppercase transition-all duration-300 border border-blue-500 scroll-link hover:bg-blue-500 hover:text-white font-roboto-condensed hover:border-transparent">Afla
+                    mai multe</a>
             </div>
         </div>
     </div>
-    </div>
-    </div>
+</div>
 
 
     <main id="despre" class="overflow-hidden text-white bg-black">
