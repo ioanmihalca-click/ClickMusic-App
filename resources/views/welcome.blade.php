@@ -395,7 +395,7 @@
     class="relative max-w-3xl mx-auto mb-16 overflow-hidden text-sm font-normal text-white bg-black border border-gray-700 rounded-lg shadow-lg bg-opacity-70">
     <div x-data="{ id: $id('accordion') }" class="cursor-pointer group">
         <button @click="setActiveAccordion(id)"
-            class="flex items-center justify-between w-full p-6 text-left transition-colors duration-300 select-none group-hover:bg-blue-900 group-hover:bg-opacity-50">
+            class="flex items-center justify-between w-full p-6 text-left transition-colors duration-300 select-none group-hover:bg-blue-500 group-hover:bg-opacity-25">
             <h3 class="text-lg tracking-wider uppercase md:text-xl font-roboto-condensed">Cine este Click? <br
                     class="md:hidden"> artistul din spatele muzicii</h3>
             <svg class="w-6 h-6 text-blue-400 transition-transform duration-300 ease-in-out" :class="{ 'rotate-180': activeAccordion == id }"
