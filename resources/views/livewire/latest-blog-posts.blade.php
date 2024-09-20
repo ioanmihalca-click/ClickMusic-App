@@ -2,7 +2,7 @@
     <div class="px-4 mx-auto max-w-7xl ">
         <div class="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3 perspective-1000">
             @foreach ($posts as $index => $post)
-                <article class="overflow-hidden bg-gray-50 border border-gray-300 rounded-lg shadow-md transition-all duration-500 ease-in-out transform-style-3d
+                <article class="overflow-hidden bg-gray-50 border border-blue-500 rounded-lg shadow-md transition-all duration-500 ease-in-out transform-style-3d
                     @if($index === 0) md:rotate-y-30 md:hover:rotate-y-0
                     @elseif($index === 1) center-card md:hover:translate-z-10
                     @else md:-rotate-y-30 md:hover:rotate-y-0
