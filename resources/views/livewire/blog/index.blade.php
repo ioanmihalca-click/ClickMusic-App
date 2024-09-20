@@ -1,10 +1,12 @@
 <section class="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
-    <h1 class="mt-8 mb-12 text-4xl font-extrabold text-center text-gray-900">Articole pe Blog</h1>
-
+   <h1
+                    class="my-8 text-2xl font-semibold tracking-widest text-center text-blue-400 uppercase font-roboto-condensed md:text-3xl">
+                    Articole pe Blog
+                </h1>
     <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         @foreach ($posts as $post)
             <article
-                class="overflow-hidden transition-all duration-300 bg-white shadow-lg group rounded-2xl hover:shadow-xl">
+                class="overflow-hidden transition-all duration-300 bg-white border border-blue-500 shadow-lg group rounded-2xl hover:shadow-xl">
                 <a href="{{ route('blog.show', $post->slug) }}" class="block">
                     @if ($post->featured_image)
                         <div class="relative overflow-hidden aspect-w-16 aspect-h-9">
@@ -40,7 +42,7 @@
 
     <div class="mt-12 text-center">
         <a href="/"
-            class="inline-flex items-center text-blue-600 transition-colors duration-300 hover:text-blue-800">
+            class="inline-flex items-center font-semibold text-blue-500 transition-colors duration-300 font-roboto-condensed hover:text-blue-600">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18">
