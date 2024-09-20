@@ -163,17 +163,12 @@
         <div class="w-16 h-16 border-t-4 border-blue-500 border-solid rounded-full animate-spin"></div>
     </div>
 
-    <!-- Fixed right-side "Ce e nou?" button -->
-    <div x-data="floatingButton()" x-init="init()" id="floating-button"
-        class="fixed right-0 z-50 transition-all duration-300 ease-in-out"
-        :style="{ bottom: `${bottomPosition}px` }">
-        <div class="p-2 bg-white rounded-l-lg shadow-lg">
-            <x-slider-intro>
-                <x-slot name="trigger">
-                </x-slot>
-            </x-slider-intro>
-        </div>
-    </div>
+   <!-- Fixed right-side "Ce e nou?" button -->
+<div x-data="floatingButton()" x-init="init()" id="floating-button"
+    class="fixed right-0 z-50 transition-all duration-300 ease-in-out"
+    :style="{ bottom: `${bottomPosition}px` }">
+    <x-slider-intro />
+</div>
 
     <div x-show="!loading" x-transition:enter="transition ease-out duration-300" x-data="netflixBackground()"
         x-init="init()" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
