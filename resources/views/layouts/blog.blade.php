@@ -34,6 +34,7 @@
     <meta property="og:locale" content="ro_RO" />
     <meta property="og:site_name" content="Click Music Blog" />
 
+
     <link rel="canonical" href="https://clickmusic.ro/blog" />
 
     <!-- Favicon -->
@@ -52,10 +53,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <style>
-        body {
-            background-color: #111827; /* bg-gray-900 */
-            color: #E5E7EB; /* text-gray-200 */
-        }
         /* Custom scrollbar styling */
         body::-webkit-scrollbar {
             width: 9px;
@@ -67,7 +64,7 @@
         }
 
         body::-webkit-scrollbar-track {
-            background-color: #1F2937; /* bg-gray-800 */
+            background-color: #d1d5db;
             border-radius: 3px;
         }
     </style>
@@ -92,16 +89,16 @@
     }
     </script>
 </head>
-<body class="font-sans antialiased">
+<body class="font-sans antialiased bg-gray-100">
 
-    <livewire:header-nav />
+<livewire:header-nav />
 
-    <main class="container px-4 py-12 mx-auto max-w-7xl">
-        <div class="p-8 rounded-lg shadow-lg">
-            {{ $slot }}
-        </div>
+ 
+
+    <main class="container px-4 py-8 mx-auto">
+        {{ $slot }}
     </main>
-    
+
        <footer class="py-8 text-white bg-gray-800">
         <div class="container px-4 mx-auto">
             <div class="flex flex-wrap justify-between">
