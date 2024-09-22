@@ -211,7 +211,7 @@
         <div class="container px-4 py-16 mx-auto">
             <div class="max-w-3xl mx-auto">
                 <section class="mb-16 overflow-hidden transition-all duration-300 transform">
-                    <div class="relative p-4 bg-gray-900 rounded-lg shadow-lg md:p-8 bg-opacity-60">
+                    <div class="relative shadow-lg p-4rounded-lg md:p-8 bg-opacity-60">
                         <div class="relative z-10 text-center">
                             <div class="flex justify-center mb-8">
                                 <img src="/img/Poza Click optimizata.jpg" alt="Click"
