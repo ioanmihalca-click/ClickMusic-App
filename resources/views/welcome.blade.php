@@ -179,7 +179,7 @@
                         :style="`animation-duration: ${50 + rowIndex * 5}s; transform: translateY(${isMobile ? rowIndex * 25 : rowIndex * 50}px) rotateX(60deg);`">
                         <template x-for="(poster, posterIndex) in row" :key="posterIndex">
                             <div class="poster">
-                                <img :src="poster" alt="Movie Poster"
+                                <img :src="poster" alt="Click Music"
                                     class="object-cover w-full h-full rounded-lg">
                             </div>
                         </template>
