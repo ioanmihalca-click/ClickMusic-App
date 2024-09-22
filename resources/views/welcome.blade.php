@@ -346,7 +346,7 @@
 
                 <div class="flex justify-center">
                     <a href="{{ route('login.google') }}"
-                        class="flex items-center justify-center px-6 py-3 text-gray-700 transition duration-300 ease-in-out bg-white border border-gray-300 rounded-lg shadow-md hover:bg-gray-50 hover:text-blue-600">
+                        class="flex items-center justify-center px-6 py-3 text-blue-500 transition duration-300 ease-in-out bg-white border border-gray-300 rounded-lg shadow-md hover:bg-gray-50 hover:text-blue-600">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                             class="mr-3 bi bi-google" viewBox="0 0 16 16">
                             <path
