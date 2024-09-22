@@ -47,7 +47,7 @@
 /* Mobile styles */
 @media (max-width: 768px) {
     .poster-container {
-        transform: rotateX(35deg) translateY(-100px);
+        transform: rotateX(35deg) translateY(-35px);
     }
 
     .poster {
