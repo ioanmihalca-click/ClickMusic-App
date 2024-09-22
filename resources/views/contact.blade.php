@@ -96,12 +96,12 @@
 
 
     <div
-        class="relative p-3 min-h-screen flex justify-center flex-col items-center  selection:bg-[#FF2D20] selection:text-white">
+        class="relative mt-8 p-3 min-h-screen flex justify-center flex-col items-center  selection:bg-[#FF2D20] selection:text-white">
 
-        <div class="max-w-5xl p-6 bg-white border border-blue-500 rounded-lg shadow-lg">
-            <h1 class="mb-2 text-2xl font-extrabold text-gray-900 md:text-3xl ">Contact</h1>
+        <div class="max-w-5xl p-6 bg-gray-800 border border-blue-500 rounded-lg shadow-lg">
+            <h1 class="mb-2 text-2xl tracking-widest text-white uppercase font-roboto-condensed md:text-3xl ">Contact</h1>
 
-            <p class="mt-4 text-left ">
+            <p class="mt-4 text-left text-white">
 
                 Pentru orice nelămuriri, sugestii sau reclamații, suntem aici să vă ajutăm: <br><br>
                 📧 Email: contact@clickmusic.ro <br>
