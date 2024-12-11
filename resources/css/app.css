@@ -87,3 +87,27 @@
         margin-bottom: 1rem;
     }
 }
+
+/* Scrollbar personalizat */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2563eb;
+}
+
+/* Pentru Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #3b82f6 #1a1a1a;
+}

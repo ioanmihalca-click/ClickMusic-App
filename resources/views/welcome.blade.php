@@ -160,6 +160,8 @@
         <div x-show="loading" class="absolute inset-0 z-50 flex items-center justify-center bg-black">
             <div class="w-16 h-16 border-t-4 border-blue-500 border-solid rounded-full animate-spin"></div>
         </div>
+        
+        
 
         <!-- Fixed right-side "Ce e nou?" button -->
         <div x-data="floatingButton()" x-init="init()" id="floating-button"
@@ -728,6 +730,13 @@
     </script>
 
     <script>
+    document.querySelectorAll('.poster-row').forEach((row, index) => {
+    // Adaugă viteze diferite pentru fiecare rând
+    row.style.animationDuration = `${60 + (index * 10)}s`;
+    
+    // Adaugă un delay aleatoriu la start
+    row.style.animationDelay = `-${Math.random() * 60}s`;
+});
         function netflixBackground() {
             return {
                 posterRows: [],
