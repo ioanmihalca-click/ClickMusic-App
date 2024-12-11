@@ -140,3 +140,24 @@
     scrollbar-width: thin;
     scrollbar-color: #3b82f6 #1a1a1a;
 }
+
+/* Blog */
+.prose {
+    --tw-prose-body: theme('colors.gray.300');
+    --tw-prose-headings: theme('colors.white');
+    --tw-prose-links: theme('colors.blue.400');
+    --tw-prose-links-hover: theme('colors.blue.300');
+    --tw-prose-underline: theme('colors.blue.400/0.3');
+    --tw-prose-underline-hover: theme('colors.blue.400');
+    --tw-prose-bold: theme('colors.white');
+    --tw-prose-counters: theme('colors.gray.400');
+    --tw-prose-bullets: theme('colors.gray.400');
+    --tw-prose-hr: theme('colors.white/10');
+    --tw-prose-quote-borders: theme('colors.white/10');
+    --tw-prose-captions: theme('colors.gray.400');
+    --tw-prose-code: theme('colors.white');
+    --tw-prose-code-bg: theme('colors.gray.800');
+    --tw-prose-pre-code: theme('colors.gray.200');
+    --tw-prose-pre-bg: theme('colors.gray.800');
+    --tw-prose-pre-border: theme('colors.gray.700');
+}

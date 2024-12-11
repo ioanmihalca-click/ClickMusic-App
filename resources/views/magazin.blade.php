@@ -234,10 +234,10 @@
         </div>
 
         <div class="relative z-10 px-6 mt-24 mb-12">
-            <h1 class="text-4xl font-bold tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 uppercase font-roboto-condensed">
+            <h1 class="text-4xl font-bold tracking-[0.2em] text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 uppercase font-roboto-condensed">
                 Albume
             </h1>
-            <div class="w-24 h-1 mt-2 rounded-full bg-gradient-to-r from-blue-500 to-transparent"></div>
+            <div class="w-24 h-1 mx-auto mt-2 rounded-full bg-gradient-to-r from-blue-500 to-transparent"></div>
         </div>
     </div>
 
