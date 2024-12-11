@@ -30,6 +30,11 @@ class AlbumList extends Component
         $this->sortField = $field;
     }
 
+    public function redirectToAlbum($slug)
+{
+    return redirect()->route('album.show', $slug);
+}
+
     public function render()
     {
         $albums = Album::search($this->search)

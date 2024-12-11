@@ -109,18 +109,18 @@ Route::get('/contact', function () {
   
 //Download mp3
 
-Route::get('/download-mp3/click-ma-racoresc', function () {
-    // Calea către fișierul MP3 (adaptează în funcție de locația ta)
-    $filePath = 'public/Click_Ma_Racoresc_feat_Mihai_Stanciuc.mp3'; 
+// Route::get('/download-mp3/click-ma-racoresc', function () {
+//     // Calea către fișierul MP3 (adaptează în funcție de locația ta)
+//     $filePath = 'public/Click_Ma_Racoresc_feat_Mihai_Stanciuc.mp3'; 
 
-    // Verificare dacă utilizatorul este autentificat (membru)
-    if (auth()->check()) {
-        return Storage::download($filePath, 'Click_Ma_Racoresc_feat_Mihai_Stanciuc.mp3');
-    } else {
-        // Redirecționare sau mesaj de eroare dacă utilizatorul nu este autentificat
-        return redirect()->back()->with('error', 'Trebuie să fii autentificat pentru a descărca acest fișier.');
-    }
-});
+//     // Verificare dacă utilizatorul este autentificat (membru)
+//     if (auth()->check()) {
+//         return Storage::download($filePath, 'Click_Ma_Racoresc_feat_Mihai_Stanciuc.mp3');
+//     } else {
+//         // Redirecționare sau mesaj de eroare dacă utilizatorul nu este autentificat
+//         return redirect()->back()->with('error', 'Trebuie să fii autentificat pentru a descărca acest fișier.');
+//     }
+// });
 
 // etc. pentru fiecare MP3 
 

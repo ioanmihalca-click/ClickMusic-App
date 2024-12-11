@@ -1,37 +1,48 @@
-<div class="container px-4 mx-auto text-white">
-    @if($albums->count() > 0)
-        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+<div class="container relative px-4 mx-auto text-white">
+    <!-- Gradient ambient în fundal -->
+    <div class="absolute inset-0 blur-3xl opacity-30">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800"></div>
+    </div>
+
+    @if ($albums->count() > 0)
+        <div class="relative grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($albums as $album)
-                <div class="relative overflow-hidden transition-all duration-300 transform bg-black border border-blue-500 rounded-lg shadow-lg group hover:scale-105">
-                    <!-- Overlay gradient pentru hover -->
-                    <div class="absolute inset-0 z-10 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-black via-black/50 to-transparent group-hover:opacity-100"></div>
-                    
-                    <!-- Imagine album -->
-                    <div class="aspect-w-1 aspect-h-1">
-                        <img src="{{ $album->cover_url }}" 
-                             alt="{{ $album->titlu }}"
-                             class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110">
-                    </div>
-                    
-                    <!-- Conținut -->
-                    <div class="relative z-20 p-6">
-                        <h3 class="mb-3 text-xl font-bold tracking-wider text-white uppercase transition-colors duration-300 font-roboto-condensed group-hover:text-blue-400">
-                            {{ $album->titlu }}
-                        </h3>
-                        
-                        <!-- Descriere care apare la hover -->
-                        <div class="transition-all duration-300 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
-                            <p class="mb-4 text-sm text-gray-300">
-                                {!! Str::limit($album->descriere, 100) !!}
-                            </p>
-                            
-                            <div class="flex items-center justify-between mt-4">
-                                <span class="text-lg font-semibold text-blue-400">
+                <div
+                    class="group relative p-[0.5px] bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-blue-500/20 rounded-xl">
+                    <div class="relative flex flex-col h-full overflow-hidden rounded-lg bg-black/90">
+                        <!-- Imagine Album -->
+                        <div class="relative overflow-hidden aspect-square">
+                            <img src="{{ $album->cover_url }}" alt="{{ $album->titlu }}"
+                                class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105">
+
+                            <!-- Badge preț -->
+                            <div class="absolute px-4 py-2 rounded-full top-4 right-4 bg-blue-500/90 backdrop-blur-sm">
+                                <span class="font-bold text-white">
                                     {{ number_format($album->pret, 2) }} RON
                                 </span>
+                            </div>
+                        </div>
+
+                        <!-- Conținut -->
+                        <div class="flex flex-col flex-grow p-6 space-y-4">
+                            <h3 class="text-xl font-bold tracking-wider text-white uppercase">
+                                {{ $album->titlu }}
+                            </h3>
+
+                            <p class="flex-grow text-gray-400">
+                                {!! Str::limit($album->descriere, 100) !!}
+                            </p>
+
+                            <!-- Buton Detalii -->
+                            <div class="pt-4 border-t border-white/10">
                                 <a href="{{ route('album.show', $album->slug) }}"
-                                   class="px-6 py-2 text-sm font-semibold tracking-wider text-white uppercase transition-all duration-300 border border-blue-500 rounded-full hover:bg-blue-500 hover:text-white font-roboto-condensed">
-                                    Detalii
+                                    class="inline-flex items-center justify-center w-full px-6 py-3 text-sm font-semibold tracking-wider text-white uppercase transition-all duration-300 bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black">
+                                    Detalii Album
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </a>
                             </div>
                         </div>
@@ -39,13 +50,13 @@
                 </div>
             @endforeach
         </div>
-        
-        <!-- Paginare stilizată -->
-        <div class="mt-8">
+
+        <!-- Paginare -->
+        <div class="relative mt-12">
             {{ $albums->links() }}
         </div>
     @else
-        <div class="p-8 text-center">
+        <div class="relative p-12 text-center border rounded-xl backdrop-blur-sm bg-black/30 border-white/10">
             <p class="text-xl text-gray-400">Nu există albume disponibile momentan.</p>
         </div>
     @endif
