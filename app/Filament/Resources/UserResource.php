@@ -32,7 +32,7 @@ class UserResource extends Resource
             ->schema([
                 TextInput::make('name')->required(),
                 TextInput::make('email')->email()->required(),
-                TextInput::make('password')->password()->required(),
+                TextInput::make('password')->password()->required()->visibleOn('create'),
                 Select::make('usertype')->options([
                     'admin' => 'admin',
                     'user' => 'user',
