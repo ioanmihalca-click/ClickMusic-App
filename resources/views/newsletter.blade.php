@@ -147,6 +147,7 @@
     <main class="container px-4 py-12 mx-auto ">
         <!-- Newsletter Section -->
         <div  class="h-screen max-w-md px-6 py-20 mx-auto">
+        
             @if (session('success'))
                 <div class="mt-4 text-green-400">{{ session('success') }}</div>
             @endif

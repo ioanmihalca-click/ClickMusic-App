@@ -210,6 +210,7 @@
 
 
     <main id="despre" class="overflow-hidden text-white bg-black">
+        
         <div class="container px-4 py-16 mx-auto">
             <div class="max-w-3xl mx-auto">
                 <section class="mb-16 overflow-hidden transition-all duration-300 transform">

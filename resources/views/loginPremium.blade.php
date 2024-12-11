@@ -144,43 +144,82 @@
 
     <livewire:header-nav />
 
-    <main class="container py-20 mx-auto">
-          <!-- Access Premium Section -->
-        <div  class="max-w-xl px-6 py-20 mx-auto ">
-            <div class="h-screen max-w-2xl mx-auto text-center ">
-                <h1 class="mb-6 text-2xl tracking-widest text-blue-400 uppercase font-roboto-condensed md:text-3xl">
+<main class="container py-20 mx-auto">
+    <!-- Gradient ambient în fundal -->
+    <div class="relative min-h-screen">
+        <div class="absolute inset-0 blur-3xl opacity-30">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800"></div>
+        </div>
+
+        <!-- Secțiunea Premium -->
+        <div class="relative max-w-xl px-6 py-20 mx-auto">
+            <div class="text-center">
+                <!-- Header cu gradient -->
+                <h1 class="mb-8 text-3xl md:text-4xl font-bold tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 uppercase font-roboto-condensed">
                     Acces Premium
                 </h1>
-                <p class="mb-8 text-lg text-gray-300">
-                    Pentru <span class="font-semibold text-blue-400">Acces Premium</span> la download-uri și la
-                    întreaga colecție de videoclipuri, inclusiv cele mai recente lansări și PREMIERE exclusive,
-                    abonează-te pentru doar<br>
-                    <span class="font-semibold text-blue-300">9,99 lei/ lună.</span>
-                </p>
-                @if (Route::has('login'))
-                    <div class="mb-8">
-                        <livewire:welcome.navigation />
+                
+                <!-- Card principal -->
+                <div class="p-[0.5px] bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-blue-500/20 rounded-xl">
+                    <div class="p-8 bg-black/90 backdrop-blur-sm rounded-xl">
+                        <div class="space-y-6">
+                            <p class="text-lg text-gray-300">
+                                Pentru <span class="font-semibold text-blue-400">Acces Premium</span> la download-uri și la
+                                întreaga colecție de videoclipuri, inclusiv cele mai recente lansări și PREMIERE exclusive,
+                                abonează-te pentru doar
+                            </p>
+                            
+                            <div class="py-4">
+                                <span class="text-2xl font-semibold text-blue-300">9,99 lei/ lună</span>
+                            </div>
+
+                            @if (Route::has('login'))
+                                <div class="py-6 border-t border-white/10">
+                                    <livewire:welcome.navigation />
+                                </div>
+                            @endif
+
+                            <!-- Buton Google -->
+                            <div class="mt-8">
+                                <a href="{{ route('login.google') }}"
+                                   class="inline-flex items-center justify-center px-8 py-4 text-gray-700 transition-all duration-300 bg-white border border-gray-300 rounded-lg shadow-md group hover:bg-gray-50 hover:scale-105">
+                                    <svg xmlns="http://www.w3.org/2000/svg" 
+                                         class="w-6 h-6 mr-3 text-gray-600 transition-colors group-hover:text-blue-600" 
+                                         fill="currentColor" 
+                                         viewBox="0 0 16 16">
+                                        <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z"/>
+                                    </svg>
+                                    <span class="text-base font-medium text-gray-700 transition-colors group-hover:text-blue-600">
+                                        Sign in with Google
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                @endif
-
-
-                <div class="flex justify-center">
-                    <a href="{{ route('login.google') }}"
-                        class="flex items-center justify-center px-6 py-3 text-gray-700 transition duration-300 ease-in-out bg-white border border-gray-300 rounded-lg shadow-md hover:bg-gray-50 hover:text-blue-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                            class="mr-3 bi bi-google" viewBox="0 0 16 16">
-                            <path
-                                d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
-                        </svg>
-                        <span class="text-base font-medium">Sign in with Google</span>
-                    </a>
                 </div>
 
+                <!-- Features (opțional) -->
+                <div class="grid grid-cols-1 gap-6 mt-12 md:grid-cols-2">
+                    <div class="p-6 border bg-white/5 backdrop-blur-sm rounded-xl border-white/10">
+                        <svg class="w-8 h-8 mx-auto mb-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                        <h3 class="mb-2 text-lg font-semibold text-white">Videoclipuri Exclusive</h3>
+                        <p class="text-gray-400">Acces la conținut premium și lansări în avanpremieră</p>
+                    </div>
 
+                    <div class="p-6 border bg-white/5 backdrop-blur-sm rounded-xl border-white/10">
+                        <svg class="w-8 h-8 mx-auto mb-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        <h3 class="mb-2 text-lg font-semibold text-white">Download Nelimitat</h3>
+                        <p class="text-gray-400">Descarcă muzica preferată pentru ascultare offline</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </main>
-
+    </div>
+</main>
 
     <footer class="py-8 text-white bg-gray-800">
         <div class="container px-4 mx-auto">
