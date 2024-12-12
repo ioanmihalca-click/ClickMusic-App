@@ -1,14 +1,17 @@
 <div class="py-16">
     <!-- Container principal cu gradient ambient -->
     <div class="relative max-w-4xl mx-auto">
-        <!-- Gradient ambient în fundal -->
-        <div class="absolute inset-0 blur-3xl opacity-30">
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800"></div>
+        <!-- Gradient animat de fundal -->
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-[conic-gradient(from_0deg,#3b82f6,#8b5cf6,#3b82f6)] blur-3xl opacity-30 animate-spin-slow"></div>
         </div>
 
         <!-- Articol principal -->
-        <article class="relative p-[0.5px] bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-blue-500/20 rounded-xl">
-            <div class="p-8 text-white bg-black/90 backdrop-blur-sm rounded-xl">
+        <article class="relative">
+            <!-- Border gradient -->
+            <div class="relative p-[0.5px] bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-blue-500/20 rounded-xl">
+                <!-- Conținut cu backdrop blur -->
+                <div class="p-8 bg-black/90 backdrop-blur-sm rounded-xl text-white relative z-10">
                 <!-- Header articol -->
                 <h1 class="mb-4 text-3xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 md:text-4xl">
                     {{ $post->title }}
