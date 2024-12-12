@@ -104,9 +104,9 @@
                                     class="object-cover w-full h-full transition-all duration-500 hover:scale-105">
 
                                 <!-- Badge Preț -->
-                                <div class="absolute px-4 py-2 rounded-full top-4 right-4 bg-blue-500/80">
+                                {{-- <div class="absolute px-4 py-2 rounded-full top-4 right-4 bg-blue-500/80">
                                     <span class="font-bold text-sm text-white">{{ number_format($album->pret, 2) }} RON</span>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
 
@@ -131,6 +131,10 @@
                                         <span class="text-gray-400">An lansare:</span>
                                         <p class="text-white">
                                             {{ \Carbon\Carbon::parse($album->data_lansare)->format('Y') }}</p>
+                                    </div>
+                                      <div>
+                                        <span class="text-gray-400">Pret:</span>
+                                       <p class="text-white">{{ number_format($album->pret, 2) }} RON</p>
                                     </div>
                                 </div>
 
