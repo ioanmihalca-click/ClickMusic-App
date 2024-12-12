@@ -16,7 +16,7 @@
                                 class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105">
 
                             <!-- Badge preț -->
-                            <div class="absolute px-4 py-2 rounded-full top-4 right-4 bg-blue-500/80 backdrop-blur-sm">
+                            <div class="absolute px-4 py-2 rounded-full bottom-4 right-4 bg-blue-500/80 backdrop-blur-sm">
                                 <span class="font-bold text-sm text-white">
                                     {{ number_format($album->pret, 2) }} RON
                                 </span>
