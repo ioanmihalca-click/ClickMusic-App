@@ -52,11 +52,9 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
-    <!-- Font Roboto -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
-
+    <link rel="preload" href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" as="style">
 
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -160,8 +158,8 @@
         <div x-show="loading" class="absolute inset-0 z-50 flex items-center justify-center bg-black">
             <div class="w-16 h-16 border-t-4 border-blue-500 border-solid rounded-full animate-spin"></div>
         </div>
-        
-        
+
+
 
         <!-- Fixed right-side "Ce e nou?" button -->
         <div x-data="floatingButton()" x-init="init()" id="floating-button"
@@ -210,7 +208,7 @@
 
 
     <main id="despre" class="overflow-hidden text-white bg-black">
-        
+
         <div class="container px-4 py-16 mx-auto">
             <div class="max-w-3xl mx-auto">
                 <section class="mb-16 overflow-hidden transition-all duration-300 transform">
@@ -389,7 +387,7 @@
 
 
 
-        <div x-data="{
+        {{-- <div x-data="{
             activeAccordion: '',
             setActiveAccordion(id) {
                 this.activeAccordion = (this.activeAccordion == id) ? '' : id
@@ -563,7 +561,7 @@
 
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </main>
     <footer class="py-8 text-white bg-gray-800">
@@ -731,13 +729,14 @@
     </script>
 
     <script>
-    document.querySelectorAll('.poster-row').forEach((row, index) => {
-    // Adaugă viteze diferite pentru fiecare rând
-    row.style.animationDuration = `${60 + (index * 10)}s`;
-    
-    // Adaugă un delay aleatoriu la start
-    row.style.animationDelay = `-${Math.random() * 60}s`;
-});
+        document.querySelectorAll('.poster-row').forEach((row, index) => {
+            // Adaugă viteze diferite pentru fiecare rând
+            row.style.animationDuration = `${60 + (index * 10)}s`;
+
+            // Adaugă un delay aleatoriu la start
+            row.style.animationDelay = `-${Math.random() * 60}s`;
+        });
+
         function netflixBackground() {
             return {
                 posterRows: [],
