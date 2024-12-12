@@ -250,9 +250,9 @@
 
 
    
-            <div class="p-6">
+           
                 <livewire:album-list />
-            </div>
+            
       
     </main>
 

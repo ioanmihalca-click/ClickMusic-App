@@ -105,7 +105,7 @@
 
                                 <!-- Badge Preț -->
                                 <div class="absolute px-4 py-2 rounded-full top-4 right-4 bg-blue-500/80">
-                                    <span class="font-bold text-white">{{ number_format($album->pret, 2) }} RON</span>
+                                    <span class="font-bold text-sm text-white">{{ number_format($album->pret, 2) }} RON</span>
                                 </div>
                             </div>
                         </div>
