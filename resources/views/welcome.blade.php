@@ -245,16 +245,52 @@
                                     Premium</a>.
                             </p>
 
-                            <div class="mt-8 mb-4 animate-bounce">
-                                <a href="#newsletter"
-                                    class="inline-block p-2 transition-colors duration-300 bg-blue-500 rounded-full scroll-link hover:bg-blue-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                                    </svg>
-                                </a>
-                            </div>
+                           <div class="relative bg-black">
+    <div class="absolute inset-0 blur-3xl opacity-30">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800"></div>
+    </div>
+
+    <div class="max-w-5xl px-6 py-24 mx-auto text-center">
+        <h2 class="text-3xl font-bold tracking-wide text-transparent uppercase bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 font-roboto-condensed">
+            Intră în Comunitate
+        </h2>
+        
+        <div class="grid gap-8 mt-12 md:grid-cols-3">
+            <div class="p-6 transition-all duration-300 border bg-gray-800/50 backdrop-blur border-gray-700/30 rounded-xl hover:scale-105">
+                <svg class="w-12 h-12 mx-auto mb-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <h3 class="mb-3 text-xl font-semibold text-white">Premiere Exclusive</h3>
+                <p class="text-gray-300">Fii primul care ascultă piesele noi înainte de lansarea oficială</p>
+            </div>
+
+            <div class="p-6 transition-all duration-300 border bg-gray-800/50 backdrop-blur border-gray-700/30 rounded-xl hover:scale-105">
+                <svg class="w-12 h-12 mx-auto mb-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                </svg>
+                <h3 class="mb-3 text-xl font-semibold text-white">Forum Comunitate</h3>
+                <p class="text-gray-300">Discută cu alți fani și împărtășește păreri despre muzică</p>
+            </div>
+
+            <div class="p-6 transition-all duration-300 border bg-gray-800/50 backdrop-blur border-gray-700/30 rounded-xl hover:scale-105">
+                <svg class="w-12 h-12 mx-auto mb-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <h3 class="mb-3 text-xl font-semibold text-white">Acces Direct</h3>
+                <p class="text-gray-300">Feedback și interacțiune directă cu artistul</p>
+            </div>
+        </div>
+
+        <div class="max-w-3xl mx-auto mt-12">
+            <a href="{{ route('accespremium') }}" class="inline-flex items-center px-8 py-3 text-lg font-medium text-white transition-all duration-300 bg-blue-600 rounded-lg hover:bg-blue-700">
+                Obține Acces Premium
+                <svg class="w-5 h-5 ml-2 -mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
                         </div>
                     </div>
                 </section>
