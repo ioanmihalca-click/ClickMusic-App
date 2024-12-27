@@ -1,12 +1,11 @@
 <x-app-layout>
     <div class="min-h-screen py-12 bg-black">
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <!-- Video Section -->
+            <!-- Video Player Section -->
             <div class="relative max-w-3xl mx-auto overflow-hidden border bg-gray-900/50 backdrop-blur-sm rounded-xl border-gray-800/30">
-                <!-- Video Player -->
-                <div class="relative aspect-w-16 aspect-h-9">
+                <!-- Video Player Container -->
+                <div class="aspect-w-16 aspect-h-9">
                     {!! $video->embed_link !!}
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent"></div>
                 </div>
 
                 <!-- Controls Bar -->
@@ -36,11 +35,11 @@
                             </a> --}}
                         </div>
 
-                        <button class="p-1.5 text-gray-400 transition-all duration-300 rounded-full hover:text-white hover:bg-gray-700">
+                        {{-- <button class="p-1.5 text-gray-400 transition-all duration-300 rounded-full hover:text-white hover:bg-gray-700">
                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
                             </svg>
-                        </button>
+                        </button> --}}
                     </div>
                 </div>
             </div>
@@ -53,7 +52,7 @@
 
                     <!-- Recommendations -->
                     <div class="mb-8">
-                        {{-- <h2 class="mb-4 text-lg font-semibold text-blue-400">Recomandări</h2> --}}
+                        <h2 class="mb-4 text-lg font-semibold text-blue-400">Videoclipuri Similare</h2>
                         @livewire('video-recommendations', ['video' => $video])
                     </div>
 

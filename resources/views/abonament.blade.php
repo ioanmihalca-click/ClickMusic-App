@@ -108,45 +108,42 @@
     <!-- Pricing Cards -->
     <div class="flex flex-col items-center justify-center gap-8 lg:flex-row">
         @if ($user->isEligibleForFreePlan())
-            <a href="{{ route('videoclipuri') }}" class="w-full max-w-sm">
-                <div class="relative h-full p-8 bg-gradient-to-b from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/30 rounded-2xl text-center transition-all duration-300 hover:scale-[1.02] hover:border-blue-500/50">
-                    <!-- Premium Badge -->
-                    <div class="absolute transform -translate-x-1/2 -top-4 left-1/2">
-                        <span class="px-4 py-2 text-sm font-medium text-blue-400 border rounded-full bg-blue-500/10 border-blue-500/20">
-                            Super User Access
-                        </span>
+            <a href="{{ route('videoclipuri') }}">
+        <div class="relative h-full p-8 bg-gradient-to-b from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/30 rounded-2xl text-center transition-all duration-300 hover:scale-[1.02] hover:border-blue-500/50">
+            <!-- Badge -->
+            <div class="absolute transform -translate-x-1/2 -top-4 left-1/2">
+                <span class="px-4 py-2 text-sm font-medium text-blue-400 border rounded-full bg-blue-500/10 border-blue-500/20">
+                    Super_User
+                </span>
+            </div>
+
+            <div class="mt-8">
+                <div class="flex flex-col items-center justify-center gap-6">
+                    <!-- Icon -->
+                    <div class="inline-flex p-4 text-blue-400 rounded-full bg-blue-500/10">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-hearts" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M11.5 1.246c.832-.855 2.913.642 0 2.566-2.913-1.924-.832-3.421 0-2.566M9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-9 8c0 1 1 1 1 1h10s1 0 1-1-1-4-6-4-6 3-6 4m13.5-8.09c1.387-1.425 4.855 1.07 0 4.277-4.854-3.207-1.387-5.702 0-4.276ZM15 2.165c.555-.57 1.942.428 0 1.711-1.942-1.283-.555-2.281 0-1.71Z"/>
+                        </svg>
                     </div>
 
-                    <div class="mt-8">
-                        <div class="inline-flex p-4 mb-6 text-blue-400 rounded-full bg-blue-500/10">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M11.5 1.246c.832-.855 2.913.642 0 2.566-2.913-1.924-.832-3.421 0-2.566M9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-9 8c0 1 1 1 1 1h10s1 0 1-1-1-4-6-4-6 3-6 4m13.5-8.09c1.387-1.425 4.855 1.07 0 4.277-4.854-3.207-1.387-5.702 0-4.276ZM15 2.165c.555-.57 1.942.428 0 1.711-1.942-1.283-.555-2.281 0-1.71Z"/>
-                            </svg>
-                        </div>
-                        
-                        <h3 class="mb-4 text-2xl font-bold text-white">Premium Access</h3>
-                        
-                        <ul class="mb-8 space-y-4 text-gray-300">
-                            <li class="flex items-center justify-center gap-2">
-                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                Acces complet
-                            </li>
-                            <li class="flex items-center justify-center gap-2">
-                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                Premiere exclusiv
-                            </li>
-                        </ul>
-
-                        <button class="w-full px-6 py-3 text-sm font-medium text-white transition-all duration-300 bg-blue-600 rounded-lg hover:bg-blue-700">
-                            Intră în cont
-                        </button>
+                    <!-- Text -->
+                    <div class="space-y-2">
+                        <p class="text-gray-300">
+                            Vi s-a atribuit rolul de
+                        </p>
+                        <p class="text-xl font-bold text-white">
+                           SUPER USER
+                        </p>
                     </div>
+
+                    <!-- Button -->
+                    <button class="w-full px-6 py-3 mt-4 text-sm font-medium text-white transition-all duration-300 bg-blue-600 rounded-lg hover:bg-blue-700">
+                        Intră în cont
+                    </button>
                 </div>
-            </a>
+            </div>
+        </div>
+    </a>
         @else
             <!-- Monthly Plan -->
             <div class="w-full max-w-sm">
