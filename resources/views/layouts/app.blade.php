@@ -50,7 +50,7 @@
     @livewireStyles
 
     <!-- Additional Styles -->
-    <style>
+  <style>
         /* Custom scrollbar styling */
         body::-webkit-scrollbar {
             width: 9px;
@@ -62,26 +62,17 @@
         }
 
         body::-webkit-scrollbar-track {
-            background-color: #d1d5db;
+            background-color: #1f2937;
             border-radius: 3px;
         }
     </style>
 </head>
-<body class="flex flex-col min-h-screen font-sans antialiased bg-gray-100">
+<body class="flex flex-col min-h-screen font-sans antialiased text-white bg-black">
     <div class="flex-grow">
         <livewire:layout.navigation />
 
-        <!-- Page Heading -->
-        @if (isset($header))
-            <header class="bg-white shadow">
-                <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-        @endif
-
-        <!-- Page Content -->
-        <main>
+        <!-- Main Content -->
+        <main class="min-h-screen">
             {{ $slot }}
         </main>
     </div>
