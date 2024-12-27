@@ -56,8 +56,7 @@
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <style>
-        /* Custom scrollbar styling */
+     <style>
         body::-webkit-scrollbar {
             width: 9px;
         }
@@ -68,126 +67,189 @@
         }
 
         body::-webkit-scrollbar-track {
-            background-color: #d1d5db;
+            background-color: #1f2937;
             border-radius: 3px;
         }
     </style>
-
-    <!-- Schema Markup for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "MusicGroup",
-        "name": "Click",
-        "genre": ["Hip-Hop", "Reggae", "Soul"],
-        "url": "https://clickmusic.ro",
-        "image": "{{ asset('img/ClickMusic-OG-Site.jpg') }}",
-        "description": "Click este un artist de muzică Hip-Hop, Reggae, Soul din Baia-Mare, Maramureș."
-    }
-    </script>
-
 </head>
 
-<body class="font-sans antialiased bg-gray-100">
-<livewire:header-nav />
-  
- 
+<body class="font-sans antialiased text-white bg-black">
+    <livewire:header-nav />
 
- <div class="px-2 mt-4 text-white bg-blue-500 rounded">
-                    @if (session()->has('success'))
-  <div class="alert alert-success">
-    {{ session()->get('success') }}
-  </div>
-@endif
+    <!-- Alert Messages -->
+    @if (session()->has('success'))
+        <div class="max-w-2xl px-4 py-3 mx-auto mt-4 border rounded-lg bg-blue-500/10 border-blue-500/20">
+            <p class="text-blue-400">{{ session()->get('success') }}</p>
+        </div>
+    @endif
 
-@if ($errors->any())
-  <div class="alert alert-danger">
-    <ul>
-      @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-      @endforeach
-    </ul>
-  </div>
-@endif
-</div>
+    @if ($errors->any())
+        <div class="max-w-2xl px-4 py-3 mx-auto mt-4 border rounded-lg bg-red-500/10 border-red-500/20">
+            <ul class="text-red-400">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-
-
-
-<!-- Pricing -->
-<div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+    <!-- Pricing Section -->
+<div class="max-w-[85rem] px-4 py-16 mx-auto sm:px-6 lg:px-8">
     <!-- Title -->
-    <div class="max-w-2xl mx-auto mb-10 text-center lg:mb-14">
-        <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Planuri de abonament</h2>
-        <p class="mt-1 text-gray-600">Alege planul care ti se potriveste.</p>
+    <div class="max-w-2xl mx-auto my-20 text-center">
+        <h2 class="text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+            Premium Access
+        </h2>
+        <p class="mt-4 text-lg text-gray-400">
+            Alege planul care ți se potrivește cel mai bine
+        </p>
     </div>
-    <!-- End Title -->
 
-    <!-- Grid -->
-    <div class="flex flex-col items-center justify-center gap-6 mt-12 lg:flex-row">
+    <!-- Pricing Cards -->
+    <div class="flex flex-col items-center justify-center gap-8 lg:flex-row">
         @if ($user->isEligibleForFreePlan())
+            <a href="{{ route('videoclipuri') }}" class="w-full max-w-sm">
+                <div class="relative h-full p-8 bg-gradient-to-b from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/30 rounded-2xl text-center transition-all duration-300 hover:scale-[1.02] hover:border-blue-500/50">
+                    <!-- Premium Badge -->
+                    <div class="absolute transform -translate-x-1/2 -top-4 left-1/2">
+                        <span class="px-4 py-2 text-sm font-medium text-blue-400 border rounded-full bg-blue-500/10 border-blue-500/20">
+                            Super User Access
+                        </span>
+                    </div>
 
-        <a href="{{ route('videoclipuri') }}">
-            <div class="w-full p-8 mx-auto text-center transition-transform transform bg-white border border-gray-200 shadow-md sm:w-80 md:w-64 lg:w-72 rounded-xl hover:shadow-xl hover:scale-105">
-                <p class="mb-8">Vi s-a atribuit rolul de <br>
-                <span class="px-2 text-white bg-blue-500 rounded">Super_User</span></p>
-                <div class="flex justify-center mx-auto text-blue-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-person-hearts" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M11.5 1.246c.832-.855 2.913.642 0 2.566-2.913-1.924-.832-3.421 0-2.566M9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h10s1 0 1-1-1-4-6-4-6 3-6 4m13.5-8.09c1.387-1.425 4.855 1.07 0 4.277-4.854-3.207-1.387-5.702 0-4.276ZM15 2.165c.555-.57 1.942.428 0 1.711-1.942-1.283-.555-2.281 0-1.71Z"/>
-                    </svg>
+                    <div class="mt-8">
+                        <div class="inline-flex p-4 mb-6 text-blue-400 rounded-full bg-blue-500/10">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M11.5 1.246c.832-.855 2.913.642 0 2.566-2.913-1.924-.832-3.421 0-2.566M9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-9 8c0 1 1 1 1 1h10s1 0 1-1-1-4-6-4-6 3-6 4m13.5-8.09c1.387-1.425 4.855 1.07 0 4.277-4.854-3.207-1.387-5.702 0-4.276ZM15 2.165c.555-.57 1.942.428 0 1.711-1.942-1.283-.555-2.281 0-1.71Z"/>
+                            </svg>
+                        </div>
+                        
+                        <h3 class="mb-4 text-2xl font-bold text-white">Premium Access</h3>
+                        
+                        <ul class="mb-8 space-y-4 text-gray-300">
+                            <li class="flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Acces complet
+                            </li>
+                            <li class="flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Premiere exclusiv
+                            </li>
+                        </ul>
+
+                        <button class="w-full px-6 py-3 text-sm font-medium text-white transition-all duration-300 bg-blue-600 rounded-lg hover:bg-blue-700">
+                            Intră în cont
+                        </button>
+                    </div>
                 </div>
-                <p>ACCES PREMIUM</p>
-            </div>
             </a>
         @else
-            <!-- Card -->
-            <div class="w-full p-8 text-center transition-transform transform bg-white border border-gray-200 shadow-md sm:w-80 md:w-64 lg:w-72 rounded-xl hover:shadow-xl hover:scale-105">
-                <h4 class="text-lg font-medium text-gray-800">Lunar</h4>
-                <div class="mt-5 text-5xl font-bold text-blue-500">
-                    <span class="text-2xl font-bold align-top">Lei</span>
-                    9.99
-                </div>
-                <p class="mt-2 text-sm text-gray-500">Fara nici o obligatie. <br> Anulezi oricand.</p>
-                <a href="{{ route('checkout', ['plan' => 'price_1PabyDLHnRRaUZdBk3McKwYs']) }}" class="inline-flex items-center justify-center px-4 py-3 mt-5 text-sm font-semibold text-white bg-blue-500 border border-transparent rounded-lg gap-x-2 hover:bg-blue-600 disabled:opacity-50 disabled:pointer-events-none">
-                    Aboneaza-te
-                </a>
-            </div>
-            <!-- End Card -->
+            <!-- Monthly Plan -->
+            <div class="w-full max-w-sm">
+                <div class="relative h-full p-8 bg-gradient-to-b from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/30 rounded-2xl text-center transition-all duration-300 hover:scale-[1.02] hover:border-blue-500/50">
+                    <div class="absolute transform -translate-x-1/2 -top-4 left-1/2">
+                        <span class="px-4 py-2 text-sm font-medium text-blue-400 border rounded-full bg-blue-500/10 border-blue-500/20">
+                            Popular
+                        </span>
+                    </div>
 
-            <!-- Card -->
-            <div class="w-full p-8 text-center transition-transform transform bg-white border border-gray-200 shadow-md sm:w-80 md:w-64 lg:w-72 rounded-xl hover:shadow-xl hover:scale-105">
-                <h4 class="text-lg font-medium text-gray-800">Anual</h4>
-                <div class="mt-5 text-5xl font-bold text-blue-500">
-                    <span class="text-2xl font-bold align-top">Lei</span>
-                    99.99
+                    <div class="mt-8">
+                        <h3 class="mb-4 text-2xl font-bold text-white">Abonament Lunar</h3>
+                        
+                        <div class="flex items-center justify-center mb-6">
+                            <span class="text-5xl font-bold text-blue-400">9.99</span>
+                            <span class="ml-2 text-gray-400">Lei/lună</span>
+                        </div>
+
+                        <ul class="mb-8 space-y-4 text-gray-300">
+                            <li class="flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Acces complet
+                            </li>
+                            <li class="flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Anulezi oricând
+                            </li>
+                        </ul>
+
+                        <a href="{{ route('checkout', ['plan' => 'price_1PabyDLHnRRaUZdBk3McKwYs']) }}" 
+                           class="block w-full px-6 py-3 text-sm font-medium text-white transition-all duration-300 bg-blue-600 rounded-lg hover:bg-blue-700">
+                            Alege acest plan
+                        </a>
+                    </div>
                 </div>
-                <p class="mt-2 text-sm text-gray-500">Platesti pe un an. <br> Ai 2 luni gratis.</p>
-                <a href="{{ route('checkout', ['plan' => 'price_1PabyDLHnRRaUZdBXUK6VBns']) }}" class="inline-flex items-center justify-center px-4 py-3 mt-5 text-sm font-semibold text-white bg-blue-500 border border-transparent rounded-lg gap-x-2 hover:bg-blue-600 disabled:opacity-50 disabled:pointer-events-none">
-                    Aboneaza-te
-                </a>
             </div>
-            <!-- End Card -->
+
+            <!-- Yearly Plan -->
+            <div class="w-full max-w-sm">
+                <div class="relative h-full p-8 bg-gradient-to-b from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/30 rounded-2xl text-center transition-all duration-300 hover:scale-[1.02] hover:border-blue-500/50">
+                    <div class="absolute transform -translate-x-1/2 -top-4 left-1/2">
+                        <span class="px-4 py-2 text-sm font-medium text-green-400 border rounded-full bg-green-500/10 border-green-500/20">
+                            Economisești 20%
+                        </span>
+                    </div>
+
+                    <div class="mt-8">
+                        <h3 class="mb-4 text-2xl font-bold text-white">Abonament Anual</h3>
+                        
+                        <div class="flex items-center justify-center mb-6">
+                            <span class="text-5xl font-bold text-blue-400">99.99</span>
+                            <span class="ml-2 text-gray-400">Lei/an</span>
+                        </div>
+
+                        <ul class="mb-8 space-y-4 text-gray-300">
+                            <li class="flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                2 luni gratuite
+                            </li>
+                            <li class="flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Acces nelimitat
+                            </li>
+                        </ul>
+
+                        <a href="{{ route('checkout', ['plan' => 'price_1PabyDLHnRRaUZdBXUK6VBns']) }}" 
+                           class="block w-full px-6 py-3 text-sm font-medium text-white transition-all duration-300 bg-blue-600 rounded-lg hover:bg-blue-700">
+                            Alege acest plan
+                        </a>
+                    </div>
+                </div>
+            </div>
         @endif
     </div>
-    <!-- End Grid -->
 
+    <!-- Active Subscription -->
     @if($activeSubscription)
-        <div class="mt-8 text-center">
-            <p class="mb-2 text-green-600">Ai un abonament activ</p>
-            <p class="font-semibold">{{ $activeSubscription->stripe_plan }}</p>
+        <div class="max-w-xl p-6 mx-auto mt-16 text-center border bg-gradient-to-b from-gray-800/50 to-gray-900/50 backdrop-blur-sm border-gray-700/30 rounded-2xl">
+            <div class="inline-flex p-3 mb-4 text-green-400 rounded-full bg-green-500/10">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <h3 class="mb-2 text-xl font-bold text-white">Abonament Activ</h3>
+            <p class="mb-6 text-gray-400">{{ $activeSubscription->stripe_plan }}</p>
 
-<form action="{{ route('subscription.cancel') }}" method="POST">
-    @csrf
-    <button type="submit" class="px-2 font-bold text-white bg-red-600 rounded hover:bg-red-500">
-      Anulează Abonamentul
-    </button>
-  </form>
-
+            <form action="{{ route('subscription.cancel') }}" method="POST">
+                @csrf
+                <button type="submit" class="px-4 py-2 text-sm font-medium text-red-400 transition-all duration-300 rounded-lg bg-red-500/10 hover:bg-red-500/20">
+                    Anulează Abonamentul
+                </button>
+            </form>
         </div>
     @endif
 </div>
-<!-- End Pricing -->
-
 
   <footer class="py-8 text-white bg-gray-800">
         <div class="container px-4 mx-auto">

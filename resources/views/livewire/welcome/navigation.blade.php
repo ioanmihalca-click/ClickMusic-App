@@ -5,7 +5,7 @@
             href="{{ url('/videoclipuri') }}"
             class="rounded-md px-3 py-2 text-blue-400 ring-1 ring-transparent transition hover:text-blue-500 focus:outline-none focus-visible:ring-[#FF2D20] "
         >
-            Videoclipuri
+            Intră în cont
         </a>
     @else
         <a
