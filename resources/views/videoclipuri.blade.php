@@ -13,9 +13,9 @@
             <div class="w-24 h-1 mx-auto mt-2 rounded-full bg-gradient-to-r from-blue-500 to-transparent"></div>
             
             <p class="max-w-2xl mx-auto mt-6 text-center text-gray-300">
-                Te salut si iti multumesc ca ai ajuns pe pagina asta.  Te invit sa ne saluti pe "Comunitate" si sa te abonezi la newsletter.
+                Te salut si iti multumesc ca ai ajuns pe pagina asta. Doar cei care inteleg si simt muzica vor avea acces la acest club. Te invit sa participi la discutiile din "Comunitate" pentru a ne cunoaste mai bine.
             <p class="max-w-2xl mx-auto mt-6 text-center text-gray-300">
-              Aici ai acces la toate PREMIERELE si la toata colectia de videoclipuri. Aici vei gasi mereu piesele mele noi inainte de a fi lansate. 
+              Aici vei gasi mereu toate piesele mele noi inainte de a fi lansate. 
             </p>
         </div>
     </div>

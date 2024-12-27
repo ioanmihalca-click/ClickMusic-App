@@ -19,7 +19,7 @@
                         <div class="flex items-center gap-2">
                             @livewire('videos.like', ['video' => $video])
                             
-                            <a href="https://www.paypal.me/ClickMusic" 
+                            {{-- <a href="https://www.paypal.me/ClickMusic" 
                                class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-all duration-300 bg-blue-600 rounded-lg hover:bg-blue-700">
                                 <svg class="w-4 h-4 mr-1" viewBox="0 0 16 16" fill="currentColor">
                                     <path d="M14.06 3.713c.12-1.071-.093-1.832-.702-2.526C12.628.356 11.312 0 9.626 0H4.734a.7.7 0 0 0-.691.59L2.005 13.509a.42.42 0 0 0 .415.486h2.756l-.202 1.28a.628.628 0 0 0 .62.726H8.14c.429 0 .793-.31.862-.731l.025-.13.48-3.043.03-.164.001-.007a.35.35 0 0 1 .348-.297h.38c1.266 0 2.425-.256 3.345-.91q.57-.403.993-1.005a4.94 4.94 0 0 0 .88-2.195c.242-1.246.13-2.356-.57-3.154a2.7 2.7 0 0 0-.76-.59l-.094-.061Z"/>
@@ -33,7 +33,7 @@
                                     <path d="M0 5a5 5 0 0 0 4.027 4.905 6.5 6.5 0 0 1 .544-2.073C3.695 7.536 3.132 6.864 3 5.91h-.5v-.426h.466V5.05q-.001-.07.004-.135H2.5v-.427h.511C3.236 3.24 4.213 2.5 5.681 2.5c.316 0 .59.031.819.085v.733a3.5 3.5 0 0 0-.815-.082c-.919 0-1.538.466-1.734 1.252h1.917v.427h-1.98q-.004.07-.003.147v.422h1.983v.427H3.93c.118.602.468 1.03 1.005 1.229a6.5 6.5 0 0 1 4.97-3.113A5.002 5.002 0 0 0 0 5"/>
                                 </svg>
                                 Revolut
-                            </a>
+                            </a> --}}
                         </div>
 
                         <button class="p-1.5 text-gray-400 transition-all duration-300 rounded-full hover:text-white hover:bg-gray-700">
@@ -53,7 +53,7 @@
 
                     <!-- Recommendations -->
                     <div class="mb-8">
-                        <h2 class="mb-4 text-lg font-semibold text-blue-400">Recomandări</h2>
+                        {{-- <h2 class="mb-4 text-lg font-semibold text-blue-400">Recomandări</h2> --}}
                         @livewire('video-recommendations', ['video' => $video])
                     </div>
 
