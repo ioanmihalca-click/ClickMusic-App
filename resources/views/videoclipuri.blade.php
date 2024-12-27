@@ -15,8 +15,9 @@
             <p class="max-w-2xl mx-auto mt-6 text-center text-gray-300">
                 Te salut si iti multumesc ca ai ajuns pe pagina asta. Acesta este un club exclusiv si o comunitate. Te invit sa participi la discutiile din "Comunitate".
             <p class="max-w-2xl mx-auto mt-6 text-center text-gray-300">
-              Aici vei gasi mereu toate piesele mele noi inainte de a fi lansate. 
+              Aici vei gasi mereu toate piesele mele inainte de a fi lansate. Asculta cele doua piese noi care inca nu sunt lansate: "RESPECT" si "Bate inima ca bitu"
             </p>
+            
         </div>
     </div>
 
