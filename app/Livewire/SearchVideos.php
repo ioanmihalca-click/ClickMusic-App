@@ -4,38 +4,31 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Video;
+use Livewire\Attributes\Url;
 use Illuminate\Support\Facades\Log;
 
 class SearchVideos extends Component
 {
-    public $searchTerm = '';
+    #[Url()]
+    public $search = '';
+    
     public $searchResults = null;
-    public $lastSearchedTerm = '';
 
-    protected $queryString = ['searchTerm' => ['except' => '']];
-
-    public function search()
+    public function updatedSearch($value)
     {
-        $this->lastSearchedTerm = trim($this->searchTerm);
-        
-        if (strlen($this->lastSearchedTerm) >= 2) {
+        if (strlen($value) >= 2) {
             $this->searchResults = Video::where(function($query) {
-                $query->where('title', 'like', "%{$this->lastSearchedTerm}%")
-                      ->orWhere('description', 'like', "%{$this->lastSearchedTerm}%");
+                $query->where('title', 'like', "%{$this->search}%")
+                      ->orWhere('description', 'like', "%{$this->search}%");
             })->get();
 
-            // Logging pentru depanare
-            Log::info("Căutare efectuată", [
-                'termen' => $this->lastSearchedTerm,
-                'rezultate' => $this->searchResults->count()
+            Log::info("Live search performed", [
+                'term' => $value,
+                'results' => $this->searchResults->count()
             ]);
         } else {
             $this->searchResults = collect();
-            Log::info("Termen de căutare prea scurt", ['termen' => $this->lastSearchedTerm]);
         }
-
-        $this->dispatch('searchPerformed', $this->lastSearchedTerm);
-        $this->searchTerm = ''; // Resetăm câmpul de căutare
     }
 
     public function render()
