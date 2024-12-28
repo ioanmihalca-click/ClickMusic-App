@@ -8,7 +8,7 @@
         
         <div class="relative px-6 py-16">
             <h1 class="text-4xl font-bold tracking-[0.2em] text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 uppercase font-roboto-condensed">
-                Piese si Videoclipuri
+               ACCES EXCLUSIV
             </h1>
             <div class="w-24 h-1 mx-auto mt-2 rounded-full bg-gradient-to-r from-blue-500 to-transparent"></div>
             
@@ -38,7 +38,7 @@
             <!-- Recent Videos Grid -->
             <div class="mb-12">
                 <h2 class="mb-6 text-2xl font-semibold tracking-wide text-blue-400 uppercase">
-                    Videoclipuri Recente
+                    Piese Recente
                 </h2>
                 @livewire('recent-videos')
             </div>
@@ -46,7 +46,7 @@
             <!-- Video Dashboard Grid -->
             <div>
                 <h2 class="mb-6 text-2xl font-semibold tracking-wide text-blue-400 uppercase">
-                    Toate Videoclipurile
+                    Toate Piesele
                 </h2>
                 @livewire('video-dashboard')
             </div>
