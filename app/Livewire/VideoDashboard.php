@@ -11,8 +11,11 @@ class VideoDashboard extends Component
 
     public function mount()
     {
-        // Fetch all videos from the database
-        $this->videos = Video::all();
+        $this->videos = cache()->remember('all_videos', 3600, function() {
+            return Video::select('id', 'title', 'description', 'embed_link', 'thumbnail_url', 'created_at')
+                ->latest()
+                ->get();
+        });
     }
 
     public function render()

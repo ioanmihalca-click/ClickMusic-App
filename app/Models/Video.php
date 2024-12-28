@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Auth;
 
 class Video extends Model
 {
@@ -13,6 +14,12 @@ class Video extends Model
     protected $fillable = ['title', 'description', 'embed_link', 'thumbnail_url', 'featured'];
 
     public $timestamps = true;
+
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime'
+    ];
+
 
     // Define any other model relationships or methods here (optional)
 
@@ -31,7 +38,7 @@ class Video extends Model
     }
 
     public function doesUserLikedVideos(){
-        return $this->likes()->where('user_id', auth() ->id())->exists();
+        return $this->likes()->where('user_id', Auth::id())->exists();
     }
 
 }

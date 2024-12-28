@@ -11,7 +11,12 @@ class RecentVideos extends Component
 
   public function mount()
   {
-    $this->recentVideos = Video::latest()->take(3)->get(); 
+      $this->recentVideos = cache()->remember('recent_videos', 3600, function() {
+          return Video::select('id', 'title', 'description', 'embed_link', 'thumbnail_url', 'created_at')
+              ->latest()
+              ->take(3)
+              ->get();
+      });
   }
 
   public function render()
