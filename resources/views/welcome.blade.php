@@ -197,7 +197,7 @@
                         class="font-roboto-condensed uppercase mb-3 tracking-[6px] md:tracking-[20px] font-bold text-4xl md:text-5xl leading-relaxed md:leading-normal">
                         Click Music Romania
                     </h1>
-                    <h2 class="mb-12 text-xl uppercase font-roboto-condensed md:text-3xl">Hip-Hop • Reggae • Soul</h2>
+                    <h2 class="mb-12 text-xl uppercase font-roboto-condensed md:text-3xl">Hip-Hop • Soul • Reggae</h2>
                     <a href="#despre"
                         class="px-10 py-2 text-xs tracking-widest uppercase transition-all duration-300 border border-blue-500 scroll-link hover:bg-blue-500 hover:text-white font-roboto-condensed hover:border-transparent">Afla
                         mai multe</a>
@@ -228,7 +228,7 @@
                             </h3>
 
                             <p class="mb-8 text-base leading-relaxed text-gray-300 md:text-lg">
-                                Salut! Sunt Click, un artist de muzică hip-hop reggae din inima României.
+                                Salut! Sunt Click, un artist de muzică hip-hop, soul și reggae din inima României.
                                 Te invit să mă cunoști răsfoind <a href="/blog"
                                     class="font-semibold text-blue-400 transition-colors duration-300 hover:text-blue-300">Blogul</a>
                                 sau ascultându-mi
@@ -240,7 +240,7 @@
                                 <a href="/magazin"
                                     class="font-semibold text-blue-400 transition-colors duration-300 hover:text-blue-300">Magazin</a>
                                 sau
-                                prin <a href="/accespremium"
+                                devenind parte din Comunitatea mea. Poti face asta aici: <a href="/accespremium"
                                     class="font-semibold text-blue-400 transition-colors duration-300 hover:text-blue-300">Acces
                                     Premium</a>.
                             </p>

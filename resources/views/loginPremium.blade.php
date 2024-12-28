@@ -161,7 +161,7 @@
                 
                 <!-- Card principal -->
                 <div class="p-[0.5px] bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-blue-500/20 rounded-xl">
-                    <div class="p-8 bg-black/90 backdrop-blur-sm rounded-xl">
+                    <div class="p-8 bg-black/70 backdrop-blur-sm rounded-xl">
                         <div class="space-y-6">
                             <p class="text-lg text-gray-300">
                             Te invit sa faci parte din Comunitatea mea. 
@@ -178,10 +178,7 @@
                                "Cotizatia" pentru accesul in acest club este una simbolica de aproape 10 lei. Banii vor fi folositi pentru imbunatatirea si sustinerea acestei platforme si a proiectele viitoare.
                             </p>
                             
-                             <p class="text-lg text-gray-300">
-                    
-                                Aboneaza-te 
-                            </p>
+                           
                             <div class="py-4">
                                 <span class="text-2xl font-semibold text-blue-300">9,99 lei/ lună</span>
                             </div>
