@@ -3,23 +3,64 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ForumThread extends Model
 {
-    protected $fillable = ['title', 'content', 'user_id', 'category_id', 'is_pinned', 'is_locked'];
-    
+    use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'slug',
+        'content',
+        'user_id',
+        'category_id',
+        'is_pinned',
+        'is_locked',
+        'views_count'
+    ];
+
+    protected static function boot()
+    {
+        parent::boot();
+        
+        static::creating(function ($thread) {
+            $thread->slug = str()->slug($thread->title);
+        });
+    }
+
+    protected $casts = [
+        'is_pinned' => 'boolean',
+        'is_locked' => 'boolean',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-    
+
     public function category()
     {
         return $this->belongsTo(ForumCategory::class);
     }
-    
+
     public function replies()
     {
         return $this->hasMany(ForumReply::class);
+    }
+
+    public function latestReply()
+    {
+        return $this->hasOne(ForumReply::class)->latestOfMany();
+    }
+
+    public function participants()
+    {
+        return $this->replies()->with('user')->get()->pluck('user')->unique('id');
+    }
+
+    public function incrementViewCount()
+    {
+        $this->increment('views_count');
     }
 }

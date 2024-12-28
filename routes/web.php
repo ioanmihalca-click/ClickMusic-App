@@ -70,12 +70,12 @@ Route::match(['get', 'post'], 'checkout/{plan}', [CheckoutController::class, '__
 ->name('checkout');
 
 
-// Route::prefix('comunitate')->middleware(['auth'])->group(function () {
-//     Route::get('/', App\Livewire\Forum\ForumIndex::class)->name('forum.index');
-//     Route::get('/categorii/{category:slug}', App\Livewire\Forum\CategoryShow::class)->name('forum.categories.show');
-//     Route::get('/discutii/creare', App\Livewire\Forum\ThreadCreate::class)->name('forum.threads.create');
-//     Route::get('/discutii/{thread:slug}', App\Livewire\Forum\ThreadShow::class)->name('forum.threads.show');
-// });
+Route::prefix('comunitate')->middleware(['auth'])->group(function () {
+    Route::get('/', App\Livewire\Forum\ForumIndex::class)->name('forum.index');
+    Route::get('/categorii/{category:slug}', App\Livewire\Forum\CategoryShow::class)->name('forum.categories.show');
+    Route::get('/discutii/creare', App\Livewire\Forum\ThreadCreate::class)->name('forum.threads.create');
+    Route::get('/discutii/{thread:slug}', App\Livewire\Forum\ThreadShow::class)->name('forum.threads.show');
+});
 
     Route::view('videoclipuri', 'videoclipuri')
     ->middleware([Subscribed::class])

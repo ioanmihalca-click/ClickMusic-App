@@ -57,50 +57,51 @@ class User extends Authenticatable implements FilamentUser
         ];
     }
 
-     // Add accessor for avatar
-     protected function avatar(): Attribute
-     {
-         return Attribute::make(
-             get: function ($value) {
-                 if (!$value) {
-                     return 'https://ui-avatars.com/api/?name='.urlencode($this->name);
-                 }
-                 return asset('storage/' . $value);
-             }
-         );
-     }
+    // Add accessor for avatar
+    protected function avatar(): Attribute
+    {
+        return Attribute::make(
+            get: function ($value) {
+                if (!$value) {
+                    return 'https://ui-avatars.com/api/?name=' . urlencode($this->name);
+                }
+                return asset('storage/' . $value);
+            }
+        );
+    }
 
-    public function comments() {
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
 
     public static function findOrCreateGoogleUser($providerUser)
-{
-    $user = User::where('email', $providerUser->email)->first();
+    {
+        $user = User::where('email', $providerUser->email)->first();
 
-    if (!$user) {
+        if (!$user) {
 
-        $randomPassword = Str::random(16);
-        $user = User::create([
-            'name' => $providerUser->name,
-            'email' => $providerUser->email,
-            'password' => bcrypt($randomPassword),
-        ]);
+            $randomPassword = Str::random(16);
+            $user = User::create([
+                'name' => $providerUser->name,
+                'email' => $providerUser->email,
+                'password' => bcrypt($randomPassword),
+            ]);
+        }
+
+        return $user;
     }
 
-    return $user;
-}
-
-public function subscribed()
-{
-    // Check if the user has an active subscription
-    return $this->subscriptions()
-                ->where('stripe_status', 'active')
-                ->exists();
-}
+    public function subscribed()
+    {
+        // Check if the user has an active subscription
+        return $this->subscriptions()
+            ->where('stripe_status', 'active')
+            ->exists();
+    }
 
 
-public function isEligibleForFreePlan()
+    public function isEligibleForFreePlan()
     {
         return $this->usertype === 'admin' || $this->usertype === 'super_user';
     }
@@ -110,4 +111,13 @@ public function isEligibleForFreePlan()
         return str_ends_with($this->email, 'ioanclickmihalca@gmail.com');
     }
 
+    public function forumThreads()
+    {
+        return $this->hasMany(ForumThread::class);
+    }
+
+    public function forumReplies()
+    {
+        return $this->hasMany(ForumReply::class);
+    }
 }
