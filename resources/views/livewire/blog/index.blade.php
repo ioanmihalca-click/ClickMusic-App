@@ -1,7 +1,7 @@
 <section class="relative px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
     <!-- Gradient ambient în fundal -->
     <div class="absolute inset-0 blur-3xl opacity-30">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/75 to-blue-500/20"></div>
     </div>
 
     <!-- Header -->

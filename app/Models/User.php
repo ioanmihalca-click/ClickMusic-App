@@ -5,12 +5,14 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use Carbon\Carbon;
-use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Support\Str;
 use Laravel\Cashier\Billable;
 use MBarlow\Megaphone\HasMegaphone;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
+use Filament\Models\Contracts\FilamentUser;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Laravel\Cashier\Concerns\ManagesSubscriptions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -29,6 +31,7 @@ class User extends Authenticatable implements FilamentUser
         'email',
         'password',
         'usertype',
+        'avatar',
     ];
 
     /**
@@ -53,6 +56,19 @@ class User extends Authenticatable implements FilamentUser
             'password' => 'hashed',
         ];
     }
+
+     // Add accessor for avatar
+     protected function avatar(): Attribute
+     {
+         return Attribute::make(
+             get: function ($value) {
+                 if (!$value) {
+                     return 'https://ui-avatars.com/api/?name='.urlencode($this->name);
+                 }
+                 return asset('storage/' . $value);
+             }
+         );
+     }
 
     public function comments() {
         return $this->hasMany(Comment::class);

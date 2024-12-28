@@ -17,17 +17,18 @@ use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\VideoController;
 use App\Livewire\Blog\Index as BlogIndex;
 use App\Notifications\SubscriptionCreated;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Notification;
 use App\Http\Controllers\AbonamentController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Notifications\AbonamentNouCreatAdmin;
 use App\Notifications\NotificareVideoclipNou;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\PromoUnsubscribeController;
 use App\Http\Controllers\VideoNotificationController;
 use App\Http\Controllers\SubscriptionSuccessController;
-use App\Http\Controllers\NewsletterController;
-use App\Http\Controllers\PromoUnsubscribeController;
 
 Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
@@ -86,6 +87,7 @@ Route::match(['get', 'post'], 'checkout/{plan}', [CheckoutController::class, '__
     ->middleware(['auth'])
     ->name('profile');
 
+    Route::patch('/profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.avatar')->middleware('auth');
 
 
 
