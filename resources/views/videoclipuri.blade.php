@@ -8,12 +8,12 @@
         
         <div class="relative px-6 py-16">
             <h1 class="text-4xl font-bold tracking-[0.2em] text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 uppercase font-roboto-condensed">
-               ACCES EXCLUSIV
+            BINE AI VENIT!
             </h1>
             <div class="w-24 h-1 mx-auto mt-2 rounded-full bg-gradient-to-r from-blue-500 to-transparent"></div>
             
             <p class="max-w-2xl mx-auto mt-6 text-center text-gray-300">
-                Te salut si iti multumesc ca ai ajuns pe pagina asta. Acesta este un club exclusiv si o comunitate. Te invit sa participi la discutiile din forumul "Comunitate".
+                Te salut si iti multumesc ca ai ajuns pe pagina asta. Aceasta comunitate este un club exclusiv. Te invit sa participi la discutiile din forumul "Comunitate".
             <p class="max-w-2xl mx-auto mt-6 text-center text-gray-300">
               Aici vei gasi mereu toate piesele mele inainte de a fi lansate. 
               Am pus recent doua piese noi, nelansate inca: "RESPECT" si "Bate inima ca bitu"
