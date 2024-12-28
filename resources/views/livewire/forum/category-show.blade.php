@@ -7,8 +7,8 @@
                 <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800"></div>
             </div>
 
-            <div class="relative p-6 bg-gray-900/90 backdrop-blur-sm rounded-xl">
-                <div class="flex items-center justify-between">
+  <div class="relative p-6 bg-gray-900/90 backdrop-blur-sm rounded-xl">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
                     <div>
                         <h1
                             class="text-3xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
@@ -17,21 +17,21 @@
                         <p class="mt-2 text-gray-400">{{ $category->description }}</p>
                     </div>
 
-                    <div class="flex items-center space-x-4">
+                    <div class="flex flex-col mt-4 space-y-2 sm:mt-0 sm:flex-row sm:space-y-0 sm:space-x-4">
                         <a href="{{ route('forum.index') }}"
-                            class="px-4 py-2 text-gray-300 transition-all duration-300 border border-gray-700 rounded-lg hover:text-white hover:border-gray-600">
+                            class="px-4 py-2 text-center text-gray-300 transition-all duration-300 border border-gray-700 rounded-lg hover:text-white hover:border-gray-600">
                             ← Înapoi la categorii
                         </a>
 
                         <a href="{{ route('forum.threads.create', ['category' => $category->id]) }}"
-                            class="px-4 py-2 text-white transition-all duration-300 bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900">
+                            class="px-4 py-2 text-center text-white transition-all duration-300 bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900">
                             Creează discuție
                         </a>
                     </div>
                 </div>
 
                 <!-- Search bar -->
-                <div class="flex-1 mb-4">
+                <div class="flex-1 my-4">
                     <div class="relative">
                         <input type="text" wire:model.live.debounce.300ms="search"
                             class="w-full px-4 py-2 text-gray-300 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500"

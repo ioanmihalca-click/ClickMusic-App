@@ -175,7 +175,7 @@
 
                               <p class="text-base text-gray-300">
                     
-                               "Cotizatia" pentru accesul in acest club este una simbolica de aproape 10 lei. Banii vor fi folositi pentru imbunatatirea si sustinerea acestei platforme si a proiectele viitoare.
+                               "Cotizatia" pentru accesul in acest club este una simbolica de aproape 10 lei pe luna. Banii vor fi folositi pentru imbunatatirea si sustinerea acestei platforme si a proiectele viitoare.
                             </p>
                             
                            
