@@ -13,7 +13,16 @@ class ProfileController extends Controller
     {
         try {
             $request->validate([
-                'avatar' => ['required', 'image', 'max:1024']
+                'avatar' => [
+                    'required',
+                    'image',
+                    'max:2048', // 2MB în kilobytes
+                    'mimes:jpeg,png,jpg,gif,webp'
+                ]
+            ], [
+                'avatar.max' => 'Imaginea trebuie să fie mai mică de 2MB.',
+                'avatar.mimes' => 'Formatul imaginii trebuie să fie: jpeg, png, jpg sau gif.',
+                'avatar.image' => 'Fișierul trebuie să fie o imagine.'
             ]);
     
             // Salvează imaginea în storage/app/public/avatars

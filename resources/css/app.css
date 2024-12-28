@@ -162,3 +162,21 @@
     --tw-prose-pre-border: theme('colors.gray.700');
 }
 
+
+/* card videoclipuri */
+    @keyframes gradient-xy {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+    
+    .animate-gradient-xy {
+        animation: gradient-xy 15s ease infinite;
+        background-size: 400% 400%;
+    }

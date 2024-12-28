@@ -1,8 +1,10 @@
 <x-app-layout>
-    <div class="min-h-screen py-12 bg-black">
+    <div class="min-h-screen py-12 bg-gradient-to-t from-black via-purple-900/55 to-black">
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+
+         
             <!-- Video Player Section -->
-            <div class="relative max-w-3xl mx-auto overflow-hidden border bg-gray-900/50 backdrop-blur-sm rounded-xl border-gray-800/30">
+            <div class="relative max-w-5xl mx-auto overflow-hidden border bg-gray-900/50 backdrop-blur-sm rounded-xl border-gray-800/30">
                 <!-- Video Player Container -->
                 <div class="aspect-w-16 aspect-h-9">
                     {!! $video->embed_link !!}
@@ -45,7 +47,7 @@
             </div>
 
             <!-- Video Info & Comments -->
-            <div class="max-w-3xl mx-auto mt-8">
+            <div class="max-w-5xl mx-auto mt-8">
                 <div class="p-6 border bg-gray-900/50 backdrop-blur-sm rounded-xl border-gray-800/30">
                     <h1 class="mb-4 text-xl font-bold text-white">{{ $video->title }}</h1>
                     <p class="mb-8 text-gray-400">{!! nl2br($video->description) !!}</p>
