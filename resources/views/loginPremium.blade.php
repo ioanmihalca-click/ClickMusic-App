@@ -164,11 +164,24 @@
                     <div class="p-8 bg-black/90 backdrop-blur-sm rounded-xl">
                         <div class="space-y-6">
                             <p class="text-lg text-gray-300">
-                                Pentru <span class="font-semibold text-blue-400">Acces Premium</span> la download-uri și la
-                                întreaga colecție de videoclipuri, inclusiv cele mai recente lansări și PREMIERE exclusive,
-                                abonează-te pentru doar
+                            Te invit sa faci parte din Comunitatea mea. 
+                            
+                            </p>
+
+                             <p class="text-base text-gray-300">
+                    
+                               Aceasta comunitate este un club exclusiv  care are acces la piese pe care inca nu le-am lansat si la videoclipuri in Premiera.
+                            </p>
+
+                              <p class="text-base text-gray-300">
+                    
+                               "Cotizatia" pentru accesul in acest club este una simbolica de aproape 10 lei. Banii vor fi folositi pentru imbunatatirea si sustinerea acestei platforme si a proiectele viitoare.
                             </p>
                             
+                             <p class="text-lg text-gray-300">
+                    
+                                Aboneaza-te 
+                            </p>
                             <div class="py-4">
                                 <span class="text-2xl font-semibold text-blue-300">9,99 lei/ lună</span>
                             </div>
