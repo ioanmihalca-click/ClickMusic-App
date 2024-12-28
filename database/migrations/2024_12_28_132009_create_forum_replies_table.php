@@ -9,10 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('forum_replies', function (Blueprint $table) {
             $table->id();
+            $table->text('content');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('thread_id')->constrained('forum_threads')->onDelete('cascade');
+            $table->boolean('is_solution')->default(false);
             $table->timestamps();
         });
     }

@@ -9,10 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('forum_categories', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->string('description')->nullable();
+            $table->string('color', 7)->default('#3b82f6'); // Pentru personalizarea vizuală
+            $table->boolean('is_private')->default(false);
             $table->timestamps();
         });
     }
