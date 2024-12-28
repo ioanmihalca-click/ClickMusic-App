@@ -1,4 +1,4 @@
-<!-- videoclipuri.blade.php -->
+
 <x-app-layout>
     <!-- Hero Header with Gradient -->
     <div class="relative bg-black">

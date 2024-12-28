@@ -19,18 +19,20 @@ class CategoryShow extends Component
         $this->category = $category;
     }
 
+    // În CategoryShow.php
     public function render()
     {
         $threads = $this->category->threads()
             ->with(['user', 'latestReply.user'])
-            ->when($this->search, function($query) {
-                $query->where('title', 'like', '%'.$this->search.'%');
+            ->withCount('replies') // Aceasta va adăuga replies_count
+            ->when($this->search, function ($query) {
+                $query->where('title', 'like', '%' . $this->search . '%');
             })
             ->latest()
             ->paginate(10);
 
         return view('livewire.forum.category-show', [
             'threads' => $threads
-        ]);
+        ])->layout('layouts.app');
     }
 }

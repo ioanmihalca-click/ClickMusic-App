@@ -1,19 +1,114 @@
 <!-- resources/views/livewire/forum/forum-index.blade.php -->
 <div class="min-h-screen py-12 bg-black">
-    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <!-- Header cu gradient, similar cu profilul tău -->
-        <div class="relative mb-8">
-            <div class="absolute inset-0 blur-3xl opacity-30">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800"></div>
-            </div>
-            
-            <div class="relative p-6 bg-gray-900/90 backdrop-blur-sm rounded-xl">
-                <h1 class="text-3xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
-                    Comunitatea Click Music
-                </h1>
-                <p class="mt-2 text-gray-400">Discută cu artiștii și ceilalți membri despre muzică, evenimente și mai multe.</p>
+   <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <!-- Header cu acțiuni -->
+    <div class="flex items-center justify-between mb-6">
+        <div class="flex items-center space-x-4">
+            <!-- Căutare -->
+            <div class="relative">
+                <input type="text" 
+                       wire:model.debounce.300ms="search"
+                       class="w-64 px-4 py-2 text-gray-300 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500"
+                       placeholder="Caută în forum...">
             </div>
         </div>
+
+        <!-- Buton creare categorie pentru admini -->
+        @if(auth()->user()->usertype === 'admin')
+            <button 
+                wire:click="$set('showCreateModal', true)"
+                class="px-4 py-2 text-white transition-all duration-300 bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900">
+                Creează Categorie Nouă
+            </button>
+        @endif
+    </div>
+
+    <!-- Modal pentru creare categorie -->
+    @if(auth()->user()->usertype === 'admin')
+        <div x-data="{ show: @entangle('showCreateModal') }"
+             x-show="show"
+             x-cloak
+             class="fixed inset-0 z-50 overflow-y-auto"
+             aria-labelledby="modal-title"
+             role="dialog"
+             aria-modal="true">
+            <div class="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+                <div x-show="show"
+                     x-transition:enter="ease-out duration-300"
+                     x-transition:enter-start="opacity-0"
+                     x-transition:enter-end="opacity-100"
+                     x-transition:leave="ease-in duration-200"
+                     x-transition:leave-start="opacity-100"
+                     x-transition:leave-end="opacity-0"
+                     class="fixed inset-0 transition-opacity bg-gray-900 bg-opacity-75"
+                     aria-hidden="true"></div>
+
+                <div x-show="show"
+                     x-transition:enter="ease-out duration-300"
+                     x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                     x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                     x-transition:leave="ease-in duration-200"
+                     x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                     class="relative inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-gray-800 rounded-lg shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
+                    <div>
+                        <h3 class="text-lg font-medium leading-6 text-white">
+                            Creează o Categorie Nouă
+                        </h3>
+                        <div class="mt-4">
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-300">
+                                        Nume Categorie
+                                    </label>
+                                    <input type="text" 
+                                           wire:model="newCategory.name"
+                                           class="w-full mt-1 text-gray-300 bg-gray-700 border-gray-600 rounded-lg focus:ring-blue-500">
+                                    @error('newCategory.name') 
+                                        <span class="text-sm text-red-500">{{ $message }}</span> 
+                                    @enderror
+                                </div>
+
+                                <div>
+                                    <label for="description" class="block text-sm font-medium text-gray-300">
+                                        Descriere
+                                    </label>
+                                    <textarea 
+                                        wire:model="newCategory.description"
+                                        rows="3"
+                                        class="w-full mt-1 text-gray-300 bg-gray-700 border-gray-600 rounded-lg focus:ring-blue-500"></textarea>
+                                    @error('newCategory.description') 
+                                        <span class="text-sm text-red-500">{{ $message }}</span> 
+                                    @enderror
+                                </div>
+
+                                <div>
+                                    <label for="color" class="block text-sm font-medium text-gray-300">
+                                        Culoare
+                                    </label>
+                                    <input type="color" 
+                                           wire:model="newCategory.color"
+                                           class="block w-full h-10 mt-1 bg-gray-700 border-gray-600 rounded-lg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-end mt-5 space-x-3">
+                        <button type="button"
+                                wire:click="$set('showCreateModal', false)"
+                                class="px-4 py-2 text-sm text-gray-300 border border-gray-600 rounded-lg hover:bg-gray-700">
+                            Anulează
+                        </button>
+                        <button type="button"
+                                wire:click="createCategory"
+                                class="px-4 py-2 text-sm text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                            Creează Categoria
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 
         <!-- Categorii -->
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

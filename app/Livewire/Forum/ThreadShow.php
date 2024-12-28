@@ -45,6 +45,6 @@ class ThreadShow extends Component
                 ->with('user')
                 ->latest()
                 ->paginate(15)
-        ]);
+        ])->layout('layouts.app');
     }
 }

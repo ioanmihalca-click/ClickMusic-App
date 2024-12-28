@@ -41,17 +41,18 @@ class ForumThread extends Model
 
     public function category()
     {
-        return $this->belongsTo(ForumCategory::class);
+        return $this->belongsTo(ForumCategory::class, 'category_id');
     }
 
     public function replies()
     {
-        return $this->hasMany(ForumReply::class);
+        return $this->hasMany(ForumReply::class, 'thread_id'); // Specifică explicit cheia străină
     }
 
     public function latestReply()
     {
-        return $this->hasOne(ForumReply::class)->latestOfMany();
+        // Specifică explicit cheia străină ca 'thread_id'
+        return $this->hasOne(ForumReply::class, 'thread_id')->latestOfMany();
     }
 
     public function participants()
@@ -63,4 +64,9 @@ class ForumThread extends Model
     {
         $this->increment('views_count');
     }
+
+    public function getReplyCountAttribute()
+{
+    return $this->replies()->count();
+}
 }

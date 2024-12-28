@@ -39,6 +39,6 @@ class ThreadCreate extends Component
     {
         return view('livewire.forum.thread-create', [
             'categories' => ForumCategory::all()
-        ]);
+        ])->layout('layouts.app');
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+// app/Models/ForumCategory.php
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -31,13 +32,21 @@ class ForumCategory extends Model
         return $this->hasMany(ForumThread::class, 'category_id');
     }
 
+    // Aici era problema - trebuie specificați corect coloanele de legătură
+    public function replies()
+    {
+        return $this->hasManyThrough(
+            ForumReply::class, 
+            ForumThread::class,
+            'category_id', // cheia străină pe forum_threads
+            'thread_id',   // cheia străină pe forum_replies
+            'id',         // cheia locală pe forum_categories
+            'id'          // cheia locală pe forum_threads
+        );
+    }
+
     public function latestThread()
     {
         return $this->hasOne(ForumThread::class)->latestOfMany();
-    }
-
-    public function replies()
-    {
-        return $this->hasManyThrough(ForumReply::class, ForumThread::class);
     }
 }
