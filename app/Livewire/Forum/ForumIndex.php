@@ -19,6 +19,12 @@ class ForumIndex extends Component
         'color' => '#3b82f6',
     ];
 
+    public function updatedSearch()
+    {
+        $this->resetPage();
+    }
+
+
     protected $rules = [
         'newCategory.name' => 'required|min:3|max:255',
         'newCategory.description' => 'required|min:10',

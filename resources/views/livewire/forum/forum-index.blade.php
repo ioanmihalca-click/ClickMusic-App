@@ -1,23 +1,27 @@
-<!-- resources/views/livewire/forum/forum-index.blade.php -->
+
 <div class="min-h-screen py-12 bg-black">
    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+         <div class="p-6 border border-gray-800 rounded-xl bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-blue-600/10">
+            <h2 class="mb-2 text-xl font-semibold text-white">Forumul de discuții "Comunitate"</h2>
+            <p class="text-gray-300">Îmi doresc ca aici să formăm o comunitate unită prin muzică. La fiecare lansare voi crea o nouă discuție unde voi pune detalii, story-uri și videouri scurte pentru ca voi sa ma ajutați să promovez piesa lansată. </p>
+        </div>
     <!-- Header cu acțiuni -->
     <div class="flex items-center justify-between mb-6">
         <div class="flex items-center space-x-4">
             <!-- Căutare -->
-            <div class="relative">
+            {{-- <div class="relative">
                 <input type="text" 
                        wire:model.debounce.300ms="search"
                        class="w-64 px-4 py-2 text-gray-300 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500"
                        placeholder="Caută în forum...">
-            </div>
+            </div> --}}
         </div>
 
         <!-- Buton creare categorie pentru admini -->
         @if(auth()->user()->usertype === 'admin')
             <button 
                 wire:click="$set('showCreateModal', true)"
-                class="px-4 py-2 text-white transition-all duration-300 bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900">
+                class="px-4 py-2 mt-6 text-white transition-all duration-300 bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900">
                 Creează Categorie Nouă
             </button>
         @endif

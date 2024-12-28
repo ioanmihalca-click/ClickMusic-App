@@ -59,10 +59,10 @@
                     </div>
 
                     <!-- Comments -->
-                    <div class="pt-6 border-t border-gray-800/50">
+                    {{-- <div class="pt-6 border-t border-gray-800/50">
                         <h2 class="mb-4 text-lg font-semibold text-blue-400">Comentarii</h2>
                         @livewire('comments.all-comments', ['videoId' => $video->id])
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

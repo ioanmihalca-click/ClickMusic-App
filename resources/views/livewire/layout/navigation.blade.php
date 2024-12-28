@@ -27,6 +27,10 @@ new class extends Component {
                         class="text-gray-300 transition-colors duration-300 hover:text-blue-400">
                         {{ __('Videoclipuri') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('forum.index')" :active="request()->routeIs('forum.index')" wire:navigate
+                        class="text-gray-300 transition-colors duration-300 hover:text-blue-400">
+                        {{ __('Comunitate') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('blog.index')" :active="request()->routeIs('blog.index')" wire:navigate
                         class="text-gray-300 transition-colors duration-300 hover:text-blue-400">
                         {{ __('Blog') }}
@@ -35,6 +39,7 @@ new class extends Component {
                         class="text-gray-300 transition-colors duration-300 hover:text-blue-400">
                         {{ __('Magazin') }}
                     </x-nav-link>
+                     
                 </div>
             </div>
 
@@ -116,6 +121,10 @@ new class extends Component {
             <x-responsive-nav-link :href="route('videoclipuri')" :active="request()->routeIs('videoclipuri')" wire:navigate
                 class="text-gray-300 hover:bg-gray-700 hover:text-blue-400">
                 {{ __('Videoclipuri') }}
+            </x-responsive-nav-link>
+             <x-responsive-nav-link :href="route('forum.index')" :active="request()->routeIs('forum.index')" wire:navigate
+                class="text-gray-300 hover:bg-gray-700 hover:text-blue-400">
+                {{ __('Comunitate') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('blog.index')" :active="request()->routeIs('blog.index')" wire:navigate
                 class="text-gray-300 hover:bg-gray-700 hover:text-blue-400">
