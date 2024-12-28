@@ -13,7 +13,7 @@
             <div class="w-24 h-1 mx-auto mt-2 rounded-full bg-gradient-to-r from-blue-500 to-transparent"></div>
             
             <p class="max-w-2xl mx-auto mt-6 text-center text-gray-300">
-                Te salut și îți mulțumesc că ai ajuns pe pagina asta. Aceasta comunitate este un club exclusiv. Te invit să participi la discuțiile din <a href="{{ route('forum.index') }}" class="text-blue-400 transition-colors hover:text-blue-300"> forumul "Comunitate"</a>.
+                Te salut și îți mulțumesc că ai ajuns pe pagina asta. Aceasta comunitate este un club exclusiv. Te invit să participi la discuțiile din forumul <a href="{{ route('forum.index') }}" class="text-blue-400 transition-colors hover:text-blue-300">"Comunitate"</a>.
             </p>
             <p class="max-w-2xl mx-auto mt-6 text-center text-gray-300">
             
