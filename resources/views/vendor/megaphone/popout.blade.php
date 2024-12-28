@@ -1,10 +1,25 @@
-<!-- Panoul de notificări -->
-<div x-cloak 
-     x-show="open" 
-     @click.outside="open = false" 
-     class="fixed inset-0 z-50 overflow-hidden" 
-     id="notification">
-    <div class="absolute inset-0 transition-opacity bg-black/75" @click="open = false"></div>
+<div class="megaphone">
+    <div
+        x-cloak
+        x-show="open"
+        class="fixed top-0 left-0 z-40 w-full h-full bg-black bg-opacity-70"
+        @click="open = false"
+        x-transition.opacity.duration.600ms
+    ></div>
+
+    <div
+        x-cloak
+        x-show="open"
+        x-transition:enter="transform transition ease-in-out duration-300 sm:duration-300"
+        x-transition:enter-start="translate-x-full"
+        x-transition:enter-end="translate-x-0"
+        x-transition:leave="transform transition ease-in-out duration-300 sm:duration-300"
+        x-transition:leave-start="translate-x-0"
+        x-transition:leave-end="translate-x-full"
+        @click.outside="open = false"
+        class="fixed top-0 right-0 z-50 w-full h-full overflow-x-hidden transition duration-300 ease-in-out transform translate-x-0 lg:w-7/12 xl:w-5/12 2xl:w-3/12"
+        id="notification"
+    >
 
     <div class="fixed inset-y-0 right-0 flex max-w-full">
         <div class="w-screen max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl">
