@@ -99,7 +99,20 @@ new class extends Component {
 
     <!-- Mobile Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1 bg-gray-800">
+        <div class="pt-4 pb-1 bg-gray-800 border-t border-gray-700">
+            <div class="px-4">
+                <!-- Added Avatar -->
+                <div class="flex items-center mb-3">
+                    <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}"
+                        class="w-10 h-10 mr-3 rounded-full">
+                    <div>
+                        <div class="text-base font-medium text-gray-300" x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name"
+                            x-on:profile-updated.window="name = $event.detail.name"></div>
+                        <div class="text-sm font-medium text-gray-400">{{ auth()->user()->email }}</div>
+                    </div>
+                </div>
+            </div>
+
             <x-responsive-nav-link :href="route('videoclipuri')" :active="request()->routeIs('videoclipuri')" wire:navigate
                 class="text-gray-300 hover:bg-gray-700 hover:text-blue-400">
                 {{ __('Videoclipuri') }}
