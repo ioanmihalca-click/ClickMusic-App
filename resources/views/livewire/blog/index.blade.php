@@ -1,7 +1,7 @@
 <section class="relative px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
     <!-- Gradient ambient în fundal -->
     <div class="absolute inset-0 blur-3xl opacity-30">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/75 to-blue-500/20"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-500/20 via-purple-500/75 to-blue-500/20"></div>
     </div>
 
     <!-- Header -->
@@ -21,17 +21,17 @@
                     <div class="relative flex flex-col h-full overflow-hidden bg-black/90 backdrop-blur-sm rounded-xl">
                         <a href="{{ route('blog.show', $post->slug) }}" class="block">
                             @if ($post->featured_image)
-                                <div class="relative overflow-hidden aspect-video">
+                                <div class="relative overflow-hidden">
                                     <img src="{{ asset('storage/' . $post->featured_image) }}" 
                                          alt="{{ $post->title }}"
-                                         class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110">
+                                         class="object-cover w-full h-auto transition-transform duration-500 group-hover:scale-110">
                                     
                                     <!-- Overlay gradient -->
                                     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60"></div>
                                 </div>
                             @endif
 
-                            <div class="p-6">
+                            <div class="p-6 bg-gray-900 ">
                                 <time datetime="{{ $post->published_at->toDateString() }}"
                                       class="block mb-3 text-sm text-blue-400">
                                     {{ $post->published_at->format('j F Y') }}

@@ -12,8 +12,10 @@
     <meta property="og:title" content="{{ $post->title }}">
     <meta property="og:description" content="{{ $post->meta['description'] ?? '' }}">
     <meta property="og:image" content="{{ asset('storage/' . $post->featured_image) }}">
-    <meta property="og:image:width" content="1200">  <meta property="og:image:height" content="630"> <meta property="og:url" content="{{ route('blog.show', $post->slug) }}">
-    <meta property="og:type" content="article"> 
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="{{ route('blog.show', $post->slug) }}">
+    <meta property="og:type" content="article">
     <meta property="og:locale" content="ro_RO">
     <meta property="og:site_name" content="Click Music Blog">
 
@@ -35,7 +37,7 @@
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    @vite(['resources/css/app.css', 'resources/js/app.js']) 
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <style>
         /* Custom scrollbar styling */
@@ -52,6 +54,47 @@
             background-color: #d1d5db;
             border-radius: 3px;
         }
+
+        /* Typography improvements */
+        .prose p {
+            margin-top: 1.5em;
+            margin-bottom: 1.5em;
+            line-height: 1.8;
+        }
+        
+        .prose h2 {
+            margin-top: 2em;
+            margin-bottom: 1em;
+        }
+        
+        .prose ul, .prose ol {
+            margin-top: 1.5em;
+            margin-bottom: 1.5em;
+        }
+        
+        .prose li {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+
+        /* Reading improvements */
+        .prose {
+            font-size: 1.125rem;
+            letter-spacing: 0.01em;
+        }
+
+        @media (min-width: 768px) {
+            .prose {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* Container width for better readability */
+        .content-container {
+            max-width: 75ch;
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
 
     <script type="application/ld+json">
@@ -64,9 +107,9 @@
         "dateModified": "{{ $post->updated_at->format('Y-m-d') }}",
         "author": {
             "@type": "Person",
-            "name": "Click" 
-        }, 
-       "publisher": {
+            "name": "Click"
+        },
+        "publisher": {
             "@type": "Organization",
             "name": "Click Music",
             "logo": {
@@ -77,21 +120,17 @@
         "description": "{{ $post->meta['description'] ?? '' }}"
     }
     </script>
-
 </head>
 
-<body class="font-sans antialiased bg-black">
-
-<livewire:header-nav />
-
+<body class="font-sans antialiased bg-gray-950">
+    <livewire:header-nav />
 
     <main class="container px-4 py-4 mx-auto">
         {{ $slot }}
     </main>
 
-       <x-footer />
+    <x-footer />
 
     @livewireScripts
 </body>
-
 </html>
