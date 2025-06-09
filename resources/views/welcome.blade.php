@@ -160,14 +160,6 @@
         </div>
 
 
-
-        <!-- Fixed right-side "Ce e nou?" button -->
-        {{-- <div x-data="floatingButton()" x-init="init()" id="floating-button"
-            class="fixed right-0 z-50 hidden transition-all duration-300 ease-in-out" :class="{ 'hidden': false }"
-            x-cloak :style="{ bottom: `${bottomPosition}px` }">
-            <x-slider-intro />
-        </div> --}}
-
         <div x-show="!loading" x-transition:enter="transition ease-out duration-300" x-data="netflixBackground()"
             x-init="init()" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
             class="relative h-screen overflow-hidden bg-black home-parallax home-fade">
