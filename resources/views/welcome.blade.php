@@ -21,15 +21,16 @@
 
     <!-- Meta Tags for Click Music Streaming App -->
     <meta name="description"
-        content="Click Music - Muzica, Hip-Hop, Reggae, Soul - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul - Click" />
+        content="Click Music - Muzica, Hip-Hop, Drum and Bass, Reggae - Electronic Press Kit, Magazin, Blog" />
     <meta name="keywords"
-        content="Click, Click Music, muzică românească, hip hop românesc, reggae românesc, muzică Baia Mare, Maramureș, artist independent, streaming muzică, albume digitale, videoclipuri muzicale, download MP3, concerte Click, versuri Click, muzică nouă, muzică underground, muzică alternativă, muzică independentă, muzică conștientă, muzică pozitivă, muzică de vară, muzică de petrecere, muzică de relaxare, artist reggae din România, albume hip-hop de ascultat în 2024, muzică pentru relaxare" />
+        content="Click, Click Music, muzică românească, hip hop românesc, drum and bass reggae românesc, Baia Mare, Maramureș, artist independent, streaming muzică, albume digitale, videoclipuri muzicale, download MP3, concerte Click, versuri Click, muzică nouă, muzică underground, muzică alternativă, muzică independentă, muzică conștientă, muzică pozitivă, muzică de vară, muzică de petrecere, muzică de relaxare, artist reggae din România, albume hip-hop de ascultat în 2024, muzică pentru relaxare" />
 
 
     <!-- Open Graph Tags for Social Media Sharing -->
-    <meta property="og:title" content="Click Music - Muzica, Hip-Hop, Soul, Reggae" />
+    <meta property="og:title"
+        content="Click Music - Muzica, Hip-Hop, Drum and Bass, Reggae - Electronic Press Kit, Magazin, Blog" />
     <meta property="og:description"
-        content="Click Music - Muzica, Hip-Hop, Soul, Reggae - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul - Click" />
+        content="Click Music - Muzica, Hip-Hop, Drum and Bass, Reggae - Electronic Press Kit, Magazin, Blog" />
     <meta property="og:image" content="{{ asset('img/ClickMusic-OG-Site.jpg') }}" />
     <meta property="og:image:type" content="image/jpg" />
     <meta property="og:image:alt" content="Click Music - Muzica, Hip-hop, Reggae și Soul" />
@@ -82,8 +83,8 @@
   "@context": "https://schema.org",
   "@type": "MusicArtist",
   "name": "Click",
-  "description": "Click este un artist de muzică hip-hop, reggae și soul din Baia-Mare, Maramureș.",
-  "genre": ["Hip-Hop", "Reggae", "Soul"],
+  "description": "Click este un artist de muzică hip-hop, drum and bass si reggae din Romania.",
+  "genre": ["Hip-Hop", "Drum and Bass", "Reggae"],
   "url": "https://clickmusic.ro",
   "image": "{{ asset('img/ClickMusic-OG-Site.jpg') }}",
   "sameAs": [
@@ -189,7 +190,8 @@
                         class="font-roboto-condensed uppercase mb-3 tracking-[6px] md:tracking-[20px] font-bold text-4xl md:text-5xl leading-relaxed md:leading-normal">
                         Click Music Romania
                     </h1>
-                    <h2 class="mb-12 text-xl uppercase font-roboto-condensed md:text-3xl">Hip-Hop • Soul • Reggae</h2>
+                    <h2 class="mb-12 text-xl uppercase font-roboto-condensed md:text-3xl">Hip-Hop • DnB •
+                        Reggae</h2>
                     <a href="#despre"
                         class="px-10 py-2 text-xs tracking-widest uppercase transition-all duration-300 border border-blue-500 scroll-link hover:bg-blue-500 hover:text-white font-roboto-condensed hover:border-transparent">Afla
                         mai multe</a>
@@ -220,7 +222,8 @@
                             </h3>
 
                             <p class="mb-8 text-base leading-relaxed text-gray-300 md:text-lg">
-                                Salut! Sunt Click, un artist de muzică hip-hop, soul și reggae din inima României.
+                                Salut! Sunt Click, un artist de muzică hip-hop, drum and bass și reggae din inima
+                                României.
                                 Te invit să mă cunoști răsfoind <a href="/blog"
                                     class="font-semibold text-blue-400 transition-colors duration-300 hover:text-blue-300">Blogul</a>
                                 sau ascultându-mi
