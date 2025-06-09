@@ -21,16 +21,16 @@
 
     <!-- Meta Tags for Click Music Streaming App -->
     <meta name="description"
-        content="Click Music - Muzica, Hip-Hop, Drum and Bass, Reggae - Electronic Press Kit, Magazin, Blog" />
+        content="Click Music - Muzica, Hip-Hop, Drum & Bass, Reggae - Electronic Press Kit, Magazin, Blog" />
     <meta name="keywords"
-        content="Click, Click Music, muzică românească, hip hop românesc, drum and bass reggae românesc, Baia Mare, Maramureș, artist independent, streaming muzică, albume digitale, videoclipuri muzicale, download MP3, concerte Click, versuri Click, muzică nouă, muzică underground, muzică alternativă, muzică independentă, muzică conștientă, muzică pozitivă, muzică de vară, muzică de petrecere, muzică de relaxare, artist reggae din România, albume hip-hop de ascultat în 2024, muzică pentru relaxare" />
+        content="Click, Click Music, muzică românească, hip hop românesc, drum & bass reggae românesc, Baia Mare, Maramureș, artist independent, streaming muzică, albume digitale, videoclipuri muzicale, download MP3, concerte Click, versuri Click, muzică nouă, muzică underground, muzică alternativă, muzică independentă, muzică conștientă, muzică pozitivă, muzică de vară, muzică de petrecere, muzică de relaxare, artist reggae din România, albume hip-hop de ascultat în 2024, muzică pentru relaxare" />
 
 
     <!-- Open Graph Tags for Social Media Sharing -->
     <meta property="og:title"
-        content="Click Music - Muzica, Hip-Hop, Drum and Bass, Reggae - Electronic Press Kit, Magazin, Blog" />
+        content="Click Music - Muzica, Hip-Hop, Drum & Bass, Reggae - Electronic Press Kit, Magazin, Blog" />
     <meta property="og:description"
-        content="Click Music - Muzica, Hip-Hop, Drum and Bass, Reggae - Electronic Press Kit, Magazin, Blog" />
+        content="Click Music - Muzica, Hip-Hop, Drum & Bass, Reggae - Electronic Press Kit, Magazin, Blog" />
     <meta property="og:image" content="{{ asset('img/ClickMusic-OG-Site.jpg') }}" />
     <meta property="og:image:type" content="image/jpg" />
     <meta property="og:image:alt" content="Click Music - Muzica, Hip-hop, Reggae și Soul" />
@@ -83,8 +83,8 @@
   "@context": "https://schema.org",
   "@type": "MusicArtist",
   "name": "Click",
-  "description": "Click este un artist de muzică hip-hop, drum and bass si reggae din Romania.",
-  "genre": ["Hip-Hop", "Drum and Bass", "Reggae"],
+  "description": "Click este un artist de muzică hip-hop, drum & bass si reggae din Romania.",
+  "genre": ["Hip-Hop", "Drum & Bass", "Reggae"],
   "url": "https://clickmusic.ro",
   "image": "{{ asset('img/ClickMusic-OG-Site.jpg') }}",
   "sameAs": [
@@ -222,7 +222,7 @@
                             </h3>
 
                             <p class="mb-8 text-base leading-relaxed text-gray-300 md:text-lg">
-                                Salut! Sunt Click, un artist de muzică hip-hop, drum and bass și reggae din inima
+                                Salut! Sunt Click, un artist de muzică hip-hop, drum & bass și reggae din inima
                                 României.
                                 Te invit să mă cunoști răsfoind <a href="/blog"
                                     class="font-semibold text-blue-400 transition-colors duration-300 hover:text-blue-300">Blogul</a>
