@@ -31,28 +31,28 @@
             <!-- Gradient Overlay -->
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/75"></div>
 
-            <!-- Content Overlay -->
-            <div class="relative z-10 flex items-center justify-center h-full text-white">
+            <!-- Content Overlay - Adjusted Higher Position -->
+            <div class="relative z-10 flex items-start justify-center h-full pt-32 text-white md:pt-24">
                 <div class="max-w-4xl px-6 mx-auto text-center">
                     <!-- Artist Photo -->
-                    <div class="mb-8">
+                    <div class="mb-6">
                         <img src="/img/Poza Click optimizata.jpg" alt="Click"
-                            class="w-32 h-32 mx-auto border-4 border-blue-500 rounded-full shadow-2xl md:w-40 md:h-40">
+                            class="mx-auto border-4 border-blue-500 rounded-full shadow-2xl w-28 h-28 md:w-36 md:h-36">
                     </div>
 
                     <!-- Main Title -->
                     <h1
-                        class="font-roboto-condensed uppercase mb-4 tracking-[6px] md:tracking-[15px] font-bold text-3xl md:text-5xl leading-relaxed">
+                        class="font-roboto-condensed uppercase mb-3 tracking-[6px] md:tracking-[15px] font-bold text-3xl md:text-5xl leading-relaxed">
                         Click Music Romania
                     </h1>
 
                     <!-- Subtitle -->
-                    <h2 class="mb-6 text-lg text-blue-400 uppercase font-roboto-condensed md:text-2xl">
+                    <h2 class="mb-5 text-lg text-blue-400 uppercase font-roboto-condensed md:text-2xl">
                         Hip-Hop • Drum & Bass • Reggae
                     </h2>
 
                     <!-- Key Stats -->
-                    <div class="grid max-w-md grid-cols-3 gap-4 mx-auto mb-8 md:grid-cols-3">
+                    <div class="grid max-w-md grid-cols-3 gap-3 mx-auto mb-6 md:grid-cols-3">
                         <div class="text-center">
                             <div class="text-xl font-bold text-blue-400 md:text-2xl">23</div>
                             <div class="text-xs text-gray-300 md:text-sm">Ani experiență</div>
@@ -68,17 +68,17 @@
                     </div>
 
                     <!-- Description -->
-                    <p class="max-w-2xl mx-auto mb-8 text-sm leading-relaxed text-gray-300 md:text-base">
+                    <p class="max-w-2xl mx-auto mb-6 text-sm leading-relaxed text-gray-300 md:text-base">
                         Artist de muzică hip-hop, drum & bass și reggae din România cu peste două decenii de experiență.
                         Cunoscut pentru hiturile naționale cu trupa Camuflaj și cariera solo de succes.
                     </p>
 
                     <!-- Action Buttons -->
-                    <div class="flex flex-col gap-4 md:flex-row md:justify-center md:gap-6">
+                    <div class="flex flex-col gap-3 md:flex-row md:justify-center md:gap-4">
                         <!-- Premium Access -->
                         <a href="/accespremium"
-                            class="relative inline-flex items-center justify-center px-8 py-3 text-sm font-semibold text-white transition-all duration-300 bg-blue-600 rounded-lg group md:text-base hover:bg-blue-700 focus:ring-4 focus:ring-blue-500/50">
-                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            class="relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-300 bg-blue-600 rounded-lg group md:text-base hover:bg-blue-700 focus:ring-4 focus:ring-blue-500/50">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
                                 </path>
@@ -88,10 +88,10 @@
                                 lei/lună</span>
                         </a>
 
-                        <!-- Explore More -->
+                        <!-- Press Kit -->
                         <a href="/electronic-press-kit"
-                            class="inline-flex items-center justify-center px-8 py-3 text-sm font-semibold text-blue-400 transition-all duration-300 border border-blue-500 rounded-lg md:text-base hover:bg-blue-500 hover:text-white">
-                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            class="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-blue-400 transition-all duration-300 border border-blue-500 rounded-lg md:text-base hover:bg-blue-500 hover:text-white">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
                                 </path>
@@ -101,8 +101,8 @@
 
                         <!-- YouTube -->
                         <a href="https://youtube.com/clickmusicromania" target="_blank" rel="noopener noreferrer"
-                            class="inline-flex items-center justify-center px-8 py-3 text-sm font-semibold text-gray-300 transition-all duration-300 border border-gray-600 rounded-lg md:text-base hover:border-red-500 hover:text-red-400">
-                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            class="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-gray-300 transition-all duration-300 border border-gray-600 rounded-lg md:text-base hover:border-red-500 hover:text-red-400">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
                                 <path
                                     d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                             </svg>
