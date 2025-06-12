@@ -34,11 +34,10 @@ Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('lo
 Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
 
 
-
-Route::view('/', 'welcome')->name('welcome');
+Route::get('/', App\Livewire\Welcome::class)->name('welcome');
 
 Route::view('/newsletter', 'newsletter')->name('newsletter');
-Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe'); 
+Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 Route::get('/newsletter/unsubscribe', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
 
 
@@ -63,11 +62,11 @@ Route::get('/album/{album:slug}/download', [AlbumController::class, 'download'])
 
 Route::get('abonament', [AbonamentController::class, 'show'])->name('abonament')->middleware('auth');
 Route::get('/subscription/success', SubscriptionSuccessController::class)->name('subscription.success')->middleware('auth');
-   
+
 
 Route::match(['get', 'post'], 'checkout/{plan}', [CheckoutController::class, '__invoke'])
-->middleware(['auth', 'verified'])
-->name('checkout');
+    ->middleware(['auth', 'verified'])
+    ->name('checkout');
 
 
 Route::prefix('comunitate')->middleware(['auth'])->group(function () {
@@ -77,31 +76,31 @@ Route::prefix('comunitate')->middleware(['auth'])->group(function () {
     Route::get('/discutii/{thread:slug}', App\Livewire\Forum\ThreadShow::class)->name('forum.threads.show');
 });
 
-    Route::view('videoclipuri', 'videoclipuri')
+Route::view('videoclipuri', 'videoclipuri')
     ->middleware([Subscribed::class])
     ->name('videoclipuri');
 
-    Route::get('/videos/{video}', [VideoController::class, 'show'])
+Route::get('/videos/{video}', [VideoController::class, 'show'])
     ->name('videos.show')
-    ->middleware(['auth']); 
+    ->middleware(['auth']);
 
-    // Route::view('sustine', 'sustine')
-    // ->middleware([Subscribed::class])
-    // ->name('sustine');
+// Route::view('sustine', 'sustine')
+// ->middleware([Subscribed::class])
+// ->name('sustine');
 
-    Route::view('profile', 'profile')
+Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-    Route::patch('/profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.avatar')->middleware('auth');
+Route::patch('/profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.avatar')->middleware('auth');
 
 
 
-    Route::post('/subscription/cancel', [SubscriptionController::class, 'cancelSubscription'])->name('subscription.cancel');
+Route::post('/subscription/cancel', [SubscriptionController::class, 'cancelSubscription'])->name('subscription.cancel');
 
-    Route::get('/videos/share/{id}', [VideoController::class, 'share'])->name('videos.share');
+Route::get('/videos/share/{id}', [VideoController::class, 'share'])->name('videos.share');
 
-   // Define route for privacy policy page
+// Define route for privacy policy page
 Route::get('/politica-de-confidentialitate', function () {
     return view('politica-de-confidentialitate');
 })->name('privacy-policy');
@@ -110,11 +109,11 @@ Route::get('/politica-de-confidentialitate', function () {
 Route::get('/termeni-si-conditii', function () {
     return view('termeni-si-conditii');
 })->name('terms-of-service');
-    
+
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
-  
+
 //Download mp3
 
 // Route::get('/download-mp3/click-ma-racoresc', function () {
@@ -148,8 +147,8 @@ Route::get('/song', function () {
 
 
 
-     
-require __DIR__.'/auth.php';
+
+require __DIR__ . '/auth.php';
 
 
 //Preview PromoMail
@@ -180,4 +179,3 @@ require __DIR__.'/auth.php';
 //     return (new NewsletterNotification($newsletter, $imageUrl, $url))
 //         ->toMail($newsletter);
 // });
-
