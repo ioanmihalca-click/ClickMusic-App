@@ -13,7 +13,7 @@
                     class="text-xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
                     Click Music
                 </h3>
-                <p class="text-gray-400">Hip-Hop, Reggae și Soul din inima României</p>
+                <p class="text-gray-400">Hip-Hop, Drum & Bass și Reggae din inima României</p>
             </div>
 
             <!-- Quick Links -->
@@ -98,7 +98,7 @@
         </div>
 
         <!-- Newsletter Section -->
-        <div class="border-t border-gray-800 pt-8 mt-8">
+        <div class="pt-8 mt-8 border-t border-gray-800">
             <div class="max-w-md mx-auto text-center">
                 @if (session('success'))
                     <div class="mt-4 text-green-400">{{ session('success') }}</div>
@@ -137,7 +137,7 @@
                         </div>
                         <div>
                             <button type="submit"
-                                class="w-full md:w-auto px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-lg shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors duration-300">
+                                class="w-full px-4 py-2 text-sm font-semibold text-white transition-colors duration-300 bg-blue-600 rounded-lg shadow-sm md:w-auto hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
                                 Abonează-te
                             </button>
                         </div>

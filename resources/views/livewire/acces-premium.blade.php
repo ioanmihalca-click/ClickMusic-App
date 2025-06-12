@@ -1,116 +1,225 @@
 <div>
-    <!-- Gradient ambient în fundal -->
-    <div class="relative min-h-screen">
-        <div class="absolute inset-0 blur-3xl opacity-30">
-            <div class="absolute inset-0 bg-gradient-to-b from-blue-600 via-purple-600 to-black"></div>
+    <!-- Background cu particule animate -->
+    <div class="relative min-h-screen overflow-hidden bg-black">
+        <!-- Gradient animat de fundal -->
+        <div class="absolute inset-0 opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-600/30 via-purple-600/30 to-black animate-pulse">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-tl from-purple-600/20 via-blue-500/30 to-cyan-400/20"></div>
         </div>
 
-        <!-- Secțiunea Premium -->
-        <div class="relative max-w-xl px-6 py-20 mx-auto">
+        <!-- Efecte de blur pentru depth -->
+        <div class="absolute rounded-full top-20 left-10 w-72 h-72 bg-blue-500/10 blur-3xl"></div>
+        <div class="absolute rounded-full bottom-20 right-10 w-96 h-96 bg-purple-500/10 blur-3xl"></div>
+        <div
+            class="absolute transform -translate-x-1/2 -translate-y-1/2 rounded-full top-1/2 left-1/2 w-80 h-80 bg-pink-500/5 blur-3xl">
+        </div>
+
+        <!-- Container principal -->
+        <div class="relative z-10 max-w-4xl px-6 py-20 mx-auto">
             <div class="text-center">
-                <!-- Header cu gradient -->
+                <!-- Icon și Badge -->
+                <div class="flex justify-center mb-8">
+                    <div class="relative">
+                        <div
+                            class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 blur-lg opacity-60">
+                        </div>
+                        <div class="relative p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600">
+                            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Header principal cu animație -->
                 <h1
-                    class="mb-8 text-3xl md:text-4xl font-bold tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 uppercase font-roboto-condensed">
-                    Acces Premium
+                    class="mb-4 text-4xl font-bold tracking-tight text-transparent md:text-6xl bg-clip-text bg-gradient-to-r from-white via-blue-100 to-purple-200 font-roboto-condensed animate-fade-in">
+                    <span class="block uppercase tracking-[0.2em]">Acces</span>
+                    <span
+                        class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 tracking-[0.3em]">Premium</span>
                 </h1>
 
-                <!-- Card principal -->
-                <div class="p-[0.5px] bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-blue-500/20 rounded-xl">
-                    <div class="p-8 bg-black/70 backdrop-blur-sm rounded-xl">
-                        <div class="space-y-6">
-                            <p class="text-lg text-gray-300">
-                                Te invit să faci parte din Comunitatea mea.
-                            </p>
+                <!-- Subtitle -->
+                <p class="max-w-2xl mx-auto mb-12 text-xl leading-relaxed text-gray-300">
+                    Alătură-te comunității exclusive și descoperă muzica înainte de toți ceilalți
+                </p>
 
-                            <p class="text-base text-gray-300">
-                                Această comunitate este un club exclusiv care are acces la piese pe care încă nu le-am
-                                lansat și la videoclipuri în Premieră.
-                            </p>
+                <!-- Card principal cu efect glassmorphism -->
+                <div class="relative group">
+                    <!-- Glow effect -->
+                    <div
+                        class="absolute transition duration-500 -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl blur-lg opacity-20 group-hover:opacity-40">
+                    </div>
 
-                            <p class="text-base text-gray-300">
-                                "Cotizația" pentru accesul în acest club este una simbolică de aproape 10 lei pe lună.
-                                Banii vor fi folosiți pentru îmbunătățirea și susținerea acestei platforme și a
-                                proiectelor viitoare.
-                            </p>
+                    <!-- Card content -->
+                    <div
+                        class="relative p-8 border shadow-2xl md:p-12 bg-black/60 backdrop-blur-xl border-white/10 rounded-2xl">
+                        <div class="space-y-8">
+                            <!-- Descriere principală -->
+                            <div class="space-y-6">
+                                <h2 class="mb-4 text-2xl font-bold text-white">
+                                    🎵 Intră în Clubul Exclusiv
+                                </h2>
 
-                            <div class="py-4">
-                                <span class="text-2xl font-semibold text-blue-300">9,99 lei/ lună</span>
+                                <p class="text-lg leading-relaxed text-gray-200">
+                                    Te invit să faci parte din <span class="font-semibold text-blue-400">Comunitatea mea
+                                        exclusivă</span> -
+                                    un club select cu acces la piese unreleased și videoclipuri în premieră absolută.
+                                </p>
+
+                                <p class="text-base leading-relaxed text-gray-300">
+                                    Această comunitate oferă o experiență unică: <span class="text-purple-400">ascultă
+                                        primul</span>
+                                    noile creații, participă la <span class="text-blue-400">sesiuni exclusive</span> și
+                                    fii parte
+                                    din procesul creativ.
+                                </p>
                             </div>
 
+                            <!-- Preț cu efect special -->
+                            <div class="relative py-8">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-xl blur-sm">
+                                </div>
+                                <div class="relative text-center">
+                                    <p class="mb-2 text-sm text-gray-400">Doar</p>
+                                    <div
+                                        class="text-4xl font-bold text-transparent md:text-5xl bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+                                        9,99 <span class="text-2xl">lei</span>
+                                    </div>
+                                    <p class="mt-2 text-lg text-gray-300">pe lună</p>
+                                    <p class="max-w-md mx-auto mt-3 text-sm text-gray-500">
+                                        Contribuția va susține dezvoltarea platformei și proiectele viitoare
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Authentication Section -->
                             @if (Route::has('login'))
-                                <div class="py-6 border-t border-white/10">
+                                <div class="mb-8">
                                     <livewire:welcome.navigation />
                                 </div>
                             @endif
 
-                            <!-- Buton Google -->
-                            <div class="mt-8">
-                                <!-- Container cu efect de gradient border -->
-                                <div class="relative group">
-                                    <!-- Gradient animat de fundal -->
-                                    <div
-                                        class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
-                                    </div>
-
-                                    <!-- Butonul în sine -->
-                                    <a href="{{ route('login.google') }}"
-                                        class="relative flex items-center justify-center px-8 py-4 text-white transition-all duration-300 rounded-lg bg-black/80 backdrop-blur-sm group-hover:bg-black/90">
-                                        <!-- Icon Google -->
-                                        <div
-                                            class="flex items-center justify-center w-8 h-8 mr-3 transition-transform duration-300 bg-white rounded-full group-hover:scale-110">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24">
-                                                <path fill="#4285F4"
-                                                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                                                <path fill="#34A853"
-                                                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                                                <path fill="#FBBC05"
-                                                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
-                                                <path fill="#EA4335"
-                                                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
-                                            </svg>
-                                        </div>
-
-                                        <!-- Text -->
-                                        <span class="text-base font-medium tracking-wide">
-                                            Sign in with Google
-                                        </span>
-
-                                        <!-- Săgeată animată -->
-                                        <svg class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1"
+                            <!-- Google Sign In Button -->
+                            <div class="flex justify-center">
+                                <a href="{{ route('login.google') }}"
+                                    class="relative px-8 py-4 overflow-hidden text-lg font-semibold text-gray-800 transition-all duration-300 bg-white group rounded-xl hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25">
+                                    <div class="flex items-center justify-center space-x-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            fill="currentColor" viewBox="0 0 16 16">
+                                            <path
+                                                d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
+                                        </svg>
+                                        <span>Începe cu Google</span>
+                                        <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
                                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                         </svg>
-                                    </a>
-                                </div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Features -->
-                <div class="grid grid-cols-1 gap-6 mt-12 md:grid-cols-2">
-                    <div class="p-6 border bg-white/5 backdrop-blur-sm rounded-xl border-white/10">
-                        <svg class="w-8 h-8 mx-auto mb-4 text-blue-400" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                        </svg>
-                        <h3 class="mb-2 text-lg font-semibold text-white">Videoclipuri Exclusive</h3>
-                        <p class="text-gray-400">Acces la conținut premium și lansări în avanpremieră</p>
+                <!-- Features Grid -->
+                <div class="grid grid-cols-1 gap-6 mt-16 md:grid-cols-3">
+                    <!-- Feature 1 -->
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-300">
+                        </div>
+                        <div
+                            class="relative p-6 transition-all duration-300 border bg-black/60 backdrop-blur-xl border-white/10 rounded-xl hover:scale-105">
+                            <div
+                                class="w-12 h-12 p-3 mx-auto mb-4 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600">
+                                <svg class="w-full h-full text-white" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <h3 class="mb-2 text-lg font-semibold text-white">Premiere Exclusive</h3>
+                            <p class="text-sm leading-relaxed text-gray-400">Acces la videoclipuri și piese înainte de
+                                lansarea publică</p>
+                        </div>
                     </div>
 
-                    <div class="p-6 border bg-white/5 backdrop-blur-sm rounded-xl border-white/10">
-                        <svg class="w-8 h-8 mx-auto mb-4 text-blue-400" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                        </svg>
-                        <h3 class="mb-2 text-lg font-semibold text-white">Download Nelimitat</h3>
-                        <p class="text-gray-400">Descarcă muzica preferată pentru ascultare offline</p>
+                    <!-- Feature 2 -->
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-300">
+                        </div>
+                        <div
+                            class="relative p-6 transition-all duration-300 border bg-black/60 backdrop-blur-xl border-white/10 rounded-xl hover:scale-105">
+                            <div
+                                class="w-12 h-12 p-3 mx-auto mb-4 rounded-lg bg-gradient-to-r from-purple-500 to-pink-600">
+                                <svg class="w-full h-full text-white" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                </svg>
+                            </div>
+                            <h3 class="mb-2 text-lg font-semibold text-white">Download Nelimitat</h3>
+                            <p class="text-sm leading-relaxed text-gray-400">Descarcă și păstrează toată muzica pentru
+                                ascultare offline</p>
+                        </div>
                     </div>
+
+                    <!-- Feature 3 -->
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-0.5 bg-gradient-to-r from-pink-500 to-blue-500 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-300">
+                        </div>
+                        <div
+                            class="relative p-6 transition-all duration-300 border bg-black/60 backdrop-blur-xl border-white/10 rounded-xl hover:scale-105">
+                            <div
+                                class="w-12 h-12 p-3 mx-auto mb-4 rounded-lg bg-gradient-to-r from-pink-500 to-blue-600">
+                                <svg class="w-full h-full text-white" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                </svg>
+                            </div>
+                            <h3 class="mb-2 text-lg font-semibold text-white">Comunitate Exclusivă</h3>
+                            <p class="text-sm leading-relaxed text-gray-400">Interacțiune directă cu artistul și alte
+                                sesiuni live</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action Footer -->
+                <div
+                    class="p-6 mt-16 border bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-xl border-white/5">
+                    <h3 class="mb-2 text-xl font-semibold text-white">Gata să începi?</h3>
+                    <p class="text-sm text-gray-300">
+                        Alătură-te astăzi și fii primul care descoperă noua muzică Click Music România
+                    </p>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- CSS pentru animații -->
+    <style>
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 1s ease-out;
+        }
+    </style>
 </div>
