@@ -6,17 +6,18 @@
 
         <!-- Desktop menu -->
         <nav class="hidden md:flex md:space-x-8">
-            <a href="/" wire:navigate
+            <a href="{{ route('home') }}" wire:navigate
                 class="text-base font-medium text-white hover:text-blue-300 font-roboto">Acasă</a>
-
-            <a href="/magazin" wire:navigate
+            <a href="{{ route('electronic-press-kit') }}" wire:navigate
+                class="text-base font-medium text-white hover:text-blue-300 font-roboto">EPK</a>
+            <a href="{{ route('magazin') }}" wire:navigate
                 class="text-base font-medium text-white hover:text-blue-300 font-roboto">Magazin</a>
-            <a href="/blog" wire:navigate
+            <a href="{{ route('blog.index') }}" wire:navigate
                 class="text-base font-medium text-white hover:text-blue-300 font-roboto">Blog</a>
-            <a href="/accespremium" wire:navigate
+            <a href="{{ route('accespremium') }}" wire:navigate
                 class="text-base font-medium text-white hover:text-blue-300 font-roboto">Acces
                 Premium</a>
-            <a href="/contact" wire:navigate
+            <a href="{{ route('contact') }}" wire:navigate
                 class="text-base font-medium text-white hover:text-blue-300 font-roboto">Contact</a>
             <a href="https://www.youtube.com/clickmusicromania"
                 class="text-base font-medium text-white hover:text-blue-300 font-roboto">Youtube</a>
@@ -51,16 +52,18 @@
             class="absolute inset-0 z-40 flex items-center justify-center w-full h-screen bg-black bg-opacity-90 md:hidden"
             style="display: none;">
             <nav class="flex flex-col items-center space-y-8">
-                <a href="/" wire:navigate
+                <a href="{{ route('home') }}" wire:navigate
                     class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">Acasă</a>
-                <a href="/magazin" wire:navigate
+                <a href="{{ route('electronic-press-kit') }}" wire:navigate
+                    class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">EPK</a>
+                <a href="{{ route('magazin') }}" wire:navigate
                     class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">Magazin</a>
-                <a href="/blog" wire:navigate
+                <a href="{{ route('blog.index') }}" wire:navigate
                     class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">Blog</a>
-                <a href="/accespremium" wire:navigate
+                <a href="{{ route('accespremium') }}" wire:navigate
                     class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">Acces
                     Premium</a>
-                <a href="/contact" wire:navigate
+                <a href="{{ route('contact') }}" wire:navigate
                     class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">Contact</a>
                 <a href="https://www.youtube.com/clickmusicromania"
                     class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">Youtube</a>

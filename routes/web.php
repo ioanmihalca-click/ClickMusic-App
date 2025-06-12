@@ -12,6 +12,7 @@ use App\Livewire\Magazin;
 use App\Livewire\Welcome;
 use App\Livewire\AccesPremium;
 use App\Http\Middleware\Subscribed;
+use App\Livewire\ElectronicPressKit;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Blog\Show as BlogShow;
 use Illuminate\Support\Facades\Storage;
@@ -38,7 +39,22 @@ Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('lo
 Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
 
 
-Route::get('/', Welcome::class)->name('welcome');
+Route::get('/', Welcome::class)->name('home');
+
+Route::get('/press', ElectronicPressKit::class)->name('electronic-press-kit');
+
+Route::get('magazin', Magazin::class)->name('magazin');
+Route::get('/album/{album:slug}', [AlbumController::class, 'show'])->name('album.show');
+Route::post('/album/{album}/checkout', [AlbumController::class, 'checkout'])->name('album.checkout');
+Route::get('/checkout/success', [AlbumController::class, 'checkoutSuccess'])->name('checkout.success');
+Route::get('/album/{album:slug}/download', [AlbumController::class, 'download'])
+    ->name('album.download')
+    ->middleware('signed');
+
+Route::get('/blog', BlogIndex::class)->name('blog.index');
+Route::get('/blog/{slug}', BlogShow::class)->name('blog.show');
+
+Route::get('/accespremium', AccesPremium::class)->name('accespremium');
 
 
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
@@ -50,19 +66,7 @@ Route::get('/promo/unsubscribe/{email}', [PromoUnsubscribeController::class, 'un
     ->name('promo.unsubscribe')
     ->middleware('signed');
 
-Route::get('/accespremium', AccesPremium::class)->name('accespremium');
 
-
-Route::get('/blog', BlogIndex::class)->name('blog.index');
-Route::get('/blog/{slug}', BlogShow::class)->name('blog.show');
-
-Route::get('magazin', Magazin::class)->name('magazin');
-Route::get('/album/{album:slug}', [AlbumController::class, 'show'])->name('album.show');
-Route::post('/album/{album}/checkout', [AlbumController::class, 'checkout'])->name('album.checkout');
-Route::get('/checkout/success', [AlbumController::class, 'checkoutSuccess'])->name('checkout.success');
-Route::get('/album/{album:slug}/download', [AlbumController::class, 'download'])
-    ->name('album.download')
-    ->middleware('signed');
 
 Route::get('abonament', [AbonamentController::class, 'show'])->name('abonament')->middleware('auth');
 Route::get('/subscription/success', SubscriptionSuccessController::class)->name('subscription.success')->middleware('auth');
@@ -115,20 +119,5 @@ Route::get('/termeni-si-conditii', function () {
 })->name('terms-of-service');
 
 Route::get('/contact', Contact::class)->name('contact');
-
-
-//Pagina de ascultare si download mp3
-
-Route::get('/song', function () {
-    $songTitle = ""; // Titlul piesei
-    $songUrl = Storage::url('songs\Click_Ma_Racoresc_feat_Mihai_Stanciuc.mp3'); // Calea către fișierul audio
-    $coverUrl = Storage::url('songs\Ma racoresc Thumbnail Optimizat.jpg'); // Calea către imaginea de copertă
-
-    return view('songs.song', compact('songTitle', 'songUrl', 'coverUrl'));
-})->name('song.show');
-
-
-
-
 
 require __DIR__ . '/auth.php';
