@@ -1,4 +1,4 @@
-<div class="container relative px-4 mx-auto text-white">
+<div class="container relative px-4 mb-32 mx-auto text-white">
     <!-- Enhanced Gradient Background with Animated Particles -->
     <div class="absolute inset-0">
         <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-blue-800/20 blur-3xl"></div>
@@ -118,13 +118,13 @@
         </div>
 
         <!-- Enhanced Pagination -->
-        <div class="relative mt-16">
+        {{-- <div class="relative mt-16">
             <div class="flex justify-center">
                 <div class="p-4 border rounded-xl bg-black/50 backdrop-blur-sm border-white/10">
                     {{ $albums->links() }}
                 </div>
             </div>
-        </div>
+        </div> --}}
     @else
         <!-- Enhanced Empty State -->
         <div class="relative max-w-md mx-auto">

@@ -25,4 +25,6 @@
 
     <!-- Album List Component -->
     <livewire:album-list />
+
+
 </div>
