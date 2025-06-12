@@ -5,23 +5,7 @@
         </a>
 
         <!-- Menu button -->
-        <button @click="isOpen = !isOpen" class="relative z-50 flex items-center space-x-2 focus:outline-none">
-            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <line x1="3" y1="12" x2="21" y2="12"
-                    :class="{ 'hidden': isOpen, 'inline-flex': !isOpen }"></line>
-                <line x1="3" y1="6" x2="21" y2="6"
-                    :class="{ 'hidden': isOpen, 'inline-flex': !isOpen }"></line>
-                <line x1="3" y1="18" x2="21" y2="18"
-                    :class="{ 'hidden': isOpen, 'inline-flex': !isOpen }"></line>
-                <line x1="18" y1="6" x2="6" y2="18"
-                    :class="{ 'hidden': !isOpen, 'inline-flex': isOpen }"></line>
-                <line x1="6" y1="6" x2="18" y2="18"
-                    :class="{ 'hidden': !isOpen, 'inline-flex': isOpen }"></line>
-            </svg>
-        </button>
-        <button @click="isOpen = !isOpen"
-            class="relative z-50 flex items-center space-x-2 md:hidden focus:outline-none">
+        <button @click="isOpen = !isOpen" class="relative z-50 flex items-center space-x-2  focus:outline-none">
             <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <line x1="3" y1="12" x2="21" y2="12"
