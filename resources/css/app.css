@@ -12,6 +12,12 @@
     transform: rotateX(35deg) translateY(-100px);
 }
 
+.home-parallax,
+.home-fade {
+    transition: filter 0.3s ease;
+    will-change: transform, filter;
+}
+
 .poster-row {
     display: flex;
     animation: scrollLeft linear infinite;
