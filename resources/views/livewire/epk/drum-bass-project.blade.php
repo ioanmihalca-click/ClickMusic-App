@@ -100,47 +100,4 @@
 
 
 
-             <!-- Project Objectives -->
-             <div class="mt-12">
-                 <h3 class="mb-8 text-2xl font-bold text-center text-blue-400">Obiectivele Proiectului</h3>
-                 <div class="grid gap-6 md:grid-cols-3">
-                     <div class="p-6 text-center border bg-white/5 backdrop-blur-sm rounded-xl border-white/10">
-                         <div
-                             class="flex items-center justify-center w-16 h-16 p-3 mx-auto mb-4 bg-blue-600 rounded-full">
-                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                     d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3">
-                                 </path>
-                             </svg>
-                         </div>
-                         <h4 class="mb-3 text-lg font-semibold text-blue-400">Artistice</h4>
-                         <ul class="space-y-1 text-sm text-gray-300">
-                             <li><strong>50+ milioane</strong> vizualizări YouTube</li>
-                             <li><strong>11+ milioane</strong> vizualizări hit principal</li>
-                             <li><strong>12 piese</strong> cu 400K+ vizualizări</li>
-                             <li><strong>5 albume/EP-uri</strong> lansate</li>
-                             <li><strong>10+ ani</strong> cu trupa Camuflaj</li>
-                         </ul>
-                     </div>
-                     <div>
-                         <h4 class="mb-2 font-semibold text-white">Digital & Social</h4>
-                         <ul class="space-y-1 text-sm text-gray-300">
-                             <li><strong>YouTube:</strong> Click Music Romania</li>
-                             <li><strong>Platform:</strong> clickmusic.ro</li>
-                             <li><strong>Instagram:</strong> @clickmusic1</li>
-                             <li><strong>Facebook:</strong> /clickmusicromania</li>
-                             <li><strong>Spotify:</strong> Disponibil</li>
-                         </ul>
-                     </div>
-                     <div>
-                         <h4 class="mb-2 font-semibold text-white">Business</h4>
-                         <ul class="space-y-1 text-sm text-gray-300">
-                             <li><strong>CEO:</strong> Click Studios Digital</li>
-                             <li><strong>Președinte:</strong> CS Victoria MM</li>
-                             <li><strong>Label:</strong> Independent</li>
-                             <li><strong>Management:</strong> Click Music</li>
-                             <li><strong>Base:</strong> Baia Mare, RO</li>
-                         </ul>
-                     </div>
-                 </div>
-             </div>
+         </div>

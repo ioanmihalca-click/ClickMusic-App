@@ -38,7 +38,7 @@
                         class="font-roboto-condensed uppercase mb-3 tracking-[6px] md:tracking-[20px] font-bold text-4xl md:text-5xl leading-relaxed md:leading-normal">
                         Click Music Romania
                     </h1>
-                    <h2 class="mb-12 text-xl uppercase font-roboto-condensed md:text-3xl">Hip-Hop • DnB •
+                    <h2 class="mb-12 text-xl uppercase font-roboto-condensed md:text-3xl">Hip-Hop • Drum & Bass •
                         Reggae</h2>
                     <a href="#despre"
                         class="px-10 py-2 text-xs tracking-widest uppercase transition-all duration-300 border border-blue-500 scroll-link hover:bg-blue-500 hover:text-white font-roboto-condensed hover:border-transparent">Afla
@@ -142,57 +142,6 @@
                     </div>
                 </section>
             </div>
-        </div>
-
-        <!-- Newsletter Section -->
-        <div id="newsletter" class="max-w-md px-6 py-20 mx-auto mt-48">
-            @if (session('success'))
-                <div class="mt-4 text-green-400">{{ session('success') }}</div>
-            @endif
-
-            @if ($errors->any())
-                <div class="mt-4 text-red-400">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-            <h2 class="mt-12 mb-6 text-2xl tracking-widest text-blue-400 uppercase font-roboto-condensed md:text-3xl">
-                Abonează-te la newsletter
-            </h2>
-            <p class="mt-4 mb-6 text-lg leading-8 text-gray-300">Trimit un email de fiecare data cand lansez ceva nou
-                pe Youtube</p>
-            <form action="{{ route('newsletter.subscribe') }}" method="POST" class="space-y-4">
-                @csrf
-                <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
-                    <div class="flex-1">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-300">Numele tău</label>
-                        <input id="name" name="name" type="text" autocomplete="name" required
-                            class="block w-full px-4 py-2 text-sm text-white transition duration-300 ease-in-out bg-gray-800 border border-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 hover:bg-gray-700"
-                            placeholder="Introdu numele tău">
-                    </div>
-                    <div class="flex-1">
-                        <label for="email-address" class="block mb-2 text-sm font-medium text-gray-300">Adresa de
-                            email</label>
-                        <input id="email-address" name="email" type="email" autocomplete="email" required
-                            class="block w-full px-4 py-2 text-sm text-white transition duration-300 ease-in-out bg-gray-800 border border-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 hover:bg-gray-700"
-                            placeholder="Adaugă emailul tău">
-                    </div>
-                </div>
-                <div class="mt-4">
-                    <button type="submit"
-                        class="w-32 px-3.5 py-2.5 text-sm font-semibold text-white bg-blue-600 rounded-md shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors duration-300">
-                        Abonează-te
-                    </button>
-                </div>
-                <p class="mt-3 text-sm">
-                    <a href="{{ route('privacy-policy') }}" class="text-blue-400 hover:text-blue-300">
-                        Politica de confidențialitate
-                    </a>
-                </p>
-            </form>
         </div>
 
         <!-- Centered Bounce Circle -->
