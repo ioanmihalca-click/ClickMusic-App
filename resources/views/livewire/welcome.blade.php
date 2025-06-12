@@ -117,6 +117,12 @@
                 </div>
             </div>
         </div>
+
+        <!-- Latest Blog Posts -->
+
+        <livewire:latest-blog-posts />
+
+
     </div>
 
     <!-- JavaScript pentru efecte -->
