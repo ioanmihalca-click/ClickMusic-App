@@ -76,7 +76,7 @@
                     <!-- Action Buttons -->
                     <div class="flex flex-col gap-3 md:flex-row md:justify-center md:gap-4">
                         <!-- Premium Access -->
-                        <a href="/accespremium"
+                        <a href="{{ route('accespremium') }}" wire:navigate
                             class="relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-300 bg-blue-600 rounded-lg group md:text-base hover:bg-blue-700 focus:ring-4 focus:ring-blue-500/50">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -89,7 +89,7 @@
                         </a>
 
                         <!-- Press Kit -->
-                        <a href="/electronic-press-kit"
+                        <a href="{{ route('electronic-press-kit') }}" wire:navigate
                             class="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-blue-400 transition-all duration-300 border border-blue-500 rounded-lg md:text-base hover:bg-blue-500 hover:text-white">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
