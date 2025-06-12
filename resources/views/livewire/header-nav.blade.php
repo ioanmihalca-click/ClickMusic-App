@@ -46,7 +46,7 @@
             x-transition:leave-end="opacity-0 transform scale-90"
             class="absolute inset-0 z-40 flex items-center justify-center w-full h-screen bg-black bg-opacity-90"
             style="display: none;">
-            <nav class="flex flex-col items-center space-y-8">
+            <nav class="flex flex-col items-center space-y-8 uppercase">
                 <a href="{{ route('home') }}" wire:navigate
                     class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">Acasă</a>
                 <a href="{{ route('electronic-press-kit') }}" wire:navigate
