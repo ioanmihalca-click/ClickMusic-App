@@ -13,7 +13,7 @@
                 Albumele Mele
             </h1>
             <p class="max-w-2xl mx-auto text-lg text-gray-300">
-                Descoperă colecția completă de albume și EP-uri cu muzică originală
+                Descoperă colecția completă de albume și EP-uri
             </p>
         </div>
 
