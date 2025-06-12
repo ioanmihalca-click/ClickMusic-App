@@ -16,9 +16,11 @@
             <a href="/accespremium" wire:navigate
                 class="text-base font-medium text-white hover:text-blue-300 font-roboto">Acces
                 Premium</a>
+            <a href="/contact" wire:navigate
+                class="text-base font-medium text-white hover:text-blue-300 font-roboto">Contact</a>
             <a href="https://www.youtube.com/clickmusicromania"
                 class="text-base font-medium text-white hover:text-blue-300 font-roboto">Youtube</a>
-            <a href="/contact" class="text-base font-medium text-white hover:text-blue-300 font-roboto">Contact</a>
+
         </nav>
 
         <!-- Mobile menu button -->
@@ -58,9 +60,11 @@
                 <a href="/accespremium" wire:navigate
                     class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">Acces
                     Premium</a>
+                <a href="/contact" wire:navigate
+                    class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">Contact</a>
                 <a href="https://www.youtube.com/clickmusicromania"
                     class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">Youtube</a>
-                <a href="/contact" class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">Contact</a>
+
             </nav>
         </div>
     </div>

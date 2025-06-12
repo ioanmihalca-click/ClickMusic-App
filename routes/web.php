@@ -6,9 +6,10 @@ use Carbon\Carbon;
 
 use App\Models\User;
 use App\Mail\NewComment;
+use App\Livewire\Contact;
 use App\Livewire\Magazin;
-use App\Livewire\Welcome;
 
+use App\Livewire\Welcome;
 use App\Livewire\AccesPremium;
 use App\Http\Middleware\Subscribed;
 use Illuminate\Support\Facades\Route;
@@ -113,9 +114,7 @@ Route::get('/termeni-si-conditii', function () {
     return view('termeni-si-conditii');
 })->name('terms-of-service');
 
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
+Route::get('/contact', Contact::class)->name('contact');
 
 
 //Pagina de ascultare si download mp3
