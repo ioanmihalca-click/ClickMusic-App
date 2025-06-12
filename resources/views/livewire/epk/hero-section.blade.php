@@ -3,14 +3,14 @@
     <div class="relative min-h-screen">
         <!-- Background gradient -->
         <div class="absolute inset-0 blur-3xl opacity-30">
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600/30 to-black"></div>
         </div>
 
         <!-- Hero Content -->
         <div class="relative z-10 flex items-center justify-center min-h-screen px-6 py-20">
             <div class="max-w-4xl mx-auto text-center text-white">
                 <h1
-                    class="mb-6 text-4xl md:text-6xl font-bold tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 uppercase font-roboto-condensed">
+                    class="mb-6 text-2xl md:text-3xl font-bold tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 uppercase font-roboto-condensed">
                     Electronic Press Kit
                 </h1>
                 <div class="w-32 h-1 mx-auto mb-8 rounded-full bg-gradient-to-r from-blue-500 to-transparent"></div>
