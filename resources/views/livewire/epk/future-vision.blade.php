@@ -92,7 +92,7 @@
                     <p class="mb-6 text-lg text-gray-300">
                         Pentru EPK complet, demo tracks și informații detaliate despre proiectul drum & bass 2025
                     </p>
-                    <a href="mailto:contact@clickmusic.ro?subject=EPK%20-%20Solicitare%20Informatii%20Complete"
+                    <a href="{{ route('contact') }}" wire:navigate
                         class="inline-flex items-center px-8 py-4 text-lg font-semibold text-white transition-all duration-300 bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-500/50">
                         <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
