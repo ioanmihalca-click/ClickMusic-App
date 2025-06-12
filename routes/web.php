@@ -9,6 +9,7 @@ use App\Mail\NewComment;
 use App\Livewire\Magazin;
 use App\Livewire\Welcome;
 
+use App\Livewire\AccesPremium;
 use App\Http\Middleware\Subscribed;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Blog\Show as BlogShow;
@@ -38,7 +39,7 @@ Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback
 
 Route::get('/', Welcome::class)->name('welcome');
 
-Route::view('/newsletter', 'newsletter')->name('newsletter');
+
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 Route::get('/newsletter/unsubscribe', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
 
@@ -48,7 +49,7 @@ Route::get('/promo/unsubscribe/{email}', [PromoUnsubscribeController::class, 'un
     ->name('promo.unsubscribe')
     ->middleware('signed');
 
-Route::view('/accespremium', 'loginPremium')->name('accespremium');
+Route::get('/accespremium', AccesPremium::class)->name('accespremium');
 
 
 Route::get('/blog', BlogIndex::class)->name('blog.index');

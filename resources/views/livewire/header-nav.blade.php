@@ -13,7 +13,8 @@
                 class="text-base font-medium text-white hover:text-blue-300 font-roboto">Magazin</a>
             <a href="/blog" wire:navigate
                 class="text-base font-medium text-white hover:text-blue-300 font-roboto">Blog</a>
-            <a href="/accespremium" class="text-base font-medium text-white hover:text-blue-300 font-roboto">Acces
+            <a href="/accespremium" wire:navigate
+                class="text-base font-medium text-white hover:text-blue-300 font-roboto">Acces
                 Premium</a>
             <a href="https://www.youtube.com/clickmusicromania"
                 class="text-base font-medium text-white hover:text-blue-300 font-roboto">Youtube</a>
@@ -54,7 +55,8 @@
                     class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">Magazin</a>
                 <a href="/blog" wire:navigate
                     class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">Blog</a>
-                <a href="/accespremium" class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">Acces
+                <a href="/accespremium" wire:navigate
+                    class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">Acces
                     Premium</a>
                 <a href="https://www.youtube.com/clickmusicromania"
                     class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">Youtube</a>
