@@ -3,9 +3,9 @@
     <div class="relative min-h-screen overflow-hidden bg-black">
         <!-- Gradient animat de fundal -->
         <div class="absolute inset-0 opacity-40">
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-600/30 via-purple-600/30 to-black animate-pulse">
+            <div class="absolute inset-0 bg-gradient-to-b from-blue-600/30 via-purple-600/30 to-black animate-pulse">
             </div>
-            <div class="absolute inset-0 bg-gradient-to-tl from-purple-600/20 via-blue-500/30 to-cyan-400/20"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-purple-600/20 via-blue-500/30 to-black"></div>
         </div>
 
         <!-- Efecte de blur pentru depth -->
@@ -18,27 +18,14 @@
         <!-- Container principal -->
         <div class="relative z-10 max-w-4xl px-6 py-20 mx-auto">
             <div class="text-center">
-                <!-- Icon și Badge -->
-                <div class="flex justify-center mb-8">
-                    <div class="relative">
-                        <div
-                            class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 blur-lg opacity-60">
-                        </div>
-                        <div class="relative p-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600">
-                            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
+
 
                 <!-- Header principal cu animație -->
                 <h1
-                    class="mb-4 text-4xl font-bold tracking-tight text-transparent md:text-6xl bg-clip-text bg-gradient-to-r from-white via-blue-100 to-purple-200 font-roboto-condensed animate-fade-in">
+                    class="my-4 text-3xl font-bold tracking-tight text-transparent md:text-6xl bg-clip-text bg-gradient-to-r from-white via-blue-100 to-purple-200 font-roboto-condensed animate-fade-in">
                     <span class="block uppercase tracking-[0.2em]">Acces</span>
                     <span
-                        class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 tracking-[0.3em]">Premium</span>
+                        class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 uppercase via-purple-400 to-pink-400 tracking-[0.3em]">Premium</span>
                 </h1>
 
                 <!-- Subtitle -->
@@ -192,14 +179,7 @@
                     </div>
                 </div>
 
-                <!-- Call to Action Footer -->
-                <div
-                    class="p-6 mt-16 border bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-xl border-white/5">
-                    <h3 class="mb-2 text-xl font-semibold text-white">Gata să începi?</h3>
-                    <p class="text-sm text-gray-300">
-                        Alătură-te astăzi și fii primul care descoperă noua muzică Click Music România
-                    </p>
-                </div>
+
             </div>
         </div>
     </div>
