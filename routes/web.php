@@ -6,9 +6,11 @@ use Carbon\Carbon;
 
 use App\Models\User;
 use App\Mail\NewComment;
+use App\Livewire\Magazin;
+use App\Livewire\Welcome;
+
 use App\Http\Middleware\Subscribed;
 use Illuminate\Support\Facades\Route;
-
 use App\Livewire\Blog\Show as BlogShow;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\UserController;
@@ -34,7 +36,7 @@ Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('lo
 Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
 
 
-Route::get('/', App\Livewire\Welcome::class)->name('welcome');
+Route::get('/', Welcome::class)->name('welcome');
 
 Route::view('/newsletter', 'newsletter')->name('newsletter');
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
@@ -52,7 +54,7 @@ Route::view('/accespremium', 'loginPremium')->name('accespremium');
 Route::get('/blog', BlogIndex::class)->name('blog.index');
 Route::get('/blog/{slug}', BlogShow::class)->name('blog.show');
 
-Route::view('magazin', 'magazin')->name('magazin');
+Route::get('magazin', Magazin::class)->name('magazin');
 Route::get('/album/{album:slug}', [AlbumController::class, 'show'])->name('album.show');
 Route::post('/album/{album}/checkout', [AlbumController::class, 'checkout'])->name('album.checkout');
 Route::get('/checkout/success', [AlbumController::class, 'checkoutSuccess'])->name('checkout.success');
@@ -114,25 +116,6 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-//Download mp3
-
-// Route::get('/download-mp3/click-ma-racoresc', function () {
-//     // Calea către fișierul MP3 (adaptează în funcție de locația ta)
-//     $filePath = 'public/Click_Ma_Racoresc_feat_Mihai_Stanciuc.mp3'; 
-
-//     // Verificare dacă utilizatorul este autentificat (membru)
-//     if (auth()->check()) {
-//         return Storage::download($filePath, 'Click_Ma_Racoresc_feat_Mihai_Stanciuc.mp3');
-//     } else {
-//         // Redirecționare sau mesaj de eroare dacă utilizatorul nu este autentificat
-//         return redirect()->back()->with('error', 'Trebuie să fii autentificat pentru a descărca acest fișier.');
-//     }
-// });
-
-// etc. pentru fiecare MP3 
-
-
-
 
 //Pagina de ascultare si download mp3
 
@@ -149,33 +132,3 @@ Route::get('/song', function () {
 
 
 require __DIR__ . '/auth.php';
-
-
-//Preview PromoMail
-
-// use App\Models\PromoEmail;
-// use App\Notifications\PromoEmailNotification;
-
-// Route::get('/preview-promo-email', function () {
-//     $promoEmail = PromoEmail::first(); // Or any other way to get a PromoEmail instance
-//     $songUrl = 'http://127.0.0.1:8000/song';
-//     $downloadUrl = 'http://127.0.0.1:8000/song';
-//     $imageUrl = 'https://res.cloudinary.com/dpxess5iw/image/upload/v1721219233/Ma_racoresc_Thumbnail_Optimizat_vsotpf.jpg';
-//     $subject = 'Ma racoresc';
-
-//     return (new PromoEmailNotification($promoEmail, $songUrl, $downloadUrl, $imageUrl, $subject))
-//         ->toMail($promoEmail);
-// });
-
-//Preview Newsletter
-// use App\Models\Newsletter; 
-// use App\Notifications\NewsletterNotification;
-
-// Route::get('/preview-newsletter-email', function () {
-//     $newsletter = Newsletter::find(1); // Or any other way to get a Newsletter instance
-//     $imageUrl = 'https://res.cloudinary.com/dpxess5iw/image/upload/v1721219233/Ma_racoresc_Thumbnail_Optimizat_vsotpf.jpg'; // Replace with your actual image path or URL
-//     $url = 'https://youtu.be/8WPtQ5P-PVU?si=qjmZIx4GipQL1CiM'; // Replace with the actual URL you want to link to
-
-//     return (new NewsletterNotification($newsletter, $imageUrl, $url))
-//         ->toMail($newsletter);
-// });

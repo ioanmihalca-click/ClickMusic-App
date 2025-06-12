@@ -9,7 +9,8 @@
             <a href="/" wire:navigate
                 class="text-base font-medium text-white hover:text-blue-300 font-roboto">Acasă</a>
 
-            <a href="/magazin" class="text-base font-medium text-white hover:text-blue-300 font-roboto">Magazin</a>
+            <a href="/magazin" wire:navigate
+                class="text-base font-medium text-white hover:text-blue-300 font-roboto">Magazin</a>
             <a href="/blog" class="text-base font-medium text-white hover:text-blue-300 font-roboto">Blog</a>
             <a href="/newsletter"
                 class="text-base font-medium text-white hover:text-blue-300 font-roboto">Newsletter</a>
@@ -50,7 +51,8 @@
             <nav class="flex flex-col items-center space-y-8">
                 <a href="/" wire:navigate
                     class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">Acasă</a>
-                <a href="/magazin" class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">Magazin</a>
+                <a href="/magazin" wire:navigate
+                    class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">Magazin</a>
                 <a href="/blog" class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">Blog</a>
                 <a href="/newsletter"
                     class="text-2xl font-medium text-white hover:text-blue-300 font-roboto">Newsletter</a>
