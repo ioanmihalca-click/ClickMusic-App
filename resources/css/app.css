@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-[x-cloak] { 
-    display: none !important; 
+[x-cloak] {
+    display: none !important;
 }
 
 .poster-container {
@@ -75,9 +75,15 @@
 
 /* Animație pentru hover pe carduri */
 @keyframes float {
-    0% { transform: translateZ(0) translateY(0); }
-    50% { transform: translateZ(10px) translateY(-5px); }
-    100% { transform: translateZ(0) translateY(0); }
+    0% {
+        transform: translateZ(0) translateY(0);
+    }
+    50% {
+        transform: translateZ(10px) translateY(-5px);
+    }
+    100% {
+        transform: translateZ(0) translateY(0);
+    }
 }
 
 .group:hover {
@@ -143,40 +149,52 @@
 
 /* Blog */
 .prose {
-    --tw-prose-body: theme('colors.gray.300');
-    --tw-prose-headings: theme('colors.white');
-    --tw-prose-links: theme('colors.blue.400');
-    --tw-prose-links-hover: theme('colors.blue.300');
-    --tw-prose-underline: theme('colors.blue.400/0.3');
-    --tw-prose-underline-hover: theme('colors.blue.400');
-    --tw-prose-bold: theme('colors.white');
-    --tw-prose-counters: theme('colors.gray.400');
-    --tw-prose-bullets: theme('colors.gray.400');
-    --tw-prose-hr: theme('colors.white/10');
-    --tw-prose-quote-borders: theme('colors.white/10');
-    --tw-prose-captions: theme('colors.gray.400');
-    --tw-prose-code: theme('colors.white');
-    --tw-prose-code-bg: theme('colors.gray.800');
-    --tw-prose-pre-code: theme('colors.gray.200');
-    --tw-prose-pre-bg: theme('colors.gray.800');
-    --tw-prose-pre-border: theme('colors.gray.700');
+    --tw-prose-body: theme("colors.gray.300");
+    --tw-prose-headings: theme("colors.white");
+    --tw-prose-links: theme("colors.blue.400");
+    --tw-prose-links-hover: theme("colors.blue.300");
+    --tw-prose-underline: theme("colors.blue.400/0.3");
+    --tw-prose-underline-hover: theme("colors.blue.400");
+    --tw-prose-bold: theme("colors.white");
+    --tw-prose-counters: theme("colors.gray.400");
+    --tw-prose-bullets: theme("colors.gray.400");
+    --tw-prose-hr: theme("colors.white/10");
+    --tw-prose-quote-borders: theme("colors.white/10");
+    --tw-prose-captions: theme("colors.gray.400");
+    --tw-prose-code: theme("colors.white");
+    --tw-prose-code-bg: theme("colors.gray.800");
+    --tw-prose-pre-code: theme("colors.gray.200");
+    --tw-prose-pre-bg: theme("colors.gray.800");
+    --tw-prose-pre-border: theme("colors.gray.700");
 }
 
-
 /* card videoclipuri */
-    @keyframes gradient-xy {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
+@keyframes gradient-xy {
+    0% {
+        background-position: 0% 50%;
     }
-    
-    .animate-gradient-xy {
-        animation: gradient-xy 15s ease infinite;
-        background-size: 400% 400%;
+    50% {
+        background-position: 100% 50%;
     }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animate-gradient-xy {
+    animation: gradient-xy 15s ease infinite;
+    background-size: 400% 400%;
+}
+
+/* Mobile Fixes for Welcome Page */
+@media (max-width: 768px) {
+    /* Add padding to ensure content isn't hidden by footer */
+    .home-parallax {
+        padding-bottom: 100px;
+    }
+
+    /* Adjust button container */
+    .action-buttons {
+        margin-bottom: 3rem;
+    }
+}

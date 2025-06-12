@@ -2,7 +2,7 @@
     <div x-data="{ loading: true, isMobile: window.innerWidth <= 768 }" x-init="$nextTick(() => {
         setTimeout(() => loading = false, 700);
         window.addEventListener('resize', () => isMobile = window.innerWidth <= 768);
-    })" class="relative h-screen overflow-hidden">
+    })" class="relative min-h-screen overflow-hidden">
 
         <!-- Loading Spinner -->
         <div x-show="loading" class="absolute inset-0 z-50 flex items-center justify-center bg-black">
@@ -11,7 +11,7 @@
 
         <div x-show="!loading" x-transition:enter="transition ease-out duration-300" x-data="netflixBackground()"
             x-init="init()" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-            class="relative h-screen overflow-hidden bg-black home-parallax home-fade">
+            class="relative min-h-screen overflow-hidden bg-black home-parallax home-fade">
 
             <!-- Poster Background -->
             <div class="absolute inset-0 overflow-hidden poster-container">
@@ -31,8 +31,8 @@
             <!-- Gradient Overlay -->
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/75"></div>
 
-            <!-- Content Overlay - Adjusted Higher Position -->
-            <div class="relative z-10 flex items-start justify-center h-full pt-32 text-white md:pt-24">
+            <!-- Content Overlay - Better Mobile Positioning -->
+            <div class="relative z-10 flex items-start justify-center h-full pt-24 text-white md:pt-24 pb-20 md:pb-16">
                 <div class="max-w-4xl px-6 mx-auto text-center">
                     <!-- Artist Photo -->
                     <div class="mb-6">
@@ -73,8 +73,9 @@
                         Cunoscut pentru hiturile naționale cu trupa Camuflaj și cariera solo de succes.
                     </p>
 
-                    <!-- Action Buttons -->
-                    <div class="flex flex-col gap-3 md:flex-row md:justify-center md:gap-4">
+                    <!-- Action Buttons - Mobile Optimized -->
+                    <div
+                        class="flex flex-col gap-3 mb-12 md:mb-0 md:flex-row md:justify-center md:gap-4 action-buttons">
                         <!-- Premium Access -->
                         <a href="{{ route('accespremium') }}" wire:navigate
                             class="relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-300 bg-blue-600 rounded-lg group md:text-base hover:bg-blue-700 focus:ring-4 focus:ring-blue-500/50">
@@ -129,6 +130,10 @@
             return {
                 posterRows: [],
                 init() {
+                    // Check if we're on mobile and adjust accordingly
+                    const isMobile = window.innerWidth <= 768;
+                    const posterRowCount = isMobile ? 3 : 5; // Show fewer rows on mobile
+
                     const posters = [
                         '/img/poze-bg/1.jpg', '/img/poze-bg/2.jpg', '/img/poze-bg/3.jpg', '/img/poze-bg/4.jpg',
                         '/img/poze-bg/5.jpg', '/img/poze-bg/6.jpg', '/img/poze-bg/7.jpg', '/img/poze-bg/8.jpg',
@@ -137,11 +142,18 @@
                         '/img/poze-bg/17.jpg', '/img/poze-bg/18.jpg', '/img/poze-bg/19.jpg', '/img/poze-bg/20.jpg'
                     ];
 
-                    this.posterRows = Array(5).fill().map(() => {
+                    this.posterRows = Array(posterRowCount).fill().map(() => {
                         return [...posters].sort(() => Math.random() - 0.5);
                     });
 
                     this.posterRows = this.posterRows.map(row => [...row, ...row]);
+
+                    // Ensure proper display on window resize
+                    window.addEventListener('resize', () => {
+                        document.querySelectorAll('.home-parallax').forEach(el => {
+                            el.classList.add('pb-20');
+                        });
+                    });
                 }
             };
         }
