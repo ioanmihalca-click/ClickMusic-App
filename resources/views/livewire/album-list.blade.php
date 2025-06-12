@@ -59,15 +59,17 @@
                                 </div>
 
                                 <!-- Play Button Overlay -->
-                                <div
-                                    class="absolute inset-0 flex items-center justify-center transition-all duration-500 opacity-0 group-hover:opacity-100">
+                                @if ($album->youtube_link)
                                     <div
-                                        class="p-4 transition-transform duration-500 transform scale-75 border rounded-full bg-white/20 backdrop-blur-md border-white/30 group-hover:scale-100">
-                                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M8 5v14l11-7z" />
-                                        </svg>
+                                        class="absolute inset-0 flex items-center justify-center transition-all duration-500 opacity-0 group-hover:opacity-100">
+                                        <a href="{{ $album->youtube_link }}" target="_blank" rel="noopener noreferrer"
+                                            class="p-4 transition-transform duration-500 transform scale-75 border rounded-full bg-white/20 backdrop-blur-md border-white/30 group-hover:scale-100 hover:bg-red-600/40">
+                                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                        </a>
                                     </div>
-                                </div>
+                                @endif
                             </div>
 
                             <!-- Content Section with Enhanced Typography -->

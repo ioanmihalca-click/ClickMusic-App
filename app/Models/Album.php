@@ -14,18 +14,19 @@ class Album extends Model
     protected $table = 'albume';
 
     protected $fillable = [
-        'titlu', 
+        'titlu',
         'slug',
-        'gen_muzical', 
-        'descriere', 
-        'numar_trackuri', 
-        'data_lansare', 
+        'gen_muzical',
+        'descriere',
+        'numar_trackuri',
+        'data_lansare',
         'pret',
-        'price_id_stripe', 
+        'price_id_stripe',
         'payment_link',
-        'coperta_album', 
-        'file_path'
-        
+        'coperta_album',
+        'file_path',
+        'youtube_link'
+
     ];
 
     protected $casts = [
@@ -35,7 +36,7 @@ class Album extends Model
     ];
 
     protected $dates = ['data_lansare'];
-    
+
 
     public function setTitluAttribute($value)
     {
@@ -58,10 +59,10 @@ class Album extends Model
         return 'slug';
     }
 
-//     public function getFilePathAttribute($value)
-// {
-//     return $value; 
-// }
+    //     public function getFilePathAttribute($value)
+    // {
+    //     return $value; 
+    // }
 
     public function getCoverUrlAttribute()
     {
@@ -69,9 +70,9 @@ class Album extends Model
     }
 
     public function getDownloadUrlAttribute()
-{
-    return route('album.download', ['album' => $this->id]);
-}
+    {
+        return route('album.download', ['album' => $this->id]);
+    }
 
     public function scopeLansatInAn($query, $an)
     {
@@ -79,12 +80,12 @@ class Album extends Model
     }
 
     public function scopeSearch($query, $search)
-{
-    return $query->where('titlu', 'like', "%{$search}%")
-                 ->orWhere('descriere', 'like', "%{$search}%");
-}
-public function getPriceIdStripeAttribute()
-{
-    return $this->attributes['price_id_stripe'];
-}
+    {
+        return $query->where('titlu', 'like', "%{$search}%")
+            ->orWhere('descriere', 'like', "%{$search}%");
+    }
+    public function getPriceIdStripeAttribute()
+    {
+        return $this->attributes['price_id_stripe'];
+    }
 }
