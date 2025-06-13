@@ -92,6 +92,11 @@ Route::get('/videos/{video}', [VideoController::class, 'show'])
     ->name('videos.show')
     ->middleware(['auth']);
 
+// Secure video streaming route (authenticated users only)
+Route::get('/videos/stream/{id}', [VideoController::class, 'stream'])
+    ->name('videos.stream')
+    ->middleware(['auth']);
+
 // Route::view('sustine', 'sustine')
 // ->middleware([Subscribed::class])
 // ->name('sustine');

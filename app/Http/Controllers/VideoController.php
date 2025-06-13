@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use App\Models\Video;
 use Livewire\Livewire;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class VideoController extends Controller
 {
@@ -20,11 +24,10 @@ class VideoController extends Controller
     }
 
     public function index()
-    {
-        {
+    { {
             $videos = Video::orderBy('created_at', 'desc')->get();
             $users = User::all(); // Preia toți utilizatorii
-        
+
             return view('admin', [
                 'videos' => $videos,
                 'users' => $users // Transmite utilizatorii către view
@@ -33,22 +36,22 @@ class VideoController extends Controller
     }
 
     public function create()
-{
-    return view('admin'); 
-}
+    {
+        return view('admin');
+    }
 
     public function store(Request $request)
     {
         $validatedData = $request->validate([
             'title' => 'required|string',
             'description' => 'required|string',
-            'embed_link' => 'required|string', 
-            'thumbnail_url' => 'required|url', 
+            'embed_link' => 'required|string',
+            'thumbnail_url' => 'required|url',
         ]);
 
         Video::create($validatedData);
 
-        return redirect()->route('admin')->with('success', 'Videoclipul a fost adăugat cu succes!'); // Folosim 'success' aici
+        return redirect()->route('videoclipuri')->with('success', 'Videoclipul a fost adăugat cu succes!'); // Folosim 'success' aici
     }
 
 
@@ -64,27 +67,62 @@ class VideoController extends Controller
         // Setează videoclipul ales ca "featured"
         Video::find($validatedData['featured_video_id'])->update(['featured' => true]);
 
-    
-        return redirect()->route('admin')->with('success_featured', 'Videoclipul promovat a fost actualizat cu succes!');
+
+        return redirect()->route('videoclipuri')->with('success_featured', 'Videoclipul promovat a fost actualizat cu succes!');
     }
 
 
     public function update(Request $request, Video $video)
-{
-    $validatedData = $request->validate([
-        'title' => 'required|string|max:255', // Adăugat max:255 pentru a limita lungimea titlului
-        'description' => 'required|string',
-    ]);
-
-    $video->update($validatedData);
-
-    return redirect()->route('admin')->with('success_edit', 'Videoclipul a fost actualizat cu succes!');
-}
-
-
-    public function destroy(Video $video) 
     {
-        $video->delete(); 
-        return redirect()->route('admin')->with('success_message', 'Videoclipul a fost șters cu succes!');
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255', // Adăugat max:255 pentru a limita lungimea titlului
+            'description' => 'required|string',
+        ]);
+
+        $video->update($validatedData);
+
+        return redirect()->route('videoclipuri')->with('success_edit', 'Videoclipul a fost actualizat cu succes!');
+    }
+
+
+    public function destroy(Video $video)
+    {
+        $video->delete();
+        return redirect()->route('videoclipuri')->with('success_message', 'Videoclipul a fost șters cu succes!');
+    }
+
+    /**
+     * Stream a video securely to authenticated users only
+     * 
+     * @param int $id
+     * @return StreamedResponse
+     */
+    public function stream($id)
+    {
+        $video = Video::findOrFail($id);
+
+        // Check if video has a file path
+        if (empty($video->video_path)) {
+            abort(404, 'Fișierul video nu a fost găsit');
+        }
+
+        // Get file path from storage
+        $path = $video->video_path;
+
+        // Check if file exists using public disk (changed from videos disk)
+        if (!Storage::disk('public')->exists($path)) {
+            abort(404, 'Fișierul video nu a fost găsit');
+        }
+
+        // Stream the file from public disk
+        $fullPath = Storage::disk('public')->path($path);
+
+        // Use mime_content_type to detect the mime type
+        $mimeType = mime_content_type($fullPath) ?: 'video/mp4';
+
+        return Response::file($fullPath, [
+            'Content-Type' => $mimeType,
+            'Accept-Ranges' => 'bytes',
+        ]);
     }
 }

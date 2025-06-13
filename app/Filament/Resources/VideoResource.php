@@ -16,6 +16,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\ToggleColumn;
+use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Actions\DeleteBulkAction;
@@ -35,9 +36,9 @@ class VideoResource extends Resource
     protected static ?string $modelLabel = 'Videoclip';
 
     protected static ?string $pluralModelLabel = 'Videoclipuri';
-    protected static ?int $navigationSort = 2; 
+    protected static ?int $navigationSort = 2;
 
-   
+
 
     public static function form(Form $form): Form
     {
@@ -45,8 +46,37 @@ class VideoResource extends Resource
             ->schema([
                 TextInput::make('title')->required(),
                 Textarea::make('description')->required(),
-                TextInput::make('embed_link')->required(),
-                TextInput::make('thumbnail_url')->required()->url()->label("Thumbnail URL"),
+                TextInput::make('embed_link')
+                    ->helperText('Introduceți codul iframe sau link-ul pentru videoclip extern (opțional dacă încărcați un fișier)')
+                    ->nullable(),
+                FileUpload::make('thumbnail_url')
+                    ->label('Thumbnail')
+                    ->disk('public')
+                    ->directory('thumbnails')
+                    ->image()
+                    ->imageEditor()
+                    ->required()
+                    ->helperText('Încărcați o imagine pentru thumbnail'),
+                FileUpload::make('video_path')
+                    ->label('Fișier Video')
+                    ->disk('public')
+                    ->directory('videos')
+                    ->acceptedFileTypes([
+                        'video/mp4',
+                        'video/webm',
+                        'video/ogg',
+                        'video/quicktime',
+                        'application/mp4',
+                        '.mp4',
+                        '.webm',
+                        '.ogg',
+                        '.mov'
+                    ])
+                    ->maxSize(500 * 1024) // 500MB limit
+                    ->helperText('Încărcați un fișier MP4, WebM, MOV sau OGG (max 500MB)')
+                    ->nullable()
+                    ->removeUploadedFileButtonPosition('right')
+                    ->uploadProgressIndicatorPosition('left'),
                 Toggle::make('featured')->label('Promovat')
             ]);
     }
@@ -57,8 +87,8 @@ class VideoResource extends Resource
             ->columns([
                 ImageColumn::make('thumbnail_url')->label('Thumbnail'),
                 TextColumn::make('title')->searchable()->sortable(),
-                TextColumn::make('description')->limit('20'),  
-                ToggleColumn::make('featured')->label('Promovat'), 
+                TextColumn::make('description')->limit('20'),
+                ToggleColumn::make('featured')->label('Promovat'),
             ])
             ->filters([
                 // ... (optional filters) ...
@@ -71,14 +101,14 @@ class VideoResource extends Resource
                 DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             // ... (optional relation managers for comments and likes) ...
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -86,5 +116,5 @@ class VideoResource extends Resource
             'create' => Pages\CreateVideo::route('/create'),
             'edit' => Pages\EditVideo::route('/{record}/edit'),
         ];
-    }    
+    }
 }

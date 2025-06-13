@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\Video; 
+use App\Models\Video;
 
 class RecentVideos extends Component
 {
@@ -11,12 +11,13 @@ class RecentVideos extends Component
 
   public function mount()
   {
-      $this->recentVideos = cache()->remember('recent_videos', 3600, function() {
-          return Video::select('id', 'title', 'description', 'embed_link', 'thumbnail_url', 'created_at')
-              ->latest()
-              ->take(3)
-              ->get();
-      });
+    // Use a shorter cache time or disable cache temporarily to see new uploads
+    $this->recentVideos = cache()->remember('recent_videos', 5, function () {
+      return Video::select('id', 'title', 'description', 'embed_link', 'thumbnail_url', 'video_path', 'created_at')
+        ->latest()
+        ->take(3)
+        ->get();
+    });
   }
 
   public function render()

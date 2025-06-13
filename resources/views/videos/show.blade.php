@@ -2,12 +2,20 @@
     <div class="min-h-screen py-12 bg-gradient-to-t from-black via-purple-900/55 to-black">
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
 
-         
+
             <!-- Video Player Section -->
-            <div class="relative max-w-5xl mx-auto overflow-hidden border bg-gray-900/50 backdrop-blur-sm rounded-xl border-gray-800/30">
+            <div
+                class="relative max-w-5xl mx-auto overflow-hidden border bg-gray-900/50 backdrop-blur-sm rounded-xl border-gray-800/30">
                 <!-- Video Player Container -->
                 <div class="aspect-w-16 aspect-h-9">
-                    {!! $video->embed_link !!}
+                    @if ($video->video_path)
+                        <video class="w-full h-full" controls controlsList="nodownload"
+                            src="{{ route('videos.stream', $video->id) }}" poster="{{ $video->thumbnail_url_full }}">
+                            Browserul dvs. nu suportă redarea de videoclipuri.
+                        </video>
+                    @else
+                        {!! $video->embed_link !!}
+                    @endif
                 </div>
 
                 <!-- Controls Bar -->
@@ -15,11 +23,11 @@
                     <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-700">
                         <div class="w-1/3 h-full bg-blue-500"></div>
                     </div>
-                    
+
                     <div class="flex items-center justify-between gap-2">
                         <div class="flex items-center gap-2">
                             @livewire('videos.like', ['video' => $video])
-                            
+
                             {{-- <a href="https://www.paypal.me/ClickMusic" 
                                class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-all duration-300 bg-blue-600 rounded-lg hover:bg-blue-700">
                                 <svg class="w-4 h-4 mr-1" viewBox="0 0 16 16" fill="currentColor">

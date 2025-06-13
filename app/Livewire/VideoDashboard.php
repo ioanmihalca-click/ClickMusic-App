@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\Video; 
+use App\Models\Video;
 
 class VideoDashboard extends Component
 {
@@ -11,8 +11,9 @@ class VideoDashboard extends Component
 
     public function mount()
     {
-        $this->videos = cache()->remember('all_videos', 3600, function() {
-            return Video::select('id', 'title', 'description', 'embed_link', 'thumbnail_url', 'created_at')
+        // Use a shorter cache time or disable cache temporarily to see new uploads
+        $this->videos = cache()->remember('all_videos', 5, function () {
+            return Video::select('id', 'title', 'description', 'embed_link', 'thumbnail_url', 'video_path', 'created_at')
                 ->latest()
                 ->get();
         });

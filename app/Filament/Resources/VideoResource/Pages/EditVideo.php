@@ -16,4 +16,11 @@ class EditVideo extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+    protected function afterSave(): void
+    {
+        // Clear the cache after updating a video to ensure changes appear on the site immediately
+        cache()->forget('all_videos');
+        cache()->forget('recent_videos');
+    }
 }
