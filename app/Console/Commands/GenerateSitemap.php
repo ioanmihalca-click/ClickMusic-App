@@ -5,9 +5,11 @@ namespace App\Console\Commands;
 use Carbon\Carbon;
 use App\Models\Post;
 use App\Models\Album;
+use Illuminate\Support\Str;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Route;
 
 class GenerateSitemap extends Command
 {
@@ -20,23 +22,49 @@ class GenerateSitemap extends Command
 
         $sitemap = Sitemap::create();
 
-        // Adaugă paginile statice principale
-        $sitemap->add(Url::create('/')
-            ->setLastModificationDate(Carbon::now())
-            ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
-            ->setPriority(1.0));
+        // Add main static pages with high priority
+        $this->addStaticPages($sitemap);
 
-        $sitemap->add(Url::create('/magazin')
-            ->setLastModificationDate(Carbon::now())
-            ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
-            ->setPriority(0.9));
+        // Add dynamic content
+        $this->addBlogPosts($sitemap);
+        $this->addAlbums($sitemap);
 
-        $sitemap->add(Url::create('/blog')
-            ->setLastModificationDate(Carbon::now())
-            ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
-            ->setPriority(0.9));
+        // Add secondary static pages with lower priority
+        $this->addSecondaryPages($sitemap);
 
-        // Adaugă articolele de blog din Canvas
+        // Save the sitemap directly to the public directory
+        $path = public_path('sitemap.xml');
+        $sitemap->writeToFile($path);
+
+        $this->info('Sitemap generated successfully at: ' . $path);
+        $this->info('File exists: ' . (file_exists($path) ? 'Yes' : 'No'));
+        $this->info('File size: ' . (file_exists($path) ? filesize($path) . ' bytes' : 'N/A'));
+    }
+
+    private function addStaticPages(Sitemap $sitemap)
+    {
+        // Inclusă doar pagini publice (fără middleware de autentificare)
+        $mainPages = [
+            '/' => 1.0,
+            '/press' => 0.9,
+            '/magazin' => 0.9,
+            '/blog' => 0.9,
+            '/accespremium' => 0.8,
+            '/contact' => 0.7,
+        ];
+
+        foreach ($mainPages as $url => $priority) {
+            $sitemap->add(
+                Url::create($url)
+                    ->setLastModificationDate(Carbon::now())
+                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
+                    ->setPriority($priority)
+            );
+        }
+    }
+
+    private function addBlogPosts(Sitemap $sitemap)
+    {
         Post::whereNotNull('published_at')
             ->orderBy('published_at', 'desc')
             ->get()
@@ -49,8 +77,10 @@ class GenerateSitemap extends Command
                         ->setPriority($priority)
                 );
             });
+    }
 
-        // Adaugă albumele
+    private function addAlbums(Sitemap $sitemap)
+    {
         if (class_exists('App\Models\Album')) {
             Album::orderBy('created_at', 'desc')
                 ->get()
@@ -64,13 +94,18 @@ class GenerateSitemap extends Command
                     );
                 });
         }
+    }
 
-        // Adaugă paginile statice secundare
+    // Metoda addPublicVideos a fost eliminată deoarece nu este necesară
+
+    // Am eliminat complet metoda addCommunityPages deoarece toate rutele de comunitate
+    // sunt protejate de middleware de autentificare
+
+    private function addSecondaryPages(Sitemap $sitemap)
+    {
         $secondaryPages = [
-            '/newsletter' => 0.7,
-            '/contact' => 0.6,
-            '/politica-de-confidentialitate' => 0.6,
-            '/termeni-si-conditii' => 0.6,
+            '/politica-de-confidentialitate' => 0.5,
+            '/termeni-si-conditii' => 0.5,
         ];
 
         foreach ($secondaryPages as $url => $priority) {
@@ -81,37 +116,33 @@ class GenerateSitemap extends Command
                     ->setPriority($priority)
             );
         }
-
-        // Salvează sitemap-ul direct în directorul public
-        $path = public_path('sitemap.xml');
-        $sitemap->writeToFile($path);
-
-        $this->info('Sitemap generated successfully at: ' . $path);
-        $this->info('File exists: ' . (file_exists($path) ? 'Yes' : 'No'));
-        $this->info('File size: ' . (file_exists($path) ? filesize($path) . ' bytes' : 'N/A'));
     }
 
     private function calculatePostPriority($post)
     {
         $daysSincePublished = Carbon::now()->diffInDays($post->published_at);
-        
+
         if ($daysSincePublished <= 7) {
             return 0.9;
         } elseif ($daysSincePublished <= 30) {
             return 0.8;
+        } elseif ($daysSincePublished <= 90) {
+            return 0.7;
         }
-        
-        return 0.7;
+
+        return 0.6;
     }
 
     private function calculateAlbumPriority($album)
     {
         $daysSinceCreated = Carbon::now()->diffInDays($album->created_at);
-        
+
         if ($daysSinceCreated <= 30) {
             return 0.8;
+        } elseif ($daysSinceCreated <= 90) {
+            return 0.7;
         }
-        
-        return 0.7;
+
+        return 0.6;
     }
 }
