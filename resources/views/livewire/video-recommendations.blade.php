@@ -50,8 +50,8 @@
                                     {{ $recommendedVideo->created_at->format('d M Y') }}
                                 </div>
                             @endif
-                            
-                            <!-- Buton Detalii -->
+
+                            {{-- <!-- Buton Detalii -->
                             @if ($recommendedVideo->video_path)
                                 <div class="mt-3">
                                     <a href="{{ route('videos.stream', $recommendedVideo->id) }}" 
@@ -62,7 +62,7 @@
                                         Detalii
                                     </a>
                                 </div>
-                            @endif
+                            @endif --}}
                         </div>
                     </div>
                 </a>

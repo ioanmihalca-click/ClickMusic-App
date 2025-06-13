@@ -148,23 +148,18 @@
                                         </svg>
                                         {{ $video->created_at->diffForHumans() }}
                                     </span>
+                                    <a wire:navigate href="{{ route('videos.show', $video->id) }}"
+                                        class="flex items-center px-2 py-1 text-xs font-medium text-white transition duration-200 ease-in-out rounded-md bg-blue-600/70 hover:bg-blue-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 mr-1" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        Detalii
+                                    </a>
                                 </div>
 
-                                <!-- Link "Redare" -->
-                                {{-- <div class="flex items-center space-x-3">
-                                    <!-- Play button -->
-                                    <button
-                                        @click="playMedia({{ $video->id }}, '{{ $video->video_path }}', '{{ addslashes($video->title) }}', `{!! addslashes(nl2br($video->description)) !!}`, {{ $video->isAudio() ? 'true' : 'false' }}, `{!! addslashes($video->embed_link) !!}`, '{{ $video->thumbnail_url_full }}')"
-                                        class="inline-flex items-center text-sm font-medium text-blue-400 transition-all duration-300 hover:text-blue-300">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1" viewBox="0 0 20 20"
-                                            fill="currentColor">
-                                            <path fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                        Redare
-                                    </button>
-                                </div> --}}
+
                             </div>
                         </div>
                     </div>
