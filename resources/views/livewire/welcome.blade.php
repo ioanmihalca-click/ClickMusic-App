@@ -33,7 +33,7 @@
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/75"></div>
 
             <!-- Content Overlay - Better Mobile Positioning -->
-            <div class="relative z-10 flex items-start justify-center h-full pt-24 pb-20 text-white md:pt-24 md:pb-16">
+            <div class="relative z-10 flex items-start justify-center h-full pt-16 pb-20 text-white md:pt-24 md:pb-16">
                 <div class="max-w-4xl px-6 mx-auto text-center">
                     <!-- Artist Photo -->
                     <div class="mb-6">
@@ -139,7 +139,7 @@
                 init() {
                     // Check if we're on mobile and adjust accordingly
                     const isMobile = window.innerWidth <= 768;
-                    const posterRowCount = isMobile ? 5 : 5; // Show fewer rows on mobile
+                    const posterRowCount = isMobile ? 7 : 5; // Show fewer rows on mobile
 
 
                     const posters = [
