@@ -13,6 +13,8 @@ use App\Livewire\Welcome;
 use App\Livewire\AccesPremium;
 use App\Http\Middleware\Subscribed;
 use App\Livewire\ElectronicPressKit;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Blog\Show as BlogShow;
 use Illuminate\Support\Facades\Storage;
@@ -57,8 +59,29 @@ Route::get('/blog/{slug}', BlogShow::class)->name('blog.show');
 Route::get('/accespremium', AccesPremium::class)->name('accespremium');
 
 
+// Newsletter functionality - extended
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 Route::get('/newsletter/unsubscribe', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
+
+// Rute noi pentru gestionarea avansată a newsletter-ului
+Route::post('/newsletter/resubscribe', [NewsletterController::class, 'resubscribe'])->name('newsletter.resubscribe');
+Route::get('/newsletter/status', [NewsletterController::class, 'status'])->name('newsletter.status');
+Route::get('/newsletter/stats', [NewsletterController::class, 'stats'])->name('newsletter.stats');
+
+// Rută pentru utilizatorii autentificați să își gestioneze abonarea
+Route::middleware(['auth'])->group(function () {
+    Route::post('/profile/newsletter-toggle', function (Request $request) {
+        $user = Auth::user();
+
+        if ($user->isSubscribedToNewsletter()) {
+            $user->unsubscribeFromNewsletter();
+            return redirect()->back()->with('success', 'Te-ai dezabonat de la newsletter.');
+        } else {
+            $user->subscribeToNewsletter();
+            return redirect()->back()->with('success', 'Te-ai abonat la newsletter.');
+        }
+    })->name('profile.newsletter.toggle');
+});
 
 
 

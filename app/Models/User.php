@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-
 use Carbon\Carbon;
 use Filament\Panel;
 use Illuminate\Support\Str;
@@ -16,6 +14,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Laravel\Cashier\Concerns\ManagesSubscriptions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Builder;
 
 class User extends Authenticatable implements FilamentUser
 {
@@ -32,6 +31,7 @@ class User extends Authenticatable implements FilamentUser
         'password',
         'usertype',
         'avatar',
+        'newsletter_unsubscribed_at',
     ];
 
     /**
@@ -54,6 +54,7 @@ class User extends Authenticatable implements FilamentUser
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'newsletter_unsubscribed_at' => 'datetime',
         ];
     }
 
@@ -69,6 +70,89 @@ class User extends Authenticatable implements FilamentUser
             }
         );
     }
+
+    /**
+     * NEWSLETTER FUNCTIONALITY - Logică simplificată
+     * Toți utilizatorii primesc newsletter implicit, exceptând cei dezabonați
+     */
+
+    /**
+     * Scope pentru utilizatori abonați la newsletter (toți minus cei dezabonați)
+     */
+    public function scopeNewsletterSubscribed(Builder $query): Builder
+    {
+        return $query->whereNull('newsletter_unsubscribed_at');
+    }
+
+    /**
+     * Verifică dacă utilizatorul este abonat la newsletter
+     */
+    public function isSubscribedToNewsletter(): bool
+    {
+        return is_null($this->newsletter_unsubscribed_at);
+    }
+
+    /**
+     * Reabonează utilizatorul la newsletter (șterge data dezabonării)
+     */
+    public function subscribeToNewsletter(): bool
+    {
+        return $this->update([
+            'newsletter_unsubscribed_at' => null,
+        ]);
+    }
+
+    /**
+     * Dezabonează utilizatorul de la newsletter
+     */
+    public function unsubscribeFromNewsletter(): bool
+    {
+        return $this->update([
+            'newsletter_unsubscribed_at' => now(),
+        ]);
+    }
+
+    /**
+     * Returnează utilizatorii abonați la newsletter
+     */
+    public static function getNewsletterSubscribers()
+    {
+        return static::newsletterSubscribed()->get();
+    }
+
+    /**
+     * Returnează numărul de abonați la newsletter
+     */
+    public static function getNewsletterSubscribersCount(): int
+    {
+        return static::newsletterSubscribed()->count();
+    }
+
+    /**
+     * Pentru compatibilitate cu sistemul de notificări newsletter
+     * Permite utilizarea User ca recipient pentru newsletter
+     */
+    public function routeNotificationForMail($notification)
+    {
+        return $this->email;
+    }
+
+    /**
+     * Proprietăți computed pentru a mima structura Newsletter
+     */
+    public function getRecipientEmailAttribute(): string
+    {
+        return $this->email;
+    }
+
+    public function getRecipientNameAttribute(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * EXISTING FUNCTIONALITY
+     */
 
     public function comments()
     {
@@ -86,6 +170,7 @@ class User extends Authenticatable implements FilamentUser
                 'name' => $providerUser->name,
                 'email' => $providerUser->email,
                 'password' => bcrypt($randomPassword),
+                // newsletter_unsubscribed_at va fi null implicit = abonat la newsletter
             ]);
         }
 
@@ -99,7 +184,6 @@ class User extends Authenticatable implements FilamentUser
             ->where('stripe_status', 'active')
             ->exists();
     }
-
 
     public function isEligibleForFreePlan()
     {

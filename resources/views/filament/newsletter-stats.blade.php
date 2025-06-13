@@ -1,91 +1,142 @@
 @php
     use App\Models\Newsletter;
+    use App\Models\User;
+    use App\Filament\Resources\NewsletterResource;
     use Carbon\Carbon;
 
-    // Statistici generale
-    $totalSubscribers = Newsletter::count();
-    $pendingCount = Newsletter::pending()->count();
-    $sentCount = Newsletter::sent()->count();
-    $failedCount = Newsletter::failed()->count();
+    // Statistici combinate
+    $combinedStats = NewsletterResource::getCombinedStats();
+
+    // Statistici generale Newsletter
+    $totalNewsletters = Newsletter::count();
+    $pendingNewsletters = Newsletter::pending()->count();
+    $sentNewsletters = Newsletter::sent()->count();
+    $failedNewsletters = Newsletter::failed()->count();
+
+    // Statistici utilizatori
+    $totalUsers = User::count();
+    $subscribedUsers = User::getNewsletterSubscribersCount();
+    $unsubscribedUsers = User::whereNotNull('newsletter_unsubscribed_at')->count();
 
     // Statistici zilnice
     $sentToday = Newsletter::getSentTodayCount();
     $remainingQuota = Newsletter::getRemainingQuota(200);
     $dailyLimit = 200;
 
-    // Statistici săptămânale
-    $sentThisWeek = Newsletter::whereDate('sent_at', '>=', Carbon::now()->startOfWeek())
-        ->where('status', Newsletter::STATUS_SENT)
-        ->count();
-
-    // Statistici lunare
-    $sentThisMonth = Newsletter::whereDate('sent_at', '>=', Carbon::now()->startOfMonth())
-        ->where('status', Newsletter::STATUS_SENT)
-        ->count();
-
     // Rata de succes
-    $successRate = $sentCount > 0 ? round(($sentCount / ($sentCount + $failedCount)) * 100, 1) : 0;
-
-    // Ultimele 7 zile - pentru grafic simplu
-    $last7Days = collect();
-    for ($i = 6; $i >= 0; $i--) {
-        $date = Carbon::now()->subDays($i);
-        $count = Newsletter::whereDate('sent_at', $date)->where('status', Newsletter::STATUS_SENT)->count();
-        $last7Days->push([
-            'date' => $date->format('d/m'),
-            'count' => $count,
-        ]);
-    }
-
-    $maxDaily = $last7Days->max('count') ?: 1;
+    $successRate =
+        $sentNewsletters > 0 ? round(($sentNewsletters / ($sentNewsletters + $failedNewsletters)) * 100, 1) : 0;
 @endphp
 
 <div class="p-6 space-y-6">
     {{-- Header --}}
     <div class="text-center">
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-            📊 Statistici Newsletter
+            📊 Statistici Newsletter Complete
         </h2>
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            Monitorizarea performanței sistemului de newsletter
+            Lista Newsletter + Utilizatori din aplicație
         </p>
     </div>
 
-    {{-- Statistici principale --}}
-    <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
-        <div class="p-4 text-center rounded-lg bg-blue-50 dark:bg-blue-900/20">
-            <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">
-                {{ number_format($totalSubscribers) }}
+    {{-- Statistici principale combinate --}}
+    <div class="p-6 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
+        <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
+            🎯 Destinatari totali
+        </h3>
+
+        <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+            <div class="text-center">
+                <div class="text-3xl font-bold text-blue-600 dark:text-blue-400">
+                    {{ number_format($combinedStats['newsletter_pending']) }}
+                </div>
+                <div class="text-sm text-blue-800 dark:text-blue-300">
+                    Lista Newsletter
+                </div>
             </div>
-            <div class="text-sm text-blue-800 dark:text-blue-300">
-                Total abonați
+
+            <div class="text-center">
+                <div class="text-3xl font-bold text-purple-600 dark:text-purple-400">
+                    {{ number_format($combinedStats['users_subscribed']) }}
+                </div>
+                <div class="text-sm text-purple-800 dark:text-purple-300">
+                    Utilizatori App
+                </div>
+            </div>
+
+            <div class="text-center">
+                <div class="text-3xl font-bold text-orange-600 dark:text-orange-400">
+                    {{ number_format($combinedStats['duplicates']) }}
+                </div>
+                <div class="text-sm text-orange-800 dark:text-orange-300">
+                    Duplicate
+                </div>
+            </div>
+
+            <div class="p-2 text-center border-2 border-green-200 rounded-lg dark:border-green-800">
+                <div class="text-3xl font-bold text-green-600 dark:text-green-400">
+                    {{ number_format($combinedStats['total_unique']) }}
+                </div>
+                <div class="text-sm font-medium text-green-800 dark:text-green-300">
+                    <strong>TOTAL UNIC</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Detalii Newsletter vs Users --}}
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {{-- Statistici Lista Newsletter --}}
+        <div class="p-6 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
+            <h4 class="flex items-center mb-4 text-lg font-semibold text-gray-900 dark:text-white">
+                📧 Lista Newsletter
+            </h4>
+
+            <div class="space-y-3">
+                <div class="flex justify-between">
+                    <span class="text-gray-600 dark:text-gray-400">Total în listă:</span>
+                    <span class="font-semibold">{{ number_format($totalNewsletters) }}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-600 dark:text-gray-400">În așteptare:</span>
+                    <span class="font-semibold text-yellow-600">{{ number_format($pendingNewsletters) }}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-600 dark:text-gray-400">Trimise cu succes:</span>
+                    <span class="font-semibold text-green-600">{{ number_format($sentNewsletters) }}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-600 dark:text-gray-400">Eșuate:</span>
+                    <span class="font-semibold text-red-600">{{ number_format($failedNewsletters) }}</span>
+                </div>
             </div>
         </div>
 
-        <div class="p-4 text-center rounded-lg bg-yellow-50 dark:bg-yellow-900/20">
-            <div class="text-2xl font-bold text-yellow-600 dark:text-yellow-400">
-                {{ number_format($pendingCount) }}
-            </div>
-            <div class="text-sm text-yellow-800 dark:text-yellow-300">
-                În așteptare
-            </div>
-        </div>
+        {{-- Statistici Utilizatori --}}
+        <div class="p-6 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
+            <h4 class="flex items-center mb-4 text-lg font-semibold text-gray-900 dark:text-white">
+                👥 Utilizatori App
+            </h4>
 
-        <div class="p-4 text-center rounded-lg bg-green-50 dark:bg-green-900/20">
-            <div class="text-2xl font-bold text-green-600 dark:text-green-400">
-                {{ number_format($sentCount) }}
-            </div>
-            <div class="text-sm text-green-800 dark:text-green-300">
-                Trimise cu succes
-            </div>
-        </div>
-
-        <div class="p-4 text-center rounded-lg bg-red-50 dark:bg-red-900/20">
-            <div class="text-2xl font-bold text-red-600 dark:text-red-400">
-                {{ number_format($failedCount) }}
-            </div>
-            <div class="text-sm text-red-800 dark:text-red-300">
-                Eșuate
+            <div class="space-y-3">
+                <div class="flex justify-between">
+                    <span class="text-gray-600 dark:text-gray-400">Total utilizatori:</span>
+                    <span class="font-semibold">{{ number_format($totalUsers) }}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-600 dark:text-gray-400">Abonați la newsletter:</span>
+                    <span class="font-semibold text-green-600">{{ number_format($subscribedUsers) }}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-600 dark:text-gray-400">Dezabonați:</span>
+                    <span class="font-semibold text-red-600">{{ number_format($unsubscribedUsers) }}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-600 dark:text-gray-400">Rata abonare:</span>
+                    <span class="font-semibold text-blue-600">
+                        {{ $totalUsers > 0 ? round(($subscribedUsers / $totalUsers) * 100, 1) : 0 }}%
+                    </span>
+                </div>
             </div>
         </div>
     </div>
@@ -93,7 +144,7 @@
     {{-- Limita zilnică --}}
     <div class="p-6 rounded-lg bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20">
         <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
-            📅 Limita zilnică
+            📅 Limita zilnică (200 emailuri/zi)
         </h3>
 
         <div class="flex items-center justify-between mb-3">
@@ -116,64 +167,32 @@
                     ⚠️ Limita zilnică a fost atinsă. Următoarele emailuri se vor trimite mâine dimineață.
                 </p>
             </div>
+        @else
+            <div
+                class="p-3 mt-3 bg-green-100 border border-green-200 rounded-lg dark:bg-green-900/30 dark:border-green-800">
+                <p class="text-sm text-green-700 dark:text-green-300">
+                    ✅ Din {{ $combinedStats['total_unique'] }} destinatari totali,
+                    <strong>{{ min($combinedStats['total_unique'], $remainingQuota) }}</strong>
+                    se pot trimite astăzi.
+                    @if ($combinedStats['total_unique'] > $remainingQuota)
+                        Restul de {{ $combinedStats['total_unique'] - $remainingQuota }} se vor trimite mâine.
+                    @endif
+                </p>
+            </div>
         @endif
-    </div>
-
-    {{-- Statistici periodice --}}
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-        <div class="p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
-            <h4 class="font-medium text-gray-900 dark:text-white">Săptămâna aceasta</h4>
-            <p class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">{{ number_format($sentThisWeek) }}</p>
-            <p class="text-xs text-gray-500">emailuri trimise</p>
-        </div>
-
-        <div class="p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
-            <h4 class="font-medium text-gray-900 dark:text-white">Luna aceasta</h4>
-            <p class="text-2xl font-bold text-emerald-600 dark:text-emerald-400">{{ number_format($sentThisMonth) }}
-            </p>
-            <p class="text-xs text-gray-500">emailuri trimise</p>
-        </div>
-
-        <div class="p-4 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
-            <h4 class="font-medium text-gray-900 dark:text-white">Rata de succes</h4>
-            <p
-                class="text-2xl font-bold {{ $successRate >= 95 ? 'text-green-600' : ($successRate >= 85 ? 'text-yellow-600' : 'text-red-600') }}">
-                {{ $successRate }}%
-            </p>
-            <p class="text-xs text-gray-500">din total încercări</p>
-        </div>
-    </div>
-
-    {{-- Grafic ultimele 7 zile --}}
-    <div class="p-6 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
-        <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
-            📈 Ultimele 7 zile
-        </h3>
-
-        <div class="flex items-end justify-between h-32 space-x-2">
-            @foreach ($last7Days as $day)
-                <div class="flex flex-col items-center flex-1">
-                    <div class="flex items-end justify-center w-full transition-all duration-300 rounded-t bg-gradient-to-t from-blue-500 to-blue-300"
-                        style="height: {{ $day['count'] > 0 ? max(($day['count'] / $maxDaily) * 100, 8) : 4 }}%">
-                        @if ($day['count'] > 0)
-                            <span class="mb-1 text-xs font-medium text-white">{{ $day['count'] }}</span>
-                        @endif
-                    </div>
-                    <div class="mt-2 text-xs text-gray-600 dark:text-gray-400">{{ $day['date'] }}</div>
-                </div>
-            @endforeach
-        </div>
     </div>
 
     {{-- Informații utile --}}
     <div class="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/20">
-        <h4 class="mb-2 font-medium text-blue-900 dark:text-blue-100">💡 Informații utile</h4>
+        <h4 class="mb-2 font-medium text-blue-900 dark:text-blue-100">💡 Informații despre sistemul combinat</h4>
         <ul class="space-y-1 text-sm text-blue-800 dark:text-blue-200">
-            <li>• Limita zilnică este setată la {{ $dailyLimit }} emailuri pentru a respecta restricțiile
-                hosting-ului</li>
-            <li>• Emailurile se trimit cu o pauză de 2 secunde între ele pentru a evita blocarea SMTP</li>
-            <li>• Job-urile rămase se reprogramează automat pentru ziua următoare la ora 09:00</li>
-            <li>• Sistemul salvează automat erorile pentru debugging în cazul problemelor</li>
+            <li>• <strong>Lista Newsletter:</strong> Adrese adăugate manual în sistemul de newsletter</li>
+            <li>• <strong>Utilizatori App:</strong> Toți utilizatorii din aplicație sunt abonați implicit (conform
+                termeni)</li>
+            <li>• <strong>Duplicate:</strong> Utilizatori care apar în ambele liste (se trimit o singură dată)</li>
+            <li>• <strong>Dezabonare:</strong> Utilizatorii se pot dezabona prin link-ul din email</li>
+            <li>• <strong>Performanță:</strong> Sistem optimizat pentru {{ $dailyLimit }} emailuri/zi cu pauze între
+                trimiteri</li>
         </ul>
     </div>
 
