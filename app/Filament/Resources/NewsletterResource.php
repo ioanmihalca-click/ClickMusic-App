@@ -221,14 +221,16 @@ class NewsletterResource extends Resource
                     ->searchable(['recipient_name', 'campaign_subject'])
                     ->sortable(),
 
-                Tables\Columns\BadgeColumn::make('status')
+                TextColumn::make('status')
                     ->label('Status')
                     ->formatStateUsing(fn($state) => Newsletter::make(['status' => $state])->status_label)
-                    ->colors([
-                        'warning' => Newsletter::STATUS_PENDING,
-                        'success' => Newsletter::STATUS_SENT,
-                        'danger' => Newsletter::STATUS_FAILED,
-                    ])
+                    ->badge()
+                    ->color(fn($state) => match ($state) {
+                        Newsletter::STATUS_PENDING => 'warning',
+                        Newsletter::STATUS_SENT => 'success',
+                        Newsletter::STATUS_FAILED => 'danger',
+                        default => 'gray',
+                    })
                     ->sortable(),
 
                 TextColumn::make('recipients_count')
@@ -382,16 +384,6 @@ class NewsletterResource extends Resource
                             ->helperText('Campania se va trimite automat la data setată'),
                     ])
                     ->action(function (array $data): void {
-                        // Creăm campania
-                        $campaign = \App\Models\Newsletter::create([
-                            'title' => $data['title'],
-                            'subject' => $data['subject'],
-                            'content' => $data['content'],
-                            'status' => $data['send_now'] ? 'draft' : 'draft',
-                            'scheduled_at' => $data['scheduled_at'] ?? null,
-                            'created_by' => Auth::id(),
-                        ]);
-
                         // Determinăm destinatarii
                         $recipients = match ($data['recipients']) {
                             'newsletter_only' => Newsletter::pending()->get(),
@@ -399,20 +391,30 @@ class NewsletterResource extends Resource
                             'all' => self::getAllRecipientsAsNewsletterFormat(),
                         };
 
-                        $campaign->update(['recipients_count' => $recipients->count()]);
+                        // Creăm campania folosind atribute corecte
+                        $campaign = Newsletter::create([
+                            'campaign_title' => $data['title'],
+                            'campaign_subject' => $data['subject'],
+                            'campaign_content' => $data['content'],
+                            'campaign_type' => Newsletter::TYPE_CAMPAIGN,
+                            'status' => $data['send_now'] ? 'draft' : 'draft',
+                            'scheduled_at' => $data['scheduled_at'] ?? null,
+                            'recipients_count' => $recipients->count(),
+                            'created_by' => Auth::id(),
+                        ]);
 
                         if ($data['send_now']) {
                             // Trimitem imediat
                             self::sendCampaign($campaign, $recipients);
 
                             FilamentNotification::make()
-                                ->title("Campania '{$campaign->title}' a fost lansată!")
+                                ->title("Campania '{$campaign->campaign_title}' a fost lansată!")
                                 ->body("Se trimit {$recipients->count()} emailuri...")
                                 ->success()
                                 ->send();
                         } else {
                             FilamentNotification::make()
-                                ->title("Campania '{$campaign->title}' a fost salvată ca draft")
+                                ->title("Campania '{$campaign->campaign_title}' a fost salvată ca draft")
                                 ->success()
                                 ->send();
                         }
@@ -472,17 +474,16 @@ class NewsletterResource extends Resource
                         // Generăm conținut HTML simplu
                         $content = self::generateSimpleEmailTemplate($data);
 
-                        // Creăm și trimitem campania
-                        $campaign = Newsletter::create([
+                        // Creăm și trimitem campania folosind metoda createCampaign
+                        $recipients = self::getAllRecipientsAsNewsletterFormat();
+
+                        $campaign = Newsletter::createCampaign([
                             'title' => 'Quick Send - ' . now()->format('d/m/Y H:i'),
                             'subject' => $data['quick_subject'],
                             'content' => $content,
-                            'status' => 'draft',
+                            'recipients_count' => $recipients->count(),
                             'created_by' => Auth::id(),
                         ]);
-
-                        $recipients = self::getAllRecipientsAsNewsletterFormat();
-                        $campaign->update(['recipients_count' => $recipients->count()]);
 
                         self::sendCampaign($campaign, $recipients);
 
