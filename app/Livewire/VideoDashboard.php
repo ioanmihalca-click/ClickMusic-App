@@ -19,6 +19,11 @@ class VideoDashboard extends Component
         });
     }
 
+    public function redirectToVideo($videoId)
+    {
+        return redirect()->route('videos.show', $videoId);
+    }
+
     public function render()
     {
         return view('livewire.video-dashboard');

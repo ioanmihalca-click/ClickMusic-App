@@ -88,12 +88,12 @@ Route::view('videoclipuri', 'videoclipuri')
     ->middleware([Subscribed::class])
     ->name('videoclipuri');
 
-Route::get('/videos/{video}', [VideoController::class, 'show'])
-    ->name('videos.show')
+Route::get('/videos/{video}', [VideoController::class, 'show'])->name('videos.show')
+
     ->middleware(['auth']);
 
 // Secure video streaming route (authenticated users only)
-Route::get('/videos/stream/{id}', [VideoController::class, 'stream'])
+Route::get('/videos/stream/{id}', [VideoController::class, 'stream'])->name('videos.stream')
     ->name('videos.stream')
     ->middleware(['auth']);
 
