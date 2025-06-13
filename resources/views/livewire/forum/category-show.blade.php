@@ -7,24 +7,59 @@
                 <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800"></div>
             </div>
 
-  <div class="relative p-6 bg-gray-900/90 backdrop-blur-sm rounded-xl">
+            <div class="relative p-6 bg-gray-900/90 backdrop-blur-sm rounded-xl">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                        <h1
-                            class="text-3xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
-                            {{ $category->name }}
-                        </h1>
+                        <div class="flex items-center gap-3">
+                            <div class="flex items-center justify-center w-10 h-10 rounded-lg"
+                                style="background-color: {{ $category->color }};">
+                                <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                                </svg>
+                            </div>
+                            <h1
+                                class="text-3xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+                                {{ $category->name }}
+                            </h1>
+                        </div>
                         <p class="mt-2 text-gray-400">{{ $category->description }}</p>
+
+                        <div class="flex flex-wrap items-center mt-3 gap-4">
+                            <div class="flex items-center text-gray-400">
+                                <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                </svg>
+                                <span>{{ $threads->total() }} discuții</span>
+                            </div>
+                            <div class="flex items-center text-gray-400">
+                                <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                </svg>
+                                <span>{{ $category->replies()->count() }} răspunsuri</span>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="flex flex-col mt-4 space-y-2 sm:mt-0 sm:flex-row sm:space-y-0 sm:space-x-4">
                         <a href="{{ route('forum.index') }}"
-                            class="px-4 py-2 text-center text-gray-300 transition-all duration-300 border border-gray-700 rounded-lg hover:text-white hover:border-gray-600">
-                            ← Înapoi la categorii
+                            class="inline-flex items-center justify-center px-4 py-2 text-center text-gray-300 transition-all duration-300 border border-gray-700 rounded-lg hover:text-white hover:border-gray-600">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                            </svg>
+                            Înapoi la categorii
                         </a>
 
                         <a href="{{ route('forum.threads.create', ['category' => $category->id]) }}"
-                            class="px-4 py-2 text-center text-white transition-all duration-300 bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900">
+                            class="inline-flex items-center justify-center px-4 py-2 text-center text-white transition-all duration-300 bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
                             Creează discuție
                         </a>
                     </div>
@@ -57,24 +92,54 @@
                                 </div>
 
                                 <div class="flex-1 min-w-0">
-                                    <div class="flex items-center justify-between">
+                                    <div class="flex flex-wrap items-center justify-between">
                                         <a href="{{ route('forum.threads.show', $thread) }}"
                                             class="text-xl font-semibold text-white hover:text-blue-400 line-clamp-1">
-                                            @if ($thread->is_pinned)
-                                                <span class="mr-2 text-blue-400">📌</span>
-                                            @endif
-                                            {{ $thread->title }}
+                                            <div class="flex items-center">
+                                                @if ($thread->is_pinned)
+                                                    <span
+                                                        class="inline-flex items-center justify-center w-6 h-6 mr-2 text-blue-400 bg-blue-400/10 rounded-full"
+                                                        title="Discuție fixată">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                                                        </svg>
+                                                    </span>
+                                                @endif
+                                                {{ $thread->title }}
+                                            </div>
                                         </a>
-                                        <span class="text-sm text-gray-500">
-                                            {{ $thread->created_at->diffForHumans() }}
-                                        </span>
+                                        <div class="flex flex-wrap items-center gap-2 mt-1 sm:mt-0">
+                                            @if ($thread->replies()->where('is_solution', true)->exists())
+                                                <span
+                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-400/10 text-green-400">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1"
+                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                    </svg>
+                                                    Rezolvat
+                                                </span>
+                                            @endif
+                                            <span class="text-sm text-gray-500">
+                                                {{ $thread->created_at->diffForHumans() }}
+                                            </span>
+                                        </div>
                                     </div>
 
                                     <div class="mt-1 text-sm text-gray-400">
                                         de <span class="font-medium text-blue-400">{{ $thread->user->name }}</span>
                                     </div>
 
-                                    <div class="flex items-center mt-4 space-x-4 text-sm">
+                                    <!-- Extras conținut truncat pentru previzualizare -->
+                                    <div class="mt-2 text-sm text-gray-500 line-clamp-2">
+                                        {{ Str::limit(strip_tags(Str::markdown($thread->content)), 150) }}
+                                    </div>
+
+                                    <div class="flex flex-wrap items-center mt-4 gap-4 text-sm">
                                         <div class="flex items-center text-gray-500">
                                             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
@@ -98,8 +163,43 @@
                                         @if ($thread->is_locked)
                                             <span
                                                 class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-400/10 text-red-400">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 mr-1"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                                </svg>
                                                 Blocat
                                             </span>
+                                        @endif
+
+                                        <!-- Controale admin -->
+                                        @if (auth()->check() && auth()->user()->usertype === 'admin')
+                                            <div class="flex space-x-1 ml-1">
+                                                <button wire:click="pinThread({{ $thread->id }})"
+                                                    wire:loading.attr="disabled"
+                                                    class="inline-flex items-center p-1 text-xs text-gray-400 transition-colors bg-gray-800 rounded hover:text-blue-400 hover:bg-gray-700"
+                                                    title="{{ $thread->is_pinned ? 'Anulează fixarea' : 'Fixează discuția' }}">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4"
+                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                                                    </svg>
+                                                </button>
+
+                                                <button wire:click="lockThread({{ $thread->id }})"
+                                                    wire:loading.attr="disabled"
+                                                    class="inline-flex items-center p-1 text-xs text-gray-400 transition-colors bg-gray-800 rounded hover:text-red-400 hover:bg-gray-700"
+                                                    title="{{ $thread->is_locked ? 'Deblochează discuția' : 'Blochează discuția' }}">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4"
+                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                                    </svg>
+                                                </button>
+                                            </div>
                                         @endif
                                     </div>
                                 </div>
@@ -140,6 +240,33 @@
                 <div class="mt-6">
                     {{ $threads->links() }}
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificări -->
+    <div x-data="{ show: false, message: '', type: 'success' }"
+        x-on:thread-updated.window="show = true; message = $event.detail.message; type='success'; setTimeout(() => show = false, 3000)"
+        x-show="show" x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 transform translate-y-2"
+        x-transition:enter-end="opacity-100 transform translate-y-0"
+        x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100 transform translate-y-0"
+        x-transition:leave-end="opacity-0 transform translate-y-2" class="fixed bottom-4 right-4 z-50">
+        <div x-bind:class="{
+            'bg-green-500': type === 'success',
+            'bg-blue-500': type === 'info',
+            'bg-yellow-500': type === 'warning',
+            'bg-red-500': type === 'error'
+        }"
+            class="px-4 py-3 text-white rounded-lg shadow-lg">
+            <div class="flex items-center">
+                <svg x-show="type === 'success'" class="w-6 h-6 mr-2" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span x-text="message"></span>
             </div>
         </div>
     </div>

@@ -19,11 +19,12 @@ class ForumIndex extends Component
         'color' => '#3b82f6',
     ];
 
+    protected $queryString = ['search' => ['except' => '']];
+
     public function updatedSearch()
     {
         $this->resetPage();
     }
-
 
     protected $rules = [
         'newCategory.name' => 'required|min:3|max:255',
@@ -42,7 +43,17 @@ class ForumIndex extends Component
         ]);
 
         $this->reset(['showCreateModal', 'newCategory']);
-        session()->flash('message', 'Categoria a fost creată cu succes!');
+        $this->dispatch('category-created', message: 'Categoria a fost creată cu succes!');
+    }
+
+    public function toggleCreateModal()
+    {
+        $this->showCreateModal = !$this->showCreateModal;
+        if ($this->showCreateModal === false) {
+            // Reset form data when closing
+            $this->reset('newCategory');
+            $this->resetValidation();
+        }
     }
 
     public function render()
@@ -50,11 +61,13 @@ class ForumIndex extends Component
         return view('livewire.forum.forum-index', [
             'categories' => ForumCategory::withCount('threads')
                 ->withCount('replies')
-                ->when($this->search, function($query) {
-                    $query->where('name', 'like', '%'.$this->search.'%')
-                        ->orWhere('description', 'like', '%'.$this->search.'%');
+                ->when($this->search, function ($query) {
+                    $query->where(function ($q) {
+                        $q->where('name', 'like', '%' . $this->search . '%')
+                            ->orWhere('description', 'like', '%' . $this->search . '%');
+                    });
                 })
                 ->get()
-        ])->layout('layouts.app');
+        ]);
     }
 }

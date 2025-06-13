@@ -10,15 +10,37 @@ use Illuminate\Support\Facades\Auth;
 
 class ThreadCreate extends Component
 {
-    public $title;
-    public $content;
-    public $category_id;
+    public $title = '';
+    public $content = '';
+    public $category_id = '';
+
+    // Populează categoria_id dacă este specificată în query string
+    public function mount($category = null)
+    {
+        if ($category) {
+            $this->category_id = $category;
+        }
+    }
 
     protected $rules = [
         'title' => 'required|min:5|max:255',
         'content' => 'required|min:20',
         'category_id' => 'required|exists:forum_categories,id'
     ];
+
+    public function updatedTitle($value)
+    {
+        // Validare în timp real pentru titlu
+        $this->validateOnly('title');
+    }
+
+    public function updatedContent($value)
+    {
+        // Validare în timp real pentru conținut
+        if (strlen($value) > 10) {
+            $this->validateOnly('content');
+        }
+    }
 
     public function save()
     {
@@ -39,6 +61,6 @@ class ThreadCreate extends Component
     {
         return view('livewire.forum.thread-create', [
             'categories' => ForumCategory::all()
-        ])->layout('layouts.app');
+        ]);
     }
 }
