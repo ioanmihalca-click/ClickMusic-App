@@ -30,7 +30,7 @@
         content="{{ $ogTitle ?? ($title ?? 'Click Music - Muzica, Hip-Hop, Drum & Bass si Reggae') }}" />
     <meta property="og:description"
         content="{{ $ogDescription ?? ($description ?? 'Click Music - Muzica, Hip-Hop, Drum & Bass si Reggae - O aplicație de streaming video a artistului de muzică hip-hop, drum & bass si reggae - Click') }}" />
-    <meta property="og:image" content="{{ $ogImage ?? asset('img/ClickMusic-OG-Site.jpg') }}" />
+    <meta property="og:image" content="{{ $ogImage ?? asset('img/OG.jpg') }}" />
     <meta property="og:image:type" content="image/jpg" />
     <meta property="og:image:alt" content="Click Music - Muzica, Hip-hop, drum & bass si Reggae" />
     <meta property="og:url" content="{{ $ogUrl ?? url()->current() }}" />
