@@ -53,19 +53,20 @@
 /* Mobile styles */
 @media (max-width: 768px) {
     .poster-container {
-        transform: rotateX(35deg) translateY(-75px);
+        transform: rotateX(35deg) translateY(50px); /* Schimbat de la -50px la 0px */
     }
 
     .poster {
-        width: 100px;
-        height: 150px;
-        margin-right: 10px;
+        width: 60px;
+        height: 90px;
+        margin-right: 8px;
     }
 
     .poster-row {
-        margin-bottom: 5px;
+        margin-bottom: 3px;
     }
 }
+
 /* Carduri 3D */
 
 .perspective-1000 {
