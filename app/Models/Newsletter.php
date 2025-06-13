@@ -256,7 +256,7 @@ class Newsletter extends Model
     /**
      * Marchează newsletter-ul ca eșuat
      */
-    public function markAsFailed(?string $errorMessage = null): bool
+    public function markAsFailed(string $errorMessage = null): bool
     {
         return $this->update([
             'status' => self::STATUS_FAILED,
@@ -275,23 +275,6 @@ class Newsletter extends Model
             'sent_at' => null,
             'failed_at' => null,
             'error_message' => null,
-        ]);
-    }
-
-    /**
-     * Creează o nouă campanie de newsletter
-     */
-    public static function createCampaign(array $attributes): self
-    {
-        return static::create([
-            'campaign_title' => $attributes['title'],
-            'campaign_subject' => $attributes['subject'],
-            'campaign_content' => $attributes['content'],
-            'campaign_type' => self::TYPE_CAMPAIGN,
-            'status' => 'draft',
-            'scheduled_at' => $attributes['scheduled_at'] ?? null,
-            'recipients_count' => $attributes['recipients_count'] ?? 0,
-            'created_by' => $attributes['created_by'] ?? null,
         ]);
     }
 
