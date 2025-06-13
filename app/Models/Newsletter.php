@@ -293,9 +293,9 @@ class Newsletter extends Model
             'recipients_count' => $data['recipients_count'] ?? 0,
             'scheduled_at' => $data['scheduled_at'] ?? null,
             'created_by' => $data['created_by'] ?? Auth::id(),
-            // Pentru campaniile setăm valori dummy pentru câmpurile obligatorii
-            'recipient_email' => 'campaign@internal.local',
-            'recipient_name' => $data['title'], // Folosim titlul campaniei ca nume
+            // Pentru campaniile setăm valori dummy UNICE
+            'recipient_email' => 'campaign-' . time() . '-' . rand(1000, 9999) . '@internal.local',
+            'recipient_name' => $data['title'],
         ]);
     }
 
