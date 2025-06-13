@@ -26,8 +26,9 @@
             x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-200"
             x-transition:leave-start="opacity-100 transform scale-100"
             x-transition:leave-end="opacity-0 transform scale-90"
-            class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" x-cloak>
-            <div class="relative w-full max-w-5xl bg-gray-900 border border-gray-800/50 rounded-xl">
+            class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" x-cloak
+            @click="open = false; if ($refs.videoPlayer) $refs.videoPlayer.pause(); if ($refs.audioPlayer) $refs.audioPlayer.pause();">
+            <div class="relative w-full max-w-5xl bg-gray-900 border border-gray-800/50 rounded-xl" @click.stop>
                 <!-- Close button -->
                 <button
                     @click="open = false; if ($refs.videoPlayer) $refs.videoPlayer.pause(); if ($refs.audioPlayer) $refs.audioPlayer.pause();"
