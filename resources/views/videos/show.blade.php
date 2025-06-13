@@ -6,13 +6,29 @@
             <!-- Video Player Section -->
             <div
                 class="relative max-w-5xl mx-auto overflow-hidden border bg-gray-900/50 backdrop-blur-sm rounded-xl border-gray-800/30">
-                <!-- Video Player Container -->
+                <!-- Media Player Container -->
                 <div class="aspect-w-16 aspect-h-9">
                     @if ($video->video_path)
-                        <video class="w-full h-full" controls controlsList="nodownload"
-                            src="{{ route('videos.stream', $video->id) }}" poster="{{ $video->thumbnail_url_full }}">
-                            Browserul dvs. nu suportă redarea de videoclipuri.
-                        </video>
+                        @if ($video->isAudio())
+                            <!-- Audio Player with Thumbnail Background -->
+                            <div class="relative flex items-center justify-center w-full h-full"
+                                style="background: url('{{ $video->thumbnail_url_full }}') center center; background-size: cover;">
+                                <div class="absolute inset-0 bg-black bg-opacity-60 backdrop-blur-sm"></div>
+                                <div class="relative z-10 w-full max-w-md px-4">
+                                    <audio class="w-full" controls controlsList="nodownload"
+                                        src="{{ route('videos.stream', $video->id) }}">
+                                        Browserul dvs. nu suportă redarea de fișiere audio.
+                                    </audio>
+                                </div>
+                            </div>
+                        @else
+                            <!-- Video Player -->
+                            <video class="w-full h-full" controls controlsList="nodownload"
+                                src="{{ route('videos.stream', $video->id) }}"
+                                poster="{{ $video->thumbnail_url_full }}">
+                                Browserul dvs. nu suportă redarea de videoclipuri.
+                            </video>
+                        @endif
                     @else
                         {!! $video->embed_link !!}
                     @endif
@@ -61,10 +77,10 @@
                     <p class="mb-8 text-gray-400">{!! nl2br($video->description) !!}</p>
 
                     <!-- Recommendations -->
-                    <div class="mb-8">
+                    {{-- <div class="mb-8">
                         <h2 class="mb-4 text-lg font-semibold text-blue-400">Videoclipuri Similare</h2>
                         @livewire('video-recommendations', ['video' => $video])
-                    </div>
+                    </div> --}}
 
                     <!-- Comments -->
                     {{-- <div class="pt-6 border-t border-gray-800/50">

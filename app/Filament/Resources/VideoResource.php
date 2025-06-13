@@ -33,9 +33,9 @@ class VideoResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-video-camera';
 
-    protected static ?string $modelLabel = 'Videoclip';
+    protected static ?string $modelLabel = 'Media';
 
-    protected static ?string $pluralModelLabel = 'Videoclipuri';
+    protected static ?string $pluralModelLabel = 'Media';
     protected static ?int $navigationSort = 2;
 
 
@@ -58,10 +58,11 @@ class VideoResource extends Resource
                     ->required()
                     ->helperText('Încărcați o imagine pentru thumbnail'),
                 FileUpload::make('video_path')
-                    ->label('Fișier Video')
+                    ->label('Fișier Media')
                     ->disk('public')
-                    ->directory('videos')
+                    ->directory('media')
                     ->acceptedFileTypes([
+                        // Video formats
                         'video/mp4',
                         'video/webm',
                         'video/ogg',
@@ -70,10 +71,17 @@ class VideoResource extends Resource
                         '.mp4',
                         '.webm',
                         '.ogg',
-                        '.mov'
+                        '.mov',
+                        // Audio formats
+                        'audio/mpeg',
+                        'audio/mp3',
+                        'audio/wav',
+                        'audio/x-wav',
+                        '.mp3',
+                        '.wav'
                     ])
                     ->maxSize(500 * 1024) // 500MB limit
-                    ->helperText('Încărcați un fișier MP4, WebM, MOV sau OGG (max 500MB)')
+                    ->helperText('Încărcați un fișier video (MP4, WebM, MOV, OGG) sau audio (MP3, WAV) (max 500MB)')
                     ->nullable()
                     ->removeUploadedFileButtonPosition('right')
                     ->uploadProgressIndicatorPosition('left'),

@@ -24,13 +24,35 @@ class Video extends Model
         'featured' => 'boolean'
     ];
 
-    // Get video URL attribute
+    // Get media file URL attribute
     public function getVideoUrlAttribute()
     {
         if ($this->video_path) {
             return url('videos/stream/' . $this->id);
         }
         return null;
+    }
+
+    // Determine if the file is an audio file
+    public function isAudio()
+    {
+        if (!$this->video_path) {
+            return false;
+        }
+
+        $extension = strtolower(pathinfo($this->video_path, PATHINFO_EXTENSION));
+        return in_array($extension, ['mp3', 'wav']);
+    }
+
+    // Determine if the file is a video file
+    public function isVideo()
+    {
+        if (!$this->video_path) {
+            return false;
+        }
+
+        $extension = strtolower(pathinfo($this->video_path, PATHINFO_EXTENSION));
+        return in_array($extension, ['mp4', 'webm', 'ogg', 'mov']);
     }
 
     // Get full thumbnail URL attribute
