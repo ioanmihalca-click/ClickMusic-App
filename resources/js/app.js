@@ -24,7 +24,7 @@ function effectsHomeSection() {
             }
 
             // Adaug efect de blur la scroll
-            const blurAmount = Math.min(topScroll / 200, 10); // Limitez la max 10px blur
+            const blurAmount = Math.min(topScroll / 400, 10); // Se va activa mai târziu
             homeSection.style.filter = `blur(${blurAmount}px)`;
         }
     }
