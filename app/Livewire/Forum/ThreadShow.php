@@ -15,6 +15,9 @@ class ThreadShow extends Component
     public ForumThread $thread;
     public $replyContent = '';
     public $replyToMark = null;
+    public $sortOrder = 'asc'; // asc = cele mai vechi prima dată, desc = cele mai noi prima dată
+
+    protected $queryString = ['sortOrder' => ['except' => 'asc']];
 
     protected $rules = [
         'replyContent' => 'required|min:3'
@@ -73,12 +76,22 @@ class ThreadShow extends Component
         $this->dispatch('solutionUnmarked');
     }
 
+    public function updatedSortOrder()
+    {
+        $this->resetPage();
+    }
+
+    public function toggleSortOrder()
+    {
+        $this->sortOrder = $this->sortOrder === 'asc' ? 'desc' : 'asc';
+    }
+
     public function render()
     {
         return view('livewire.forum.thread-show', [
             'replies' => $this->thread->replies()
                 ->with('user')
-                ->latest()
+                ->orderBy('created_at', $this->sortOrder)
                 ->paginate(15)
         ]);
     }

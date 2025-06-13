@@ -60,41 +60,77 @@
                 </div>
             </div>
 
+            <!-- Header pentru secțiunea de răspunsuri -->
+            <div class="mt-8 mb-4">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xl font-semibold text-white">Răspunsuri ({{ $replies->total() }})</h2>
+                    <div class="flex items-center text-sm text-gray-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Ordonate cronologic
+                    </div>
+                </div>
+            </div>
+
             <!-- Replies -->
-            <div class="space-y-6">
-                @foreach ($replies as $reply)
-                    <div id="reply-{{ $reply->id }}" class="relative group">
-                        <div
-                            class="absolute -inset-0.5 {{ $reply->is_solution ? 'bg-gradient-to-r from-green-500 via-emerald-500 to-green-500' : 'bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500' }} rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
-                        </div>
+            <div class="relative">
+                <!-- Linia temporală verticală -->
+                <div class="absolute left-5 top-0 bottom-0 w-0.5 bg-gray-700"></div>
 
-                        <div
-                            class="relative p-6 bg-gray-900/90 backdrop-blur-sm rounded-xl {{ $reply->is_solution ? 'border border-green-500/30' : '' }}">
-                            @if ($reply->is_solution)
-                                <div class="absolute top-0 right-0 transform translate-x-2 -translate-y-2">
-                                    <div
-                                        class="flex items-center justify-center w-8 h-8 bg-green-500 rounded-full shadow-lg">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M5 13l4 4L19 7" />
-                                        </svg>
+                <div class="space-y-6">
+                    @foreach ($replies as $loop_index => $reply)
+                        <div id="reply-{{ $reply->id }}" class="relative group">
+                            <!-- Indicator temporal -->
+                            <div class="absolute left-5 -translate-x-1/2 w-2 h-2 rounded-full {{ $reply->is_solution ? 'bg-green-500' : 'bg-blue-500' }} z-10"></div>
+
+                            <div
+                                class="absolute -inset-0.5 ml-8 {{ $reply->is_solution ? 'bg-gradient-to-r from-green-500 via-emerald-500 to-green-500' : 'bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500' }} rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
+                            </div>
+
+                            <div
+                                class="relative p-6 ml-8 bg-gray-900/90 backdrop-blur-sm rounded-xl {{ $reply->is_solution ? 'border border-green-500/30' : '' }}">
+                                @if ($reply->is_solution)
+                                    <div class="absolute top-0 right-0 transform translate-x-2 -translate-y-2">
+                                        <div
+                                            class="flex items-center justify-center w-8 h-8 bg-green-500 rounded-full shadow-lg">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M5 13l4 4L19 7" />
+                                            </svg>
+                                        </div>
                                     </div>
-                                </div>
-                            @endif
+                                @endif
 
-                            <div class="flex space-x-4">
-                                <div class="flex-shrink-0">
-                                    <img src="{{ $reply->user->avatar }}" alt="{{ $reply->user->name }}"
-                                        class="w-10 h-10 rounded-full">
+                                <!-- Număr răspuns -->
+                                <div class="absolute top-0 left-0 text-sm text-gray-500 transform -translate-x-12 translate-y-6">
+                                    #{{ $loop_index + 1 + (($replies->currentPage() - 1) * $replies->perPage()) }}
                                 </div>
+
+                                <div class="flex space-x-4">
+                                    <div class="flex-shrink-0">
+                                        <img src="{{ $reply->user->avatar }}" alt="{{ $reply->user->name }}"
+                                            class="w-10 h-10 rounded-full">
+                                    </div>
 
                                 <div class="flex-1">
                                     <div class="flex items-center justify-between">
                                         <div class="text-sm">
-                                            <span class="font-medium text-blue-400">{{ $reply->user->name }}</span>
-                                            <span class="text-gray-500">•
-                                                {{ $reply->created_at->diffForHumans() }}</span>
+                                            <div class="flex items-center">
+                                                <span class="font-medium text-blue-400">{{ $reply->user->name }}</span>
+                                                @if($reply->user->id === $thread->user_id)
+                                                    <span class="ml-2 px-1.5 py-0.5 text-xs bg-blue-400/10 text-blue-400 rounded-md">Autor</span>
+                                                @endif
+                                            </div>
+                                            <div class="text-gray-500 text-xs mt-0.5">
+                                                <span class="inline-block">
+                                                    <time datetime="{{ $reply->created_at->toIso8601String() }}" title="{{ $reply->created_at->format('d M Y, H:i') }}">
+                                                        {{ $reply->created_at->format('d M Y, H:i') }}
+                                                    </time>
+                                                </span>
+                                                <span class="inline-block ml-2 text-gray-600">({{ $reply->created_at->diffForHumans() }})</span>
+                                            </div>
                                         </div>
 
                                         <div class="flex items-center space-x-2">
@@ -177,7 +213,7 @@
                                     class="w-full px-4 py-3 text-gray-300 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500"
                                     placeholder="Contribuie la discuție..."></textarea>
 
-                                <div class="absolute top-2 right-2 text-xs text-gray-500">
+                                <div class="absolute text-xs text-gray-500 top-2 right-2">
                                     Markdown suportat
                                 </div>
 
@@ -215,7 +251,7 @@
                     </form>
                 </div>
             @else
-                <div class="p-6 mt-8 text-center bg-gray-900/80 border border-gray-800 rounded-xl">
+                <div class="p-6 mt-8 text-center border border-gray-800 bg-gray-900/80 rounded-xl">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mx-auto text-gray-500" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -236,7 +272,7 @@
                 x-transition:enter-end="opacity-100 transform translate-y-0"
                 x-transition:leave="transition ease-in duration-200"
                 x-transition:leave-start="opacity-100 transform translate-y-0"
-                x-transition:leave-end="opacity-0 transform translate-y-2" class="fixed bottom-4 right-4 z-50">
+                x-transition:leave-end="opacity-0 transform translate-y-2" class="fixed z-50 bottom-4 right-4">
                 <div x-bind:class="{
                     'bg-green-500': type === 'success',
                     'bg-blue-500': type === 'info',
