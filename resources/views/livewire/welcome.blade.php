@@ -4,8 +4,9 @@
         window.addEventListener('resize', () => isMobile = window.innerWidth <= 768);
     })" class="relative min-h-screen overflow-hidden">
 
+
         <!-- Loading Spinner -->
-        <div x-show="loading" class="absolute inset-0 z-50 flex items-center justify-center bg-black">
+        <div x-show="loading" class="fixed inset-0 z-50 flex items-center justify-center bg-black">
             <div class="w-16 h-16 border-t-4 border-blue-500 border-solid rounded-full animate-spin"></div>
         </div>
 
@@ -32,7 +33,7 @@
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/75"></div>
 
             <!-- Content Overlay - Better Mobile Positioning -->
-            <div class="relative z-10 flex items-start justify-center h-full pt-24 text-white md:pt-24 pb-20 md:pb-16">
+            <div class="relative z-10 flex items-start justify-center h-full pt-24 pb-20 text-white md:pt-24 md:pb-16">
                 <div class="max-w-4xl px-6 mx-auto text-center">
                     <!-- Artist Photo -->
                     <div class="mb-6">
