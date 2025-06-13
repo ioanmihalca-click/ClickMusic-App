@@ -44,23 +44,144 @@ class NewsletterResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('recipient_name')
-                    ->label('Nume Destinatar')
-                    ->maxLength(255),
-                TextInput::make('recipient_email')
-                    ->label('Adresă Email')
-                    ->email()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Select::make('status')
-                    ->label('Status')
-                    ->options([
-                        Newsletter::STATUS_PENDING => 'În așteptare',
-                        Newsletter::STATUS_SENT => 'Trimis',
-                        Newsletter::STATUS_FAILED => 'Eșuat',
+                // Pentru abonați simpli
+                Forms\Components\Section::make('Abonat Newsletter')
+                    ->schema([
+                        TextInput::make('recipient_name')
+                            ->label('Nume Destinatar')
+                            ->maxLength(255),
+                        TextInput::make('recipient_email')
+                            ->label('Adresă Email')
+                            ->email()
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\Select::make('status')
+                            ->label('Status')
+                            ->options([
+                                Newsletter::STATUS_PENDING => 'În așteptare',
+                                Newsletter::STATUS_SENT => 'Trimis',
+                                Newsletter::STATUS_FAILED => 'Eșuat',
+                            ])
+                            ->default(Newsletter::STATUS_PENDING)
+                            ->required(),
                     ])
-                    ->default(Newsletter::STATUS_PENDING)
-                    ->required(),
+                    ->visible(fn(?Newsletter $record) => $record?->isSubscriber() ?? true)
+                    ->columnSpanFull(),
+
+                // Pentru campaniile newsletter
+                Forms\Components\Section::make('Detalii Campanie')
+                    ->schema([
+                        Forms\Components\Grid::make(2)
+                            ->schema([
+                                TextInput::make('campaign_title')
+                                    ->label('Titlu Campanie')
+                                    ->required()
+                                    ->maxLength(255)
+                                    ->placeholder('Ex: Piesa nouă - Iunie 2025'),
+
+                                TextInput::make('campaign_subject')
+                                    ->label('Subiect Email')
+                                    ->required()
+                                    ->maxLength(255)
+                                    ->placeholder('Ex: 🎵 Piesa noua de la Click!'),
+                            ]),
+
+                        Forms\Components\RichEditor::make('campaign_content')
+                            ->label('Conținut Newsletter')
+                            ->required()
+                            ->toolbarButtons([
+                                'attachFiles',
+                                'blockquote',
+                                'bold',
+                                'bulletList',
+                                'codeBlock',
+                                'h2',
+                                'h3',
+                                'italic',
+                                'link',
+                                'orderedList',
+                                'redo',
+                                'strike',
+                                'table',
+                                'undo',
+                            ])
+                            ->placeholder('Scrie conținutul newsletter-ului aici...')
+                            ->helperText('Poți folosi variabile: {{site_name}}, {{year}}, {{current_date}}, {{site_url}}, {{email}}, {{name}}')
+                            ->columnSpanFull(),
+                    ])
+                    ->visible(fn(?Newsletter $record) => $record?->isCampaign() ?? false)
+                    ->columnSpanFull(),
+
+                // Secțiune programare și statistici
+                Forms\Components\Section::make('Programare și Statistici')
+                    ->schema([
+                        Forms\Components\Grid::make(2)
+                            ->schema([
+                                Forms\Components\DateTimePicker::make('scheduled_at')
+                                    ->label('Programat pentru')
+                                    ->helperText('Lasă gol pentru trimitere imediată')
+                                    ->minDate(now()),
+
+                                Forms\Components\Select::make('status')
+                                    ->label('Status Campanie')
+                                    ->options([
+                                        Newsletter::STATUS_PENDING => 'Draft/În așteptare',
+                                        Newsletter::STATUS_SENT => 'Trimis',
+                                        Newsletter::STATUS_FAILED => 'Eșuat',
+                                    ])
+                                    ->required(),
+                            ]),
+
+                        Forms\Components\Grid::make(3)
+                            ->schema([
+                                Forms\Components\TextInput::make('recipients_count')
+                                    ->label('Total Destinatari')
+                                    ->numeric()
+                                    ->disabled()
+                                    ->helperText('Se actualizează automat'),
+
+                                Forms\Components\TextInput::make('sent_count')
+                                    ->label('Trimiși cu Succes')
+                                    ->numeric()
+                                    ->disabled()
+                                    ->helperText('Actualizat după trimitere'),
+
+                                Forms\Components\TextInput::make('failed_count')
+                                    ->label('Eșuați')
+                                    ->numeric()
+                                    ->disabled()
+                                    ->helperText('Erori de trimitere'),
+                            ]),
+                    ])
+                    ->visible(fn(?Newsletter $record) => $record?->isCampaign() ?? false)
+                    ->columnSpanFull(),
+
+                // Template-uri predefinite (bonus)
+                Forms\Components\Section::make('Template-uri Rapide')
+                    ->schema([
+                        Forms\Components\Select::make('template')
+                            ->label('Alege un template')
+                            ->options([
+                                'song_announcement' => '🎵 Anunț Piesă Nouă',
+                                'video_release' => '📹 Lansare Video',
+                                'event_announcement' => '🎤 Anunț Eveniment',
+                                'monthly_update' => '📰 Update Lunar',
+                                'custom' => '✏️ Custom (fără template)',
+                            ])
+                            ->live()
+                            ->afterStateUpdated(function ($state, Forms\Set $set) {
+                                $templates = self::getEmailTemplates();
+                                if (isset($templates[$state])) {
+                                    $template = $templates[$state];
+                                    $set('campaign_subject', $template['subject']);
+                                    $set('campaign_content', $template['content']);
+                                }
+                            })
+                            ->helperText('Selectează un template pentru a începe rapid'),
+                    ])
+                    ->visible(fn(?Newsletter $record) => $record === null || ($record->isCampaign() && $record->canBeEdited()))
+                    ->columnSpanFull()
+                    ->collapsible(),
             ]);
     }
 
@@ -100,9 +221,8 @@ class NewsletterResource extends Resource
                     ->searchable(['recipient_name', 'campaign_subject'])
                     ->sortable(),
 
-                TextColumn::make('status')
+                Tables\Columns\BadgeColumn::make('status')
                     ->label('Status')
-                    ->badge()
                     ->formatStateUsing(fn($state) => Newsletter::make(['status' => $state])->status_label)
                     ->colors([
                         'warning' => Newsletter::STATUS_PENDING,
@@ -353,7 +473,7 @@ class NewsletterResource extends Resource
                         $content = self::generateSimpleEmailTemplate($data);
 
                         // Creăm și trimitem campania
-                        $campaign = \App\Models\Newsletter::create([
+                        $campaign = Newsletter::create([
                             'title' => 'Quick Send - ' . now()->format('d/m/Y H:i'),
                             'subject' => $data['quick_subject'],
                             'content' => $content,
@@ -606,6 +726,208 @@ class NewsletterResource extends Resource
     }
 
     /**
+     * Template-uri predefinite pentru newslettere
+     */
+    private static function getEmailTemplates(): array
+    {
+        return [
+            'song_announcement' => [
+                'subject' => '🎵 Piesa nouă de la Click!',
+                'content' => '
+<div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
+    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; text-align: center;">
+        <h1 style="color: white; margin: 0;">{{site_name}}</h1>
+        <p style="color: white; margin: 10px 0 0 0; opacity: 0.9;">Muzică de calitate pentru sufletul tău</p>
+    </div>
+    
+    <div style="padding: 30px 20px; background: white;">
+        <p style="font-size: 16px; line-height: 1.6; color: #333;">
+            Salut {{name}}!
+        </p>
+        
+        <p style="font-size: 16px; line-height: 1.6; color: #333;">
+            Sper că acest email te găsește bine. Vreau să te anunț că am lansat o nouă piesă!
+        </p>
+        
+        <div style="text-align: center; margin: 30px 0;">
+            <img src="[ADAUGĂ_URL_IMAGINE]" alt="Piesa nouă" style="max-width: 100%; height: auto; border-radius: 8px;" />
+        </div>
+        
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="[ADAUGĂ_URL_YOUTUBE]" style="display: inline-block; background: #ff0000; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px;">
+                ▶️ Ascultă pe YouTube
+            </a>
+        </div>
+        
+        <p style="font-size: 16px; line-height: 1.6; color: #333;">
+            Aștept cu drag să mă saluți și să-mi spui părerea ta despre piesă într-un comentariu. Să ne auzim cu bine!
+        </p>
+    </div>
+    
+    <div style="background: #f8f9fa; padding: 20px; text-align: center; font-size: 14px; color: #666;">
+        <p style="margin: 0 0 10px 0;">
+            Cu respect,<br>
+            <strong>Click</strong>
+        </p>
+        
+        <p style="margin: 10px 0;">
+            <a href="https://www.youtube.com/clickmusicromania" style="color: #dc2626; text-decoration: none; margin: 0 10px;">YouTube</a>
+            <a href="{{site_url}}" style="color: #3b82f6; text-decoration: none; margin: 0 10px;">{{site_name}}</a>
+        </p>
+        
+        <p style="margin: 15px 0 0 0; font-size: 12px; color: #999;">
+            Dacă nu mai dorești să primești newslettere, te poți 
+            <a href="{{site_url}}/newsletter/unsubscribe?email={{email}}" style="color: #3869d4;">dezabona aici</a>.
+        </p>
+    </div>
+</div>'
+            ],
+
+            'video_release' => [
+                'subject' => '📹 Video nou de la Click Music!',
+                'content' => '
+<div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
+    <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); padding: 20px; text-align: center;">
+        <h1 style="color: white; margin: 0;">{{site_name}}</h1>
+        <p style="color: white; margin: 10px 0 0 0; opacity: 0.9;">📹 Video nou disponibil!</p>
+    </div>
+    
+    <div style="padding: 30px 20px; background: white;">
+        <h2 style="color: #333; text-align: center; margin-bottom: 20px;">Am lansat un video nou!</h2>
+        
+        <p style="font-size: 16px; line-height: 1.6; color: #333;">
+            Salut {{name}}!
+        </p>
+        
+        <p style="font-size: 16px; line-height: 1.6; color: #333;">
+            [ADAUGĂ_DESCRIEREA_VIDEO]
+        </p>
+        
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="[ADAUGĂ_URL_VIDEO]">
+                <img src="[ADAUGĂ_THUMBNAIL_VIDEO]" alt="Video nou" style="max-width: 100%; height: auto; border-radius: 8px; border: 3px solid #ff6b6b;" />
+            </a>
+        </div>
+        
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="[ADAUGĂ_URL_VIDEO]" style="display: inline-block; background: #ff6b6b; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px;">
+                🎬 Vezi Videoul
+            </a>
+        </div>
+    </div>
+    
+    <div style="background: #f8f9fa; padding: 20px; text-align: center; font-size: 14px; color: #666;">
+        <p style="margin: 0 0 10px 0;">Cu respect,<br><strong>Click</strong></p>
+        <p style="margin: 15px 0 0 0; font-size: 12px; color: #999;">
+            <a href="{{site_url}}/newsletter/unsubscribe?email={{email}}" style="color: #3869d4;">Dezabonează-te</a>
+        </p>
+    </div>
+</div>'
+            ],
+
+            'event_announcement' => [
+                'subject' => '🎤 Eveniment special cu Click Music!',
+                'content' => '
+<div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
+    <div style="background: linear-gradient(135deg, #00b894 0%, #00a085 100%); padding: 20px; text-align: center;">
+        <h1 style="color: white; margin: 0;">{{site_name}}</h1>
+        <p style="color: white; margin: 10px 0 0 0; opacity: 0.9;">🎤 Eveniment special!</p>
+    </div>
+    
+    <div style="padding: 30px 20px; background: white;">
+        <h2 style="color: #333; text-align: center; margin-bottom: 20px;">Te invit la un eveniment special!</h2>
+        
+        <p style="font-size: 16px; line-height: 1.6; color: #333;">
+            Salut {{name}}!
+        </p>
+        
+        <div style="background: #f0f9ff; border-left: 4px solid #00b894; padding: 20px; margin: 20px 0;">
+            <h3 style="margin: 0 0 10px 0; color: #00b894;">[NUME_EVENIMENT]</h3>
+            <p style="margin: 5px 0; color: #333;"><strong>📅 Data:</strong> [DATA_EVENIMENT]</p>
+            <p style="margin: 5px 0; color: #333;"><strong>📍 Locația:</strong> [LOCAȚIA_EVENIMENT]</p>
+            <p style="margin: 5px 0; color: #333;"><strong>🕐 Ora:</strong> [ORA_EVENIMENT]</p>
+        </div>
+        
+        <p style="font-size: 16px; line-height: 1.6; color: #333;">
+            [DESCRIEREA_EVENIMENTULUI]
+        </p>
+        
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="[LINK_BILETE]" style="display: inline-block; background: #00b894; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px;">
+                🎟️ Rezervă Bilete
+            </a>
+        </div>
+    </div>
+    
+    <div style="background: #f8f9fa; padding: 20px; text-align: center; font-size: 14px; color: #666;">
+        <p style="margin: 0 0 10px 0;">Cu respect,<br><strong>Click</strong></p>
+        <p style="margin: 15px 0 0 0; font-size: 12px; color: #999;">
+            <a href="{{site_url}}/newsletter/unsubscribe?email={{email}}" style="color: #3869d4;">Dezabonează-te</a>
+        </p>
+    </div>
+</div>'
+            ],
+
+            'monthly_update' => [
+                'subject' => '📰 Update lunar de la Click Music',
+                'content' => '
+<div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
+    <div style="background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%); padding: 20px; text-align: center;">
+        <h1 style="color: white; margin: 0;">{{site_name}}</h1>
+        <p style="color: white; margin: 10px 0 0 0; opacity: 0.9;">📰 Update lunar - {{current_date}}</p>
+    </div>
+    
+    <div style="padding: 30px 20px; background: white;">
+        <h2 style="color: #333; margin-bottom: 20px;">Ce mai fac în ultima vreme?</h2>
+        
+        <p style="font-size: 16px; line-height: 1.6; color: #333;">
+            Salut {{name}}!
+        </p>
+        
+        <p style="font-size: 16px; line-height: 1.6; color: #333;">
+            Iată ce s-a întâmplat în ultima lună la Click Music:
+        </p>
+        
+        <div style="background: #f8f9ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="color: #6c5ce7; margin: 0 0 15px 0;">🎵 Muzică</h3>
+            <ul style="color: #333; margin: 0; padding-left: 20px;">
+                <li>[ADAUGĂ_UPDATE_MUZICAL]</li>
+                <li>[ADAUGĂ_UPDATE_MUZICAL]</li>
+            </ul>
+        </div>
+        
+        <div style="background: #fff5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="color: #e17055; margin: 0 0 15px 0;">📹 Video</h3>
+            <ul style="color: #333; margin: 0; padding-left: 20px;">
+                <li>[ADAUGĂ_UPDATE_VIDEO]</li>
+                <li>[ADAUGĂ_UPDATE_VIDEO]</li>
+            </ul>
+        </div>
+        
+        <div style="background: #f0fff4; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="color: #00b894; margin: 0 0 15px 0;">🎤 Evenimente</h3>
+            <ul style="color: #333; margin: 0; padding-left: 20px;">
+                <li>[ADAUGĂ_UPDATE_EVENIMENT]</li>
+            </ul>
+        </div>
+        
+        <p style="font-size: 16px; line-height: 1.6; color: #333;">
+            Mulțumesc că îmi urmărești activitatea! 🙏
+        </p>
+    </div>
+    
+    <div style="background: #f8f9fa; padding: 20px; text-align: center; font-size: 14px; color: #666;">
+        <p style="margin: 0 0 10px 0;">Cu respect,<br><strong>Click</strong></p>
+        <p style="margin: 15px 0 0 0; font-size: 12px; color: #999;">
+            <a href="{{site_url}}/newsletter/unsubscribe?email={{email}}" style="color: #3869d4;">Dezabonează-te</a>
+        </p>
+    </div>
+</div>'
+            ],
+        ];
+    }
+
+    /**
      * Trimite o campanie de newsletter
      */
     private static function sendCampaign(Newsletter $campaign, Collection $recipients): void
@@ -649,17 +971,12 @@ class NewsletterResource extends Resource
     {
         return User::getNewsletterSubscribers()->map(function ($user) {
             // Creăm un obiect pseudo-Newsletter pentru compatibilitate
-            $pseudoNewsletter = new class($user) {
+            $pseudoNewsletter = new class {
                 public $id;
                 public $recipient_email;
                 public $recipient_name;
                 public $status = 'pending';
                 public $user;
-
-                public function __construct($user)
-                {
-                    $this->user = $user;
-                }
 
                 public function notify($notification)
                 {
@@ -684,6 +1001,7 @@ class NewsletterResource extends Resource
             $pseudoNewsletter->id = 'user_' . $user->id;
             $pseudoNewsletter->recipient_email = $user->email;
             $pseudoNewsletter->recipient_name = $user->name;
+            $pseudoNewsletter->user = $user; // Referință către userul real
 
             return $pseudoNewsletter;
         });
