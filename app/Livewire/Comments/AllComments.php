@@ -1,9 +1,11 @@
 <?php
+
 namespace App\Livewire\Comments;
 
 use App\Models\Reply;
 use Livewire\Component;
 use App\Events\CommentCreated;
+use Illuminate\Support\Facades\Auth;
 use App\Megaphone\CommentReplyNotification;
 use App\Models\Video; // Import the Video model
 use App\Models\Comment; // Import the Comment model
@@ -24,17 +26,17 @@ class AllComments extends Component
     {
         $video = Video::find($this->videoId);
 
-    // Fetch comments with eager loading of replies, sorted by the latest reply
-    $comments = $video->comments()
-        ->whereNull('reply_id')
-        ->latest()
-        ->with(['replies' => function ($query) {
-            $query->latest();
-        }])
-        ->get()
-        ->sortByDesc(function ($comment) {
-            return $comment->replies->max('created_at') ?: $comment->created_at;
-        });
+        // Fetch comments with eager loading of replies, sorted by the latest reply
+        $comments = $video->comments()
+            ->whereNull('reply_id')
+            ->latest()
+            ->with(['replies' => function ($query) {
+                $query->latest();
+            }])
+            ->get()
+            ->sortByDesc(function ($comment) {
+                return $comment->replies->max('created_at') ?: $comment->created_at;
+            });
         return view('livewire.comments.all-comments', compact('comments', 'video'));
     }
 
@@ -47,7 +49,7 @@ class AllComments extends Component
         $comment = new Comment;
         $comment->body = $this->newComment;
         $comment->video_id = $this->videoId;
-        $comment->user_id = auth()->id(); // Assuming user is authenticated
+        $comment->user_id = Auth::id(); // Using Auth facade
         $comment->save();
 
         event(new CommentCreated($comment)); // Dispatch the event
@@ -60,22 +62,19 @@ class AllComments extends Component
         $this->validate([
             "replyToComment.{$commentId}" => 'required|min:1'
         ]);
-    
+
         $comment = Comment::findOrFail($commentId); // Find the parent comment
         $reply = new Comment; // Create a new comment
         $reply->body = $this->replyToComment[$commentId];
         $reply->video_id = $comment->video_id; // Assign the same video ID
-        $reply->user_id = auth()->id(); // Assuming user is authenticated
+        $reply->user_id = Auth::id(); // Using Auth facade
         $reply->reply_id = $comment->id; // Set the reply's reply_id to the parent comment's ID
         $reply->save();
-    
+
         // Reset reply content after submission
         $this->replyToComment[$commentId] = "";
 
-     // Trigger the Megaphone notification, passing only title and body:
+        // Trigger the Megaphone notification, passing only title and body:
         $comment->user->notify(new CommentReplyNotification($reply, $comment->video));
-        
     }
-    
-
 }
