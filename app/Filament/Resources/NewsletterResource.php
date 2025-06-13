@@ -196,7 +196,7 @@ class NewsletterResource extends Resource
                     ->label('Statistici Newsletter')
                     ->icon('heroicon-o-chart-bar')
                     ->color('info')
-                    ->modalContent(fn() => view('filament.newsletter-stats-combined'))
+                    ->modalContent(fn() => view('filament.newsletter-stats'))
                     ->modalWidth('md')
                     ->slideOver(),
 
