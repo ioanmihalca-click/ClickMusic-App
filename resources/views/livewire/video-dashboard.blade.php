@@ -66,30 +66,10 @@
                     <template x-if="!videoPath && embedLink">
                         <div x-html="embedLink"></div>
                     </template>
-                </div>
-
-                <!-- Video info -->
+                </div> <!-- Video info -->
                 <div class="p-6">
                     <h2 x-text="videoTitle" class="mb-4 text-xl font-bold text-white"></h2>
                     <div x-html="videoDescription" class="text-gray-400"></div>
-
-                    <!-- View full page link -->
-                    <div class="mt-4">
-                        <a :href="`/videos/${videoId}`"
-                            class="inline-flex items-center text-sm font-medium text-blue-400 transition-all duration-300 hover:text-blue-300">
-                            <span
-                                class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-blue-300 after:transition-all after:duration-300 hover:after:w-full">
-                                Vezi pagina completă
-                            </span>
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1"
-                                viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -164,11 +144,13 @@
                                             <path fill-rule="evenodd"
                                                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
                                                 clip-rule="evenodd" />
+                                        </svg>
+                                        {{ $video->created_at->diffForHumans() }}
                                     </span>
                                 </div>
 
-                                <!-- Link "Vezi mai mult" -->
-                                <div class="flex items-center space-x-3">
+                                <!-- Link "Redare" -->
+                                {{-- <div class="flex items-center space-x-3">
                                     <!-- Play button -->
                                     <button
                                         @click="playMedia({{ $video->id }}, '{{ $video->video_path }}', '{{ addslashes($video->title) }}', `{!! addslashes(nl2br($video->description)) !!}`, {{ $video->isAudio() ? 'true' : 'false' }}, `{!! addslashes($video->embed_link) !!}`, '{{ $video->thumbnail_url_full }}')"
@@ -181,23 +163,7 @@
                                         </svg>
                                         Redare
                                     </button>
-
-                                    <!-- View details link -->
-                                    <a href="{{ route('videos.show', $video) }}"
-                                        class="inline-flex items-center text-sm font-medium text-blue-400 transition-all duration-300 group-hover:text-blue-300">
-                                        <span
-                                            class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-blue-300 after:transition-all after:duration-300 group-hover:after:w-full">
-                                            Vezi pagina
-                                        </span>
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1"
-                                            viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd"
-                                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
