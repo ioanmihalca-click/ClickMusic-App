@@ -139,7 +139,7 @@
                 init() {
                     // Check if we're on mobile and adjust accordingly
                     const isMobile = window.innerWidth <= 768;
-                    const posterRowCount = isMobile ? 7 : 5; // Show fewer rows on mobile
+                    const posterRowCount = isMobile ? 7 : 5; // Show rows on mobile
 
 
                     const posters = [
