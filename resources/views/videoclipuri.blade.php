@@ -1,6 +1,6 @@
 <x-app-layout>
     <!-- Hero Header with Gradient -->
-    <div class="relative bg-black">
+    {{-- <div class="relative bg-black">
         <div class="absolute inset-0 blur-3xl opacity-30">
             <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800"></div>
         </div>
@@ -17,19 +17,15 @@
                 să participi la discuțiile din forumul <a href="{{ route('forum.index') }}"
                     class="text-blue-400 transition-colors hover:text-blue-300">"Comunitate"</a>.
             </p>
-            <p class="max-w-2xl mx-auto mt-6 text-center text-gray-300">
-
-                Am pus recent doua piese noi, nelansate inca: "RESPECT" si "Bate inima ca bitu"
-            </p>
 
         </div>
-    </div>
+    </div> --}}
 
     <!-- Main Content -->
     <div class="py-12 bg-black">
         <div class="px-6 mx-auto max-w-7xl lg:px-8">
             <!-- Search Bar -->
-            <div class="px-4 mb-8">
+            <div class="mb-8 ">
                 @livewire('search-videos')
             </div>
             {{-- 
