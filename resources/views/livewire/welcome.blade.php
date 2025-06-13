@@ -139,7 +139,8 @@
                 init() {
                     // Check if we're on mobile and adjust accordingly
                     const isMobile = window.innerWidth <= 768;
-                    const posterRowCount = isMobile ? 3 : 5; // Show fewer rows on mobile
+                    const posterRowCount = isMobile ? 5 : 5; // Show fewer rows on mobile
+
 
                     const posters = [
                         '/img/poze-bg/1.jpg', '/img/poze-bg/2.jpg', '/img/poze-bg/3.jpg', '/img/poze-bg/4.jpg',
