@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Builder;
@@ -275,6 +276,26 @@ class Newsletter extends Model
             'sent_at' => null,
             'failed_at' => null,
             'error_message' => null,
+        ]);
+    }
+
+    /**
+     * Creează o nouă campanie
+     */
+    public static function createCampaign(array $data): self
+    {
+        return static::create([
+            'campaign_title' => $data['title'],
+            'campaign_subject' => $data['subject'],
+            'campaign_content' => $data['content'],
+            'campaign_type' => self::TYPE_CAMPAIGN,
+            'status' => self::STATUS_PENDING,
+            'recipients_count' => $data['recipients_count'] ?? 0,
+            'scheduled_at' => $data['scheduled_at'] ?? null,
+            'created_by' => $data['created_by'] ?? Auth::id(),
+            // Pentru campaniile setăm valori dummy pentru câmpurile obligatorii
+            'recipient_email' => 'campaign@internal.local',
+            'recipient_name' => $data['title'], // Folosim titlul campaniei ca nume
         ]);
     }
 

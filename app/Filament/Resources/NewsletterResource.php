@@ -391,18 +391,15 @@ class NewsletterResource extends Resource
                             'all' => self::getAllRecipientsAsNewsletterFormat(),
                         };
 
-                        // Creăm campania folosind atribute corecte
-                        $campaign = Newsletter::create([
-                            'campaign_title' => $data['title'],
-                            'campaign_subject' => $data['subject'],
-                            'campaign_content' => $data['content'],
-                            'campaign_type' => Newsletter::TYPE_CAMPAIGN,
-                            'status' => $data['send_now'] ? 'draft' : 'draft',
-                            'scheduled_at' => $data['scheduled_at'] ?? null,
+                        // Creăm campania folosind metoda createCampaign din model
+                        $campaign = Newsletter::createCampaign([
+                            'title' => $data['title'],
+                            'subject' => $data['subject'],
+                            'content' => $data['content'],
                             'recipients_count' => $recipients->count(),
+                            'scheduled_at' => $data['scheduled_at'] ?? null,
                             'created_by' => Auth::id(),
                         ]);
-
                         if ($data['send_now']) {
                             // Trimitem imediat
                             self::sendCampaign($campaign, $recipients);
@@ -944,11 +941,19 @@ class NewsletterResource extends Resource
                     ->send();
             }
 
-            // Lansăm job-ul pentru trimitere folosind noul job
-            SendNewsletters::dispatch($campaign, $recipients);
+            // Convertim toți recipients într-un format uniform pentru queue
+            $recipientsData = $recipients->map(function ($recipient) {
+                return [
+                    'email' => $recipient->recipient_email,
+                    'name' => $recipient->recipient_name,
+                    'type' => isset($recipient->user) ? 'user' : 'newsletter',
+                    'user_id' => isset($recipient->user) ? $recipient->user->id : null,
+                    'newsletter_id' => is_numeric($recipient->id) ? $recipient->id : null,
+                ];
+            });
 
-            // Nu mai marcăm ca sending, job-ul se va ocupa de asta
-
+            // Lansăm job-ul cu date serializabile
+            SendNewsletters::dispatch($campaign->id, $recipientsData);
         } catch (\Exception $e) {
             Log::error("Eroare la lansarea campaniei {$campaign->id}: " . $e->getMessage());
             $campaign->markAsFailed();
@@ -970,7 +975,7 @@ class NewsletterResource extends Resource
      */
     private static function getUsersAsNewsletterFormat(): Collection
     {
-        return User::getNewsletterSubscribers()->map(function ($user) {
+        $mappedCollection = User::getNewsletterSubscribers()->map(function ($user) {
             // Creăm un obiect pseudo-Newsletter pentru compatibilitate
             $pseudoNewsletter = new class {
                 public $id;
@@ -997,6 +1002,12 @@ class NewsletterResource extends Resource
                     \Illuminate\Support\Facades\Log::error("Newsletter failed for user {$this->recipient_email}: {$errorMessage}");
                     return true;
                 }
+
+                public function getKey()
+                {
+                    // Returnează id-ul ca și key pentru compatibilitate cu modelele Eloquent
+                    return $this->id;
+                }
             };
 
             $pseudoNewsletter->id = 'user_' . $user->id;
@@ -1006,6 +1017,9 @@ class NewsletterResource extends Resource
 
             return $pseudoNewsletter;
         });
+
+        // Convertim Illuminate\Support\Collection la Illuminate\Database\Eloquent\Collection
+        return new \Illuminate\Database\Eloquent\Collection($mappedCollection->all());
     }
 
     /**

@@ -30,7 +30,6 @@ use Illuminate\Support\Facades\Notification;
 use App\Http\Controllers\AbonamentController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Notifications\AbonamentNouCreatAdmin;
-use App\Notifications\NotificareVideoclipNou;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\PromoUnsubscribeController;
