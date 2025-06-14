@@ -21,7 +21,7 @@
                             MAGAZIN
                         </h1>
                         <p class="text-lg text-gray-300">
-                            Albume • Merchandise • Accesorii
+                            Albume • Tricouri • Accesorii
                         </p>
                         <p class="text-sm text-gray-400">
                             Livrare rapidă • Plată securizată
