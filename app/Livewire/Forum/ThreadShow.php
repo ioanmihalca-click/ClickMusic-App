@@ -43,6 +43,9 @@ class ThreadShow extends Component
 
         // Scrollează automat la noul răspuns
         $this->dispatch('scrollToReply', id: $reply->id);
+
+        // Declanșează evenimentul pentru notificări
+        event(new \App\Events\ForumReplyCreated($reply, $this->thread));
     }
 
     public function markAsSolution($replyId)

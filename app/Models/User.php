@@ -32,6 +32,8 @@ class User extends Authenticatable implements FilamentUser
         'usertype',
         'avatar',
         'newsletter_unsubscribed_at',
+        'newsletter_consent',
+        'forum_notifications',
     ];
 
     /**
@@ -55,6 +57,8 @@ class User extends Authenticatable implements FilamentUser
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'newsletter_unsubscribed_at' => 'datetime',
+            'newsletter_consent' => 'boolean',
+            'forum_notifications' => 'boolean',
         ];
     }
 
