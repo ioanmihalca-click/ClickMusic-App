@@ -51,6 +51,11 @@ Route::get('/album/{album:slug}/download', [AlbumController::class, 'download'])
     ->name('album.download')
     ->middleware('signed');
 
+// Rute pentru haine 
+Route::get('/haina/{haina:slug}', [App\Http\Controllers\HainaController::class, 'show'])->name('haina.show');
+Route::post('/haina/{haina}/checkout', [App\Http\Controllers\HainaController::class, 'checkout'])->name('haina.checkout');
+Route::get('/haina/checkout/success', [App\Http\Controllers\HainaController::class, 'checkoutSuccess'])->name('haina.checkout.success');
+
 Route::get('/blog', BlogIndex::class)->name('blog.index');
 Route::get('/blog/{slug}', BlogShow::class)->name('blog.show');
 

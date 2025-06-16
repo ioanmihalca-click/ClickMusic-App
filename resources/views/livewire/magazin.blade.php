@@ -21,7 +21,7 @@
                             MAGAZIN
                         </h1>
                         <p class="text-lg text-gray-300">
-                            Albume • Tricouri • Accesorii
+                            Albume • Haine • Accesorii
                         </p>
                         <p class="text-sm text-gray-400">
                             Livrare rapidă • Plată securizată
@@ -41,23 +41,25 @@
         </div>
     </div>
 
-    <!-- Navigation Menu - Can be customized based on shop categories -->
+    <!-- Navigation Menu - Interactive tabs -->
     <div class="sticky z-30 border-b border-gray-800 shadow-lg top-12 bg-black/95 backdrop-blur-sm">
         <div class="container px-4 mx-auto">
             <nav class="flex flex-wrap justify-center gap-2 py-4 text-sm md:gap-6 md:text-base">
-                <button
-                    class="px-4 py-2 font-medium text-white transition-all duration-300 scale-105 bg-blue-600 rounded-lg shadow-lg">
+                <button wire:click="setActiveTab('toate')"
+                    class="px-4 py-2 font-medium transition-all duration-300 rounded-lg
+                    {{ $activeTab === 'toate' ? 'text-white bg-blue-600 scale-105 shadow-lg' : 'text-gray-300 hover:text-blue-400 hover:bg-gray-800/50' }}">
                     Toate Produsele
                 </button>
-                <button
-                    class="px-4 py-2 font-medium text-gray-300 transition-all duration-300 rounded-lg hover:text-blue-400 hover:bg-gray-800/50">
+                <button wire:click="setActiveTab('albume')"
+                    class="px-4 py-2 font-medium transition-all duration-300 rounded-lg
+                    {{ $activeTab === 'albume' ? 'text-white bg-blue-600 scale-105 shadow-lg' : 'text-gray-300 hover:text-blue-400 hover:bg-gray-800/50' }}">
                     Albume
                 </button>
-                <button
-                    class="px-4 py-2 font-medium text-gray-300 transition-all duration-300 rounded-lg hover:text-blue-400 hover:bg-gray-800/50">
-                    Tricouri
+                <button wire:click="setActiveTab('haine')"
+                    class="px-4 py-2 font-medium transition-all duration-300 rounded-lg
+                    {{ $activeTab === 'haine' ? 'text-white bg-blue-600 scale-105 shadow-lg' : 'text-gray-300 hover:text-blue-400 hover:bg-gray-800/50' }}">
+                    Haine
                 </button>
-
             </nav>
         </div>
     </div>
@@ -83,17 +85,40 @@
 
     <!-- Products Section -->
     <div class="min-h-screen transition-all duration-500 ease-in-out">
-        <!-- Album List Component -->
-        <livewire:album-list />
+        @if ($activeTab === 'toate')
+            <!-- Show both albums and haine -->
+            <div class="space-y-16">
+                <div>
+                    <h2
+                        class="mb-8 text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                        Albume Muzicale
+                    </h2>
+                    <livewire:album-list />
+                </div>
+                <div>
+                    <h2
+                        class="mb-8 text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400">
+                        Haine Click Music
+                    </h2>
+                    <livewire:haina-list />
+                </div>
+            </div>
+        @elseif($activeTab === 'albume')
+            <!-- Show only albums -->
+            <livewire:album-list />
+        @elseif($activeTab === 'haine')
+            <!-- Show only haine -->
+            <livewire:haina-list />
+        @endif
     </div>
 
     <!-- Loading indicator pentru tranziții -->
-    <div wire:loading.delay class="fixed inset-0 z-40 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+    {{-- <div wire:loading.delay class="fixed inset-0 z-40 flex items-center justify-center bg-black/50 backdrop-blur-sm">
         <div class="flex items-center px-6 py-4 space-x-3 bg-gray-900 border border-gray-700 rounded-lg">
             <div class="w-5 h-5 border-2 border-blue-500 rounded-full animate-spin border-t-transparent"></div>
             <span class="text-white">Se încarcă...</span>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Custom Styles pentru animații -->
     <style>

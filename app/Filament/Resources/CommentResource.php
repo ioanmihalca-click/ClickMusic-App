@@ -7,6 +7,7 @@ use App\Models\Comment;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
+use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Notifications\Notification;
@@ -25,7 +26,7 @@ class CommentResource extends Resource
 
     protected static ?string $navigationLabel = 'Comentarii';
 
-    protected static ?int $navigationSort = 5;
+    protected static ?int $navigationSort = 6;
 
     public static function table(Table $table): Table
     {
@@ -70,7 +71,7 @@ class CommentResource extends Resource
                 Tables\Actions\DeleteAction::make(),
                 Tables\Actions\Action::make('view_video')
                     ->label('Vezi videoclip')
-                    ->url(fn (Comment $record): string => route('videos.show', $record->video))
+                    ->url(fn(Comment $record): string => route('videos.show', $record->video))
                     ->openUrlInNewTab(),
 
                 Tables\Actions\Action::make('quick_reply')
@@ -83,14 +84,14 @@ class CommentResource extends Resource
                     ->action(function (Comment $record, array $data): void {
                         $reply = $record->replies()->create([
                             'body' => $data['reply'],
-                            'user_id' => auth()->id(),
+                            'user_id' => Auth::id(),
                             'video_id' => $record->video_id,
                         ]);
 
 
                         // Trigger Megaphone Notification (Here's the key change!)
                         $record->user->notify(new CommentReplyNotification($reply, $record->video));
-                    
+
                         Notification::make()
                             ->title('Răspuns adăugat cu succes')
                             ->success()
