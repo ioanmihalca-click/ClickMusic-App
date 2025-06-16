@@ -134,9 +134,11 @@ Route::get('/videos/stream/{id}', [VideoController::class, 'stream'])->name('vid
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
-    ->name('profile');
+    ->name('profile.edit');
 
 Route::patch('/profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.avatar')->middleware('auth');
+Route::get('/profile/avatar/crop', [ProfileController::class, 'showCropForm'])->name('profile.avatar.crop')->middleware('auth');
+Route::post('/profile/avatar/crop', [ProfileController::class, 'cropAvatar'])->name('profile.avatar.crop.save')->middleware('auth');
 
 
 

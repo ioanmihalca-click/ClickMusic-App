@@ -66,6 +66,8 @@
                                                 Schimbă imaginea
                                             </span>
                                         </label>
+                                        <p class="mt-1 text-xs text-center text-gray-400">Poți aranja și redimensiona
+                                            imaginea după încărcare</p>
                                     </div>
 
                                     <!-- Upload form (simplified to just contain the input) -->

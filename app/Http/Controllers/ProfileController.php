@@ -26,17 +26,72 @@ class ProfileController extends Controller
                 'avatar.image' => 'Fișierul trebuie să fie o imagine.'
             ]);
 
+            // Salvează temporar imaginea pentru cropping
+            $tempPath = $request->file('avatar')->store('temp/avatars', 'public');
+
+            // Redirecționează către pagina de cropping
+            return redirect()->route('profile.avatar.crop', ['image' => $tempPath]);
+        } catch (\Exception $e) {
+            Log::error('Avatar upload error', ['error' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
+            return back()->withErrors(['avatar' => 'Eroare la încărcare: ' . $e->getMessage()]);
+        }
+    }
+
+    public function showCropForm(Request $request)
+    {
+        $tempImage = $request->query('image');
+
+        if (!$tempImage || !Storage::disk('public')->exists($tempImage)) {
+            return redirect()->route('profile.edit')->withErrors(['avatar' => 'Imaginea temporară nu a fost găsită.']);
+        }
+
+        $imageUrl = asset('storage/' . $tempImage);
+
+        return view('profile.crop-avatar', [
+            'imageUrl' => $imageUrl,
+            'tempImage' => $tempImage
+        ]);
+    }
+
+    public function cropAvatar(Request $request)
+    {
+        try {
+            $request->validate([
+                'croppedImage' => 'required',
+                'tempImage' => 'required|string'
+            ]);
+
+            // Decode croppedImage din base64
+            $base64Image = $request->input('croppedImage');
+            $base64Image = str_replace('data:image/png;base64,', '', $base64Image);
+            $base64Image = str_replace(' ', '+', $base64Image);
+            $imageData = base64_decode($base64Image);
+
+            if (!$imageData) {
+                throw new \Exception('Imaginea nu a putut fi decodată.');
+            }
+
+            // Obține un nume de fișier unic pentru imaginea finală
+            $filename = 'avatar_' . time() . '_' . uniqid() . '.png';
+            $finalPath = 'avatars/' . $filename;
+
+            // Salvează imaginea cropată
+            Storage::disk('public')->put($finalPath, $imageData);
+
             // Obține utilizatorul curent
             $user = User::find(Auth::id());
 
             // Salvăm imaginea veche pentru a o șterge după ce am salvat cu succes noua imagine
             $oldAvatar = $user->avatar;
 
-            // Salvează imaginea nouă în storage/app/public/avatars
-            $path = $request->file('avatar')->store('avatars', 'public');
-
             // Actualizează calea către avatar în baza de date
-            $user->update(['avatar' => $path]);
+            $user->update(['avatar' => $finalPath]);
+
+            // Șterge fișierul temporar
+            $tempImage = $request->input('tempImage');
+            if (Storage::disk('public')->exists($tempImage)) {
+                Storage::disk('public')->delete($tempImage);
+            }
 
             // Acum, după ce am salvat noua imagine, ștergem imaginea veche dacă există
             if ($oldAvatar) {
@@ -76,10 +131,10 @@ class ProfileController extends Controller
                 }
             }
 
-            return back()->with('status', 'avatar-updated');
+            return redirect()->route('profile.edit')->with('status', 'avatar-updated');
         } catch (\Exception $e) {
-            Log::error('Avatar update error', ['error' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
-            return back()->withErrors(['avatar' => 'Eroare la încărcare: ' . $e->getMessage()]);
+            Log::error('Avatar crop error', ['error' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
+            return back()->withErrors(['avatar' => 'Eroare la procesarea imaginii: ' . $e->getMessage()]);
         }
     }
 }

@@ -72,7 +72,7 @@ new class extends Component {
 
                     <x-slot name="content">
                         <div class="bg-gray-800 border border-gray-700 rounded-md">
-                            <x-dropdown-link :href="route('profile')" wire:navigate
+                            <x-dropdown-link :href="route('profile.edit')" wire:navigate
                                 class="text-white hover:bg-gray-700 hover:text-blue-400">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
@@ -181,7 +181,7 @@ new class extends Component {
             <!-- User Profile & Logout - Enhanced Design -->
             <div class="w-full px-6 pt-8 mt-10 border-t border-gray-700">
                 <div class="flex flex-col space-y-4">
-                    <x-responsive-nav-link :href="route('profile')" wire:navigate
+                    <x-responsive-nav-link :href="route('profile.edit')" wire:navigate
                         class="flex items-center justify-center w-full px-6 py-3 text-lg font-medium text-center text-gray-100 transition-colors duration-300 ease-in-out bg-gray-800 rounded-lg hover:bg-gray-700 hover:text-blue-400">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
