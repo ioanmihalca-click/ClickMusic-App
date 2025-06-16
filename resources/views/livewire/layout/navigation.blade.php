@@ -89,7 +89,7 @@ new class extends Component {
             <!-- Hamburger -->
             <div class="flex items-center -me-2 sm:hidden">
                 <button @click="open = ! open"
-                    class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-300 rounded-md hover:text-blue-400 hover:bg-gray-800 focus:outline-none">
+                    class="relative z-50 flex items-center justify-center p-2 text-gray-400 transition duration-300 rounded-md hover:text-blue-400 hover:bg-gray-800 focus:outline-none">
                     <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -102,58 +102,59 @@ new class extends Component {
         </div>
     </div>
 
-    <!-- Mobile Menu -->
-    <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
-        <div class="pt-4 pb-1 bg-gray-800 border-t border-gray-700">
-            <div class="px-4">
-                <!-- Added Avatar -->
-                <div class="flex items-center mb-3">
-                    <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}"
-                        class="w-10 h-10 mr-3 rounded-full">
-                    <div>
-                        <div class="text-base font-medium text-gray-300" x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name"
-                            x-on:profile-updated.window="name = $event.detail.name"></div>
-                        <div class="text-sm font-medium text-gray-400">{{ auth()->user()->email }}</div>
-                    </div>
+    <!-- Mobile Menu - Fullscreen Overlay -->
+    <div x-show="open" x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100"
+        x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform scale-100"
+        x-transition:leave-end="opacity-0 transform scale-90"
+        class="fixed inset-0 z-40 flex flex-col items-center justify-center w-full h-screen bg-gray-900 sm:hidden bg-opacity-95"
+        style="display: none;">
+
+        <div class="w-full px-4 mx-auto max-w-7xl">
+            <!-- User Info at Top -->
+            <div class="flex items-center mb-8">
+                <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}"
+                    class="w-12 h-12 mr-4 border-2 border-blue-400 rounded-full">
+                <div>
+                    <div class="text-xl font-medium text-white" x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name"
+                        x-on:profile-updated.window="name = $event.detail.name"></div>
+                    <div class="text-sm font-medium text-gray-400">{{ auth()->user()->email }}</div>
                 </div>
             </div>
 
-            <x-responsive-nav-link :href="route('videoclipuri')" :active="request()->routeIs('videoclipuri')" wire:navigate
-                class="text-gray-300 hover:bg-gray-700 hover:text-blue-400">
-                {{ __('Media') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('forum.index')" :active="request()->routeIs('forum.index')" wire:navigate
-                class="text-gray-300 hover:bg-gray-700 hover:text-blue-400">
-                {{ __('Comunitate') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('blog.index')" :active="request()->routeIs('blog.index')" wire:navigate
-                class="text-gray-300 hover:bg-gray-700 hover:text-blue-400">
-                {{ __('Blog') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('magazin')" :active="request()->routeIs('magazin')" wire:navigate
-                class="text-gray-300 hover:bg-gray-700 hover:text-blue-400">
-                {{ __('Magazin') }}
-            </x-responsive-nav-link>
-        </div>
-
-        <div class="pt-4 pb-1 bg-gray-800 border-t border-gray-700">
-            <div class="px-4">
-                <div class="text-base font-medium text-gray-300" x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name"
-                    x-on:profile-updated.window="name = $event.detail.name"></div>
-                <div class="text-sm font-medium text-gray-400">{{ auth()->user()->email }}</div>
-            </div>
-
-            <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile')" wire:navigate
-                    class="text-gray-300 hover:bg-gray-700 hover:text-blue-400">
-                    {{ __('Profile') }}
+            <!-- Navigation Links -->
+            <nav class="flex flex-col items-center space-y-6 uppercase">
+                <x-responsive-nav-link :href="route('videoclipuri')" :active="request()->routeIs('videoclipuri')" wire:navigate
+                    class="w-full py-2 text-2xl font-medium text-center text-white hover:text-blue-400">
+                    {{ __('Media') }}
                 </x-responsive-nav-link>
-                <button wire:click="logout" class="w-full text-start">
-                    <x-responsive-nav-link class="text-gray-300 hover:bg-gray-700 hover:text-blue-400">
-                        {{ __('Log Out') }}
+                <x-responsive-nav-link :href="route('forum.index')" :active="request()->routeIs('forum.index')" wire:navigate
+                    class="w-full py-2 text-2xl font-medium text-center text-white hover:text-blue-400">
+                    {{ __('Comunitate') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('blog.index')" :active="request()->routeIs('blog.index')" wire:navigate
+                    class="w-full py-2 text-2xl font-medium text-center text-white hover:text-blue-400">
+                    {{ __('Blog') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('magazin')" :active="request()->routeIs('magazin')" wire:navigate
+                    class="w-full py-2 text-2xl font-medium text-center text-white hover:text-blue-400">
+                    {{ __('Magazin') }}
+                </x-responsive-nav-link>
+
+                <!-- User Profile & Logout -->
+                <div class="w-full pt-6 mt-6 border-t border-gray-700">
+                    <x-responsive-nav-link :href="route('profile')" wire:navigate
+                        class="w-full py-2 text-2xl font-medium text-center text-white hover:text-blue-400">
+                        {{ __('Profile') }}
                     </x-responsive-nav-link>
-                </button>
-            </div>
+                    <button wire:click="logout" class="w-full py-2 text-center">
+                        <x-responsive-nav-link
+                            class="w-full text-2xl font-medium text-center text-white hover:text-blue-400">
+                            {{ __('Log Out') }}
+                        </x-responsive-nav-link>
+                    </button>
+                </div>
+            </nav>
         </div>
     </div>
 </nav>
