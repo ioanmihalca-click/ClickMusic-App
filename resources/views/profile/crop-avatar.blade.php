@@ -179,24 +179,22 @@
             // Reset
             document.getElementById('reset').addEventListener('click', function() {
                 cropper.reset();
-            });
-
-            // Form submit
+            }); // Form submit
             cropForm.addEventListener('submit', function(e) {
                 e.preventDefault();
 
-                // Get cropped canvas
+                // Get cropped canvas - redus la dimensiuni mai mici pentru optimizare
                 const canvas = cropper.getCroppedCanvas({
-                    width: 512, // Output size
-                    height: 512,
+                    width: 300, // Dimensiune mai mică pentru optimizare
+                    height: 300,
                     fillColor: '#fff',
                     imageSmoothingEnabled: true,
-                    imageSmoothingQuality: 'high',
+                    imageSmoothingQuality: 'medium', // Medium pentru optimizare
                 });
 
                 if (canvas) {
-                    // Convert canvas to base64 string
-                    croppedImageInput.value = canvas.toDataURL('image/png');
+                    // Convert canvas to base64 string - folosind format JPEG pentru compresie mai bună
+                    croppedImageInput.value = canvas.toDataURL('image/jpeg', 0.85); // 0.85 = 85% calitate
                     this.submit();
                 }
             });

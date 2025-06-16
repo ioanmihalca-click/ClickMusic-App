@@ -63,6 +63,7 @@ class ProfileController extends Controller
 
             // Decode croppedImage din base64
             $base64Image = $request->input('croppedImage');
+            $base64Image = str_replace('data:image/jpeg;base64,', '', $base64Image);
             $base64Image = str_replace('data:image/png;base64,', '', $base64Image);
             $base64Image = str_replace(' ', '+', $base64Image);
             $imageData = base64_decode($base64Image);
@@ -71,12 +72,64 @@ class ProfileController extends Controller
                 throw new \Exception('Imaginea nu a putut fi decodată.');
             }
 
-            // Obține un nume de fișier unic pentru imaginea finală
-            $filename = 'avatar_' . time() . '_' . uniqid() . '.png';
+            // Creează o imagine de la datele decodate
+            $tempFile = tempnam(sys_get_temp_dir(), 'avatar');
+            file_put_contents($tempFile, $imageData);
+
+            // Încarcă imaginea folosind GD
+            $image = imagecreatefromstring($imageData);
+            if (!$image) {
+                throw new \Exception('Nu s-a putut crea imaginea din datele primite.');
+            }
+
+            // Redimensionează la o dimensiune rezonabilă dacă este prea mare
+            // Obține dimensiunile curente
+            $width = imagesx($image);
+            $height = imagesy($image);
+
+            // Dacă imaginea este mai mare de 300x300, o redimensionăm
+            $maxDimension = 300;
+            if ($width > $maxDimension || $height > $maxDimension) {
+                if ($width > $height) {
+                    $newWidth = $maxDimension;
+                    $newHeight = intval($height * ($maxDimension / $width));
+                } else {
+                    $newHeight = $maxDimension;
+                    $newWidth = intval($width * ($maxDimension / $height));
+                }
+
+                $resized = imagecreatetruecolor($newWidth, $newHeight);
+                imagealphablending($resized, false);
+                imagesavealpha($resized, true);
+                imagecopyresampled($resized, $image, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+                imagedestroy($image);
+                $image = $resized;
+            }
+
+            // Obține un nume de fișier unic pentru imaginea finală - folosim jpg pentru compresie mai bună
+            $filename = 'avatar_' . time() . '_' . uniqid() . '.jpg';
             $finalPath = 'avatars/' . $filename;
 
-            // Salvează imaginea cropată
-            Storage::disk('public')->put($finalPath, $imageData);
+            // Salvează imaginea optimizată
+            $tempOutput = tempnam(sys_get_temp_dir(), 'avatar_output');
+            imagejpeg($image, $tempOutput, 85); // Calitate 85% - un bun echilibru între calitate și dimensiune
+            imagedestroy($image);
+
+            // Încarcă imaginea optimizată în storage
+            $optimizedImageData = file_get_contents($tempOutput);
+            Storage::disk('public')->put($finalPath, $optimizedImageData);
+
+            // Curăță fișierele temporare
+            @unlink($tempFile);
+            @unlink($tempOutput);
+
+            // Verifică și logează dimensiunea fișierului optimizat
+            $fileSize = Storage::disk('public')->size($finalPath);
+            Log::info('Avatar saved with optimization', [
+                'path' => $finalPath,
+                'size' => $fileSize,
+                'size_kb' => round($fileSize / 1024, 2) . ' KB'
+            ]);
 
             // Obține utilizatorul curent
             $user = User::find(Auth::id());
