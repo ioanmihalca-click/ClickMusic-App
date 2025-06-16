@@ -1,12 +1,14 @@
 <?php
 
-// app/Livewire/Forum/ForumIndex.php
+
 namespace App\Livewire\Forum;
 
-use App\Models\ForumCategory;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Models\ForumCategory;
+use Livewire\Attributes\Layout;
 
+#[Layout('layouts.app')]
 class ForumIndex extends Component
 {
     use WithPagination;

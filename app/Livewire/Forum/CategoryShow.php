@@ -4,11 +4,13 @@
 namespace App\Livewire\Forum;
 
 use Livewire\Component;
+use App\Models\ForumThread;
 use Livewire\WithPagination;
 use App\Models\ForumCategory;
-use App\Models\ForumThread;
+use Livewire\Attributes\Layout;
 use Illuminate\Support\Facades\Auth;
 
+#[Layout('layouts.app')]
 class CategoryShow extends Component
 {
     use WithPagination;

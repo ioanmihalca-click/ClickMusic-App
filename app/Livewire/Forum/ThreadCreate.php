@@ -6,8 +6,10 @@ namespace App\Livewire\Forum;
 use Livewire\Component;
 use App\Models\ForumThread;
 use App\Models\ForumCategory;
+use Livewire\Attributes\Layout;
 use Illuminate\Support\Facades\Auth;
 
+#[Layout('layouts.app')]
 class ThreadCreate extends Component
 {
     public $title = '';

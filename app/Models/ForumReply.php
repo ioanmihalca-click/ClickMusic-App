@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Livewire\Attributes\Layout;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+#[Layout('layouts.app')]
 class ForumReply extends Model
 {
     use HasFactory;

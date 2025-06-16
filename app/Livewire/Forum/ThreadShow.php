@@ -3,11 +3,13 @@
 namespace App\Livewire\Forum;
 
 use Livewire\Component;
-use App\Models\ForumThread;
 use App\Models\ForumReply;
-use Illuminate\Support\Facades\Auth;
+use App\Models\ForumThread;
 use Livewire\WithPagination;
+use Livewire\Attributes\Layout;
+use Illuminate\Support\Facades\Auth;
 
+#[Layout('layouts.app')]
 class ThreadShow extends Component
 {
     use WithPagination;
