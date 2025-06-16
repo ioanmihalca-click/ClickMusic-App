@@ -89,17 +89,11 @@
             <!-- Show both albums and haine -->
             <div class="space-y-16">
                 <div>
-                    <h2
-                        class="mb-8 text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-                        Albume Muzicale
-                    </h2>
+
                     <livewire:album-list />
                 </div>
                 <div>
-                    <h2
-                        class="mb-8 text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400">
-                        Haine Click Music
-                    </h2>
+
                     <livewire:haina-list />
                 </div>
             </div>
