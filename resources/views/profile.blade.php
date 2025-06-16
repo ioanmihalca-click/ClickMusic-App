@@ -20,7 +20,8 @@
                                 <!-- Avatar Section -->
                                 <div class="relative group/avatar" id="avatarContainer">
                                     <div class="flex flex-col items-center space-y-2">
-                                        <div class="relative flex items-center justify-center cursor-pointer">
+                                        <div class="relative flex items-center justify-center cursor-pointer"
+                                            onclick="document.getElementById('avatar-upload').click();">
                                             <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}"
                                                 class="object-cover w-24 h-24 overflow-hidden transition-all duration-300 rounded-full sm:w-32 sm:h-32 aspect-square ring-2 ring-blue-400/50 touch-manipulation hover:brightness-90">
 
