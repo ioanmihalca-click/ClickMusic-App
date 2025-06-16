@@ -24,12 +24,21 @@ class ProfileController extends Controller
                 'avatar.mimes' => 'Formatul imaginii trebuie să fie: jpeg, png, jpg sau gif.',
                 'avatar.image' => 'Fișierul trebuie să fie o imagine.'
             ]);
-    
-            // Salvează imaginea în storage/app/public/avatars
+
+            // Obține utilizatorul curent
+            $user = User::find(Auth::id());
+
+            // Verifică și șterge imaginea veche dacă există
+            if ($user && $user->avatar && Storage::disk('public')->exists($user->avatar)) {
+                Storage::disk('public')->delete($user->avatar);
+            }
+
+            // Salvează imaginea nouă în storage/app/public/avatars
             $path = $request->file('avatar')->store('avatars', 'public');
-    
-            User::where('id', Auth::id())->update(['avatar' => $path]);
-    
+
+            // Actualizează calea către avatar în baza de date
+            $user->update(['avatar' => $path]);
+
             return back()->with('status', 'avatar-updated');
         } catch (\Exception $e) {
             return back()->withErrors(['avatar' => 'Eroare la încărcare: ' . $e->getMessage()]);
