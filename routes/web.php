@@ -32,7 +32,6 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Notifications\AbonamentNouCreatAdmin;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\SubscriptionController;
-use App\Http\Controllers\PromoUnsubscribeController;
 use App\Http\Controllers\VideoNotificationController;
 use App\Http\Controllers\SubscriptionSuccessController;
 
@@ -81,12 +80,6 @@ Route::middleware(['auth'])->group(function () {
         }
     })->name('profile.newsletter.toggle');
 });
-
-
-
-Route::get('/promo/unsubscribe/{email}', [PromoUnsubscribeController::class, 'unsubscribe'])
-    ->name('promo.unsubscribe')
-    ->middleware('signed');
 
 
 
