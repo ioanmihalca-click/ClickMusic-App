@@ -18,17 +18,16 @@
                         <div class="relative p-6 bg-gray-900/90 backdrop-blur-sm rounded-xl">
                             <div class="flex flex-col items-center space-y-4 sm:flex-row sm:space-x-8 sm:space-y-0">
                                 <!-- Avatar Section -->
-                                <div class="relative group/avatar" id="avatarContainer" x-data="{ showUpload: false }">
+                                <div class="relative group/avatar" id="avatarContainer">
                                     <div class="flex flex-col items-center space-y-2">
-                                        <div class="relative flex items-center justify-center cursor-pointer"
-                                            @click="showUpload = !showUpload">
+                                        <div class="relative flex items-center justify-center cursor-pointer">
                                             <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}"
                                                 class="object-cover w-24 h-24 overflow-hidden transition-all duration-300 rounded-full sm:w-32 sm:h-32 aspect-square ring-2 ring-blue-400/50 touch-manipulation hover:brightness-90">
 
-                                            <!-- Hint overlay (semi-visible always, more visible on hover) -->
+                                            <!-- Hint overlay (always visible, enhanced on hover) -->
                                             <div
-                                                class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 rounded-full opacity-30 bg-blue-500/20 hover:opacity-70">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white"
+                                                class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 rounded-full bg-blue-500/30 hover:bg-blue-500/50">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white"
                                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         stroke-width="2"
@@ -53,10 +52,9 @@
                                             </div>
                                         </div>
 
-                                        <!-- Always visible button/text -->
-                                        <button
-                                            class="px-3 py-1 text-xs font-medium text-gray-300 transition-all duration-300 border border-gray-700 rounded-md hover:text-white hover:border-blue-500 hover:bg-gray-800/50 active:scale-95"
-                                            @click="showUpload = !showUpload">
+                                        <!-- Always visible button/text that directly triggers file upload -->
+                                        <label for="avatar-upload"
+                                            class="px-3 py-1 text-xs font-medium text-gray-300 transition-all duration-300 border border-gray-700 rounded-md cursor-pointer hover:text-white hover:border-blue-500 hover:bg-gray-800/50 active:scale-95">
                                             <span class="flex items-center gap-1">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none"
                                                     viewBox="0 0 24 24" stroke="currentColor">
@@ -66,36 +64,15 @@
                                                 </svg>
                                                 Schimbă imaginea
                                             </span>
-                                        </button>
+                                        </label>
                                     </div>
 
-                                    <!-- Upload form -->
+                                    <!-- Upload form (simplified to just contain the input) -->
                                     <form action="{{ route('profile.avatar') }}" method="POST"
-                                        enctype="multipart/form-data"
-                                        class="absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300"
-                                        x-bind:class="{
-                                            'opacity-100': showUpload,
-                                            'opacity-0': !showUpload,
-                                            'pointer-events-none': !
-                                                showUpload
-                                        }">
+                                        enctype="multipart/form-data">
                                         @csrf
                                         @method('PATCH')
-                                        <div
-                                            class="flex flex-col items-center p-4 space-y-2 bg-gray-900/80 backdrop-blur-md rounded-2xl">
-                                            <label for="avatar-upload"
-                                                class="flex items-center justify-center p-3 text-white transition-all duration-300 rounded-full cursor-pointer bg-blue-600/90 hover:bg-blue-700 active:scale-95">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
-                                                    viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                                                </svg>
-                                            </label>
-                                            <p class="text-sm font-medium text-white">Încarcă/Schimbă imagine</p>
-                                        </div> <input id="avatar-upload" type="file" name="avatar" class="hidden"
+                                        <input id="avatar-upload" type="file" name="avatar" class="hidden"
                                             accept="image/*"
                                             onchange="if(this.files[0]) { 
                                                 document.getElementById('avatar-loading').classList.remove('hidden'); 
