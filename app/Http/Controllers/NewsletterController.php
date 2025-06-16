@@ -37,6 +37,7 @@ class NewsletterController extends Controller
             'recipient_name' => $validatedData['name'],
             'recipient_email' => $validatedData['email'],
             'status' => Newsletter::STATUS_PENDING,
+            'campaign_type' => Newsletter::TYPE_SUBSCRIBER, // Adăugăm tipul corect de subscriber
         ]);
 
         Log::info("Newsletter subscription: {$validatedData['email']} added to newsletter list");
