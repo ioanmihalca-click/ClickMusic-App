@@ -597,6 +597,15 @@ class NewsletterResource extends Resource
             ->defaultSort('created_at', 'desc');
     }
 
+    /**
+     * Modificăm query-ul ca să arate doar campaniile, nu și abonații din formular
+     */
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->where('campaign_type', Newsletter::TYPE_CAMPAIGN);
+    }
+
     private static function getSendNewsletterAction(string $name, string $label, callable $getRecords): Action
     {
         return Action::make($name)

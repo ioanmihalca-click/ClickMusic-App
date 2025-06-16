@@ -9,11 +9,11 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateNewsletterSubscriber extends CreateRecord
 {
     protected static string $resource = NewsletterSubscriberResource::class;
-
     protected function mutateFormDataBeforeCreate(array $data): array
     {
         // La creare, toate înregistrările noi sunt de tip subscriber (nu campanii)
         $data['status'] = 'pending';
+        $data['campaign_type'] = 'subscriber';
 
         return $data;
     }
