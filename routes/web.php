@@ -104,8 +104,17 @@ Route::prefix('comunitate')->middleware(['auth'])->group(function () {
     Route::get('/categorii/{category:slug}', App\Livewire\Forum\CategoryShow::class)->name('forum.categories.show');
     Route::get('/discutii/creare', App\Livewire\Forum\ThreadCreate::class)->name('forum.threads.create');
     Route::get('/discutii/{thread:slug}', App\Livewire\Forum\ThreadShow::class)->name('forum.threads.show');
-});
 
+    // Thread management routes
+    Route::delete('/discutii/{thread}/delete', [App\Http\Controllers\ForumThreadsController::class, 'destroy'])->name('forum.threads.destroy');
+    Route::get('/discutii/{thread}/edit', [App\Http\Controllers\ForumThreadsController::class, 'edit'])->name('forum.threads.edit');
+    Route::put('/discutii/{thread}', [App\Http\Controllers\ForumThreadsController::class, 'update'])->name('forum.threads.update');
+
+    // Reply management routes
+    Route::delete('/raspunsuri/{reply}/delete', [App\Http\Controllers\ForumRepliesController::class, 'destroy'])->name('forum.replies.destroy');
+    Route::get('/raspunsuri/{reply}/edit', [App\Http\Controllers\ForumRepliesController::class, 'edit'])->name('forum.replies.edit');
+    Route::put('/raspunsuri/{reply}', [App\Http\Controllers\ForumRepliesController::class, 'update'])->name('forum.replies.update');
+});
 Route::view('videoclipuri', 'videoclipuri')
     ->middleware([Subscribed::class])
     ->name('videoclipuri');

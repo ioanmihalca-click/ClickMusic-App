@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="ro" class="h-full">
+
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-34NT57GG5F"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
         gtag('js', new Date());
         gtag('config', 'G-34NT57GG5F');
     </script>
@@ -15,12 +19,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Meta Tags for Click Music Streaming App -->
-    <meta name="description" content="Click Music - Muzica, Hip-Hop, Reggae, Soul - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul - Click">
-    <meta name="keywords" content="Click Music, streaming video, hip-hop, reggae, soul, Click, Baia Mare, Maramureș, Romania, muzică, videoclipuri muzicale, artist, streaming, audio, video, videoclipuri exclusive">
-    
+    <meta name="description"
+        content="Click Music - Muzica, Hip-Hop, Reggae, Soul - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul - Click">
+    <meta name="keywords"
+        content="Click Music, streaming video, hip-hop, reggae, soul, Click, Baia Mare, Maramureș, Romania, muzică, videoclipuri muzicale, artist, streaming, audio, video, videoclipuri exclusive">
+
     <!-- Open Graph Tags for Social Media Sharing -->
     <meta property="og:title" content="Click Music - Muzica, Hip-Hop, Soul, Reggae">
-    <meta property="og:description" content="Click Music - Muzica, Hip-Hop, Reggae, Soul - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul - Click">
+    <meta property="og:description"
+        content="Click Music - Muzica, Hip-Hop, Reggae, Soul - O aplicație de streaming video a artistului de muzică hip-hop, reggae și soul - Click">
     <meta property="og:image" content="{{ asset('img/ClickMusic-OG.jpg') }}">
     <meta property="og:image:type" content="image/jpg">
     <meta property="og:image:alt" content="Click Music - Muzica, Hip-Hop, Reggae, Soul">
@@ -50,7 +57,7 @@
     @livewireStyles
 
     <!-- Additional Styles -->
-  <style>
+    <style>
         /* Custom scrollbar styling */
         body::-webkit-scrollbar {
             width: 9px;
@@ -67,6 +74,7 @@
         }
     </style>
 </head>
+
 <body class="flex flex-col min-h-screen font-sans antialiased text-white bg-black">
     <div class="flex-grow">
         <livewire:layout.navigation />
@@ -78,8 +86,11 @@
     </div>
 
     <x-footer />
-   
-   @livewireScripts
+
+    <!-- Flash Messages Component -->
+    <x-flash-messages />
+
+    @livewireScripts
 </body>
 
 </html>
