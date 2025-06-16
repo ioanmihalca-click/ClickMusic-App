@@ -324,4 +324,12 @@ class Newsletter extends Model
             default => 'primary',
         };
     }
+
+    /**
+     * Verifică dacă newsletter-ul este dezabonat (analog cu User->unsubscribed)
+     */
+    public function getUnsubscribedAttribute(): bool
+    {
+        return $this->status !== self::STATUS_PENDING;
+    }
 }

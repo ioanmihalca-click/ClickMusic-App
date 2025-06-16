@@ -208,4 +208,12 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->hasMany(ForumReply::class);
     }
+
+    /**
+     * Verifică dacă utilizatorul este dezabonat
+     */
+    public function getUnsubscribedAttribute(): bool
+    {
+        return !is_null($this->newsletter_unsubscribed_at);
+    }
 }

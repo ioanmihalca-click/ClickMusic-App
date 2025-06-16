@@ -37,7 +37,8 @@ class NewsletterResource extends Resource
 {
     protected static ?string $model = Newsletter::class;
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
-    protected static ?string $navigationLabel = 'Newsletter';
+    protected static ?string $navigationLabel = 'Campanii Newsletter';
+    protected static ?string $navigationGroup = 'Marketing';
     protected static ?int $navigationSort = 7;
 
     public static function form(Form $form): Form
@@ -1066,6 +1067,7 @@ class NewsletterResource extends Resource
         return [
             'index' => ListNewsletters::route('/'),
             'edit' => EditNewsletter::route('/{record}/edit'),
+            'create' => CreateNewsletter::route('/create'),
         ];
     }
 
