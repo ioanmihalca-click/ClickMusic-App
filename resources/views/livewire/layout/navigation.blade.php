@@ -107,54 +107,108 @@ new class extends Component {
         x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100"
         x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform scale-100"
         x-transition:leave-end="opacity-0 transform scale-90"
-        class="fixed inset-0 z-40 flex flex-col items-center justify-center w-full h-screen bg-gray-900 sm:hidden bg-opacity-95"
+        class="fixed inset-0 z-40 flex flex-col items-center justify-start w-full h-screen overflow-y-auto bg-gradient-to-b from-gray-900 to-gray-800 sm:hidden"
         style="display: none;">
 
-        <div class="w-full px-4 mx-auto max-w-7xl">
-            <!-- User Info at Top -->
-            <div class="flex items-center mb-8">
-                <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}"
-                    class="w-12 h-12 mr-4 border-2 border-blue-400 rounded-full">
-                <div>
-                    <div class="text-xl font-medium text-white" x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name"
+        <div class="w-full px-4 pt-16 mx-auto max-w-7xl">
+            <!-- User Info at Top - Enhanced Design -->
+            <div class="flex flex-col items-center mb-10">
+                <div class="relative mb-3">
+                    <img src="{{ auth()->user()->avatar }}" alt="{{ auth()->user()->name }}"
+                        class="w-20 h-20 border-2 border-blue-400 rounded-full shadow-lg">
+                    <div
+                        class="absolute bottom-0 right-0 flex items-center justify-center w-6 h-6 bg-green-500 border-2 border-gray-900 rounded-full">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-white" x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name"
                         x-on:profile-updated.window="name = $event.detail.name"></div>
-                    <div class="text-sm font-medium text-gray-400">{{ auth()->user()->email }}</div>
+                    <div class="text-sm font-medium text-blue-400">{{ auth()->user()->email }}</div>
                 </div>
             </div>
 
-            <!-- Navigation Links -->
-            <nav class="flex flex-col items-center space-y-6 uppercase">
+            <!-- Navigation Links - Enhanced Design -->
+            <nav class="flex flex-col items-center space-y-5">
                 <x-responsive-nav-link :href="route('videoclipuri')" :active="request()->routeIs('videoclipuri')" wire:navigate
-                    class="w-full py-2 text-2xl font-medium text-center text-white hover:text-blue-400">
-                    {{ __('Media') }}
-                </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('forum.index')" :active="request()->routeIs('forum.index')" wire:navigate
-                    class="w-full py-2 text-2xl font-medium text-center text-white hover:text-blue-400">
-                    {{ __('Comunitate') }}
-                </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('blog.index')" :active="request()->routeIs('blog.index')" wire:navigate
-                    class="w-full py-2 text-2xl font-medium text-center text-white hover:text-blue-400">
-                    {{ __('Blog') }}
-                </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('magazin')" :active="request()->routeIs('magazin')" wire:navigate
-                    class="w-full py-2 text-2xl font-medium text-center text-white hover:text-blue-400">
-                    {{ __('Magazin') }}
+                    class="w-full py-3 text-xl font-bold tracking-wider text-center text-gray-100 uppercase transition-all duration-300 ease-in-out transform hover:text-blue-400 hover:scale-105">
+                    <span class="flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 4v16M17 4v16M3 8h18M3 16h18" />
+                        </svg>
+                        {{ __('Media') }}
+                    </span>
                 </x-responsive-nav-link>
 
-                <!-- User Profile & Logout -->
-                <div class="w-full pt-6 mt-6 border-t border-gray-700">
+                <x-responsive-nav-link :href="route('forum.index')" :active="request()->routeIs('forum.index')" wire:navigate
+                    class="w-full py-3 text-xl font-bold tracking-wider text-center text-gray-100 uppercase transition-all duration-300 ease-in-out transform hover:text-blue-400 hover:scale-105">
+                    <span class="flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                        </svg>
+                        {{ __('Comunitate') }}
+                    </span>
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('blog.index')" :active="request()->routeIs('blog.index')" wire:navigate
+                    class="w-full py-3 text-xl font-bold tracking-wider text-center text-gray-100 uppercase transition-all duration-300 ease-in-out transform hover:text-blue-400 hover:scale-105">
+                    <span class="flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                        </svg>
+                        {{ __('Blog') }}
+                    </span>
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('magazin')" :active="request()->routeIs('magazin')" wire:navigate
+                    class="w-full py-3 text-xl font-bold tracking-wider text-center text-gray-100 uppercase transition-all duration-300 ease-in-out transform hover:text-blue-400 hover:scale-105">
+                    <span class="flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                        </svg>
+                        {{ __('Magazin') }}
+                    </span>
+                </x-responsive-nav-link>
+            </nav>
+
+            <!-- User Profile & Logout - Enhanced Design -->
+            <div class="w-full px-6 pt-8 mt-10 border-t border-gray-700">
+                <div class="flex flex-col space-y-4">
                     <x-responsive-nav-link :href="route('profile')" wire:navigate
-                        class="w-full py-2 text-2xl font-medium text-center text-white hover:text-blue-400">
+                        class="flex items-center justify-center w-full px-6 py-3 text-lg font-medium text-center text-gray-100 transition-colors duration-300 ease-in-out bg-gray-800 rounded-lg hover:bg-gray-700 hover:text-blue-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
                         {{ __('Profile') }}
                     </x-responsive-nav-link>
-                    <button wire:click="logout" class="w-full py-2 text-center">
+
+                    <button wire:click="logout" class="w-full">
                         <x-responsive-nav-link
-                            class="w-full text-2xl font-medium text-center text-white hover:text-blue-400">
+                            class="flex items-center justify-center w-full px-6 py-3 text-lg font-medium text-center text-gray-100 transition-colors duration-300 ease-in-out bg-gray-800 rounded-lg hover:bg-red-600 hover:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                            </svg>
                             {{ __('Log Out') }}
                         </x-responsive-nav-link>
                     </button>
                 </div>
-            </nav>
+            </div>
+
+            <!-- Footer with App Version -->
+            <div class="mt-10 mb-6 text-xs text-center text-gray-500">
+                <p>ClickMusic © 2025</p>
+            </div>
         </div>
     </div>
 </nav>
