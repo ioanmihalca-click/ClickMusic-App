@@ -1,5 +1,5 @@
-<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="bg-gray-800 shadow rounded-lg overflow-hidden">
+<div class="max-w-3xl px-4 py-12 mx-auto mt-8 sm:px-6 lg:px-8">
+    <div class="overflow-hidden bg-gray-800 rounded-lg shadow">
         <div class="p-6">
             <div class="flex items-center justify-between mb-6">
                 <h1 class="text-2xl font-bold text-white">Notificări</h1>
