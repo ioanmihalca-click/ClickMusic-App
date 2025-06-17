@@ -142,6 +142,13 @@ Route::post('/profile/avatar/crop', [ProfileController::class, 'cropAvatar'])->n
 
 Route::post('/subscription/cancel', [SubscriptionController::class, 'cancelSubscription'])->name('subscription.cancel');
 
+// Logout route
+Route::post('/logout', function () {
+    $logout = new \App\Livewire\Actions\Logout();
+    $logout();
+    return redirect('/');
+})->name('logout')->middleware('auth');
+
 Route::get('/videos/share/{id}', [VideoController::class, 'share'])->name('videos.share');
 
 // Define route for privacy policy page

@@ -6,7 +6,8 @@ use App\Models\Reply;
 use Livewire\Component;
 use App\Events\CommentCreated;
 use Illuminate\Support\Facades\Auth;
-use App\Megaphone\CommentReplyNotification;
+use App\Events\CommentReplied;
+use App\Services\NotificationService;
 use App\Models\Video; // Import the Video model
 use App\Models\Comment; // Import the Comment model
 
@@ -74,7 +75,7 @@ class AllComments extends Component
         // Reset reply content after submission
         $this->replyToComment[$commentId] = "";
 
-        // Trigger the Megaphone notification, passing only title and body:
-        $comment->user->notify(new CommentReplyNotification($reply, $comment->video));
+        // Trigger the notification system through the event
+        event(new CommentReplied($reply, $comment->video));
     }
 }

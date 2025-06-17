@@ -34,6 +34,7 @@ class NewVideoNotification extends Notification implements ShouldQueue
             ->line('**' . $this->video->title . '**')
             ->line($this->video->description)
             ->action('Vezi acum', route('videos.show', $this->video->id))
-            ->line('Pentru a viziona noul video, trebuie să fii autentificat în aplicație. Îți mulțumesc că faci parte din comunitatea noastră!');
+            ->line('Pentru a viziona noul video, trebuie să fii autentificat în aplicație. Îți mulțumesc că faci parte din comunitatea noastră!')
+            ->salutation('Cu respect, Click Music');
     }
 }

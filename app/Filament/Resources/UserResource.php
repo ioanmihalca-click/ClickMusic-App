@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
-use App\Megaphone\SuperUserNotificationBell;
 use App\Notifications\SuperUserNotification;
 use App\Filament\Resources\UserResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -24,7 +23,7 @@ class UserResource extends Resource
     protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
-    protected static ?int $navigationSort = 1; 
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
@@ -50,29 +49,26 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('usertype'),
                 Tables\Columns\TextColumn::make('created_at')->dateTime()->sortable(),
             ])
-            
+
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Action::make('make_super_user')
-                ->label('Make Super User')
-                ->action(function (User $record) {
-                    if ($record->id == Auth::id()) { 
-                        return redirect()->back()->with('error_message', 'You cannot change your own user type.');
-                    }
-                    $record->update(['usertype' => 'super_user']);
-                    $record->notify(new SuperUserNotification());
-                    
-                    // Trigger Megaphone notification
-                  $record->notify(new SuperUserNotificationBell());
-                })
-                ->requiresConfirmation()
-                ->color('success')
-                ->icon('heroicon-s-user-plus')
-        ])
-            
+                    ->label('Make Super User')
+                    ->action(function (User $record) {
+                        if ($record->id == Auth::id()) {
+                            return redirect()->back()->with('error_message', 'You cannot change your own user type.');
+                        }
+                        $record->update(['usertype' => 'super_user']);
+                        $record->notify(new SuperUserNotification());
+                    })
+                    ->requiresConfirmation()
+                    ->color('success')
+                    ->icon('heroicon-s-user-plus')
+            ])
+
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),

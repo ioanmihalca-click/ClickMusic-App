@@ -14,7 +14,6 @@ use Filament\Notifications\Notification;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
-use App\Megaphone\CommentReplyNotification;
 use App\Filament\Resources\CommentResource\Pages\ListComments;
 
 
@@ -89,8 +88,8 @@ class CommentResource extends Resource
                         ]);
 
 
-                        // Trigger Megaphone Notification (Here's the key change!)
-                        $record->user->notify(new CommentReplyNotification($reply, $record->video));
+                        // Trigger event for notification
+                        event(new \App\Events\CommentReplied($reply, $record->video));
 
                         Notification::make()
                             ->title('Răspuns adăugat cu succes')

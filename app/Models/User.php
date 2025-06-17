@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use Filament\Panel;
 use Illuminate\Support\Str;
 use Laravel\Cashier\Billable;
-use MBarlow\Megaphone\HasMegaphone;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\FilamentUser;
@@ -18,7 +17,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class User extends Authenticatable implements FilamentUser
 {
-    use HasFactory, Notifiable, Billable, HasMegaphone, ManagesSubscriptions;
+    use HasFactory, Notifiable, Billable, ManagesSubscriptions;
 
     /**
      * The attributes that are mass assignable.
@@ -215,5 +214,21 @@ class User extends Authenticatable implements FilamentUser
     public function getUnsubscribedAttribute(): bool
     {
         return !is_null($this->newsletter_unsubscribed_at);
+    }
+
+    /**
+     * User's custom notifications
+     */
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
+
+    /**
+     * Get unread notifications count
+     */
+    public function unreadNotificationsCount()
+    {
+        return $this->notifications()->whereNull('read_at')->count();
     }
 }

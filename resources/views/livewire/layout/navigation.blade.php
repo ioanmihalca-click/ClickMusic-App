@@ -44,7 +44,7 @@ new class extends Component {
             </div>
 
             <div class="flex items-center justify-center ml-auto">
-                <livewire:megaphone />
+                <livewire:notifications-menu />
             </div>
 
             <!-- Settings Dropdown -->

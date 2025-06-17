@@ -1,1 +1,0 @@
-@include('megaphone::types.base')
