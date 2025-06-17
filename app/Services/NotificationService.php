@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\User;
+use App\Models\Video;
 use App\Models\Notification;
 
 class NotificationService
@@ -109,6 +110,26 @@ class NotificationService
             $commentBody,
             $url,
             ['video_title' => $videoTitle]
+        );
+    }
+
+    /**
+     * Send a notification about a new video to all users
+     *
+     * @param Video $video The video object
+     * @return void
+     */
+    public function sendNewVideoNotification(Video $video)
+    {
+        $this->sendToAllUsers(
+            'new_video',
+            'Video nou: ' . $video->title,
+            'Un nou video a fost adăugat pe Click Music!',
+            route('videos.show', $video->id),
+            [
+                'video_id' => $video->id,
+                'thumbnail' => $video->thumbnail_url_full,
+            ]
         );
     }
 }
