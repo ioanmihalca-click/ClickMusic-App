@@ -7,19 +7,6 @@
     <div class="container relative px-4 mx-auto">
         <!-- Newsletter Section -->
         <div class="max-w-2xl mx-auto text-center">
-            @if (session('success'))
-                <div class="mb-4 text-green-400">{{ session('success') }}</div>
-            @endif
-
-            @if ($errors->any())
-                <div class="mb-4 text-red-400">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
 
             <h3
                 class="mb-2 text-lg font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
