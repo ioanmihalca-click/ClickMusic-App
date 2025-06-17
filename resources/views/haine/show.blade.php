@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-layouts.app>
     <div class="min-h-screen py-12 bg-gradient-to-b from-black via-green-900/35 to-black">
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
@@ -193,6 +193,14 @@
                                     </svg>
                                     Plată securizată prin Stripe
                                 </div>
+                                <div class="flex items-center mt-2 text-sm text-gray-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2 text-green-400"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                    </svg>
+                                    Transport Gratuit
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -247,4 +255,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-layouts.app>
