@@ -4,18 +4,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Click Music - Magazin | Albume</title>
+    <title>{{ $album->titlu }} - Click Music</title>
 
     <!-- Meta Tags -->
     <meta name="description"
-        content="Descoperă albumele artistului Click - muzică Hip-Hop, Reggae, Soul autentică din inima României. Streaming și achiziție de albume digitale.">
-    <meta name="keywords" content="Click Music, hip-hop românesc, soul, reggae, albume muzicale, artist român, Baia Mare">
+        content="{{ $album->titlu }} - {{ $album->gen_muzical }} - Album {{ \Carbon\Carbon::parse($album->data_lansare)->format('Y') }} cu {{ $album->numar_trackuri }} piese - Click Music">
+    <meta name="keywords"
+        content="Click Music, {{ $album->gen_muzical }}, {{ $album->titlu }}, albume muzicale, artist român, Baia Mare">
 
     <!-- Open Graph Tags -->
-    <meta property="og:title" content="Click Music - Albume Hip-Hop, Reggae, Soul">
+    <meta property="og:title" content="{{ $album->titlu }} - Click Music">
     <meta property="og:description"
-        content="Explorează colecția de albume a artistului Click - Hip-Hop, Reggae si Soul direct din inima României.">
-    <meta property="og:image" content="{{ asset('img/ClickMusic-OG-Magazin.jpg') }}">
+        content="{{ $album->gen_muzical }} - {{ \Carbon\Carbon::parse($album->data_lansare)->format('Y') }} - {{ $album->numar_trackuri }} piese">
+    <meta property="og:image" content="{{ asset('storage/' . $album->coperta_album) }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
 
@@ -105,7 +106,7 @@
 
                                 <!-- Badge Preț -->
                                 {{-- <div class="absolute px-4 py-2 rounded-full top-4 right-4 bg-blue-500/80">
-                                    <span class="font-bold text-sm text-white">{{ number_format($album->pret, 2) }} RON</span>
+                                    <span class="text-sm font-bold text-white">{{ number_format($album->pret, 2) }} RON</span>
                                 </div> --}}
                             </div>
                         </div>
