@@ -1,4 +1,5 @@
-<x-layouts.app>
+<x-layouts.app :title="$haina->nume . ' - Click Music Shop'" :description="'Cumpără ' . $haina->nume . ' - ' . $haina->categorie . ' - Click Music Shop'" :ogTitle="$haina->nume . ' - Click Music Shop'" :ogDescription="'Cumpără ' . $haina->nume . ' - ' . $haina->categorie . ' - Click Music Shop'" :ogImage="$haina->image_url"
+    :ogUrl="url()->current()">
     <div class="min-h-screen py-12 bg-gradient-to-b from-black via-green-900/35 to-black">
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
