@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Carbon\Carbon;
 use App\Models\Post;
 use App\Models\Album;
+use App\Models\Haina;
 use Illuminate\Support\Str;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
@@ -28,6 +29,7 @@ class GenerateSitemap extends Command
         // Add dynamic content
         $this->addBlogPosts($sitemap);
         $this->addAlbums($sitemap);
+        $this->addHaine($sitemap);
 
         // Add secondary static pages with lower priority
         $this->addSecondaryPages($sitemap);
@@ -85,21 +87,32 @@ class GenerateSitemap extends Command
             Album::orderBy('created_at', 'desc')
                 ->get()
                 ->each(function ($album) use ($sitemap) {
-                    $priority = $this->calculateAlbumPriority($album);
                     $sitemap->add(
                         Url::create(route('album.show', $album->slug))
                             ->setLastModificationDate($album->updated_at)
                             ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
-                            ->setPriority($priority)
+                            ->setPriority(0.9)
                     );
                 });
         }
     }
 
-    // Metoda addPublicVideos a fost eliminată deoarece nu este necesară
-
-    // Am eliminat complet metoda addCommunityPages deoarece toate rutele de comunitate
-    // sunt protejate de middleware de autentificare
+    private function addHaine(Sitemap $sitemap)
+    {
+        if (class_exists('App\Models\Haina')) {
+            Haina::activ()
+                ->orderBy('created_at', 'desc')
+                ->get()
+                ->each(function ($haina) use ($sitemap) {
+                    $sitemap->add(
+                        Url::create(route('haina.show', $haina->slug))
+                            ->setLastModificationDate($haina->updated_at)
+                            ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+                            ->setPriority(0.9)
+                    );
+                });
+        }
+    }
 
     private function addSecondaryPages(Sitemap $sitemap)
     {
@@ -127,19 +140,6 @@ class GenerateSitemap extends Command
         } elseif ($daysSincePublished <= 30) {
             return 0.8;
         } elseif ($daysSincePublished <= 90) {
-            return 0.7;
-        }
-
-        return 0.6;
-    }
-
-    private function calculateAlbumPriority($album)
-    {
-        $daysSinceCreated = Carbon::now()->diffInDays($album->created_at);
-
-        if ($daysSinceCreated <= 30) {
-            return 0.8;
-        } elseif ($daysSinceCreated <= 90) {
             return 0.7;
         }
 
