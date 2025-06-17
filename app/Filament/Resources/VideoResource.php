@@ -46,9 +46,7 @@ class VideoResource extends Resource
             ->schema([
                 TextInput::make('title')->required(),
                 Textarea::make('description')->required(),
-                TextInput::make('embed_link')
-                    ->helperText('Introduceți codul iframe sau link-ul pentru videoclip extern (opțional dacă încărcați un fișier)')
-                    ->nullable(),
+
                 FileUpload::make('thumbnail_url')
                     ->label('Thumbnail')
                     ->disk('public')
