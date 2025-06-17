@@ -100,8 +100,7 @@ class GenerateSitemap extends Command
     private function addHaine(Sitemap $sitemap)
     {
         if (class_exists('App\Models\Haina')) {
-            Haina::activ()
-                ->orderBy('created_at', 'desc')
+            Haina::orderBy('created_at', 'desc')
                 ->get()
                 ->each(function ($haina) use ($sitemap) {
                     $sitemap->add(
