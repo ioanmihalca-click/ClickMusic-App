@@ -4,19 +4,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $album->titlu }} - Click Music</title>
+    <title>Click Music - Magazin | Albume</title>
 
     <!-- Meta Tags -->
     <meta name="description"
-        content="{{ $album->titlu }} - {{ $album->gen_muzical }} - Album {{ \Carbon\Carbon::parse($album->data_lansare)->format('Y') }} cu {{ $album->numar_trackuri }} piese - Click Music">
-    <meta name="keywords"
-        content="Click Music, {{ $album->gen_muzical }}, {{ $album->titlu }}, albume muzicale, artist român, Baia Mare">
+        content="Descoperă albumele artistului Click - muzică Hip-Hop, Reggae, Soul autentică din inima României. Streaming și achiziție de albume digitale.">
+    <meta name="keywords" content="Click Music, hip-hop românesc, soul, reggae, albume muzicale, artist român, Baia Mare">
 
     <!-- Open Graph Tags -->
-    <meta property="og:title" content="{{ $album->titlu }} - Click Music">
+    <meta property="og:title" content="Click Music - Albume Hip-Hop, Reggae, Soul">
     <meta property="og:description"
-        content="{{ $album->gen_muzical }} - {{ \Carbon\Carbon::parse($album->data_lansare)->format('Y') }} - {{ $album->numar_trackuri }} piese">
-    <meta property="og:image" content="{{ asset('storage/' . $album->coperta_album) }}">
+        content="Explorează colecția de albume a artistului Click - Hip-Hop, Reggae si Soul direct din inima României.">
+    <meta property="og:image" content="{{ asset('img/ClickMusic-OG-Magazin.jpg') }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
 
