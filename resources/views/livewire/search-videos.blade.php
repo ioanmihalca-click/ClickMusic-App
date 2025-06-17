@@ -18,7 +18,7 @@
                 :class="{ 'shadow-lg shadow-blue-500/20': isFocused }" placeholder="Caută Videoclip">
 
             <!-- Loading Spinner -->
-            <div x-show="isLoading" class="absolute transform -translate-y-1/2 right-4 top-1/2">
+            <div x-show="isLoading" x-cloak class="absolute transform -translate-y-1/2 right-4 top-1/2">
                 <svg class="w-5 h-5 text-blue-500 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
@@ -30,7 +30,7 @@
             </div>
 
             <!-- Clear Button -->
-            <button x-show="search.length > 0" @click="$wire.search = ''" type="button"
+            <button x-show="search.length > 0" @click="$wire.search = ''" type="button" x-cloak
                 class="absolute inset-y-0 flex items-center pr-3 right-12">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400 hover:text-white" fill="none"
                     viewBox="0 0 24 24" stroke="currentColor">
@@ -71,15 +71,17 @@
                                                     class="flex items-center justify-center w-16 h-16 transition-transform duration-300 transform bg-blue-600 rounded-full opacity-80 group-hover:scale-110">
                                                     @if ($video->isAudio())
                                                         <!-- Audio Icon -->
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white"
-                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                            class="w-8 h-8 text-white" fill="none"
+                                                            viewBox="0 0 24 24" stroke="currentColor">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 stroke-width="2"
                                                                 d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
                                                         </svg>
                                                     @else
                                                         <!-- Video Icon -->
-                                                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                        <svg class="w-8 h-8 text-white" fill="currentColor"
+                                                            viewBox="0 0 20 20">
                                                             <path fill-rule="evenodd"
                                                                 d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
                                                                 clip-rule="evenodd"></path>
@@ -94,7 +96,7 @@
                                         </a>
                                     @endif
                                 </div>
-                                
+
                                 <!-- Conținut cu overlay doar pentru această secțiune -->
                                 <div class="relative flex flex-col flex-grow">
                                     <!-- Overlay doar pentru secțiunea de conținut -->
@@ -122,28 +124,31 @@
                                             </span>
                                             <a wire:navigate href="{{ route('videos.show', $video->id) }}"
                                                 class="flex items-center px-2 py-1 text-xs font-medium text-white transition duration-200 ease-in-out rounded-md bg-blue-600/70 hover:bg-blue-500">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 mr-1" fill="none"
-                                                    viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 mr-1"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
                                                         d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                 </svg>
                                                 Detalii
                                             </a>
                                         </div>
+                                    </div>
+                                    </a>
                                 </div>
-                            </a>
-                        </div>
                     @endforeach
                 </div>
             @else
-                <div class="flex flex-col items-center justify-center py-12 mt-4 text-center bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 rounded-xl">
+                <div
+                    class="flex flex-col items-center justify-center py-12 mt-4 text-center border bg-gray-900/80 backdrop-blur-sm border-gray-800/50 rounded-xl">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mb-4 text-blue-500/70" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                             d="M9.879 7.519a1 1 0 00-1.442 1.386l4.764 4.764a1 1 0 001.442 0l4.764-4.764a1 1 0 00-1.442-1.386L14 10.586V6a1 1 0 00-2 0v4.586l-2.121-2.067zM19 16v3a2 2 0 01-2 2H7a2 2 0 01-2-2v-3" />
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 14h14" />
                     </svg>
-                    <p class="text-xl font-medium text-blue-400">Nu s-au găsit rezultate pentru "<span class="text-white">{{ $search }}</span>"
+                    <p class="text-xl font-medium text-blue-400">Nu s-au găsit rezultate pentru "<span
+                            class="text-white">{{ $search }}</span>"
                     </p>
                     <p class="mt-2 text-gray-400">Încearcă alte cuvinte cheie sau verifică ortografia</p>
                 </div>

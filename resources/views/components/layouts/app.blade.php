@@ -112,6 +112,9 @@
     <!-- Cookie Consent Banner -->
     @include('partials.cookie-consent')
 
+    <!-- Flash Messages Component -->
+    <x-flash-messages />
+
     @livewireScripts
 
     <!-- Additional Scripts -->

@@ -14,12 +14,11 @@
     </button>
 
     <!-- Dropdown panel, show/hide based on dropdown state -->
-    <div x-show="open" x-transition:enter="transition ease-out duration-200"
+    <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-200"
         x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
         x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 scale-100"
         x-transition:leave-end="opacity-0 scale-95" @click.away="open = false"
-        class="absolute right-0 z-50 mt-2 origin-top-right bg-gray-800 border border-gray-700 rounded-md shadow-lg w-80"
-        style="display: none;">
+        class="absolute right-0 z-50 mt-2 origin-top-right bg-gray-800 border border-gray-700 rounded-md shadow-lg w-80">
         <div class="p-3">
             <div class="flex items-center justify-between mb-2">
                 <h3 class="text-lg font-medium text-white">Notificări</h3>
@@ -34,18 +33,24 @@
                 @forelse($this->notifications as $notification)
                     <div wire:key="notification-{{ $notification->id }}"
                         class="py-3 {{ $notification->read_at ? 'opacity-70' : '' }}">
-                        <div class="flex items-center justify-between">
-                            <span class="inline-flex items-center">
-                                <span
-                                    class="w-2 h-2 mr-2 {{ $notification->read_at ? 'bg-gray-600' : 'bg-blue-500' }} rounded-full"></span>
-                            </span>
-                            <span class="text-xs text-gray-400">
-                                {{ $notification->created_at->diffForHumans() }}
-                            </span>
-                        </div>
                         <a href="{{ $notification->link }}" wire:click="markAsRead({{ $notification->id }})"
-                            class="block p-2 mt-1 rounded-md hover:bg-gray-700">
-                            <div class="font-medium text-white">{{ $notification->title }}</div>
+                            class="block p-3 transition duration-150 rounded-md hover:bg-gray-700">
+                            <div class="flex items-center mb-1">
+                                <span
+                                    class="w-2 h-2 {{ $notification->read_at ? 'bg-gray-600' : 'bg-blue-500' }} rounded-full"></span>
+                                <div class="ml-2 font-medium text-white">{{ $notification->title }}</div>
+                                <div class="ml-auto">
+                                    <span
+                                        class="inline-flex items-center text-xs text-gray-400 bg-gray-700 px-2 py-0.5 rounded">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 mr-1" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        {{ $notification->created_at->diffForHumans() }}
+                                    </span>
+                                </div>
+                            </div>
                             @if ($notification->body)
                                 <div class="mt-1 text-sm text-gray-300">
                                     {{ \Illuminate\Support\Str::limit($notification->body, 100) }}</div>
