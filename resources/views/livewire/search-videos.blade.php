@@ -30,7 +30,7 @@
             </div>
 
             <!-- Clear Button -->
-            <button x-show="search.length > 0" @click="$wire.search = ''" type="button" x-cloak
+            <button x-show="$wire.search.length > 0" @click="$wire.search = ''" type="button" x-cloak
                 class="absolute inset-y-0 flex items-center pr-3 right-12">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400 hover:text-white" fill="none"
                     viewBox="0 0 24 24" stroke="currentColor">
