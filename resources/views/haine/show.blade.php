@@ -194,63 +194,55 @@
                                     </svg>
                                     Plată securizată prin Stripe
                                 </div>
-                                <div class="flex items-center mt-2 text-sm text-gray-400">
+
+                            </div>
+
+                            <!-- Informații livrare - moved inside form container -->
+                            <div class="p-4 mt-4 border border-gray-600 rounded-lg bg-gray-800/30">
+                                <h3 class="flex items-center mb-3 text-sm font-semibold text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2 text-green-400"
                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
-                                    Transport Gratuit
+                                    Informații livrare
+                                </h3>
+                                <div class="space-y-2 text-xs text-gray-400">
+                                    <div class="flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 mr-2 text-green-400"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7" />
+                                        </svg>
+                                        Livrare în toată România
+                                    </div>
+                                    <div class="flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 mr-2 text-green-400"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        Livrare în 7-14 zile lucrătoare
+                                    </div>
+                                    <div class="flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 mr-2 text-green-400"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        Calitate premium garantată
+                                    </div>
+                                    <div class="flex items-center font-medium text-green-400">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 mr-2 text-green-400"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                        </svg>
+                                        Transport gratuit - inclus în preț
+                                    </div>
                                 </div>
                             </div>
                         </form>
-                    </div>
-
-                    <!-- Informații livrare -->
-                    <div
-                        class="p-6 mt-6 shadow-xl bg-gray-900/70 backdrop-blur-md rounded-2xl ring-1 ring-green-500/20">
-                        <h3 class="flex items-center mb-4 text-lg font-semibold text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-green-400"
-                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            Informații livrare
-                        </h3>
-                        <div class="space-y-3 text-sm text-gray-300">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2 text-green-400"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>
-                                Livrare în toată România
-                            </div>
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2 text-green-400"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                Procesare în 1-2 zile lucrătoare
-                            </div>
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2 text-green-400"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                Calitate premium garantată
-                            </div>
-                            <div class="flex items-center font-medium text-green-400">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2 text-green-400"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                                </svg>
-                                Transport gratuit - inclus în preț
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
