@@ -54,6 +54,10 @@
                                 class="col-span-2 p-4 border rounded-lg bg-gray-800/50 border-green-500/30 md:col-span-1">
                                 <h3 class="text-sm font-semibold tracking-wider text-green-400 uppercase">Preț</h3>
                                 <p class="text-lg font-medium text-white">{{ number_format($haina->pret, 2) }} RON</p>
+                                <span
+                                    class="inline-block px-2 py-1 mt-2 text-xs font-semibold text-white bg-green-600 rounded-full">
+                                    Transport gratuit
+                                </span>
                             </div>
                         </div>
 
@@ -228,6 +232,14 @@
                                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                                 Calitate premium garantată
+                            </div>
+                            <div class="flex items-center font-medium text-green-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2 text-green-400"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                </svg>
+                                Transport gratuit - inclus în preț
                             </div>
                         </div>
                     </div>

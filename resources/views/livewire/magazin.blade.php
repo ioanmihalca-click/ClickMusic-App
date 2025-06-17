@@ -24,7 +24,7 @@
                             Albume • Haine • Accesorii
                         </p>
                         <p class="text-sm text-gray-400">
-                            Livrare rapidă • Plată securizată
+                            Livrare rapidă • Plată securizată • Transport gratuit
                         </p>
                     </div>
                 </div>
