@@ -38,7 +38,6 @@
                             <span class="inline-flex items-center">
                                 <span
                                     class="w-2 h-2 mr-2 {{ $notification->read_at ? 'bg-gray-600' : 'bg-blue-500' }} rounded-full"></span>
-                                <span class="font-medium text-gray-200">{{ $notification->type }}</span>
                             </span>
                             <span class="text-xs text-gray-400">
                                 {{ $notification->created_at->diffForHumans() }}
@@ -62,7 +61,7 @@
 
             @if (count($this->notifications) > 0)
                 <div class="mt-3 text-center">
-                    <a href="#" class="text-sm text-blue-400 hover:text-blue-300">
+                    <a href="{{ route('notifications') }}" class="text-sm text-blue-400 hover:text-blue-300">
                         Vezi toate notificările
                     </a>
                 </div>

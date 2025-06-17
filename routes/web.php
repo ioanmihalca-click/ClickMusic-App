@@ -97,6 +97,11 @@ Route::match(['get', 'post'], 'checkout/{plan}', [CheckoutController::class, '__
     ->name('checkout');
 
 
+// Rută pentru pagina de notificări
+Route::get('/notifications', App\Livewire\Notifications::class)
+    ->middleware(['auth'])
+    ->name('notifications');
+
 Route::prefix('comunitate')->middleware(['auth'])->group(function () {
     Route::get('/', App\Livewire\Forum\ForumIndex::class)->name('forum.index');
     Route::get('/categorii/{category:slug}', App\Livewire\Forum\CategoryShow::class)->name('forum.categories.show');
