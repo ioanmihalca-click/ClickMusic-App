@@ -114,12 +114,12 @@ new class extends Component {
         </div>
 
         <div class="mt-4 space-y-4">
-            <h3 class="text-md font-medium text-white">{{ __('Notification Preferences') }}</h3>
+            <h3 class="font-medium text-white text-md">{{ __('Notification Preferences') }}</h3>
 
             <div class="flex items-start">
                 <div class="flex items-center h-5">
                     <input wire:model="forum_notifications" id="forum_notifications" type="checkbox"
-                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 border-gray-600 bg-gray-700">
+                        class="w-4 h-4 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500">
                 </div>
                 <div class="ml-3 text-sm">
                     <label for="forum_notifications"
@@ -130,16 +130,7 @@ new class extends Component {
                 </div>
             </div>
 
-            <div class="flex items-start">
-                <div class="flex items-center h-5">
-                    <input wire:model="newsletter_consent" id="newsletter_consent" type="checkbox"
-                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 border-gray-600 bg-gray-700">
-                </div>
-                <div class="ml-3 text-sm">
-                    <label for="newsletter_consent" class="text-white">{{ __('Abonează-mă la newsletter') }}</label>
-                    <p class="text-gray-400">{{ __('Primește noutăți despre lansări, evenimente și promoții.') }}</p>
-                </div>
-            </div>
+
         </div>
 
         <div class="flex items-center gap-4">
