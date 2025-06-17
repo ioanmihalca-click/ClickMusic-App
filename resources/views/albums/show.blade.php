@@ -15,7 +15,7 @@
     <meta property="og:title" content="Click Music - Albume Hip-Hop, Reggae, Soul">
     <meta property="og:description"
         content="Explorează colecția de albume a artistului Click - Hip-Hop, Reggae si Soul direct din inima României.">
-    <meta property="og:image" content="{{ asset('img/ClickMusic-OG-Magazin.jpg') }}">
+    <meta property="og:image" content="{{ asset('img/OG.jpg') }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
 

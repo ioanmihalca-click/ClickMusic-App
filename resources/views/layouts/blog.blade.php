@@ -6,6 +6,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-34NT57GG5F"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
+
         function gtag() {
             dataLayer.push(arguments);
         }
@@ -26,7 +27,7 @@
     <meta property="og:title" content="Blog Click Music - Noutăți din Hip-Hop, Reggae si Soul" />
     <meta property="og:description"
         content="Descoperă cele mai recente articole, noutăți și povești din lumea Hip-Hop, Reggae si Soul pe blogul lui Click" />
-    <meta property="og:image" content="{{ asset('img/ClickMusic-OG-Blog.jpg') }}" />
+    <meta property="og:image" content="{{ asset('img/OG.jpg') }}" />
     <meta property="og:image:type" content="image/jpg" />
     <meta property="og:image:alt" content="Blog Click Music - Noutăți din Hip-Hop, Reggae si Soul" />
     <meta property="og:url" content="https://clickmusic.ro/blog" />
@@ -89,17 +90,18 @@
     }
     </script>
 </head>
+
 <body class="font-sans antialiased bg-black">
 
-<livewire:header-nav />
+    <livewire:header-nav />
 
- 
+
 
     <main class="container px-4 py-8 mx-auto">
         {{ $slot }}
     </main>
 
-      <x-footer />
+    <x-footer />
 
     @livewireScripts
 </body>
