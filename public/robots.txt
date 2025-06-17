@@ -3,6 +3,14 @@ Disallow: /login
 Disallow: /register
 Disallow: /forgot-password
 Disallow: /videoclipuri/
+
+Disallow: /zhHant/
+Disallow: /product/
+Disallow: /safe_search/
+Disallow: /pcmypage/
+Disallow: /*.shtml$
+Disallow: /*.html$
+
 Allow: /
 
 Sitemap: https://clickmusic.ro/sitemap.xml
