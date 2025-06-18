@@ -80,7 +80,7 @@
                     </div>
                 @endif
                 <!-- Article content -->
-                <div class="pb-4">
+                <div class="px-4 pb-4 sm:px-6 sm:pb-6 md:px-8 md:pb-8">
                     <div
                         class="prose prose-lg prose-invert max-w-none prose-headings:text-white prose-headings:font-bold prose-p:text-gray-300 prose-p:leading-relaxed prose-a:text-blue-400 prose-a:no-underline hover:prose-a:text-blue-300 prose-strong:text-white prose-strong:font-semibold prose-blockquote:border-l-blue-500 prose-blockquote:bg-blue-500/10 prose-code:text-blue-300 prose-code:bg-slate-800 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-pre:bg-slate-800 prose-pre:border prose-pre:border-slate-700 prose-ul:text-gray-300 prose-ol:text-gray-300 prose-li:text-gray-300">
                         {!! $post->body !!}
