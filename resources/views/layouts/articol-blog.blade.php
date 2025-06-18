@@ -162,7 +162,7 @@
 <body class="font-sans antialiased text-white bg-black">
     <livewire:header-nav />
 
-    <main class="container px-6 py-8 mx-auto max-w-6xl">
+    <main class="container px-4 sm:px-6 py-6 sm:py-8 mx-auto max-w-6xl">
         {{ $slot }}
     </main>
 
