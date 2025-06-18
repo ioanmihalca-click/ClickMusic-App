@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class User extends Authenticatable implements FilamentUser
 {
-    use HasFactory, Notifiable, Billable, ManagesSubscriptions;
+    use Notifiable, Billable, ManagesSubscriptions;
 
     /**
      * The attributes that are mass assignable.

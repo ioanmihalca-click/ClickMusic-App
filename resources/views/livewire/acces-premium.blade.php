@@ -20,10 +20,6 @@
             <div class="text-center">
 
 
-
-
-
-
                 <!-- Card principal cu efect glassmorphism -->
                 <div class="relative group">
                     <!-- Glow effect -->
@@ -51,7 +47,11 @@
                                         exclusivă</span> -
                                     un club select cu acces la piese unreleased și videoclipuri în premieră absolută.
                                 </p>
-                                <p class="max-w-xl mx-auto mt-3 text-sm text-gray-500">
+                                <p class="max-w-xl mx-auto mt-3 text-gray-300">
+                                    Ai acces gratuit la secțiunea "Comunitate", dar pentru conținutul exclusiv
+                                    și experiențele premium ai nevoie de un abonament lunar.
+                                </p>
+                                <p class="max-w-xl mx-auto mt-3 text-sm text-blue-500">
                                     Contribuția de 9,99 lei pe luna va susține dezvoltarea platformei și proiectele
                                     viitoare
                                 </p>
