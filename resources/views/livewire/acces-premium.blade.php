@@ -48,10 +48,19 @@
                                     un club select cu acces la piese unreleased și videoclipuri în premieră absolută.
                                 </p>
                                 <p class="max-w-xl mx-auto mt-3 text-gray-300">
-                                    Ai acces gratuit la secțiunea "Comunitate", dar pentru conținutul exclusiv
-                                    și experiențele premium ai nevoie de un abonament lunar.
+                                    Ai acces <span class="font-semibold text-blue-400">GRATUIT</span> la secțiunea
+                                    "Comunitate", dar
+                                    pentru conținutul EXCLUSIV
+                                    ai nevoie de un abonament lunar.
                                 </p>
-                                <p class="max-w-xl mx-auto mt-3 text-sm text-blue-500">
+                                <p
+                                    class="max-w-xl mx-auto mt-3 text-sm tracking-normal text-blue-400 flex items-center justify-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-yellow-400"
+                                        fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                    </svg>
                                     Contribuția de 9,99 lei pe luna va susține dezvoltarea platformei și proiectele
                                     viitoare
                                 </p>
