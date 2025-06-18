@@ -21,34 +21,35 @@
                             class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent">
                         </div>
 
-                        <!-- Article meta in overlay -->
+                        <!-- Title in overlay -->
                         <div
                             class="absolute bottom-4 sm:bottom-6 md:bottom-8 left-4 sm:left-6 md:left-8 right-4 sm:right-6 md:right-8">
-                            <div class="flex items-center mb-4">
-                                <time datetime="{{ $post->published_at->toDateString() }}"
-                                    class="inline-flex items-center px-2 py-1 text-xs font-medium text-white border rounded-full sm:px-4 sm:py-2 sm:text-sm bg-black/50 backdrop-blur-md border-white/20">
-                                    <svg class="w-3 h-3 mr-1 sm:w-4 sm:h-4 sm:mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    {{ $post->published_at->format('d F Y') }}
-                                </time>
-
-                                <span
-                                    class="inline-flex items-center px-2 py-1 ml-2 text-xs font-medium text-blue-400 border rounded-full sm:px-4 sm:py-2 sm:ml-4 sm:text-sm bg-blue-500/20 backdrop-blur-md border-blue-500/30">
-                                    <svg class="w-3 h-3 mr-1 sm:w-4 sm:h-4 sm:mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    de Click
-                                </span>
-                            </div>
-
                             <h1 class="font-bold leading-tight text-white text-md md:text-4xl ">
                                 {{ $post->title }}
                             </h1>
+                        </div>
+                    </div>
+
+                    <!-- Article meta below image -->
+                    <div class="p-4 sm:p-6 md:p-8">
+                        <div class="flex items-center mb-6">
+                            <time datetime="{{ $post->published_at->toDateString() }}"
+                                class="inline-flex items-center px-2 py-1 text-xs font-medium text-gray-300 border rounded-full sm:px-4 sm:py-2 sm:text-sm bg-slate-800/50 backdrop-blur-md border-slate-600/30">
+                                <svg class="w-3 h-3 mr-1 sm:w-4 sm:h-4 sm:mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                {{ $post->published_at->format('d F Y') }}
+                            </time>
+
+                            <span
+                                class="inline-flex items-center px-2 py-1 ml-2 text-xs font-medium text-blue-400 border rounded-full sm:px-4 sm:py-2 sm:ml-4 sm:text-sm bg-blue-500/20 backdrop-blur-md border-blue-500/30">
+                                <svg class="w-3 h-3 mr-1 sm:w-4 sm:h-4 sm:mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                de Click
+                            </span>
                         </div>
                     </div>
                 @else
@@ -79,7 +80,7 @@
                     </div>
                 @endif
                 <!-- Article content -->
-                <div class="mt-4">
+                <div class="px-4 pb-4 sm:px-6 sm:pb-6 md:px-8 md:pb-8">
                     <div
                         class="prose prose-lg prose-invert max-w-none prose-headings:text-white prose-headings:font-bold prose-p:text-gray-300 prose-p:leading-relaxed prose-a:text-blue-400 prose-a:no-underline hover:prose-a:text-blue-300 prose-strong:text-white prose-strong:font-semibold prose-blockquote:border-l-blue-500 prose-blockquote:bg-blue-500/10 prose-code:text-blue-300 prose-code:bg-slate-800 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-pre:bg-slate-800 prose-pre:border prose-pre:border-slate-700 prose-ul:text-gray-300 prose-ol:text-gray-300 prose-li:text-gray-300">
                         {!! $post->body !!}
