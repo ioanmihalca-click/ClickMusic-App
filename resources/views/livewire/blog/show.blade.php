@@ -1,4 +1,3 @@
-{{-- show.blade.php --}}
 <div class="relative py-12">
     <!-- Background elements -->
     <div class="absolute inset-0 overflow-hidden">
