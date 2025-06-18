@@ -49,7 +49,7 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('usertype'),
                 Tables\Columns\TextColumn::make('created_at')->dateTime()->sortable(),
             ])
-
+            ->defaultSort('created_at', 'desc')
             ->filters([
                 //
             ])
