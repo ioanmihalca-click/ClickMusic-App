@@ -44,7 +44,7 @@
     <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logo.png') }}" type="image/x-icon" />
 
-    <title>Blog Click Music - Noutăți din Hip-Hop, Reggae și Soul</title>
+    <title>Blog Click Music - Articole și Noutăți din muzică - hip-hop, drum & bass, reggae</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -65,8 +65,29 @@
         }
 
         body::-webkit-scrollbar-track {
-            background-color: #d1d5db;
+            background-color: #1f2937;
             border-radius: 3px;
+        }
+
+        /* Smooth transitions and modern typography */
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .blog-grid-item {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .blog-grid-item:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        /* Glass morphism effect */
+        .glass-effect {
+            backdrop-filter: blur(20px);
+            background: rgba(31, 41, 55, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
 
@@ -91,13 +112,11 @@
     </script>
 </head>
 
-<body class="font-sans antialiased bg-black">
+<body class="font-sans antialiased text-white bg-black">
 
     <livewire:header-nav />
 
-
-
-    <main class="container px-4 py-8 mx-auto">
+    <main class="container px-6 py-12 mx-auto max-w-7xl">
         {{ $slot }}
     </main>
 
