@@ -8,6 +8,11 @@
                         class="overflow-hidden shadow-xl bg-gray-900/70 backdrop-blur-md rounded-2xl ring-1 ring-purple-500/20">
                         <!-- Media Player Container -->
                         <div class="relative aspect-w-16 aspect-h-9">
+                            @if (isset($showUpsell) && $showUpsell)
+                                <!-- Upsell Overlay for Free Users -->
+                                <livewire:video-upsell-overlay :videoId="$video->id" />
+                            @endif
+
                             @if ($video->video_path)
                                 @if ($video->isAudio())
                                     <!-- Audio Player with Thumbnail Background -->

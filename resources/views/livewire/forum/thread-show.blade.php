@@ -1,4 +1,3 @@
-<!-- resources/views/livewire/forum/thread-show.blade.php -->
 <div class="min-h-screen py-12 bg-black">
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <!-- Thread Header -->
@@ -81,16 +80,26 @@
                                 </div>
                             </div>
 
-                            <div class="mt-1 text-sm text-gray-400">
-                                Creat de <span class="font-medium text-blue-400">{{ $thread->user->name }}</span>
-                                • {{ $thread->created_at->diffForHumans() }}
-                                • {{ $thread->views_count }} vizualizări
+                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-2">
+                                <div class="flex items-center space-x-2 text-sm text-gray-400">
+                                    <div class="flex items-center">
+                                        <span class="font-medium text-blue-400">{{ $thread->user->name }}</span>
+                                        <livewire:user-badge :user="$thread->user" />
+                                    </div>
+                                    <span>&bull;</span>
+                                    <span>{{ $thread->created_at->diffForHumans() }}</span>
+                                </div>
+
+                                <div class="mt-2 sm:mt-0">
+                                    <span class="text-sm text-gray-400">{{ $replies->count() }} răspunsuri</span>
+                                </div>
+                            </div>
+
+                            <div
+                                class="mt-4 prose prose-sm max-w-none text-gray-300 prose-headings:text-gray-200 prose-a:text-blue-400">
+                                {!! $thread->body_html !!}
                             </div>
                         </div>
-                    </div>
-
-                    <div class="mt-4 prose prose-invert max-w-none">
-                        {!! Str::markdown($thread->content) !!}
                     </div>
                 </div>
             </div>
@@ -157,12 +166,13 @@
                                     <div class="flex-1">
                                         <div class="flex items-center justify-between">
                                             <div class="text-sm">
-                                                <div class="flex items-center">
+                                                <div class="flex items-center gap-2">
                                                     <span
                                                         class="font-medium text-blue-400">{{ $reply->user->name }}</span>
+                                                    <livewire:user-badge :user="$reply->user" />
                                                     @if ($reply->user->id === $thread->user_id)
                                                         <span
-                                                            class="ml-2 px-1.5 py-0.5 text-xs bg-blue-400/10 text-blue-400 rounded-md">Autor</span>
+                                                            class="px-1.5 py-0.5 text-xs bg-blue-400/10 text-blue-400 rounded-md">Autor</span>
                                                     @endif
                                                 </div>
                                                 <div class="text-gray-500 text-xs mt-0.5">
@@ -415,3 +425,5 @@
                 });
             </script>
         </div>
+    </div>
+</div>

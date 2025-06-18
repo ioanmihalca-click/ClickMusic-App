@@ -29,6 +29,34 @@
             class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" x-cloak
             @click="open = false; if ($refs.videoPlayer) $refs.videoPlayer.pause(); if ($refs.audioPlayer) $refs.audioPlayer.pause();">
             <div class="relative w-full max-w-5xl bg-gray-900 border border-gray-800/50 rounded-xl" @click.stop>
+                <!-- Premium Content Overlay for free users -->
+                @if (!$userIsPremium)
+                    <div
+                        class="absolute inset-0 z-50 flex items-center justify-center bg-black/95 rounded-xl backdrop-blur-md">
+                        <div class="w-full max-w-lg p-6 space-y-4 bg-gray-800/90 rounded-lg">
+                            <h3 class="text-xl font-bold text-blue-400">Acces Limitat</h3>
+
+                            <div class="p-4 my-4 border-l-4 border-blue-400 bg-blue-900/20">
+                                <p class="text-lg text-gray-200">
+                                    Pentru a asculta sau viziona acest conținut ai nevoie de un <span
+                                        class="font-bold text-blue-400">abonament Premium</span>.
+                                </p>
+                            </div>
+
+                            <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 pt-4">
+                                <a href="{{ route('abonament') }}"
+                                    class="w-full px-6 py-3 text-white text-center transition duration-150 bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                                    <span class="font-medium">Abonează-te Acum</span>
+                                </a>
+
+                                <button @click="open = false"
+                                    class="w-full px-6 py-3 text-white transition duration-150 border border-gray-600 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50">
+                                    <span>Închide</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                @endif
                 <!-- Close button -->
                 <button
                     @click="open = false; if ($refs.videoPlayer) $refs.videoPlayer.pause(); if ($refs.audioPlayer) $refs.audioPlayer.pause();"
@@ -89,10 +117,40 @@
                         <!-- Container Video - fără overlay -->
                         <div class="relative aspect-w-16 aspect-h-9">
                             @if ($video->video_path)
+                                <!-- Condiționăm click-ul pe baza statutului utilizatorului -->
                                 <div class="block w-full h-full cursor-pointer"
-                                    @click="playMedia({{ $video->id }}, '{{ $video->video_path }}', '{{ addslashes($video->title) }}', `{!! addslashes(nl2br($video->description)) !!}`, {{ $video->isAudio() ? 'true' : 'false' }}, null, '{{ $video->thumbnail_url_full }}')">
+                                    @if ($userIsPremium) @click="playMedia({{ $video->id }}, '{{ $video->video_path }}', '{{ addslashes($video->title) }}', `{!! addslashes(nl2br($video->description)) !!}`, {{ $video->isAudio() ? 'true' : 'false' }}, null, '{{ $video->thumbnail_url_full }}')"
+                                    @else
+                                        @click="window.location.href='{{ route('abonament') }}?video={{ $video->id }}'" @endif>
                                     <img src="{{ $video->thumbnail_url_full }}" alt="{{ $video->title }}"
                                         class="object-cover w-full h-full">
+
+                                    <!-- Overlay pentru utilizatorii gratuiți -->
+                                    @if (!$userIsPremium)
+                                        <div
+                                            class="absolute inset-0 bg-black/70 backdrop-blur-sm flex flex-col items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+                                            <div
+                                                class="bg-black/80 p-3 md:p-5 rounded-xl max-w-[90%] md:max-w-[80%] text-center transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-all duration-300 border border-blue-500/30">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="h-8 w-8 md:h-10 md:w-10 text-blue-400 mx-auto mb-2 md:mb-3"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                                </svg>
+                                                <h3 class="text-base md:text-lg font-semibold text-white mb-1">Conținut
+                                                    Premium</h3>
+                                                <p class="text-gray-300 text-xs md:text-sm mb-2 md:mb-3">Pentru a
+                                                    asculta acest conținut ai
+                                                    nevoie de un abonament Premium</p>
+                                                <button
+                                                    class="bg-blue-600 text-white px-3 py-2 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-medium hover:bg-blue-700">
+                                                    Abonează-te acum
+                                                </button>
+                                            </div>
+                                        </div>
+                                    @endif
+
                                     <div class="absolute inset-0 flex items-center justify-center">
                                         <div
                                             class="flex items-center justify-center w-16 h-16 transition-opacity duration-300 bg-blue-600 rounded-full opacity-80 hover:opacity-100">
@@ -116,9 +174,41 @@
                                     </div>
                                 </div>
                             @else
+                                <!-- Video embed extern -->
                                 <div class="w-full h-full cursor-pointer"
-                                    @click="playMedia({{ $video->id }}, null, '{{ addslashes($video->title) }}', `{!! addslashes(nl2br($video->description)) !!}`, false, `{!! addslashes($video->embed_link) !!}`, '{{ $video->thumbnail_url_full }}')">
-                                    {!! $video->embed_link !!}
+                                    @if ($userIsPremium) @click="playMedia({{ $video->id }}, null, '{{ addslashes($video->title) }}', `{!! addslashes(nl2br($video->description)) !!}`, false, `{!! addslashes($video->embed_link) !!}`, '{{ $video->thumbnail_url_full }}')"
+                                    @else
+                                        @click="window.location.href='{{ route('abonament') }}?video={{ $video->id }}'" @endif>
+                                    <!-- Overlay pentru videoclipurile embed pentru utilizatorii gratuiți -->
+                                    @if (!$userIsPremium)
+                                        <div
+                                            class="absolute inset-0 z-10 bg-black/70 backdrop-blur-sm flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-300">
+                                            <div
+                                                class="bg-black/80 p-3 md:p-5 rounded-xl max-w-[90%] md:max-w-[80%] text-center border border-blue-500/30">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="h-8 w-8 md:h-10 md:w-10 text-blue-400 mx-auto mb-2 md:mb-3"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                                </svg>
+                                                <h3 class="text-base md:text-lg font-semibold text-white mb-1">Conținut
+                                                    Premium</h3>
+                                                <p class="text-gray-300 text-xs md:text-sm mb-2 md:mb-3">Pentru a
+                                                    asculta sau viziona
+                                                    acest conținut ai nevoie de un abonament Premium</p>
+                                                <a href="{{ route('abonament') }}"
+                                                    class="bg-blue-600 text-white px-3 py-2 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-medium hover:bg-blue-700 inline-block">
+                                                    Abonează-te acum
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endif
+
+                                    <!-- Afisăm iframe-ul dar este acoperit de overlay pentru utilizatorii free -->
+                                    <div class="relative {{ !$userIsPremium ? 'opacity-30' : '' }}">
+                                        {!! $video->embed_link !!}
+                                    </div>
                                 </div>
                             @endif
                         </div>
@@ -150,8 +240,8 @@
                                     </span>
                                     <a wire:navigate href="{{ route('videos.show', $video->id) }}"
                                         class="flex items-center px-2 py-1 text-xs font-medium text-white transition duration-200 ease-in-out rounded-md bg-blue-600/70 hover:bg-blue-500">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 mr-1" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 mr-1"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>

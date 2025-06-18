@@ -90,6 +90,9 @@
     <!-- Flash Messages Component -->
     <x-flash-messages />
 
+    <!-- Premium Upsell Notification pentru utilizatorii free -->
+    <livewire:premium-upsell-notification />
+
     @livewireScripts
 </body>
 

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Video;
 use Livewire\Livewire;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -14,7 +15,17 @@ class VideoController extends Controller
 {
     public function show(Video $video)
     {
-        return view('videos.show', compact('video'));
+        // Check if user is authenticated but not premium (free tier)
+        $showUpsell = false;
+
+        if (Auth::check()) {
+            $showUpsell = !Auth::user()->isPremium();
+        }
+
+        return view('videos.show', [
+            'video' => $video,
+            'showUpsell' => $showUpsell || session()->has('upsell')
+        ]);
     }
 
     public function share($id)
@@ -104,6 +115,11 @@ class VideoController extends Controller
         // Check if video has a file path
         if (empty($video->video_path)) {
             abort(404, 'Fișierul video nu a fost găsit');
+        }
+
+        // Double-check that the user is premium (middleware should handle this, but adding extra security)
+        if (Auth::check() && !Auth::user()->isPremium()) {
+            return redirect()->route('videos.show', $video->id)->with('upsell', true);
         }
 
         // Get file path from storage

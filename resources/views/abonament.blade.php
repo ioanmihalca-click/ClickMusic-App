@@ -118,40 +118,40 @@
 
         <!-- Pricing Cards -->
         <div class="flex flex-col items-center justify-center gap-10 lg:flex-row lg:items-stretch">
-            @if ($user->isEligibleForFreePlan())
-                <a href="{{ route('videoclipuri') }}" class="group">
+            @if ($user->isPremium())
+                <!-- User already has Premium access -->
+                <a href="{{ route('videoclipuri') }}" class="group w-full max-w-sm">
                     <div
-                        class="relative h-full p-10 bg-gradient-to-br from-purple-900/40 via-gray-800/60 to-blue-900/40 backdrop-blur-lg border border-gray-600/40 rounded-3xl text-center transition-all duration-500 group-hover:scale-[1.03] group-hover:border-blue-400/60 group-hover:shadow-2xl group-hover:shadow-blue-500/20">
+                        class="relative h-full p-10 bg-gradient-to-br from-blue-900/40 via-gray-800/60 to-blue-900/40 backdrop-blur-lg border border-blue-600/40 rounded-3xl text-center transition-all duration-500 group-hover:scale-[1.03] group-hover:border-blue-400/60 group-hover:shadow-2xl group-hover:shadow-blue-500/20">
                         <!-- Decorative elements -->
                         <div
                             class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-3xl group-hover:opacity-100">
                         </div>
 
-
-
-                        <div class="relative z-10 ">
+                        <div class="relative z-10">
                             <div class="flex flex-col items-center justify-center gap-8">
-                                <!-- Icon with enhanced styling -->
+                                <!-- Premium Icon with enhanced styling -->
                                 <div
                                     class="relative inline-flex p-6 text-blue-300 border shadow-xl rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 border-blue-400/30">
                                     <div
                                         class="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-2xl animate-pulse">
                                     </div>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
-                                        fill="currentColor" class="relative z-10 bi bi-person-hearts"
-                                        viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M11.5 1.246c.832-.855 2.913.642 0 2.566-2.913-1.924-.832-3.421 0-2.566M9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-9 8c0 1 1 1 1 1h10s1 0 1-1-1-4-6-4-6 3-6 4m13.5-8.09c1.387-1.425 4.855 1.07 0 4.277-4.854-3.207-1.387-5.702 0-4.276ZM15 2.165c.555-.57 1.942.428 0 1.711-1.942-1.283-.555-2.281 0-1.71Z" />
+                                        fill="currentColor" class="relative z-10" viewBox="0 0 16 16">
+                                        <path
+                                            d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z" />
+                                        <path
+                                            d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
                                     </svg>
                                 </div>
 
-                                <!-- Text cu textele originale -->
+                                <!-- Status text -->
                                 <div class="space-y-4">
                                     <p class="text-lg leading-relaxed text-gray-300">
-                                        Vi s-a atribuit rolul de
+                                        Ai acces
                                     </p>
-                                    <p class="text-3xl font-bold tracking-wide text-white">
-                                        SUPER USER
+                                    <p class="text-3xl font-bold tracking-wide text-blue-400">
+                                        PREMIUM
                                     </p>
                                 </div>
 
@@ -162,9 +162,11 @@
                                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
-                                        Intră în cont
+                                        Vizionează conținut
                                     </span>
                                 </button>
                             </div>
@@ -172,6 +174,89 @@
                     </div>
                 </a>
             @else
+                <!-- Free Plan -->
+                <div class="w-full max-w-sm group">
+                    <div
+                        class="relative h-full p-10 bg-gradient-to-br from-gray-800/60 via-gray-900/70 to-gray-800/60 backdrop-blur-lg border border-gray-600/40 rounded-3xl text-center transition-all duration-500 group-hover:scale-[1.03] group-hover:border-gray-400/60 group-hover:shadow-2xl group-hover:shadow-gray-500/20">
+                        <!-- Decorative gradient overlay -->
+                        <div
+                            class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-gradient-to-br from-gray-500/5 to-gray-500/5 rounded-3xl group-hover:opacity-100">
+                        </div>
+
+                        <div class="absolute transform -translate-x-1/2 -top-5 left-1/2">
+                            <span
+                                class="px-6 py-3 text-sm font-semibold text-gray-300 border rounded-full shadow-lg bg-gray-500/20 border-gray-400/30 backdrop-blur-sm">
+                                <svg class="inline w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M4.649 3.084A1 1 0 015.163 4.4 13.95 13.95 0 004 10c0 1.993.416 3.886 1.164 5.6a1 1 0 01-1.832.8A15.95 15.95 0 012 10c0-2.274.475-4.44 1.332-6.4a1 1 0 011.317-.516zM12.96 7a3 3 0 00-2.342 1.126l-.328.41-.111-.279A2 2 0 008.323 7H8a1 1 0 000 2h.323l.532 1.33-1.035 1.295a1 1 0 01-.781.375H7a1 1 0 100 2h.039a3 3 0 002.342-1.126l.328-.41.111.279A2 2 0 0011.677 14H12a1 1 0 100-2h-.323l-.532-1.33 1.035-1.295A1 1 0 0112.961 9H13a1 1 0 100-2h-.039zm1.874-2.6a1 1 0 011.833-.8A15.95 15.95 0 0118 10c0 2.274-.475 4.44-1.332 6.4a1 1 0 11-1.832-.8A13.949 13.949 0 0016 10c0-1.993-.416-3.886-1.165-5.6z" />
+                                </svg>
+                                Gratuit
+                            </span>
+                        </div>
+
+                        <div class="relative z-10 mt-12">
+                            <h3 class="mb-6 text-3xl font-bold tracking-wide text-white">Plan Free</h3>
+
+                            <div class="flex items-center justify-center mb-8">
+                                <span
+                                    class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-500">0</span>
+                                <div class="ml-3 text-left">
+                                    <span class="block text-lg text-gray-400">Lei</span>
+                                    <span class="block text-sm text-gray-500">permanent</span>
+                                </div>
+                            </div>
+
+                            <ul class="mb-10 space-y-5 text-gray-300">
+                                <li class="flex items-center justify-center gap-3">
+                                    <div
+                                        class="flex items-center justify-center flex-shrink-0 w-6 h-6 rounded-full bg-gray-500/20">
+                                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </div>
+                                    <span class="text-base">Acces la forum</span>
+                                </li>
+                                <li class="flex items-center justify-center gap-3">
+                                    <div
+                                        class="flex items-center justify-center flex-shrink-0 w-6 h-6 rounded-full bg-gray-500/20">
+                                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </div>
+                                    <span class="text-base">Vizualizare listă video</span>
+                                </li>
+                                <li class="flex items-center justify-center gap-3">
+                                    <div
+                                        class="flex items-center justify-center flex-shrink-0 w-6 h-6 rounded-full bg-red-500/20">
+                                        <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </div>
+                                    <span class="text-base text-gray-500">Fără acces la conținut</span>
+                                </li>
+                            </ul>
+
+                            <a href="{{ route('videoclipuri') }}"
+                                class="block w-full px-8 py-4 text-base font-semibold text-white transition-all duration-300 bg-gradient-to-r from-gray-600 to-gray-700 rounded-xl hover:from-gray-700 hover:to-gray-800 hover:shadow-lg hover:shadow-gray-500/25 transform hover:-translate-y-0.5">
+                                <span class="flex items-center justify-center">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                    </svg>
+                                    Folosește gratuit
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Monthly Plan -->
                 <div class="w-full max-w-sm group">
                     <div
@@ -214,7 +299,18 @@
                                                 d="M5 13l4 4L19 7" />
                                         </svg>
                                     </div>
-                                    <span class="text-base">Acces complet</span>
+                                    <span class="text-base">Acces la toate videoclipurile</span>
+                                </li>
+                                <li class="flex items-center justify-center gap-3">
+                                    <div
+                                        class="flex items-center justify-center flex-shrink-0 w-6 h-6 rounded-full bg-blue-500/20">
+                                        <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </div>
+                                    <span class="text-base">Conținut exclusiv</span>
                                 </li>
                                 <li class="flex items-center justify-center gap-3">
                                     <div
@@ -253,7 +349,16 @@
                             class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-gradient-to-br from-green-500/5 to-blue-500/5 rounded-3xl group-hover:opacity-100">
                         </div>
 
-
+                        <div class="absolute transform -translate-x-1/2 -top-5 left-1/2">
+                            <span
+                                class="px-6 py-3 text-sm font-semibold text-green-300 border rounded-full shadow-lg bg-green-500/20 border-green-400/30 backdrop-blur-sm">
+                                <svg class="inline w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+                                </svg>
+                                Cel mai bun preț
+                            </span>
+                        </div>
 
                         <div class="relative z-10 mt-12">
                             <h3 class="mb-6 text-3xl font-bold tracking-wide text-white">Abonament Anual</h3>
@@ -267,9 +372,22 @@
                                 </div>
                             </div>
 
-                            <!-- Eliminăm savings highlight box -->
+                            <div class="p-3 mb-6 bg-green-900/20 border border-green-500/30 rounded-xl">
+                                <p class="text-sm font-medium text-green-400">Economisești 16% față de planul lunar</p>
+                            </div>
 
                             <ul class="mb-10 space-y-5 text-gray-300">
+                                <li class="flex items-center justify-center gap-3">
+                                    <div
+                                        class="flex items-center justify-center flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20">
+                                        <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </div>
+                                    <span class="text-base">Tot ce include planul lunar</span>
+                                </li>
                                 <li class="flex items-center justify-center gap-3">
                                     <div
                                         class="flex items-center justify-center flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20">
@@ -290,7 +408,7 @@
                                                 d="M5 13l4 4L19 7" />
                                         </svg>
                                     </div>
-                                    <span class="text-base">Acces nelimitat</span>
+                                    <span class="text-base">Badge premium exclusiv</span>
                                 </li>
 
                             </ul>
@@ -355,6 +473,143 @@
                             </span>
                         </button>
                     </form>
+                </div>
+            </div>
+        @endif
+
+        @if (!$activeSubscription && !$user->isPremium())
+            <!-- Plan Comparison Table -->
+            <div class="mt-20 mb-16">
+                <div class="max-w-4xl mx-auto">
+                    <h3 class="mb-8 text-2xl font-bold text-center text-white">Comparație Planuri</h3>
+
+                    <div class="overflow-hidden border rounded-xl border-gray-700/50 backdrop-blur-sm bg-gray-900/50">
+                        <table class="min-w-full divide-y divide-gray-700/50">
+                            <thead class="bg-gray-800/70">
+                                <tr>
+                                    <th scope="col" class="px-6 py-4 text-sm font-medium text-left text-gray-300">
+                                        Caracteristici
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-4 text-sm font-medium text-center text-gray-300">
+                                        Free
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-4 text-sm font-medium text-center text-blue-400">
+                                        Premium
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-700/50">
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-gray-300 whitespace-nowrap">
+                                        Acces la forum
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-center text-gray-300 whitespace-nowrap">
+                                        <svg class="w-5 h-5 mx-auto text-green-400" fill="currentColor"
+                                            viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-center text-gray-300 whitespace-nowrap">
+                                        <svg class="w-5 h-5 mx-auto text-green-400" fill="currentColor"
+                                            viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-gray-300 whitespace-nowrap">
+                                        Badge în comunitate
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-center text-gray-300 whitespace-nowrap">
+                                        <span
+                                            class="px-2 py-1 text-xs font-medium rounded bg-gray-800/60 text-gray-400">Free</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-center text-gray-300 whitespace-nowrap">
+                                        <span
+                                            class="px-2 py-1 text-xs font-medium rounded bg-blue-900/60 text-blue-400">Premium</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-gray-300 whitespace-nowrap">
+                                        Vizualizare lista video
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-center text-gray-300 whitespace-nowrap">
+                                        <svg class="w-5 h-5 mx-auto text-green-400" fill="currentColor"
+                                            viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-center text-gray-300 whitespace-nowrap">
+                                        <svg class="w-5 h-5 mx-auto text-green-400" fill="currentColor"
+                                            viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-gray-300 whitespace-nowrap">
+                                        Vizionare videoclipuri
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-center text-gray-300 whitespace-nowrap">
+                                        <svg class="w-5 h-5 mx-auto text-red-500" fill="currentColor"
+                                            viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-center text-gray-300 whitespace-nowrap">
+                                        <svg class="w-5 h-5 mx-auto text-green-400" fill="currentColor"
+                                            viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                clip-rule="evenodd" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-gray-300 whitespace-nowrap">
+                                        Acces la conținut exclusiv
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-center text-gray-300 whitespace-nowrap">
+                                        <svg class="w-5 h-5 mx-auto text-red-500" fill="currentColor"
+                                            viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-center text-gray-300 whitespace-nowrap">
+                                        <svg class="w-5 h-5 mx-auto text-green-400" fill="currentColor"
+                                            viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                clip-rule="evenodd" />
+                                    </td>
+                                </tr>
+                                <tr class="bg-gray-800/30">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-300 whitespace-nowrap">
+                                        Preț
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-center text-gray-300 whitespace-nowrap">
+                                        <span class="font-medium">0 Lei</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-center text-blue-400 whitespace-nowrap">
+                                        <span class="font-medium">de la 9.99 Lei / lună</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         @endif

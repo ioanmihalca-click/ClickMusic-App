@@ -231,4 +231,53 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->notifications()->whereNull('read_at')->count();
     }
+
+    // Determine if the user has an active premium subscription
+    public function isPremium()
+    {
+        if ($this->usertype === 'admin' || $this->usertype === 'super_user') {
+            return true;
+        }
+
+        return $this->subscribed('prod_QGao8eve2XHvzf');
+    }
+
+    // Determine if the user should see premium badges (is a paying user)
+    public function hasPremiumBadge()
+    {
+        return $this->isPremium() && $this->usertype !== 'admin' && $this->usertype !== 'super_user';
+    }
+
+    // Determine if the user has a free plan (authenticated but not premium)
+    public function hasFreePlan()
+    {
+        return !$this->isPremium() && $this->id;
+    }
+
+    // Check if user can access community features
+    public function canAccessCommunity()
+    {
+        // All authenticated users can access community
+        return $this->id !== null;
+    }
+
+    // Check if user can access premium video content
+    public function canAccessPremiumContent()
+    {
+        return $this->isPremium();
+    }
+
+    // Get the user's membership type for display
+    public function getMembershipTypeAttribute()
+    {
+        if ($this->usertype === 'admin') {
+            return 'Admin';
+        } elseif ($this->usertype === 'super_user') {
+            return 'Super User';
+        } elseif ($this->isPremium()) {
+            return 'Premium';
+        } else {
+            return 'Free';
+        }
+    }
 }

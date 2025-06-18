@@ -119,17 +119,17 @@ Route::prefix('comunitate')->middleware(['auth'])->group(function () {
     Route::put('/raspunsuri/{reply}', [App\Http\Controllers\ForumRepliesController::class, 'update'])->name('forum.replies.update');
 });
 Route::view('videoclipuri', 'videoclipuri')
-    ->middleware([Subscribed::class])
+    ->middleware(['auth'])
     ->name('videoclipuri');
 
-Route::get('/videos/{video}', [VideoController::class, 'show'])->name('videos.show')
-
+Route::get('/videos/{video}', [VideoController::class, 'show'])
+    ->name('videos.show')
     ->middleware(['auth']);
 
-// Secure video streaming route (authenticated users only)
-Route::get('/videos/stream/{id}', [VideoController::class, 'stream'])->name('videos.stream')
-
-    ->middleware(['auth']);
+// Secure video streaming route (premium users only)
+Route::get('/videos/stream/{id}', [VideoController::class, 'stream'])
+    ->name('videos.stream')
+    ->middleware(['auth', Subscribed::class . ':forVideoOnly']);
 
 // Route::view('sustine', 'sustine')
 // ->middleware([Subscribed::class])
