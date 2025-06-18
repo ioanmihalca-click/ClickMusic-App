@@ -44,7 +44,7 @@
                                 </span>
                             </div>
 
-                            <h1 class="text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl">
+                            <h1 class="font-bold leading-tight text-white text-md md:text-4xl ">
                                 {{ $post->title }}
                             </h1>
                         </div>
@@ -77,7 +77,7 @@
                     </div>
                 @endif
                 <!-- Article content -->
-                <div class="p-4 sm:p-6 md:p-8 lg:p-12">
+                <div>
                     <div
                         class="prose prose-lg prose-invert max-w-none prose-headings:text-white prose-headings:font-bold prose-p:text-gray-300 prose-p:leading-relaxed prose-a:text-blue-400 prose-a:no-underline hover:prose-a:text-blue-300 prose-strong:text-white prose-strong:font-semibold prose-blockquote:border-l-blue-500 prose-blockquote:bg-blue-500/10 prose-code:text-blue-300 prose-code:bg-slate-800 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-pre:bg-slate-800 prose-pre:border prose-pre:border-slate-700 prose-ul:text-gray-300 prose-ol:text-gray-300 prose-li:text-gray-300">
                         {!! $post->body !!}
