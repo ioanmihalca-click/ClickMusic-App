@@ -47,14 +47,6 @@ class VideoResource extends Resource
                 TextInput::make('title')->required(),
                 Textarea::make('description')->required(),
 
-                FileUpload::make('thumbnail_url')
-                    ->label('Thumbnail')
-                    ->disk('public')
-                    ->directory('thumbnails')
-                    ->image()
-                    ->imageEditor()
-                    ->required()
-                    ->helperText('Încărcați o imagine pentru thumbnail'),
                 FileUpload::make('video_path')
                     ->label('Fișier Media')
                     ->disk('public')
@@ -83,6 +75,16 @@ class VideoResource extends Resource
                     ->nullable()
                     ->removeUploadedFileButtonPosition('right')
                     ->uploadProgressIndicatorPosition('left'),
+
+                FileUpload::make('thumbnail_url')
+                    ->label('Thumbnail')
+                    ->disk('public')
+                    ->directory('thumbnails')
+                    ->image()
+                    ->imageEditor()
+                    ->required()
+                    ->helperText('Încărcați o imagine pentru thumbnail'),
+
                 Toggle::make('featured')->label('Promovat')
             ]);
     }
