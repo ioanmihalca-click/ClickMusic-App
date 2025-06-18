@@ -26,8 +26,9 @@
                             class="absolute bottom-4 sm:bottom-6 md:bottom-8 left-4 sm:left-6 md:left-8 right-4 sm:right-6 md:right-8">
                             <div class="flex items-center mb-4">
                                 <time datetime="{{ $post->published_at->toDateString() }}"
-                                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-white border rounded-full bg-black/50 backdrop-blur-md border-white/20">
-                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    class="inline-flex items-center px-2 py-1 text-xs font-medium text-white border rounded-full sm:px-4 sm:py-2 sm:text-sm bg-black/50 backdrop-blur-md border-white/20">
+                                    <svg class="w-3 h-3 mr-1 sm:w-4 sm:h-4 sm:mr-2" fill="currentColor"
+                                        viewBox="0 0 20 20">
                                         <path fill-rule="evenodd"
                                             d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
                                             clip-rule="evenodd" />
@@ -36,8 +37,9 @@
                                 </time>
 
                                 <span
-                                    class="inline-flex items-center px-4 py-2 ml-4 text-sm font-medium text-blue-400 border rounded-full bg-blue-500/20 backdrop-blur-md border-blue-500/30">
-                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    class="inline-flex items-center px-2 py-1 ml-2 text-xs font-medium text-blue-400 border rounded-full sm:px-4 sm:py-2 sm:ml-4 sm:text-sm bg-blue-500/20 backdrop-blur-md border-blue-500/30">
+                                    <svg class="w-3 h-3 mr-1 sm:w-4 sm:h-4 sm:mr-2" fill="currentColor"
+                                        viewBox="0 0 20 20">
                                         <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                     de Click
@@ -53,8 +55,8 @@
                     <div class="p-6 text-center sm:p-8 md:p-12">
                         <div class="flex items-center justify-center mb-6">
                             <time datetime="{{ $post->published_at->toDateString() }}"
-                                class="inline-flex items-center px-4 py-2 text-sm font-medium text-white border rounded-full bg-black/50 backdrop-blur-md border-white/20">
-                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                class="inline-flex items-center px-2 py-1 text-xs font-medium text-white border rounded-full sm:px-4 sm:py-2 sm:text-sm bg-black/50 backdrop-blur-md border-white/20">
+                                <svg class="w-3 h-3 mr-1 sm:w-4 sm:h-4 sm:mr-2" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                         d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
                                         clip-rule="evenodd" />
@@ -63,8 +65,8 @@
                             </time>
 
                             <span
-                                class="inline-flex items-center px-4 py-2 ml-4 text-sm font-medium text-blue-400 border rounded-full bg-blue-500/20 backdrop-blur-md border-blue-500/30">
-                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                class="inline-flex items-center px-2 py-1 ml-2 text-xs font-medium text-blue-400 border rounded-full sm:px-4 sm:py-2 sm:ml-4 sm:text-sm bg-blue-500/20 backdrop-blur-md border-blue-500/30">
+                                <svg class="w-3 h-3 mr-1 sm:w-4 sm:h-4 sm:mr-2" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                                 de Click
@@ -235,7 +237,7 @@
 
                                             <div class="absolute top-4 left-4">
                                                 <time datetime="{{ $post->published_at->toDateString() }}"
-                                                    class="inline-flex items-center px-3 py-1 text-xs font-medium text-white border rounded-full bg-black/50 backdrop-blur-md border-white/20">
+                                                    class="inline-flex items-center px-2 py-1 text-xs font-medium text-white border rounded-full sm:px-3 sm:py-1 bg-black/50 backdrop-blur-md border-white/20">
                                                     {{ $post->published_at->format('d M') }}
                                                 </time>
                                             </div>
