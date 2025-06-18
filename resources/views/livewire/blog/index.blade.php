@@ -1,4 +1,4 @@
-<section class="relative">
+<section class="relative py-8">
     <!-- Background elements -->
     <div class="absolute inset-0 overflow-hidden">
         <div class="absolute rounded-full top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 blur-3xl"></div>

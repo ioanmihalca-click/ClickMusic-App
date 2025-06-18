@@ -1,5 +1,5 @@
 {{-- show.blade.php --}}
-<div class="relative py-8 sm:py-12">
+<div class="relative py-12">
     <!-- Background elements -->
     <div class="absolute inset-0 overflow-hidden">
         <div class="absolute rounded-full top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 blur-3xl"></div>
@@ -12,7 +12,7 @@
             <!-- Article header -->
             <header class="relative">
                 @if ($post->featured_image)
-                    <div class="relative overflow-hidden h-96">
+                    <div class="relative h-auto overflow-hidden">
                         <img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}"
                             class="object-cover w-full h-full">
 
