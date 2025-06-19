@@ -38,7 +38,7 @@
                     <div class="h-full overflow-hidden glass-effect rounded-2xl">
                         <a href="{{ route('blog.show', $post->slug) }}" class="block h-full">
                             @if ($post->featured_image)
-                                <div class="relative aspect-[4/3] overflow-hidden">
+                                <div class="relative">
                                     <img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}"
                                         class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110">
 
