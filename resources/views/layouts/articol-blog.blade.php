@@ -13,7 +13,7 @@
 
     <meta property="og:title" content="{{ $post->title }}">
     <meta property="og:description" content="{{ $post->meta['description'] ?? '' }}">
-    <meta property="og:image" content="{{ asset('storage/' . $post->featured_image) }}">
+    <meta property="og:image" content="{{ url(asset('storage/' . $post->featured_image)) }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:url" content="{{ route('blog.show', $post->slug) }}">
@@ -24,7 +24,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ $post->title }}">
     <meta name="twitter:description" content="{{ $post->meta['description'] ?? '' }}">
-    <meta name="twitter:image" content="{{ asset('storage/' . $post->featured_image) }}">
+    <meta name="twitter:image" content="{{ url(asset('storage/' . $post->featured_image)) }}">
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-34NT57GG5F"></script>
     <script>
@@ -162,7 +162,7 @@
 <body class="font-sans antialiased text-white bg-black">
     <livewire:header-nav />
 
-    <main class="container px-4 sm:px-6 py-6 sm:py-8 mx-auto max-w-6xl">
+    <main class="container max-w-6xl px-4 py-6 mx-auto sm:px-6 sm:py-8">
         {{ $slot }}
     </main>
 

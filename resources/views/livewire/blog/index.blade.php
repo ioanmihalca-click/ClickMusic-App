@@ -32,13 +32,13 @@
         </div>
 
         <!-- Articles Grid -->
-        <div class="grid grid-cols-1 gap-8 mb-16 md:grid-cols-2 lg:grid-cols-3">
+        <div class="grid grid-cols-1 gap-6 mb-16 md:grid-cols-2 lg:grid-cols-3 xl:gap-8">
             @foreach ($posts as $post)
                 <article class="blog-grid-item group">
                     <div class="h-full overflow-hidden glass-effect rounded-2xl">
                         <a href="{{ route('blog.show', $post->slug) }}" class="block h-full">
                             @if ($post->featured_image)
-                                <div class="relative h-64 overflow-hidden">
+                                <div class="relative aspect-[4/3] overflow-hidden">
                                     <img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}"
                                         class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110">
 
@@ -57,7 +57,7 @@
                                 </div>
                             @endif
 
-                            <div class="p-6">
+                            <div class="p-4 sm:p-6">
                                 <h2
                                     class="mb-3 text-xl font-bold text-white transition-colors duration-300 line-clamp-2 group-hover:text-blue-400">
                                     {{ $post->title }}
