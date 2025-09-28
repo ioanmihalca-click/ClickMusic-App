@@ -20,15 +20,17 @@ class SendVideoNotifications implements ShouldQueue
 
     protected $video;
     protected $userIds;
+    protected $isInitialDispatch;
     protected $maxEmailsPerBatch = 30; // Reducă batch-ul pentru a respecta limita zilnică de 100
 
     public $tries = 3;
     public $timeout = 1800; // 30 minute
 
-    public function __construct(Video $video, ?Collection $userIds = null)
+    public function __construct(Video $video, ?Collection $userIds = null, bool $isInitialDispatch = null)
     {
         $this->video = $video;
         $this->userIds = $userIds ?? collect();
+        $this->isInitialDispatch = $isInitialDispatch ?? $userIds === null;
     }
 
     public function handle()
@@ -47,12 +49,12 @@ class SendVideoNotifications implements ShouldQueue
 
             // Dacă nu avem userIds specifici, luăm toți utilizatorii abonați la newsletter
             if ($this->userIds->isEmpty()) {
-                $maxToTake = min($this->maxEmailsPerBatch, $remainingQuota);
+                // Luăm TOȚI utilizatorii, dar limitați la quota zilnică
                 $this->userIds = User::newsletterSubscribed()
                     ->pluck('id')
-                    ->take($maxToTake);
+                    ->take($remainingQuota);
             } else {
-                // Limitează la quota rămasă
+                // Pentru job-urile re-dispatched, limitează la quota rămasă
                 $this->userIds = $this->userIds->take($remainingQuota);
             }
 
@@ -60,7 +62,8 @@ class SendVideoNotifications implements ShouldQueue
             $sentCount = 0;
             $failedCount = 0;
 
-            Log::info("Starting video notifications for video: {$this->video->title} to {$this->userIds->count()} users (Remaining quota: {$remainingQuota})");
+            $dispatchType = $this->isInitialDispatch ? 'INITIAL' : 'CONTINUATION';
+            Log::info("Starting video notifications [{$dispatchType}] for video: {$this->video->title} to {$this->userIds->count()} users (Remaining quota: {$remainingQuota})");
 
             foreach ($this->userIds as $userId) {
                 try {
@@ -84,24 +87,22 @@ class SendVideoNotifications implements ShouldQueue
                 DailyEmailTracker::recordSentEmails($sentCount, 'video_notification');
             }
 
-            // Verifică dacă mai sunt utilizatori de notificat
-            $remainingUsers = User::newsletterSubscribed()
-                ->whereNotIn('id', $this->userIds)
-                ->pluck('id');
+            // Programează utilizatorii rămași DOAR dacă este dispatch-ul inițial
+            // și nu toți utilizatorii au fost procesați din cauza limitei zilnice
+            if ($this->isInitialDispatch) {
+                $allUsers = User::newsletterSubscribed()->pluck('id');
+                $totalUsers = $allUsers->count();
 
-            if ($remainingUsers->isNotEmpty()) {
-                $newRemainingQuota = DailyEmailTracker::getRemainingQuota();
+                // Dacă am mai mulți utilizatori decât cât am putut procesa astăzi
+                if ($totalUsers > $sentCount) {
+                    $processedUserIds = $this->userIds->take($sentCount);
+                    $remainingUsers = $allUsers->diff($processedUserIds);
 
-                if ($newRemainingQuota > 0) {
-                    // Mai avem quota pentru astăzi, programează următorul batch în 5 minute
-                    $nextBatch = $remainingUsers->take(min($this->maxEmailsPerBatch, $newRemainingQuota));
-                    static::dispatch($this->video, $nextBatch)
-                        ->delay(now()->addMinutes(5));
-                } else {
-                    // Quota epuizată pentru astăzi, programează pentru mâine
-                    Log::info("Daily quota exhausted. Scheduling remaining {$remainingUsers->count()} notifications for tomorrow.");
-                    static::dispatch($this->video, $remainingUsers)
-                        ->delay(now()->addDay()->setTime(8, 0));
+                    if ($remainingUsers->isNotEmpty()) {
+                        Log::info("Scheduling remaining {$remainingUsers->count()} video notifications for tomorrow at 08:00.");
+                        static::dispatch($this->video, $remainingUsers, false) // false = not initial dispatch
+                            ->delay(now()->addDay()->setTime(8, 0));
+                    }
                 }
             }
 
