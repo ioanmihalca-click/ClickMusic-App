@@ -625,12 +625,13 @@ class NewsletterResource extends Resource
                         return;
                     }
 
-                    // Verificăm limita zilnică
-                    $remainingQuota = Newsletter::getRemainingQuota();
+                    // Verificăm limita zilnică prin sistemul unificat
+                    $remainingQuota = \App\Models\DailyEmailTracker::getRemainingQuota();
                     if ($remainingQuota <= 0) {
+                        $dailyLimit = config('mail.daily_limit', 100);
                         FilamentNotification::make()
                             ->title("Limita zilnică a fost atinsă")
-                            ->body("Au fost deja trimise 200 de emailuri astăzi. Încearcă mâine.")
+                            ->body("Au fost deja trimise {$dailyLimit} de emailuri astăzi. Încearcă mâine.")
                             ->warning()
                             ->send();
                         return;
@@ -697,11 +698,12 @@ class NewsletterResource extends Resource
                         return;
                     }
 
-                    $remainingQuota = Newsletter::getRemainingQuota();
+                    $remainingQuota = \App\Models\DailyEmailTracker::getRemainingQuota();
                     if ($remainingQuota <= 0) {
+                        $dailyLimit = config('mail.daily_limit', 100);
                         FilamentNotification::make()
                             ->title("Limita zilnică a fost atinsă")
-                            ->body("Au fost deja trimise 200 de emailuri astăzi. Încearcă mâine.")
+                            ->body("Au fost deja trimise {$dailyLimit} de emailuri astăzi. Încearcă mâine.")
                             ->warning()
                             ->send();
                         return;
@@ -941,12 +943,12 @@ class NewsletterResource extends Resource
     private static function sendCampaign(Newsletter $campaign, Collection $recipients): void
     {
         try {
-            // Verificăm limita zilnică
-            $remainingQuota = Newsletter::getRemainingQuota();
+            // Verificăm limita zilnică prin sistemul unificat
+            $remainingQuota = \App\Models\DailyEmailTracker::getRemainingQuota();
             if ($remainingQuota <= 0) {
                 FilamentNotification::make()
                     ->title("Limita zilnică atinsă")
-                    ->body("Campania va fi trimisă mâine dimineață.")
+                    ->body("Campania va fi trimisă mâine dimineață la 08:00.")
                     ->warning()
                     ->send();
             }

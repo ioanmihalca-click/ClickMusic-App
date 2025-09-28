@@ -5,6 +5,7 @@ namespace App\Jobs;
 use Exception;
 use App\Models\User;
 use App\Models\Newsletter;
+use App\Models\DailyEmailTracker;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Collection;
@@ -44,7 +45,6 @@ class SendNewsletters implements ShouldQueue
             return;
         }
 
-        $maxDailySent = 200;
         $errorCount = 0;
         $maxErrors = 5;
         $processedCount = 0;
@@ -53,19 +53,18 @@ class SendNewsletters implements ShouldQueue
 
         Log::info("Starting SendNewsletterCampaign job for campaign: {$campaign->campaign_title} with {$this->recipientsData->count()} recipients");
 
-        // Verificăm câte mailuri s-au trimis astăzi
-        $sentToday = Newsletter::getSentTodayCount();
-        Log::info("Emails sent today: {$sentToday}/{$maxDailySent}");
+        // Verificăm câte mailuri mai putem trimite astăzi prin sistemul unificat
+        $remainingQuota = DailyEmailTracker::getRemainingQuota();
+        Log::info("Remaining email quota today: {$remainingQuota}");
 
-        // Dacă am atins limita zilnică, programăm job-ul pentru mâine
-        if (Newsletter::isDailyLimitReached($maxDailySent)) {
+        // Dacă nu mai avem quota, programăm job-ul pentru mâine
+        if ($remainingQuota <= 0) {
             Log::info("Daily limit reached. Scheduling campaign for tomorrow.");
             $this->rescheduleForTomorrow($campaign);
             return;
         }
 
-        // Calculăm câte mailuri mai putem trimite astăzi
-        $remainingQuota = Newsletter::getRemainingQuota($maxDailySent);
+        // Limitează numărul de recipients la quota rămasă
         $recipientsToProcess = $this->recipientsData->take($remainingQuota);
 
         Log::info("Processing {$recipientsToProcess->count()} recipients (remaining quota: {$remainingQuota})");
@@ -75,9 +74,9 @@ class SendNewsletters implements ShouldQueue
 
         foreach ($recipientsToProcess as $recipientData) {
             try {
-                // Verificăm din nou limita pentru fiecare mail
-                if (Newsletter::isDailyLimitReached($maxDailySent)) {
-                    Log::info("Daily limit reached during processing. Scheduling remaining recipients for tomorrow.");
+                // Verificăm din nou quota pentru fiecare mail
+                if (DailyEmailTracker::getRemainingQuota() <= 0) {
+                    Log::info("Daily quota exhausted during processing. Scheduling remaining recipients for tomorrow.");
                     $this->scheduleRemainingRecipients($campaign, $recipientData);
                     break;
                 }
@@ -134,6 +133,12 @@ class SendNewsletters implements ShouldQueue
             $this->scheduleRemainingRecipients($campaign, $remaining->first(), $remaining);
         }
 
+        // Înregistrăm email-urile trimise în sistemul unificat de tracking
+        if ($sentCount > 0) {
+            DailyEmailTracker::recordSentEmails($sentCount, 'newsletter_campaign');
+            Log::info("Recorded {$sentCount} newsletter emails in daily tracker");
+        }
+
         // Actualizăm statisticile campaniei
         $campaign->updateCampaignStats($sentCount, $failedCount);
 
@@ -174,12 +179,12 @@ class SendNewsletters implements ShouldQueue
      */
     private function rescheduleForTomorrow(Newsletter $campaign)
     {
-        $tomorrow = \Carbon\Carbon::tomorrow()->hour(9)->minute(0)->second(0);
+        $tomorrow = \Carbon\Carbon::tomorrow()->hour(8)->minute(0)->second(0);
 
         static::dispatch($this->campaignId, $this->recipientsData)
             ->delay($tomorrow);
 
-        Log::info("Campaign '{$campaign->campaign_title}' rescheduled for tomorrow at 09:00");
+        Log::info("Campaign '{$campaign->campaign_title}' rescheduled for tomorrow at 08:00");
     }
 
     /**
@@ -197,12 +202,12 @@ class SendNewsletters implements ShouldQueue
         }
 
         if ($remaining->count() > 0) {
-            $tomorrow = \Carbon\Carbon::tomorrow()->hour(9)->minute(0)->second(0);
+            $tomorrow = \Carbon\Carbon::tomorrow()->hour(8)->minute(0)->second(0);
 
             static::dispatch($this->campaignId, $remaining)
                 ->delay($tomorrow);
 
-            Log::info("Scheduled {$remaining->count()} remaining recipients for campaign '{$campaign->campaign_title}' for tomorrow at 09:00");
+            Log::info("Scheduled {$remaining->count()} remaining recipients for campaign '{$campaign->campaign_title}' for tomorrow at 08:00");
         }
     }
 

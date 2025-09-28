@@ -219,6 +219,7 @@ class Newsletter extends Model
 
     /**
      * Returnează numărul de newslettere trimise astăzi
+     * @deprecated Use DailyEmailTracker::getTodayEmailCount() instead
      */
     public static function getSentTodayCount(): int
     {
@@ -227,6 +228,7 @@ class Newsletter extends Model
 
     /**
      * Verifică dacă s-a atins limita zilnică
+     * @deprecated Use DailyEmailTracker::canSendEmails() instead
      */
     public static function isDailyLimitReached(int $limit = 200): bool
     {
@@ -235,6 +237,7 @@ class Newsletter extends Model
 
     /**
      * Returnează câte newslettere mai pot fi trimise astăzi
+     * @deprecated Use DailyEmailTracker::getRemainingQuota() instead
      */
     public static function getRemainingQuota(int $limit = 200): int
     {
