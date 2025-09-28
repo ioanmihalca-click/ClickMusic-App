@@ -28,13 +28,13 @@ class NewVideoNotification extends Notification implements ShouldQueue
     {
         return (new MailMessage)
             ->from('contact@clickmusic.ro', 'Click Music Ro')
-            ->subject('O noua piesa pe Click Music - ' . $this->video->title)
+            ->subject('O noua piesa pe clickmusic.ro - ' . $this->video->title)
             ->greeting('Salut ' . $notifiable->name . '!')
             ->line('Am adăugat conținut nou pe platformă:')
             ->line('**' . $this->video->title . '**')
             ->line($this->video->description)
             ->action('Vezi acum', route('videos.show', $this->video->id))
-            ->line('Pentru a viziona noul video, trebuie să fii autentificat în aplicație. Îți mulțumesc că faci parte din comunitatea noastră!')
+            ->line('Pentru a viziona noul video, trebuie să fii autentificat în aplicație. Îți mulțumesc că faci parte din comunitatea mea!')
             ->salutation('Cu respect, Click Music');
     }
 }

@@ -108,4 +108,17 @@ return [
         'name' => env('MAIL_FROM_NAME', '${APP_NAME}'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Daily Email Limit
+    |--------------------------------------------------------------------------
+    |
+    | This option defines the maximum number of emails that can be sent
+    | per day. This is useful for shared hosting providers that limit
+    | the number of emails sent daily (e.g., Hostinger free mail: 100/day).
+    |
+    */
+
+    'daily_limit' => env('MAIL_DAILY_LIMIT', 100),
+
 ];
