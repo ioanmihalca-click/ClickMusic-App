@@ -323,6 +323,116 @@ class NewsletterResource extends Resource
                     ->modalWidth('md')
                     ->slideOver(),
 
+                // Administrare abonați
+                Action::make('manageSubscribers')
+                    ->label('Administrează Abonați')
+                    ->icon('heroicon-o-users')
+                    ->color('secondary')
+                    ->form([
+                        Forms\Components\TextInput::make('email')
+                            ->label('Email')
+                            ->email()
+                            ->required()
+                            ->placeholder('user@example.com'),
+                        Forms\Components\Select::make('action')
+                            ->label('Acțiune')
+                            ->options([
+                                'subscribe' => 'Abonează',
+                                'unsubscribe' => 'Dezabonează',
+                                'check_status' => 'Verifică Status',
+                            ])
+                            ->required()
+                            ->default('check_status'),
+                    ])
+                    ->action(function (array $data): void {
+                        $email = $data['email'];
+                        $action = $data['action'];
+
+                        // Verificăm dacă există un user cu acest email
+                        $user = User::where('email', $email)->first();
+
+                        // Verificăm dacă există în newsletter subscribers
+                        $newsletter = Newsletter::where('recipient_email', $email)
+                            ->where('campaign_type', Newsletter::TYPE_SUBSCRIBER)
+                            ->first();
+
+                        switch ($action) {
+                            case 'subscribe':
+                                if ($user) {
+                                    $user->subscribeToNewsletter();
+                                    FilamentNotification::make()
+                                        ->title("Utilizatorul {$email} a fost abonat la newsletter")
+                                        ->success()
+                                        ->send();
+                                } elseif ($newsletter) {
+                                    $newsletter->resetToPending();
+                                    FilamentNotification::make()
+                                        ->title("Adresa {$email} din lista newsletter a fost reactivată")
+                                        ->success()
+                                        ->send();
+                                } else {
+                                    // Creăm o intrare nouă în newsletter
+                                    Newsletter::create([
+                                        'recipient_email' => $email,
+                                        'recipient_name' => explode('@', $email)[0],
+                                        'campaign_type' => Newsletter::TYPE_SUBSCRIBER,
+                                        'status' => Newsletter::STATUS_PENDING,
+                                    ]);
+                                    FilamentNotification::make()
+                                        ->title("Email-ul {$email} a fost adăugat la newsletter")
+                                        ->success()
+                                        ->send();
+                                }
+                                break;
+
+                            case 'unsubscribe':
+                                if ($user) {
+                                    $user->unsubscribeFromNewsletter();
+                                    FilamentNotification::make()
+                                        ->title("Utilizatorul {$email} a fost dezabonat")
+                                        ->success()
+                                        ->send();
+                                }
+                                if ($newsletter) {
+                                    $newsletter->markAsFailed('Dezabonat manual');
+                                    FilamentNotification::make()
+                                        ->title("Adresa {$email} a fost dezabonată din newsletter")
+                                        ->success()
+                                        ->send();
+                                }
+                                if (!$user && !$newsletter) {
+                                    FilamentNotification::make()
+                                        ->title("Email-ul {$email} nu a fost găsit în sistem")
+                                        ->warning()
+                                        ->send();
+                                }
+                                break;
+
+                            case 'check_status':
+                                $statuses = [];
+                                if ($user) {
+                                    $userStatus = $user->newsletter_unsubscribed_at ? 'dezabonat' : 'abonat';
+                                    $statuses[] = "Utilizator înregistrat: {$userStatus}";
+                                }
+                                if ($newsletter) {
+                                    $newsletterStatus = $newsletter->status === Newsletter::STATUS_PENDING ? 'abonat' : 'dezabonat';
+                                    $statuses[] = "Lista newsletter: {$newsletterStatus}";
+                                }
+
+                                if (empty($statuses)) {
+                                    $statuses[] = "Nu există în sistem";
+                                }
+
+                                FilamentNotification::make()
+                                    ->title("Status pentru {$email}")
+                                    ->body(implode(', ', $statuses))
+                                    ->info()
+                                    ->send();
+                                break;
+                        }
+                    })
+                    ->modalWidth('md'),
+
                 // Editor pentru campanie newsletter
                 Action::make('createCampaign')
                     ->label('Creează Campanie Newsletter')

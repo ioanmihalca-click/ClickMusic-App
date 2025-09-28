@@ -69,148 +69,58 @@ class NewsletterSubscriberResource extends Resource
                     ->label('Email')
                     ->searchable()
                     ->sortable(),
-                TextColumn::make('source')
-                    ->label('Sursa')
+                TextColumn::make('status')
+                    ->label('Status')
                     ->badge()
                     ->color(fn(string $state): string => match ($state) {
-                        'user' => 'success',
-                        'newsletter' => 'info',
+                        Newsletter::STATUS_PENDING => 'success',
+                        Newsletter::STATUS_FAILED => 'danger',
+                        Newsletter::STATUS_SENT => 'info',
                         default => 'gray',
                     })
                     ->formatStateUsing(fn(string $state): string => match ($state) {
-                        'user' => 'Cont utilizator',
-                        'newsletter' => 'Formular newsletter',
+                        Newsletter::STATUS_PENDING => 'Abonat',
+                        Newsletter::STATUS_FAILED => 'Dezabonat',
+                        Newsletter::STATUS_SENT => 'A primit emailuri',
                         default => $state,
                     }),
                 TextColumn::make('created_at')
                     ->label('Data abonării')
                     ->dateTime('d.m.Y H:i')
                     ->sortable(),
-                TextColumn::make('subscription_status')
-                    ->label('Status abonare')
-                    ->badge()
-                    ->formatStateUsing(function ($record) {
-                        $isUser = $record->source === 'user';
-                        $isSubscribed = $isUser ?
-                            is_null($record->newsletter_unsubscribed_at) : ($record->status === Newsletter::STATUS_PENDING);
-
-                        return $isSubscribed ? 'Abonat' : 'Dezabonat';
-                    })
-                    ->color(function ($record) {
-                        $isUser = $record->source === 'user';
-                        $isSubscribed = $isUser ?
-                            is_null($record->newsletter_unsubscribed_at) : ($record->status === Newsletter::STATUS_PENDING);
-
-                        return $isSubscribed ? 'success' : 'danger';
-                    }),
-                TextColumn::make('user.usertype')
-                    ->label('Tip cont')
-                    ->visible(function ($livewire) {
-                        // Verificăm mai întâi dacă filtrul există și are valoare
-                        if (!isset($livewire->tableFilters['source']) || !isset($livewire->tableFilters['source']['value'])) {
-                            return false;
-                        }
-                        return $livewire->tableFilters['source']['value'] === 'user';
-                    })
-                    ->badge()
-                    ->color(fn(string $state): string => match ($state) {
-                        'admin' => 'danger',
-                        'super_user' => 'warning',
-                        'subscriber' => 'success',
-                        default => 'gray',
-                    }),
+            ])
+            ->headerActions([
+                Tables\Actions\CreateAction::make()
+                    ->label('Adaugă Abonat Newsletter'),
             ])
             ->filters([
-                SelectFilter::make('source')
-                    ->label('Sursa')
+                SelectFilter::make('status')
+                    ->label('Status Abonare')
                     ->options([
-                        'user' => 'Conturi utilizatori',
-                        'newsletter' => 'Formular newsletter',
+                        Newsletter::STATUS_PENDING => 'Abonat',
+                        Newsletter::STATUS_FAILED => 'Dezabonat',
+                        Newsletter::STATUS_SENT => 'A primit emailuri',
                     ]),
-                TernaryFilter::make('is_active')
-                    ->label('Status')
-                    ->placeholder('Toți abonații')
-                    ->trueLabel('Activi')
-                    ->falseLabel('Dezabonați')
-                    ->queries(
-                        true: fn(Builder $query) => $query->where(function ($query) {
-                            return $query->where(function ($subQuery) {
-                                $subQuery->where('source', 'user')
-                                    ->whereNull('newsletter_unsubscribed_at');
-                            })->orWhere(function ($subQuery) {
-                                $subQuery->where('source', 'newsletter')
-                                    ->where('status', Newsletter::STATUS_PENDING);
-                            });
-                        }),
-                        false: fn(Builder $query) => $query->where(function ($query) {
-                            return $query->where(function ($subQuery) {
-                                $subQuery->where('source', 'user')
-                                    ->whereNotNull('newsletter_unsubscribed_at');
-                            })->orWhere(function ($subQuery) {
-                                $subQuery->where('source', 'newsletter')
-                                    ->whereNotIn('status', [Newsletter::STATUS_PENDING]);
-                            });
-                        }),
-                        blank: fn(Builder $query) => $query,
-                    ),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make()
-                    ->before(function ($record) {
-                        // Verificăm dacă este un utilizator și, dacă da, îl dezabonăm în loc să-l ștergem
-                        if ($record->source === 'user') {
-                            $user = User::where('email', $record->recipient_email)->first();
-                            if ($user) {
-                                $user->unsubscribeFromNewsletter();
-                            }
-                            return false; // Nu ștergem record-ul, doar am dezabonat utilizatorul
-                        }
-                        // Pentru abonat simplu, lăsăm să continue acțiunea de ștergere
-                    }),
+                Tables\Actions\DeleteAction::make(),
                 Tables\Actions\Action::make('toggle_subscription')
                     ->label(function ($record) {
-                        $isUser = $record->source === 'user';
-                        $isUnsubscribed = $isUser ?
-                            !is_null($record->newsletter_unsubscribed_at) : ($record->status !== Newsletter::STATUS_PENDING);
-
-                        return $isUnsubscribed ? 'Reabonează' : 'Dezabonează';
+                        return $record->status === Newsletter::STATUS_PENDING ? 'Dezabonează' : 'Reabonează';
                     })
                     ->icon(function ($record) {
-                        $isUser = $record->source === 'user';
-                        $isUnsubscribed = $isUser ?
-                            !is_null($record->newsletter_unsubscribed_at) : ($record->status !== Newsletter::STATUS_PENDING);
-
-                        return $isUnsubscribed ? 'heroicon-o-check' : 'heroicon-o-no-symbol';
+                        return $record->status === Newsletter::STATUS_PENDING ? 'heroicon-o-no-symbol' : 'heroicon-o-check';
                     })
                     ->color(function ($record) {
-                        $isUser = $record->source === 'user';
-                        $isUnsubscribed = $isUser ?
-                            !is_null($record->newsletter_unsubscribed_at) : ($record->status !== Newsletter::STATUS_PENDING);
-
-                        return $isUnsubscribed ? 'success' : 'danger';
-                    })->action(function ($record) {
-                        if ($record->source === 'user') {
-                            $user = User::where('email', $record->recipient_email)->first();
-                            if ($user) {
-                                // Verificăm direct starea newsletter_unsubscribed_at
-                                if (!is_null($record->newsletter_unsubscribed_at)) {
-                                    // Dacă este dezabonat, îl reabonăm
-                                    $user->subscribeToNewsletter();
-                                } else {
-                                    // Dacă este abonat, îl dezabonăm
-                                    $user->unsubscribeFromNewsletter();
-                                }
-                            }
+                        return $record->status === Newsletter::STATUS_PENDING ? 'danger' : 'success';
+                    })
+                    ->action(function ($record) {
+                        if ($record->status === Newsletter::STATUS_PENDING) {
+                            $record->markAsFailed('Dezabonat manual');
                         } else {
-                            if ($record->status === Newsletter::STATUS_PENDING) {
-                                // Dacă este în așteptare, îl marcăm ca failed (dezabonat)
-                                $record->markAsFailed('Dezabonat manual');
-                            } else {
-                                // Dacă este deja failed/dezabonat, îl resetăm la pending (reabonare)
-                                $record->resetToPending();
-                            }
+                            $record->resetToPending();
                         }
                     }),
             ])
@@ -236,34 +146,21 @@ class NewsletterSubscriberResource extends Resource
      */
     public static function getEloquentQuery(): Builder
     {
-        // Pornim de la query-ul standard
-        $newsletterQuery = parent::getEloquentQuery()
-            ->subscribers() // Luăm doar subscriberii, nu campaniile
+        // Abordare simplificată: returnăm doar subscribers din newsletter table
+        // și vom afișa utilizatorii separat prin filtre
+        return parent::getEloquentQuery()
+            ->where('campaign_type', Newsletter::TYPE_SUBSCRIBER)
             ->select([
                 'id',
                 'recipient_name',
                 'recipient_email',
                 'created_at',
-                'status',
+                'status'
             ])
             ->selectRaw("'newsletter' as source")
             ->selectRaw("NULL as newsletter_unsubscribed_at")
             ->selectRaw("NULL as user_id")
-            ->selectRaw("NULL as usertype");        // Obținem toți utilizatorii (abonați și dezabonați) cu date convertite în formatul așteptat
-        $userQuery = User::select([
-            'id as user_id',
-            'name as recipient_name',
-            'email as recipient_email',
-            'created_at',
-            'newsletter_unsubscribed_at',
-            'usertype',
-        ])
-            ->selectRaw("NULL as id")
-            ->selectRaw("'user' as source")
-            ->selectRaw("CASE WHEN newsletter_unsubscribed_at IS NULL THEN 'pending' ELSE 'failed' END as status");
-
-        // Unim cele două query-uri
-        return $newsletterQuery->union($userQuery);
+            ->selectRaw("NULL as usertype");
     }
 
     /**
