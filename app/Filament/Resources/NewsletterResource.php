@@ -36,10 +36,13 @@ use App\Filament\Resources\NewsletterResource\Pages\CreateNewsletter;
 class NewsletterResource extends Resource
 {
     protected static ?string $model = Newsletter::class;
-    protected static ?string $navigationIcon = 'heroicon-o-envelope';
+    protected static ?string $navigationIcon = 'heroicon-o-megaphone';
     protected static ?string $navigationLabel = 'Campanii Newsletter';
     protected static ?string $navigationGroup = 'Marketing';
     protected static ?int $navigationSort = 7;
+    protected static ?string $modelLabel = 'Campanie Newsletter';
+    protected static ?string $pluralModelLabel = 'Campaniile Newsletter';
+    protected static ?string $recordTitleAttribute = 'campaign_title';
 
     public static function form(Form $form): Form
     {
@@ -139,7 +142,8 @@ class NewsletterResource extends Resource
                                     ->label('Total Destinatari')
                                     ->numeric()
                                     ->disabled()
-                                    ->helperText('Se actualizează automat'),
+                                    ->default(fn() => \App\Filament\Resources\NewsletterResource::getCombinedStats()['total_unique'])
+                                    ->helperText('Se actualizează automat la trimitere'),
 
                                 Forms\Components\TextInput::make('sent_count')
                                     ->label('Trimiși cu Succes')
@@ -476,9 +480,10 @@ class NewsletterResource extends Resource
                         Forms\Components\Select::make('recipients')
                             ->label('Destinatari')
                             ->options([
-                                'newsletter_only' => 'Doar Lista Newsletter (' . Newsletter::pending()->count() . ')',
-                                'users_only' => 'Doar Utilizatori App (' . User::getNewsletterSubscribersCount() . ')',
-                                'all' => 'TOȚI (Newsletter + Utilizatori) (' . self::getCombinedStats()['total_unique'] . ')',
+                                'newsletter_only' => 'Doar Lista Newsletter (' . Newsletter::pending()->count() . ' adrese)',
+                                'users_only' => 'Doar Utilizatori App (' . User::getNewsletterSubscribersCount() . ' utilizatori)',
+                                'all' => 'TOȚI (Newsletter + Utilizatori) (' . self::getCombinedStats()['total_unique'] . ' unici)',
+                                'test_mode' => '🧪 Test - doar administratori (doar tine)',
                             ])
                             ->default('all')
                             ->required(),
@@ -500,6 +505,7 @@ class NewsletterResource extends Resource
                             'newsletter_only' => Newsletter::pending()->get(),
                             'users_only' => self::getUsersAsNewsletterFormat(),
                             'all' => self::getAllRecipientsAsNewsletterFormat(),
+                            'test_mode' => self::getAdminRecipientsOnly(),
                         };
 
                         // Creăm campania folosind metoda createCampaign din model
@@ -579,6 +585,17 @@ class NewsletterResource extends Resource
                             ->placeholder('https://example.com/image.jpg'),
                     ])
                     ->action(function (array $data): void {
+                        // Verificăm limita zilnică înainte de a crea campania
+                        $remainingQuota = \App\Models\DailyEmailTracker::getRemainingQuota();
+                        if ($remainingQuota <= 0) {
+                            FilamentNotification::make()
+                                ->title('Limita zilnică atinsă')
+                                ->body('Nu se pot trimite emailuri astăzi. Campania va fi programată pentru mâine.')
+                                ->warning()
+                                ->send();
+                            return;
+                        }
+
                         // Generăm conținut HTML simplu
                         $content = self::generateSimpleEmailTemplate($data);
 
@@ -1181,6 +1198,110 @@ class NewsletterResource extends Resource
             'duplicates' => $duplicateUsersCount,
             'total_unique' => $newsletterCount + $usersCount - $duplicateUsersCount,
         ];
+    }
+
+    /**
+     * Returnează doar administratorii pentru testare
+     */
+    private static function getAdminRecipientsOnly(): Collection
+    {
+        $currentUser = Auth::user();
+
+        if (!$currentUser) {
+            return new \Illuminate\Database\Eloquent\Collection();
+        }
+
+        // Creăm un obiect pseudo-Newsletter pentru compatibilitate
+        $pseudoNewsletter = new class {
+            public $id;
+            public $recipient_email;
+            public $recipient_name;
+            public $status = 'pending';
+            public $user;
+
+            public function notify($notification)
+            {
+                return $this->user->notify($notification);
+            }
+
+            public function markAsSent()
+            {
+                return true;
+            }
+
+            public function markAsFailed($errorMessage = null)
+            {
+                \Illuminate\Support\Facades\Log::error("Test newsletter failed for admin {$this->recipient_email}: {$errorMessage}");
+                return true;
+            }
+
+            public function getKey()
+            {
+                return $this->id;
+            }
+        };
+
+        $pseudoNewsletter->id = 'admin_test_' . $currentUser->id;
+        $pseudoNewsletter->recipient_email = $currentUser->email;
+        $pseudoNewsletter->recipient_name = $currentUser->name;
+        $pseudoNewsletter->user = $currentUser;
+
+        return new \Illuminate\Database\Eloquent\Collection([$pseudoNewsletter]);
+    }
+
+    /**
+     * Generează un template simplu pentru Quick Send
+     */
+    private static function generateSimpleEmailTemplate(array $data): string
+    {
+        return '
+<div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
+    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; text-align: center;">
+        <h1 style="color: white; margin: 0;">{{site_name}}</h1>
+        <p style="color: white; margin: 10px 0 0 0; opacity: 0.9;">Muzică de calitate pentru sufletul tău</p>
+    </div>
+
+    <div style="padding: 30px 20px; background: white;">
+        <p style="font-size: 16px; line-height: 1.6; color: #333;">
+            Salut {{name}}!
+        </p>
+
+        <p style="font-size: 16px; line-height: 1.6; color: #333;">
+            ' . nl2br(htmlspecialchars($data['quick_message'])) . '
+        </p>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <img src="' . htmlspecialchars($data['image_url']) . '" alt="Imagine nouă" style="max-width: 100%; height: auto; border-radius: 8px;" />
+        </div>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="' . htmlspecialchars($data['youtube_url']) . '" style="display: inline-block; background: #ff0000; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px;">
+                ▶️ Ascultă pe YouTube
+            </a>
+        </div>
+
+        <p style="font-size: 16px; line-height: 1.6; color: #333;">
+            Aștept cu drag să mă saluți și să-mi spui părerea ta într-un comentariu. Să ne auzim cu bine!
+        </p>
+    </div>
+
+    <div style="background: #f8f9fa; padding: 20px; text-align: center; font-size: 14px; color: #666;">
+        <p style="margin: 0 0 10px 0;">
+            Cu respect,<br>
+            <strong>Click</strong>
+        </p>
+
+        <p style="margin: 10px 0;">
+            <a href="https://www.youtube.com/clickmusicromania" style="color: #dc2626; text-decoration: none; margin: 0 10px;">YouTube</a>
+            <a href="{{site_url}}" style="color: #3b82f6; text-decoration: none; margin: 0 10px;">{{site_name}}</a>
+        </p>
+
+        <p style="margin: 15px 0 0 0; font-size: 12px; color: #999;">
+            Dacă nu mai dorești să primești newslettere, te poți
+            <a href="{{site_url}}/newsletter/unsubscribe?email={{email}}" style="color: #3869d4;">dezabona aici</a>.
+        </p>
+    </div>
+</div>';
     }
 
     public static function getPages(): array
