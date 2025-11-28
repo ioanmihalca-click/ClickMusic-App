@@ -3,14 +3,10 @@
     <div class="min-h-screen py-12 bg-black">
         <!-- Header cu gradient -->
         <div class="relative mb-8">
-            <div class="absolute inset-0 blur-3xl opacity-30">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800"></div>
-            </div>
-
-            <div class="relative p-6 bg-gray-900/90 backdrop-blur-sm rounded-xl">
+            <div class="relative p-6 bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-xl border border-white/10 rounded-2xl ring-1 ring-blue-400/5">
                 <div class="flex items-center justify-between">
                     <div>
-                        <h1 class="text-3xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+                        <h1 class="text-3xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-blue-400 to-blue-500">
                             Comunitatea Click Music
                         </h1>
                         <p class="mt-2 text-gray-400">
