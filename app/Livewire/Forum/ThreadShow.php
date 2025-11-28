@@ -16,6 +16,7 @@ class ThreadShow extends Component
 
     public ForumThread $thread;
     public $replyContent = '';
+    public $replyToReplyContent = [];  // Array pentru reply-uri nested
     public $replyToMark = null;
     public $sortOrder = 'asc'; // asc = cele mai vechi prima dată, desc = cele mai noi prima dată
 
@@ -27,7 +28,8 @@ class ThreadShow extends Component
 
     public function mount(ForumThread $thread)
     {
-        $this->thread = $thread;
+        // Încarcă relația video pentru thread-uri legate de videoclipuri
+        $this->thread = $thread->load('video');
         $this->thread->incrementViewCount();
     }
 
@@ -45,6 +47,28 @@ class ThreadShow extends Component
 
         // Scrollează automat la noul răspuns
         $this->dispatch('scrollToReply', id: $reply->id);
+
+        // Declanșează evenimentul pentru notificări
+        event(new \App\Events\ForumReplyCreated($reply, $this->thread));
+    }
+
+    /**
+     * Adaugă un răspuns nested (reply la reply)
+     */
+    public function addReplyToReply($parentReplyId)
+    {
+        $this->validate([
+            "replyToReplyContent.{$parentReplyId}" => 'required|min:1'
+        ]);
+
+        $reply = $this->thread->replies()->create([
+            'content' => $this->replyToReplyContent[$parentReplyId],
+            'user_id' => Auth::id(),
+            'parent_id' => $parentReplyId
+        ]);
+
+        $this->replyToReplyContent[$parentReplyId] = '';
+        $this->dispatch('replyAdded');
 
         // Declanșează evenimentul pentru notificări
         event(new \App\Events\ForumReplyCreated($reply, $this->thread));
@@ -95,7 +119,8 @@ class ThreadShow extends Component
     {
         return view('livewire.forum.thread-show', [
             'replies' => $this->thread->replies()
-                ->with('user')
+                ->whereNull('parent_id')  // Doar răspunsuri principale (top-level)
+                ->with(['user', 'replies.user'])  // Eager load nested replies cu useri
                 ->orderBy('created_at', $this->sortOrder)
                 ->paginate(15)
         ]);

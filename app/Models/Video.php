@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -85,5 +86,32 @@ class Video extends Model
     public function doesUserLikedVideos()
     {
         return $this->likes()->where('user_id', Auth::id())->exists();
+    }
+
+    /**
+     * Relație cu thread-ul din forum (pentru videoclipuri noi)
+     */
+    public function forumThread(): HasOne
+    {
+        return $this->hasOne(ForumThread::class);
+    }
+
+    /**
+     * Verifică dacă videoclipul folosește sistemul nou de comentarii (forum)
+     */
+    public function usesForumComments(): bool
+    {
+        return $this->forumThread()->exists();
+    }
+
+    /**
+     * Returnează numărul total de comentarii (include și cele din forum pentru videoclipuri noi)
+     */
+    public function getTotalCommentsCountAttribute(): int
+    {
+        if ($this->usesForumComments()) {
+            return $this->forumThread?->replies()->count() ?? 0;
+        }
+        return $this->allCommentsCount();
     }
 }

@@ -44,7 +44,8 @@
                                     @endif
 
                                     <!-- Butoane de editare/ștergere pentru autorul thread-ului sau admin -->
-                                    @if (auth()->id() === $thread->user_id || auth()->user()->usertype === 'admin')
+                                    {{-- Nu afișăm butoanele pentru thread-uri auto-generate (din videoclipuri) --}}
+                                    @if (!$thread->is_auto_generated && (auth()->id() === $thread->user_id || auth()->user()->usertype === 'admin'))
                                         <div class="flex items-center space-x-2 ml-4">
                                             @if (auth()->id() === $thread->user_id)
                                                 <a href="{{ route('forum.threads.edit', $thread) }}"
@@ -99,6 +100,50 @@
                                 class="mt-4 prose prose-sm max-w-none text-gray-300 prose-headings:text-gray-200 prose-a:text-blue-400">
                                 {!! $thread->body_html !!}
                             </div>
+
+                            {{-- Video embed pentru thread-uri legate de videoclipuri --}}
+                            @if($thread->isVideoThread() && $thread->video)
+                                <div class="mt-6 overflow-hidden rounded-xl ring-1 ring-purple-500/30">
+                                    @if($thread->video->video_path)
+                                        @if($thread->video->isAudio())
+                                            {{-- Audio Player --}}
+                                            <div class="relative flex items-center justify-center w-full h-48 bg-center bg-cover"
+                                                style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('{{ $thread->video->thumbnail_url_full }}') center center no-repeat; background-size: cover;">
+                                                <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+                                                <div class="relative z-10 w-full max-w-md px-8 py-4 bg-black/30 rounded-xl backdrop-blur-md">
+                                                    <audio class="w-full" controls controlsList="nodownload"
+                                                        src="{{ route('videos.stream', $thread->video->id) }}">
+                                                        Browserul dvs. nu suportă redarea de fișiere audio.
+                                                    </audio>
+                                                </div>
+                                            </div>
+                                        @else
+                                            {{-- Video Player --}}
+                                            <video class="w-full aspect-video" controls controlsList="nodownload"
+                                                src="{{ route('videos.stream', $thread->video->id) }}"
+                                                poster="{{ $thread->video->thumbnail_url_full }}">
+                                                Browserul dvs. nu suportă redarea de videoclipuri.
+                                            </video>
+                                        @endif
+                                    @elseif($thread->video->embed_link)
+                                        {{-- Embed extern --}}
+                                        <div class="aspect-video">
+                                            {!! $thread->video->embed_link !!}
+                                        </div>
+                                    @endif
+
+                                    {{-- Link către pagina video --}}
+                                    <div class="p-3 bg-gray-800/50">
+                                        <a href="{{ route('videos.show', $thread->video) }}"
+                                            class="inline-flex items-center text-sm text-purple-400 hover:text-purple-300 transition-colors">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                            </svg>
+                                            Vezi pagina completă a videoclipului
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -273,6 +318,78 @@
                                         <div class="mt-2 prose prose-invert max-w-none">
                                             {!! Str::markdown($reply->content) !!}
                                         </div>
+
+                                        {{-- Secțiune nested replies --}}
+                                        @if(!$thread->is_locked)
+                                            <div class="mt-4" x-data="{ showReplies: {{ $reply->replies->count() > 0 ? 'true' : 'false' }} }">
+                                                {{-- Buton toggle replies --}}
+                                                <button @click="showReplies = !showReplies"
+                                                    class="flex items-center text-sm text-blue-400 transition-colors duration-200 hover:text-blue-300">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+                                                    </svg>
+                                                    <span x-text="showReplies ? 'Ascunde răspunsuri' : '{{ $reply->replies->count() > 0 ? $reply->replies->count() . " răspunsuri" : "Răspunde" }}'"></span>
+                                                </button>
+
+                                                {{-- Lista de nested replies + form --}}
+                                                <div x-show="showReplies" x-transition:enter="transition ease-out duration-300"
+                                                    x-transition:enter-start="opacity-0 transform scale-95"
+                                                    x-transition:enter-end="opacity-100 transform scale-100"
+                                                    class="mt-3">
+
+                                                    {{-- Nested replies list --}}
+                                                    @if($reply->replies->count() > 0)
+                                                        <ul class="pl-4 ml-2 space-y-3 border-l-2 border-purple-500/30">
+                                                            @foreach($reply->replies->sortByDesc('created_at') as $nestedReply)
+                                                                <li class="p-3 rounded-lg bg-gray-900/50 backdrop-blur-sm ring-1 ring-purple-500/10">
+                                                                    <div class="flex items-start space-x-2">
+                                                                        <div class="flex-shrink-0">
+                                                                            <img src="{{ $nestedReply->user->avatar }}" alt="{{ $nestedReply->user->name }}"
+                                                                                class="w-8 h-8 rounded-full">
+                                                                        </div>
+                                                                        <div class="flex-1 min-w-0">
+                                                                            <div class="flex items-center space-x-2">
+                                                                                <span class="text-sm font-medium text-blue-400">{{ $nestedReply->user->name }}</span>
+                                                                                @if($nestedReply->user->usertype === 'admin')
+                                                                                    <span class="px-1.5 py-0.5 text-xs bg-purple-500/20 text-purple-300 rounded-md">Admin</span>
+                                                                                @endif
+                                                                                <span class="text-xs text-gray-500">{{ $nestedReply->created_at->diffForHumans() }}</span>
+                                                                            </div>
+                                                                            <div class="mt-1 text-sm text-gray-300 prose prose-sm prose-invert max-w-none">
+                                                                                {!! Str::markdown($nestedReply->content) !!}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    @endif
+
+                                                    {{-- Form pentru reply nou --}}
+                                                    @auth
+                                                        <form wire:submit.prevent="addReplyToReply({{ $reply->id }})" class="mt-3 pl-4 ml-2">
+                                                            <div class="mb-2">
+                                                                <textarea wire:model.defer="replyToReplyContent.{{ $reply->id }}"
+                                                                    class="w-full p-2 text-sm text-white transition-all duration-300 border-none rounded-lg shadow-sm resize-none bg-gray-800/50 backdrop-blur-sm ring-1 ring-purple-500/20 focus:ring-purple-500/40 focus:outline-none"
+                                                                    rows="2" placeholder="Răspunde la acest comentariu..."></textarea>
+                                                                @error("replyToReplyContent.{$reply->id}")
+                                                                    <span class="mt-1 text-xs text-red-400">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="flex justify-end">
+                                                                <button type="submit"
+                                                                    class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-white transition-all duration-300 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg hover:from-blue-700 hover:to-purple-700 shadow-sm focus:outline-none">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+                                                                    </svg>
+                                                                    Trimite
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    @endauth
+                                                </div>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

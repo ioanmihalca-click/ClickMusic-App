@@ -143,7 +143,13 @@
                             </svg>
                             Comentarii
                         </h2>
-                        @livewire('comments.all-comments', ['videoId' => $video->id])
+                        @if($video->usesForumComments())
+                            {{-- Videoclipuri noi - folosesc sistemul forum --}}
+                            @livewire('comments.video-forum-comments', ['video' => $video])
+                        @else
+                            {{-- Videoclipuri vechi - folosesc sistemul clasic --}}
+                            @livewire('comments.all-comments', ['videoId' => $video->id])
+                        @endif
                     </div>
                 </div>
 

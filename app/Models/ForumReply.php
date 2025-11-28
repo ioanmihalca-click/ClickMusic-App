@@ -15,6 +15,7 @@ class ForumReply extends Model
         'content',
         'user_id',
         'thread_id',
+        'parent_id',
         'is_solution'
     ];
 
@@ -30,5 +31,29 @@ class ForumReply extends Model
     public function thread()
     {
         return $this->belongsTo(ForumThread::class, 'thread_id');
+    }
+
+    /**
+     * Relație cu răspunsurile copil (nested replies)
+     */
+    public function replies()
+    {
+        return $this->hasMany(ForumReply::class, 'parent_id');
+    }
+
+    /**
+     * Relație cu răspunsul părinte
+     */
+    public function parent()
+    {
+        return $this->belongsTo(ForumReply::class, 'parent_id');
+    }
+
+    /**
+     * Verifică dacă e răspuns principal (nu nested)
+     */
+    public function isTopLevel(): bool
+    {
+        return is_null($this->parent_id);
     }
 }

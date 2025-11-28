@@ -10,6 +10,13 @@ class ForumThreadsController extends Controller
 {
     public function destroy(ForumThread $thread)
     {
+        // Thread-urile auto-generate (din videoclipuri) pot fi șterse doar de admin
+        if ($thread->is_auto_generated && Auth::user()->usertype !== 'admin') {
+            return redirect()
+                ->back()
+                ->with('error', 'Discuțiile generate automat pentru videoclipuri nu pot fi șterse.');
+        }
+
         // Check if user is admin or the thread author
         if (Auth::user()->usertype === 'admin' || Auth::user()->id === $thread->user_id) {
             // Delete all replies first
@@ -30,6 +37,13 @@ class ForumThreadsController extends Controller
 
     public function edit(ForumThread $thread)
     {
+        // Thread-urile auto-generate (din videoclipuri) nu pot fi editate
+        if ($thread->is_auto_generated) {
+            return redirect()
+                ->back()
+                ->with('error', 'Discuțiile generate automat pentru videoclipuri nu pot fi editate.');
+        }
+
         // Check if user is the thread author (admins can't edit others' threads, only delete them)
         if (Auth::user()->id !== $thread->user_id) {
             return redirect()
@@ -43,6 +57,13 @@ class ForumThreadsController extends Controller
 
     public function update(Request $request, ForumThread $thread)
     {
+        // Thread-urile auto-generate (din videoclipuri) nu pot fi editate
+        if ($thread->is_auto_generated) {
+            return redirect()
+                ->back()
+                ->with('error', 'Discuțiile generate automat pentru videoclipuri nu pot fi editate.');
+        }
+
         // Check if user is the thread author
         if (Auth::user()->id !== $thread->user_id) {
             return redirect()
