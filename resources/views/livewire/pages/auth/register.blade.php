@@ -43,7 +43,7 @@ new #[Layout('layouts.guest')] class extends Component
             <x-input-label for="name" :value="__('Name')" class="text-gray-300" />
             <x-text-input wire:model="name" 
                          id="name" 
-                         class="block w-full mt-1 text-white border-gray-600 rounded-lg bg-gray-700/50 focus:border-blue-500 focus:ring-blue-500"
+                         class="block w-full mt-1 text-white border-white/10 rounded-lg bg-black/30 backdrop-blur-sm focus:border-blue-500/50 focus:ring-blue-500/30"
                          type="text" 
                          name="name" 
                          required 
@@ -57,7 +57,7 @@ new #[Layout('layouts.guest')] class extends Component
             <x-input-label for="email" :value="__('Email')" class="text-gray-300" />
             <x-text-input wire:model="email" 
                          id="email" 
-                         class="block w-full mt-1 text-white border-gray-600 rounded-lg bg-gray-700/50 focus:border-blue-500 focus:ring-blue-500"
+                         class="block w-full mt-1 text-white border-white/10 rounded-lg bg-black/30 backdrop-blur-sm focus:border-blue-500/50 focus:ring-blue-500/30"
                          type="email" 
                          name="email" 
                          required 
@@ -70,7 +70,7 @@ new #[Layout('layouts.guest')] class extends Component
             <x-input-label for="password" :value="__('Password')" class="text-gray-300" />
             <x-text-input wire:model="password" 
                          id="password" 
-                         class="block w-full mt-1 text-white border-gray-600 rounded-lg bg-gray-700/50 focus:border-blue-500 focus:ring-blue-500"
+                         class="block w-full mt-1 text-white border-white/10 rounded-lg bg-black/30 backdrop-blur-sm focus:border-blue-500/50 focus:ring-blue-500/30"
                          type="password"
                          name="password"
                          required 
@@ -83,7 +83,7 @@ new #[Layout('layouts.guest')] class extends Component
             <x-input-label for="password_confirmation" :value="__('Confirm Password')" class="text-gray-300" />
             <x-text-input wire:model="password_confirmation" 
                          id="password_confirmation" 
-                         class="block w-full mt-1 text-white border-gray-600 rounded-lg bg-gray-700/50 focus:border-blue-500 focus:ring-blue-500"
+                         class="block w-full mt-1 text-white border-white/10 rounded-lg bg-black/30 backdrop-blur-sm focus:border-blue-500/50 focus:ring-blue-500/30"
                          type="password"
                          name="password_confirmation" 
                          required 
@@ -106,17 +106,17 @@ new #[Layout('layouts.guest')] class extends Component
         <!-- Divider -->
         <div class="relative">
             <div class="absolute inset-0 flex items-center">
-                <div class="w-full border-t border-gray-700"></div>
+                <div class="w-full border-t border-white/10"></div>
             </div>
             <div class="relative flex justify-center text-sm">
-                <span class="px-2 text-gray-400 bg-gray-800/50">sau</span>
+                <span class="px-2 text-gray-500 bg-transparent">sau</span>
             </div>
         </div>
 
         <!-- Google Login -->
         <div>
             <a href="{{ route('login.google') }}" 
-               class="flex items-center justify-center w-full px-6 py-3 text-white transition-all duration-300 border border-gray-600 rounded-lg bg-gray-700/50 hover:bg-gray-700 group">
+               class="flex items-center justify-center w-full px-6 py-3 text-white transition-all duration-300 border border-white/10 rounded-lg bg-black/30 backdrop-blur-sm hover:bg-white/5 group">
                 <svg xmlns="http://www.w3.org/2000/svg" 
                      width="20" 
                      height="20" 

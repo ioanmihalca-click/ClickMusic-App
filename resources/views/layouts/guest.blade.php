@@ -75,7 +75,7 @@
             </div>
 
             <div class="z-10 w-full px-8 py-8 mt-6 overflow-hidden sm:max-w-md">
-                <div class="p-6 border shadow-xl bg-gray-800/50 backdrop-blur-sm border-gray-700/30 rounded-xl">
+                <div class="p-6 border shadow-2xl bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-xl border-blue-500/10 rounded-2xl ring-1 ring-blue-400/5">
                     {{ $slot }}
                 </div>
             </div>
