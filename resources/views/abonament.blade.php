@@ -108,7 +108,7 @@
                 Premium Experience
             </div>
             <h2
-                class="mb-6 text-5xl font-bold tracking-tight text-transparent md:text-6xl bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600">
+                class="mb-6 text-5xl font-bold tracking-tight text-transparent md:text-6xl bg-clip-text bg-gradient-to-r from-blue-300 via-blue-400 to-blue-500">
                 Access Premium
             </h2>
             <p class="max-w-2xl mx-auto mt-6 text-xl leading-relaxed text-gray-300">
@@ -122,11 +122,7 @@
                 <!-- User already has Premium access -->
                 <a href="{{ route('videoclipuri') }}" class="group w-full max-w-sm">
                     <div
-                        class="relative h-full p-10 bg-gradient-to-br from-blue-900/40 via-gray-800/60 to-blue-900/40 backdrop-blur-lg border border-blue-600/40 rounded-3xl text-center transition-all duration-500 group-hover:scale-[1.03] group-hover:border-blue-400/60 group-hover:shadow-2xl group-hover:shadow-blue-500/20">
-                        <!-- Decorative elements -->
-                        <div
-                            class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-3xl group-hover:opacity-100">
-                        </div>
+                        class="relative h-full p-10 bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-lg border border-white/10 rounded-3xl text-center transition-all duration-500 ring-1 ring-blue-400/5">
 
                         <div class="relative z-10">
                             <div class="flex flex-col items-center justify-center gap-8">
@@ -175,13 +171,9 @@
                 </a>
             @else
                 <!-- Free Plan -->
-                <div class="w-full max-w-sm group">
+                <div class="w-full max-w-sm">
                     <div
-                        class="relative h-full p-10 bg-gradient-to-br from-gray-800/60 via-gray-900/70 to-gray-800/60 backdrop-blur-lg border border-gray-600/40 rounded-3xl text-center transition-all duration-500 group-hover:scale-[1.03] group-hover:border-gray-400/60 group-hover:shadow-2xl group-hover:shadow-gray-500/20">
-                        <!-- Decorative gradient overlay -->
-                        <div
-                            class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-gradient-to-br from-gray-500/5 to-gray-500/5 rounded-3xl group-hover:opacity-100">
-                        </div>
+                        class="relative h-full p-10 bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-gray-950/60 backdrop-blur-lg border border-white/10 rounded-3xl text-center transition-all duration-500 ring-1 ring-white/5">
 
                         <div class="absolute transform -translate-x-1/2 -top-5 left-1/2">
                             <span
@@ -258,13 +250,9 @@
                 </div>
 
                 <!-- Monthly Plan -->
-                <div class="w-full max-w-sm group">
+                <div class="w-full max-w-sm">
                     <div
-                        class="relative h-full p-10 bg-gradient-to-br from-gray-800/60 via-gray-900/70 to-gray-800/60 backdrop-blur-lg border border-gray-600/40 rounded-3xl text-center transition-all duration-500 group-hover:scale-[1.03] group-hover:border-blue-400/60 group-hover:shadow-2xl group-hover:shadow-blue-500/20">
-                        <!-- Decorative gradient overlay -->
-                        <div
-                            class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-gradient-to-br from-blue-500/5 to-gray-500/5 rounded-3xl group-hover:opacity-100">
-                        </div>
+                        class="relative h-full p-10 bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-lg border border-white/10 rounded-3xl text-center transition-all duration-500 ring-1 ring-blue-400/5">
 
                         <div class="absolute transform -translate-x-1/2 -top-5 left-1/2">
                             <span
@@ -341,13 +329,9 @@
                 </div>
 
                 <!-- Yearly Plan -->
-                <div class="w-full max-w-sm group">
+                <div class="w-full max-w-sm">
                     <div
-                        class="relative h-full p-10 bg-gradient-to-br from-gray-800/60 via-gray-900/70 to-gray-800/60 backdrop-blur-lg border border-gray-600/40 rounded-3xl text-center transition-all duration-500 group-hover:scale-[1.03] group-hover:border-green-400/60 group-hover:shadow-2xl group-hover:shadow-green-500/20">
-                        <!-- Decorative gradient overlay -->
-                        <div
-                            class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-gradient-to-br from-green-500/5 to-blue-500/5 rounded-3xl group-hover:opacity-100">
-                        </div>
+                        class="relative h-full p-10 bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-green-950/30 backdrop-blur-lg border border-white/10 rounded-3xl text-center transition-all duration-500 ring-1 ring-green-400/5">
 
                         <div class="absolute transform -translate-x-1/2 -top-5 left-1/2">
                             <span
@@ -433,9 +417,7 @@
         <!-- Active Subscription -->
         @if ($activeSubscription)
             <div
-                class="max-w-2xl p-8 mx-auto mt-20 text-center border shadow-2xl bg-gradient-to-br from-gray-800/60 via-gray-900/70 to-gray-800/60 backdrop-blur-lg border-gray-600/40 rounded-3xl">
-                <!-- Decorative elements -->
-                <div class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-blue-500/5 rounded-3xl"></div>
+                class="relative max-w-2xl p-8 mx-auto mt-20 text-center border shadow-2xl bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-lg border-white/10 rounded-3xl ring-1 ring-blue-400/5">
 
                 <div class="relative z-10">
                     <div
@@ -618,7 +600,7 @@
     <!-- User Account Section with Livewire Logout -->
     <div class="max-w-[85rem] px-4 py-12 mx-auto sm:px-6 lg:px-8">
         <div
-            class="flex flex-col max-w-3xl p-6 mx-auto space-y-6 border shadow-xl sm:flex-row sm:items-center sm:justify-between sm:p-8 bg-gradient-to-r from-gray-800/60 to-gray-900/60 backdrop-blur-lg border-gray-600/40 rounded-3xl sm:space-y-0">
+            class="flex flex-col max-w-3xl p-6 mx-auto space-y-6 border shadow-xl sm:flex-row sm:items-center sm:justify-between sm:p-8 bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-lg border-white/10 rounded-3xl ring-1 ring-blue-400/5 sm:space-y-0">
             <!-- User Info -->
             <div class="flex items-center space-x-4 sm:space-x-6">
                 <div class="relative">
