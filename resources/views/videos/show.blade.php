@@ -1,11 +1,11 @@
 <x-app-layout>
-    <div class="min-h-screen py-12 bg-gradient-to-b from-black via-purple-900/35 to-black">
+    <div class="min-h-screen py-12 bg-black">
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
                 <!-- Left Column - Video Player Section -->
                 <div class="lg:col-span-8">
                     <div
-                        class="overflow-hidden shadow-xl bg-gray-900/70 backdrop-blur-md rounded-2xl ring-1 ring-purple-500/20">
+                        class="overflow-hidden shadow-xl bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-xl border border-white/10 rounded-2xl ring-1 ring-blue-400/5">
                         <!-- Media Player Container -->
                         <div class="relative aspect-w-16 aspect-h-9">
                             @if (isset($showUpsell) && $showUpsell)
@@ -47,7 +47,7 @@
                         </div>
 
                         <!-- Controls Bar -->
-                        <div class="border-t border-purple-500/20">
+                        <div class="border-t border-white/10">
                             <!-- Progress Bar -->
                             {{-- <div class="relative h-1 bg-gray-700/50">
                                 <div class="w-1/3 h-full rounded-full bg-gradient-to-r from-blue-500 to-purple-500">
@@ -100,7 +100,7 @@
 
                     <!-- Video Info -->
                     <div
-                        class="p-6 mt-6 shadow-xl bg-gray-900/70 backdrop-blur-md rounded-2xl ring-1 ring-purple-500/20">
+                        class="p-6 mt-6 shadow-xl bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-xl border border-white/10 rounded-2xl ring-1 ring-blue-400/5">
                         <h1 class="mb-2 text-2xl font-bold text-white">{{ $video->title }}</h1>
 
                         <div class="flex items-center mb-6 space-x-3 text-sm text-gray-400">
@@ -134,9 +134,9 @@
 
                     <!-- Comments Section -->
                     <div
-                        class="p-6 mt-6 shadow-xl bg-gray-900/70 backdrop-blur-md rounded-2xl ring-1 ring-purple-500/20">
+                        class="p-6 mt-6 shadow-xl bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-xl border border-white/10 rounded-2xl ring-1 ring-blue-400/5">
                         <h2 class="flex items-center mb-4 text-xl font-semibold text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-purple-400" fill="none"
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-blue-400" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
@@ -156,9 +156,9 @@
                 <!-- Right Sidebar - Recommendations -->
                 <div class="lg:col-span-4">
                     <div
-                        class="sticky p-6 shadow-xl top-20 bg-gray-900/70 backdrop-blur-md rounded-2xl ring-1 ring-purple-500/20">
+                        class="sticky p-6 shadow-xl top-20 bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-xl border border-white/10 rounded-2xl ring-1 ring-blue-400/5">
                         <h2 class="flex items-center mb-4 text-xl font-semibold text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-purple-400" fill="none"
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-blue-400" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
