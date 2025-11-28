@@ -2,7 +2,7 @@
     <div class="space-y-4">
         @forelse ($videos as $recommendedVideo)
             <div
-                class="overflow-hidden transition-all duration-300 glass-card group hover:shadow-cyan-500/20">
+                class="overflow-hidden transition-all duration-300 glass-card group">
                 <a href="{{ route('videos.show', $recommendedVideo->id) }}" class="block">
                     <div class="flex flex-row items-center">
                         <!-- Thumbnail -->

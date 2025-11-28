@@ -1,5 +1,5 @@
 @foreach ($comments as $comment)
-    <li class="p-5 glass-card transition-all duration-300 hover:shadow-cyan-500/20"
+    <li class="p-5 glass-card transition-all duration-300"
         x-data="{ open: false }">
         <div class="flex flex-col">
             <div class="flex items-center">
@@ -53,7 +53,7 @@
             <form wire:submit.prevent="addReplyToComment({{ $comment->id }})" class="pl-4 mt-4 ml-5">
                 <div class="mb-2">
                     <textarea wire:model.defer="replyToComment.{{ $comment->id }}"
-                        class="w-full p-2 text-white transition-all duration-300 rounded-2xl shadow-glass resize-none bg-slate-900/60 border border-white/10 backdrop-blur-xl focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-400/40 focus:outline-none"
+                        class="w-full p-2 text-white transition-all duration-300 rounded-2xl resize-none bg-slate-900/60 border border-white/10 backdrop-blur-xl focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-400/40 focus:outline-none"
                         rows="2" placeholder="Răspunde la acest comentariu..."></textarea>
                     @error("replyToComment.{$comment->id}")
                         <span class="mt-1 text-xs text-red-400">{{ $message }}</span>

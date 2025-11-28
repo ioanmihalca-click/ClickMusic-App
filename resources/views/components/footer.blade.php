@@ -1,15 +1,15 @@
-<footer class="relative py-6 bg-black">
+<footer class="relative py-10 bg-black">
     <!-- Gradient Overlay -->
     <div class="absolute inset-0 blur-3xl opacity-30">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-cyan-500 to-emerald-500"></div>
     </div>
 
     <div class="container relative px-4 mx-auto">
         <!-- Newsletter Section -->
-        <div class="max-w-2xl mx-auto text-center">
+        <div class="max-w-3xl mx-auto text-center glass-card p-8">
 
             <h3
-                class="mb-2 text-lg font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+                class="mb-2 text-lg font-bold tracking-[0.25em] text-transparent uppercase bg-clip-text bg-gradient-to-r from-sky-300 via-cyan-200 to-emerald-200">
                 Abonează-te la newsletter
             </h3>
             <p class="mb-4 text-sm text-gray-400">
@@ -21,17 +21,17 @@
                 <div class="flex flex-col space-y-3 md:flex-row md:space-y-0 md:space-x-3">
                     <div class="flex-1">
                         <input id="name" name="name" type="text" autocomplete="name" required
-                            class="block w-full px-3 py-2 text-sm text-white transition duration-300 ease-in-out bg-gray-800 border border-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 hover:bg-gray-700"
+                            class="block w-full px-4 py-3 text-sm text-white transition duration-300 ease-in-out rounded-2xl border border-white/10 bg-slate-900/60 backdrop-blur-xl focus:ring-2 focus:ring-cyan-400/40 focus:border-cyan-200/60"
                             placeholder="Numele tău">
                     </div>
                     <div class="flex-1">
                         <input id="email-address" name="email" type="email" autocomplete="email" required
-                            class="block w-full px-3 py-2 text-sm text-white transition duration-300 ease-in-out bg-gray-800 border border-gray-700 rounded-lg focus:ring-blue-500 focus:border-blue-500 hover:bg-gray-700"
+                            class="block w-full px-4 py-3 text-sm text-white transition duration-300 ease-in-out rounded-2xl border border-white/10 bg-slate-900/60 backdrop-blur-xl focus:ring-2 focus:ring-cyan-400/40 focus:border-cyan-200/60"
                             placeholder="Adresa de email">
                     </div>
                     <div>
                         <button type="submit"
-                            class="w-full px-4 py-2 text-sm font-semibold text-white transition-colors duration-300 bg-blue-600 rounded-lg shadow-sm md:w-auto hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+                            class="glass-button whitespace-nowrap">
                             Abonează-te
                         </button>
                     </div>
@@ -40,23 +40,23 @@
         </div>
 
         <!-- Links Section -->
-        <div class="flex flex-col items-center justify-between gap-4 pt-6 mt-6 border-t border-gray-800 md:flex-row">
+        <div class="flex flex-col items-center justify-between gap-4 pt-6 mt-10 border-t border-white/10 md:flex-row">
             <!-- Legal Links -->
             <div class="flex flex-wrap gap-4 text-sm">
                 <a href="{{ route('privacy-policy') }}"
-                    class="text-gray-400 transition-colors duration-300 hover:text-blue-400">
+                    class="text-gray-400 transition-colors duration-300 hover:text-cyan-300">
                     Politica de confidențialitate
                 </a>
                 <a href="{{ route('terms-of-service') }}"
-                    class="text-gray-400 transition-colors duration-300 hover:text-blue-400">
+                    class="text-gray-400 transition-colors duration-300 hover:text-cyan-300">
                     Termeni și Condiții
                 </a>
             </div>
 
             <!-- Social Links -->
-            <div class="flex space-x-3">
+            <div class="flex flex-wrap justify-center gap-3">
                 <a href="https://instagram.com/clickmusic1" target="_blank" rel="noopener noreferrer"
-                    class="p-2 text-gray-400 transition-all duration-300 border border-gray-800 rounded-lg hover:border-blue-500 hover:text-blue-400 hover:scale-110">
+                    class="p-2 text-gray-300 transition-all duration-300 border border-white/10 rounded-xl hover:text-white hover:border-cyan-400/60">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" fill="currentColor"
                         viewBox="0 0 16 16">
                         <path
@@ -65,7 +65,7 @@
                 </a>
 
                 <a href="https://www.facebook.com/clickmusicromania" target="_blank" rel="noopener noreferrer"
-                    class="p-2 text-gray-400 transition-all duration-300 border border-gray-800 rounded-lg hover:border-blue-500 hover:text-blue-400 hover:scale-110">
+                    class="p-2 text-gray-300 transition-all duration-300 border border-white/10 rounded-xl hover:text-white hover:border-cyan-400/60">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" fill="currentColor"
                         viewBox="0 0 16 16">
                         <path
@@ -75,7 +75,7 @@
 
                 <a href="https://open.spotify.com/artist/0rbyxJSUfSXjmeW652c41O" target="_blank"
                     rel="noopener noreferrer"
-                    class="p-2 text-gray-400 transition-all duration-300 border border-gray-800 rounded-lg hover:border-blue-500 hover:text-blue-400 hover:scale-110">
+                    class="p-2 text-gray-300 transition-all duration-300 border border-white/10 rounded-xl hover:text-white hover:border-cyan-400/60">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" fill="currentColor"
                         viewBox="0 0 16 16">
                         <path
@@ -84,7 +84,7 @@
                 </a>
 
                 <a href="https://youtube.com/clickmusicromania" target="_blank" rel="noopener noreferrer"
-                    class="p-2 text-gray-400 transition-all duration-300 border border-gray-800 rounded-lg hover:border-blue-500 hover:text-blue-400 hover:scale-110">
+                    class="p-2 text-gray-300 transition-all duration-300 border border-white/10 rounded-xl hover:text-white hover:border-cyan-400/60">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" fill="currentColor"
                         viewBox="0 0 16 16">
                         <path
@@ -95,14 +95,14 @@
         </div>
 
         <!-- Bottom Section -->
-        <div class="pt-4 mt-4 text-center border-t border-gray-800">
+        <div class="pt-6 mt-8 text-center border-t border-white/10">
             <p class="text-sm text-gray-400">
                 &copy; {{ date('Y') }} ClickMusic. Toate drepturile rezervate.
             </p>
             <p class="mt-1 text-sm text-gray-400">
                 Aplicație dezvoltată de
                 <a href="https://clickstudios-digital.com" target="_blank" rel="noopener noreferrer"
-                    class="text-blue-400 transition-colors duration-300 hover:text-blue-300">
+                    class="text-cyan-300 transition-colors duration-300 hover:text-emerald-200">
                     Click Studios Digital
                 </a>
             </p>

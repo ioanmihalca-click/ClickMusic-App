@@ -33,7 +33,7 @@ export default {
                 glow: '0 0 35px rgba(94,234,212,0.55)',
             },
             boxShadow: {
-                glass: '0 25px 65px rgba(2,6,23,0.55)',
+                glass: 'none',
             },
             objectPosition: {
                 'right-30': '35% center',

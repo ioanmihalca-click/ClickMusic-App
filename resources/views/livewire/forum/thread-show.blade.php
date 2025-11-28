@@ -341,7 +341,7 @@
                                                     @if($reply->replies->count() > 0)
                                                         <ul class="pl-4 ml-2 space-y-3 border-l-2 border-cyan-400/30">
                                                             @foreach($reply->replies->sortByDesc('created_at') as $nestedReply)
-                                                                <li class="p-3 glass-card">
+                                                            <li class="p-3 glass-card">
                                                                     <div class="flex items-start space-x-2">
                                                                         <div class="flex-shrink-0">
                                                                             <img src="{{ $nestedReply->user->avatar }}" alt="{{ $nestedReply->user->name }}"
@@ -370,7 +370,7 @@
                                                         <form wire:submit.prevent="addReplyToReply({{ $reply->id }})" class="mt-3 pl-4 ml-2">
                                                             <div class="mb-2">
                                                                 <textarea wire:model.defer="replyToReplyContent.{{ $reply->id }}"
-                                                                    class="w-full p-2 text-sm text-white transition-all duration-300 rounded-2xl shadow-glass resize-none bg-slate-900/60 border border-white/10 backdrop-blur-xl focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-400/40 focus:outline-none"
+                                                                    class="w-full p-2 text-sm text-white transition-all duration-300 rounded-2xl resize-none bg-slate-900/60 border border-white/10 backdrop-blur-xl focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-400/40 focus:outline-none"
                                                                     rows="2" placeholder="Răspunde la acest comentariu..."></textarea>
                                                                 @error("replyToReplyContent.{$reply->id}")
                                                                     <span class="mt-1 text-xs text-red-400">{{ $message }}</span>
@@ -421,7 +421,7 @@
 
                                 <div class="relative">
                                     <textarea wire:model="replyContent" id="replyContent" rows="4"
-                                        class="w-full px-4 py-3 text-gray-200 bg-slate-900/60 border border-white/10 rounded-2xl shadow-glass focus:ring-2 focus:ring-cyan-400/40 focus:border-cyan-300/60"
+                                        class="w-full px-4 py-3 text-gray-200 bg-slate-900/60 border border-white/10 rounded-2xl focus:ring-2 focus:ring-cyan-400/40 focus:border-cyan-300/60"
                                         placeholder="Contribuie la discuție..."></textarea>
 
                                     <div class="absolute text-xs text-gray-500 top-2 right-2">

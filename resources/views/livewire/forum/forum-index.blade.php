@@ -1,7 +1,7 @@
 <div class="min-h-screen py-12 bg-black">
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div
-            class="p-6 border border-white/10 rounded-xl bg-gradient-to-r from-blue-600/10 via-cyan-500/10 to-emerald-500/10 backdrop-blur-xl shadow-glass">
+            class="p-6 border border-white/10 rounded-xl bg-gradient-to-r from-blue-600/10 via-cyan-500/10 to-emerald-500/10 backdrop-blur-xl">
             <h2 class="mb-2 text-xl font-semibold text-white">Forumul de discuții "Comunitate"</h2>
             <p class="text-gray-300">Îmi doresc ca aici să formăm o comunitate unită prin muzică. La fiecare lansare voi
                 crea o nouă discuție unde voi pune detalii, story-uri și videouri scurte pentru ca voi sa ma ajutați să

@@ -13,7 +13,7 @@
         <form wire:submit.prevent="addComment" class="mt-6">
             <div class="mb-4">
                 <textarea wire:model.defer="newComment" id="newComment"
-                    class="block w-full p-3 mt-1 text-white rounded-2xl shadow-glass bg-slate-900/50 border border-white/10 backdrop-blur-xl focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-400/40 focus:outline-none resize-none transition-all duration-300"
+                    class="block w-full p-3 mt-1 text-white rounded-2xl bg-slate-900/50 border border-white/10 backdrop-blur-xl focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-400/40 focus:outline-none resize-none transition-all duration-300"
                     rows="3" placeholder="Adaugă un comentariu..."></textarea>
                 @error('newComment')
                     <span class="text-red-400 text-sm mt-1">{{ $message }}</span>
@@ -126,7 +126,7 @@
                                         <form wire:submit.prevent="addReplyToReply({{ $comment->id }})" class="mt-2 pl-4 ml-2">
                                             <div class="mb-2">
                                                 <textarea wire:model.defer="replyToReplyContent.{{ $comment->id }}"
-                                                    class="w-full p-2 text-sm text-white transition-all duration-300 rounded-2xl shadow-glass resize-none bg-slate-900/60 border border-white/10 backdrop-blur-xl focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-400/40 focus:outline-none"
+                                                    class="w-full p-2 text-sm text-white transition-all duration-300 rounded-2xl resize-none bg-slate-900/60 border border-white/10 backdrop-blur-xl focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-400/40 focus:outline-none"
                                                     rows="2" placeholder="Răspunde la acest comentariu..."></textarea>
                                                 @error("replyToReplyContent.{$comment->id}")
                                                     <span class="mt-1 text-xs text-red-400">{{ $message }}</span>
