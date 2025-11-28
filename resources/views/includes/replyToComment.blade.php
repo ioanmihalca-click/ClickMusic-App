@@ -29,7 +29,7 @@
         <div x-show="open" x-transition:enter="transition ease-out duration-300"
             x-transition:enter-start="opacity-0 transform scale-95"
             x-transition:enter-end="opacity-100 transform scale-100">
-            <ul class="pl-4 mt-4 ml-5 space-y-4 border-l-2 border-cyan-400/30">
+            <ul class="pl-4 mt-4 ml-5 space-y-4 border-l-2 border-sky-400/30">
                 @foreach ($comment->replies->sortByDesc('created_at') as $reply)
                     <li class="p-4 glass-card">
                         <div class="flex flex-col">
@@ -53,7 +53,7 @@
             <form wire:submit.prevent="addReplyToComment({{ $comment->id }})" class="pl-4 mt-4 ml-5">
                 <div class="mb-2">
                     <textarea wire:model.defer="replyToComment.{{ $comment->id }}"
-                        class="w-full p-2 text-white transition-all duration-300 rounded-2xl resize-none bg-slate-900/60 border border-white/10 backdrop-blur-xl focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-400/40 focus:outline-none"
+                        class="w-full p-2 text-white transition-all duration-300 rounded-2xl resize-none bg-slate-900/60 border border-white/10 backdrop-blur-xl focus:border-sky-300/60 focus:ring-2 focus:ring-sky-400/40 focus:outline-none"
                         rows="2" placeholder="Răspunde la acest comentariu..."></textarea>
                     @error("replyToComment.{$comment->id}")
                         <span class="mt-1 text-xs text-red-400">{{ $message }}</span>

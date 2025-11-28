@@ -3,14 +3,14 @@
     <div class="relative min-h-screen overflow-hidden bg-black">
         <!-- Gradient animat de fundal -->
         <div class="absolute inset-0 opacity-40">
-            <div class="absolute inset-0 bg-gradient-to-b from-blue-600/30 via-cyan-500/30 to-black animate-pulse">
+            <div class="absolute inset-0 bg-gradient-to-b from-blue-600/30 via-sky-500/30 to-black animate-pulse">
             </div>
-            <div class="absolute inset-0 bg-gradient-to-b from-cyan-500/20 via-blue-500/30 to-black"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-sky-500/20 via-blue-500/30 to-black"></div>
         </div>
 
         <!-- Efecte de blur pentru depth -->
         <div class="absolute rounded-full top-20 left-10 w-72 h-72 bg-blue-500/10 blur-3xl"></div>
-        <div class="absolute rounded-full bottom-20 right-10 w-96 h-96 bg-cyan-400/15 blur-3xl"></div>
+        <div class="absolute rounded-full bottom-20 right-10 w-96 h-96 bg-blue-400/20 blur-3xl"></div>
         <div
             class="absolute transform -translate-x-1/2 -translate-y-1/2 rounded-full top-1/2 left-1/2 w-80 h-80 bg-pink-500/5 blur-3xl">
         </div>
@@ -24,7 +24,7 @@
                 <div class="relative group">
                     <!-- Glow effect -->
                     <div
-                        class="absolute transition duration-500 -inset-1 bg-gradient-to-r from-blue-500 via-cyan-400 to-emerald-400 rounded-2xl blur-lg opacity-20 group-hover:opacity-40">
+                        class="absolute transition duration-500 -inset-1 bg-gradient-to-r from-blue-500 via-sky-400 to-indigo-600 rounded-2xl blur-lg opacity-20 group-hover:opacity-40">
                     </div>
 
                     <!-- Card content -->
@@ -36,10 +36,10 @@
 
                                 <!-- Header principal cu animație -->
                                 <h1
-                                    class="my-4 text-3xl font-bold tracking-tight text-transparent md:text-6xl bg-clip-text bg-gradient-to-r from-white via-blue-100 to-cyan-200 font-roboto-condensed animate-fade-in">
+                                    class="my-4 text-3xl font-bold tracking-tight text-transparent md:text-6xl bg-clip-text bg-gradient-to-r from-white via-blue-100 to-sky-200 font-roboto-condensed animate-fade-in">
                                     <span class="block uppercase tracking-[0.2em]">Acces</span>
                                     <span
-                                        class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 uppercase via-cyan-300 to-emerald-300 tracking-[0.3em]">Premium</span>
+                                        class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 uppercase via-sky-300 to-indigo-500 tracking-[0.3em]">Premium</span>
                                 </h1>
 
                                 <p class="text-lg leading-relaxed text-gray-200">

@@ -8,15 +8,15 @@
     }
 
     .glass-pill {
-        @apply inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-cyan-200/90 shadow-inner shadow-white/5;
+        @apply inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-200/90 shadow-inner shadow-blue-200/5;
     }
 
     .glass-button {
-        @apply relative inline-flex items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-r from-sky-500/70 via-cyan-400/70 to-emerald-400/70 px-6 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-none transition-all duration-300 hover:scale-[1.02];
+        @apply relative inline-flex items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-r from-sky-500/80 via-blue-500/80 to-indigo-600/80 px-6 py-3 text-sm font-semibold uppercase tracking-widest text-white shadow-none transition-all duration-300 hover:scale-[1.02];
     }
 
     .aurora-text {
-        @apply text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-200 to-emerald-300 drop-shadow-glow;
+        @apply text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-300 to-indigo-400 drop-shadow-glow;
     }
 }
 
@@ -97,22 +97,7 @@
     transform: translateZ(12px);
 }
 
-/* Animație pentru hover pe carduri */
-@keyframes float {
-    0% {
-        transform: translateZ(0) translateY(0);
-    }
-    50% {
-        transform: translateZ(10px) translateY(-5px);
-    }
-    100% {
-        transform: translateZ(0) translateY(0);
-    }
-}
-
-.group:hover {
-    animation: float 6s ease-in-out infinite;
-}
+/* Animație pentru hover pe carduri (dezactivată pentru design static) */
 
 /* Stilizare paginare */
 .pagination {

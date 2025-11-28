@@ -2,14 +2,14 @@
     <div class="relative min-h-screen py-16">
         <!-- Gradient ambient în fundal -->
         <div class="absolute inset-0 blur-3xl opacity-30">
-            <div class="absolute inset-0 bg-gradient-to-b from-blue-600 via-cyan-500 to-black"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-blue-600 via-blue-500 to-black"></div>
         </div>
 
         <!-- Container principal -->
         <div class="container relative px-4 mx-auto">
             <!-- Card principal -->
             <div
-                class="relative p-[0.5px] bg-gradient-to-br from-blue-500/20 via-cyan-400/20 to-emerald-400/20 rounded-xl max-w-4xl mx-auto mt-24">
+                class="relative p-[0.5px] bg-gradient-to-br from-blue-500/20 via-sky-400/20 to-indigo-600/20 rounded-xl max-w-4xl mx-auto mt-24">
                 <div class="p-8 text-white glass-card">
                     <!-- Header -->
                     <div class="mb-8">

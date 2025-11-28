@@ -3,7 +3,7 @@
         <!-- Thread Header -->
         <div class="relative mb-8">
             <div class="absolute inset-0 blur-3xl opacity-30">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-700"></div>
             </div>
 
             <div class="relative p-6 glass-card">
@@ -135,7 +135,7 @@
                                     {{-- Link către pagina video --}}
                                     <div class="p-3 mt-4 glass-card">
                                         <a href="{{ route('videos.show', $thread->video) }}"
-                                            class="inline-flex items-center text-sm text-cyan-300 hover:text-cyan-200 transition-colors">
+                                            class="inline-flex items-center text-sm text-sky-300 hover:text-sky-200 transition-colors">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                                             </svg>
@@ -178,7 +178,7 @@
                             </div>
 
                             <div
-                                class="absolute -inset-0.5 ml-8 {{ $reply->is_solution ? 'bg-gradient-to-r from-green-500 via-emerald-500 to-green-500' : 'bg-gradient-to-r from-blue-500 via-cyan-400 to-emerald-400' }} rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
+                                class="absolute -inset-0.5 ml-8 {{ $reply->is_solution ? 'bg-gradient-to-r from-green-500 via-emerald-500 to-green-500' : 'bg-gradient-to-r from-blue-500 via-sky-400 to-indigo-600' }} rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
                             </div>
 
                             <div
@@ -339,7 +339,7 @@
 
                                                     {{-- Nested replies list --}}
                                                     @if($reply->replies->count() > 0)
-                                                        <ul class="pl-4 ml-2 space-y-3 border-l-2 border-cyan-400/30">
+                                                        <ul class="pl-4 ml-2 space-y-3 border-l-2 border-sky-400/30">
                                                             @foreach($reply->replies->sortByDesc('created_at') as $nestedReply)
                                                             <li class="p-3 glass-card">
                                                                     <div class="flex items-start space-x-2">
@@ -351,7 +351,7 @@
                                                                             <div class="flex items-center space-x-2">
                                                                                 <span class="text-sm font-medium text-blue-400">{{ $nestedReply->user->name }}</span>
                                                                                 @if($nestedReply->user->usertype === 'admin')
-                                                                                    <span class="px-1.5 py-0.5 text-xs bg-cyan-500/20 text-cyan-200 rounded-md">Admin</span>
+                                                                                    <span class="px-1.5 py-0.5 text-xs bg-sky-500/20 text-sky-200 rounded-md">Admin</span>
                                                                                 @endif
                                                                                 <span class="text-xs text-gray-500">{{ $nestedReply->created_at->diffForHumans() }}</span>
                                                                             </div>
@@ -370,7 +370,7 @@
                                                         <form wire:submit.prevent="addReplyToReply({{ $reply->id }})" class="mt-3 pl-4 ml-2">
                                                             <div class="mb-2">
                                                                 <textarea wire:model.defer="replyToReplyContent.{{ $reply->id }}"
-                                                                    class="w-full p-2 text-sm text-white transition-all duration-300 rounded-2xl resize-none bg-slate-900/60 border border-white/10 backdrop-blur-xl focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-400/40 focus:outline-none"
+                                                                    class="w-full p-2 text-sm text-white transition-all duration-300 rounded-2xl resize-none bg-slate-900/60 border border-white/10 backdrop-blur-xl focus:border-sky-300/60 focus:ring-2 focus:ring-sky-400/40 focus:outline-none"
                                                                     rows="2" placeholder="Răspunde la acest comentariu..."></textarea>
                                                                 @error("replyToReplyContent.{$reply->id}")
                                                                     <span class="mt-1 text-xs text-red-400">{{ $message }}</span>
@@ -403,7 +403,7 @@
                 @if (!$thread->is_locked)
                     <div class="relative mt-8 group">
                         <div
-                            class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-cyan-400 to-emerald-400 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
+                            class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-sky-400 to-indigo-600 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
                         </div>
 
                         <form wire:submit.prevent="saveReply"
@@ -421,7 +421,7 @@
 
                                 <div class="relative">
                                     <textarea wire:model="replyContent" id="replyContent" rows="4"
-                                        class="w-full px-4 py-3 text-gray-200 bg-slate-900/60 border border-white/10 rounded-2xl focus:ring-2 focus:ring-cyan-400/40 focus:border-cyan-300/60"
+                                        class="w-full px-4 py-3 text-gray-200 bg-slate-900/60 border border-white/10 rounded-2xl focus:ring-2 focus:ring-sky-400/40 focus:border-sky-300/60"
                                         placeholder="Contribuie la discuție..."></textarea>
 
                                     <div class="absolute text-xs text-gray-500 top-2 right-2">

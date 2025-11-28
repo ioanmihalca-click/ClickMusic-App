@@ -1,6 +1,6 @@
 <div class="mt-8">
     <h4 class="text-xl font-semibold text-white flex items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-cyan-300" fill="none" viewBox="0 0 24 24"
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-sky-300" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
@@ -13,7 +13,7 @@
         <form wire:submit.prevent="addComment" class="mt-6">
             <div class="mb-4">
                 <textarea wire:model.defer="newComment" id="newComment"
-                    class="block w-full p-3 mt-1 text-white rounded-2xl bg-slate-900/50 border border-white/10 backdrop-blur-xl focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-400/40 focus:outline-none resize-none transition-all duration-300"
+                    class="block w-full p-3 mt-1 text-white rounded-2xl bg-slate-900/50 border border-white/10 backdrop-blur-xl focus:border-sky-300/60 focus:ring-2 focus:ring-sky-400/40 focus:outline-none resize-none transition-all duration-300"
                     rows="3" placeholder="Adaugă un comentariu..."></textarea>
                 @error('newComment')
                     <span class="text-red-400 text-sm mt-1">{{ $message }}</span>
@@ -33,7 +33,7 @@
         </form>
     @else
         <div class="mt-6 p-4 glass-card text-center text-gray-300">
-            <a href="{{ route('login') }}" class="text-cyan-300 hover:text-cyan-200">Autentifică-te</a> pentru a adăuga un comentariu.
+            <a href="{{ route('login') }}" class="text-sky-300 hover:text-sky-200">Autentifică-te</a> pentru a adăuga un comentariu.
         </div>
     @endauth
 
@@ -48,9 +48,9 @@
                             @if ($comment->user->avatar)
                                 <img src="{{ asset('storage/' . $comment->user->avatar) }}"
                                     alt="{{ $comment->user->name }}"
-                                    class="w-10 h-10 rounded-full object-cover ring-2 ring-cyan-400/40">
+                                    class="w-10 h-10 rounded-full object-cover ring-2 ring-sky-400/40">
                             @else
-                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-sky-500 to-emerald-400 flex items-center justify-center text-white font-semibold">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-sky-500 to-indigo-600 flex items-center justify-center text-white font-semibold">
                                     {{ substr($comment->user->name, 0, 1) }}
                                 </div>
                             @endif
@@ -61,7 +61,7 @@
                             <div class="flex items-center space-x-2">
                                 <span class="font-medium text-white">{{ $comment->user->name }}</span>
                                 @if ($comment->user->usertype === 'admin')
-                                    <span class="px-2 py-0.5 text-xs font-medium bg-cyan-500/20 text-cyan-200 rounded-full">
+                                    <span class="px-2 py-0.5 text-xs font-medium bg-sky-500/20 text-sky-200 rounded-full">
                                         Admin
                                     </span>
                                 @endif
@@ -90,7 +90,7 @@
 
                                     {{-- Nested replies list --}}
                                     @if($comment->replies->count() > 0)
-                                        <ul class="pl-4 ml-2 space-y-2 border-l-2 border-cyan-400/30">
+                                        <ul class="pl-4 ml-2 space-y-2 border-l-2 border-sky-400/30">
                                             @foreach($comment->replies->sortByDesc('created_at') as $nestedReply)
                                                 <li class="p-2 glass-card">
                                                     <div class="flex items-start space-x-2">
@@ -100,7 +100,7 @@
                                                                     alt="{{ $nestedReply->user->name }}"
                                                                     class="w-7 h-7 rounded-full object-cover">
                                                             @else
-                                                                <div class="w-7 h-7 rounded-full bg-gradient-to-br from-sky-500 to-emerald-400 flex items-center justify-center text-white text-xs font-semibold">
+                                                                <div class="w-7 h-7 rounded-full bg-gradient-to-br from-sky-500 to-indigo-600 flex items-center justify-center text-white text-xs font-semibold">
                                                                     {{ substr($nestedReply->user->name, 0, 1) }}
                                                                 </div>
                                                             @endif
@@ -109,7 +109,7 @@
                                                             <div class="flex items-center space-x-2">
                                                                 <span class="text-sm font-medium text-blue-400">{{ $nestedReply->user->name }}</span>
                                                                 @if($nestedReply->user->usertype === 'admin')
-                                                                    <span class="px-1.5 py-0.5 text-xs bg-cyan-500/20 text-cyan-200 rounded-md">Admin</span>
+                                                                    <span class="px-1.5 py-0.5 text-xs bg-sky-500/20 text-sky-200 rounded-md">Admin</span>
                                                                 @endif
                                                                 <span class="text-xs text-gray-500">{{ $nestedReply->created_at->diffForHumans() }}</span>
                                                             </div>
@@ -126,7 +126,7 @@
                                         <form wire:submit.prevent="addReplyToReply({{ $comment->id }})" class="mt-2 pl-4 ml-2">
                                             <div class="mb-2">
                                                 <textarea wire:model.defer="replyToReplyContent.{{ $comment->id }}"
-                                                    class="w-full p-2 text-sm text-white transition-all duration-300 rounded-2xl resize-none bg-slate-900/60 border border-white/10 backdrop-blur-xl focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-400/40 focus:outline-none"
+                                                    class="w-full p-2 text-sm text-white transition-all duration-300 rounded-2xl resize-none bg-slate-900/60 border border-white/10 backdrop-blur-xl focus:border-sky-300/60 focus:ring-2 focus:ring-sky-400/40 focus:outline-none"
                                                     rows="2" placeholder="Răspunde la acest comentariu..."></textarea>
                                                 @error("replyToReplyContent.{$comment->id}")
                                                     <span class="mt-1 text-xs text-red-400">{{ $message }}</span>
@@ -155,7 +155,7 @@
         @if ($thread)
             <div class="mt-6 text-center">
                 <a href="{{ route('forum.threads.show', $thread) }}"
-                    class="inline-flex items-center text-cyan-300 hover:text-cyan-200 transition-colors">
+                    class="inline-flex items-center text-sky-300 hover:text-sky-200 transition-colors">
                     <span>Vezi discuția completă în forum</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -174,7 +174,7 @@
 
             @if ($thread)
                 <a href="{{ route('forum.threads.show', $thread) }}"
-                    class="mt-3 inline-block text-cyan-300 hover:text-cyan-200">
+                    class="mt-3 inline-block text-sky-300 hover:text-sky-200">
                     sau discută în forum →
                 </a>
             @endif

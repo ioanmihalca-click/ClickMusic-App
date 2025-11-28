@@ -1,7 +1,7 @@
 <footer class="relative py-10 bg-black">
     <!-- Gradient Overlay -->
     <div class="absolute inset-0 blur-3xl opacity-30">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-cyan-500 to-emerald-500"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-700"></div>
     </div>
 
     <div class="container relative px-4 mx-auto">
@@ -9,7 +9,7 @@
         <div class="max-w-3xl mx-auto text-center glass-card p-8">
 
             <h3
-                class="mb-2 text-lg font-bold tracking-[0.25em] text-transparent uppercase bg-clip-text bg-gradient-to-r from-sky-300 via-cyan-200 to-emerald-200">
+                class="mb-2 text-lg font-bold tracking-[0.25em] text-transparent uppercase bg-clip-text bg-gradient-to-r from-sky-300 via-blue-200 to-indigo-200">
                 Abonează-te la newsletter
             </h3>
             <p class="mb-4 text-sm text-gray-400">
@@ -21,12 +21,12 @@
                 <div class="flex flex-col space-y-3 md:flex-row md:space-y-0 md:space-x-3">
                     <div class="flex-1">
                         <input id="name" name="name" type="text" autocomplete="name" required
-                            class="block w-full px-4 py-3 text-sm text-white transition duration-300 ease-in-out rounded-2xl border border-white/10 bg-slate-900/60 backdrop-blur-xl focus:ring-2 focus:ring-cyan-400/40 focus:border-cyan-200/60"
+                            class="block w-full px-4 py-3 text-sm text-white transition duration-300 ease-in-out rounded-2xl border border-white/10 bg-slate-900/60 backdrop-blur-xl focus:ring-2 focus:ring-sky-400/40 focus:border-sky-200/60"
                             placeholder="Numele tău">
                     </div>
                     <div class="flex-1">
                         <input id="email-address" name="email" type="email" autocomplete="email" required
-                            class="block w-full px-4 py-3 text-sm text-white transition duration-300 ease-in-out rounded-2xl border border-white/10 bg-slate-900/60 backdrop-blur-xl focus:ring-2 focus:ring-cyan-400/40 focus:border-cyan-200/60"
+                            class="block w-full px-4 py-3 text-sm text-white transition duration-300 ease-in-out rounded-2xl border border-white/10 bg-slate-900/60 backdrop-blur-xl focus:ring-2 focus:ring-sky-400/40 focus:border-sky-200/60"
                             placeholder="Adresa de email">
                     </div>
                     <div>
@@ -44,11 +44,11 @@
             <!-- Legal Links -->
             <div class="flex flex-wrap gap-4 text-sm">
                 <a href="{{ route('privacy-policy') }}"
-                    class="text-gray-400 transition-colors duration-300 hover:text-cyan-300">
+                    class="text-gray-400 transition-colors duration-300 hover:text-sky-300">
                     Politica de confidențialitate
                 </a>
                 <a href="{{ route('terms-of-service') }}"
-                    class="text-gray-400 transition-colors duration-300 hover:text-cyan-300">
+                    class="text-gray-400 transition-colors duration-300 hover:text-sky-300">
                     Termeni și Condiții
                 </a>
             </div>
@@ -56,7 +56,7 @@
             <!-- Social Links -->
             <div class="flex flex-wrap justify-center gap-3">
                 <a href="https://instagram.com/clickmusic1" target="_blank" rel="noopener noreferrer"
-                    class="p-2 text-gray-300 transition-all duration-300 border border-white/10 rounded-xl hover:text-white hover:border-cyan-400/60">
+                    class="p-2 text-gray-300 transition-all duration-300 border border-white/10 rounded-xl hover:text-white hover:border-blue-400/60">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" fill="currentColor"
                         viewBox="0 0 16 16">
                         <path
@@ -65,7 +65,7 @@
                 </a>
 
                 <a href="https://www.facebook.com/clickmusicromania" target="_blank" rel="noopener noreferrer"
-                    class="p-2 text-gray-300 transition-all duration-300 border border-white/10 rounded-xl hover:text-white hover:border-cyan-400/60">
+                    class="p-2 text-gray-300 transition-all duration-300 border border-white/10 rounded-xl hover:text-white hover:border-blue-400/60">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" fill="currentColor"
                         viewBox="0 0 16 16">
                         <path
@@ -75,7 +75,7 @@
 
                 <a href="https://open.spotify.com/artist/0rbyxJSUfSXjmeW652c41O" target="_blank"
                     rel="noopener noreferrer"
-                    class="p-2 text-gray-300 transition-all duration-300 border border-white/10 rounded-xl hover:text-white hover:border-cyan-400/60">
+                    class="p-2 text-gray-300 transition-all duration-300 border border-white/10 rounded-xl hover:text-white hover:border-blue-400/60">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" fill="currentColor"
                         viewBox="0 0 16 16">
                         <path
@@ -84,7 +84,7 @@
                 </a>
 
                 <a href="https://youtube.com/clickmusicromania" target="_blank" rel="noopener noreferrer"
-                    class="p-2 text-gray-300 transition-all duration-300 border border-white/10 rounded-xl hover:text-white hover:border-cyan-400/60">
+                    class="p-2 text-gray-300 transition-all duration-300 border border-white/10 rounded-xl hover:text-white hover:border-blue-400/60">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" fill="currentColor"
                         viewBox="0 0 16 16">
                         <path
@@ -102,7 +102,7 @@
             <p class="mt-1 text-sm text-gray-400">
                 Aplicație dezvoltată de
                 <a href="https://clickstudios-digital.com" target="_blank" rel="noopener noreferrer"
-                    class="text-cyan-300 transition-colors duration-300 hover:text-emerald-200">
+                    class="text-sky-300 transition-colors duration-300 hover:text-blue-200">
                     Click Studios Digital
                 </a>
             </p>
