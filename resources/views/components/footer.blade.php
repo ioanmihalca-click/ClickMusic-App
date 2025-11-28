@@ -1,7 +1,7 @@
 <footer class="relative py-10 bg-black">
     <!-- Gradient Overlay -->
-    <div class="absolute inset-0 blur-3xl opacity-30">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-700"></div>
+    <div class="absolute inset-0 blur-3xl opacity-10">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-950 via-slate-900 to-gray-900"></div>
     </div>
 
     <div class="container relative px-4 mx-auto">

@@ -2,34 +2,23 @@
     <!-- Background cu particule animate -->
     <div class="relative min-h-screen overflow-hidden bg-black">
         <!-- Gradient animat de fundal -->
-        <div class="absolute inset-0 opacity-40">
-            <div class="absolute inset-0 bg-gradient-to-b from-blue-600/30 via-sky-500/30 to-black animate-pulse">
+        <div class="absolute inset-0 opacity-15">
+            <div class="absolute inset-0 bg-gradient-to-b from-blue-950/40 via-slate-900/30 to-black">
             </div>
-            <div class="absolute inset-0 bg-gradient-to-b from-sky-500/20 via-blue-500/30 to-black"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-900/20 via-blue-950/20 to-black"></div>
         </div>
 
-        <!-- Efecte de blur pentru depth -->
-        <div class="absolute rounded-full top-20 left-10 w-72 h-72 bg-blue-500/10 blur-3xl"></div>
-        <div class="absolute rounded-full bottom-20 right-10 w-96 h-96 bg-blue-400/20 blur-3xl"></div>
-        <div
-            class="absolute transform -translate-x-1/2 -translate-y-1/2 rounded-full top-1/2 left-1/2 w-80 h-80 bg-pink-500/5 blur-3xl">
-        </div>
-
+        
         <!-- Container principal -->
         <div class="relative z-10 max-w-4xl px-6 py-20 mx-auto mt-12">
             <div class="text-center">
 
 
                 <!-- Card principal cu efect glassmorphism -->
-                <div class="relative group">
-                    <!-- Glow effect -->
-                    <div
-                        class="absolute transition duration-500 -inset-1 bg-gradient-to-r from-blue-500 via-sky-400 to-indigo-600 rounded-2xl blur-lg opacity-20 group-hover:opacity-40">
-                    </div>
-
+                <div class="relative">
                     <!-- Card content -->
                     <div
-                        class="relative p-8 border shadow-2xl md:p-12 bg-black/60 backdrop-blur-xl border-white/10 rounded-2xl">
+                        class="relative p-8 border shadow-2xl md:p-12 bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-xl border-white/10 rounded-2xl ring-1 ring-blue-400/5">
                         <div class="space-y-8">
                             <!-- Descriere principală -->
                             <div class="space-y-6">
