@@ -2,15 +2,11 @@
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <!-- Thread Header -->
         <div class="relative mb-8">
-            <div class="absolute inset-0 blur-3xl opacity-30">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-700"></div>
-            </div>
-
-            <div class="relative p-6 glass-card">
+            <div class="relative p-6 bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-xl border border-white/10 rounded-2xl ring-1 ring-blue-400/5">
                 <!-- Adăugăm butonul de înapoi -->
                 <div class="mb-4">
                     <a href="{{ route('forum.categories.show', $thread->category) }}"
-                        class="inline-flex items-center px-4 py-2 text-gray-300 transition-all duration-300 border border-gray-700 rounded-lg hover:text-white hover:border-gray-600">
+                        class="inline-flex items-center px-4 py-2 text-gray-300 transition-all duration-300 border border-white/10 rounded-lg hover:text-white hover:border-blue-500/20">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -19,10 +15,10 @@
                     </a>
                 </div>
 
-                <div class="relative p-6 glass-card">
+                <div class="relative p-6 bg-gradient-to-br from-gray-900/60 via-slate-900/50 to-blue-950/30 backdrop-blur-xl border border-white/5 rounded-xl">
                     <div class="flex items-start space-x-4">
                         <img src="{{ $thread->user->avatar }}" alt="{{ $thread->user->name }}"
-                            class="w-12 h-12 rounded-full ring-2 ring-gray-800">
+                            class="w-12 h-12 rounded-full ring-2 ring-blue-500/20">
 
                         <div class="flex-1">
                             <div class="flex items-center justify-between">
@@ -167,22 +163,18 @@
             <!-- Replies -->
             <div class="relative">
                 <!-- Linia temporală verticală -->
-                <div class="absolute left-5 top-0 bottom-0 w-0.5 bg-gray-700"></div>
+                <div class="absolute left-5 top-0 bottom-0 w-0.5 bg-white/10"></div>
 
                 <div class="space-y-6">
                     @foreach ($replies as $loop_index => $reply)
-                        <div id="reply-{{ $reply->id }}" class="relative group">
+                        <div id="reply-{{ $reply->id }}" class="relative">
                             <!-- Indicator temporal -->
                             <div
                                 class="absolute left-5 -translate-x-1/2 w-2 h-2 rounded-full {{ $reply->is_solution ? 'bg-green-500' : 'bg-blue-500' }} z-10">
                             </div>
 
                             <div
-                                class="absolute -inset-0.5 ml-8 {{ $reply->is_solution ? 'bg-gradient-to-r from-green-500 via-emerald-500 to-green-500' : 'bg-gradient-to-r from-blue-500 via-sky-400 to-indigo-600' }} rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
-                            </div>
-
-                            <div
-                                class="relative p-6 ml-8 glass-card {{ $reply->is_solution ? 'border border-green-500/30' : '' }}">
+                                class="relative p-6 ml-8 bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-xl border {{ $reply->is_solution ? 'border-green-500/30' : 'border-white/10' }} rounded-2xl ring-1 ring-blue-400/5 transition-all duration-300 hover:border-blue-500/20">
                                 @if ($reply->is_solution)
                                     <div class="absolute top-0 right-0 transform translate-x-2 -translate-y-2">
                                         <div
@@ -401,13 +393,9 @@
 
                 <!-- Reply Form -->
                 @if (!$thread->is_locked)
-                    <div class="relative mt-8 group">
-                        <div
-                            class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-sky-400 to-indigo-600 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
-                        </div>
-
+                    <div class="relative mt-8">
                         <form wire:submit.prevent="saveReply"
-                            class="relative p-6 glass-card">
+                            class="relative p-6 bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-xl border border-white/10 rounded-2xl ring-1 ring-blue-400/5">
                             <div>
                                 <div class="flex items-center mb-3">
                                     <div class="flex-shrink-0 mr-3">
@@ -462,7 +450,7 @@
                         </form>
                     </div>
                 @else
-                    <div class="p-6 mt-8 text-center glass-card">
+                    <div class="p-6 mt-8 text-center bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-xl border border-white/10 rounded-2xl ring-1 ring-blue-400/5">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mx-auto text-gray-500"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

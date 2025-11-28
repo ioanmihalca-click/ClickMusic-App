@@ -3,13 +3,9 @@
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <!-- Header cu gradient -->
         <div class="relative mb-8">
-            <div class="absolute inset-0 blur-3xl opacity-30">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-700"></div>
-            </div>
-
-            <div class="relative p-6 glass-card">
+            <div class="relative p-6 bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-xl border border-white/10 rounded-2xl ring-1 ring-blue-400/5">
                 <h1
-                    class="text-3xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+                    class="text-3xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-blue-400 to-blue-500">
                     Crează o discuție nouă
                 </h1>
                 <p class="mt-2 text-gray-400">Împărtășește gândurile tale cu comunitatea</p>
@@ -17,19 +13,15 @@
         </div>
 
         <!-- Formular -->
-        <div class="relative group">
-            <div
-                class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-sky-400 to-indigo-600 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
-            </div>
-
-            <form wire:submit="save" class="relative p-6 space-y-6 glass-card">
+        <div class="relative">
+            <form wire:submit="save" class="relative p-6 space-y-6 bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-xl border border-white/10 rounded-2xl ring-1 ring-blue-400/5">
                 <!-- Categoria -->
                 <div>
                     <label for="category" class="block text-sm font-medium text-gray-300">
                         Categoria
                     </label>
                     <select wire:model="category_id" id="category"
-                        class="w-full mt-1 text-gray-300 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        class="w-full mt-1 text-gray-300 bg-black/30 border border-white/10 rounded-lg focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500/50">
                         <option value="">Selectează o categorie</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -46,7 +38,7 @@
                         Titlul discuției
                     </label>
                     <input type="text" wire:model="title" id="title"
-                        class="w-full mt-1 text-gray-300 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500"
+                        class="w-full mt-1 text-gray-300 bg-black/30 border border-white/10 rounded-lg focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500/50"
                         placeholder="Introdu titlul discuției">
                     @error('title')
                         <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
@@ -61,7 +53,7 @@
                     <div class="mt-1">
                         <div class="relative">
                             <textarea wire:model="content" id="content" rows="8"
-                                class="w-full px-4 py-3 text-gray-300 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500"
+                                class="w-full px-4 py-3 text-gray-300 bg-black/30 border border-white/10 rounded-lg focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500/50"
                                 placeholder="Despre ce vrei să discuți? Poți include detalii, întrebări sau orice informație relevantă."></textarea>
                             <div class="absolute top-2 right-2 text-xs text-gray-500">
                                 Markdown suportat
@@ -73,7 +65,7 @@
                     </div>
 
                     <div
-                        class="p-3 mt-2 space-y-2 text-sm text-gray-400 border border-gray-800 rounded-lg bg-gray-900/50">
+                        class="p-3 mt-2 space-y-2 text-sm text-gray-400 border border-white/10 rounded-lg bg-black/20">
                         <p class="font-medium">Formatare text:</p>
                         <div class="grid grid-cols-1 gap-2 md:grid-cols-3">
                             <div class="flex items-center">

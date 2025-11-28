@@ -1,7 +1,7 @@
 <div class="min-h-screen py-12 bg-black">
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div
-            class="p-6 border border-white/10 rounded-xl bg-gradient-to-r from-blue-600/10 via-blue-500/10 to-indigo-700/10 backdrop-blur-xl">
+            class="p-6 border border-white/10 rounded-2xl bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-xl ring-1 ring-blue-400/5">
             <h2 class="mb-2 text-xl font-semibold text-white">Forumul de discuții "Comunitate"</h2>
             <p class="text-gray-300">Îmi doresc ca aici să formăm o comunitate unită prin muzică. La fiecare lansare voi
                 crea o nouă discuție unde voi pune detalii, story-uri și videouri scurte pentru ca voi sa ma ajutați să
@@ -111,13 +111,9 @@
         <!-- Categorii -->
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($categories as $category)
-                <div class="relative group">
-                    <div
-                        class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-sky-400 to-indigo-600 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
-                    </div>
-
+                <div class="relative">
                     <a href="{{ route('forum.categories.show', $category) }}"
-                        class="relative block p-6 glass-card hover:bg-slate-900/85">
+                        class="relative block p-6 bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-xl border border-white/10 rounded-2xl ring-1 ring-blue-400/5 transition-all duration-300 hover:border-blue-500/20">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-3">
                                 <div class="flex items-center justify-center w-10 h-10 rounded-lg"
@@ -148,7 +144,7 @@
                         </div>
 
                         @if ($category->latest_thread)
-                            <div class="pt-4 mt-4 border-t border-gray-800">
+                            <div class="pt-4 mt-4 border-t border-white/10">
                                 <div class="flex items-start space-x-3">
                                     <img src="{{ $category->latest_thread->user->avatar }}"
                                         alt="{{ $category->latest_thread->user->name }}"
@@ -166,7 +162,7 @@
                                 </div>
                             </div>
                         @else
-                            <div class="pt-4 mt-4 border-t border-gray-800">
+                            <div class="pt-4 mt-4 border-t border-white/10">
                                 <div class="text-sm text-center text-gray-500">Nicio discuție încă</div>
                             </div>
                         @endif

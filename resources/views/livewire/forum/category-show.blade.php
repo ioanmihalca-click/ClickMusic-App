@@ -3,11 +3,7 @@
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <!-- Header cu gradient -->
         <div class="relative mb-8">
-            <div class="absolute inset-0 blur-3xl opacity-30">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-700"></div>
-            </div>
-
-            <div class="relative p-6 glass-card">
+            <div class="relative p-6 bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-xl border border-white/10 rounded-2xl ring-1 ring-blue-400/5">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
                     <div>
                         <div class="flex items-center gap-3">
@@ -20,7 +16,7 @@
                                 </svg>
                             </div>
                             <h1
-                                class="text-3xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+                                class="text-3xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-blue-400 to-blue-500">
                                 {{ $category->name }}
                             </h1>
                         </div>
@@ -46,7 +42,7 @@
 
                     <div class="flex flex-col mt-4 space-y-2 sm:mt-0 sm:flex-row sm:space-y-0 sm:space-x-4">
                         <a href="{{ route('forum.index') }}"
-                            class="inline-flex items-center justify-center px-4 py-2 text-center text-gray-300 transition-all duration-300 border border-gray-700 rounded-lg hover:text-white hover:border-gray-600">
+                            class="inline-flex items-center justify-center px-4 py-2 text-center text-gray-300 transition-all duration-300 border border-white/10 rounded-lg hover:text-white hover:border-blue-500/20">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -69,7 +65,7 @@
                 <div class="flex-1 my-4">
                     <div class="relative">
                         <input type="text" wire:model.live.debounce.300ms="search"
-                            class="w-full px-4 py-2 text-gray-300 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500"
+                            class="w-full px-4 py-2 text-gray-300 bg-black/30 border border-white/10 rounded-lg focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500/50"
                             placeholder="Caută după titlu sau conținut...">
                     </div>
                 </div>
@@ -78,17 +74,13 @@
             <!-- Lista de thread-uri -->
             <div class="space-y-4">
                 @forelse($threads as $thread)
-                    <div class="relative group">
+                    <div class="relative">
                         <div
-                            class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-sky-400 to-indigo-600 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
-                        </div>
-
-                        <div
-                            class="relative p-6 glass-card hover:bg-slate-900/80">
+                            class="relative p-6 bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-xl border border-white/10 rounded-2xl ring-1 ring-blue-400/5 transition-all duration-300 hover:border-blue-500/20">
                             <div class="flex items-start space-x-4">
                                 <div class="flex-shrink-0">
                                     <img src="{{ $thread->user->avatar }}" alt="{{ $thread->user->name }}"
-                                        class="w-12 h-12 rounded-full ring-2 ring-gray-800">
+                                        class="w-12 h-12 rounded-full ring-2 ring-blue-500/20">
                                 </div>
 
                                 <div class="flex-1 min-w-0">
@@ -255,7 +247,7 @@
                                 </div>
 
                                 @if ($thread->latestReply)
-                                    <div class="hidden pl-4 border-l border-gray-800 md:block">
+                                    <div class="hidden pl-4 border-l border-white/10 md:block">
                                         <div class="text-sm text-gray-400">
                                             Ultimul răspuns
                                         </div>
