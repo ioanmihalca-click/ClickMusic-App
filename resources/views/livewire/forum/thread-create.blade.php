@@ -4,10 +4,10 @@
         <!-- Header cu gradient -->
         <div class="relative mb-8">
             <div class="absolute inset-0 blur-3xl opacity-30">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500"></div>
             </div>
 
-            <div class="relative p-6 bg-gray-900/90 backdrop-blur-sm rounded-xl">
+            <div class="relative p-6 glass-card">
                 <h1
                     class="text-3xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
                     Crează o discuție nouă
@@ -19,10 +19,10 @@
         <!-- Formular -->
         <div class="relative group">
             <div
-                class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
+                class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-cyan-400 to-emerald-400 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
             </div>
 
-            <form wire:submit="save" class="relative p-6 space-y-6 bg-gray-900/90 backdrop-blur-sm rounded-xl">
+            <form wire:submit="save" class="relative p-6 space-y-6 glass-card">
                 <!-- Categoria -->
                 <div>
                     <label for="category" class="block text-sm font-medium text-gray-300">

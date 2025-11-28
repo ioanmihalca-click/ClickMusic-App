@@ -3,10 +3,10 @@
         <!-- Thread Header -->
         <div class="relative mb-8">
             <div class="absolute inset-0 blur-3xl opacity-30">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500"></div>
             </div>
 
-            <div class="relative p-6 bg-gray-900/90 backdrop-blur-sm rounded-xl">
+            <div class="relative p-6 glass-card">
                 <!-- Adăugăm butonul de înapoi -->
                 <div class="mb-4">
                     <a href="{{ route('forum.categories.show', $thread->category) }}"
@@ -19,7 +19,7 @@
                     </a>
                 </div>
 
-                <div class="relative p-6 bg-gray-900/90 backdrop-blur-sm rounded-xl">
+                <div class="relative p-6 glass-card">
                     <div class="flex items-start space-x-4">
                         <img src="{{ $thread->user->avatar }}" alt="{{ $thread->user->name }}"
                             class="w-12 h-12 rounded-full ring-2 ring-gray-800">
@@ -103,7 +103,7 @@
 
                             {{-- Video embed pentru thread-uri legate de videoclipuri --}}
                             @if($thread->isVideoThread() && $thread->video)
-                                <div class="mt-6 overflow-hidden rounded-xl ring-1 ring-purple-500/30">
+                                <div class="mt-6 overflow-hidden glass-card">
                                     @if($thread->video->video_path)
                                         @if($thread->video->isAudio())
                                             {{-- Audio Player --}}
@@ -133,9 +133,9 @@
                                     @endif
 
                                     {{-- Link către pagina video --}}
-                                    <div class="p-3 bg-gray-800/50">
+                                    <div class="p-3 mt-4 glass-card">
                                         <a href="{{ route('videos.show', $thread->video) }}"
-                                            class="inline-flex items-center text-sm text-purple-400 hover:text-purple-300 transition-colors">
+                                            class="inline-flex items-center text-sm text-cyan-300 hover:text-cyan-200 transition-colors">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                                             </svg>
@@ -178,11 +178,11 @@
                             </div>
 
                             <div
-                                class="absolute -inset-0.5 ml-8 {{ $reply->is_solution ? 'bg-gradient-to-r from-green-500 via-emerald-500 to-green-500' : 'bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500' }} rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
+                                class="absolute -inset-0.5 ml-8 {{ $reply->is_solution ? 'bg-gradient-to-r from-green-500 via-emerald-500 to-green-500' : 'bg-gradient-to-r from-blue-500 via-cyan-400 to-emerald-400' }} rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
                             </div>
 
                             <div
-                                class="relative p-6 ml-8 bg-gray-900/90 backdrop-blur-sm rounded-xl {{ $reply->is_solution ? 'border border-green-500/30' : '' }}">
+                                class="relative p-6 ml-8 glass-card {{ $reply->is_solution ? 'border border-green-500/30' : '' }}">
                                 @if ($reply->is_solution)
                                     <div class="absolute top-0 right-0 transform translate-x-2 -translate-y-2">
                                         <div
@@ -339,9 +339,9 @@
 
                                                     {{-- Nested replies list --}}
                                                     @if($reply->replies->count() > 0)
-                                                        <ul class="pl-4 ml-2 space-y-3 border-l-2 border-purple-500/30">
+                                                        <ul class="pl-4 ml-2 space-y-3 border-l-2 border-cyan-400/30">
                                                             @foreach($reply->replies->sortByDesc('created_at') as $nestedReply)
-                                                                <li class="p-3 rounded-lg bg-gray-900/50 backdrop-blur-sm ring-1 ring-purple-500/10">
+                                                                <li class="p-3 glass-card">
                                                                     <div class="flex items-start space-x-2">
                                                                         <div class="flex-shrink-0">
                                                                             <img src="{{ $nestedReply->user->avatar }}" alt="{{ $nestedReply->user->name }}"
@@ -351,7 +351,7 @@
                                                                             <div class="flex items-center space-x-2">
                                                                                 <span class="text-sm font-medium text-blue-400">{{ $nestedReply->user->name }}</span>
                                                                                 @if($nestedReply->user->usertype === 'admin')
-                                                                                    <span class="px-1.5 py-0.5 text-xs bg-purple-500/20 text-purple-300 rounded-md">Admin</span>
+                                                                                    <span class="px-1.5 py-0.5 text-xs bg-cyan-500/20 text-cyan-200 rounded-md">Admin</span>
                                                                                 @endif
                                                                                 <span class="text-xs text-gray-500">{{ $nestedReply->created_at->diffForHumans() }}</span>
                                                                             </div>
@@ -370,7 +370,7 @@
                                                         <form wire:submit.prevent="addReplyToReply({{ $reply->id }})" class="mt-3 pl-4 ml-2">
                                                             <div class="mb-2">
                                                                 <textarea wire:model.defer="replyToReplyContent.{{ $reply->id }}"
-                                                                    class="w-full p-2 text-sm text-white transition-all duration-300 border-none rounded-lg shadow-sm resize-none bg-gray-800/50 backdrop-blur-sm ring-1 ring-purple-500/20 focus:ring-purple-500/40 focus:outline-none"
+                                                                    class="w-full p-2 text-sm text-white transition-all duration-300 rounded-2xl shadow-glass resize-none bg-slate-900/60 border border-white/10 backdrop-blur-xl focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-400/40 focus:outline-none"
                                                                     rows="2" placeholder="Răspunde la acest comentariu..."></textarea>
                                                                 @error("replyToReplyContent.{$reply->id}")
                                                                     <span class="mt-1 text-xs text-red-400">{{ $message }}</span>
@@ -378,7 +378,7 @@
                                                             </div>
                                                             <div class="flex justify-end">
                                                                 <button type="submit"
-                                                                    class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-white transition-all duration-300 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg hover:from-blue-700 hover:to-purple-700 shadow-sm focus:outline-none">
+                                                                    class="glass-button px-4 py-2 text-xs">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
                                                                     </svg>
@@ -403,11 +403,11 @@
                 @if (!$thread->is_locked)
                     <div class="relative mt-8 group">
                         <div
-                            class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
+                            class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-cyan-400 to-emerald-400 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
                         </div>
 
                         <form wire:submit.prevent="saveReply"
-                            class="relative p-6 bg-gray-900/90 backdrop-blur-sm rounded-xl">
+                            class="relative p-6 glass-card">
                             <div>
                                 <div class="flex items-center mb-3">
                                     <div class="flex-shrink-0 mr-3">
@@ -421,7 +421,7 @@
 
                                 <div class="relative">
                                     <textarea wire:model="replyContent" id="replyContent" rows="4"
-                                        class="w-full px-4 py-3 text-gray-300 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500"
+                                        class="w-full px-4 py-3 text-gray-200 bg-slate-900/60 border border-white/10 rounded-2xl shadow-glass focus:ring-2 focus:ring-cyan-400/40 focus:border-cyan-300/60"
                                         placeholder="Contribuie la discuție..."></textarea>
 
                                     <div class="absolute text-xs text-gray-500 top-2 right-2">
@@ -449,7 +449,7 @@
 
                             <div class="flex justify-end mt-4">
                                 <button type="submit" wire:loading.attr="disabled"
-                                    class="inline-flex items-center px-4 py-2 text-white transition-all duration-300 bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 disabled:opacity-50">
+                                    class="glass-button">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -462,7 +462,7 @@
                         </form>
                     </div>
                 @else
-                    <div class="p-6 mt-8 text-center border border-gray-800 bg-gray-900/80 rounded-xl">
+                    <div class="p-6 mt-8 text-center glass-card">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mx-auto text-gray-500"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

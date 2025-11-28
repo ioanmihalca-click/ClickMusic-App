@@ -108,12 +108,12 @@
                 <div class="relative group">
                     <!-- Efect gradient animat pentru border -->
                     <div
-                        class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-xy">
+                        class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-cyan-400 to-emerald-400 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-xy">
                     </div>
 
                     <!-- Card-ul principal -->
                     <div
-                        class="relative flex flex-col overflow-hidden border border-gray-800 bg-gray-900/90 backdrop-blur-sm rounded-xl">
+                        class="relative flex flex-col overflow-hidden glass-card">
                         <!-- Container Video - fără overlay -->
                         <div class="relative aspect-w-16 aspect-h-9">
                             @if ($video->video_path)

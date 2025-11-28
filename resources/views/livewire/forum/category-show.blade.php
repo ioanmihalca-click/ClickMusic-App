@@ -4,10 +4,10 @@
         <!-- Header cu gradient -->
         <div class="relative mb-8">
             <div class="absolute inset-0 blur-3xl opacity-30">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500"></div>
             </div>
 
-            <div class="relative p-6 bg-gray-900/90 backdrop-blur-sm rounded-xl">
+            <div class="relative p-6 glass-card">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
                     <div>
                         <div class="flex items-center gap-3">
@@ -80,11 +80,11 @@
                 @forelse($threads as $thread)
                     <div class="relative group">
                         <div
-                            class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
+                            class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-cyan-400 to-emerald-400 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
                         </div>
 
                         <div
-                            class="relative p-6 transition-colors bg-gray-900/90 backdrop-blur-sm rounded-xl hover:bg-gray-900/95">
+                            class="relative p-6 glass-card hover:bg-slate-900/80">
                             <div class="flex items-start space-x-4">
                                 <div class="flex-shrink-0">
                                     <img src="{{ $thread->user->avatar }}" alt="{{ $thread->user->name }}"

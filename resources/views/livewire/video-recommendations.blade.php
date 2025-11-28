@@ -2,7 +2,7 @@
     <div class="space-y-4">
         @forelse ($videos as $recommendedVideo)
             <div
-                class="overflow-hidden transition-all duration-300 border rounded-xl group hover:bg-gray-800/50 border-purple-500/20 hover:border-purple-500/40">
+                class="overflow-hidden transition-all duration-300 glass-card group hover:shadow-cyan-500/20">
                 <a href="{{ route('videos.show', $recommendedVideo->id) }}" class="block">
                     <div class="flex flex-row items-center">
                         <!-- Thumbnail -->
@@ -36,7 +36,7 @@
                         <!-- Info -->
                         <div class="w-2/3 p-3">
                             <h4
-                                class="text-sm font-medium text-white transition-colors line-clamp-2 group-hover:text-purple-400">
+                                class="text-sm font-medium text-white transition-colors line-clamp-2 group-hover:text-cyan-300">
                                 {{ $recommendedVideo->title }}
                             </h4>
 
@@ -55,7 +55,7 @@
                             @if ($recommendedVideo->video_path)
                                 <div class="mt-3">
                                     <a href="{{ route('videos.stream', $recommendedVideo->id) }}" 
-                                       class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-all duration-300 rounded-md bg-purple-600/70 hover:bg-purple-700">
+                                       class="inline-flex items-center px-3 py-1 text-xs font-medium text-white transition-all duration-300 rounded-md bg-cyan-600/70 hover:bg-cyan-500/80">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>

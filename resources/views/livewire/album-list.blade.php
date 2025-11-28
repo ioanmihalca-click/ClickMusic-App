@@ -1,7 +1,7 @@
 <div class="container relative px-4 mb-32 mx-auto text-white">
     <!-- Enhanced Gradient Background with Animated Particles -->
     <div class="absolute inset-0">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-blue-800/20 blur-3xl"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-cyan-500/20 to-emerald-500/20 blur-3xl"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30"></div>
     </div>
 
@@ -9,7 +9,7 @@
         <!-- Page Header -->
         <div class="relative mb-12 text-center">
             <h1
-                class="mb-4 text-4xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 md:text-5xl">
+                class="mb-4 text-4xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-emerald-300 md:text-5xl">
                 Albumele Mele
             </h1>
             <p class="max-w-2xl mx-auto text-lg text-gray-300">
@@ -22,18 +22,18 @@
                 <div class="relative group">
                     <!-- Animated Border Effect -->
                     <div
-                        class="absolute inset-0 transition-opacity duration-500 opacity-0 rounded-xl bg-gradient-to-r from-blue-500/50 via-purple-500/50 to-blue-500/50 group-hover:opacity-100 blur-sm">
+                        class="absolute inset-0 transition-opacity duration-500 opacity-0 rounded-xl bg-gradient-to-r from-blue-500/50 via-cyan-400/50 to-emerald-400/50 group-hover:opacity-100 blur-sm">
                     </div>
 
                     <div
-                        class="relative p-[1px] bg-gradient-to-br from-blue-500/30 via-purple-500/30 to-blue-500/30 rounded-xl transform transition-all duration-500 group-hover:scale-[1.02] group-hover:shadow-2xl group-hover:shadow-blue-500/25">
+                        class="relative p-[1px] bg-gradient-to-br from-blue-500/30 via-cyan-400/30 to-emerald-400/30 rounded-xl transform transition-all duration-500 group-hover:scale-[1.02] group-hover:shadow-2xl group-hover:shadow-blue-500/25">
                         <div
                             class="relative flex flex-col h-full overflow-hidden bg-black/95 backdrop-blur-sm rounded-xl">
                             <!-- Album Cover with Enhanced Effects -->
                             <div class="relative overflow-hidden aspect-square">
                                 <!-- Glow Effect Behind Image -->
                                 <div
-                                    class="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 blur-xl">
+                                    class="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-emerald-400/20 blur-xl">
                                 </div>
 
                                 <img src="{{ $album->cover_url }}" alt="{{ $album->titlu }}"
@@ -77,11 +77,11 @@
                                 <!-- Album Title with Glow Effect -->
                                 <div class="space-y-2">
                                     <h3
-                                        class="text-xl font-bold tracking-wider text-transparent uppercase transition-all duration-300 bg-clip-text bg-gradient-to-r from-white to-blue-200 group-hover:from-blue-300 group-hover:to-purple-300">
+                                        class="text-xl font-bold tracking-wider text-transparent uppercase transition-all duration-300 bg-clip-text bg-gradient-to-r from-white to-cyan-200 group-hover:from-blue-300 group-hover:to-emerald-300">
                                         {{ $album->titlu }}
                                     </h3>
                                     <div
-                                        class="w-12 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-500 group-hover:w-full">
+                                        class="w-12 h-0.5 bg-gradient-to-r from-blue-500 to-emerald-400 transition-all duration-500 group-hover:w-full">
                                     </div>
                                 </div>
 
@@ -94,10 +94,10 @@
                                 <!-- Enhanced Action Button -->
                                 <div class="pt-4 border-t border-white/10">
                                     <a href="{{ route('album.show', $album->slug) }}"
-                                        class="relative inline-flex items-center justify-center w-full px-6 py-3 overflow-hidden text-sm font-semibold tracking-wider text-white uppercase transition-all duration-500 transform border rounded-lg group/btn border-blue-500/30 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black hover:scale-105 active:scale-95">
+                                        class="relative inline-flex items-center justify-center w-full px-6 py-3 overflow-hidden text-sm font-semibold tracking-wider text-white uppercase transition-all duration-500 transform border rounded-lg group/btn border-cyan-400/30 bg-gradient-to-r from-blue-600 to-emerald-500 hover:from-blue-500 hover:to-cyan-400 focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-black hover:scale-105 active:scale-95">
                                         <!-- Button Background Effect -->
                                         <div
-                                            class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-gradient-to-r from-blue-400 to-purple-400 group-hover/btn:opacity-20">
+                                            class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-gradient-to-r from-blue-400 to-emerald-300 group-hover/btn:opacity-20">
                                         </div>
 
                                         <!-- Button Text -->
@@ -130,12 +130,12 @@
     @else
         <!-- Enhanced Empty State -->
         <div class="relative max-w-md mx-auto">
-            <div class="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 blur-xl">
+            <div class="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/20 to-emerald-400/20 blur-xl">
             </div>
             <div class="relative p-12 text-center border rounded-2xl backdrop-blur-sm bg-black/40 border-white/20">
                 <!-- Empty State Icon -->
                 <div class="mb-6">
-                    <div class="inline-flex p-4 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20">
+                    <div class="inline-flex p-4 rounded-full bg-gradient-to-br from-blue-500/20 to-emerald-400/20">
                         <svg class="w-12 h-12 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3">
@@ -145,7 +145,7 @@
                 </div>
 
                 <h3
-                    class="mb-3 text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                    class="mb-3 text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-300">
                     Nu există albume
                 </h3>
                 <p class="leading-relaxed text-gray-400">

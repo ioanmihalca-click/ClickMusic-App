@@ -2,7 +2,7 @@
     <!-- Hero Header with Gradient -->
     {{-- <div class="relative bg-black">
         <div class="absolute inset-0 blur-3xl opacity-30">
-            <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500"></div>
         </div>
 
         <div class="relative px-6 py-16">

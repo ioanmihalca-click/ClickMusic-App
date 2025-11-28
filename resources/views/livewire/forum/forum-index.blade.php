@@ -1,7 +1,7 @@
 <div class="min-h-screen py-12 bg-black">
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div
-            class="p-6 border border-gray-800 rounded-xl bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-blue-600/10">
+            class="p-6 border border-white/10 rounded-xl bg-gradient-to-r from-blue-600/10 via-cyan-500/10 to-emerald-500/10 backdrop-blur-xl shadow-glass">
             <h2 class="mb-2 text-xl font-semibold text-white">Forumul de discuții "Comunitate"</h2>
             <p class="text-gray-300">Îmi doresc ca aici să formăm o comunitate unită prin muzică. La fiecare lansare voi
                 crea o nouă discuție unde voi pune detalii, story-uri și videouri scurte pentru ca voi sa ma ajutați să
@@ -113,11 +113,11 @@
             @foreach ($categories as $category)
                 <div class="relative group">
                     <div
-                        class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
+                        class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-cyan-400 to-emerald-400 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
                     </div>
 
                     <a href="{{ route('forum.categories.show', $category) }}"
-                        class="relative block p-6 transition bg-gray-900/90 backdrop-blur-sm rounded-xl hover:bg-gray-900/95">
+                        class="relative block p-6 glass-card hover:bg-slate-900/85">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-3">
                                 <div class="flex items-center justify-center w-10 h-10 rounded-lg"

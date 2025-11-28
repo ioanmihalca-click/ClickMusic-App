@@ -1,5 +1,5 @@
 @foreach ($comments as $comment)
-    <li class="p-5 transition-all duration-300 shadow-md bg-gray-800/50 backdrop-blur-sm rounded-xl ring-1 ring-purple-500/20 hover:ring-purple-500/30"
+    <li class="p-5 glass-card transition-all duration-300 hover:shadow-cyan-500/20"
         x-data="{ open: false }">
         <div class="flex flex-col">
             <div class="flex items-center">
@@ -29,9 +29,9 @@
         <div x-show="open" x-transition:enter="transition ease-out duration-300"
             x-transition:enter-start="opacity-0 transform scale-95"
             x-transition:enter-end="opacity-100 transform scale-100">
-            <ul class="pl-4 mt-4 ml-5 space-y-4 border-l-2 border-purple-500/30">
+            <ul class="pl-4 mt-4 ml-5 space-y-4 border-l-2 border-cyan-400/30">
                 @foreach ($comment->replies->sortByDesc('created_at') as $reply)
-                    <li class="p-4 rounded-lg shadow-sm bg-gray-900/50 backdrop-blur-sm ring-1 ring-purple-500/10">
+                    <li class="p-4 glass-card">
                         <div class="flex flex-col">
                             <div class="flex items-center">
                                 @if ($reply->user && $reply->user->usertype === 'admin')
@@ -53,7 +53,7 @@
             <form wire:submit.prevent="addReplyToComment({{ $comment->id }})" class="pl-4 mt-4 ml-5">
                 <div class="mb-2">
                     <textarea wire:model.defer="replyToComment.{{ $comment->id }}"
-                        class="w-full p-2 text-white transition-all duration-300 border-none rounded-lg shadow-sm resize-none bg-gray-900/50 backdrop-blur-sm ring-1 ring-purple-500/20 focus:ring-purple-500/40 focus:outline-none"
+                        class="w-full p-2 text-white transition-all duration-300 rounded-2xl shadow-glass resize-none bg-slate-900/60 border border-white/10 backdrop-blur-xl focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-400/40 focus:outline-none"
                         rows="2" placeholder="Răspunde la acest comentariu..."></textarea>
                     @error("replyToComment.{$comment->id}")
                         <span class="mt-1 text-xs text-red-400">{{ $message }}</span>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="flex justify-end">
                     <button type="submit"
-                        class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-white transition-all duration-300 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg hover:from-blue-700 hover:to-purple-700 shadow-sm focus:outline-none">
+                        class="glass-button px-4 py-2 text-xs">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
