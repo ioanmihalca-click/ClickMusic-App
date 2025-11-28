@@ -28,12 +28,12 @@
             x-transition:leave-end="opacity-0 transform scale-90"
             class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" x-cloak
             @click="open = false; if ($refs.videoPlayer) $refs.videoPlayer.pause(); if ($refs.audioPlayer) $refs.audioPlayer.pause();">
-            <div class="relative w-full max-w-5xl bg-gray-900 border border-gray-800/50 rounded-xl" @click.stop>
+            <div class="relative w-full max-w-5xl bg-gradient-to-br from-gray-900/95 via-slate-900/90 to-blue-950/50 backdrop-blur-xl border border-white/10 rounded-2xl ring-1 ring-blue-400/5" @click.stop>
                 <!-- Premium Content Overlay for free users -->
                 @if (!$userIsPremium)
                     <div
                         class="absolute inset-0 z-50 flex items-center justify-center bg-black/95 rounded-xl backdrop-blur-md">
-                        <div class="w-full max-w-lg p-6 space-y-4 bg-gray-800/90 rounded-lg">
+                        <div class="w-full max-w-lg p-6 space-y-4 bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-xl border border-white/10 rounded-2xl ring-1 ring-blue-400/5">
                             <h3 class="text-xl font-bold text-blue-400">Acces Limitat</h3>
 
                             <div class="p-4 my-4 border-l-4 border-blue-400 bg-blue-900/20">
@@ -105,15 +105,10 @@
 
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             @foreach ($videos as $video)
-                <div class="relative group">
-                    <!-- Efect gradient animat pentru border -->
-                    <div
-                        class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-sky-400 to-indigo-600 rounded-xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-xy">
-                    </div>
-
+                <div class="relative">
                     <!-- Card-ul principal -->
                     <div
-                        class="relative flex flex-col overflow-hidden glass-card">
+                        class="relative flex flex-col overflow-hidden bg-gradient-to-br from-gray-900/80 via-slate-900/70 to-blue-950/40 backdrop-blur-xl border border-white/10 rounded-2xl ring-1 ring-blue-400/5 transition-all duration-300 hover:border-blue-500/20">
                         <!-- Container Video - fără overlay -->
                         <div class="relative aspect-w-16 aspect-h-9">
                             @if ($video->video_path)
@@ -130,7 +125,7 @@
                                         <div
                                             class="absolute inset-0 bg-black/70 backdrop-blur-sm flex flex-col items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                                             <div
-                                                class="bg-black/80 p-3 md:p-5 rounded-xl max-w-[90%] md:max-w-[80%] text-center transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-all duration-300 border border-blue-500/30">
+                                                class="bg-gradient-to-br from-gray-900/90 via-slate-900/80 to-blue-950/50 backdrop-blur-xl p-3 md:p-5 rounded-xl max-w-[90%] md:max-w-[80%] text-center transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-all duration-300 border border-white/10">
                                                 <svg xmlns="http://www.w3.org/2000/svg"
                                                     class="h-8 w-8 md:h-10 md:w-10 text-blue-400 mx-auto mb-2 md:mb-3"
                                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -184,7 +179,7 @@
                                         <div
                                             class="absolute inset-0 z-10 bg-black/70 backdrop-blur-sm flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-300">
                                             <div
-                                                class="bg-black/80 p-3 md:p-5 rounded-xl max-w-[90%] md:max-w-[80%] text-center border border-blue-500/30">
+                                                class="bg-gradient-to-br from-gray-900/90 via-slate-900/80 to-blue-950/50 backdrop-blur-xl p-3 md:p-5 rounded-xl max-w-[90%] md:max-w-[80%] text-center border border-white/10">
                                                 <svg xmlns="http://www.w3.org/2000/svg"
                                                     class="h-8 w-8 md:h-10 md:w-10 text-blue-400 mx-auto mb-2 md:mb-3"
                                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -213,18 +208,13 @@
                             @endif
                         </div>
 
-                        <!-- Conținut cu overlay doar pentru această secțiune -->
+                        <!-- Conținut -->
                         <div class="relative flex flex-col flex-grow">
-                            <!-- Overlay doar pentru secțiunea de conținut -->
-                            <div
-                                class="absolute inset-0 z-10 transition-opacity duration-300 bg-black/50 group-hover:opacity-0">
-                            </div>
-
                             <!-- Conținutul efectiv -->
-                            <div class="relative z-20 p-5 space-y-3">
+                            <div class="relative p-5 space-y-3">
                                 <!-- Titlu cu trunchiere -->
                                 <h3
-                                    class="text-lg font-bold leading-tight tracking-wide text-white transition-colors duration-300 line-clamp-1 group-hover:text-blue-400">
+                                    class="text-lg font-bold leading-tight tracking-wide text-white transition-colors duration-300 line-clamp-1 hover:text-blue-400">
                                     {{ $video->title }}
                                 </h3>
 
