@@ -37,8 +37,8 @@
     <!-- Schema Markup for SEO -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "MusicGroup",
+        "@@context": "https://schema.org",
+        "@@type": "MusicGroup",
         "name": "Click",
         "genre": ["Hip-Hop", "Soul", "Reggae"],
         "url": "https://clickmusic.ro",

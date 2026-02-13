@@ -37,11 +37,11 @@
     <!-- Schema Markup -->
     <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "MusicAlbum",
+  "@@context": "https://schema.org",
+  "@@type": "MusicAlbum",
   "name": "{{ $album->titlu }}",  // Titlul albumului
   "byArtist": {
-    "@type": "MusicArtist",
+    "@@type": "MusicArtist",
     "name": "Click" 
   },
   "description": "{{ $album->descriere }}",  // Descrierea albumului
@@ -57,7 +57,7 @@
   "genre": "{{ $album->gen_muzical }}", // Genul muzical
   "numTracks": {{ $album->numar_trackuri }}, // Numărul de piese
   "offers": {
-    "@type": "Offer",
+    "@@type": "Offer",
     "price": "{{ $album->pret }}",
     "priceCurrency": "RON",
     "url": "{{ route('album.show', $album->slug) }}", // URL-ul paginii albumului

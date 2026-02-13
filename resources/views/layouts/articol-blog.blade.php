@@ -136,21 +136,21 @@
 
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
+        "@@context": "https://schema.org",
+        "@@type": "BlogPosting",
         "headline": "{{ $post->title }}",
         "image": "{{ asset('storage/' . $post->featured_image) }}",
         "datePublished": "{{ $post->published_at->format('Y-m-d') }}",
         "dateModified": "{{ $post->updated_at->format('Y-m-d') }}",
         "author": {
-            "@type": "Person",
+            "@@type": "Person",
             "name": "Click"
         },
         "publisher": {
-            "@type": "Organization",
+            "@@type": "Organization",
             "name": "Click Music",
             "logo": {
-                "@type": "ImageObject",
+                "@@type": "ImageObject",
                 "url": "{{ asset('img/logo.png') }}"
             }
         },

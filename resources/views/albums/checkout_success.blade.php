@@ -38,8 +38,8 @@
     <!-- Schema Markup -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "MusicArtist",
+      "@@context": "https://schema.org",
+      "@@type": "MusicArtist",
       "name": "Click",
       "description": "Artist de muzică Hip-Hop, Reggae si Soul din Baia Mare, România",
       "image": "{{ asset('img/ClickMusic-OG-Magazin.jpg') }}",

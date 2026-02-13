@@ -94,17 +94,17 @@
     <!-- Schema Markup for SEO -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "Blog",
+        "@@context": "https://schema.org",
+        "@@type": "Blog",
         "name": "Click Music Blog",
         "url": "https://clickmusic.ro/blog",
         "image": "{{ asset('img/ClickMusic-OG-Blog.jpg') }}",
         "description": "Blog-ul oficial Click Music cu articole, noutăți și povești din lumea hip-hop, reggae și soul.",
         "publisher": {
-            "@type": "Organization",
+            "@@type": "Organization",
             "name": "Click Music",
             "logo": {
-                "@type": "ImageObject",
+                "@@type": "ImageObject",
                 "url": "{{ asset('img/logo.png') }}"
             }
         }

@@ -79,8 +79,8 @@
     @else
         <script type="application/ld+json">
         {
-          "@context": "https://schema.org",
-          "@type": "MusicArtist",
+          "@@context": "https://schema.org",
+          "@@type": "MusicArtist",
           "name": "Click",
           "description": "Click este un artist de muzică hip-hop, drum & bass si reggae din România.",
           "genre": ["Hip-Hop", "Reggae", "Soul"],
