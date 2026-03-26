@@ -5,7 +5,7 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\User;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use App\Models\Newsletter;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
@@ -23,19 +23,19 @@ use App\Filament\Resources\NewsletterSubscriberResource\Pages\ListNewsletterSubs
 class NewsletterSubscriberResource extends Resource
 {
     protected static ?string $model = Newsletter::class;
-    protected static ?string $navigationIcon = 'heroicon-o-user-group';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-user-group';
     protected static ?string $navigationLabel = 'Abonați Newsletter';
-    protected static ?string $navigationGroup = 'Marketing';
+    protected static string | \UnitEnum | null $navigationGroup = 'Marketing';
     protected static ?int $navigationSort = 8;
     protected static ?string $modelLabel = 'Abonat Newsletter';
     protected static ?string $pluralModelLabel = 'Abonați Newsletter';
     protected static ?string $recordTitleAttribute = 'recipient_email';
     protected static ?string $slug = 'newsletter-subscribers';
-    protected static ?string $description = 'Gestionează lista de abonați la newsletter';
 
-    public static function form(Form $form): Form
+
+    public static function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema([
                 Forms\Components\TextInput::make('recipient_name')
                     ->label('Nume')

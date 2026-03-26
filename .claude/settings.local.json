@@ -3,7 +3,16 @@
     "allow": [
       "Bash(dir:*)",
       "Bash(findstr:*)",
-      "Bash(xargs ls:*)"
+      "Bash(xargs ls:*)",
+      "Bash(find 'D:/_Work Click Studios Digital/Click Music Ro/ClickMusic-App/database/migrations' -name *.php)",
+      "Bash(composer show:*)",
+      "WebFetch(domain:filamentphp.com)",
+      "WebFetch(domain:livewire.laravel.com)",
+      "Bash(find resources/views/livewire -name \"*.blade.php\" -exec grep -l \"Livewire\\\\Volt\\\\Component\" {})",
+      "Bash(while read:*)",
+      "Bash(do sed:*)",
+      "Bash(echo \"Fixed: $f\")",
+      "Bash(done)"
     ],
     "deny": [],
     "ask": []

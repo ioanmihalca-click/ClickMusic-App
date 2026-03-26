@@ -57,7 +57,7 @@
                                 <!-- Authentication Section -->
                                 @if (Route::has('login'))
                                     <div class="mb-8">
-                                        <livewire:welcome.navigation />
+                                        @include('livewire.welcome.navigation')
                                     </div>
                                 @endif
 

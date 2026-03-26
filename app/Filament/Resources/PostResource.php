@@ -7,7 +7,7 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use App\Models\Post;
 use Filament\Tables;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
@@ -22,13 +22,13 @@ use App\Filament\Resources\PostResource\Pages\CreatePost;
 class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-document-text';
     protected static ?string $navigationLabel = 'Blog';
     protected static ?int $navigationSort = 3; 
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema([
                 Forms\Components\TextInput::make('title')
                     ->required()

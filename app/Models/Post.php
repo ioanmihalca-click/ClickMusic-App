@@ -31,10 +31,8 @@ class Post extends Model
     protected $appends = ['read_time'];
 
     // Automatically generate slug on save
-    protected static function booted()
+    protected static function booted(): void
     {
-        parent::boot();
-
         static::saving(function (Post $post) {
             $post->slug = Str::slug($post->title);
         });

@@ -6,7 +6,7 @@ use Filament\Forms;
 use Filament\Tables;
 use App\Models\Haina;
 use Pages\EditHaines;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
@@ -33,15 +33,15 @@ class HaineResource extends Resource
 {
     protected static ?string $model = Haina::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-shopping-bag';
 
     protected static ?string $navigationLabel = 'Haine - Magazin';
 
     protected static ?int $navigationSort = 5;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema([
                 Section::make()
                     ->schema([

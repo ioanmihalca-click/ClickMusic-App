@@ -5,7 +5,7 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use App\Models\User;
 use Filament\Tables;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use App\Models\Newsletter;
 use Filament\Tables\Table;
 use App\Jobs\SendNewsletter;
@@ -36,17 +36,17 @@ use App\Filament\Resources\NewsletterResource\Pages\CreateNewsletter;
 class NewsletterResource extends Resource
 {
     protected static ?string $model = Newsletter::class;
-    protected static ?string $navigationIcon = 'heroicon-o-megaphone';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-megaphone';
     protected static ?string $navigationLabel = 'Campanii Newsletter';
-    protected static ?string $navigationGroup = 'Marketing';
+    protected static string | \UnitEnum | null $navigationGroup = 'Marketing';
     protected static ?int $navigationSort = 7;
     protected static ?string $modelLabel = 'Campanie Newsletter';
     protected static ?string $pluralModelLabel = 'Campaniile Newsletter';
     protected static ?string $recordTitleAttribute = 'campaign_title';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema([
                 // Pentru abonați simpli
                 Forms\Components\Section::make('Abonat Newsletter')

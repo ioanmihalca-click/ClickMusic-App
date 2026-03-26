@@ -5,7 +5,7 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Video;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Filament\Actions\EditAction;
 use Filament\Resources\Resource;
@@ -31,7 +31,7 @@ class VideoResource extends Resource
 {
     protected static ?string $model = Video::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-video-camera';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-video-camera';
 
     protected static ?string $modelLabel = 'Media';
 
@@ -40,9 +40,9 @@ class VideoResource extends Resource
 
 
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema([
                 TextInput::make('title')->required(),
                 Textarea::make('description')->required(),

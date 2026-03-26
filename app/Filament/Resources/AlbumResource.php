@@ -5,7 +5,7 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Album;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
@@ -23,15 +23,15 @@ class AlbumResource extends Resource
 {
     protected static ?string $model = Album::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-musical-note';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-musical-note';
 
     protected static ?string $navigationLabel = 'Albume - Magazin';
 
     protected static ?int $navigationSort = 4;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema([
                 Section::make()
                     ->schema([

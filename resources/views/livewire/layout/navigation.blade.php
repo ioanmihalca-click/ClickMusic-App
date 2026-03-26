@@ -1,6 +1,6 @@
 <?php
 use App\Livewire\Actions\Logout;
-use Livewire\Volt\Component;
+use Livewire\Component;
 
 new class extends Component {
     public function logout(Logout $logout): void
@@ -43,6 +43,7 @@ new class extends Component {
                 </div>
             </div>
 
+            @auth
             <div class="flex items-center justify-center ml-auto">
                 <livewire:notifications-menu />
             </div>
@@ -85,6 +86,12 @@ new class extends Component {
                     </x-slot>
                 </x-dropdown>
             </div>
+            @else
+            <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <a href="{{ route('login') }}" class="text-sm text-gray-300 transition-colors duration-300 hover:text-blue-400">{{ __('Login') }}</a>
+                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-300 transition-colors duration-300 hover:text-blue-400">{{ __('Register') }}</a>
+            </div>
+            @endauth
 
             <!-- Hamburger -->
             <div class="flex items-center -me-2 sm:hidden">
@@ -111,6 +118,7 @@ new class extends Component {
         style="display: none;">
 
         <div class="w-full px-4 pt-16 mx-auto max-w-7xl">
+            @auth
             <!-- User Info at Top - Enhanced Design -->
             <div class="flex flex-col items-center mb-10">
                 <div class="relative mb-3">
@@ -126,6 +134,7 @@ new class extends Component {
                     <div class="text-sm font-medium text-blue-400">{{ auth()->user()->email }}</div>
                 </div>
             </div>
+            @endauth
 
             <!-- Navigation Links - Enhanced Design -->
             <nav class="flex flex-col items-center space-y-5">
@@ -179,6 +188,7 @@ new class extends Component {
             </nav>
 
             <!-- User Profile & Logout - Enhanced Design -->
+            @auth
             <div class="w-full px-6 pt-8 mt-10 border-t border-gray-700">
                 <div class="flex flex-col space-y-4">
                     <x-responsive-nav-link :href="route('profile.edit')" wire:navigate
@@ -204,6 +214,18 @@ new class extends Component {
                     </button>
                 </div>
             </div>
+            @else
+            <div class="w-full px-6 pt-8 mt-10 border-t border-gray-700">
+                <div class="flex flex-col space-y-4">
+                    <a href="{{ route('login') }}" class="flex items-center justify-center w-full px-6 py-3 text-lg font-medium text-center text-gray-100 transition-colors duration-300 ease-in-out bg-gray-800 rounded-lg hover:bg-gray-700 hover:text-blue-400">
+                        {{ __('Login') }}
+                    </a>
+                    <a href="{{ route('register') }}" class="flex items-center justify-center w-full px-6 py-3 text-lg font-medium text-center text-gray-100 transition-colors duration-300 ease-in-out bg-gray-800 rounded-lg hover:bg-gray-700 hover:text-blue-400">
+                        {{ __('Register') }}
+                    </a>
+                </div>
+            </div>
+            @endauth
 
             <!-- Footer with App Version -->
             <div class="mt-10 mb-6 text-xs text-center text-gray-500">

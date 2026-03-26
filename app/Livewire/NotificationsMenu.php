@@ -10,7 +10,10 @@ class NotificationsMenu extends Component
 
     public function getNotificationsProperty()
     {
-        // Get the latest 5 notifications for the current user
+        if (! Auth::check()) {
+            return collect();
+        }
+
         return Auth::user()->notifications()
             ->orderBy('created_at', 'desc')
             ->limit(5)
@@ -19,6 +22,10 @@ class NotificationsMenu extends Component
 
     public function getUnreadCountProperty()
     {
+        if (! Auth::check()) {
+            return 0;
+        }
+
         return Auth::user()->unreadNotificationsCount();
     }
 

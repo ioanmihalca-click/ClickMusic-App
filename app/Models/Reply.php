@@ -3,7 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Mews\Purifier\Casts\CleanHtml;
+use Stevebauman\Purify\Casts\PurifyHtml;
 
 class Reply extends Model
 {
@@ -12,7 +12,7 @@ class Reply extends Model
     protected $fillable = ['user_id', 'comment_id', 'body'];
     
     protected $casts = [
-        'body' => CleanHtml::class,
+        'body' => PurifyHtml::class,
     ];
 
     public function user()
