@@ -16,8 +16,9 @@
         "laravel/socialite": "^5.0",
         "laravel/tinker": "^3.0",
         "livewire/livewire": "^4.0",
-        "stevebauman/purify": "^6.0",
-        "spatie/laravel-sitemap": "^7.3"
+        "spatie/laravel-markdown-response": "^1.2",
+        "spatie/laravel-sitemap": "^7.3",
+        "stevebauman/purify": "^6.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^4.0",
