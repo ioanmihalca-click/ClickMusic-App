@@ -2,8 +2,11 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Tables;
 use App\Models\Comment;
+use Filament\Actions\Action;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
@@ -67,13 +70,13 @@ class CommentResource extends Resource
                     ->relationship('video', 'title'),
             ])
             ->actions([
-                Tables\Actions\DeleteAction::make(),
-                Tables\Actions\Action::make('view_video')
+                DeleteAction::make(),
+                Action::make('view_video')
                     ->label('Vezi videoclip')
                     ->url(fn(Comment $record): string => route('videos.show', $record->video))
                     ->openUrlInNewTab(),
 
-                Tables\Actions\Action::make('quick_reply')
+                Action::make('quick_reply')
                     ->label('Răspunde rapid')
                     ->form([
                         Textarea::make('reply')
@@ -98,8 +101,8 @@ class CommentResource extends Resource
                     }),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
