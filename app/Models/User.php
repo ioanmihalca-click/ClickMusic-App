@@ -2,22 +2,20 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
-use Filament\Panel;
-use Illuminate\Support\Str;
-use Laravel\Cashier\Billable;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Laravel\Cashier\Concerns\ManagesSubscriptions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
+use Laravel\Cashier\Billable;
+use Laravel\Cashier\Concerns\ManagesSubscriptions;
 
 class User extends Authenticatable implements FilamentUser
 {
-    use Notifiable, Billable, ManagesSubscriptions;
+    use Billable, HasFactory, ManagesSubscriptions, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -66,10 +64,11 @@ class User extends Authenticatable implements FilamentUser
     {
         return Attribute::make(
             get: function ($value) {
-                if (!$value) {
-                    return 'https://ui-avatars.com/api/?name=' . urlencode($this->name);
+                if (! $value) {
+                    return 'https://ui-avatars.com/api/?name='.urlencode($this->name);
                 }
-                return asset('storage/' . $value);
+
+                return asset('storage/'.$value);
             }
         );
     }
@@ -156,7 +155,6 @@ class User extends Authenticatable implements FilamentUser
     /**
      * EXISTING FUNCTIONALITY
      */
-
     public function comments()
     {
         return $this->hasMany(Comment::class);
@@ -166,7 +164,7 @@ class User extends Authenticatable implements FilamentUser
     {
         $user = User::where('email', $providerUser->email)->first();
 
-        if (!$user) {
+        if (! $user) {
 
             $randomPassword = Str::random(16);
             $user = User::create([
@@ -213,7 +211,7 @@ class User extends Authenticatable implements FilamentUser
      */
     public function getUnsubscribedAttribute(): bool
     {
-        return !is_null($this->newsletter_unsubscribed_at);
+        return ! is_null($this->newsletter_unsubscribed_at);
     }
 
     /**
@@ -251,7 +249,7 @@ class User extends Authenticatable implements FilamentUser
     // Determine if the user has a free plan (authenticated but not premium)
     public function hasFreePlan()
     {
-        return !$this->isPremium() && $this->id;
+        return ! $this->isPremium() && $this->id;
     }
 
     // Check if user can access community features

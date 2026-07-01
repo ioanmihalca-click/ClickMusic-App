@@ -12,11 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('forum_replies', function (Blueprint $table) {
-            $table->foreignId('parent_id')
-                  ->nullable()
-                  ->after('thread_id')
-                  ->constrained('forum_replies')
-                  ->onDelete('cascade');
+            if (! Schema::hasColumn('forum_replies', 'parent_id')) {
+                $table->foreignId('parent_id')
+                    ->nullable()
+                    ->after('thread_id')
+                    ->constrained('forum_replies')
+                    ->onDelete('cascade');
+            }
         });
     }
 
@@ -26,8 +28,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('forum_replies', function (Blueprint $table) {
-            $table->dropForeign(['parent_id']);
-            $table->dropColumn('parent_id');
+            if (Schema::hasColumn('forum_replies', 'parent_id')) {
+                $table->dropForeign(['parent_id']);
+                $table->dropColumn('parent_id');
+            }
         });
     }
 };

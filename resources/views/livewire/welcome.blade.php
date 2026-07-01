@@ -52,21 +52,24 @@
                         Hip-Hop • Drum & Bass • Reggae
                     </h2>
 
-                    <!-- Key Stats -->
-                    <div class="grid max-w-md grid-cols-3 gap-3 mx-auto mb-6 md:grid-cols-3">
-                        <div class="text-center">
-                            <div class="text-xl font-bold text-blue-400 md:text-2xl">23</div>
-                            <div class="text-xs text-gray-300 md:text-sm">Ani experiență</div>
+                    <!-- Latest YouTube Clip -->
+                    @if (! empty($youtubeEmbedUrl))
+                        <div class="max-w-2xl mx-auto mb-6">
+                            <p class="mb-3 text-xs tracking-[3px] text-blue-400 uppercase font-roboto-condensed md:text-sm">
+                                Cel mai recent videoclip
+                            </p>
+                            <div class="relative w-full overflow-hidden shadow-2xl rounded-xl ring-1 ring-blue-500/40"
+                                style="padding-top: 56.25%">
+                                <iframe class="absolute inset-0 w-full h-full"
+                                    src="{{ $youtubeEmbedUrl }}"
+                                    title="Cel mai recent videoclip Click Music"
+                                    frameborder="0" loading="lazy"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                                </iframe>
+                            </div>
                         </div>
-                        <div class="text-center">
-                            <div class="text-xl font-bold text-blue-400 md:text-2xl">50M+</div>
-                            <div class="text-xs text-gray-300 md:text-sm">Vizualizări</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-xl font-bold text-blue-400 md:text-2xl">2025</div>
-                            <div class="text-xs text-gray-300 md:text-sm">Proiect D&B</div>
-                        </div>
-                    </div>
+                    @endif
 
                     <!-- Description -->
                     <p class="max-w-2xl mx-auto mb-6 text-sm leading-relaxed text-gray-300 md:text-base">

@@ -12,14 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('forum_threads', function (Blueprint $table) {
-            $table->foreignId('video_id')
-                  ->nullable()
-                  ->after('category_id')
-                  ->constrained('videos')
-                  ->onDelete('cascade');
-            $table->boolean('is_auto_generated')
-                  ->default(false)
-                  ->after('is_locked');
+            if (! Schema::hasColumn('forum_threads', 'video_id')) {
+                $table->foreignId('video_id')
+                    ->nullable()
+                    ->after('category_id')
+                    ->constrained('videos')
+                    ->onDelete('cascade');
+            }
+
+            if (! Schema::hasColumn('forum_threads', 'is_auto_generated')) {
+                $table->boolean('is_auto_generated')
+                    ->default(false)
+                    ->after('is_locked');
+            }
         });
     }
 
@@ -29,8 +34,14 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('forum_threads', function (Blueprint $table) {
-            $table->dropForeign(['video_id']);
-            $table->dropColumn(['video_id', 'is_auto_generated']);
+            if (Schema::hasColumn('forum_threads', 'video_id')) {
+                $table->dropForeign(['video_id']);
+                $table->dropColumn('video_id');
+            }
+
+            if (Schema::hasColumn('forum_threads', 'is_auto_generated')) {
+                $table->dropColumn('is_auto_generated');
+            }
         });
     }
 };

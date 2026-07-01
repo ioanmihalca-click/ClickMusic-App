@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\SiteSetting;
 use Livewire\Component;
 
 class Welcome extends Component
@@ -9,6 +10,7 @@ class Welcome extends Component
     public function render()
     {
         return view('livewire.welcome', [
+            'youtubeEmbedUrl' => SiteSetting::current()->homepage_youtube_embed_url,
             'title' => 'Click Music - Hip-Hop, Drum & Bass, Reggae - Electronic Press Kit, Magazin, Blog',
             'description' => 'Click Music - Muzica, Hip-Hop, Drum & Bass, Reggae - Electronic Press Kit, Magazin, Blog',
             'keywords' => 'Click, Click Music, muzică românească, hip hop românesc, drum & bass reggae românesc, Baia Mare, Maramureș, artist independent, streaming muzică, albume digitale, videoclipuri muzicale, download MP3, concerte Click, versuri Click, muzică nouă, muzică underground, muzică alternativă, muzică independentă, muzică conștientă, muzică pozitivă, muzică de vară, muzică de petrecere, muzică de relaxare, artist reggae din România, albume hip-hop de ascultat în 2024, muzică pentru relaxare',
@@ -24,7 +26,7 @@ class Welcome extends Component
   "description": "Click este un artist de muzică hip-hop, drum & bass si reggae din Romania.",
   "genre": ["Hip-Hop", "Drum & Bass", "Reggae"],
   "url": "https://clickmusic.ro",
-  "image": "' . asset('img/ClickMusic-OG-Site.jpg') . '",
+  "image": "'.asset('img/ClickMusic-OG-Site.jpg').'",
   "sameAs": [
     "https://youtube.com/clickmusicromania"
   ],
@@ -78,7 +80,7 @@ class Welcome extends Component
     }
   ]
 }
-</script>'
+</script>',
         ]);
     }
 }
