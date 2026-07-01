@@ -2,29 +2,29 @@
 
 namespace App\Filament\Resources;
 
+use App\Events\CommentReplied;
+use App\Filament\Resources\CommentResource\Pages\ListComments;
 use App\Models\Comment;
 use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
-use Filament\Tables\Table;
-use Illuminate\Support\Str;
-use Filament\Resources\Resource;
-use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\Textarea;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Notifications\Notification;
+use Filament\Resources\Resource;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\CommentResource\Pages\ListComments;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class CommentResource extends Resource
 {
     protected static ?string $model = Comment::class;
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-chat-bubble-left-right';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-chat-bubble-left-right';
 
     protected static ?string $navigationLabel = 'Comentarii';
 
@@ -51,11 +51,13 @@ class CommentResource extends Resource
                     ->limit(10) // Limitează textul la 50 de caractere
                     ->tooltip(function (Comment $record): string {
                         $prefix = $record->reply_id ? '[Răspuns] ' : '';
-                        return $prefix . $record->body;
+
+                        return $prefix.$record->body;
                     }) // Adaugă un tooltip cu textul complet la hover
                     ->formatStateUsing(function (Comment $record) {
                         $prefix = $record->reply_id ? '[Răspuns] ' : '';
-                        return $prefix . Str::limit($record->body, 10);
+
+                        return $prefix.Str::limit($record->body, 10);
                     }),
                 TextColumn::make('created_at')
                     ->label('Data')
@@ -73,7 +75,7 @@ class CommentResource extends Resource
                 DeleteAction::make(),
                 Action::make('view_video')
                     ->label('Vezi videoclip')
-                    ->url(fn(Comment $record): string => route('videos.show', $record->video))
+                    ->url(fn (Comment $record): string => route('videos.show', $record->video))
                     ->openUrlInNewTab(),
 
                 Action::make('quick_reply')
@@ -90,9 +92,8 @@ class CommentResource extends Resource
                             'video_id' => $record->video_id,
                         ]);
 
-
                         // Trigger event for notification
-                        event(new \App\Events\CommentReplied($reply, $record->video));
+                        event(new CommentReplied($reply, $record->video));
 
                         Notification::make()
                             ->title('Răspuns adăugat cu succes')

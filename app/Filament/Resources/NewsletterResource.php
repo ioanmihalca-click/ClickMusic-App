@@ -9,14 +9,20 @@ use App\Jobs\SendNewsletters;
 use App\Models\DailyEmailTracker;
 use App\Models\Newsletter;
 use App\Models\User;
+use Filament\Actions\Action;
+use Filament\Actions\BulkAction;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
 use Filament\Forms;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification as FilamentNotification;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
-use Filament\Tables;
-use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
@@ -49,7 +55,7 @@ class NewsletterResource extends Resource
         return $schema
             ->schema([
                 // Pentru abonați simpli
-                Forms\Components\Section::make('Abonat Newsletter')
+                Section::make('Abonat Newsletter')
                     ->schema([
                         TextInput::make('recipient_name')
                             ->label('Nume Destinatar')
@@ -73,9 +79,9 @@ class NewsletterResource extends Resource
                     ->columnSpanFull(),
 
                 // Pentru campaniile newsletter
-                Forms\Components\Section::make('Detalii Campanie')
+                Section::make('Detalii Campanie')
                     ->schema([
-                        Forms\Components\Grid::make(2)
+                        Grid::make(2)
                             ->schema([
                                 TextInput::make('campaign_title')
                                     ->label('Titlu Campanie')
@@ -117,9 +123,9 @@ class NewsletterResource extends Resource
                     ->columnSpanFull(),
 
                 // Secțiune programare și statistici
-                Forms\Components\Section::make('Programare și Statistici')
+                Section::make('Programare și Statistici')
                     ->schema([
-                        Forms\Components\Grid::make(2)
+                        Grid::make(2)
                             ->schema([
                                 Forms\Components\DateTimePicker::make('scheduled_at')
                                     ->label('Programat pentru')
@@ -136,7 +142,7 @@ class NewsletterResource extends Resource
                                     ->required(),
                             ]),
 
-                        Forms\Components\Grid::make(3)
+                        Grid::make(3)
                             ->schema([
                                 TextInput::make('recipients_count')
                                     ->label('Total Destinatari')
@@ -162,7 +168,7 @@ class NewsletterResource extends Resource
                     ->columnSpanFull(),
 
                 // Template-uri predefinite (bonus)
-                Forms\Components\Section::make('Template-uri Rapide')
+                Section::make('Template-uri Rapide')
                     ->schema([
                         Forms\Components\Select::make('template')
                             ->label('Alege un template')
@@ -639,13 +645,13 @@ class NewsletterResource extends Resource
                     ->requiresConfirmation(),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make()
+                ViewAction::make()
                     ->visible(fn ($record) => $record->isCampaign()),
 
-                Tables\Actions\EditAction::make()
+                EditAction::make()
                     ->visible(fn ($record) => $record->canBeEdited()),
 
-                Tables\Actions\DeleteAction::make(),
+                DeleteAction::make(),
 
                 // Preview pentru campaniile
                 Action::make('preview')
@@ -715,7 +721,7 @@ class NewsletterResource extends Resource
                     ->requiresConfirmation(),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+                DeleteBulkAction::make(),
                 self::getSendNewsletterBulkAction('sendSelected', 'Trimite selectate', fn ($records) => $records),
 
                 // Bulk action pentru a trimite la utilizatori + selectate
@@ -726,7 +732,7 @@ class NewsletterResource extends Resource
                 ),
 
                 // Bulk action pentru resetare
-                Tables\Actions\BulkAction::make('resetStatus')
+                BulkAction::make('resetStatus')
                     ->label('Resetează status')
                     ->icon('heroicon-o-arrow-path')
                     ->color('warning')
@@ -827,9 +833,9 @@ class NewsletterResource extends Resource
         ];
     }
 
-    private static function getSendNewsletterBulkAction(string $name, string $label, callable $getRecords): Tables\Actions\BulkAction
+    private static function getSendNewsletterBulkAction(string $name, string $label, callable $getRecords): BulkAction
     {
-        return Tables\Actions\BulkAction::make($name)
+        return BulkAction::make($name)
             ->label($label)
             ->icon('heroicon-o-paper-airplane')
             ->form(self::getSendNewsletterForm())

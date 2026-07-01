@@ -68,6 +68,7 @@ class FilamentResourceFixesTest extends TestCase
             ->fillForm([
                 'meta.title' => 'Titlu nou',
                 'meta.description' => 'Descriere noua',
+                'featured_image' => ['blog-images/test.jpg'],
             ])
             ->call('save')
             ->assertHasNoFormErrors();
@@ -132,7 +133,7 @@ class FilamentResourceFixesTest extends TestCase
 
         Livewire::test(ListNewsletterSubscribers::class)
             ->callAction(TestAction::make('importCsv')->table(), data: [
-                'csv_file' => $relativePath,
+                'csv_file' => [$relativePath],
                 'skip_duplicates' => true,
             ])
             ->assertNotified('Import finalizat');

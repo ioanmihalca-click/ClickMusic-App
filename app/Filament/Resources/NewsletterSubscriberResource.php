@@ -7,11 +7,18 @@ use App\Filament\Resources\NewsletterSubscriberResource\Pages\EditNewsletterSubs
 use App\Filament\Resources\NewsletterSubscriberResource\Pages\ListNewsletterSubscribers;
 use App\Models\Newsletter;
 use App\Models\User;
+use Filament\Actions\Action;
+use Filament\Actions\BulkAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\CreateAction;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
 use Filament\Forms;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
@@ -110,12 +117,12 @@ class NewsletterSubscriberResource extends Resource
                     ->sortable(),
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make()
+                CreateAction::make()
                     ->label('Adaugă Abonat Newsletter')
                     ->icon('heroicon-o-plus'),
 
                 // Import din CSV
-                Tables\Actions\Action::make('importCsv')
+                Action::make('importCsv')
                     ->label('Import CSV')
                     ->icon('heroicon-o-document-arrow-up')
                     ->color('info')
@@ -136,7 +143,7 @@ class NewsletterSubscriberResource extends Resource
                     }),
 
                 // Export la CSV
-                Tables\Actions\Action::make('exportCsv')
+                Action::make('exportCsv')
                     ->label('Export CSV')
                     ->icon('heroicon-o-document-arrow-down')
                     ->color('success')
@@ -145,7 +152,7 @@ class NewsletterSubscriberResource extends Resource
                     }),
 
                 // Statistici rapide
-                Tables\Actions\Action::make('stats')
+                Action::make('stats')
                     ->label('Statistici')
                     ->icon('heroicon-o-chart-bar')
                     ->color('gray')
@@ -163,12 +170,12 @@ class NewsletterSubscriberResource extends Resource
                     ]),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                ViewAction::make(),
+                EditAction::make(),
+                DeleteAction::make(),
 
                 // Toggle subscription cu confirmări
-                Tables\Actions\Action::make('toggle_subscription')
+                Action::make('toggle_subscription')
                     ->label(function ($record) {
                         return $record->status === Newsletter::STATUS_PENDING ? 'Dezabonează' : 'Reabonează';
                     })
@@ -200,7 +207,7 @@ class NewsletterSubscriberResource extends Resource
                     }),
 
                 // Trimite email de test
-                Tables\Actions\Action::make('send_test_email')
+                Action::make('send_test_email')
                     ->label('Test Email')
                     ->icon('heroicon-o-paper-airplane')
                     ->color('warning')
@@ -220,11 +227,11 @@ class NewsletterSubscriberResource extends Resource
                     }),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
 
                     // Reabonare în masă
-                    Tables\Actions\BulkAction::make('bulk_resubscribe')
+                    BulkAction::make('bulk_resubscribe')
                         ->label('Reabonează selectați')
                         ->icon('heroicon-o-check')
                         ->color('success')
@@ -244,7 +251,7 @@ class NewsletterSubscriberResource extends Resource
                         ->requiresConfirmation(),
 
                     // Dezabonare în masă
-                    Tables\Actions\BulkAction::make('bulk_unsubscribe')
+                    BulkAction::make('bulk_unsubscribe')
                         ->label('Dezabonează selectați')
                         ->icon('heroicon-o-no-symbol')
                         ->color('danger')

@@ -6,7 +6,6 @@ use App\Filament\Resources\NewsletterSubscriberResource;
 use App\Models\User;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
-use Filament\Notifications\Notification;
 
 class EditNewsletterSubscriber extends EditRecord
 {

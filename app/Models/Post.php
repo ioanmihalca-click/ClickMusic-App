@@ -2,25 +2,25 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
 class Post extends Model
 {
-    use SoftDeletes;
+    use HasUuids, SoftDeletes;
 
     protected $table = 'canvas_posts';
+
     protected $primaryKey = 'id';
+
     protected $keyType = 'string';
+
     public $incrementing = false;
 
     protected $fillable = [
-        'title', 'slug', 'body', 'meta', 'featured_image', 'published_at'
+        'title', 'slug', 'body', 'meta', 'featured_image', 'published_at',
     ];
 
     protected $casts = [
@@ -49,7 +49,8 @@ class Post extends Model
     {
         $words = str_word_count(strip_tags($this->body));
         $minutes = ceil($words / 200); // Average reading speed: 200 words/minute
-        return $minutes . ' min read';
+
+        return $minutes.' min read';
     }
 
     public function getSummaryAttribute()
