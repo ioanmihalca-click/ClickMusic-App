@@ -2,7 +2,7 @@
     <!-- Background elements -->
     <div class="absolute inset-0 overflow-hidden">
         <div class="absolute rounded-full top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 blur-3xl"></div>
-        <div class="absolute rounded-full bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 blur-3xl"></div>
+        <div class="absolute rounded-full bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 blur-3xl"></div>
     </div>
 
     <!-- Main container with consistent padding -->
@@ -19,7 +19,7 @@
 
             <h1 class="mb-6 text-5xl font-bold tracking-tight text-white md:text-6xl">
                 Povești din
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-blue-600">
+                <span class="aurora-text">
                     Muzică
                 </span>
             </h1>
@@ -28,7 +28,7 @@
                 Descoperă articole, interviuri și povești din lumea hip-hop, reggae și soul
             </p>
 
-            <div class="w-24 h-1 mx-auto mt-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"></div>
+            <div class="w-24 h-1 mx-auto mt-8 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500"></div>
         </div>
 
         <!-- Articles Grid -->
@@ -95,8 +95,7 @@
 
         <!-- Back to home -->
         <div class="text-center">
-            <a href="/"
-                class="inline-flex items-center px-8 py-4 text-sm font-semibold text-white transition-all duration-300 transform shadow-lg bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl hover:from-blue-700 hover:to-purple-700 hover:scale-105 shadow-blue-500/25">
+            <a href="/" class="glass-button">
                 <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M10 19l-7-7m0 0l7-7m-7 7h18" />

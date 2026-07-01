@@ -2,7 +2,7 @@
     <!-- Background elements -->
     <div class="absolute inset-0 overflow-hidden">
         <div class="absolute rounded-full top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 blur-3xl"></div>
-        <div class="absolute rounded-full bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 blur-3xl"></div>
+        <div class="absolute rounded-full bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/5 blur-3xl"></div>
     </div>
 
     <!-- Main article container -->
@@ -143,7 +143,7 @@
 
                             <!-- Newsletter signup -->
                             <div
-                                class="p-4 border bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-2xl sm:p-6 md:p-8 border-blue-500/20">
+                                class="p-4 border bg-gradient-to-br from-sky-600/20 via-blue-600/20 to-indigo-600/20 rounded-2xl sm:p-6 md:p-8 border-sky-500/20">
                                 @if (session('success'))
                                     <div
                                         class="p-4 mb-6 text-green-400 border rounded-lg bg-green-900/50 border-green-500/30">
@@ -195,8 +195,7 @@
                                                 placeholder="adresa@exemplu.ro">
                                         </div>
 
-                                        <button type="submit"
-                                            class="w-full px-6 py-3 text-sm font-semibold text-white transition-all duration-300 transform shadow-lg bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl hover:from-blue-700 hover:to-purple-700 hover:scale-105 shadow-blue-500/25">
+                                        <button type="submit" class="w-full glass-button">
                                             🚀 Abonează-te acum
                                         </button>
                                     </div>
@@ -222,7 +221,7 @@
                     <p class="max-w-lg mx-auto text-gray-400">
                         Alte articole care te-ar putea interesa din lumea muzicii
                     </p>
-                    <div class="w-16 h-1 mx-auto mt-6 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"></div>
+                    <div class="w-16 h-1 mx-auto mt-6 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500"></div>
                 </div>
 
                 <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3 md:gap-8">
@@ -281,8 +280,7 @@
 
         <!-- Back to all articles -->
         <div class="relative mt-16 text-center">
-            <a href="{{ route('blog.index') }}"
-                class="inline-flex items-center px-8 py-4 text-sm font-semibold text-white transition-all duration-300 transform shadow-lg bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl hover:from-blue-700 hover:to-purple-700 hover:scale-105 shadow-blue-500/25">
+            <a href="{{ route('blog.index') }}" class="glass-button">
                 <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M10 19l-7-7m0 0l7-7m-7 7h18" />
