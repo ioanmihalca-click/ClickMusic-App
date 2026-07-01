@@ -33,29 +33,29 @@
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/75"></div>
 
             <!-- Content Overlay - Better Mobile Positioning -->
-            <div class="relative z-10 flex items-start justify-center h-full pt-16 pb-20 text-white md:pt-24 md:pb-16">
+            <div class="relative z-10 flex items-start justify-center h-full pt-10 pb-6 text-white md:pt-12 md:pb-8">
                 <div class="max-w-4xl px-6 mx-auto text-center">
                     <!-- Artist Photo -->
-                    <div class="mb-6">
+                    <div class="mb-3">
                         <img src="/img/Poza Click optimizata.jpg" alt="Click"
-                            class="mx-auto border-4 border-blue-500 rounded-full shadow-2xl w-28 h-28 md:w-36 md:h-36">
+                            class="mx-auto border-4 border-blue-500 rounded-full shadow-2xl w-20 h-20 md:w-24 md:h-24">
                     </div>
 
                     <!-- Main Title -->
                     <h1
-                        class="font-roboto-condensed uppercase mb-3 tracking-[6px] md:tracking-[15px] font-bold text-3xl md:text-5xl leading-relaxed">
+                        class="font-roboto-condensed uppercase mb-2 tracking-[4px] md:tracking-[10px] font-bold text-2xl md:text-4xl leading-tight">
                         Click Music Romania
                     </h1>
 
                     <!-- Subtitle -->
-                    <h2 class="mb-5 text-lg text-blue-400 uppercase font-roboto-condensed md:text-2xl">
+                    <h2 class="mb-3 text-base text-blue-400 uppercase font-roboto-condensed md:text-xl">
                         Hip-Hop • Drum & Bass • Reggae
                     </h2>
 
                     <!-- Latest YouTube Clip -->
                     @if (! empty($youtubeEmbedUrl))
-                        <div class="max-w-2xl mx-auto mb-6">
-                            <p class="mb-3 text-xs tracking-[3px] text-blue-400 uppercase font-roboto-condensed md:text-sm">
+                        <div class="max-w-lg mx-auto mb-4">
+                            <p class="mb-2 text-xs tracking-[3px] text-blue-400 uppercase font-roboto-condensed md:text-sm">
                                 Cel mai recent videoclip
                             </p>
                             <div class="relative w-full overflow-hidden shadow-2xl rounded-xl ring-1 ring-blue-500/40"
@@ -71,15 +71,9 @@
                         </div>
                     @endif
 
-                    <!-- Description -->
-                    <p class="max-w-2xl mx-auto mb-6 text-sm leading-relaxed text-gray-300 md:text-base">
-                        Artist de muzică hip-hop, drum & bass și reggae din România cu peste două decenii de experiență.
-                        Cunoscut pentru hiturile naționale cu trupa Camuflaj și cariera solo de succes.
-                    </p>
-
                     <!-- Action Buttons - Mobile Optimized -->
                     <div
-                        class="flex flex-col gap-3 mb-12 md:mb-0 md:flex-row md:justify-center md:gap-4 action-buttons">
+                        class="flex flex-col gap-3 mb-6 md:mb-0 md:flex-row md:justify-center md:gap-4 action-buttons">
                         <!-- Premium Access -->
                         <a href="{{ route('accespremium') }}" wire:navigate
                             class="relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-300 bg-blue-600 rounded-lg group md:text-base hover:bg-blue-700 focus:ring-4 focus:ring-blue-500/50">
@@ -115,8 +109,11 @@
                         </a>
                     </div>
 
-
-
+                    <!-- Description -->
+                    <p class="max-w-2xl mx-auto mt-8 text-sm leading-relaxed text-gray-300 md:text-base">
+                        Artist de muzică hip-hop, drum & bass și reggae din România cu peste două decenii de experiență.
+                        Cunoscut pentru hiturile naționale cu trupa Camuflaj și cariera solo de succes.
+                    </p>
 
                 </div>
             </div>
