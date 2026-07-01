@@ -2,28 +2,23 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
-use App\Models\Album;
-use Filament\Schemas\Schema;
-use Filament\Tables\Table;
-use Illuminate\Support\Str;
-use Filament\Resources\Resource;
-use Filament\Forms\Components\Card;
-use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TextInput;
-use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\AlbumResource\Pages;
-use Filament\Forms\Components\MarkdownEditor;
+use App\Models\Album;
+use Filament\Forms;
 use Filament\Forms\Components\RichEditor;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Section;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Tables;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 
 class AlbumResource extends Resource
 {
     protected static ?string $model = Album::class;
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-musical-note';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-musical-note';
 
     protected static ?string $navigationLabel = 'Albume - Magazin';
 
@@ -39,7 +34,7 @@ class AlbumResource extends Resource
                             ->required()
                             ->maxLength(255)
                             ->reactive()
-                            ->afterStateUpdated(fn($state, callable $set) => $set('slug', Str::slug($state))),
+                            ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug($state))),
 
                         Forms\Components\TextInput::make('slug')
                             ->required()
@@ -96,12 +91,13 @@ class AlbumResource extends Resource
                                     ->visibility('private')
                                     ->acceptedFileTypes(['application/zip', 'application/x-zip-compressed', 'application/x-rar-compressed'])
                                     ->maxSize(504800)
-                                    ->required(fn(string $context): bool => $context === 'create'), // Required doar la creare
+                                    ->required(fn (string $context): bool => $context === 'create'), // Required doar la creare
                             ]),
                     ])
-                    ->columns(2)
+                    ->columns(2),
             ]);
     }
+
     public static function table(Table $table): Table
     {
         return $table
@@ -138,13 +134,13 @@ class AlbumResource extends Resource
                         return $query
                             ->when(
                                 $data['lansate_de_la'],
-                                fn(Builder $query, $date): Builder => $query->whereDate('data_lansare', '>=', $date),
+                                fn (Builder $query, $date): Builder => $query->whereDate('data_lansare', '>=', $date),
                             )
                             ->when(
                                 $data['lansate_pana_la'],
-                                fn(Builder $query, $date): Builder => $query->whereDate('data_lansare', '<=', $date),
+                                fn (Builder $query, $date): Builder => $query->whereDate('data_lansare', '<=', $date),
                             );
-                    })
+                    }),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

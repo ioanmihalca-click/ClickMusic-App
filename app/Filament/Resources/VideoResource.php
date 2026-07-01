@@ -2,43 +2,33 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
-use App\Models\Video;
-use Filament\Schemas\Schema;
-use Filament\Tables\Table;
-use Filament\Actions\EditAction;
-use Filament\Resources\Resource;
-use Filament\Actions\DeleteAction;
-use Filament\Forms\Components\Toggle;
-use Filament\Forms\Components\Textarea;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Forms\Components\TextInput;
-use Filament\Tables\Columns\ImageColumn;
-use Filament\Tables\Columns\ToggleColumn;
-use Filament\Forms\Components\FileUpload;
-use Illuminate\Database\Eloquent\Builder;
-use Filament\Tables\Columns\BooleanColumn;
-use Filament\Tables\Actions\DeleteBulkAction;
 use App\Filament\Resources\VideoResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\VideoResource\Pages\EditVideo;
-use App\Filament\Resources\VideoResource\Pages\ListVideos;
-use App\Filament\Resources\VideoResource\RelationManagers;
-use App\Filament\Resources\VideoResource\Pages\CreateVideo;
+use App\Models\Video;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\EditAction;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
+use Filament\Tables\Table;
 
 class VideoResource extends Resource
 {
     protected static ?string $model = Video::class;
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-video-camera';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-video-camera';
 
     protected static ?string $modelLabel = 'Media';
 
     protected static ?string $pluralModelLabel = 'Media';
+
     protected static ?int $navigationSort = 2;
-
-
 
     public static function form(Schema $schema): Schema
     {
@@ -68,7 +58,7 @@ class VideoResource extends Resource
                         'audio/wav',
                         'audio/x-wav',
                         '.mp3',
-                        '.wav'
+                        '.wav',
                     ])
                     ->maxSize(500 * 1024) // 500MB limit
                     ->helperText('Încărcați un fișier video (MP4, WebM, MOV, OGG) sau audio (MP3, WAV) (max 500MB)')
@@ -85,7 +75,7 @@ class VideoResource extends Resource
                     ->required()
                     ->helperText('Încărcați o imagine pentru thumbnail'),
 
-                Toggle::make('featured')->label('Promovat')
+                Toggle::make('featured')->label('Promovat'),
             ]);
     }
 
@@ -102,8 +92,8 @@ class VideoResource extends Resource
                 // ... (optional filters) ...
             ])
             ->actions([
-                // EditAction::make(),
-                // DeleteAction::make(),
+                EditAction::make(),
+                DeleteAction::make(),
             ])
             ->bulkActions([
                 DeleteBulkAction::make(),

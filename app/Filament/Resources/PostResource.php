@@ -4,27 +4,29 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use App\Models\Post;
-use Filament\Tables;
-use Filament\Schemas\Schema;
-use Filament\Tables\Table;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
-use Filament\Resources\Resource;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\ImageColumn;
-use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\RichEditor;
-use App\Filament\Resources\PostResource\Pages\ListPosts;
 use App\Filament\Resources\PostResource\Pages\CreatePost;
+use App\Filament\Resources\PostResource\Pages\EditPost;
+use App\Filament\Resources\PostResource\Pages\ListPosts;
+use App\Models\Post;
+use Filament\Forms;
+use Filament\Forms\Components\DatePicker;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+use Illuminate\Support\Str;
 
 class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-document-text';
+
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
+
     protected static ?string $navigationLabel = 'Blog';
-    protected static ?int $navigationSort = 3; 
+
+    protected static ?int $navigationSort = 3;
 
     public static function form(Schema $schema): Schema
     {
@@ -37,12 +39,12 @@ class PostResource extends Resource
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->unique(ignoreRecord: true),
-               
-                    Forms\Components\TextInput::make('meta.title')->label('Meta Title')->required(),
-                    Forms\Components\Textarea::make('meta.description')->label('Meta Description')->required(),
-                    Forms\Components\MarkdownEditor::make('body')->columnSpanFull()
+
+                Forms\Components\TextInput::make('meta.title')->label('Meta Title')->required(),
+                Forms\Components\Textarea::make('meta.description')->label('Meta Description')->required(),
+                Forms\Components\MarkdownEditor::make('body')->columnSpanFull()
                     ->required(),
-                    Forms\Components\FileUpload::make('featured_image')->disk('public')->directory('blog-images')
+                Forms\Components\FileUpload::make('featured_image')->disk('public')->directory('blog-images')
                     ->required()
                     ->image(),
                 DatePicker::make('published_at')
@@ -60,7 +62,7 @@ class PostResource extends Resource
                 TextColumn::make('meta')->searchable()->limit('20'),
                 TextColumn::make('published_at')
                     ->dateTime(),
-                      
+
             ])
             ->filters([
                 // ... (optional filters) ...
@@ -75,39 +77,20 @@ class PostResource extends Resource
             ])
             ->defaultSort('published_at', 'desc');
     }
-    
+
     public static function getRelations(): array
     {
         return [
             // ... (optional relation managers for categories, tags, etc.) ...
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
             'index' => ListPosts::route('/'),
             'create' => CreatePost::route('/create'),
-            // 'view' => ViewPost::route('/{record}'),
-            // 'edit' => EditPost::route('/{record}/edit'),
+            'edit' => EditPost::route('/{record}/edit'),
         ];
-    } 
-    
-    public static function mutateFormDataBeforeFill(array $data): array
-    {
-        // Decode JSON string to array for meta
-        $data['meta'] = json_decode($data['meta'], true);
-    
-        return $data;
     }
-    
-    // This method is called before the form fields are saved to the database
-    public static function mutateFormDataBeforeSave(array $data): array
-    {
-        // Convert the meta array to a JSON string before saving
-        $data['meta'] = json_encode(Arr::only($data['meta'], ['title', 'description']));
-    
-        return $data;
-    }
-
 }

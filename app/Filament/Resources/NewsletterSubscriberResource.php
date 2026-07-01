@@ -2,36 +2,44 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
-use App\Models\User;
-use Filament\Schemas\Schema;
-use App\Models\Newsletter;
-use Filament\Tables\Table;
-use Filament\Resources\Resource;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\BadgeColumn;
-use Filament\Tables\Filters\SelectFilter;
-use Filament\Tables\Filters\TernaryFilter;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
-use App\Filament\Resources\NewsletterSubscriberResource\Pages;
 use App\Filament\Resources\NewsletterSubscriberResource\Pages\CreateNewsletterSubscriber;
 use App\Filament\Resources\NewsletterSubscriberResource\Pages\EditNewsletterSubscriber;
 use App\Filament\Resources\NewsletterSubscriberResource\Pages\ListNewsletterSubscribers;
+use App\Models\Newsletter;
+use App\Models\User;
+use Filament\Forms;
+use Filament\Notifications\Notification;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Mail\Message;
+use Illuminate\Support\Facades\Mail;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class NewsletterSubscriberResource extends Resource
 {
     protected static ?string $model = Newsletter::class;
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-user-group';
-    protected static ?string $navigationLabel = 'Abonați Newsletter';
-    protected static string | \UnitEnum | null $navigationGroup = 'Marketing';
-    protected static ?int $navigationSort = 8;
-    protected static ?string $modelLabel = 'Abonat Newsletter';
-    protected static ?string $pluralModelLabel = 'Abonați Newsletter';
-    protected static ?string $recordTitleAttribute = 'recipient_email';
-    protected static ?string $slug = 'newsletter-subscribers';
 
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-user-group';
+
+    protected static ?string $navigationLabel = 'Abonați Newsletter';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Marketing';
+
+    protected static ?int $navigationSort = 8;
+
+    protected static ?string $modelLabel = 'Abonat Newsletter';
+
+    protected static ?string $pluralModelLabel = 'Abonați Newsletter';
+
+    protected static ?string $recordTitleAttribute = 'recipient_email';
+
+    protected static ?string $slug = 'newsletter-subscribers';
 
     public static function form(Schema $schema): Schema
     {
@@ -60,7 +68,7 @@ class NewsletterSubscriberResource extends Resource
                     ->disabled()
                     ->dehydrated(false)
                     ->formatStateUsing(function (Newsletter $record) {
-                        return \App\Models\User::where('email', $record->recipient_email)->exists();
+                        return User::where('email', $record->recipient_email)->exists();
                     }),
                 Forms\Components\DateTimePicker::make('created_at')
                     ->label('Data abonării')
@@ -84,13 +92,13 @@ class NewsletterSubscriberResource extends Resource
                 TextColumn::make('status')
                     ->label('Status')
                     ->badge()
-                    ->color(fn(string $state): string => match ($state) {
+                    ->color(fn (string $state): string => match ($state) {
                         Newsletter::STATUS_PENDING => 'success',
                         Newsletter::STATUS_FAILED => 'danger',
                         Newsletter::STATUS_SENT => 'info',
                         default => 'gray',
                     })
-                    ->formatStateUsing(fn(string $state): string => match ($state) {
+                    ->formatStateUsing(fn (string $state): string => match ($state) {
                         Newsletter::STATUS_PENDING => 'Abonat',
                         Newsletter::STATUS_FAILED => 'Dezabonat',
                         Newsletter::STATUS_SENT => 'A primit emailuri',
@@ -114,6 +122,7 @@ class NewsletterSubscriberResource extends Resource
                     ->form([
                         Forms\Components\FileUpload::make('csv_file')
                             ->label('Fișier CSV')
+                            ->disk('local')
                             ->acceptedFileTypes(['text/csv', '.csv'])
                             ->required()
                             ->helperText('Format așteptat: nume,email (fără header)'),
@@ -131,7 +140,7 @@ class NewsletterSubscriberResource extends Resource
                     ->label('Export CSV')
                     ->icon('heroicon-o-document-arrow-down')
                     ->color('success')
-                    ->action(function (): \Symfony\Component\HttpFoundation\BinaryFileResponse {
+                    ->action(function (): BinaryFileResponse {
                         return static::exportToCsv();
                     }),
 
@@ -140,7 +149,7 @@ class NewsletterSubscriberResource extends Resource
                     ->label('Statistici')
                     ->icon('heroicon-o-chart-bar')
                     ->color('gray')
-                    ->modalContent(fn() => view('filament.newsletter-subscriber-stats'))
+                    ->modalContent(fn () => view('filament.newsletter-subscriber-stats'))
                     ->modalWidth('md')
                     ->slideOver(),
             ])
@@ -177,13 +186,13 @@ class NewsletterSubscriberResource extends Resource
                     ->action(function ($record) {
                         if ($record->status === Newsletter::STATUS_PENDING) {
                             $record->markAsFailed('Dezabonat manual din admin');
-                            \Filament\Notifications\Notification::make()
+                            Notification::make()
                                 ->title('Abonat dezabonat')
                                 ->success()
                                 ->send();
                         } else {
                             $record->resetToPending();
-                            \Filament\Notifications\Notification::make()
+                            Notification::make()
                                 ->title('Abonat reactivat')
                                 ->success()
                                 ->send();
@@ -219,7 +228,7 @@ class NewsletterSubscriberResource extends Resource
                         ->label('Reabonează selectați')
                         ->icon('heroicon-o-check')
                         ->color('success')
-                        ->action(function (\Illuminate\Database\Eloquent\Collection $records): void {
+                        ->action(function (Collection $records): void {
                             $count = 0;
                             $records->each(function ($record) use (&$count) {
                                 if ($record->status !== Newsletter::STATUS_PENDING) {
@@ -227,7 +236,7 @@ class NewsletterSubscriberResource extends Resource
                                     $count++;
                                 }
                             });
-                            \Filament\Notifications\Notification::make()
+                            Notification::make()
                                 ->title("Reabonați {$count} utilizatori")
                                 ->success()
                                 ->send();
@@ -239,7 +248,7 @@ class NewsletterSubscriberResource extends Resource
                         ->label('Dezabonează selectați')
                         ->icon('heroicon-o-no-symbol')
                         ->color('danger')
-                        ->action(function (\Illuminate\Database\Eloquent\Collection $records): void {
+                        ->action(function (Collection $records): void {
                             $count = 0;
                             $records->each(function ($record) use (&$count) {
                                 if ($record->status === Newsletter::STATUS_PENDING) {
@@ -247,7 +256,7 @@ class NewsletterSubscriberResource extends Resource
                                     $count++;
                                 }
                             });
-                            \Filament\Notifications\Notification::make()
+                            Notification::make()
                                 ->title("Dezabonați {$count} utilizatori")
                                 ->success()
                                 ->send();
@@ -261,9 +270,9 @@ class NewsletterSubscriberResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListNewsletterSubscribers::route('/'),
-            'create' => Pages\CreateNewsletterSubscriber::route('/create'),
-            'edit' => Pages\EditNewsletterSubscriber::route('/{record}/edit'),
+            'index' => ListNewsletterSubscribers::route('/'),
+            'create' => CreateNewsletterSubscriber::route('/create'),
+            'edit' => EditNewsletterSubscriber::route('/{record}/edit'),
         ];
     }
 
@@ -282,15 +291,16 @@ class NewsletterSubscriberResource extends Resource
     private static function processCsvImport(array $data): void
     {
         try {
-            $csvPath = storage_path('app/' . $data['csv_file']);
+            $csvPath = storage_path('app/'.$data['csv_file']);
             $skipDuplicates = $data['skip_duplicates'] ?? true;
 
-            if (!file_exists($csvPath)) {
-                \Filament\Notifications\Notification::make()
+            if (! file_exists($csvPath)) {
+                Notification::make()
                     ->title('Eroare')
                     ->body('Fișierul CSV nu a fost găsit')
                     ->danger()
                     ->send();
+
                 return;
             }
 
@@ -302,20 +312,23 @@ class NewsletterSubscriberResource extends Resource
             while (($row = fgetcsv($file)) !== false) {
                 if (count($row) < 2) {
                     $errors++;
+
                     continue;
                 }
 
                 $name = trim($row[0]);
                 $email = trim($row[1]);
 
-                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                if (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     $errors++;
+
                     continue;
                 }
 
                 // Verificăm duplicatele
                 if ($skipDuplicates && Newsletter::where('recipient_email', $email)->exists()) {
                     $skipped++;
+
                     continue;
                 }
 
@@ -331,14 +344,14 @@ class NewsletterSubscriberResource extends Resource
 
             fclose($file);
 
-            \Filament\Notifications\Notification::make()
+            Notification::make()
                 ->title('Import finalizat')
                 ->body("Importați: {$imported}, Omisi: {$skipped}, Erori: {$errors}")
                 ->success()
                 ->send();
 
         } catch (\Exception $e) {
-            \Filament\Notifications\Notification::make()
+            Notification::make()
                 ->title('Eroare la import')
                 ->body($e->getMessage())
                 ->danger()
@@ -349,10 +362,10 @@ class NewsletterSubscriberResource extends Resource
     /**
      * Export la CSV
      */
-    private static function exportToCsv(): \Symfony\Component\HttpFoundation\BinaryFileResponse
+    private static function exportToCsv(): BinaryFileResponse
     {
-        $filename = 'newsletter-subscribers-' . date('Y-m-d-H-i-s') . '.csv';
-        $path = storage_path('app/' . $filename);
+        $filename = 'newsletter-subscribers-'.date('Y-m-d-H-i-s').'.csv';
+        $path = storage_path('app/'.$filename);
 
         $file = fopen($path, 'w');
 
@@ -382,28 +395,28 @@ class NewsletterSubscriberResource extends Resource
     private static function sendTestEmail(Newsletter $record, array $data): void
     {
         try {
-            \Illuminate\Support\Facades\Mail::send([], [], function (\Illuminate\Mail\Message $message) use ($record, $data) {
+            Mail::send([], [], function (Message $message) use ($record, $data) {
                 $message->from('contact@clickmusic.ro', 'Click Music Ro')
                     ->to($record->recipient_email, $record->recipient_name)
                     ->subject($data['test_subject'])
                     ->html(
-                        '<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">' .
-                        '<h2 style="color: #333;">' . htmlspecialchars($data['test_subject']) . '</h2>' .
-                        '<p style="color: #666; line-height: 1.6;">' . nl2br(htmlspecialchars($data['test_message'])) . '</p>' .
-                        '<hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;">' .
-                        '<p style="color: #999; font-size: 12px;">Acesta este un email de test trimis din sistemul de administrare.</p>' .
+                        '<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">'.
+                        '<h2 style="color: #333;">'.htmlspecialchars($data['test_subject']).'</h2>'.
+                        '<p style="color: #666; line-height: 1.6;">'.nl2br(htmlspecialchars($data['test_message'])).'</p>'.
+                        '<hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;">'.
+                        '<p style="color: #999; font-size: 12px;">Acesta este un email de test trimis din sistemul de administrare.</p>'.
                         '</div>'
                     );
             });
 
-            \Filament\Notifications\Notification::make()
+            Notification::make()
                 ->title('Email de test trimis')
                 ->body("Trimis către {$record->recipient_email}")
                 ->success()
                 ->send();
 
         } catch (\Exception $e) {
-            \Filament\Notifications\Notification::make()
+            Notification::make()
                 ->title('Eroare la trimiterea email-ului')
                 ->body($e->getMessage())
                 ->danger()

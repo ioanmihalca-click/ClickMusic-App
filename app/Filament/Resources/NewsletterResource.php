@@ -2,46 +2,46 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use App\Models\User;
-use Filament\Tables;
-use Filament\Schemas\Schema;
-use App\Models\Newsletter;
-use Filament\Tables\Table;
-use App\Jobs\SendNewsletter;
-use App\Jobs\SendNewsletters;
-use Filament\Resources\Resource;
-use Filament\Forms\Components\View;
-use Filament\Tables\Actions\Action;
-use Filament\Tables\Filters\Filter;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Auth;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Forms\Components\TextInput;
-use Filament\Notifications\Notification;
-use Filament\Tables\Columns\BadgeColumn;
-use Filament\Forms\Components\RichEditor;
-use Filament\Tables\Filters\SelectFilter;
-use Illuminate\Database\Eloquent\Builder;
-use Filament\Forms\Components\Placeholder;
-use Filament\Forms\Components\Wizard\Step;
-
-use Illuminate\Database\Eloquent\Collection;
-use Filament\Notifications\Notification as FilamentNotification;
+use App\Filament\Resources\NewsletterResource\Pages\CreateNewsletter;
 use App\Filament\Resources\NewsletterResource\Pages\EditNewsletter;
 use App\Filament\Resources\NewsletterResource\Pages\ListNewsletters;
-use App\Filament\Resources\NewsletterResource\Pages\CreateNewsletter;
-
+use App\Jobs\SendNewsletters;
+use App\Models\DailyEmailTracker;
+use App\Models\Newsletter;
+use App\Models\User;
+use Filament\Forms;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification as FilamentNotification;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Tables;
+use Filament\Tables\Actions\Action;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class NewsletterResource extends Resource
 {
     protected static ?string $model = Newsletter::class;
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-megaphone';
+
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-megaphone';
+
     protected static ?string $navigationLabel = 'Campanii Newsletter';
-    protected static string | \UnitEnum | null $navigationGroup = 'Marketing';
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Marketing';
+
     protected static ?int $navigationSort = 7;
+
     protected static ?string $modelLabel = 'Campanie Newsletter';
+
     protected static ?string $pluralModelLabel = 'Campaniile Newsletter';
+
     protected static ?string $recordTitleAttribute = 'campaign_title';
 
     public static function form(Schema $schema): Schema
@@ -69,7 +69,7 @@ class NewsletterResource extends Resource
                             ->default(Newsletter::STATUS_PENDING)
                             ->required(),
                     ])
-                    ->visible(fn(?Newsletter $record) => $record?->isSubscriber() ?? true)
+                    ->visible(fn (?Newsletter $record) => $record?->isSubscriber() ?? true)
                     ->columnSpanFull(),
 
                 // Pentru campaniile newsletter
@@ -90,7 +90,7 @@ class NewsletterResource extends Resource
                                     ->placeholder('Ex: 🎵 Piesa noua de la Click!'),
                             ]),
 
-                        Forms\Components\RichEditor::make('campaign_content')
+                        RichEditor::make('campaign_content')
                             ->label('Conținut Newsletter')
                             ->required()
                             ->toolbarButtons([
@@ -113,7 +113,7 @@ class NewsletterResource extends Resource
                             ->helperText('Poți folosi variabile: {{site_name}}, {{year}}, {{current_date}}, {{site_url}}, {{email}}, {{name}}')
                             ->columnSpanFull(),
                     ])
-                    ->visible(fn(?Newsletter $record) => $record?->isCampaign() ?? false)
+                    ->visible(fn (?Newsletter $record) => $record?->isCampaign() ?? false)
                     ->columnSpanFull(),
 
                 // Secțiune programare și statistici
@@ -138,27 +138,27 @@ class NewsletterResource extends Resource
 
                         Forms\Components\Grid::make(3)
                             ->schema([
-                                Forms\Components\TextInput::make('recipients_count')
+                                TextInput::make('recipients_count')
                                     ->label('Total Destinatari')
                                     ->numeric()
                                     ->disabled()
-                                    ->default(fn() => \App\Filament\Resources\NewsletterResource::getCombinedStats()['total_unique'])
+                                    ->default(fn () => NewsletterResource::getCombinedStats()['total_unique'])
                                     ->helperText('Se actualizează automat la trimitere'),
 
-                                Forms\Components\TextInput::make('sent_count')
+                                TextInput::make('sent_count')
                                     ->label('Trimiși cu Succes')
                                     ->numeric()
                                     ->disabled()
                                     ->helperText('Actualizat după trimitere'),
 
-                                Forms\Components\TextInput::make('failed_count')
+                                TextInput::make('failed_count')
                                     ->label('Eșuați')
                                     ->numeric()
                                     ->disabled()
                                     ->helperText('Erori de trimitere'),
                             ]),
                     ])
-                    ->visible(fn(?Newsletter $record) => $record?->isCampaign() ?? false)
+                    ->visible(fn (?Newsletter $record) => $record?->isCampaign() ?? false)
                     ->columnSpanFull(),
 
                 // Template-uri predefinite (bonus)
@@ -184,7 +184,7 @@ class NewsletterResource extends Resource
                             })
                             ->helperText('Selectează un template pentru a începe rapid'),
                     ])
-                    ->visible(fn(?Newsletter $record) => $record === null || ($record->isCampaign() && $record->canBeEdited()))
+                    ->visible(fn (?Newsletter $record) => $record === null || ($record->isCampaign() && $record->canBeEdited()))
                     ->columnSpanFull()
                     ->collapsible(),
             ]);
@@ -200,6 +200,7 @@ class NewsletterResource extends Resource
                         if ($record->isCampaign()) {
                             return $record->campaign_title;
                         }
+
                         return $record->recipient_email;
                     })
                     ->searchable(['campaign_title', 'recipient_email'])
@@ -208,7 +209,7 @@ class NewsletterResource extends Resource
                 TextColumn::make('campaign_type')
                     ->label('Tip')
                     ->badge()
-                    ->formatStateUsing(fn($state) => $state === Newsletter::TYPE_CAMPAIGN ? 'Campanie' : 'Abonat')
+                    ->formatStateUsing(fn ($state) => $state === Newsletter::TYPE_CAMPAIGN ? 'Campanie' : 'Abonat')
                     ->colors([
                         'success' => Newsletter::TYPE_CAMPAIGN,
                         'info' => Newsletter::TYPE_SUBSCRIBER,
@@ -221,6 +222,7 @@ class NewsletterResource extends Resource
                         if ($record->isCampaign()) {
                             return $record->campaign_subject;
                         }
+
                         return $record->recipient_name;
                     })
                     ->searchable(['recipient_name', 'campaign_subject'])
@@ -228,9 +230,9 @@ class NewsletterResource extends Resource
 
                 TextColumn::make('status')
                     ->label('Status')
-                    ->formatStateUsing(fn($state) => Newsletter::make(['status' => $state])->status_label)
+                    ->formatStateUsing(fn ($state) => Newsletter::make(['status' => $state])->status_label)
                     ->badge()
-                    ->color(fn($state) => match ($state) {
+                    ->color(fn ($state) => match ($state) {
                         Newsletter::STATUS_PENDING => 'warning',
                         Newsletter::STATUS_SENT => 'success',
                         Newsletter::STATUS_FAILED => 'danger',
@@ -244,6 +246,7 @@ class NewsletterResource extends Resource
                         if ($record->isCampaign()) {
                             return number_format($record->recipients_count);
                         }
+
                         return '1';
                     })
                     ->alignCenter()
@@ -253,8 +256,9 @@ class NewsletterResource extends Resource
                     ->label('Trimiși')
                     ->formatStateUsing(function ($record) {
                         if ($record->isCampaign()) {
-                            return $record->sent_count . '/' . $record->recipients_count;
+                            return $record->sent_count.'/'.$record->recipients_count;
                         }
+
                         return $record->status === Newsletter::STATUS_SENT ? '1/1' : '0/1';
                     })
                     ->alignCenter()
@@ -271,7 +275,7 @@ class NewsletterResource extends Resource
                     ->dateTime('d/m/Y H:i')
                     ->sortable()
                     ->toggleable()
-                    ->visible(fn() => Newsletter::whereNotNull('scheduled_at')->exists()),
+                    ->visible(fn () => Newsletter::whereNotNull('scheduled_at')->exists()),
 
                 TextColumn::make('created_at')
                     ->label('Creat la')
@@ -297,11 +301,11 @@ class NewsletterResource extends Resource
 
                 Filter::make('sent_today')
                     ->label('Trimise astăzi')
-                    ->query(fn(Builder $query) => $query->sentToday()),
+                    ->query(fn (Builder $query) => $query->sentToday()),
 
                 Filter::make('campaigns_only')
                     ->label('Doar campaniile')
-                    ->query(fn(Builder $query) => $query->campaigns()),
+                    ->query(fn (Builder $query) => $query->campaigns()),
 
                 Filter::make('search')
                     ->query(function (Builder $query, array $data): Builder {
@@ -323,7 +327,7 @@ class NewsletterResource extends Resource
                     ->label('Statistici Newsletter')
                     ->icon('heroicon-o-chart-bar')
                     ->color('info')
-                    ->modalContent(fn() => view('filament.newsletter-stats'))
+                    ->modalContent(fn () => view('filament.newsletter-stats'))
                     ->modalWidth('md')
                     ->slideOver(),
 
@@ -333,7 +337,7 @@ class NewsletterResource extends Resource
                     ->icon('heroicon-o-users')
                     ->color('secondary')
                     ->form([
-                        Forms\Components\TextInput::make('email')
+                        TextInput::make('email')
                             ->label('Email')
                             ->email()
                             ->required()
@@ -404,7 +408,7 @@ class NewsletterResource extends Resource
                                         ->success()
                                         ->send();
                                 }
-                                if (!$user && !$newsletter) {
+                                if (! $user && ! $newsletter) {
                                     FilamentNotification::make()
                                         ->title("Email-ul {$email} nu a fost găsit în sistem")
                                         ->warning()
@@ -424,7 +428,7 @@ class NewsletterResource extends Resource
                                 }
 
                                 if (empty($statuses)) {
-                                    $statuses[] = "Nu există în sistem";
+                                    $statuses[] = 'Nu există în sistem';
                                 }
 
                                 FilamentNotification::make()
@@ -443,19 +447,19 @@ class NewsletterResource extends Resource
                     ->icon('heroicon-o-pencil-square')
                     ->color('success')
                     ->form([
-                        Forms\Components\TextInput::make('title')
+                        TextInput::make('title')
                             ->label('Titlu Campanie')
                             ->required()
                             ->maxLength(255)
                             ->placeholder('Ex: Piesa nouă - Iunie 2025'),
 
-                        Forms\Components\TextInput::make('subject')
+                        TextInput::make('subject')
                             ->label('Subiect Email')
                             ->required()
                             ->maxLength(255)
                             ->placeholder('Ex: 🎵 Piesa noua de la Click!'),
 
-                        Forms\Components\RichEditor::make('content')
+                        RichEditor::make('content')
                             ->label('Conținut Newsletter')
                             ->required()
                             ->toolbarButtons([
@@ -480,9 +484,9 @@ class NewsletterResource extends Resource
                         Forms\Components\Select::make('recipients')
                             ->label('Destinatari')
                             ->options([
-                                'newsletter_only' => 'Doar Lista Newsletter (' . Newsletter::pending()->count() . ' adrese)',
-                                'users_only' => 'Doar Utilizatori App (' . User::getNewsletterSubscribersCount() . ' utilizatori)',
-                                'all' => 'TOȚI (Newsletter + Utilizatori) (' . self::getCombinedStats()['total_unique'] . ' unici)',
+                                'newsletter_only' => 'Doar Lista Newsletter ('.Newsletter::pending()->count().' adrese)',
+                                'users_only' => 'Doar Utilizatori App ('.User::getNewsletterSubscribersCount().' utilizatori)',
+                                'all' => 'TOȚI (Newsletter + Utilizatori) ('.self::getCombinedStats()['total_unique'].' unici)',
                                 'test_mode' => '🧪 Test - doar administratori (doar tine)',
                             ])
                             ->default('all')
@@ -495,7 +499,7 @@ class NewsletterResource extends Resource
 
                         Forms\Components\DateTimePicker::make('scheduled_at')
                             ->label('Programează pentru')
-                            ->visible(fn(Forms\Get $get) => !$get('send_now'))
+                            ->visible(fn (Forms\Get $get) => ! $get('send_now'))
                             ->minDate(now())
                             ->helperText('Campania se va trimite automat la data setată'),
                     ])
@@ -538,7 +542,16 @@ class NewsletterResource extends Resource
                 Action::make('addEmail')
                     ->label('Adaugă Email')
                     ->icon('heroicon-o-plus')
-                    ->form(fn(Form $form) => static::form($form))
+                    ->schema([
+                        TextInput::make('recipient_name')
+                            ->label('Nume Destinatar')
+                            ->maxLength(255),
+                        TextInput::make('recipient_email')
+                            ->label('Adresă Email')
+                            ->email()
+                            ->required()
+                            ->maxLength(255),
+                    ])
                     ->action(function (array $data): void {
                         if (Newsletter::where('recipient_email', $data['recipient_email'])->exists()) {
                             FilamentNotification::make()
@@ -546,7 +559,11 @@ class NewsletterResource extends Resource
                                 ->warning()
                                 ->send();
                         } else {
-                            Newsletter::create($data);
+                            Newsletter::create([
+                                ...$data,
+                                'campaign_type' => Newsletter::TYPE_SUBSCRIBER,
+                                'status' => Newsletter::STATUS_PENDING,
+                            ]);
                             FilamentNotification::make()
                                 ->title('Email adăugat cu succes')
                                 ->success()
@@ -560,7 +577,7 @@ class NewsletterResource extends Resource
                     ->icon('heroicon-o-paper-airplane')
                     ->color('warning')
                     ->form([
-                        Forms\Components\TextInput::make('quick_subject')
+                        TextInput::make('quick_subject')
                             ->label('Subiect')
                             ->required()
                             ->default('🎵 Piesa noua de la Click!')
@@ -572,13 +589,13 @@ class NewsletterResource extends Resource
                             ->rows(3)
                             ->placeholder('Salut! Am lansat o piesa noua...'),
 
-                        Forms\Components\TextInput::make('youtube_url')
+                        TextInput::make('youtube_url')
                             ->label('Link YouTube')
                             ->url()
                             ->required()
                             ->placeholder('https://youtube.com/watch?v=...'),
 
-                        Forms\Components\TextInput::make('image_url')
+                        TextInput::make('image_url')
                             ->label('Imagine (URL)')
                             ->url()
                             ->required()
@@ -586,13 +603,14 @@ class NewsletterResource extends Resource
                     ])
                     ->action(function (array $data): void {
                         // Verificăm limita zilnică înainte de a crea campania
-                        $remainingQuota = \App\Models\DailyEmailTracker::getRemainingQuota();
+                        $remainingQuota = DailyEmailTracker::getRemainingQuota();
                         if ($remainingQuota <= 0) {
                             FilamentNotification::make()
                                 ->title('Limita zilnică atinsă')
                                 ->body('Nu se pot trimite emailuri astăzi. Campania va fi programată pentru mâine.')
                                 ->warning()
                                 ->send();
+
                             return;
                         }
 
@@ -603,7 +621,7 @@ class NewsletterResource extends Resource
                         $recipients = self::getAllRecipientsAsNewsletterFormat();
 
                         $campaign = Newsletter::createCampaign([
-                            'title' => 'Quick Send - ' . now()->format('d/m/Y H:i'),
+                            'title' => 'Quick Send - '.now()->format('d/m/Y H:i'),
                             'subject' => $data['quick_subject'],
                             'content' => $content,
                             'recipients_count' => $recipients->count(),
@@ -613,7 +631,7 @@ class NewsletterResource extends Resource
                         self::sendCampaign($campaign, $recipients);
 
                         FilamentNotification::make()
-                            ->title("Newsletter trimis!")
+                            ->title('Newsletter trimis!')
                             ->body("Se trimit {$recipients->count()} emailuri...")
                             ->success()
                             ->send();
@@ -622,10 +640,10 @@ class NewsletterResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make()
-                    ->visible(fn($record) => $record->isCampaign()),
+                    ->visible(fn ($record) => $record->isCampaign()),
 
                 Tables\Actions\EditAction::make()
-                    ->visible(fn($record) => $record->canBeEdited()),
+                    ->visible(fn ($record) => $record->canBeEdited()),
 
                 Tables\Actions\DeleteAction::make(),
 
@@ -634,8 +652,8 @@ class NewsletterResource extends Resource
                     ->label('Preview')
                     ->icon('heroicon-o-eye')
                     ->color('info')
-                    ->visible(fn($record) => $record->isCampaign())
-                    ->modalContent(fn($record) => view('filament.campaign-preview', ['campaign' => $record]))
+                    ->visible(fn ($record) => $record->isCampaign())
+                    ->modalContent(fn ($record) => view('filament.campaign-preview', ['campaign' => $record]))
                     ->modalWidth('4xl'),
 
                 // Trimite campania
@@ -643,7 +661,7 @@ class NewsletterResource extends Resource
                     ->label('Trimite')
                     ->icon('heroicon-o-paper-airplane')
                     ->color('success')
-                    ->visible(fn($record) => $record->isCampaign() && $record->canBeSent())
+                    ->visible(fn ($record) => $record->isCampaign() && $record->canBeSent())
                     ->action(function ($record): void {
                         $recipients = self::getAllRecipientsAsNewsletterFormat();
                         $record->update(['recipients_count' => $recipients->count()]);
@@ -663,7 +681,7 @@ class NewsletterResource extends Resource
                     ->label('Programează')
                     ->icon('heroicon-o-clock')
                     ->color('warning')
-                    ->visible(fn($record) => $record->isCampaign() && $record->canBeSent())
+                    ->visible(fn ($record) => $record->isCampaign() && $record->canBeSent())
                     ->form([
                         Forms\Components\DateTimePicker::make('scheduled_at')
                             ->label('Programează pentru')
@@ -675,7 +693,7 @@ class NewsletterResource extends Resource
                         $record->scheduleCampaign(new \DateTime($data['scheduled_at']));
 
                         FilamentNotification::make()
-                            ->title("Campania programată!")
+                            ->title('Campania programată!')
                             ->body("Se va trimite la {$data['scheduled_at']}")
                             ->success()
                             ->send();
@@ -693,18 +711,18 @@ class NewsletterResource extends Resource
                             ->success()
                             ->send();
                     })
-                    ->visible(fn(Newsletter $record) => $record->isSubscriber() && $record->status !== Newsletter::STATUS_PENDING)
+                    ->visible(fn (Newsletter $record) => $record->isSubscriber() && $record->status !== Newsletter::STATUS_PENDING)
                     ->requiresConfirmation(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
-                self::getSendNewsletterBulkAction('sendSelected', 'Trimite selectate', fn($records) => $records),
+                self::getSendNewsletterBulkAction('sendSelected', 'Trimite selectate', fn ($records) => $records),
 
                 // Bulk action pentru a trimite la utilizatori + selectate
                 self::getSendNewsletterBulkAction(
                     'sendSelectedPlusUsers',
                     'Trimite la Selectate + Utilizatori App',
-                    fn($records) => $records->merge(self::getUsersAsNewsletterFormat())
+                    fn ($records) => $records->merge(self::getUsersAsNewsletterFormat())
                 ),
 
                 // Bulk action pentru resetare
@@ -713,9 +731,9 @@ class NewsletterResource extends Resource
                     ->icon('heroicon-o-arrow-path')
                     ->color('warning')
                     ->action(function (Collection $records): void {
-                        $records->each(fn($record) => $record->resetToPending());
+                        $records->each(fn ($record) => $record->resetToPending());
                         FilamentNotification::make()
-                            ->title('Statusul a fost resetat pentru ' . $records->count() . ' newslettere')
+                            ->title('Statusul a fost resetat pentru '.$records->count().' newslettere')
                             ->success()
                             ->send();
                     })
@@ -746,21 +764,23 @@ class NewsletterResource extends Resource
                     // Verificăm dacă avem newslettere de trimis
                     if ($newsletters->isEmpty()) {
                         FilamentNotification::make()
-                            ->title("Nu există newslettere de trimis")
+                            ->title('Nu există newslettere de trimis')
                             ->warning()
                             ->send();
+
                         return;
                     }
 
                     // Verificăm limita zilnică prin sistemul unificat
-                    $remainingQuota = \App\Models\DailyEmailTracker::getRemainingQuota();
+                    $remainingQuota = DailyEmailTracker::getRemainingQuota();
                     if ($remainingQuota <= 0) {
                         $dailyLimit = config('mail.daily_limit', 100);
                         FilamentNotification::make()
-                            ->title("Limita zilnică a fost atinsă")
+                            ->title('Limita zilnică a fost atinsă')
                             ->body("Au fost deja trimise {$dailyLimit} de emailuri astăzi. Încearcă mâine.")
                             ->warning()
                             ->send();
+
                         return;
                     }
 
@@ -779,9 +799,9 @@ class NewsletterResource extends Resource
                         ->success()
                         ->send();
                 } catch (\Exception $e) {
-                    Log::error("Eroare la trimiterea newsletterului: " . $e->getMessage());
+                    Log::error('Eroare la trimiterea newsletterului: '.$e->getMessage());
                     FilamentNotification::make()
-                        ->title("Eroare la trimiterea newsletterului")
+                        ->title('Eroare la trimiterea newsletterului')
                         ->body($e->getMessage())
                         ->danger()
                         ->send();
@@ -794,12 +814,12 @@ class NewsletterResource extends Resource
     private static function getSendNewsletterForm(): array
     {
         return [
-            Forms\Components\TextInput::make('image_url')
+            TextInput::make('image_url')
                 ->label('URL Imagine')
                 ->url()
                 ->required()
                 ->placeholder('https://example.com/image.jpg'),
-            Forms\Components\TextInput::make('url')
+            TextInput::make('url')
                 ->label('URL Destinație')
                 ->url()
                 ->required()
@@ -819,20 +839,22 @@ class NewsletterResource extends Resource
 
                     if ($newsletters->isEmpty()) {
                         FilamentNotification::make()
-                            ->title("Nu există newslettere de trimis")
+                            ->title('Nu există newslettere de trimis')
                             ->warning()
                             ->send();
+
                         return;
                     }
 
-                    $remainingQuota = \App\Models\DailyEmailTracker::getRemainingQuota();
+                    $remainingQuota = DailyEmailTracker::getRemainingQuota();
                     if ($remainingQuota <= 0) {
                         $dailyLimit = config('mail.daily_limit', 100);
                         FilamentNotification::make()
-                            ->title("Limita zilnică a fost atinsă")
+                            ->title('Limita zilnică a fost atinsă')
                             ->body("Au fost deja trimise {$dailyLimit} de emailuri astăzi. Încearcă mâine.")
                             ->warning()
                             ->send();
+
                         return;
                     }
 
@@ -851,9 +873,9 @@ class NewsletterResource extends Resource
                         ->success()
                         ->send();
                 } catch (\Exception $e) {
-                    Log::error("Eroare la trimiterea newsletterului: " . $e->getMessage());
+                    Log::error('Eroare la trimiterea newsletterului: '.$e->getMessage());
                     FilamentNotification::make()
-                        ->title("Eroare la trimiterea newsletterului")
+                        ->title('Eroare la trimiterea newsletterului')
                         ->body($e->getMessage())
                         ->danger()
                         ->send();
@@ -917,7 +939,7 @@ class NewsletterResource extends Resource
             <a href="{{site_url}}/newsletter/unsubscribe?email={{email}}" style="color: #3869d4;">dezabona aici</a>.
         </p>
     </div>
-</div>'
+</div>',
             ],
 
             'video_release' => [
@@ -959,7 +981,7 @@ class NewsletterResource extends Resource
             <a href="{{site_url}}/newsletter/unsubscribe?email={{email}}" style="color: #3869d4;">Dezabonează-te</a>
         </p>
     </div>
-</div>'
+</div>',
             ],
 
             'event_announcement' => [
@@ -1002,7 +1024,7 @@ class NewsletterResource extends Resource
             <a href="{{site_url}}/newsletter/unsubscribe?email={{email}}" style="color: #3869d4;">Dezabonează-te</a>
         </p>
     </div>
-</div>'
+</div>',
             ],
 
             'monthly_update' => [
@@ -1059,7 +1081,7 @@ class NewsletterResource extends Resource
             <a href="{{site_url}}/newsletter/unsubscribe?email={{email}}" style="color: #3869d4;">Dezabonează-te</a>
         </p>
     </div>
-</div>'
+</div>',
             ],
         ];
     }
@@ -1071,11 +1093,11 @@ class NewsletterResource extends Resource
     {
         try {
             // Verificăm limita zilnică prin sistemul unificat
-            $remainingQuota = \App\Models\DailyEmailTracker::getRemainingQuota();
+            $remainingQuota = DailyEmailTracker::getRemainingQuota();
             if ($remainingQuota <= 0) {
                 FilamentNotification::make()
-                    ->title("Limita zilnică atinsă")
-                    ->body("Campania va fi trimisă mâine dimineață la 08:00.")
+                    ->title('Limita zilnică atinsă')
+                    ->body('Campania va fi trimisă mâine dimineață la 08:00.')
                     ->warning()
                     ->send();
             }
@@ -1094,11 +1116,11 @@ class NewsletterResource extends Resource
             // Lansăm job-ul cu date serializabile
             SendNewsletters::dispatch($campaign->id, $recipientsData);
         } catch (\Exception $e) {
-            Log::error("Eroare la lansarea campaniei {$campaign->id}: " . $e->getMessage());
+            Log::error("Eroare la lansarea campaniei {$campaign->id}: ".$e->getMessage());
             $campaign->markAsFailed();
 
             FilamentNotification::make()
-                ->title("Eroare la trimiterea campaniei")
+                ->title('Eroare la trimiterea campaniei')
                 ->body($e->getMessage())
                 ->danger()
                 ->send();
@@ -1116,11 +1138,16 @@ class NewsletterResource extends Resource
     {
         $mappedCollection = User::getNewsletterSubscribers()->map(function ($user) {
             // Creăm un obiect pseudo-Newsletter pentru compatibilitate
-            $pseudoNewsletter = new class {
+            $pseudoNewsletter = new class
+            {
                 public $id;
+
                 public $recipient_email;
+
                 public $recipient_name;
+
                 public $status = 'pending';
+
                 public $user;
 
                 public function notify($notification)
@@ -1138,7 +1165,8 @@ class NewsletterResource extends Resource
                 public function markAsFailed($errorMessage = null)
                 {
                     // Pentru utilizatori, loghează eroarea dar nu marchează
-                    \Illuminate\Support\Facades\Log::error("Newsletter failed for user {$this->recipient_email}: {$errorMessage}");
+                    Log::error("Newsletter failed for user {$this->recipient_email}: {$errorMessage}");
+
                     return true;
                 }
 
@@ -1149,7 +1177,7 @@ class NewsletterResource extends Resource
                 }
             };
 
-            $pseudoNewsletter->id = 'user_' . $user->id;
+            $pseudoNewsletter->id = 'user_'.$user->id;
             $pseudoNewsletter->recipient_email = $user->email;
             $pseudoNewsletter->recipient_name = $user->name;
             $pseudoNewsletter->user = $user; // Referință către userul real
@@ -1158,7 +1186,7 @@ class NewsletterResource extends Resource
         });
 
         // Convertim Illuminate\Support\Collection la Illuminate\Database\Eloquent\Collection
-        return new \Illuminate\Database\Eloquent\Collection($mappedCollection->all());
+        return new Collection($mappedCollection->all());
     }
 
     /**
@@ -1172,7 +1200,7 @@ class NewsletterResource extends Resource
         // Evităm duplicatele - verificăm dacă email-ul există deja în newsletters
         $newsletterEmails = $newsletters->pluck('recipient_email')->toArray();
         $uniqueUsers = $users->filter(function ($user) use ($newsletterEmails) {
-            return !in_array($user->recipient_email, $newsletterEmails);
+            return ! in_array($user->recipient_email, $newsletterEmails);
         });
 
         return $newsletters->merge($uniqueUsers);
@@ -1207,16 +1235,21 @@ class NewsletterResource extends Resource
     {
         $currentUser = Auth::user();
 
-        if (!$currentUser) {
-            return new \Illuminate\Database\Eloquent\Collection();
+        if (! $currentUser) {
+            return new Collection;
         }
 
         // Creăm un obiect pseudo-Newsletter pentru compatibilitate
-        $pseudoNewsletter = new class {
+        $pseudoNewsletter = new class
+        {
             public $id;
+
             public $recipient_email;
+
             public $recipient_name;
+
             public $status = 'pending';
+
             public $user;
 
             public function notify($notification)
@@ -1231,7 +1264,8 @@ class NewsletterResource extends Resource
 
             public function markAsFailed($errorMessage = null)
             {
-                \Illuminate\Support\Facades\Log::error("Test newsletter failed for admin {$this->recipient_email}: {$errorMessage}");
+                Log::error("Test newsletter failed for admin {$this->recipient_email}: {$errorMessage}");
+
                 return true;
             }
 
@@ -1241,12 +1275,12 @@ class NewsletterResource extends Resource
             }
         };
 
-        $pseudoNewsletter->id = 'admin_test_' . $currentUser->id;
+        $pseudoNewsletter->id = 'admin_test_'.$currentUser->id;
         $pseudoNewsletter->recipient_email = $currentUser->email;
         $pseudoNewsletter->recipient_name = $currentUser->name;
         $pseudoNewsletter->user = $currentUser;
 
-        return new \Illuminate\Database\Eloquent\Collection([$pseudoNewsletter]);
+        return new Collection([$pseudoNewsletter]);
     }
 
     /**
@@ -1267,15 +1301,15 @@ class NewsletterResource extends Resource
         </p>
 
         <p style="font-size: 16px; line-height: 1.6; color: #333;">
-            ' . nl2br(htmlspecialchars($data['quick_message'])) . '
+            '.nl2br(htmlspecialchars($data['quick_message'])).'
         </p>
 
         <div style="text-align: center; margin: 30px 0;">
-            <img src="' . htmlspecialchars($data['image_url']) . '" alt="Imagine nouă" style="max-width: 100%; height: auto; border-radius: 8px;" />
+            <img src="'.htmlspecialchars($data['image_url']).'" alt="Imagine nouă" style="max-width: 100%; height: auto; border-radius: 8px;" />
         </div>
 
         <div style="text-align: center; margin: 30px 0;">
-            <a href="' . htmlspecialchars($data['youtube_url']) . '" style="display: inline-block; background: #ff0000; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px;">
+            <a href="'.htmlspecialchars($data['youtube_url']).'" style="display: inline-block; background: #ff0000; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px;">
                 ▶️ Ascultă pe YouTube
             </a>
         </div>

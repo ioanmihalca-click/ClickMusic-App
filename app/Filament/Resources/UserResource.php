@@ -2,27 +2,25 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
+use App\Filament\Resources\UserResource\Pages;
 use App\Models\User;
-use Filament\Tables;
-use Filament\Schemas\Schema;
-use Filament\Tables\Table;
-use Filament\Resources\Resource;
-use Filament\Tables\Actions\Action;
-use Illuminate\Support\Facades\Auth;
+use App\Notifications\SuperUserNotification;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Illuminate\Database\Eloquent\Builder;
-use App\Notifications\SuperUserNotification;
-use App\Filament\Resources\UserResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\UserResource\RelationManagers;
+use Filament\Notifications\Notification;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Tables;
+use Filament\Tables\Actions\Action;
+use Filament\Tables\Table;
+use Illuminate\Support\Facades\Auth;
 
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-users';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-users';
+
     protected static ?int $navigationSort = 1;
 
     public static function form(Schema $schema): Schema
@@ -36,7 +34,7 @@ class UserResource extends Resource
                     'admin' => 'admin',
                     'user' => 'user',
                     'super_user' => 'super_user',
-                ])
+                ]),
             ]);
     }
 
@@ -58,15 +56,25 @@ class UserResource extends Resource
                 Action::make('make_super_user')
                     ->label('Make Super User')
                     ->action(function (User $record) {
-                        if ($record->id == Auth::id()) {
-                            return redirect()->back()->with('error_message', 'You cannot change your own user type.');
+                        if ($record->id === Auth::id()) {
+                            Notification::make()
+                                ->title('You cannot change your own user type.')
+                                ->danger()
+                                ->send();
+
+                            return;
                         }
                         $record->update(['usertype' => 'super_user']);
-                        $record->notify(new SuperUserNotification());
+                        $record->notify(new SuperUserNotification);
+
+                        Notification::make()
+                            ->title("{$record->name} is now a super user.")
+                            ->success()
+                            ->send();
                     })
                     ->requiresConfirmation()
                     ->color('success')
-                    ->icon('heroicon-s-user-plus')
+                    ->icon('heroicon-s-user-plus'),
             ])
 
             ->bulkActions([

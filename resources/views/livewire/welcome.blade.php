@@ -2,7 +2,7 @@
     <div x-data="{ loading: true, isMobile: window.innerWidth <= 768 }" x-init="$nextTick(() => {
         setTimeout(() => loading = false, 700);
         window.addEventListener('resize', () => isMobile = window.innerWidth <= 768);
-    })" class="relative min-h-screen overflow-hidden">
+    })" class="relative min-h-[calc(100vh-4rem)] overflow-hidden">
 
 
         <!-- Loading Spinner -->
@@ -12,7 +12,7 @@
 
         <div x-show="!loading" x-transition:enter="transition ease-out duration-300" x-data="netflixBackground()"
             x-init="init()" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-            class="relative min-h-screen overflow-hidden bg-black home-parallax home-fade">
+            class="relative min-h-[calc(100vh-4rem)] overflow-hidden bg-black home-parallax home-fade">
 
             <!-- Poster Background -->
             <div class="absolute inset-0 overflow-hidden poster-container">
@@ -32,88 +32,96 @@
             <!-- Gradient Overlay -->
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/75"></div>
 
-            <!-- Content Overlay - Better Mobile Positioning -->
-            <div class="relative z-10 flex items-start justify-center h-full pt-10 pb-6 text-white md:pt-12 md:pb-8">
-                <div class="max-w-4xl px-6 mx-auto text-center">
-                    <!-- Artist Photo -->
-                    <div class="mb-3">
-                        <img src="/img/Poza Click optimizata.jpg" alt="Click"
-                            class="mx-auto border-4 border-blue-500 rounded-full shadow-2xl w-20 h-20 md:w-24 md:h-24">
+            <!-- Content Overlay -->
+            @php $hasVideo = ! empty($youtubeEmbedUrl); @endphp
+            <div class="relative z-10 flex items-center justify-center h-full px-6 py-10 text-white">
+                <div
+                    class="grid w-full max-w-6xl items-center gap-10 mx-auto {{ $hasVideo ? 'md:grid-cols-2 md:gap-12 lg:gap-16' : '' }}">
+
+                    <!-- Identity + CTAs -->
+                    <div class="text-center {{ $hasVideo ? 'md:text-left' : '' }}">
+                        <div
+                            class="flex flex-col items-center gap-4 mb-5 {{ $hasVideo ? 'md:flex-row md:items-center md:gap-5' : '' }}">
+                            <img src="/img/Poza Click optimizata.jpg" alt="Click"
+                                class="border-4 border-blue-500 rounded-full shadow-2xl w-20 h-20 md:w-24 md:h-24 shrink-0">
+
+                            <div>
+                                <h1
+                                    class="font-roboto-condensed uppercase tracking-[3px] md:tracking-[6px] font-bold text-3xl md:text-4xl lg:text-5xl leading-tight">
+                                    Click Music Romania
+                                </h1>
+                                <h2 class="mt-1 text-base text-blue-400 uppercase font-roboto-condensed md:text-xl">
+                                    Hip-Hop • Drum & Bass • Reggae
+                                </h2>
+                            </div>
+                        </div>
+
+                        <p
+                            class="mx-auto mb-6 text-sm leading-relaxed text-gray-300 md:text-base {{ $hasVideo ? 'max-w-md md:mx-0' : 'max-w-2xl' }}">
+                            Artist de muzică hip-hop, drum & bass și reggae din România cu peste două decenii de
+                            experiență. Cunoscut pentru hiturile naționale cu trupa Camuflaj și cariera solo de
+                            succes.
+                        </p>
+
+                        <!-- Action Buttons -->
+                        <div
+                            class="flex flex-col gap-3 md:flex-row md:flex-wrap md:gap-3 action-buttons {{ $hasVideo ? '' : 'md:justify-center' }}">
+                            <!-- Premium Access -->
+                            <a href="{{ route('accespremium') }}" wire:navigate
+                                class="relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-300 bg-blue-600 rounded-lg group md:text-base hover:bg-blue-700 focus:ring-4 focus:ring-blue-500/50">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
+                                    </path>
+                                </svg>
+                                Acces Premium
+                                <span class="px-2 py-1 ml-2 text-xs text-yellow-900 bg-yellow-500 rounded-full">9,99
+                                    lei/lună</span>
+                            </a>
+
+                            <!-- Press Kit -->
+                            <a href="{{ route('electronic-press-kit') }}" wire:navigate
+                                class="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-blue-400 transition-all duration-300 border border-blue-500 rounded-lg md:text-base hover:bg-blue-500 hover:text-white">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                    </path>
+                                </svg>
+                                Press Kit
+                            </a>
+
+                            <!-- YouTube -->
+                            <a href="https://youtube.com/clickmusicromania" target="_blank" rel="noopener noreferrer"
+                                class="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-gray-300 transition-all duration-300 border border-gray-600 rounded-lg md:text-base hover:border-red-500 hover:text-red-400">
+                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                </svg>
+                                YouTube
+                            </a>
+                        </div>
                     </div>
 
-                    <!-- Main Title -->
-                    <h1
-                        class="font-roboto-condensed uppercase mb-2 tracking-[4px] md:tracking-[10px] font-bold text-2xl md:text-4xl leading-tight">
-                        Click Music Romania
-                    </h1>
-
-                    <!-- Subtitle -->
-                    <h2 class="mb-3 text-base text-blue-400 uppercase font-roboto-condensed md:text-xl">
-                        Hip-Hop • Drum & Bass • Reggae
-                    </h2>
-
                     <!-- Latest YouTube Clip -->
-                    @if (! empty($youtubeEmbedUrl))
-                        <div class="max-w-lg mx-auto mb-4">
-                            <p class="mb-2 text-xs tracking-[3px] text-blue-400 uppercase font-roboto-condensed md:text-sm">
-                                Cel mai recent videoclip
-                            </p>
+                    @if ($hasVideo)
+                        <div class="relative w-full max-w-md mx-auto md:max-w-none">
+                            <span
+                                class="absolute z-10 inline-flex items-center gap-1.5 px-3 py-1 text-white uppercase rounded-full shadow-lg -top-3 left-4 md:left-6 bg-blue-600 text-[11px] font-semibold tracking-wider shadow-blue-600/40">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                                Ultimul videoclip
+                            </span>
                             <div class="relative w-full overflow-hidden shadow-2xl rounded-xl ring-1 ring-blue-500/40"
                                 style="padding-top: 56.25%">
-                                <iframe class="absolute inset-0 w-full h-full"
-                                    src="{{ $youtubeEmbedUrl }}"
-                                    title="Cel mai recent videoclip Click Music"
-                                    frameborder="0" loading="lazy"
+                                <iframe class="absolute inset-0 w-full h-full" src="{{ $youtubeEmbedUrl }}"
+                                    title="Cel mai recent videoclip Click Music" frameborder="0" loading="lazy"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                                 </iframe>
                             </div>
                         </div>
                     @endif
-
-                    <!-- Action Buttons - Mobile Optimized -->
-                    <div
-                        class="flex flex-col gap-3 mb-6 md:mb-0 md:flex-row md:justify-center md:gap-4 action-buttons">
-                        <!-- Premium Access -->
-                        <a href="{{ route('accespremium') }}" wire:navigate
-                            class="relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white transition-all duration-300 bg-blue-600 rounded-lg group md:text-base hover:bg-blue-700 focus:ring-4 focus:ring-blue-500/50">
-                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
-                                </path>
-                            </svg>
-                            Acces Premium
-                            <span class="px-2 py-1 ml-2 text-xs text-yellow-900 bg-yellow-500 rounded-full">9,99
-                                lei/lună</span>
-                        </a>
-
-                        <!-- Press Kit -->
-                        <a href="{{ route('electronic-press-kit') }}" wire:navigate
-                            class="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-blue-400 transition-all duration-300 border border-blue-500 rounded-lg md:text-base hover:bg-blue-500 hover:text-white">
-                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
-                                </path>
-                            </svg>
-                            Press Kit
-                        </a>
-
-                        <!-- YouTube -->
-                        <a href="https://youtube.com/clickmusicromania" target="_blank" rel="noopener noreferrer"
-                            class="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-gray-300 transition-all duration-300 border border-gray-600 rounded-lg md:text-base hover:border-red-500 hover:text-red-400">
-                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                            </svg>
-                            YouTube
-                        </a>
-                    </div>
-
-                    <!-- Description -->
-                    <p class="max-w-2xl mx-auto mt-8 text-sm leading-relaxed text-gray-300 md:text-base">
-                        Artist de muzică hip-hop, drum & bass și reggae din România cu peste două decenii de experiență.
-                        Cunoscut pentru hiturile naționale cu trupa Camuflaj și cariera solo de succes.
-                    </p>
 
                 </div>
             </div>
