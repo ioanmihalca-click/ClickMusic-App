@@ -24,63 +24,121 @@
     display: none !important;
 }
 
+/* ── Netflix poster wall ──
+   Transformarea statică (înclinarea 3D) stă pe .poster-plane, iar animația de
+   scroll pe .poster-row. Nu împart niciodată același element, altfel keyframes-urile
+   ar suprascrie tilt-ul. */
 .poster-container {
-    perspective: 900px;
-    transform-style: preserve-3d;
-    transform: rotateX(35deg) translateY(-100px);
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    perspective: 1400px;
+    perspective-origin: 50% 30%;
+    pointer-events: none;
+    contain: layout paint;
 }
 
-.home-parallax,
-.home-fade {
-    transition: filter 0.3s ease;
-    will-change: transform, filter;
+.poster-plane {
+    position: absolute;
+    top: -18%;
+    right: -22%;
+    bottom: -18%;
+    left: -22%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* stretch-ul implicit ar dimensiona rândurile la lățimea planului
+       și ar strica loop-ul de -50% */
+    align-items: flex-start;
+    gap: 20px;
+    transform: rotateX(24deg) rotateZ(-7deg) scale(1.15);
+    transform-origin: 50% 35%;
 }
 
 .poster-row {
     display: flex;
-    animation: scrollLeft linear infinite;
-    margin-bottom: 10px;
+    /* rând dimensionat de conținut, ca translateX(-50%) să fie exact un set duplicat */
+    width: max-content;
+    animation: poster-scroll-left 60s linear infinite;
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 .poster {
     flex: 0 0 auto;
-    width: 100px;
-    height: 150px;
-    margin-right: 20px;
-    overflow: hidden;
-    opacity: 0.7;
-    transition: all 0.3s ease;
+    width: 150px;
+    height: 225px;
+    /* margin-right, NU flex gap: marginea de după ultimul poster intră în
+       lățimea rândului și menține loop-ul de -50% fără cusătură */
+    margin-right: 16px;
+    object-fit: cover;
+    border-radius: 10px;
+    opacity: 0.78;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
 }
 
-.poster:hover {
-    opacity: 1;
-    transform: scale(1.05);
-    z-index: 10;
+@keyframes poster-scroll-left {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
 }
 
-@keyframes scrollLeft {
-    0% {
-        transform: translateX(0) rotateX(35deg);
+@keyframes poster-scroll-right {
+    from {
+        transform: translateX(-50%);
     }
 
-    100% {
-        transform: translateX(-50%) rotateX(35deg);
+    to {
+        transform: translateX(0);
     }
+}
+
+.poster-overlay {
+    background:
+        radial-gradient(
+            ellipse 120% 90% at 50% 38%,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.45) 55%,
+            rgba(0, 0, 0, 0.9) 100%
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(0, 0, 0, 0.3) 28%,
+            rgba(0, 0, 0, 0.3) 62%,
+            rgba(0, 0, 0, 0.95) 100%
+        );
+}
+
+.home-parallax {
+    will-change: transform;
 }
 
 /* Mobile styles */
 @media (max-width: 768px) {
-    .poster-container {
-        transform: rotateX(35deg) translateY(-20px); /* Ridică puțin posterele */
+    .poster-plane {
+        gap: 12px;
+        transform: rotateX(20deg) rotateZ(-6deg) scale(1.2);
     }
 
     .poster {
-        width: 60px;
-        height: 90px;
-        margin-right: 8px;
+        width: 68px;
+        height: 102px;
+        margin-right: 10px;
+        border-radius: 6px;
     }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    /* delay-urile negative lasă rândurile înghețate decalat:
+       peretele rămâne complet, doar static */
     .poster-row {
-        margin-bottom: 3px;
+        animation-play-state: paused;
     }
 }
 

@@ -1,38 +1,61 @@
 import "./bootstrap";
 
-//Parallax effect
+// Parallax + estompare la scroll pentru hero-ul de pe homepage.
+// Se scriu doar transform și opacity (compositor-only), throttled prin rAF.
 
-function effectsHomeSection() {
-    const homeSection = document.querySelector(".home-parallax, .home-fade");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    if (homeSection) {
-        const homeSHeight = homeSection.offsetHeight;
-        const topScroll = window.scrollY;
+let heroSection = null;
+let heroDim = null;
+let heroHeight = 0;
+let heroTicking = false;
 
-        if (topScroll <= homeSHeight) {
-            if (homeSection.classList.contains("home-parallax")) {
-                homeSection.style.transform = `translateY(${
-                    topScroll * 0.7
-                }px)`;
-            }
+function cacheHeroElements() {
+    heroSection = document.querySelector(".home-parallax");
+    heroDim = heroSection ? heroSection.querySelector(".scroll-dim") : null;
+    // hero-ul e ascuns cât timp rulează spinner-ul, deci offsetHeight poate fi 0;
+    // min-h-screen garantează că înălțimea reală e cel puțin cât viewport-ul
+    heroHeight = heroSection ? heroSection.offsetHeight : 0;
+}
 
-            if (homeSection.classList.contains("home-fade")) {
-                const caption = homeSection.querySelector(".caption-content");
-                if (caption) {
-                    caption.style.opacity = 1 - topScroll / homeSHeight;
-                }
-            }
+function updateHeroEffects() {
+    heroTicking = false;
 
-            // Adaug efect de blur la scroll
-            const blurAmount = Math.min(topScroll / 400, 10); // Se va activa mai târziu
-            homeSection.style.filter = `blur(${blurAmount}px)`;
-        }
+    if (!heroSection || prefersReducedMotion.matches) {
+        return;
+    }
+
+    const sectionHeight = heroHeight || window.innerHeight;
+    const scrolled = Math.min(window.scrollY, sectionHeight);
+
+    heroSection.style.transform = `translateY(${(scrolled * 0.7).toFixed(1)}px)`;
+
+    if (heroDim) {
+        heroDim.style.opacity = Math.min(
+            scrolled / (sectionHeight * 0.6),
+            1
+        ).toFixed(3);
     }
 }
 
-// Call the function on scroll and initial load
-window.addEventListener("scroll", effectsHomeSection);
-effectsHomeSection();
+function requestHeroUpdate() {
+    if (!heroTicking) {
+        heroTicking = true;
+        requestAnimationFrame(updateHeroEffects);
+    }
+}
+
+window.addEventListener("scroll", requestHeroUpdate, { passive: true });
+window.addEventListener("resize", cacheHeroElements);
+
+// după navigarea SPA referințele vechi devin noduri detașate
+document.addEventListener("livewire:navigated", () => {
+    cacheHeroElements();
+    updateHeroEffects();
+});
+
+cacheHeroElements();
+updateHeroEffects();
 
 //Smooth scroll
 

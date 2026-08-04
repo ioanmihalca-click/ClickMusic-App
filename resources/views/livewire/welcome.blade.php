@@ -1,8 +1,6 @@
 <div>
-    <div x-data="{ loading: true, isMobile: window.innerWidth <= 768 }" x-init="$nextTick(() => {
-        setTimeout(() => loading = false, 700);
-        window.addEventListener('resize', () => isMobile = window.innerWidth <= 768);
-    })" class="relative min-h-screen overflow-hidden">
+    <div x-data="{ loading: true }" x-init="$nextTick(() => setTimeout(() => loading = false, 400))"
+        class="relative min-h-screen overflow-hidden">
 
 
         <!-- Loading Spinner -->
@@ -11,26 +9,28 @@
         </div>
 
         <div x-show="!loading" x-transition:enter="transition ease-out duration-300" x-data="netflixBackground()"
-            x-init="init()" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-            class="relative min-h-screen overflow-hidden bg-black home-parallax home-fade">
+            x-on:resize.window.debounce.200ms="buildRows()" x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100" class="relative min-h-screen overflow-hidden bg-black home-parallax">
 
             <!-- Poster Background -->
-            <div class="absolute inset-0 overflow-hidden poster-container">
-                <template x-for="(row, rowIndex) in posterRows" :key="rowIndex">
-                    <div class="poster-row"
-                        :style="`animation-duration: ${50 + rowIndex * 5}s; transform: translateY(${isMobile ? rowIndex * 25 : rowIndex * 50}px) rotateX(60deg);`">
-                        <template x-for="(poster, posterIndex) in row" :key="posterIndex">
-                            <div class="poster">
-                                <img :src="poster" alt="Click Music"
-                                    class="object-cover w-full h-full rounded-lg">
-                            </div>
-                        </template>
-                    </div>
-                </template>
+            <div class="absolute inset-0 poster-container" aria-hidden="true">
+                <div class="poster-plane">
+                    <template x-for="(row, rowIndex) in posterRows" :key="rowIndex">
+                        <div class="poster-row" :style="row.style">
+                            <template x-for="(poster, posterIndex) in row.posters" :key="posterIndex">
+                                <img class="poster" :src="poster" alt="" width="200" height="300"
+                                    decoding="async">
+                            </template>
+                        </div>
+                    </template>
+                </div>
             </div>
 
-            <!-- Gradient Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/75"></div>
+            <!-- Cinematic Overlay -->
+            <div class="absolute inset-0 poster-overlay"></div>
+
+            <!-- Scroll dim layer (condus din resources/js/app.js) -->
+            <div class="absolute inset-0 z-20 bg-black opacity-0 pointer-events-none scroll-dim"></div>
 
             <!-- Content Overlay - Better Mobile Positioning -->
             <div class="relative z-10 flex items-start justify-center h-full pt-16 pb-20 text-white md:pt-24 md:pb-16">
@@ -131,20 +131,15 @@
 
     <!-- JavaScript pentru efecte -->
     <script>
-        document.querySelectorAll('.poster-row').forEach((row, index) => {
-            row.style.animationDuration = `${60 + (index * 10)}s`;
-            row.style.animationDelay = `-${Math.random() * 60}s`;
-        });
-
         function netflixBackground() {
             return {
                 posterRows: [],
+                perRow: 0,
+                rowCount: 0,
                 init() {
-                    // Check if we're on mobile and adjust accordingly
-                    const isMobile = window.innerWidth <= 768;
-                    const posterRowCount = isMobile ? 7 : 5; // Show rows on mobile
-
-
+                    this.buildRows();
+                },
+                buildRows() {
                     const posters = [
                         '/img/poze-bg/1.jpg', '/img/poze-bg/2.jpg', '/img/poze-bg/3.jpg', '/img/poze-bg/4.jpg',
                         '/img/poze-bg/5.jpg', '/img/poze-bg/6.jpg', '/img/poze-bg/7.jpg', '/img/poze-bg/8.jpg',
@@ -153,17 +148,53 @@
                         '/img/poze-bg/17.jpg', '/img/poze-bg/18.jpg', '/img/poze-bg/19.jpg', '/img/poze-bg/20.jpg'
                     ];
 
-                    this.posterRows = Array(posterRowCount).fill().map(() => {
-                        return [...posters].sort(() => Math.random() - 0.5);
-                    });
+                    const isMobile = window.innerWidth <= 768;
+                    // lățime poster + margine, respectiv înălțime poster + gap rând (vezi .poster / .poster-plane)
+                    const tileWidth = isMobile ? 78 : 166;
+                    const rowPitch = isMobile ? 114 : 245;
 
-                    this.posterRows = this.posterRows.map(row => [...row, ...row]);
+                    // planul e supradimensionat cu 44% pe lățime și 36% pe înălțime,
+                    // deci rândurile trebuie să depășească viewport-ul ca să nu apară goluri
+                    const perRow = Math.min(38, Math.ceil((window.innerWidth * 1.6) / tileWidth) + 1);
+                    const rowCount = Math.min(12, Math.ceil((window.innerHeight * 1.3) / rowPitch) + 1);
 
-                    // Ensure proper display on window resize
-                    window.addEventListener('resize', () => {
-                        document.querySelectorAll('.home-parallax').forEach(el => {
-                            el.classList.add('pb-20');
-                        });
+                    // reconstruim doar când peretele ar rămâne prea mic (ex. rotirea telefonului).
+                    // altfel resize-urile mărunte, precum bara de adrese pe mobil, ar reporni animațiile
+                    if (perRow <= this.perRow && rowCount <= this.rowCount) {
+                        return;
+                    }
+
+                    this.perRow = Math.max(perRow, this.perRow);
+                    this.rowCount = Math.max(rowCount, this.rowCount);
+
+                    const shuffle = (items) => {
+                        const shuffled = [...items];
+
+                        for (let i = shuffled.length - 1; i > 0; i--) {
+                            const j = Math.floor(Math.random() * (i + 1));
+                            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+                        }
+
+                        return shuffled;
+                    };
+
+                    this.posterRows = Array.from({ length: this.rowCount }, (_, rowIndex) => {
+                        const deck = shuffle(posters);
+                        const sequence = Array.from({ length: this.perRow }, (_, i) => deck[i % deck.length]);
+
+                        const duration = 60 + Math.random() * 40;
+                        // delay negativ aleator: rândurile pornesc în faze diferite
+                        const delay = -(Math.random() * duration);
+                        // decalaj orizontal aleator, ca posterele să nu formeze coloane
+                        const offset = -(Math.random() * tileWidth);
+                        const name = rowIndex % 2 === 0 ? 'poster-scroll-left' : 'poster-scroll-right';
+
+                        return {
+                            // set duplicat: keyframes-urile mută rândul cu exact -50% pentru un loop continuu
+                            posters: [...sequence, ...sequence],
+                            style: `animation-name: ${name}; animation-duration: ${duration.toFixed(1)}s;` +
+                                ` animation-delay: ${delay.toFixed(1)}s; margin-left: ${offset.toFixed(0)}px;`,
+                        };
                     });
                 }
             };
