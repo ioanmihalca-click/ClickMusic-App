@@ -150,12 +150,12 @@
 
                     const isMobile = window.innerWidth <= 768;
                     // lățime poster + margine, respectiv înălțime poster + gap rând (vezi .poster / .poster-plane)
-                    const tileWidth = isMobile ? 78 : 166;
-                    const rowPitch = isMobile ? 114 : 245;
+                    const tileWidth = isMobile ? 68 : 120;
+                    const rowPitch = isMobile ? 93 : 160;
 
                     // planul e supradimensionat cu 44% pe lățime și 36% pe înălțime,
                     // deci rândurile trebuie să depășească viewport-ul ca să nu apară goluri
-                    const perRow = Math.min(38, Math.ceil((window.innerWidth * 1.6) / tileWidth) + 1);
+                    const perRow = Math.min(40, Math.ceil((window.innerWidth * 1.4) / tileWidth) + 1);
                     const rowCount = Math.min(12, Math.ceil((window.innerHeight * 1.3) / rowPitch) + 1);
 
                     // reconstruim doar când peretele ar rămâne prea mic (ex. rotirea telefonului).
@@ -178,21 +178,23 @@
                         return shuffled;
                     };
 
-                    this.posterRows = Array.from({ length: this.rowCount }, (_, rowIndex) => {
+                    this.posterRows = Array.from({ length: this.rowCount }, () => {
                         const deck = shuffle(posters);
                         const sequence = Array.from({ length: this.perRow }, (_, i) => deck[i % deck.length]);
 
-                        const duration = 60 + Math.random() * 40;
+                        // durata se derivă dintr-o viteză țintă în px/s, ca driftul să arate
+                        // la fel indiferent de lățimea rândului sau de breakpoint
+                        const speed = 20 + Math.random() * 8;
+                        const duration = (this.perRow * tileWidth) / speed;
                         // delay negativ aleator: rândurile pornesc în faze diferite
                         const delay = -(Math.random() * duration);
                         // decalaj orizontal aleator, ca posterele să nu formeze coloane
                         const offset = -(Math.random() * tileWidth);
-                        const name = rowIndex % 2 === 0 ? 'poster-scroll-left' : 'poster-scroll-right';
 
                         return {
                             // set duplicat: keyframes-urile mută rândul cu exact -50% pentru un loop continuu
                             posters: [...sequence, ...sequence],
-                            style: `animation-name: ${name}; animation-duration: ${duration.toFixed(1)}s;` +
+                            style: `animation-duration: ${duration.toFixed(1)}s;` +
                                 ` animation-delay: ${delay.toFixed(1)}s; margin-left: ${offset.toFixed(0)}px;`,
                         };
                     });

@@ -22,11 +22,11 @@ class WelcomePageTest extends TestCase
             ->assertSee('netflixBackground()', false);
     }
 
-    public function test_the_poster_rows_scroll_in_alternating_directions(): void
+    public function test_the_poster_rows_scroll_in_a_single_direction(): void
     {
         Livewire::test(Welcome::class)
-            ->assertSeeHtml('poster-scroll-left')
-            ->assertSeeHtml('poster-scroll-right');
+            ->assertSeeHtml('animation-duration')
+            ->assertDontSeeHtml('poster-scroll-right');
     }
 
     public function test_the_scroll_dim_layer_replaces_the_blur_effect(): void
